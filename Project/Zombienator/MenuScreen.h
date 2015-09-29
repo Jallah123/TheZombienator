@@ -8,10 +8,11 @@ class MenuScreen
 public:
 	void AddUIComponent(AbstractUIComponent UIComponent);
 	virtual int GetSomething() = 0;
+	void SetBackgroundTexture(SDL_Texture& Texture) { BackgroundTexture = &Texture; }
+	SDL_Texture* const GetBackgroundTexture() { return BackgroundTexture; }
 private:
-
+	SDL_Texture* BackgroundTexture;
 protected:
 	std::vector<AbstractUIComponent> UIComponents;
-	SDL_Texture* BackgroundTexture;
 	MusicController *MusicController = & MusicController::GetInstance();
 };
