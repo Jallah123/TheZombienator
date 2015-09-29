@@ -1,7 +1,7 @@
 #include "TestScreen.h"
 #include <iostream>
 
-TestScreen::TestScreen()
+TestScreen::TestScreen(SDL_Renderer& ren) : MenuScreen(ren)
 {
 	std::cout << "Made TestSCreen" << std::endl;
 }

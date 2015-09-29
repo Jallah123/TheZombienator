@@ -2,7 +2,7 @@
 
 
 
-AbstractUIComponent::AbstractUIComponent()
+AbstractUIComponent::AbstractUIComponent(SDL_Renderer& ren)
 {
 }
 

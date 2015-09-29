@@ -3,6 +3,7 @@
 #include "SDL_mixer.h"
 #include "TestScreen.h"
 #include "Button.h"
+#include "SDL_ttf.h"
 
 using namespace std;
 
@@ -18,6 +19,10 @@ int main(int argc, char* args[])
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		std::cout << "SDL_Init error: " << SDL_GetError() << std::endl;
 		return 1;
+	}
+	if (TTF_Init() == -1) {
+		printf("TTF_Init: %s\n", TTF_GetError());
+		exit(2);
 	}
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		cout << "SDL_Mixer Error: " << Mix_GetError() << endl;
@@ -43,8 +48,8 @@ int main(int argc, char* args[])
 
 	//While application is running 
 	bool quit = false;
-	MenuScreen m = TestScreen{};
-	Button b = Button{};
+	MenuScreen m = TestScreen{ *ren };
+	Button b = Button{*ren, "testknop"};
 	b.SetDimensions(20, 20, 150, 150);
 	m.AddUIComponent(b);
 	while (!quit) {
@@ -63,18 +68,10 @@ int main(int argc, char* args[])
 		} //Clear screen 
 
 		
-
 		SDL_SetRenderDrawColor(ren, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(ren);
-		SDL_SetRenderDrawColor(ren, 0xFF, 0xFF, 0x00, 0xFF);
-		//Render texture to screen 
-		SDL_Rect rectangle;
-		rectangle.x = 10;
-		rectangle.y = 10;
-		rectangle.w = 50;
-		rectangle.h = 50;
+		m.Draw(*ren);
 
-		SDL_RenderFillRect(ren, &rectangle);
 		//Update screen 
 		SDL_RenderPresent(ren);
 	}
