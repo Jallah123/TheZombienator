@@ -2,6 +2,9 @@
 #include <iostream>
 #include "string"
 #include "SDL_ttf.h"
+#include "MenuScreen.h"
+#include "TestScreen.h"
+#include "ScreenController.h"
 
 Button::Button(SDL_Renderer& ren, std::string text) : AbstractUIComponent(ren) {
 	TTF_Font* Sans = TTF_OpenFont("C:/Users/jelle/Documents/TheZombienator/Project/Zombienator/Debug/sans.ttf", 14);
@@ -20,6 +23,11 @@ void Button::Draw(SDL_Renderer& ren) {
 
 void Button::ClickAction() {
 	std::cout << "Clicked" << std::endl;
+	//MenuScreen m = TestScreen{ ren };
+	//Button b = Button{ ren, "testknop22222" };
+	//b.SetDimensions(20, 20, 150, 150);
+	//m.AddUIComponent(b);
+	//ScreenController::GetInstance().ChangeMenu(m);
 }
 
 Button::~Button()

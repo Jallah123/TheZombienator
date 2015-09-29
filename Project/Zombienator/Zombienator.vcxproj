@@ -162,6 +162,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MusicController.cpp" />
+    <ClCompile Include="ScreenController.cpp" />
     <ClCompile Include="TestScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +170,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MusicController.h" />
+    <ClInclude Include="ScreenController.h" />
     <ClInclude Include="TestScreen.h" />
   </ItemGroup>
   <ItemGroup>

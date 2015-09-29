@@ -4,6 +4,7 @@
 #include "TestScreen.h"
 #include "Button.h"
 #include "SDL_ttf.h"
+#include "ScreenController.h"
 
 using namespace std;
 
@@ -52,6 +53,7 @@ int main(int argc, char* args[])
 	Button b = Button{*ren, "testknop"};
 	b.SetDimensions(20, 20, 150, 150);
 	m.AddUIComponent(b);
+	ScreenController::GetInstance().ChangeMenu(m);
 	while (!quit) {
 		//Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
@@ -70,19 +72,14 @@ int main(int argc, char* args[])
 		
 		SDL_SetRenderDrawColor(ren, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(ren);
-		m.Draw(*ren);
+		ScreenController::GetInstance().GetCurrentMenu().Draw(*ren);
 
 		//Update screen 
 		SDL_RenderPresent(ren);
 	}
-	/* Creating the surface. */
-
-
-
 
 	SDL_DestroyRenderer(ren);
 	SDL_DestroyWindow(win);
 	SDL_Quit();
-	system("PAUSE");
 	return 0;
 }
