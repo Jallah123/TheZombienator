@@ -158,14 +158,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractUIComponent.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MusicController.cpp" />
+    <ClCompile Include="TestScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractUIComponent.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MusicController.h" />
+    <ClInclude Include="TestScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

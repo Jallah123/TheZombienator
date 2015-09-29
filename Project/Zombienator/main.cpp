@@ -1,7 +1,8 @@
 #include <iostream>
 #include "SDL.h"
 #include "SDL_mixer.h"
-#include "MenuScreen.h"
+#include "TestScreen.h"
+#include "Button.h"
 
 using namespace std;
 
@@ -42,6 +43,10 @@ int main(int argc, char* args[])
 
 	//While application is running 
 	bool quit = false;
+	MenuScreen m = TestScreen{};
+	Button b = Button{};
+	b.SetDimensions(20, 20, 150, 150);
+	m.AddUIComponent(b);
 	while (!quit) {
 		//Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
@@ -50,7 +55,7 @@ int main(int argc, char* args[])
 				quit = true;
 			}
 			else if (e.type == SDL_MOUSEBUTTONDOWN) {
-				cout << "Clicked position: " << e.button.x << ":" << e.button.y << endl;
+				
 			}
 		} //Clear screen 
 
@@ -65,6 +70,8 @@ int main(int argc, char* args[])
 		rectangle.y = 10;
 		rectangle.w = 50;
 		rectangle.h = 50;
+
+
 
 		SDL_RenderFillRect(ren, &rectangle);
 		//Update screen 
