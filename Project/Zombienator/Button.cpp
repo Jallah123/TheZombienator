@@ -1,10 +1,6 @@
 #include "Button.h"
 #include <iostream>
 
-Button::Button()
-{
-}
-
 void Button::Draw(SDL_Renderer& ren) {
 	// NOPE
 	// SDL_RenderFillRect(&ren, this);

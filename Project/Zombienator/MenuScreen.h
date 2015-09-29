@@ -12,7 +12,6 @@ public:
 	void SetBackgroundTexture(SDL_Texture& Texture) { BackgroundTexture = &Texture; }
 	SDL_Texture* const GetBackgroundTexture() { return BackgroundTexture; }
 	void ClickComponents(SDL_Point MousePosition);
-	void Click(AbstractUIComponent& UIComponent);
 private:
 	SDL_Texture* BackgroundTexture;
 protected:

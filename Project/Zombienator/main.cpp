@@ -55,7 +55,10 @@ int main(int argc, char* args[])
 				quit = true;
 			}
 			else if (e.type == SDL_MOUSEBUTTONDOWN) {
-				
+				SDL_Point p = SDL_Point{};
+				p.x = e.button.x;
+				p.y = e.button.y;
+				m.ClickComponents(p);
 			}
 		} //Clear screen 
 
@@ -70,8 +73,6 @@ int main(int argc, char* args[])
 		rectangle.y = 10;
 		rectangle.w = 50;
 		rectangle.h = 50;
-
-
 
 		SDL_RenderFillRect(ren, &rectangle);
 		//Update screen 
