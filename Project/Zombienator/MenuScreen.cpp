@@ -1,9 +1,10 @@
 #include "MenuScreen.h"
 #include "iostream"
+#include "SDL_image.h"
 
 MenuScreen::MenuScreen(SDL_Renderer& ren)
 {
-	SDL_Surface *s = SDL_LoadBMP("C:/Users/Tojba/Documents/TheZombienator/Project/Zombienator/Debug/assets/images/menu_preview.bmp");
+	SDL_Surface *s = IMG_Load("C:/Users/Tojba/Documents/TheZombienator/Project/Zombienator/Debug/assets/images/menu_preview.png");
 	BackgroundTexture = SDL_CreateTextureFromSurface(&ren, s);
 }
 
