@@ -7,7 +7,7 @@
 #include "ScreenController.h"
 
 Button::Button(SDL_Renderer& ren, std::string text) : AbstractUIComponent(ren) {
-	TTF_Font* Sans = TTF_OpenFont("C:/Users/jelle/Documents/TheZombienator/Project/Zombienator/Debug/sans.ttf", 14);
+	TTF_Font* Sans = TTF_OpenFont("C:/Users/Tojba/Documents/TheZombienator/Project/Zombienator/Debug/Block-Cartoon.ttf", 14);
 	SDL_Color Black = { 0, 0, 0 };
 	char tab2[1024];
 	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, strcpy(tab2, text.c_str()), Black);

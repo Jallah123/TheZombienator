@@ -3,13 +3,13 @@
 
 MenuScreen::MenuScreen(SDL_Renderer& ren)
 {
-	SDL_Surface *s = SDL_LoadBMP("C:/Users/jelle/Documents/TheZombienator/Project/Zombienator/Debug/assets/images/default_background.bmp");
+	SDL_Surface *s = SDL_LoadBMP("C:/Users/Tojba/Documents/TheZombienator/Project/Zombienator/Debug/assets/images/menu_preview.bmp");
 	BackgroundTexture = SDL_CreateTextureFromSurface(&ren, s);
 }
 
-void MenuScreen::AddUIComponent(AbstractUIComponent& UIComponent)
+void MenuScreen::AddUIComponent(AbstractUIComponent* UIComponent)
 {
-	UIComponents.push_back(&UIComponent);
+	UIComponents.push_back(UIComponent);
 }
 
 void MenuScreen::ClickComponents(SDL_Point MousePosition)

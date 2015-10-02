@@ -50,9 +50,6 @@ int main(int argc, char* args[])
 	//While application is running 
 	bool quit = false;
 	MenuScreen m = TestScreen{ *ren };
-	Button b = Button{*ren, "testknop"};
-	b.SetDimensions(20, 20, 150, 150);
-	m.AddUIComponent(b);
 	ScreenController::GetInstance().ChangeMenu(m);
 	while (!quit) {
 		//Handle events on queue 
