@@ -14,17 +14,18 @@ private:
 	SDL_Window* Sdl_Window;
 	SDL_Renderer* Sdl_Renderer;
 	SDL_Event e;
+	TTF_Font* Font;
 	int width = 720;
 	int height = 1280;
 
 	static Program* instance; // our shared instance
 
 	Program();
-
 	int Render();
 	int InitComponents();
 public:
 	SDL_Renderer* GetRenderer();
+	TTF_Font* GetFont();
 
 	static Program* shared_program();
 };

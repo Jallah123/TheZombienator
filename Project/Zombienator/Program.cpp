@@ -29,6 +29,11 @@ SDL_Renderer* Program::GetRenderer() {
 	return Sdl_Renderer;
 }
 
+TTF_Font * Program::GetFont()
+{
+	return Font;
+}
+
 int Program::Render() {
 	bool quit = false;
 	MenuScreen m = TestScreen{ Sdl_Renderer };
@@ -74,6 +79,8 @@ int Program::InitComponents() {
 		printf("TTF_Init: %s\n", TTF_GetError());
 		return 2;
 	}
+	Font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
+
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		cout << "SDL_Mixer Error: " << Mix_GetError() << endl;
 	}

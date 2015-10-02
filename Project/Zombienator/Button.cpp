@@ -8,7 +8,9 @@
 #include "SDL_image.h"
 
 Button::Button(SDL_Renderer& ren, std::string text, std::string img_url) : AbstractUIComponent(ren) {
-	TTF_Font* Sans = TTF_OpenFont("C:/Users/Tojba/Documents/TheZombienator/Project/Zombienator/Debug/Block-Cartoon.ttf", 1024);
+	// TODO: When singleton is working correctly, uncomment.
+	// TTF_Font* Sans = Program::shared_program()->GetFont();
+	TTF_Font* Sans = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
 	SDL_Color Black = { 0, 0, 0 };
 	char tab2[1024];
 	SDL_Surface *s = IMG_Load(strcpy(tab2, img_url.c_str()));

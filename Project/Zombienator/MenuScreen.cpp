@@ -3,7 +3,7 @@
 
 MenuScreen::MenuScreen(SDL_Renderer* ren)
 {
-	SDL_Surface *s = IMG_Load("C:/Users/Tojba/Documents/TheZombienator/Project/Zombienator/Debug/assets/images/menu_bg.png");
+	SDL_Surface *s = IMG_Load("assets/images/menu_bg.png");
 	BackgroundTexture = SDL_CreateTextureFromSurface(ren, s);
 }
 
