@@ -9,3 +9,8 @@ void ScreenController::Back()
 {
 	MenuStack.pop();
 }
+
+int ScreenController::Size()
+{
+	return MenuStack.size();
+}

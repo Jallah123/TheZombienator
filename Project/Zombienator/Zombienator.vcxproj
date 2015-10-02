@@ -71,23 +71,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\jelle\Documents\TheZombienator\Project\Zombienator\SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\jelle\Documents\TheZombienator\Project\Zombienator\SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\jelle\Documents\TheZombienator\Project\Zombienator\SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\jelle\Documents\TheZombienator\Project\Zombienator\SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\jelle\Documents\TheZombienator\Project\Zombienator\SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\jelle\Documents\TheZombienator\Project\Zombienator\SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\jelle\Documents\TheZombienator\Project\Zombienator\SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\jelle\Documents\TheZombienator\Project\Zombienator\SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -101,7 +101,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2_ttf.lib;SDL2.lib;SDL2main.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
     </Link>
@@ -117,7 +117,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2_ttf.lib;SDL2.lib;SDL2main.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -135,7 +135,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2_ttf.lib;SDL2.lib;SDL2main.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,7 +153,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2_ttf.lib;SDL2.lib;SDL2main.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -162,6 +162,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MusicController.cpp" />
+    <ClCompile Include="Program.cpp" />
     <ClCompile Include="ScreenController.cpp" />
     <ClCompile Include="TestScreen.cpp" />
   </ItemGroup>
@@ -170,6 +171,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MusicController.h" />
+    <ClInclude Include="Program.h" />
     <ClInclude Include="ScreenController.h" />
     <ClInclude Include="TestScreen.h" />
   </ItemGroup>

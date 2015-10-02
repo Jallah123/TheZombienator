@@ -1,11 +1,10 @@
 #include "MenuScreen.h"
 #include "iostream"
-#include "SDL_image.h"
 
-MenuScreen::MenuScreen(SDL_Renderer& ren)
+MenuScreen::MenuScreen(SDL_Renderer* ren)
 {
-	SDL_Surface *s = IMG_Load("C:/Users/Tojba/Documents/TheZombienator/Project/Zombienator/Debug/assets/images/menu_preview.png");
-	BackgroundTexture = SDL_CreateTextureFromSurface(&ren, s);
+	SDL_Surface *s = IMG_Load("C:/Users/Tojba/Documents/TheZombienator/Project/Zombienator/Debug/assets/images/menu_bg.png");
+	BackgroundTexture = SDL_CreateTextureFromSurface(ren, s);
 }
 
 void MenuScreen::AddUIComponent(AbstractUIComponent* UIComponent)
@@ -24,4 +23,11 @@ void MenuScreen::Draw(SDL_Renderer& ren)
 	SDL_RenderCopy(&ren, BackgroundTexture, 0, 0);
 	std::vector<AbstractUIComponent*>::iterator it;
 	for (it = UIComponents.begin(); it != UIComponents.end(); it++) (*it)->Draw(ren);
+}
+
+void MenuScreen::ChangeBackground(SDL_Renderer* ren, std::string img_url)
+{
+	char tab2[1024];
+	SDL_Surface *s = IMG_Load(strcpy(tab2, img_url.c_str()));
+	BackgroundTexture = SDL_CreateTextureFromSurface(ren, s);
 }

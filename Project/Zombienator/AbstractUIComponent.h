@@ -1,5 +1,7 @@
 #pragma once
 #include "SDL.h"
+#include "SDL_ttf.h"
+
 class AbstractUIComponent : public SDL_Rect
 {
 public:

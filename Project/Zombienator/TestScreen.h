@@ -5,7 +5,7 @@ class TestScreen :
 	public MenuScreen
 {
 public:
-	TestScreen(SDL_Renderer& ren);
+	TestScreen(SDL_Renderer* ren);
 	~TestScreen();
 };
 
