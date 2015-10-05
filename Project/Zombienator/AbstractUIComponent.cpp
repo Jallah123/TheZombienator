@@ -4,6 +4,7 @@
 
 AbstractUIComponent::AbstractUIComponent(SDL_Renderer& ren)
 {
+	instance = &ren;
 }
 
 

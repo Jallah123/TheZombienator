@@ -15,7 +15,7 @@ public:
 	void OnClick(SDL_Point MousePosition);
 	virtual void Draw(SDL_Renderer& ren) = 0;
 protected:
-
+	SDL_Renderer* instance;
 private:
 	virtual void ClickAction() = 0;
 };

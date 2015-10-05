@@ -1,6 +1,7 @@
 #pragma once
 #include "AbstractUIComponent.h"
 #include "string"
+#include "SDL.h"
 
 class Button : public AbstractUIComponent
 {

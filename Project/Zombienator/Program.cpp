@@ -1,6 +1,7 @@
 #include "Program.h"
 
 Program::Program() {
+	cout << "Creating Program" << endl;
 	if (InitComponents() == 0) {
 		cout << "Init complete" << endl;
 	}
@@ -9,21 +10,12 @@ Program::Program() {
 	}
 }
 
+Program& Program::shared_program() {
 
-Program* Program::instance{ nullptr }; // definition & init
+	static Program instance;
 
-Program* Program::shared_program() {
-
-	if (instance == nullptr) {
-
-		instance = new Program;
-
-		return instance;
-
-	}
+	return instance;
 }
-
-
 
 SDL_Renderer* Program::GetRenderer() {
 	return Sdl_Renderer;
@@ -50,8 +42,6 @@ int Program::Render() {
 				p.x = e.button.x;
 				p.y = e.button.y;
 				ScreenController::GetInstance().GetCurrentMenu().ClickComponents(p);
-				MenuScreen m = TestScreen{ Sdl_Renderer };
-				ScreenController::GetInstance().ChangeMenu(m);
 			}
 		}
 
@@ -72,17 +62,17 @@ int Program::Render() {
 
 int Program::InitComponents() {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-		cout << "SDL_Init error: " << SDL_GetError() << endl;
+		cerr << "SDL_Init error: " << SDL_GetError() << endl;
 		return 1;
 	}
 	if (TTF_Init() == -1) {
-		printf("TTF_Init: %s\n", TTF_GetError());
+		cerr << "TTF_Init: %s\n" << TTF_GetError() << endl;
 		return 2;
 	}
 	Font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
 
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-		cout << "SDL_Mixer Error: " << Mix_GetError() << endl;
+		cerr << "SDL_Mixer Error: " << Mix_GetError() << endl;
 	}
 
 	// More channels so we can play more sounds at the same time
@@ -90,7 +80,7 @@ int Program::InitComponents() {
 
 	Sdl_Window = SDL_CreateWindow("Zombienator!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, height, width, SDL_WINDOW_SHOWN);
 	if (Sdl_Window == nullptr) {
-		cout << "SDL_CreateWindow error: " << SDL_GetError() << endl;
+		cerr << "SDL_CreateWindow error: " << SDL_GetError() << endl;
 		SDL_Quit();
 		return 1;
 	}
@@ -98,7 +88,7 @@ int Program::InitComponents() {
 	Sdl_Renderer = SDL_CreateRenderer(Sdl_Window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (Sdl_Renderer == nullptr) {
 		SDL_DestroyWindow(Sdl_Window);
-		std::cout << "SDL_CreateRenderer error: " << SDL_GetError() << std::endl;
+		cerr << "SDL_CreateRenderer error: " << SDL_GetError() << endl;
 		SDL_Quit();
 		return 1;
 	}

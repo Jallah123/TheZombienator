@@ -18,14 +18,13 @@ private:
 	int width = 720;
 	int height = 1280;
 
-	static Program* instance; // our shared instance
-
 	Program();
 	int Render();
 	int InitComponents();
 public:
+
 	SDL_Renderer* GetRenderer();
 	TTF_Font* GetFont();
 
-	static Program* shared_program();
+	static Program& shared_program();
 };

@@ -6,6 +6,7 @@
 #include "ScreenController.h"
 #include "Program.h"
 #include "SDL_image.h"
+#include "SDL.h"
 
 Button::Button(SDL_Renderer& ren, std::string text, std::string img_url) : AbstractUIComponent(ren) {
 	// TODO: When singleton is working correctly, uncomment.
@@ -30,7 +31,7 @@ void Button::Draw(SDL_Renderer& ren) {
 
 void Button::ClickAction() {
 	std::cout << "Clicked" << std::endl;
-	SDL_Renderer* ren = Program::shared_program()->GetRenderer();
+	SDL_Renderer* ren = instance;
 	MenuScreen m = TestScreen{ ren };
 	ScreenController::GetInstance().ChangeMenu(m);
 }
