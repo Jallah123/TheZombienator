@@ -7,7 +7,8 @@ void ScreenController::ChangeMenu(MenuScreen NewMenu)
 
 void ScreenController::Back()
 {
-	MenuStack.pop();
+	if(MenuStack.size() > 1)
+		MenuStack.pop();
 }
 
 int ScreenController::Size()

@@ -1,15 +1,8 @@
 #include "AbstractUIComponent.h"
 
-
-
 AbstractUIComponent::AbstractUIComponent(SDL_Renderer& ren)
 {
 	instance = &ren;
-}
-
-
-AbstractUIComponent::~AbstractUIComponent()
-{
 }
 
 void AbstractUIComponent::OnClick(SDL_Point MousePosition)
@@ -22,4 +15,8 @@ void AbstractUIComponent::OnClick(SDL_Point MousePosition)
 	if (SDL_HasIntersection(this, &MouseRect) == SDL_TRUE) {
 		ClickAction();
 	}
+}
+
+AbstractUIComponent::~AbstractUIComponent()
+{
 }

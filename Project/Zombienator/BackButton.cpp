@@ -1,4 +1,4 @@
-#include "Button.h"
+#include "BackButton.h"
 #include "string"
 #include "MenuScreen.h"
 #include "TestScreen.h"
@@ -7,7 +7,7 @@
 #include "SDL_image.h"
 #include "SDL.h"
 
-Button::Button(SDL_Renderer& ren, std::string text, std::string img_url) : AbstractUIComponent(ren) {
+BackButton::BackButton(SDL_Renderer& ren, std::string text, std::string img_url) : AbstractUIComponent(ren) {
 	// TODO: When singleton is working correctly, uncomment.
 	// TTF_Font* Sans = Program::shared_program()->GetFont();
 	TTF_Font* Sans = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
@@ -20,7 +20,7 @@ Button::Button(SDL_Renderer& ren, std::string text, std::string img_url) : Abstr
 	Message = SDL_CreateTextureFromSurface(&ren, surfaceMessage);
 }
 
-void Button::Draw(SDL_Renderer& ren) {
+void BackButton::Draw(SDL_Renderer& ren) {
 	//TODO color
 	SDL_SetRenderDrawColor(&ren, 0x00, 0x00, 0x00, 0xFF);
 	SDL_RenderFillRect(&ren, this);
@@ -28,12 +28,10 @@ void Button::Draw(SDL_Renderer& ren) {
 	SDL_RenderCopy(&ren, Message, 0, this);
 }
 
-void Button::ClickAction() {
-	SDL_Renderer* ren = instance;
-	MenuScreen m = TestScreen{ ren };
-	ScreenController::GetInstance().ChangeMenu(m);
+void BackButton::ClickAction() {
+	ScreenController::GetInstance().Back();
 }
 
-Button::~Button()
+BackButton::~BackButton()
 {
 }
