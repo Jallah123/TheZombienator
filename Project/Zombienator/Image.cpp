@@ -15,7 +15,6 @@ Image::Image(SDL_Renderer& ren, std::string img_url) : AbstractUIComponent(ren) 
 
 void Image::Draw(SDL_Renderer& ren) {
 	SDL_SetRenderDrawColor(&ren, 0x00, 0x00, 0x00, 0xFF);
-	SDL_RenderFillRect(&ren, this);
 	SDL_RenderCopy(&ren, Background, 0, this);
 }
 

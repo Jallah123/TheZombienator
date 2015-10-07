@@ -12,7 +12,8 @@ public:
 	void Previous();
 	~SelectionScreen();
 private:
-	int currentImage = 0;
+	int currentImageIndex{ 0 };
+	Image* currentImage{ nullptr };
 	std::vector<Image*> images;
 };
 
