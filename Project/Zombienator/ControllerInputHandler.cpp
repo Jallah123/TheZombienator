@@ -6,9 +6,6 @@ void ControllerInputHandler::SetButton(SDL_ControllerButtonEvent button, bool b)
 	case SDL_CONTROLLER_BUTTON_A:
 		inputContainer->SetKey(' ', b);
 		break;
-	case SDL_CONTROLLER_BUTTON_Y:
-		inputContainer->SetKey('y', b);
-		break;
 	case SDL_CONTROLLER_BUTTON_LEFTSHOULDER:
 		inputContainer->SetKey('q', b);
 		break;
