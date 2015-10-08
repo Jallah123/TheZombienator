@@ -1,42 +1,24 @@
-﻿Build started 8-10-2015 17:12:26.
+﻿Build started 8-10-2015 22:14:43.
      1>Project "C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Zombienator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AbstractUIComponent.cpp BackButton.cpp Button.cpp main.cpp MenuScreen.cpp MusicController.cpp Program.cpp ScreenController.cpp TestScreen.cpp
-         TestScreen.cpp
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\testscreen.cpp(13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-         ScreenController.cpp
-         Program.cpp
-         MusicController.cpp
-         MenuScreen.cpp
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\menuscreen.cpp(31): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-         main.cpp
-         Button.cpp
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\button.cpp(16): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\button.cpp(19): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-         BackButton.cpp
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\backbutton.cpp(16): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\backbutton.cpp(19): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-         AbstractUIComponent.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AbstractContainer.cpp Behaviour.cpp Character.cpp DrawContainer.cpp GameObject.cpp MoveDirection.cpp
+         MoveDirection.cpp
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\movedirection.cpp : fatal error C1041: cannot open program database 'C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\vc140.idb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+         GameObject.cpp
+         DrawContainer.cpp
+         Character.cpp
+         Behaviour.cpp
+         AbstractContainer.cpp
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.h(6): error C2065: 'Behaviour': undeclared identifier
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.h(6): error C2059: syntax error: '>'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.h(6): error C2976: 'std::vector': too few template arguments
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(678): note: see declaration of 'std::vector'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.h(7): error C2143: syntax error: missing ';' before 'public'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.cpp(6): error C2512: 'std::vector': no appropriate default constructor available
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(678): note: see declaration of 'std::vector'
          Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.lib" /MACHINE:X86 Debug\AbstractUIComponent.obj
-         Debug\BackButton.obj
-         Debug\Button.obj
-         Debug\main.obj
-         Debug\MenuScreen.obj
-         Debug\MusicController.obj
-         Debug\Program.obj
-         Debug\ScreenController.obj
-         Debug\TestScreen.obj
-         LINK : C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.exe not found or not built by the last incremental link; performing full link
-         Zombienator.vcxproj -> C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.exe
-     1>Done Building Project "C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Zombienator.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Zombienator.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:07.28
+Time Elapsed 00:00:02.23

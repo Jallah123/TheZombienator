@@ -157,25 +157,48 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractContainer.cpp" />
     <ClCompile Include="AbstractUIComponent.cpp" />
+    <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
+    <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="CollideContainer.cpp" />
+    <ClCompile Include="DrawContainer.cpp" />
+    <ClCompile Include="ForceContainer.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="InputContainer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
+    <ClCompile Include="MoveContainer.cpp" />
+    <ClCompile Include="MoveDirection.cpp" />
     <ClCompile Include="MusicController.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ScreenController.cpp" />
     <ClCompile Include="TestScreen.cpp" />
+    <ClCompile Include="UpdateContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractContainer.h" />
     <ClInclude Include="AbstractUIComponent.h" />
+    <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
+    <ClInclude Include="Behaviour.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="CollideContainer.h" />
+    <ClInclude Include="DrawContainer.h" />
+    <ClInclude Include="ForceContainer.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="InputContainer.h" />
     <ClInclude Include="MenuScreen.h" />
+    <ClInclude Include="MoveContainer.h" />
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ScreenController.h" />
     <ClInclude Include="TestScreen.h" />
+    <ClInclude Include="UpdateContainer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Debug\assets\images\default_background.bmp" />
