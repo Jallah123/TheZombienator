@@ -57,3 +57,6 @@ bld/
 *.ilk
 *.log
 *.tlog
+
+# Custom ignores
+Project/Zombienator/Debug/*
