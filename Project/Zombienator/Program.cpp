@@ -43,8 +43,13 @@ int Program::Render() {
 				p.y = e.button.y;
 				ScreenController::GetInstance().GetCurrentMenu().ClickComponents(p);
 			}
+			else if (e.type == SDL_KEYDOWN) {
+				inputContainer.SetKey(e.key.keysym.sym, SDL_PRESSED);
+			}
+			else if (e.type == SDL_KEYUP) {
+				inputContainer.SetKey(e.key.keysym.sym, SDL_RELEASED);
+			}
 		}
-
 
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(Sdl_Renderer);
@@ -92,5 +97,6 @@ int Program::InitComponents() {
 		SDL_Quit();
 		return 1;
 	}
+	inputContainer = InputContainer{};
 	return 0;
 }
