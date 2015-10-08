@@ -1,6 +1,11 @@
 #include "Program.h"
 
+
+
+
 Program::Program() {
+	xmlParseTest();
+
 	cout << "Creating Program" << endl;
 	if (InitComponents() == 0) {
 		cout << "Init complete" << endl;
@@ -8,6 +13,7 @@ Program::Program() {
 	if (Render() == 0) {
 		cout << "Done rendering" << endl;
 	}
+
 }
 
 Program& Program::shared_program() {
@@ -25,6 +31,14 @@ TTF_Font * Program::GetFont()
 {
 	return Font;
 }
+
+void Program::xmlParseTest()
+{
+	cout << "hetero" << endl;
+	MapRender r = MapRender{"assets/maps/TestMap/TestMap.tmx"};
+
+}
+
 
 int Program::Render() {
 	bool quit = false;

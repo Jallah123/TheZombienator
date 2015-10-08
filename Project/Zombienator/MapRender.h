@@ -1,10 +1,13 @@
 #pragma once
 #include <string>
+#include <iostream>
+#include "thirdparty/pugixml-1.6/src/pugixml.hpp"
 
+using namespace std;
 class MapRender
 {
 public:
-	MapRender(std::string xml_url);
+	MapRender(char* xml_url);
 private:
 protected:
 

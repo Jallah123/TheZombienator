@@ -5,6 +5,7 @@
 #include "TestScreen.h"
 #include "SDL_ttf.h"
 #include "ScreenController.h"
+#include "MapRender.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ private:
 	TTF_Font* Font;
 	int width = 720;
 	int height = 1280;
-
+	void xmlParseTest();
 	Program();
 	int Render();
 	int InitComponents();
