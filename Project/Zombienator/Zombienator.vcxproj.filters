@@ -106,6 +106,39 @@
     <Filter Include="Source Files\Models\GameObjects\Behaviours\Animate">
       <UniqueIdentifier>{b6e253ba-a823-48fb-9ba4-388aa1c64080}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Behaviours\Draw">
+      <UniqueIdentifier>{8e61f16f-b55d-4702-a007-a7cf9979bd30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Behaviours\Input">
+      <UniqueIdentifier>{e87b5fa4-e267-43f2-92a0-3cea233ccf21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Behaviours\Collide">
+      <UniqueIdentifier>{4477cbf5-94fb-4496-8d9a-0aaeaae46349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Behaviours\Move">
+      <UniqueIdentifier>{8b518a98-6585-4332-871f-4a292d3f9b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Behaviours\Force">
+      <UniqueIdentifier>{2dabdf34-7d67-47e6-b2ed-cec402ea2ae2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Behaviours\Update">
+      <UniqueIdentifier>{959a2f35-682d-4d81-8b26-3487984ebc49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Behaviours\Animate">
+      <UniqueIdentifier>{3db1caed-edd9-4a45-8e84-8c152e52599d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Characters\NPC">
+      <UniqueIdentifier>{3a7c2712-c599-4c74-9f6e-3732a17e36a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Characters\PC">
+      <UniqueIdentifier>{180cddb0-2a89-49b2-a892-968a1ca9e04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\GameObjects\Characters\NPC">
+      <UniqueIdentifier>{7a0996e1-744a-43d4-afda-1fc31264a567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\GameObjects\Characters\PC">
+      <UniqueIdentifier>{be5dde3b-a6ed-454f-9057-3585c198e4d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestScreen.cpp">
@@ -171,6 +204,12 @@
     <ClCompile Include="AnimateContainer.cpp">
       <Filter>Source Files\Containers</Filter>
     </ClCompile>
+    <ClCompile Include="PlayableCharacter.cpp">
+      <Filter>Source Files\Models\GameObjects\Characters\PC</Filter>
+    </ClCompile>
+    <ClCompile Include="NonPlayableCharacter.cpp">
+      <Filter>Source Files\Models\GameObjects\Characters\NPC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -229,6 +268,12 @@
     </ClInclude>
     <ClInclude Include="AnimateContainer.h">
       <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayableCharacter.h">
+      <Filter>Header Files\Models\GameObjects\Characters\PC</Filter>
+    </ClInclude>
+    <ClInclude Include="NonPlayableCharacter.h">
+      <Filter>Header Files\Models\GameObjects\Characters\NPC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

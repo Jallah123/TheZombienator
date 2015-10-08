@@ -14,3 +14,8 @@ CollideContainer::~CollideContainer()
 void CollideContainer::Collide()
 {
 }
+
+void AbstractContainer::Register()
+{
+
+}
