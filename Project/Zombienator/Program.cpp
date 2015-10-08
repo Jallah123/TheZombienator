@@ -47,10 +47,10 @@ int Program::Render() {
 				ScreenController::GetInstance().GetCurrentMenu().ClickComponents(p);
 			}
 			else if (e.type == SDL_KEYDOWN) {
-				inputContainer->SetKey(e.key.keysym.sym, SDL_PRESSED);
+				keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_PRESSED);
 			}
 			else if (e.type == SDL_KEYUP) {
-				inputContainer->SetKey(e.key.keysym.sym, SDL_RELEASED);
+				keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_RELEASED);
 			}
 			else if (e.type == SDL_CONTROLLERBUTTONDOWN) {
 				controllerInputHandler->SetButton(e.cbutton, SDL_PRESSED);
@@ -104,7 +104,7 @@ int Program::InitComponents() {
 		SDL_Quit();
 		return 1;
 	}
-	inputContainer = &InputContainer::GetInstance();
+	keyboardInputHandler = &KeyboardInputHandler::GetInstance();
 	controllerInputHandler = &ControllerInputHandler::GetInstance();
 	return 0;
 }

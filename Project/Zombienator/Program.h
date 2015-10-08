@@ -5,7 +5,7 @@
 #include "TestScreen.h"
 #include "SDL_ttf.h"
 #include "ScreenController.h"
-#include "InputContainer.h"
+#include "KeyboardInputHandler.h"
 #include "ControllerInputHandler.h"
 
 using namespace std;
@@ -16,8 +16,8 @@ private:
 	SDL_Window* Sdl_Window;
 	SDL_Renderer* Sdl_Renderer;
 	SDL_Event e;
-	InputContainer* inputContainer;
 	SDL_GameController* controller;
+	KeyboardInputHandler* keyboardInputHandler;
 	ControllerInputHandler* controllerInputHandler;
 	TTF_Font* Font;
 	int width = 720;
