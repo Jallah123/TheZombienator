@@ -160,7 +160,10 @@
     <ClCompile Include="AbstractUIComponent.cpp" />
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapRender.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MusicController.cpp" />
     <ClCompile Include="Program.cpp" />
@@ -171,6 +174,9 @@
     <ClInclude Include="AbstractUIComponent.h" />
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MapRender.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="Program.h" />
