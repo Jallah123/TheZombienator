@@ -4,12 +4,19 @@
 class InputContainer
 {
 public:
-	InputContainer();
+	static InputContainer& GetInstance() {
+		static InputContainer instance;
+		return instance;
+	}
+
 	std::map<char, bool> GetKeys() { return keys; };
-	void SetKey(char c, bool b) { keys[c] = b; };
+	void SetKey(char c, bool b) { keys[c] = b; std::cout << "put " << c << " to " << b << std::endl; };
 	bool GetKeyState(char c) { return keys[c]; };
-	~InputContainer();
+
 private:
+	InputContainer() {};
+	~InputContainer() {};
+	InputContainer(InputContainer const&) = delete;
+	void operator=(InputContainer const&) = delete;
 	std::map<char, bool> keys;
 };
-
