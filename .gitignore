@@ -57,3 +57,5 @@ bld/
 *.ilk
 *.log
 *.tlog
+
+Project/Zombienator/Debug/*
