@@ -51,6 +51,15 @@
     <ClCompile Include="BackButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InputContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerInputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardInputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuScreen.h">
@@ -75,6 +84,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BackButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerInputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardInputHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
