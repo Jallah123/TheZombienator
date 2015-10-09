@@ -9,11 +9,32 @@
 
 SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
+	struct PreviousButton : AbstractUIComponent {
+		SelectionScreen* ss;
+		void Draw(SDL_Renderer& ren) {
+			std::string img_url{ "assets/images/previous.bmp" };
+			char tab2[1024];
+			SDL_Surface* s = IMG_Load(strcpy(tab2, img_url.c_str()));
+			SDL_Texture* Image  = SDL_CreateTextureFromSurface(&ren, s);
+			SDL_RenderCopy(&ren, Image, 0, this);
+		}
+		void ClickAction() {
+			std::cout << ss->images.capacity() << std::endl;
+			ss->currentImageIndex--;
+			if (ss->currentImageIndex < 0)
+			{
+				ss->currentImageIndex = ss->images.capacity() - 1;
+			}
+			std::cout << "ImageIndex: " << ss->currentImageIndex << std::endl;
+			*ss->currentImage = ss->images.at(ss->currentImageIndex);
+		}
+	};
 	std::cout << "Made SelectionScreen" << std::endl;
 	//Init buttons
-	PreviousButton* previousButton = new PreviousButton(*ren, "", "assets/images/previous.bmp");
+	PreviousButton* previousButton{};
 	previousButton->SetDimensions(100, 10, 75, 75);
 	previousButton->SetLocation(100, 282);
+	previousButton->ss = this;
 	AddUIComponent(previousButton);
 
 	Button* nextButton = new Button(*ren, "", "assets/images/next.png");
