@@ -5,9 +5,12 @@ Program::Program() {
 	if (InitComponents() == 0) {
 		cout << "Init complete" << endl;
 	}
+	if (InitJoystick() == 0) {
+		cout << "Init joystick" << endl;
+	}
 	if (Render() == 0) {
 		cout << "Done rendering" << endl;
-	}
+	} 
 }
 
 Program& Program::shared_program() {
@@ -43,8 +46,19 @@ int Program::Render() {
 				p.y = e.button.y;
 				ScreenController::GetInstance().GetCurrentMenu().ClickComponents(p);
 			}
+			else if (e.type == SDL_KEYDOWN) {
+				keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_PRESSED);
+			}
+			else if (e.type == SDL_KEYUP) {
+				keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_RELEASED);
+			}
+			else if (e.type == SDL_CONTROLLERBUTTONDOWN) {
+				controllerInputHandler->SetButton(e.cbutton, SDL_PRESSED);
+			}
+			else if (e.type == SDL_CONTROLLERBUTTONUP) {
+				controllerInputHandler->SetButton(e.cbutton, SDL_RELEASED);
+			}
 		}
-
 
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(Sdl_Renderer);
@@ -54,14 +68,12 @@ int Program::Render() {
 		SDL_RenderPresent(Sdl_Renderer);
 	}
 
-	SDL_DestroyRenderer(Sdl_Renderer);
-	SDL_DestroyWindow(Sdl_Window);
-	SDL_Quit();
+
 	return 0;
 }
 
 int Program::InitComponents() {
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER) != 0) {
 		cerr << "SDL_Init error: " << SDL_GetError() << endl;
 		return 1;
 	}
@@ -92,5 +104,25 @@ int Program::InitComponents() {
 		SDL_Quit();
 		return 1;
 	}
+	keyboardInputHandler = &KeyboardInputHandler::GetInstance();
+	controllerInputHandler = &ControllerInputHandler::GetInstance();
 	return 0;
+}
+
+int Program::InitJoystick() {
+	for (int JoystickIndex = 0; JoystickIndex < SDL_NumJoysticks(); ++JoystickIndex)
+	{
+		if (!SDL_IsGameController(JoystickIndex))
+		{
+			continue;
+		}
+		controller = SDL_GameControllerOpen(JoystickIndex);
+	}
+	return 0;
+}
+Program::~Program() {
+	SDL_GameControllerClose(controller);
+	SDL_DestroyRenderer(Sdl_Renderer);
+	SDL_DestroyWindow(Sdl_Window);
+	SDL_Quit();
 }
