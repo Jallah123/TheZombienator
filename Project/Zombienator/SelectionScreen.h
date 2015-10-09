@@ -7,13 +7,13 @@ class SelectionScreen :
 {
 public:
 	SelectionScreen(SDL_Renderer* ren);
-	void AddImage(Image* img);
+	void AddImage(Image img);
 	void Next();
 	void Previous();
 	~SelectionScreen();
-private:
 	int currentImageIndex{ 0 };
 	Image* currentImage{ nullptr };
-	std::vector<Image*> images;
+	std::vector<Image> images;
+private:
 };
 
