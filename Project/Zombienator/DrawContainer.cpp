@@ -11,6 +11,12 @@ DrawContainer::~DrawContainer()
 {
 }
 
-void DrawContainer::Draw()
+
+void DrawContainer::Register()
+{
+	//this->Add(DrawBehaviour)
+}
+
+void DrawContainer::Draw(SDL_Renderer & ren)
 {
 }

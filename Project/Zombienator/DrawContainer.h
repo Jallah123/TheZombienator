@@ -1,12 +1,13 @@
-#include "AbstractContainer.h"
 #pragma once
-class DrawContainer : public AbstractContainer
+#include "AbstractContainer.h"
+class DrawContainer :
+	public AbstractContainer
 {
-	
 public:
 	DrawContainer();
 	~DrawContainer();
 
-	void Draw();
+	virtual void Register() override;
+	void Draw(SDL_Renderer& ren);
 };
 

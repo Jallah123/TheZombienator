@@ -1,24 +1,36 @@
-﻿Build started 8-10-2015 22:14:43.
+﻿Build started 11-10-2015 22:05:16.
      1>Project "C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Zombienator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AbstractContainer.cpp Behaviour.cpp Character.cpp DrawContainer.cpp GameObject.cpp MoveDirection.cpp
-         MoveDirection.cpp
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\movedirection.cpp : fatal error C1041: cannot open program database 'C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\vc140.idb'; if multiple CL.EXE write to the same .PDB file, please use /FS
-         GameObject.cpp
-         DrawContainer.cpp
-         Character.cpp
-         Behaviour.cpp
-         AbstractContainer.cpp
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.h(6): error C2065: 'Behaviour': undeclared identifier
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.h(6): error C2059: syntax error: '>'
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.h(6): error C2976: 'std::vector': too few template arguments
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(678): note: see declaration of 'std::vector'
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.h(7): error C2143: syntax error: missing ';' before 'public'
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\abstractcontainer.cpp(6): error C2512: 'std::vector': no appropriate default constructor available
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(678): note: see declaration of 'std::vector'
-         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt MenuScreen.cpp
+         MenuScreen.cpp
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\menuscreen.cpp(61): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.lib" /MACHINE:X86 Debug\AbstractContainer.obj
+         Debug\AbstractUIComponent.obj
+         Debug\AnimateContainer.obj
+         Debug\BackButton.obj
+         Debug\Behaviour.obj
+         Debug\Button.obj
+         Debug\Character.obj
+         Debug\GameObjectFactory.obj
+         Debug\DrawContainer.obj
+         Debug\GameObject.obj
+         Debug\main.obj
+         Debug\MenuScreen.obj
+         Debug\MoveDirection.obj
+         Debug\MusicController.obj
+         Debug\NonPlayableCharacter.obj
+         Debug\PlayableCharacter.obj
+         Debug\Program.obj
+         Debug\ScreenController.obj
+         Debug\TestScreen.obj
+     1>GameObjectFactory.obj : error LNK2001: unresolved external symbol "private: static class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::function<class GameObject * __cdecl(void)>,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class std::function<class GameObject * __cdecl(void)> > > > GameObjectFactory::registry" (?registry@GameObjectFactory@@0V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$function@$$A6APAVGameObject@@XZ@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$function@$$A6APAVGameObject@@XZ@2@@std@@@2@@std@@A)
+     1>MenuScreen.obj : error LNK2001: unresolved external symbol "private: static class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::function<class GameObject * __cdecl(void)>,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class std::function<class GameObject * __cdecl(void)> > > > GameObjectFactory::registry" (?registry@GameObjectFactory@@0V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$function@$$A6APAVGameObject@@XZ@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$function@$$A6APAVGameObject@@XZ@2@@std@@@2@@std@@A)
+     1>MenuScreen.obj : error LNK2019: unresolved external symbol "private: __thiscall GameObjectFactory::GameObjectFactory(void)" (??0GameObjectFactory@@AAE@XZ) referenced in function "public: static class GameObjectFactory * __cdecl GameObjectFactory::Instance(void)" (?Instance@GameObjectFactory@@SAPAV1@XZ)
+     1>C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.exe : fatal error LNK1120: 2 unresolved externals
      1>Done Building Project "C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Zombienator.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:02.23
+Time Elapsed 00:00:01.67

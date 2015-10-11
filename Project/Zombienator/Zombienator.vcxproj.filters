@@ -156,12 +156,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\Models\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="DrawContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="AbstractContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
     <ClCompile Include="AbstractUIComponent.cpp">
       <Filter>Source Files\Views\UIComponents</Filter>
     </ClCompile>
@@ -186,29 +180,23 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InputContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="CollideContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="MoveContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="ForceContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="UpdateContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimateContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
     <ClCompile Include="PlayableCharacter.cpp">
       <Filter>Source Files\Models\GameObjects\Characters\PC</Filter>
     </ClCompile>
     <ClCompile Include="NonPlayableCharacter.cpp">
       <Filter>Source Files\Models\GameObjects\Characters\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimateContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -220,12 +208,6 @@
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Header Files\Models\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawContainer.h">
-      <Filter>Header Files\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="AbstractContainer.h">
-      <Filter>Header Files\Containers</Filter>
     </ClInclude>
     <ClInclude Include="Behaviour.h">
       <Filter>Header Files\Models\GameObjects\Behaviours</Filter>
@@ -251,29 +233,26 @@
     <ClInclude Include="TestScreen.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="InputContainer.h">
-      <Filter>Header Files\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="CollideContainer.h">
-      <Filter>Header Files\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveContainer.h">
-      <Filter>Header Files\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ForceContainer.h">
-      <Filter>Header Files\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="UpdateContainer.h">
-      <Filter>Header Files\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimateContainer.h">
-      <Filter>Header Files\Containers</Filter>
-    </ClInclude>
     <ClInclude Include="PlayableCharacter.h">
       <Filter>Header Files\Models\GameObjects\Characters\PC</Filter>
     </ClInclude>
     <ClInclude Include="NonPlayableCharacter.h">
       <Filter>Header Files\Models\GameObjects\Characters\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimateContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectRegistrar.h">
+      <Filter>Header Files\Factories</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
