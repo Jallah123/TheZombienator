@@ -4,48 +4,61 @@
 #include "Button.h"
 #include "Image.h"
 #include <functional>
-#include "PreviousButton.h"
 
+
+struct PreviousButton : AbstractUIComponent {
+	SelectionScreen* ss;
+
+	PreviousButton(SDL_Renderer& ren, SelectionScreen* sss) : AbstractUIComponent(ren) {
+		ss = sss;
+	}
+	
+	void Draw(SDL_Renderer& ren) {
+		std::string img_url{ "assets/images/previous.bmp" };
+		char tab2[1024];
+		SDL_Surface* s = IMG_Load(strcpy(tab2, img_url.c_str()));
+		SDL_Texture* Image = SDL_CreateTextureFromSurface(&ren, s);
+		SDL_RenderCopy(&ren, Image, 0, this);
+	} 
+
+	void ClickAction() {
+		ss->currentImageIndex--;
+		if (ss->currentImageIndex < 0)
+		{
+			ss->currentImageIndex = ss->images.capacity() - 1;
+		}
+		*ss->currentImage = ss->images.at(ss->currentImageIndex);
+	}
+};
+
+struct NextButton : AbstractUIComponent {
+	SelectionScreen* ss;
+
+	NextButton(SDL_Renderer& ren, SelectionScreen* sss) : AbstractUIComponent(ren) {
+		ss = sss;
+	}
+
+	void Draw(SDL_Renderer& ren) {
+		std::string img_url{ "assets/images/next.bmp" };
+		char tab2[1024];
+		SDL_Surface* s = IMG_Load(strcpy(tab2, img_url.c_str()));
+		SDL_Texture* Image = SDL_CreateTextureFromSurface(&ren, s);
+		SDL_RenderCopy(&ren, Image, 0, this);
+	}
+
+	void ClickAction() {
+		ss->currentImageIndex++;
+		if (ss->currentImageIndex >= ss->images.capacity())
+		{
+			ss->currentImageIndex = 0;
+		}
+		*ss->currentImage = ss->images.at(ss->currentImageIndex);
+	}
+};
 
 SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
-	struct PreviousButton : AbstractUIComponent {
-		SelectionScreen* ss;
-		void Draw(SDL_Renderer& ren) {
-			std::string img_url{ "assets/images/previous.bmp" };
-			char tab2[1024];
-			SDL_Surface* s = IMG_Load(strcpy(tab2, img_url.c_str()));
-			SDL_Texture* Image  = SDL_CreateTextureFromSurface(&ren, s);
-			SDL_RenderCopy(&ren, Image, 0, this);
-		}
-		void ClickAction() {
-			std::cout << ss->images.capacity() << std::endl;
-			ss->currentImageIndex--;
-			if (ss->currentImageIndex < 0)
-			{
-				ss->currentImageIndex = ss->images.capacity() - 1;
-			}
-			std::cout << "ImageIndex: " << ss->currentImageIndex << std::endl;
-			*ss->currentImage = ss->images.at(ss->currentImageIndex);
-		}
-	};
 	std::cout << "Made SelectionScreen" << std::endl;
-	//Init buttons
-	PreviousButton* previousButton{};
-	previousButton->SetDimensions(100, 10, 75, 75);
-	previousButton->SetLocation(100, 282);
-	previousButton->ss = this;
-	AddUIComponent(previousButton);
-
-	Button* nextButton = new Button(*ren, "", "assets/images/next.png");
-	nextButton->SetDimensions(100, 10, 75, 75);
-	nextButton->SetLocation(1080, 282);
-	AddUIComponent(nextButton);
-
-	Button* selectButton = new Button(*ren, "Select character", "assets/images/select.bmp");
-	selectButton->SetDimensions(100, 10, 250, 90);
-	selectButton->SetLocation(500, 500);
-	AddUIComponent(selectButton);
 
 	//Add images to vector
 	Image* image2 = new Image{ *ren, "assets/images/next.png" };
@@ -57,6 +70,22 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	image3->SetDimensions(200, 10, 250, 250);
 	image3->SetLocation(500, 200);
 	AddImage(*image3);
+
+	//Init buttons
+	PreviousButton* previousButton = new PreviousButton(*ren, this);
+	previousButton->SetDimensions(100, 10, 75, 75);
+	previousButton->SetLocation(100, 282);
+	AddUIComponent(previousButton);
+
+	NextButton* nextButton = new NextButton(*ren, this);
+	nextButton->SetDimensions(100, 10, 75, 75);
+	nextButton->SetLocation(1080, 282);
+	AddUIComponent(nextButton);
+
+	Button* selectButton = new Button(*ren, "Select character", "assets/images/select.bmp");
+	selectButton->SetDimensions(100, 10, 250, 90);
+	selectButton->SetLocation(500, 500);
+	AddUIComponent(selectButton);
 
 	//Testing
 	currentImage = image2;
