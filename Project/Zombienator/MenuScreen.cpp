@@ -4,9 +4,12 @@
 #include "GameObjectFactory.h"
 #include "iostream"
 
+Character* c = new Character();
 MenuScreen::MenuScreen(SDL_Renderer* ren)
 {
 	SDL_Surface *s = IMG_Load("assets/images/menu_bg.png");
+
+	c->SetImage("assets/images/spritesheets/Boy1.png", *ren);
 	BackgroundTexture = SDL_CreateTextureFromSurface(ren, s);
 }
 
@@ -28,20 +31,19 @@ void MenuScreen::Draw(SDL_Renderer& ren)
 	std::vector<AbstractUIComponent*>::iterator it;
 	for (it = UIComponents.begin(); it != UIComponents.end(); it++) (*it)->Draw(ren);
 
-	Character* c = new Character();
-	c->SetImage("assets/images/spritesheets/Boy1.png", ren);
+	
+	
 	c->SetSize(40, 40);
 	c->SetPosition(80, 80);
 
 	//static GameObjectRegistrar<Character> GameObjectRegistrar("henk");
 
 	//auto instance = GameObjectFactory::Instance()->Create("henk");
+	
+	//GameObjectFactory::Instance()->Register("name", [](void) -> GameObject* {return new Character(); });
 
-	GameObjectFactory::Instance()->Register("name", [](void) -> GameObject* {return new Character(); });
-
-	SDL_Surface * image = IMG_Load("assets/images/spritesheets/Boy1.png");
-	/*
-	SDL_Texture * texture = SDL_CreateTextureFromSurface(&ren, image);
+	
+	
 	Uint32 ticks = SDL_GetTicks();
 	const int FRAMES = 3;
 	Uint32 sprite = (ticks / 100) % FRAMES;
@@ -50,8 +52,8 @@ void MenuScreen::Draw(SDL_Renderer& ren)
 	SDL_Rect srcrect = { sprite * width, 0, width, height };
 	SDL_Rect dstrect = { 10, 10, width, height };
 	
-	SDL_RenderCopy(&ren, texture, &srcrect, &dstrect);
-	*/
+	SDL_RenderCopy(&ren, c->GetTexture(), &srcrect, &dstrect);
+	
 
 }
 
