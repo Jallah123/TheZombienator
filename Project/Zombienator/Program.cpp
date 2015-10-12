@@ -29,7 +29,7 @@ TTF_Font * Program::GetFont()
 
 int Program::Render() {
 	bool quit = false;
-	MenuScreen m = SelectionScreen{ Sdl_Renderer };
+	MenuScreen& m = SelectionScreen{ Sdl_Renderer };
 	ScreenController::GetInstance().ChangeMenu(m);
 	while (!quit) {
 		//Handle events on queue 

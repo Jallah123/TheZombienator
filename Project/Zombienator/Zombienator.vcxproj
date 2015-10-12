@@ -164,7 +164,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MusicController.cpp" />
-    <ClCompile Include="PreviousButton.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ScreenController.cpp" />
     <ClCompile Include="SelectionScreen.cpp" />
@@ -177,7 +176,6 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MusicController.h" />
-    <ClInclude Include="PreviousButton.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ScreenController.h" />
     <ClInclude Include="SelectionScreen.h" />

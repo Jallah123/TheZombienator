@@ -25,7 +25,7 @@ struct PreviousButton : AbstractUIComponent {
 		ss->currentImageIndex--;
 		if (ss->currentImageIndex < 0)
 		{
-			ss->currentImageIndex = ss->images.capacity() - 1;
+			ss->currentImageIndex = ss->images.size() - 1;
 		}
 		*ss->currentImage = ss->images.at(ss->currentImageIndex);
 	}
@@ -48,7 +48,7 @@ struct NextButton : AbstractUIComponent {
 
 	void ClickAction() {
 		ss->currentImageIndex++;
-		if (ss->currentImageIndex >= ss->images.capacity())
+		if (ss->currentImageIndex >= ss->images.size())
 		{
 			ss->currentImageIndex = 0;
 		}
@@ -92,28 +92,6 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	AddUIComponent(currentImage);
 	Previous();
 	Previous();
-}
-
-void SelectionScreen::Next()
-{
-	currentImageIndex++;
-	if (currentImageIndex >= images.capacity())
-	{
-		currentImageIndex = 0;
-	}
-	*currentImage = images.at(currentImageIndex);
-}
-
-void SelectionScreen::Previous()
-{
-	std::cout << images.capacity() << std::endl;
-	currentImageIndex--;
-	if (currentImageIndex < 0)
-	{
-		currentImageIndex = images.capacity() - 1;
-	}
-	std::cout << "ImageIndex: " << currentImageIndex << std::endl;
-	*currentImage = images.at(currentImageIndex);
 }
 
 void SelectionScreen::AddImage(Image img)
