@@ -8,12 +8,15 @@ class SelectionScreen :
 public:
 	SelectionScreen(SDL_Renderer* ren);
 	void AddImage(Image img);
-	void Next();
-	void Previous();
+	int GetCurrentImageIndex() { return currentImageIndex; };
+	Image* GetCurrentImage() { return currentImage; };
+	std::vector<Image> GetImages() { return images; };
+	void SetCurrentImageIndex(int index) { currentImageIndex = index; };
+	void SetCurrentImage(Image* image) { *currentImage = *image; };
 	~SelectionScreen();
+private:
 	int currentImageIndex{ 0 };
 	Image* currentImage{ nullptr };
 	std::vector<Image> images;
-private:
 };
 

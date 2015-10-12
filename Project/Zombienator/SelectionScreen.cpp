@@ -5,37 +5,36 @@
 #include "Image.h"
 #include <functional>
 
-
 struct PreviousButton : AbstractUIComponent {
-	SelectionScreen* ss;
+	SelectionScreen* selectionScreen;
 
-	PreviousButton(SDL_Renderer& ren, SelectionScreen* sss) : AbstractUIComponent(ren) {
-		ss = sss;
+	PreviousButton(SDL_Renderer& ren, SelectionScreen* _selectionScreen) : AbstractUIComponent(ren) {
+		selectionScreen = _selectionScreen;
 	}
-	
+
 	void Draw(SDL_Renderer& ren) {
 		std::string img_url{ "assets/images/previous.bmp" };
 		char tab2[1024];
 		SDL_Surface* s = IMG_Load(strcpy(tab2, img_url.c_str()));
 		SDL_Texture* Image = SDL_CreateTextureFromSurface(&ren, s);
 		SDL_RenderCopy(&ren, Image, 0, this);
-	} 
+	}
 
 	void ClickAction() {
-		ss->currentImageIndex--;
-		if (ss->currentImageIndex < 0)
+		selectionScreen->SetCurrentImageIndex(selectionScreen->GetCurrentImageIndex() - 1);
+		if (selectionScreen->GetCurrentImageIndex() < 0)
 		{
-			ss->currentImageIndex = ss->images.size() - 1;
+			selectionScreen->SetCurrentImageIndex(selectionScreen->GetImages().size() - 1);
 		}
-		*ss->currentImage = ss->images.at(ss->currentImageIndex);
+		selectionScreen->SetCurrentImage(&selectionScreen->GetImages().at(selectionScreen->GetCurrentImageIndex()));
 	}
 };
 
 struct NextButton : AbstractUIComponent {
-	SelectionScreen* ss;
+	SelectionScreen* selectionScreen;
 
-	NextButton(SDL_Renderer& ren, SelectionScreen* sss) : AbstractUIComponent(ren) {
-		ss = sss;
+	NextButton(SDL_Renderer& ren, SelectionScreen* _selectionScreen) : AbstractUIComponent(ren) {
+		selectionScreen = _selectionScreen;
 	}
 
 	void Draw(SDL_Renderer& ren) {
@@ -47,12 +46,12 @@ struct NextButton : AbstractUIComponent {
 	}
 
 	void ClickAction() {
-		ss->currentImageIndex++;
-		if (ss->currentImageIndex >= ss->images.size())
+		selectionScreen->SetCurrentImageIndex(selectionScreen->GetCurrentImageIndex() + 1);
+		if (selectionScreen->GetCurrentImageIndex() >= selectionScreen->GetImages().size())
 		{
-			ss->currentImageIndex = 0;
+			selectionScreen->SetCurrentImageIndex(0);
 		}
-		*ss->currentImage = ss->images.at(ss->currentImageIndex);
+		selectionScreen->SetCurrentImage(&selectionScreen->GetImages().at(selectionScreen->GetCurrentImageIndex()));
 	}
 };
 
@@ -90,8 +89,6 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	//Testing
 	currentImage = image2;
 	AddUIComponent(currentImage);
-	Previous();
-	Previous();
 }
 
 void SelectionScreen::AddImage(Image img)
