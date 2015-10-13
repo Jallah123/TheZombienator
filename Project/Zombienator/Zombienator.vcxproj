@@ -160,28 +160,37 @@
     <ClCompile Include="AbstractUIComponent.cpp" />
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="HomeScreen.cpp" />
+    <ClCompile Include="InfiniteModeButton.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MusicController.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ScreenController.cpp" />
+    <ClCompile Include="SettingsButton.cpp" />
+    <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="TestScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractUIComponent.h" />
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="HomeScreen.h" />
+    <ClInclude Include="InfiniteModeButton.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ScreenController.h" />
+    <ClInclude Include="SettingsButton.h" />
+    <ClInclude Include="StoryModeButton.h" />
     <ClInclude Include="TestScreen.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Debug\assets\images\default_background.bmp" />
+    <Image Include="assets\images\button_spritesheet.png" />
+    <Image Include="assets\images\menu_bg.png" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="D:\Downloads\sans.ttf" />
+    <Font Include="assets\fonts\Block-Cartoon.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

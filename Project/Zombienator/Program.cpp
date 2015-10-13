@@ -11,9 +11,7 @@ Program::Program() {
 }
 
 Program& Program::shared_program() {
-
 	static Program instance;
-
 	return instance;
 }
 
@@ -21,14 +19,15 @@ SDL_Renderer* Program::GetRenderer() {
 	return Sdl_Renderer;
 }
 
-TTF_Font * Program::GetFont()
-{
+TTF_Font * Program::GetFont() {
 	return Font;
 }
 
 int Program::Render() {
 	bool quit = false;
-	MenuScreen m = TestScreen{ Sdl_Renderer };
+	MenuScreen m = HomeScreen{ Sdl_Renderer };
+	//MenuScreen m = TestScreen{ Sdl_Renderer };
+
 	ScreenController::GetInstance().ChangeMenu(m);
 	while (!quit) {
 		//Handle events on queue 
