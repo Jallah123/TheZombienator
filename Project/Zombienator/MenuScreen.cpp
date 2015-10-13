@@ -5,6 +5,8 @@
 #include "iostream"
 
 Character* c = new Character();
+DrawContainer drawContainer;
+
 MenuScreen::MenuScreen(SDL_Renderer* ren)
 {
 	SDL_Surface *s = IMG_Load("assets/images/menu_bg.png");
@@ -31,18 +33,18 @@ void MenuScreen::Draw(SDL_Renderer& ren)
 	std::vector<AbstractUIComponent*>::iterator it;
 	for (it = UIComponents.begin(); it != UIComponents.end(); it++) (*it)->Draw(ren);
 
-	
-	
+	float dt = 1;
+	drawContainer.Draw(dt, ren);
 	c->SetSize(40, 40);
 	c->SetPosition(80, 80);
 
-	//static GameObjectRegistrar<Character> GameObjectRegistrar("henk");
-
-	//auto instance = GameObjectFactory::Instance()->Create("henk");
 	
-	//GameObjectFactory::Instance()->Register("name", [](void) -> GameObject* {return new Character(); });
 
 	
+	
+	GameObjectFactory::Instance()->Register("name", [](void) -> GameObject* {return new Character(); });
+	auto instance = GameObjectFactory::Instance()->Create("name");
+	//static Registrar<Character> GameObjectRegistrar("name");
 	
 	Uint32 ticks = SDL_GetTicks();
 	const int FRAMES = 3;

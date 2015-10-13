@@ -1,6 +1,10 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+#include "AnimateContainer.h"
+#include "DrawContainer.h"
+#include "BehaviourFactory.h"
+#include "DrawBehaviour.h"
 #include "GameObject.h"
 #pragma once
 
@@ -12,9 +16,17 @@ protected:
 	int damage;
 	int health;
 	int speed;
+	//Containers
+	AnimateContainer* animateContainer;
+	DrawContainer* drawContainer;
+	/*InputContainer inputContainer;
+	CollideContainer collideContainer;*/
 
+	//Behaviours
+	DrawBehaviour* drawBehaviour;
 public:
 	Character();
+	//Character(DrawContainer* drawC, AnimateContainer* animC);
 	~Character();
 
 	void TakeHit(int damage);
@@ -22,7 +34,10 @@ public:
 	int GetSpeed() const { return speed; }
 	int GetDamage() const { return damage; }
 
-	static GameObject* __stdcall Create() { return new Character(); }
+	void SetDrawBehaviour(std::string name) {
+		//this->drawBehaviour = BehaviourFactory::Instance()->Create(name, this);
+		this->drawContainer->Add(drawBehaviour);
+	}
 };
 
 #endif

@@ -11,7 +11,7 @@ AnimateContainer::~AnimateContainer()
 {
 }
 
-void AnimateContainer::Register()
+void AnimateContainer::Animate(float dt)
 {
-	//this->Add(AnimateBehaviour)
 }
+

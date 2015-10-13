@@ -1,34 +1,67 @@
-﻿Build started 12-10-2015 22:48:26.
+﻿Build started 13-10-2015 13:55:08.
      1>Project "C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Zombienator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt MenuScreen.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AbstractContainer.cpp AnimateContainer.cpp Behaviour.cpp BehaviourFactory.cpp Character.cpp DrawBehaviour.cpp DrawContainer.cpp GameObjectFactory.cpp MenuScreen.cpp MoveDirection.cpp NonPlayableCharacter.cpp
+         NonPlayableCharacter.cpp
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(12): error C2143: syntax error: missing ';' before '*'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(12): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(17): error C2061: syntax error: identifier 'GameObject'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(17): error C2065: 'gameObject': undeclared identifier
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(17): error C2065: 'go': undeclared identifier
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviourfactory.h(20): error C2061: syntax error: identifier 'GameObject'
          MenuScreen.cpp
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\menuscreen.cpp(52): warning C4838: conversion from 'Uint32' to 'int' requires a narrowing conversion
-     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\menuscreen.cpp(63): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.lib" /MACHINE:X86 Debug\AbstractContainer.obj
-         Debug\AbstractUIComponent.obj
-         Debug\AnimateContainer.obj
-         Debug\BackButton.obj
-         Debug\Behaviour.obj
-         Debug\Button.obj
-         Debug\Character.obj
-         Debug\GameObjectFactory.obj
-         Debug\DrawContainer.obj
-         Debug\GameObject.obj
-         Debug\main.obj
-         Debug\MenuScreen.obj
-         Debug\MoveDirection.obj
-         Debug\MusicController.obj
-         Debug\NonPlayableCharacter.obj
-         Debug\PlayableCharacter.obj
-         Debug\Program.obj
-         Debug\ScreenController.obj
-         Debug\TestScreen.obj
-         Zombienator.vcxproj -> C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Debug\Zombienator.exe
-     1>Done Building Project "C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Zombienator.vcxproj" (Build target(s)).
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(12): error C2143: syntax error: missing ';' before '*'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(12): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(17): error C2061: syntax error: identifier 'GameObject'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(17): error C2065: 'gameObject': undeclared identifier
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(17): error C2065: 'go': undeclared identifier
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviourfactory.h(20): error C2061: syntax error: identifier 'GameObject'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\menuscreen.cpp(54): warning C4838: conversion from 'Uint32' to 'int' requires a narrowing conversion
+         DrawContainer.cpp
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\drawbehaviour.h(9): error C2504: 'Behaviour': base class undefined
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(39): error C2664: 'void AbstractContainer::Add(Behaviour *)': cannot convert argument 1 from 'DrawBehaviour *' to 'Behaviour *'
+         c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(39): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\drawcontainer.cpp(9): error C2440: 'return': cannot convert from 'DrawBehaviour *' to 'Behaviour *'
+         c:\users\ninox\documents\github\thezombienator\project\zombienator\drawcontainer.cpp(9): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\drawcontainer.cpp(22): error C2683: 'dynamic_cast': 'Behaviour' is not a polymorphic type
+         c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(10): note: see declaration of 'Behaviour'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\drawcontainer.cpp(24): error C2039: 'Draw': is not a member of 'Behaviour'
+         c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(10): note: see declaration of 'Behaviour'
+         DrawBehaviour.cpp
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviourfactory.h(20): error C2061: syntax error: identifier 'GameObject'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(26): error C2143: syntax error: missing ';' before '*'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(26): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(39): error C2065: 'drawBehaviour': undeclared identifier
+         Character.cpp
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(12): error C2143: syntax error: missing ';' before '*'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(12): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(17): error C2061: syntax error: identifier 'GameObject'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(17): error C2065: 'gameObject': undeclared identifier
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviour.h(17): error C2065: 'go': undeclared identifier
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviourfactory.h(20): error C2061: syntax error: identifier 'GameObject'
+         BehaviourFactory.cpp
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\drawbehaviour.h(9): error C2504: 'Behaviour': base class undefined
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(39): error C2664: 'void AbstractContainer::Add(Behaviour *)': cannot convert argument 1 from 'DrawBehaviour *' to 'Behaviour *'
+         c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(39): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+         Behaviour.cpp
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\behaviourfactory.h(20): error C2061: syntax error: identifier 'GameObject'
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\drawbehaviour.h(9): error C2504: 'Behaviour': base class undefined
+     1>c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(39): error C2664: 'void AbstractContainer::Add(Behaviour *)': cannot convert argument 1 from 'DrawBehaviour *' to 'Behaviour *'
+         c:\users\ninox\documents\github\thezombienator\project\zombienator\character.h(39): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+         Generating Code...
+         Compiling...
+         GameObjectFactory.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         MoveDirection.cpp
+         AnimateContainer.cpp
+         AbstractContainer.cpp
+     1>Done Building Project "C:\Users\Ninox\Documents\GitHub\TheZombienator\Project\Zombienator\Zombienator.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:01.41
+Time Elapsed 00:00:03.04

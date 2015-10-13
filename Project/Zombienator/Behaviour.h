@@ -1,6 +1,7 @@
 #ifndef BEHAVIOUR_H
 #define BEHAVIOUR_H
 #include "Character.h"
+#include <memory>
 #pragma once
 
 class Character;
@@ -8,13 +9,13 @@ class Character;
 class Behaviour
 {
 protected:
-	Character* character;
+	GameObject* gameObject;
 public:
 	Behaviour();
 	~Behaviour();
 
-	void SetCharacter(Character* c) { character = c; }
-
+	void SetGameObject(GameObject* go) { gameObject = go; }
+/*
 	virtual void Animate(float dt) = 0;
 	virtual void Update(float dt) = 0;
 	virtual void FeelForce(float dt) = 0;
@@ -22,6 +23,7 @@ public:
 	virtual void Collide(float dt) = 0;
 	virtual void Input(float dt) = 0;
 	virtual void Draw(float dt, SDL_Renderer& ren) = 0;
+	*/
 };
 
 #endif

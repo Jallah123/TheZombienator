@@ -2,10 +2,9 @@
 
 
 
-Character::Character()
+Character::Character() : GameObject()
 {
 }
-
 
 Character::~Character()
 {

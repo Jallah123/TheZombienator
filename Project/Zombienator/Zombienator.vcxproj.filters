@@ -153,9 +153,6 @@
     <ClCompile Include="MoveDirection.cpp">
       <Filter>Source Files\Enums</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files\Models\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="AbstractUIComponent.cpp">
       <Filter>Source Files\Views\UIComponents</Filter>
     </ClCompile>
@@ -196,6 +193,12 @@
       <Filter>Source Files\Containers</Filter>
     </ClCompile>
     <ClCompile Include="GameObjectFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawBehaviour.cpp">
+      <Filter>Source Files\Models\GameObjects\Behaviours\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviourFactory.cpp">
       <Filter>Source Files\Factories</Filter>
     </ClCompile>
   </ItemGroup>
@@ -251,7 +254,13 @@
     <ClInclude Include="GameObjectFactory.h">
       <Filter>Header Files\Factories</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectRegistrar.h">
+    <ClInclude Include="Registrar.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawBehaviour.h">
+      <Filter>Header Files\Models\GameObjects\Behaviours\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviourFactory.h">
       <Filter>Header Files\Factories</Filter>
     </ClInclude>
   </ItemGroup>
