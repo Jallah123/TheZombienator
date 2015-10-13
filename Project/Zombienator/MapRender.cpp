@@ -4,6 +4,13 @@
 
 MapRender::MapRender(char* xml_url)
 {
+	
+	// Map object aan
+	// Standaard waardes map zetten
+	// Loopen door alle layers
+	// Layerobjecten aanmaken met tiles
+	// Layerobject aan map toevoegen
+	// returnen
 
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file(xml_url);
@@ -12,6 +19,16 @@ MapRender::MapRender(char* xml_url)
 	
 	// Get map
 	pugi::xml_node map = doc.child("map");
+
+	std::string map_img = map.child("image").attribute("source").value();
+	char *map_img_char = &map_img[0];
+
+	// Create map
+	Map m = Map{};
+	m.setImage(map_img_char);
+
+	// TODO: doesnt work ..yet..
+	cout << "KOFFIE" << m.getImage() << endl;
 
 	// Loop though elements
 	for (pugi::xml_node element = map.first_child(); element; element = element.next_sibling()) {
