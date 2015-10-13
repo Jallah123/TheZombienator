@@ -36,7 +36,14 @@ void InfiniteModeButton::Draw(SDL_Renderer& ren) {
 
 	// --
 	SDL_RenderCopy(&ren, Image, &srcrect, &dstrect);
-	SDL_RenderCopy(&ren, Message, 0, this);
+
+	SDL_Rect Message_rect; //create a rect
+	Message_rect.x = 530;  //controls the rect's x coordinate 
+	Message_rect.y = 358; // controls the rect's y coordinte
+	Message_rect.w = 208; // controls the width of the rect
+	Message_rect.h = 23; // controls the height of the rect
+
+	SDL_RenderCopy(&ren, Message, nullptr, &Message_rect);
 }
 
 void InfiniteModeButton::ClickAction()

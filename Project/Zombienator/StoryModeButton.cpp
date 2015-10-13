@@ -38,12 +38,12 @@ void StoryModeButton::Draw(SDL_Renderer& ren) {
 	SDL_RenderCopy(&ren, Image, &srcrect, &dstrect);
 
 	SDL_Rect Message_rect; //create a rect
-	Message_rect.x = 0;  //controls the rect's x coordinate 
-	Message_rect.y = 0; // controls the rect's y coordinte
-	Message_rect.w = 100; // controls the width of the rect
-	Message_rect.h = 100; // controls the height of the rect
+	Message_rect.x = 545;  //controls the rect's x coordinate 
+	Message_rect.y = 258; // controls the rect's y coordinte
+	Message_rect.w = 178; // controls the width of the rect
+	Message_rect.h = 25; // controls the height of the rect
 
-	SDL_RenderCopy(&ren, Message, NULL, this);
+	SDL_RenderCopy(&ren, Message, nullptr, &Message_rect);
 }
 
 void StoryModeButton::ClickAction()
