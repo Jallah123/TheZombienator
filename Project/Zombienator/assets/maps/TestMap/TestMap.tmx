@@ -775,4 +775,11 @@
    <tile gid="79"/>
   </data>
  </layer>
+ <layer name="Tile Layer 2" width="32" height="24">
+  <data>
+   <tile gid="95"/>
+   <tile gid="79"/>
+   <tile gid="80"/>
+  </data>
+ </layer>
 </map>
