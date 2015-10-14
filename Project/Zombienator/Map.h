@@ -1,14 +1,16 @@
 #pragma once
+#include "MapLayer.h"
 using namespace std;
 
 class Map
 {
 public:
-	Map();
-	void setImage(char* _img_path);
-	char* getImage() { return img_path; };
+	Map(char* _img_path);
+	char* getImage();
+	void setMapLayer(MapLayer _mapLayer);
 private:
 	char* img_path;
+	vector<MapLayer> mapLayers;
 protected:
 
 };

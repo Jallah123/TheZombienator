@@ -163,6 +163,7 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapLayer.cpp" />
     <ClCompile Include="MapRender.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MusicController.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MapLayer.h" />
     <ClInclude Include="MapRender.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MusicController.h" />
