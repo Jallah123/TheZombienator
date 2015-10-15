@@ -2,6 +2,7 @@
 #include <iostream>
 #include "SDL.h"
 #include "SDL_mixer.h"
+#include "HomeScreen.h"
 #include "TestScreen.h"
 #include "SDL_ttf.h"
 #include "ScreenController.h"
@@ -20,7 +21,7 @@ private:
 	KeyboardInputHandler* keyboardInputHandler;
 	ControllerInputHandler* controllerInputHandler;
 	TTF_Font* Font;
-	int width = 720;
+	int width = 640;
 	int height = 1280;
 
 	Program();

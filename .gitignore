@@ -1,3 +1,6 @@
+# Debug
+Debug/
+
 # User-specific files
 *.suo
 *.user
@@ -57,6 +60,7 @@ bld/
 *.ilk
 *.log
 *.tlog
+*.sdf
 
 # Custom ignores
 Project/Zombienator/Debug/*
