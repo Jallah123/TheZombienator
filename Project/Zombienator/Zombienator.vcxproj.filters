@@ -87,6 +87,15 @@
     <ClCompile Include="InfiniteModeButton.cpp">
       <Filter>Source Files\HomeScreen\Buttons</Filter>
     </ClCompile>
+    <ClCompile Include="InputContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerInputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardInputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuScreen.h">
@@ -124,6 +133,15 @@
     </ClInclude>
     <ClInclude Include="InfiniteModeButton.h">
       <Filter>Header Files\HomeScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="InputContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerInputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardInputHandler.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

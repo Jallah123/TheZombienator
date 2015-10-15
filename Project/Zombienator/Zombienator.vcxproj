@@ -162,6 +162,9 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="HomeScreen.cpp" />
     <ClCompile Include="InfiniteModeButton.cpp" />
+    <ClCompile Include="ControllerInputHandler.cpp" />
+    <ClCompile Include="InputContainer.cpp" />
+    <ClCompile Include="KeyboardInputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MusicController.cpp" />
@@ -177,6 +180,9 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="HomeScreen.h" />
     <ClInclude Include="InfiniteModeButton.h" />
+    <ClInclude Include="ControllerInputHandler.h" />
+    <ClInclude Include="InputContainer.h" />
+    <ClInclude Include="KeyboardInputHandler.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="Program.h" />

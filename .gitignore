@@ -61,3 +61,6 @@ bld/
 *.log
 *.tlog
 *.sdf
+
+# Custom ignores
+Project/Zombienator/Debug/*

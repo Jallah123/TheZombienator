@@ -6,6 +6,8 @@
 #include "TestScreen.h"
 #include "SDL_ttf.h"
 #include "ScreenController.h"
+#include "KeyboardInputHandler.h"
+#include "ControllerInputHandler.h"
 
 using namespace std;
 
@@ -15,13 +17,18 @@ private:
 	SDL_Window* Sdl_Window;
 	SDL_Renderer* Sdl_Renderer;
 	SDL_Event e;
+	SDL_GameController* controller;
+	KeyboardInputHandler* keyboardInputHandler;
+	ControllerInputHandler* controllerInputHandler;
 	TTF_Font* Font;
 	int width = 640;
 	int height = 1280;
 
 	Program();
+	~Program();
 	int Render();
 	int InitComponents();
+	int InitJoystick();
 public:
 
 	SDL_Renderer* GetRenderer();
