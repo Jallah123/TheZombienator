@@ -25,32 +25,8 @@
     <Filter Include="Source Files\Enums">
       <UniqueIdentifier>{d2c021e6-0e7b-4941-a887-f244005becb7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Factories">
-      <UniqueIdentifier>{d62eb0ed-49e7-4ede-be5c-e2e05a3d0e00}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{4e93b398-f3c0-4114-8731-b6e5eec24bd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Models\GameObjects">
-      <UniqueIdentifier>{1e70f168-af98-4726-a1d7-fed7f25302aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Models\GameObjects\Characters">
-      <UniqueIdentifier>{3d86f0b8-c7e2-4101-bc41-fb38a872dc14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Controllers">
-      <UniqueIdentifier>{eccf6a3f-a10d-48af-92b5-b0b9849d52b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Views">
-      <UniqueIdentifier>{4db6d222-3666-49de-8e7d-b1e1ad4d07f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Models\GameObjects\Behaviours">
-      <UniqueIdentifier>{322343d5-bf90-4023-bd81-a7c9d0e11c19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Models\GameObjects\Items">
-      <UniqueIdentifier>{b1ad2146-6a7c-4e8e-890c-c68bc723f62d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models">
-      <UniqueIdentifier>{4a1a2d5c-5800-42b8-9749-e83f455fbd4c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Controllers">
       <UniqueIdentifier>{35f36561-6c4e-44ca-80a4-5af7600aeacf}</UniqueIdentifier>
@@ -76,14 +52,8 @@
     <Filter Include="Source Files\Containers">
       <UniqueIdentifier>{d86e981f-912b-4e74-ac11-58ea07903e0e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Containers">
-      <UniqueIdentifier>{d54e8e02-96d9-4480-8c84-14337bc78d28}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Views\UIComponents">
       <UniqueIdentifier>{6f06ba62-8a67-4d00-84fe-3a769a059cfd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Views\UIComponents">
-      <UniqueIdentifier>{7c702447-362f-4184-a745-c510b668f771}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Models\GameObjects\Behaviours\Draw">
       <UniqueIdentifier>{43094c84-6ea4-44bc-ab6e-03a16227c9ef}</UniqueIdentifier>
@@ -106,38 +76,12 @@
     <Filter Include="Source Files\Models\GameObjects\Behaviours\Animate">
       <UniqueIdentifier>{b6e253ba-a823-48fb-9ba4-388aa1c64080}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Behaviours\Draw">
-      <UniqueIdentifier>{8e61f16f-b55d-4702-a007-a7cf9979bd30}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Behaviours\Input">
-      <UniqueIdentifier>{e87b5fa4-e267-43f2-92a0-3cea233ccf21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Behaviours\Collide">
-      <UniqueIdentifier>{4477cbf5-94fb-4496-8d9a-0aaeaae46349}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Behaviours\Move">
-      <UniqueIdentifier>{8b518a98-6585-4332-871f-4a292d3f9b78}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Behaviours\Force">
-      <UniqueIdentifier>{2dabdf34-7d67-47e6-b2ed-cec402ea2ae2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Behaviours\Update">
-      <UniqueIdentifier>{959a2f35-682d-4d81-8b26-3487984ebc49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Behaviours\Animate">
-      <UniqueIdentifier>{3db1caed-edd9-4a45-8e84-8c152e52599d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Models\GameObjects\Characters\NPC">
       <UniqueIdentifier>{3a7c2712-c599-4c74-9f6e-3732a17e36a9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Models\GameObjects\Characters\PC">
       <UniqueIdentifier>{180cddb0-2a89-49b2-a892-968a1ca9e04f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Models\GameObjects\Characters\NPC">
-      <UniqueIdentifier>{7a0996e1-744a-43d4-afda-1fc31264a567}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Models\GameObjects\Characters\PC">
-      <UniqueIdentifier>{be5dde3b-a6ed-454f-9057-3585c198e4d4}</UniqueIdentifier>
     <Filter Include="Source Files\TestScreen">
       <UniqueIdentifier>{9d475ee9-77da-4f4d-953b-7e56f13c29fe}</UniqueIdentifier>
     </Filter>
@@ -149,18 +93,6 @@
     </Filter>
     <Filter Include="Source Files\HomeScreen\Buttons">
       <UniqueIdentifier>{32758691-0e08-4057-a631-90205109ad46}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\HomeScreen">
-      <UniqueIdentifier>{8ccc10eb-5822-4ae9-8359-ed4093dbe227}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\TestScreen">
-      <UniqueIdentifier>{77ad61cb-6fcc-4d6d-a095-7e45bd167442}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\TestScreen\Buttons">
-      <UniqueIdentifier>{8298a526-2f6f-4568-afc3-14a8088b3024}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\HomeScreen\Buttons">
-      <UniqueIdentifier>{e23b0861-8880-48db-ab2e-b2701818e1bc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
