@@ -138,6 +138,29 @@
     </Filter>
     <Filter Include="Source Files\Models\GameObjects\Characters\PC">
       <UniqueIdentifier>{be5dde3b-a6ed-454f-9057-3585c198e4d4}</UniqueIdentifier>
+    <Filter Include="Source Files\TestScreen">
+      <UniqueIdentifier>{9d475ee9-77da-4f4d-953b-7e56f13c29fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TestScreen\Buttons">
+      <UniqueIdentifier>{9f310f52-e6fd-4c63-a9d6-503daf8f76a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HomeScreen">
+      <UniqueIdentifier>{8def4405-30b8-4680-9e43-4f4afe45d8f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HomeScreen\Buttons">
+      <UniqueIdentifier>{32758691-0e08-4057-a631-90205109ad46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HomeScreen">
+      <UniqueIdentifier>{8ccc10eb-5822-4ae9-8359-ed4093dbe227}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TestScreen">
+      <UniqueIdentifier>{77ad61cb-6fcc-4d6d-a095-7e45bd167442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TestScreen\Buttons">
+      <UniqueIdentifier>{8298a526-2f6f-4568-afc3-14a8088b3024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HomeScreen\Buttons">
+      <UniqueIdentifier>{e23b0861-8880-48db-ab2e-b2701818e1bc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +223,41 @@
     </ClCompile>
     <ClCompile Include="BehaviourFactory.cpp">
       <Filter>Source Files\Factories</Filter>
+    <ClCompile Include="ScreenController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\TestScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="BackButton.cpp">
+      <Filter>Source Files\TestScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScreen.cpp">
+      <Filter>Source Files\TestScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeScreen.cpp">
+      <Filter>Source Files\HomeScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsButton.cpp">
+      <Filter>Source Files\HomeScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="StoryModeButton.cpp">
+      <Filter>Source Files\HomeScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="InfiniteModeButton.cpp">
+      <Filter>Source Files\HomeScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="InputContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerInputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardInputHandler.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -262,15 +320,53 @@
     </ClInclude>
     <ClInclude Include="BehaviourFactory.h">
       <Filter>Header Files\Factories</Filter>
+    <ClInclude Include="ScreenController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\TestScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="BackButton.h">
+      <Filter>Header Files\TestScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScreen.h">
+      <Filter>Header Files\TestScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeScreen.h">
+      <Filter>Header Files\HomeScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsButton.h">
+      <Filter>Header Files\HomeScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="StoryModeButton.h">
+      <Filter>Header Files\HomeScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="InfiniteModeButton.h">
+      <Filter>Header Files\HomeScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="InputContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerInputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardInputHandler.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Debug\assets\images\default_background.bmp">
+    <Image Include="assets\images\button_spritesheet.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+    <Image Include="assets\images\menu_bg.png">
       <Filter>Resource Files\assets\images</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="D:\Downloads\sans.ttf">
+    <Font Include="assets\fonts\Block-Cartoon.ttf">
       <Filter>Resource Files\assets\fonts</Filter>
     </Font>
   </ItemGroup>
