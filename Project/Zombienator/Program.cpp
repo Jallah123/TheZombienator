@@ -44,7 +44,6 @@ int Program::Render() {
 			}
 		}
 
-
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(Sdl_Renderer);
 		ScreenController::GetInstance().GetCurrentMenu().Draw(*Sdl_Renderer);

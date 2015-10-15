@@ -28,7 +28,7 @@ void InfiniteModeButton::Draw(SDL_Renderer& ren) {
 
 	// Spritesheet Position
 	SDL_Rect srcrect;
-	srcrect.x = 0; srcrect.y = 238; srcrect.w = 238; srcrect.h = 102;
+	srcrect.x = 0; srcrect.y = 442; srcrect.w = 238; srcrect.h = 102;
 
 	// Screen Position
 	SDL_Rect dstrect;

@@ -28,7 +28,7 @@ void StoryModeButton::Draw(SDL_Renderer& ren) {
 
 	// Spritesheet Position
 	SDL_Rect srcrect;
-	srcrect.x = 0; srcrect.y = 238; srcrect.w = 238; srcrect.h = 102;
+	srcrect.x = 0; srcrect.y = 340; srcrect.w = 238; srcrect.h = 102;
 
 	// Screen Position
 	SDL_Rect dstrect;
@@ -36,14 +36,7 @@ void StoryModeButton::Draw(SDL_Renderer& ren) {
 
 	// --
 	SDL_RenderCopy(&ren, Image, &srcrect, &dstrect);
-
-	SDL_Rect Message_rect; //create a rect
-	Message_rect.x = 0;  //controls the rect's x coordinate 
-	Message_rect.y = 0; // controls the rect's y coordinte
-	Message_rect.w = 100; // controls the width of the rect
-	Message_rect.h = 100; // controls the height of the rect
-
-	SDL_RenderCopy(&ren, Message, NULL, this);
+	SDL_RenderCopy(&ren, Message, 0, this);
 }
 
 void StoryModeButton::ClickAction()

@@ -17,12 +17,12 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	AddUIComponent(a);
 
 	// StoryModeButton
-	StoryModeButton* b = new StoryModeButton(*ren, "STORY MODE", "assets/images/button_spritesheet.png");
+	StoryModeButton* b = new StoryModeButton(*ren, "", "assets/images/button_spritesheet.png");
 	b->SetDimensions(515, 220, 238, 102);
 	AddUIComponent(b);
 
 	// StoryModeButton
-	InfiniteModeButton* c = new InfiniteModeButton(*ren, "INFINITE MODE", "assets/images/button_spritesheet.png");
+	InfiniteModeButton* c = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
 	c->SetDimensions(515, 322, 238, 102);
 	AddUIComponent(c);
 }
