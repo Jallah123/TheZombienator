@@ -60,3 +60,4 @@ bld/
 *.ilk
 *.log
 *.tlog
+*.sdf
