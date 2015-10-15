@@ -18,7 +18,7 @@ void DrawBehaviour::Draw(float dt, SDL_Renderer & ren)
 	//Do casting here:
 	Character* c = (Character*) &this->gameObject;
 	std::cout << "Draw behaviour draw " << &c << std::endl;
-	if(c->GetTexture() != nullptr)
-	SDL_RenderCopy(&ren, c->GetTexture(), &c->GetSourceRect(), &c->GetDestinationRect());
+	//if(c->GetTexture() != nullptr)
+	//SDL_RenderCopy(&ren, c->GetTexture(), &c->GetSourceRect(), &c->GetDestinationRect());
 }
 

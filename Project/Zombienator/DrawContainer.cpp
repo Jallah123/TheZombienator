@@ -19,7 +19,7 @@ DrawContainer::~DrawContainer()
 
 void DrawContainer::Draw(float dt, SDL_Renderer & ren)
 {
-	std::cout << arr.size() << " DrawContainer size" << std::endl;
+	//std::cout << arr.size() << " DrawContainer size" << std::endl;
 	if (this->arr.empty()) return;//Do nothing on empty
 	for (Behaviour* i : this->arr) {
 		DrawBehaviour* db = (DrawBehaviour*)&i;

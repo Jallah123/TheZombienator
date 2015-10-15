@@ -5,6 +5,7 @@
 #include "AnimateContainer.h"
 #include "iostream"
 
+SDL_Texture* texture = nullptr;
 Character* c = nullptr;
 DrawContainer drawContainer;
 AnimateContainer animateContainer;
@@ -16,6 +17,9 @@ MenuScreen::MenuScreen(SDL_Renderer* ren)
 	c->SetContainers(&drawContainer, &animateContainer);
 	c->SetDrawBehaviour("DrawBehaviour");
 	c->SetImage("assets/images/spritesheets/Boy1.png", *ren);
+
+	SDL_Surface * image = IMG_Load("assets/images/spritesheets/Boy1.png");
+	texture = SDL_CreateTextureFromSurface(ren, image);
 
 	std::cout << "Adress of character " << &c << std::endl;
 	//c->SetSize(40, 40);
@@ -48,16 +52,8 @@ void MenuScreen::Draw(SDL_Renderer& ren)
 	float dt = 1;
 	drawContainer.Draw(dt, ren);
 	
-	
-	
-
-	
-
-	
-	
-	
 	//static Registrar<Character> GameObjectRegistrar("name");
-	/*
+	
 	Uint32 ticks = SDL_GetTicks();
 	const int FRAMES = 3;
 	Uint32 sprite = (ticks / 100) % FRAMES;
@@ -65,10 +61,8 @@ void MenuScreen::Draw(SDL_Renderer& ren)
 	int height = 40;
 	SDL_Rect srcrect = { sprite * width, 0, width, height };
 	SDL_Rect dstrect = { 10, 10, width, height };
-	*/
-	//SDL_RenderCopy(&ren, c->GetTexture(), &srcrect, &dstrect);
-	
 
+	SDL_RenderCopy(&ren, texture, &srcrect, &dstrect);
 }
 
 void MenuScreen::ChangeBackground(SDL_Renderer* ren, std::string img_url)
