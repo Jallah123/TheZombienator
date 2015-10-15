@@ -34,8 +34,14 @@ public:
 	int GetSpeed() const { return speed; }
 	int GetDamage() const { return damage; }
 
+	void SetContainers(DrawContainer* drawC, AnimateContainer* animC) {
+		drawContainer = drawC;
+		animateContainer = animC;
+	}
+
 	void SetDrawBehaviour(std::string name) {
-		//this->drawBehaviour = BehaviourFactory::Instance()->Create(name, this);
+  		this->drawBehaviour = BehaviourFactory::Instance()->CreateDrawBehaviour(name, this);
+
 		this->drawContainer->Add(drawBehaviour);
 	}
 };

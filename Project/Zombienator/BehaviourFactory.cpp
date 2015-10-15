@@ -17,7 +17,7 @@ void BehaviourFactory::Register(std::string name, std::function<Behaviour*(void)
 	BehaviourFactory::registry[name] = fn;
 }
 
-std::shared_ptr<Behaviour> BehaviourFactory::Create(std::string name, GameObject* obj)
+DrawBehaviour* BehaviourFactory::CreateDrawBehaviour(std::string name, GameObject* obj)
 {
 	Behaviour* instance = nullptr;
 
@@ -29,7 +29,7 @@ std::shared_ptr<Behaviour> BehaviourFactory::Create(std::string name, GameObject
 	// wrap instance in a shared ptr and return
 	if (instance != nullptr) {
 		instance->SetGameObject(obj);//link the behaviour to its gameObject
-		return std::shared_ptr<Behaviour>(instance);
+		return (DrawBehaviour*)&instance;
 	}
 
 	return nullptr;

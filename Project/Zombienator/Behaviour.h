@@ -1,11 +1,6 @@
-#ifndef BEHAVIOUR_H
-#define BEHAVIOUR_H
-#include "Character.h"
 #include <memory>
 #pragma once
-
-class Character;
-
+#include "GameObject.h"
 class Behaviour
 {
 protected:
@@ -25,5 +20,3 @@ public:
 	virtual void Draw(float dt, SDL_Renderer& ren) = 0;
 	*/
 };
-
-#endif

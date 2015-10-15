@@ -2,16 +2,27 @@
 #include "Character.h"
 //#include "GameObjectRegistrar.h"
 #include "GameObjectFactory.h"
+#include "AnimateContainer.h"
 #include "iostream"
 
-Character* c = new Character();
+Character* c = nullptr;
 DrawContainer drawContainer;
+AnimateContainer animateContainer;
 
 MenuScreen::MenuScreen(SDL_Renderer* ren)
 {
+	GameObjectFactory::Instance()->Register("character", [](void) -> GameObject* {return new Character(); });
+	c = GameObjectFactory::Instance()->CreateCharacter("character");
+	c->SetContainers(&drawContainer, &animateContainer);
+	c->SetDrawBehaviour("DrawBehaviour");
+	c->SetImage("assets/images/spritesheets/Boy1.png", *ren);
+
+	std::cout << "Adress of character " << &c << std::endl;
+	//c->SetSize(40, 40);
+	//c->SetPosition(200, 100);
 	SDL_Surface *s = IMG_Load("assets/images/menu_bg.png");
 
-	c->SetImage("assets/images/spritesheets/Boy1.png", *ren);
+	
 	BackgroundTexture = SDL_CreateTextureFromSurface(ren, s);
 }
 
@@ -27,25 +38,26 @@ void MenuScreen::ClickComponents(SDL_Point MousePosition)
 }
 
 void MenuScreen::Draw(SDL_Renderer& ren)
-{
+{	//Draw background
 	SDL_RenderCopy(&ren, BackgroundTexture, 0, 0);
 
 	std::vector<AbstractUIComponent*>::iterator it;
 	for (it = UIComponents.begin(); it != UIComponents.end(); it++) (*it)->Draw(ren);
 
+	//Draw GameObjects
 	float dt = 1;
 	drawContainer.Draw(dt, ren);
-	c->SetSize(40, 40);
-	c->SetPosition(80, 80);
-
+	
+	
 	
 
 	
+
 	
-	GameObjectFactory::Instance()->Register("name", [](void) -> GameObject* {return new Character(); });
-	auto instance = GameObjectFactory::Instance()->Create("name");
+	
+	
 	//static Registrar<Character> GameObjectRegistrar("name");
-	
+	/*
 	Uint32 ticks = SDL_GetTicks();
 	const int FRAMES = 3;
 	Uint32 sprite = (ticks / 100) % FRAMES;
@@ -53,8 +65,8 @@ void MenuScreen::Draw(SDL_Renderer& ren)
 	int height = 40;
 	SDL_Rect srcrect = { sprite * width, 0, width, height };
 	SDL_Rect dstrect = { 10, 10, width, height };
-	
-	SDL_RenderCopy(&ren, c->GetTexture(), &srcrect, &dstrect);
+	*/
+	//SDL_RenderCopy(&ren, c->GetTexture(), &srcrect, &dstrect);
 	
 
 }

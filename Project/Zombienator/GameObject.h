@@ -1,9 +1,10 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
+#pragma once
 #include "MoveDirection.cpp"
 #include "SDL.h"
 #include "SDL_image.h"
-#pragma once
+#include <iostream>
 
 class GameObject
 {
@@ -21,6 +22,7 @@ public:
 	void SetImage(const char* path, SDL_Renderer& ren) { 
 		SDL_Surface * image = IMG_Load(path);
 		this->texture = SDL_CreateTextureFromSurface(&ren, image);
+		std::cout << "Image Loaded";
 	}
 	void SetSize(int w, int h) { this->width = w; this->height = h; }
 	void SetPosition(int x, int y) { destRect = { x, y, width, height }; }
