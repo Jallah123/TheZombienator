@@ -164,9 +164,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -223,17 +220,6 @@
     </ClCompile>
     <ClCompile Include="BehaviourFactory.cpp">
       <Filter>Source Files\Factories</Filter>
-    <ClCompile Include="ScreenController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Program.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\TestScreen\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="BackButton.cpp">
-      <Filter>Source Files\TestScreen\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="TestScreen.cpp">
       <Filter>Source Files\TestScreen</Filter>
@@ -320,35 +306,6 @@
     </ClInclude>
     <ClInclude Include="BehaviourFactory.h">
       <Filter>Header Files\Factories</Filter>
-    <ClInclude Include="ScreenController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Program.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files\TestScreen\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="BackButton.h">
-      <Filter>Header Files\TestScreen\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScreen.h">
-      <Filter>Header Files\TestScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="HomeScreen.h">
-      <Filter>Header Files\HomeScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsButton.h">
-      <Filter>Header Files\HomeScreen\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="StoryModeButton.h">
-      <Filter>Header Files\HomeScreen\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="InfiniteModeButton.h">
-      <Filter>Header Files\HomeScreen\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="InputContainer.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ControllerInputHandler.h">
       <Filter>Header Files</Filter>
