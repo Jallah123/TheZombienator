@@ -1,7 +1,7 @@
 #include "MenuScreen.h"
 #include "iostream"
 
-MenuScreen::MenuScreen(SDL_Renderer* ren)
+MenuScreen::MenuScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
 	SDL_Surface *s = IMG_Load("assets/images/menu_bg.png");
 	BackgroundTexture = SDL_CreateTextureFromSurface(ren, s);

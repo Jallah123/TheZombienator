@@ -5,8 +5,9 @@
 #include "MusicController.h"
 #include <algorithm>
 #include "SDL_image.h"
+#include "AbstractScreen.h"
 
-class MenuScreen
+class MenuScreen : public AbstractScreen
 {
 public:
 	MenuScreen(SDL_Renderer* ren);
@@ -17,8 +18,6 @@ public:
 	void Draw(SDL_Renderer& ren);
 private:
 protected:
-	std::vector<AbstractUIComponent*> UIComponents;
 	SDL_Texture* BackgroundTexture;
-	MusicController *MusicController = &MusicController::GetInstance();
 	void ChangeBackground(SDL_Renderer* ren, std::string img_url);
 };

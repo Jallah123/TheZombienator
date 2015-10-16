@@ -16,8 +16,8 @@ private:
 	SDL_Renderer* Sdl_Renderer;
 	SDL_Event e;
 	TTF_Font* Font;
-	int width = 720;
-	int height = 1280;
+	int width = 768;
+	int height = 768;
 	void xmlParseTest();
 	Program();
 	int Render();

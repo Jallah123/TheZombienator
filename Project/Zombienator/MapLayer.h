@@ -6,14 +6,14 @@ class MapLayer
 {
 	public:
 		MapLayer();
-		MapLayer(char* _name);
-		char* getName();
-		vector<int> getGIDs();
-		void setGID(int gID);
-
+		MapLayer(string _name);
+		string getName();
+		vector<vector<int>> getGIDs();
+		void addGID(vector<int>);
+		int getGID(int x, int y);
 	private:
-		char* name;
-		vector<int> gIDs;
+		string name;
+		vector<vector<int>> gIDs;
 
 	protected:
 

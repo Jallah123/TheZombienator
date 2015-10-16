@@ -1,58 +1,45 @@
 #include "MapRender.h"
-#include "thirdparty/pugixml-1.6/src/pugixml.cpp"
+#include "MapLayer.h"
+#include "Map.h"
+#include <fstream>
+#include <json.h>
 
 
 MapRender::MapRender(char* xml_url)
 {
+	Json::Value root;
+	std::ifstream config_doc("C:\\Users\\Tojba\\Documents\\TheZombienator\\Project\\Zombienator\\assets\\maps\\TestMap\\TestMap2.json", std::ifstream::binary);
+	config_doc >> root;
 
-	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(xml_url);
+	string s = root.get("height", "1").asString();
+	Json::Value layers = root["layers"];
+	Map map{ "assets/maps/TestMap/mountain_landescape_23.png" };
 
-	//std::cout << "Load result: " << result.description() << ", mesh name: " << doc.child("map").child("layer").attribute("name").value() << std::endl;
-	
-	// Get map
-	pugi::xml_node map = doc.child("map");
+	for (int i = 0; i < layers.size(); i++) {
+		Json::Value layer = layers[i];
+		string name = layer.get("name", "noname").asString();
+		int width = layer.get("width", 0).asInt();
 
-	std::string _map_img = map.child("tileset").child("image").attribute("source").value();
-	char *map_img = &_map_img[0];
+		cout << name << endl;
 
-	// Create map
-	Map m = Map{ map_img };
+		MapLayer ml{name};
+		vector<int> currentRow;
 
-	// Loop though elements
-	for (pugi::xml_node element = map.first_child(); element; element = element.next_sibling()) {
+		int size = layer["data"].size();
 
-		std::string elementName = element.name();
-
-		if (elementName == "layer") {
-
-			std::string _layer_name = element.attribute("name").value();
-			char *layer_name = &_layer_name[0];
-
-			// Create MapLayer
-			MapLayer ml = MapLayer{ layer_name };
-
-			// Add tiles to MapLayer
-			renderLayer(element, ml);
-
-			// Add MapLayer to Map
-			m.setMapLayer(ml);
+		for (int x = 1; x <= size; x++) {
+			currentRow.push_back(layer["data"][x-1].asInt());
+			if (x % width == 0 && x != 0) {
+				ml.addGID(currentRow);
+				currentRow.clear();
+			}
 		}
-
+		map.addMapLayer(ml);
 	}
-
 }
 
 void MapRender::renderLayer(pugi::xml_node layer, MapLayer ml) {
 
-	for (pugi::xml_node tile = layer.child("data").first_child(); tile; tile = tile.next_sibling()) {
 
-		std::string _tileGID = tile.attribute("gid").value();
-		int tileGID = atoi(_tileGID.c_str());
-
-		// Add tile gID to MapLayer
-		ml.setGID(tileGID);
-
-	}
 
 }

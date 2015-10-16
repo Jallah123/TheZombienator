@@ -6,29 +6,33 @@ MapLayer::MapLayer() {
 
 }
 
-MapLayer::MapLayer(char * _name)
+MapLayer::MapLayer(string _name)
 {
 	name = _name;
 }
 
-char * MapLayer::getName()
+string MapLayer::getName()
 {
 	return name;
 }
 
-vector<int> MapLayer::getGIDs()
+vector<vector<int>> MapLayer::getGIDs()
 {
 	return gIDs;
 }
 
-void MapLayer::setGID(int gID)
+int MapLayer::getGID(int x, int y) 
 {
-	std::vector<int>::iterator it;
+	return gIDs.at(x).at(y);
+}
 
-	it = gIDs.begin();
-	gIDs.insert(it, gID);
+void MapLayer::addGID(vector<int> gID)
+{
+	gIDs.push_back(gID);
 
-	//cout << gID << endl;
-
-
+	/*
+	for (int i = 0; i < gID.size(); i++)
+		cout << gID[i] << ", ";
+	 cout << endl;
+	 */
 }

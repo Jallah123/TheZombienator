@@ -1,11 +1,7 @@
 #include "Program.h"
-
-
-
+#include "GameScreen.h"
 
 Program::Program() {
-	xmlParseTest();
-
 	cout << "Creating Program" << endl;
 	if (InitComponents() == 0) {
 		cout << "Init complete" << endl;
@@ -34,15 +30,13 @@ TTF_Font * Program::GetFont()
 
 void Program::xmlParseTest()
 {
-	cout << "hetero" << endl;
 	MapRender r = MapRender{"assets/maps/TestMap/TestMap.tmx"};
-
 }
 
 
 int Program::Render() {
 	bool quit = false;
-	MenuScreen m = TestScreen{ Sdl_Renderer };
+	GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/TestMap/TestMap.json" };
 	ScreenController::GetInstance().ChangeMenu(m);
 	while (!quit) {
 		//Handle events on queue 
@@ -55,14 +49,14 @@ int Program::Render() {
 				SDL_Point p = SDL_Point{};
 				p.x = e.button.x;
 				p.y = e.button.y;
-				ScreenController::GetInstance().GetCurrentMenu().ClickComponents(p);
+				ScreenController::GetInstance().GetCurrentMenu()->ClickComponents(p);
 			}
 		}
 
-
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(Sdl_Renderer);
-		ScreenController::GetInstance().GetCurrentMenu().Draw(*Sdl_Renderer);
+		ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer);
+		// ScreenController& sg = ScreenController::GetInstance();
 
 		//Update screen 
 		SDL_RenderPresent(Sdl_Renderer);
@@ -92,7 +86,7 @@ int Program::InitComponents() {
 	// More channels so we can play more sounds at the same time
 	Mix_AllocateChannels(16);
 
-	Sdl_Window = SDL_CreateWindow("Zombienator!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, height, width, SDL_WINDOW_SHOWN);
+	Sdl_Window = SDL_CreateWindow("Zombienator!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_SHOWN);
 	if (Sdl_Window == nullptr) {
 		cerr << "SDL_CreateWindow error: " << SDL_GetError() << endl;
 		SDL_Quit();
