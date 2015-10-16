@@ -34,15 +34,6 @@
     <Filter Include="Header Files\Views">
       <UniqueIdentifier>{a8861851-8b74-4903-81bd-51b9e6f5e127}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Behaviours">
-      <UniqueIdentifier>{a99019ca-6687-479c-a4db-05c67c0419df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Characters">
-      <UniqueIdentifier>{01baa3b6-269e-43be-a62f-0b550f0ecb3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Items">
-      <UniqueIdentifier>{28be931a-2095-49dd-ba75-033069a7857e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Factories">
       <UniqueIdentifier>{c949c2c9-1cd7-4edc-a04c-d0acee42cea0}</UniqueIdentifier>
     </Filter>
@@ -183,16 +174,13 @@
     <ClCompile Include="KeyboardInputHandler.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
+    <ClCompile Include="AnimateBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Header Files\Models\GameObjects\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Behaviour.h">
-      <Filter>Header Files\Models\GameObjects\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="AbstractUIComponent.h">
       <Filter>Header Files\Views\UIComponents</Filter>
@@ -265,6 +253,15 @@
     </ClInclude>
     <ClInclude Include="KeyboardInputHandler.h">
       <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimateBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Behaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

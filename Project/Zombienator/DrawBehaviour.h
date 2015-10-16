@@ -1,4 +1,3 @@
-
 #pragma once
 #include "Behaviour.h"
 class DrawBehaviour : public Behaviour

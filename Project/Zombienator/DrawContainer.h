@@ -1,10 +1,7 @@
-#ifndef DRAW_CONTAINER_H
-#define DRAW_CONTAINER_H
+#pragma once
 #include "SDL.h"
 #include "AbstractContainer.h"
-#pragma once
 
-class AbstractContainer;
 class DrawContainer :
 	public AbstractContainer
 {
@@ -14,5 +11,3 @@ public:
 
 	void Draw(float dt, SDL_Renderer& ren);
 };
-
-#endif

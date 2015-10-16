@@ -1,13 +1,14 @@
-#include <memory>
 #pragma once
+#include <memory>
 #include "GameObject.h"
+
 class Behaviour
 {
 protected:
 	GameObject* gameObject;
 public:
 	Behaviour();
-	~Behaviour();
+	virtual ~Behaviour();
 
 	void SetGameObject(GameObject* go) { gameObject = go; }
 /*

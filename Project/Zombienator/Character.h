@@ -1,21 +1,20 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H
-
-#include "AnimateContainer.h"
-#include "DrawContainer.h"
-#include "BehaviourFactory.h"
-#include "DrawBehaviour.h"
-#include "GameObject.h"
 #pragma once
 
-class GameObject;
+#include "BehaviourFactory.h"
+#include "AnimateBehaviour.h"
+#include "DrawBehaviour.h"
+#include "AnimateContainer.h"
+#include "DrawContainer.h"
+#include "GameObject.h"
 
-class Character : public GameObject
+class Character : 
+	public GameObject
 {
 protected:
-	int damage;
-	int health;
-	int speed;
+	int damage = 0;
+	int health = 0;
+	int speed = 0;
+	int animationFrames = 0;
 	//Containers
 	AnimateContainer* animateContainer;
 	DrawContainer* drawContainer;
@@ -24,6 +23,7 @@ protected:
 
 	//Behaviours
 	DrawBehaviour* drawBehaviour;
+	AnimateBehaviour* animateBehaviour;
 public:
 	Character();
 	//Character(DrawContainer* drawC, AnimateContainer* animC);
@@ -33,17 +33,12 @@ public:
 	int GetHealth() const { return health; }
 	int GetSpeed() const { return speed; }
 	int GetDamage() const { return damage; }
+	int GetFrames() const { return animationFrames; }
 
-	void SetContainers(DrawContainer* drawC, AnimateContainer* animC) {
-		drawContainer = drawC;
-		animateContainer = animC;
-	}
+	void SetFrames(int f) { animationFrames = f; }
 
-	void SetDrawBehaviour(std::string name) {
-  		this->drawBehaviour = BehaviourFactory::Instance()->CreateDrawBehaviour(name, this);
 
-		this->drawContainer->Add(drawBehaviour);
-	}
+	void SetContainers(DrawContainer* drawC, AnimateContainer* animC);
+	void SetDrawBehaviour(std::string name);
+	void SetAnimateBehaviour(std::string name);
 };
-
-#endif
