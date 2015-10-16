@@ -1,5 +1,7 @@
 
-
+#include "Behaviour.h"
+#include "DrawBehaviour.h"
+#include "AnimateBehaviour.h"
 #include "BehaviourFactory.h"
 
 

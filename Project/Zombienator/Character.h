@@ -1,10 +1,11 @@
 #pragma once
+
+#include "BehaviourFactory.h"
 #include "AnimateBehaviour.h"
 #include "DrawBehaviour.h"
 #include "AnimateContainer.h"
 #include "DrawContainer.h"
 #include "GameObject.h"
-#include "BehaviourFactory.h"
 
 class Character : 
 	public GameObject
@@ -22,7 +23,7 @@ protected:
 
 	//Behaviours
 	DrawBehaviour* drawBehaviour;
-	//AnimateBehaviour* animateBehaviour;
+	AnimateBehaviour* animateBehaviour;
 public:
 	Character();
 	//Character(DrawContainer* drawC, AnimateContainer* animC);
@@ -37,18 +38,7 @@ public:
 	void SetFrames(int f) { animationFrames = f; }
 
 
-	void SetContainers(DrawContainer* drawC, AnimateContainer* animC) {
-		drawContainer = drawC;
-		animateContainer = animC;
-	}
-
-	void SetDrawBehaviour(std::string name) {
-  		this->drawBehaviour = BehaviourFactory::Instance()->CreateDrawBehaviour(name, this);
-		this->drawContainer->Add(drawBehaviour);
-	}
-
-	/*void SetAnimateBehaviour(std::string name) {
-		this->animateBehaviour = BehaviourFactory::Instance()->CreateAnimateBehaviour(name, this);
-		this->animateContainer->Add(animateBehaviour);
-	}*/
+	void SetContainers(DrawContainer* drawC, AnimateContainer* animC);
+	void SetDrawBehaviour(std::string name);
+	void SetAnimateBehaviour(std::string name);
 };

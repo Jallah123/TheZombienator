@@ -16,14 +16,21 @@ AnimateBehaviour::~AnimateBehaviour()
 void AnimateBehaviour::Animate(float dt, int ticks)
 {
 	if (!this->gameObject) return;
-	//Do casting
 	Character* c = dynamic_cast<Character*>(gameObject);
-	Uint32 sprite = (ticks / 100) % c->GetFrames();
+	int frames = c->GetFrames();
+
+	if (frames == 0) return;
+	//Do casting
+	
+	Uint32 sprite = (ticks / 100) % frames;
 	
 	//get source rect
 	SDL_Rect srcR = c->GetSourceRect();
+	int width = c->GetWidth();
+	int height = c->GetHeight();
 	//Animate
-	srcR.w = sprite * c->GetWidth();
+	srcR.x = sprite * width;
+	srcR.y = 0;
 	//Set source rect
 	c->SetSourceRect(srcR);
 }

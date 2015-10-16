@@ -1,9 +1,14 @@
+#ifndef BEHAVIOUR_FACTORY
+#define BEHAVIOUR_FACTORY
 #pragma once
 #include <map>
 #include <memory>
 #include <functional>
-#include "DrawBehaviour.h"
-#include "AnimateBehaviour.h"
+
+class Behaviour;
+class DrawBehaviour;
+class AnimateBehaviour;
+class GameObject;
 
 class BehaviourFactory
 {
@@ -22,3 +27,4 @@ public:
 
 	static std::map<std::string, std::function<Behaviour*(void)>> registry;
 };
+#endif

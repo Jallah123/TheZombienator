@@ -20,6 +20,7 @@ MenuScreen::MenuScreen(SDL_Renderer* ren)
 	c->SetImage("assets/images/spritesheets/Boy1.png", *ren);
 	c->SetSize(40, 40);
 	c->SetPosition(200, 100);
+	c->SetFrames(3);
 	SDL_Surface * image = IMG_Load("assets/images/spritesheets/Boy1.png");
 	texture = SDL_CreateTextureFromSurface(ren, image);
 

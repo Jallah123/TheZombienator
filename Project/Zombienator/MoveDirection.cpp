@@ -1,5 +1,6 @@
 enum MoveDirection
 {
+	NONE,
 	NORTH,
 	NORTH_EAST,
 	SOUTH,
