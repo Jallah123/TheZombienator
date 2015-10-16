@@ -1,6 +1,3 @@
-#ifndef BEHAVIOUR_FACTORY_H
-#define BEHAVIOUR_FACTORY_H
-
 #pragma once
 #include <map>
 #include <memory>
@@ -25,5 +22,3 @@ public:
 
 	static std::map<std::string, std::function<Behaviour*(void)>> registry;
 };
-
-#endif

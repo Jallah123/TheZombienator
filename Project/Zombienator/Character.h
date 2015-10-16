@@ -1,14 +1,13 @@
 #pragma once
+#include "AnimateBehaviour.h"
+#include "DrawBehaviour.h"
 #include "AnimateContainer.h"
 #include "DrawContainer.h"
 #include "GameObject.h"
 #include "BehaviourFactory.h"
 
-class GameObject;
-class AnimateBehaviour;
-class DrawBehaviour;
-
-class Character : public GameObject
+class Character : 
+	public GameObject
 {
 protected:
 	int damage = 0;
@@ -23,7 +22,7 @@ protected:
 
 	//Behaviours
 	DrawBehaviour* drawBehaviour;
-	AnimateBehaviour* animateBehaviour;
+	//AnimateBehaviour* animateBehaviour;
 public:
 	Character();
 	//Character(DrawContainer* drawC, AnimateContainer* animC);
@@ -48,8 +47,8 @@ public:
 		this->drawContainer->Add(drawBehaviour);
 	}
 
-	void SetAnimateBehaviour(std::string name) {
+	/*void SetAnimateBehaviour(std::string name) {
 		this->animateBehaviour = BehaviourFactory::Instance()->CreateAnimateBehaviour(name, this);
 		this->animateContainer->Add(animateBehaviour);
-	}
+	}*/
 };

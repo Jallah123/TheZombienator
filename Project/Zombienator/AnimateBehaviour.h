@@ -1,6 +1,3 @@
-#ifndef ANIMATE_BEHAVIOUR_H
-#define ANIMATE_BEHAVIOUR_H
-
 #pragma once
 #include "Behaviour.h"
 #include "Character.h"
@@ -15,5 +12,3 @@ public:
 	//Use Animate
 	void Animate(float dt, int ticks);
 };
-
-#endif

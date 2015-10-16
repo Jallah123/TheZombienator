@@ -1,6 +1,3 @@
-#ifndef BEHAVIOUR_H
-#define BEHAVIOUR_H
-
 #pragma once
 #include <memory>
 #include "GameObject.h"
@@ -24,4 +21,3 @@ public:
 	virtual void Draw(float dt, SDL_Renderer& ren) = 0;
 	*/
 };
-#endif

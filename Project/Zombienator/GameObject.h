@@ -1,5 +1,3 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
 #pragma once
 #include "MoveDirection.cpp"
 #include "SDL.h"
@@ -13,7 +11,6 @@ protected:
 	SDL_Texture* texture = nullptr;
 	int width = 0, height = 0;
 	SDL_Rect sourceRect, destRect;
-	
 
 public:
 	GameObject() {}//Default constructer
@@ -36,5 +33,3 @@ public:
 	SDL_Texture* const GetTexture() { return this->texture; }
 	MoveDirection const GetMoveDir() { return this->moveDirection; }
 };
-
-#endif

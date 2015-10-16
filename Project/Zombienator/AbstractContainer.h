@@ -1,10 +1,6 @@
-#ifndef ABSTRACT_CONTAINER_H
-#define ABSTRACT_CONTAINER_H
-
 #pragma once
 #include <vector>
-
-class Behaviour;
+#include "Behaviour.h"
 
 class AbstractContainer
 {
@@ -18,7 +14,3 @@ public:
 	void Add(Behaviour* b) { arr.push_back(b); }
 	void Remove(Behaviour* b) {}
 };
-
-#include "AnimateContainer.h"
-#include "DrawContainer.h"
-#endif
