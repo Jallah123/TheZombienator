@@ -189,7 +189,7 @@
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ScreenController.cpp" />
     <ClCompile Include="TestScreen.cpp" />
-    <ClCompile Include="thirdparty\jsoncpp-0.10.5\dist\jsoncpp.cpp" />
+    <ClCompile Include="thirdparty\jsoncpp-0.10.5\build\jsoncpp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScreen.h" />
@@ -206,8 +206,8 @@
     <ClInclude Include="Program.h" />
     <ClInclude Include="ScreenController.h" />
     <ClInclude Include="TestScreen.h" />
-    <ClInclude Include="thirdparty\jsoncpp-0.10.5\dist\json\json-forwards.h" />
-    <ClInclude Include="thirdparty\jsoncpp-0.10.5\dist\json\json.h" />
+    <ClInclude Include="thirdparty\jsoncpp-0.10.5\build\json\json-forwards.h" />
+    <ClInclude Include="thirdparty\jsoncpp-0.10.5\build\json\json.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Debug\assets\images\default_background.bmp" />
