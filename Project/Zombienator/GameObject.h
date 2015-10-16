@@ -11,13 +11,13 @@ class GameObject
 protected:
 	MoveDirection moveDirection;
 	SDL_Texture* texture = nullptr;
-	int width, height;
+	int width = 0, height = 0;
 	SDL_Rect sourceRect, destRect;
 	
 
 public:
 	GameObject() {}//Default constructer
-	~GameObject() {}
+	virtual ~GameObject() {}
 	
 	void SetImage(const char* path, SDL_Renderer& ren) { 
 		SDL_Surface * image = IMG_Load(path);
@@ -26,6 +26,8 @@ public:
 	}
 	void SetSize(int w, int h) { this->width = w; this->height = h; }
 	void SetPosition(int x, int y) { destRect = { x, y, width, height }; }
+
+	void SetSourceRect(SDL_Rect r) { sourceRect = r; }
 
 	SDL_Rect const GetSourceRect() { return this->sourceRect; }
 	SDL_Rect const GetDestinationRect() { return this->destRect; }

@@ -1,13 +1,17 @@
-#include <memory>
+#ifndef BEHAVIOUR_H
+#define BEHAVIOUR_H
+
 #pragma once
+#include <memory>
 #include "GameObject.h"
+
 class Behaviour
 {
 protected:
 	GameObject* gameObject;
 public:
 	Behaviour();
-	~Behaviour();
+	virtual ~Behaviour();
 
 	void SetGameObject(GameObject* go) { gameObject = go; }
 /*
@@ -20,3 +24,4 @@ public:
 	virtual void Draw(float dt, SDL_Renderer& ren) = 0;
 	*/
 };
+#endif

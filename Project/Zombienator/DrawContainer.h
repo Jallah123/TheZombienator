@@ -1,8 +1,9 @@
 #ifndef DRAW_CONTAINER_H
 #define DRAW_CONTAINER_H
+
+#pragma once
 #include "SDL.h"
 #include "AbstractContainer.h"
-#pragma once
 
 class AbstractContainer;
 class DrawContainer :

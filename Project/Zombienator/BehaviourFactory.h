@@ -6,7 +6,7 @@
 #include <memory>
 #include <functional>
 #include "DrawBehaviour.h"
-
+#include "AnimateBehaviour.h"
 
 class BehaviourFactory
 {
@@ -20,6 +20,9 @@ public:
 	}
 	static void Register(std::string name, std::function<Behaviour*(void)> fn);
 	static DrawBehaviour* CreateDrawBehaviour(std::string name, GameObject* obj);
+	static AnimateBehaviour* CreateAnimateBehaviour(std::string name, GameObject* obj);
+	
+
 	static std::map<std::string, std::function<Behaviour*(void)>> registry;
 };
 

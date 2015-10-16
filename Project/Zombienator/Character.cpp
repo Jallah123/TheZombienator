@@ -2,7 +2,7 @@
 
 
 
-Character::Character() : GameObject()
+Character::Character() : GameObject() 
 {
 }
 

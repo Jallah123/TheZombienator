@@ -1,5 +1,4 @@
 #pragma once
-#include "iostream"
 #include "DrawBehaviour.h"
 #include "DrawContainer.h"
 #include "BehaviourFactory.h"
@@ -19,10 +18,10 @@ DrawContainer::~DrawContainer()
 
 void DrawContainer::Draw(float dt, SDL_Renderer & ren)
 {
-	//std::cout << arr.size() << " DrawContainer size" << std::endl;
 	if (this->arr.empty()) return;//Do nothing on empty
 	for (Behaviour* i : this->arr) {
-		DrawBehaviour* db = (DrawBehaviour*)&i;
+		DrawBehaviour* db = dynamic_cast<DrawBehaviour*>(i);
+		
 		//Draw each Behaviour
 		db->Draw(dt, ren);
 	}

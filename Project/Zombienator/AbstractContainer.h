@@ -1,7 +1,8 @@
 #ifndef ABSTRACT_CONTAINER_H
 #define ABSTRACT_CONTAINER_H
-#include <vector>
+
 #pragma once
+#include <vector>
 
 class Behaviour;
 

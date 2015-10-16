@@ -159,6 +159,7 @@
   <ItemGroup>
     <ClCompile Include="AbstractContainer.cpp" />
     <ClCompile Include="AbstractUIComponent.cpp" />
+    <ClCompile Include="AnimateBehaviour.cpp" />
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="Behaviour.cpp" />
@@ -188,6 +189,7 @@
   <ItemGroup>
     <ClInclude Include="AbstractContainer.h" />
     <ClInclude Include="AbstractUIComponent.h" />
+    <ClInclude Include="AnimateBehaviour.h" />
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="Behaviour.h" />

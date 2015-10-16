@@ -26,8 +26,8 @@ Character* GameObjectFactory::CreateCharacter(std::string name)
 		instance = it->second();
 
 	if (instance != nullptr) {
-		Character* cInstance = (Character*)&instance;
-		std::cout << "GameObjectFactory Character: " << &cInstance << std::endl;
+		Character* cInstance = (Character*)instance;//MUST REWRITE TO DYNAMIC CAST!!!!!!!!!!
+		std::cout << "GameObjectFactory Character: " << cInstance << std::endl;
 		return cInstance;
 	}
 	return nullptr;

@@ -1,4 +1,5 @@
-
+#ifndef DRAW_BEHAVIOUR_H
+#define DRAW_BEHAVIOUR_H
 #pragma once
 #include "Behaviour.h"
 class DrawBehaviour : public Behaviour
@@ -10,3 +11,4 @@ public:
 	//Use Draw
 	void Draw(float dt, SDL_Renderer& ren);
 };
+#endif
