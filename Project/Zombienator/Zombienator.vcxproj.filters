@@ -69,7 +69,7 @@
     <ClCompile Include="MapParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="thirdparty\jsoncpp-0.10.5\build\jsoncpp.cpp">
+    <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,10 +116,10 @@
     <ClInclude Include="MapParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="thirdparty\jsoncpp-0.10.5\build\json\json-forwards.h">
+    <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="thirdparty\jsoncpp-0.10.5\build\json\json.h">
+    <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
