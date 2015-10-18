@@ -20,14 +20,18 @@ GameScreen::GameScreen(SDL_Renderer* _ren, string path) : AbstractScreen(ren)
 void GameScreen::Draw(SDL_Renderer& ren)
 {
 	vector<SDL_Rect*> sprites = map.get()->getSprites();
-	int index = 0;
-	for (int x = 0; x < 24; x++)
+	vector<MapLayer> layers = map.get()->getLayers();
+	
+	for (int l = layers.size()-1; l >= 0; l--)
 	{
-		for (int y = 0; y < 32; y++)
+		for (int x = 0; x < 24; x++)
 		{
-			DrawRect(x * 32, y * 32, sprites.at(map->getLayer().getGID(x, y)));
+			for (int y = 0; y < 32; y++)
+			{
+				DrawRect(x * 32, y * 32, sprites.at(layers.at(l).getGID(x, y)));
+			}
 		}
-	}
+	} 
 }
 
 void GameScreen::DrawRect(int x, int y, SDL_Rect* clip) { 

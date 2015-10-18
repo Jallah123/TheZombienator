@@ -23,16 +23,13 @@ vector<vector<int>> MapLayer::getGIDs()
 
 int MapLayer::getGID(int x, int y) 
 {
+	if (gIDs.at(x).at(y) < 0) {
+		return 0;
+	}
 	return gIDs.at(x).at(y);
 }
 
 void MapLayer::addGID(vector<int> gID)
 {
 	gIDs.push_back(gID);
-
-	/*
-	for (int i = 0; i < gID.size(); i++)
-		cout << gID[i] << ", ";
-	 cout << endl;
-	 */
 }

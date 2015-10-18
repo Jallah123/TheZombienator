@@ -15,7 +15,7 @@ public:
 	vector<SDL_Rect*> getSprites() { return sprites; };
 	void setTexture(SDL_Texture* texture);
 	SDL_Texture* getTexture() { return texture; };
-	MapLayer getLayer() { return mapLayers[1]; };
+	vector<MapLayer> getLayers() { return mapLayers; };
 	~Map();
 private:
 	SDL_Texture* texture;
