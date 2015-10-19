@@ -31,7 +31,7 @@ TTF_Font * Program::GetFont()
 
 int Program::Render() {
 	bool quit = false;
-	GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/TestMap.json" };
+	GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/map1-final.json" };
 	ScreenController::GetInstance().ChangeMenu(m);
 	while (!quit) {
 		//Handle events on queue 

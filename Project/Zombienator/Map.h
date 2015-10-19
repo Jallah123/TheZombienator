@@ -11,6 +11,7 @@ public:
 	Map(string _img_path);
 	string getImagePath();
 	void addMapLayer(MapLayer _mapLayer);
+	void addCollisionLayer(MapLayer _mapLayer);
 	void setSprites(vector<SDL_Rect*> _sprites) { sprites = _sprites; };
 	vector<SDL_Rect*> getSprites() { return sprites; };
 	void setTexture(SDL_Texture* texture);
@@ -22,6 +23,7 @@ private:
 	vector<SDL_Rect*> sprites;
 	string img_path;
 	vector<MapLayer> mapLayers;
+	vector<MapLayer> collisionLayer;
 protected:
 
 };

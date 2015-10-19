@@ -196,6 +196,7 @@
     <ClInclude Include="AbstractUIComponent.h" />
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapLayer.h" />

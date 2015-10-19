@@ -122,6 +122,9 @@
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Debug\assets\images\default_background.bmp">
