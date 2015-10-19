@@ -28,15 +28,10 @@ TTF_Font * Program::GetFont()
 	return Font;
 }
 
-void Program::xmlParseTest()
-{
-	MapRender r = MapRender{"assets/maps/TestMap/TestMap.tmx"};
-}
-
 
 int Program::Render() {
 	bool quit = false;
-	GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/TestMap/TestMap.json" };
+	GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/TestMap.json" };
 	ScreenController::GetInstance().ChangeMenu(m);
 	while (!quit) {
 		//Handle events on queue 

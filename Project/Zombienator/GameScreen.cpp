@@ -8,7 +8,7 @@ GameScreen::GameScreen(SDL_Renderer* _ren, string path) : AbstractScreen(ren)
 	 map = mp.ParseJsonMap(path);
 	 map.get()->setSprites(mp.GenerateSprites(path));
 	 SDL_Surface* s;
-	 s = IMG_Load("assets/maps/TestMap/mountain_landscape_23.png");
+	 s = IMG_Load(map->getImagePath().c_str());
 	 if (!s) {
 		 cout << "Error image load : " << IMG_GetError() << endl;
 		 return;

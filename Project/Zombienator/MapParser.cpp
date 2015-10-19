@@ -16,8 +16,9 @@ unique_ptr<Map> MapParser::ParseJsonMap(string path)
 	config_doc >> root;
 
 	Json::Value layers = root["layers"];
-	unique_ptr<Map> map(new Map("assets/maps/TestMap/mountain_landescape_23.png"));	
-
+	string  imageLocation = "assets/maps/" + root["tilesets"][0]["image"].asString();
+	unique_ptr<Map> map(new Map(imageLocation));	
+	
 	for (int i = 0; i < layers.size(); i++) {
 		Json::Value layer = layers[i];
 		string name = layer.get("name", "noname").asString();
