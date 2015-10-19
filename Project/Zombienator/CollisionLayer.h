@@ -1,17 +1,17 @@
 #pragma once
 #include <vector>
+#include "CollisionObject.h"
 using namespace std;
 
 class CollisionLayer
 {
 public:
 	CollisionLayer();
-	vector<vector<int>> getGIDs();
-	void addGID(vector<int>);
-	int getGID(int x, int y);
+	void addCollisionObject(CollisionObject collisionObject);
+	vector<CollisionObject> getCollisionObjects() { return collisionObjects; };
+
 private:
-	string name;
-	vector<vector<int>> gIDs;
+	vector<CollisionObject> collisionObjects;
 
 protected:
 

@@ -2,6 +2,8 @@
 #include "MapRender.h"
 #include "MapLayer.h"
 #include "Map.h"
+#include "CollisionLayer.h"
+#include "CollisionObject.h"
 #include <fstream>
 #include <json.h>
 
@@ -43,25 +45,25 @@ unique_ptr<Map> MapParser::ParseJsonMap(string path)
 			}
 			map.get()->addMapLayer(ml);
 		}
-		else {//collision loading
-			int width = layer.get("width", 0).asInt();
-
-			cout << name << endl;
-
-			MapLayer ml{ name };
-			vector<int> currentRow;
+		else { // Collision layer
+			
+			CollisionLayer cl;
 
 			int size = layer["objects"].size();
 
 			for (int x = 1; x <= size; x++) {
-				int data = layer["data"][x - 1].asInt() - 1;
-				currentRow.push_back(data);
-				if (x % 32 == 0 && x != 0) {
-					ml.addGID(currentRow);
-					currentRow.clear();
-				}
+				int _id = layer["objects"][x - 1]["id"].asInt();
+				int _width = layer["objects"][x - 1]["width"].asInt();
+				int _height = layer["objects"][x - 1]["height"].asInt();
+				int _x = layer["objects"][x - 1]["x"].asInt();
+				int _y = layer["objects"][x - 1]["y"].asInt();
+
+				CollisionObject collisionObject = CollisionObject(_id, _width, _height, _x, _y);
+				cl.addCollisionObject(collisionObject);
+
 			}
-			map.get()->addMapLayer(ml);
+
+			map.get()->addCollisionLayer(cl);
 		}
 	}
 	config_doc.close();

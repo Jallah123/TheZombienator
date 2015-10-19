@@ -1,14 +1,12 @@
-﻿Build started 19-10-2015 20:25:54.
-     1>Project "C:\Users\Sander\Documents\Sourcetree\TheZombienator\Project\Zombienator\Zombienator.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Users\Sander\Documents\Sourcetree\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt MapParser.cpp
-         MapParser.cpp
-     1>c:\users\sander\documents\sourcetree\thezombienator\project\zombienator\mapparser.cpp(22): warning C4018: '<': signed/unsigned mismatch
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sander\Documents\Sourcetree\TheZombienator\Project\Zombienator\Debug\Zombienator.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Sander\Documents\Sourcetree\TheZombienator\Project\Zombienator\Debug\Zombienator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sander\Documents\Sourcetree\TheZombienator\Project\Zombienator\Debug\Zombienator.lib" /MACHINE:X86 Debug\AbstractScreen.obj
+﻿Build started 19-Oct-15 21:02:17.
+     1>Project "D:\Documents\School\Blok 13\Project\GitHub\Project\Zombienator\Zombienator.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\School\Blok 13\Project\GitHub\Project\Zombienator\Debug\Zombienator.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Documents\School\Blok 13\Project\GitHub\Project\Zombienator\Debug\Zombienator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\School\Blok 13\Project\GitHub\Project\Zombienator\Debug\Zombienator.lib" /MACHINE:X86 Debug\AbstractScreen.obj
          Debug\AbstractUIComponent.obj
          Debug\BackButton.obj
          Debug\Button.obj
+         Debug\CollisionLayer.obj
+         Debug\CollisionObject.obj
          Debug\GameScreen.obj
          Debug\main.obj
          Debug\Map.obj
@@ -21,9 +19,9 @@
          Debug\ScreenController.obj
          Debug\TestScreen.obj
          Debug\jsoncpp.obj
-     1>LINK : fatal error LNK1201: error writing to program database 'C:\Users\Sander\Documents\Sourcetree\TheZombienator\Project\Zombienator\Debug\Zombienator.pdb'; check for insufficient disk space, invalid path, or insufficient privilege
-     1>Done Building Project "C:\Users\Sander\Documents\Sourcetree\TheZombienator\Project\Zombienator\Zombienator.vcxproj" (Build target(s)) -- FAILED.
+         Zombienator.vcxproj -> D:\Documents\School\Blok 13\Project\GitHub\Project\Zombienator\Debug\Zombienator.exe
+     1>Done Building Project "D:\Documents\School\Blok 13\Project\GitHub\Project\Zombienator\Zombienator.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:01.17
+Time Elapsed 00:00:01.88

@@ -178,6 +178,8 @@
     <ClCompile Include="AbstractUIComponent.cpp" />
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CollisionLayer.cpp" />
+    <ClCompile Include="CollisionObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -197,6 +199,7 @@
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CollisionLayer.h" />
+    <ClInclude Include="CollisionObject.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapLayer.h" />

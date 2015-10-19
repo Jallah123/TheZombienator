@@ -21,6 +21,7 @@ void GameScreen::Draw(SDL_Renderer& ren)
 {
 	vector<SDL_Rect*> sprites = map.get()->getSprites();
 	vector<MapLayer> layers = map.get()->getLayers();
+	vector<CollisionLayer> collisionLayers = map.get()->getCollisionLayers();
 	
 	for (int l = layers.size()-1; l >= 0; l--)
 	{
@@ -31,7 +32,13 @@ void GameScreen::Draw(SDL_Renderer& ren)
 				DrawRect(x * 32, y * 32, sprites.at(layers.at(l).getGID(x, y)));
 			}
 		}
-	} 
+	}
+
+
+	for (int l = collisionLayers.size() - 1; l >= 0; l--)
+	{
+		// TODO
+	}
 }
 
 void GameScreen::DrawRect(int x, int y, SDL_Rect* clip) { 

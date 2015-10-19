@@ -1,5 +1,6 @@
 #include "Map.h"
 #include "MapLayer.h"
+#include "CollisionLayer.h"
 #include <iostream>
 using namespace std;
 
@@ -25,6 +26,16 @@ void Map::addMapLayer(MapLayer _mapLayer)
 	mapLayers.insert(it, _mapLayer);
 
 	cout << "MapLayer rendered - " << _mapLayer.getName().c_str() << endl;
+}
+
+void Map::addCollisionLayer(CollisionLayer _collisionLayer)
+{
+	std::vector<CollisionLayer>::iterator it;
+
+	it = collisionLayers.begin();
+	collisionLayers.insert(it, _collisionLayer);
+
+	cout << "CollisionLayer rendered" << endl;
 }
 
 Map::~Map() 
