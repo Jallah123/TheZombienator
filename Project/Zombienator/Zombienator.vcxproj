@@ -157,35 +157,75 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractContainer.cpp" />
     <ClCompile Include="AbstractUIComponent.cpp" />
+    <ClCompile Include="AnimateBehaviour.cpp" />
+    <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
+    <ClCompile Include="Behaviour.cpp" />
+    <ClCompile Include="BehaviourFactory.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="DrawBehaviour.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="DrawContainer.cpp" />
+    <ClCompile Include="HomeScreen.cpp" />
+    <ClCompile Include="InfiniteModeButton.cpp" />
+    <ClCompile Include="ControllerInputHandler.cpp" />
+    <ClCompile Include="InputContainer.cpp" />
+    <ClCompile Include="KeyboardInputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
+    <ClCompile Include="MoveDirection.cpp" />
     <ClCompile Include="MusicController.cpp" />
+    <ClCompile Include="NonPlayableCharacter.cpp" />
+    <ClCompile Include="PlayableCharacter.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ScreenController.cpp" />
     <ClCompile Include="SelectionScreen.cpp" />
+    <ClCompile Include="SettingsButton.cpp" />
+    <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="TestScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractContainer.h" />
     <ClInclude Include="AbstractUIComponent.h" />
+    <ClInclude Include="AnimateBehaviour.h" />
+    <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
+    <ClInclude Include="Behaviour.h" />
+    <ClInclude Include="BehaviourFactory.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="DrawBehaviour.h" />
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="DrawContainer.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="HomeScreen.h" />
+    <ClInclude Include="InfiniteModeButton.h" />
+    <ClInclude Include="ControllerInputHandler.h" />
+    <ClInclude Include="InputContainer.h" />
+    <ClInclude Include="KeyboardInputHandler.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MusicController.h" />
+    <ClInclude Include="NonPlayableCharacter.h" />
+    <ClInclude Include="PlayableCharacter.h" />
     <ClInclude Include="Program.h" />
+    <ClInclude Include="Registrar.h" />
     <ClInclude Include="ScreenController.h" />
     <ClInclude Include="SelectionScreen.h" />
+    <ClInclude Include="SettingsButton.h" />
+    <ClInclude Include="StoryModeButton.h" />
     <ClInclude Include="TestScreen.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Debug\assets\images\default_background.bmp" />
+    <Image Include="assets\images\button_spritesheet.png" />
+    <Image Include="assets\images\menu_bg.png" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="D:\Downloads\sans.ttf" />
+    <Font Include="assets\fonts\Block-Cartoon.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
