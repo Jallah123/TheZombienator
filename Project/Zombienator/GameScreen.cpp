@@ -23,21 +23,28 @@ void GameScreen::Draw(SDL_Renderer& ren)
 	vector<MapLayer> layers = map.get()->getLayers();
 	vector<CollisionLayer> collisionLayers = map.get()->getCollisionLayers();
 	
-	for (int l = layers.size()-1; l >= 0; l--)
+	for (int i = layers.size()-1; i >= 0; i--)
 	{
 		for (int x = 0; x < 24; x++)
 		{
 			for (int y = 0; y < 32; y++)
 			{
-				DrawRect(x * 32, y * 32, sprites.at(layers.at(l).getGID(x, y)));
+				DrawRect(x * 32, y * 32, sprites.at(layers.at(i).getGID(x, y)));
 			}
 		}
 	}
 
-
-	for (int l = collisionLayers.size() - 1; l >= 0; l--)
+	for (int j = collisionLayers.size() - 1; j >= 0; j--)
 	{
-		// TODO
+		
+		vector<CollisionObject> collisionObjects = collisionLayers[j].getCollisionObjects();
+
+		for (int k = collisionObjects.size() - 1; k >= 0; k--)
+		{
+			/* For debugging purposes only */
+			DrawCollisionObject(collisionObjects[k].getY(), collisionObjects[k].getX(), collisionObjects[k].getHeight(), collisionObjects[k].getWidth());
+		}
+
 	}
 }
 
@@ -51,4 +58,12 @@ void GameScreen::DrawRect(int x, int y, SDL_Rect* clip) {
 	}
 	//Render to screen 
 	SDL_RenderCopy( ren, map.get()->getTexture(), clip, &renderQuad );
+}
+
+/* For debugging purposes only */
+void GameScreen::DrawCollisionObject(int x, int y, int height, int width) {
+	//Set rendering space and render to screen 
+	SDL_Rect rectangle = { y, x, height, width };
+	//Render to screen
+	SDL_RenderDrawRect(ren, &rectangle );
 }
