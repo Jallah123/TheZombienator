@@ -2,6 +2,7 @@
 #include "AbstractUIComponent.h"
 #include "string"
 #include "SDL.h"
+#include "functional"
 
 class Button : public AbstractUIComponent
 {
