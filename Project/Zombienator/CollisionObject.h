@@ -4,7 +4,7 @@ using namespace std;
 class CollisionObject
 {
 public:
-	CollisionObject(int _id, int _height, int _width, int _x, int _y);
+	CollisionObject(int _id, int _x, int _y, int _width, int _height);
 	int getId() { return id; };
 	int getHeight() { return height; };
 	int getWidth() { return width; };

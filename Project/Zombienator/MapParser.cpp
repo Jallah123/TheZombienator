@@ -53,12 +53,12 @@ unique_ptr<Map> MapParser::ParseJsonMap(string path)
 
 			for (int x = 1; x <= size; x++) {
 				int _id = layer["objects"][x - 1]["id"].asInt();
-				int _width = layer["objects"][x - 1]["width"].asInt();
-				int _height = layer["objects"][x - 1]["height"].asInt();
 				int _x = layer["objects"][x - 1]["x"].asInt();
 				int _y = layer["objects"][x - 1]["y"].asInt();
+				int _width = layer["objects"][x - 1]["width"].asInt();
+				int _height = layer["objects"][x - 1]["height"].asInt();
 
-				CollisionObject collisionObject = CollisionObject(_id, _width, _height, _x, _y);
+				CollisionObject collisionObject = CollisionObject(_id, _x, _y, _width, _height);
 				cl.addCollisionObject(collisionObject);
 
 			}

@@ -36,16 +36,22 @@ void GameScreen::Draw(SDL_Renderer& ren)
 
 	for (int j = collisionLayers.size() - 1; j >= 0; j--)
 	{
-		
 		vector<CollisionObject> collisionObjects = collisionLayers[j].getCollisionObjects();
 
 		for (int k = collisionObjects.size() - 1; k >= 0; k--)
 		{
 			/* For debugging purposes only */
-			DrawCollisionObject(collisionObjects[k].getY(), collisionObjects[k].getX(), collisionObjects[k].getHeight(), collisionObjects[k].getWidth());
+			DrawCollisionObject(collisionObjects[k].getY(), collisionObjects[k].getX(), collisionObjects[k].getWidth(), collisionObjects[k].getHeight());
 		}
 
 	}
+
+	/* For debugging purposes only */
+	SDL_SetRenderDrawColor(&ren, 0xFF, 0x00, 0x00, 0xFF);
+	SDL_Rect rectangle = { 80, 80, 50, 50 };
+	SDL_RenderDrawRect(&ren, &rectangle);
+
+	cout << "HOER" << map->checkCollision(80, 80, 50, 50) << endl;
 }
 
 void GameScreen::DrawRect(int x, int y, SDL_Rect* clip) { 
@@ -61,9 +67,9 @@ void GameScreen::DrawRect(int x, int y, SDL_Rect* clip) {
 }
 
 /* For debugging purposes only */
-void GameScreen::DrawCollisionObject(int x, int y, int height, int width) {
+void GameScreen::DrawCollisionObject(int x, int y, int width, int height) {
 	//Set rendering space and render to screen 
-	SDL_Rect rectangle = { y, x, height, width };
+	SDL_Rect rectangle = { y, x, width, height };
 	//Render to screen
 	SDL_RenderDrawRect(ren, &rectangle );
 }

@@ -19,6 +19,7 @@ public:
 	SDL_Texture* getTexture() { return texture; };
 	vector<MapLayer> getLayers() { return mapLayers; };
 	vector<CollisionLayer> getCollisionLayers() { return collisionLayers; };
+	bool checkCollision(int _x, int _y, int _width, int _height);
 	~Map();
 private:
 	SDL_Texture* texture;
@@ -26,6 +27,7 @@ private:
 	string img_path;
 	vector<MapLayer> mapLayers;
 	vector<CollisionLayer> collisionLayers;
+	bool checkRectangleCollision(SDL_Rect unitRectangle, SDL_Rect collisionRectangle);
 protected:
 
 };
