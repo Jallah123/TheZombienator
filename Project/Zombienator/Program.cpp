@@ -33,9 +33,23 @@ int Program::Render() {
 	//MenuScreen m = TestScreen{ Sdl_Renderer };
 
 	ScreenController::GetInstance().ChangeMenu(m);
+
+	// --- //
+	currentFrameTime = SDL_GetTicks();
+	// --- //
+
 	while (!quit) {
 		//Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
+
+			// --- //
+			lastFrameTime = currentFrameTime;
+			currentFrameTime = SDL_GetTicks();
+			deltaTime = float(currentFrameTime - lastFrameTime) / 1000;
+			// --- //
+
+
+
 			//User requests quit 
 			if (e.type == SDL_QUIT) {
 				quit = true;
@@ -62,7 +76,7 @@ int Program::Render() {
 
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(Sdl_Renderer);
-		ScreenController::GetInstance().GetCurrentMenu().Draw(*Sdl_Renderer);
+		ScreenController::GetInstance().GetCurrentMenu().Draw(*Sdl_Renderer , deltaTime);
 
 		//Update screen 
 		SDL_RenderPresent(Sdl_Renderer);

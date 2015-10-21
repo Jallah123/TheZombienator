@@ -14,7 +14,7 @@ public:
 	void SetBackgroundTexture(SDL_Texture& Texture) { BackgroundTexture = &Texture; }
 	SDL_Texture* const GetBackgroundTexture() { return BackgroundTexture; }
 	void ClickComponents(SDL_Point MousePosition);
-	void Draw(SDL_Renderer& ren);
+	void Draw(SDL_Renderer& ren, float dt);
 private:
 protected:
 	std::vector<AbstractUIComponent*> UIComponents;

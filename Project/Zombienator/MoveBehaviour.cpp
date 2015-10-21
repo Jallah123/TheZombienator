@@ -13,7 +13,18 @@ void MoveBehaviour::Move(float dt, int ticks, KeyboardInputHandler& iC) {
 	if (frames == 0) return;
 
 	// -- Get destination rect
+	SDL_Rect srcR = c->GetSourceRect();
 	SDL_Rect destR = c->GetDestinationRect();
+	spriteDstX = srcR.x;
+	spriteDstY = srcR.y;
+
+	// -- https://forums.libsdl.org/viewtopic.php?p=46935&sid=f5bc6f4719900fe51e671eb702c1ecab
+	// -- http://www.cplusplus.com/forum/general/155845/
+	// -- http://gafferongames.com/game-physics/fix-your-timestep/
+	// -- http://www.koonsolo.com/news/dewitters-gameloop/
+
+	// -- Temp dt
+	dt = 1;
 
 	// -- Move directions
 	bool up = iC.inputContainer->GetKeyState('w');
