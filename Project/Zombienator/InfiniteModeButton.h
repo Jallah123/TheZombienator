@@ -2,15 +2,14 @@
 #include "AbstractUIComponent.h"
 #include "string"
 #include "SDL.h"
-#include "functional"
 
-class Button : public AbstractUIComponent
+class InfiniteModeButton : public AbstractUIComponent
 {
 public:
-	Button(SDL_Renderer& ren, std::string text, std::string img_url);
+	InfiniteModeButton(SDL_Renderer& ren, std::string text, std::string img_url);
 	void Draw(SDL_Renderer & ren);
 	void ClickAction();
-	~Button();
+	~InfiniteModeButton();
 private:
 	SDL_Texture* Message;
 	SDL_Texture* Image;

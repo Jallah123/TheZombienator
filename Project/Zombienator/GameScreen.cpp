@@ -51,7 +51,7 @@ void GameScreen::Draw(SDL_Renderer& ren)
 	SDL_Rect rectangle = { 80, 80, 50, 50 };
 	SDL_RenderDrawRect(&ren, &rectangle);
 
-	cout << "HOER" << map->checkCollision(80, 80, 50, 50) << endl;
+	cout << "checkCollision() : " << map->checkCollision(80, 80, 50, 50) << endl;
 }
 
 void GameScreen::DrawRect(int x, int y, SDL_Rect* clip) { 

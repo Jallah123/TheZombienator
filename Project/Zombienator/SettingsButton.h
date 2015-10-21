@@ -2,15 +2,14 @@
 #include "AbstractUIComponent.h"
 #include "string"
 #include "SDL.h"
-#include "functional"
 
-class Button : public AbstractUIComponent
+class SettingsButton : public AbstractUIComponent
 {
 public:
-	Button(SDL_Renderer& ren, std::string text, std::string img_url);
+	SettingsButton(SDL_Renderer& ren, std::string text, std::string img_url);
 	void Draw(SDL_Renderer & ren);
 	void ClickAction();
-	~Button();
+	~SettingsButton();
 private:
 	SDL_Texture* Message;
 	SDL_Texture* Image;
