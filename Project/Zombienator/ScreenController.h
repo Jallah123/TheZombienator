@@ -1,6 +1,9 @@
 #pragma once
 #include <stack> 
-#include "MenuScreen.h"
+#include "AbstractScreen.h"
+#include <memory>
+
+using namespace std;
 
 class ScreenController
 {
@@ -9,17 +12,17 @@ public:
 		static ScreenController instance;
 		return instance;
 	}
-	void ChangeMenu(MenuScreen NewMenu);
+	void ChangeMenu(AbstractScreen* NewMenu);
 	void Back();
-	std::stack<MenuScreen> GetMenuStack() { return MenuStack; };
-	MenuScreen GetCurrentMenu() { return MenuStack.top(); };
+	std::stack<AbstractScreen*> GetMenuStack() { return MenuStack; };
+	AbstractScreen* GetCurrentMenu() { return MenuStack.top(); };
 	int Size();
 private:
 	ScreenController() {};
 	~ScreenController() {};
 	ScreenController(ScreenController const&) = delete;
 	void operator=(ScreenController const&) = delete;
-	std::stack<MenuScreen> MenuStack;
+	stack<AbstractScreen*> MenuStack;
 };
 
 

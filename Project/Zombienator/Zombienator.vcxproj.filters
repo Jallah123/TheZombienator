@@ -22,69 +22,327 @@
     <Filter Include="Resource Files\assets\fonts">
       <UniqueIdentifier>{4e9fa2c9-6869-47aa-b9da-d4b5de30c338}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Enums">
+      <UniqueIdentifier>{d2c021e6-0e7b-4941-a887-f244005becb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{4e93b398-f3c0-4114-8731-b6e5eec24bd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Controllers">
+      <UniqueIdentifier>{35f36561-6c4e-44ca-80a4-5af7600aeacf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views">
+      <UniqueIdentifier>{a8861851-8b74-4903-81bd-51b9e6f5e127}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Factories">
+      <UniqueIdentifier>{c949c2c9-1cd7-4edc-a04c-d0acee42cea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Containers">
+      <UniqueIdentifier>{d86e981f-912b-4e74-ac11-58ea07903e0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\UIComponents">
+      <UniqueIdentifier>{6f06ba62-8a67-4d00-84fe-3a769a059cfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Characters\NPC">
+      <UniqueIdentifier>{3a7c2712-c599-4c74-9f6e-3732a17e36a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObjects\Characters\PC">
+      <UniqueIdentifier>{180cddb0-2a89-49b2-a892-968a1ca9e04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HomeScreen">
+      <UniqueIdentifier>{8def4405-30b8-4680-9e43-4f4afe45d8f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HomeScreen\Buttons">
+      <UniqueIdentifier>{32758691-0e08-4057-a631-90205109ad46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Containers">
+      <UniqueIdentifier>{4d7ebf7e-ce93-4d46-b31d-130b50bf1f64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{7d2364ad-96ef-4a0f-a859-b11d2da801de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Behaviour">
+      <UniqueIdentifier>{f1d6e999-d104-44c9-b4a8-2930f0d257cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\GameObject">
+      <UniqueIdentifier>{3968be50-6143-452e-a4cc-cdff7a004255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views">
+      <UniqueIdentifier>{ae91aec1-3a2f-45de-b253-17145dac2c84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\TestScreen">
+      <UniqueIdentifier>{9d475ee9-77da-4f4d-953b-7e56f13c29fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\TestScreen\Buttons">
+      <UniqueIdentifier>{9f310f52-e6fd-4c63-a9d6-503daf8f76a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\UIComponents">
+      <UniqueIdentifier>{63e020ce-910b-4d5b-9ff3-b451ed98629f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Behaviour">
+      <UniqueIdentifier>{9c216a70-82c7-4e59-ab24-d3823b45f47f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\GameObject">
+      <UniqueIdentifier>{d9212d2b-7ed2-463d-b750-5adc4fe47bbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Factories">
+      <UniqueIdentifier>{8449dd62-03b8-4385-9022-d8e53d6f14fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controllers">
+      <UniqueIdentifier>{d595bd32-f84a-4e03-901a-d1d7eca87f03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AbstractUIComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MusicController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MoveDirection.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimateContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScreen.cpp">
+      <Filter>Source Files\Views\TestScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeScreen.cpp">
+      <Filter>Source Files\HomeScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsButton.cpp">
+      <Filter>Source Files\HomeScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="StoryModeButton.cpp">
+      <Filter>Source Files\HomeScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="InfiniteModeButton.cpp">
+      <Filter>Source Files\HomeScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractUIComponent.cpp">
+      <Filter>Source Files\Views\UIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\Views\UIComponents</Filter>
+    </ClCompile>
     <ClCompile Include="BackButton.cpp">
+      <Filter>Source Files\Views\UIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\Models\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Behaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="InputContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviourFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="NonPlayableCharacter.cpp">
+      <Filter>Source Files\Models\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayableCharacter.cpp">
+      <Filter>Source Files\Models\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScreen.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerInputHandler.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardInputHandler.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimateBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MenuScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AbstractUIComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MusicController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AbstractUIComponent.h">
+      <Filter>Header Files\Views\UIComponents</Filter>
+    </ClInclude>
     <ClInclude Include="BackButton.h">
+      <Filter>Header Files\Views\UIComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\Views\UIComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScreen.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScreen.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayableCharacter.h">
+      <Filter>Header Files\Models\GameObjects\Characters\PC</Filter>
+    </ClInclude>
+    <ClInclude Include="NonPlayableCharacter.h">
+      <Filter>Header Files\Models\GameObjects\Characters\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="Registrar.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviourFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimateContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerInputHandler.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeScreen.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="InfiniteModeButton.h">
+      <Filter>Header Files\Views\UIComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsButton.h">
+      <Filter>Header Files\Views\UIComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="StoryModeButton.h">
+      <Filter>Header Files\Views\UIComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardInputHandler.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimateBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Behaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Debug\assets\images\default_background.bmp">
+    <Image Include="assets\images\button_spritesheet.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+    <Image Include="assets\images\menu_bg.png">
       <Filter>Resource Files\assets\images</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="D:\Downloads\sans.ttf">
+    <Font Include="assets\fonts\Block-Cartoon.ttf">
       <Filter>Resource Files\assets\fonts</Filter>
     </Font>
   </ItemGroup>

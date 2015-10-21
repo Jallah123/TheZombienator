@@ -1,13 +1,13 @@
 #include "ScreenController.h"
 
-void ScreenController::ChangeMenu(MenuScreen NewMenu)
+void ScreenController::ChangeMenu(AbstractScreen* NewMenu)
 {
 	MenuStack.push(NewMenu);
 }
 
 void ScreenController::Back()
 {
-	if(MenuStack.size() > 1)
+	if (MenuStack.size() > 1) 
 		MenuStack.pop();
 }
 
