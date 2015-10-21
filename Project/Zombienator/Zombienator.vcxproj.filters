@@ -43,18 +43,6 @@
     <Filter Include="Header Files\Views\UIComponents">
       <UniqueIdentifier>{6f06ba62-8a67-4d00-84fe-3a769a059cfd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Characters\NPC">
-      <UniqueIdentifier>{3a7c2712-c599-4c74-9f6e-3732a17e36a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\GameObjects\Characters\PC">
-      <UniqueIdentifier>{180cddb0-2a89-49b2-a892-968a1ca9e04f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\HomeScreen">
-      <UniqueIdentifier>{8def4405-30b8-4680-9e43-4f4afe45d8f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\HomeScreen\Buttons">
-      <UniqueIdentifier>{32758691-0e08-4057-a631-90205109ad46}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Containers">
       <UniqueIdentifier>{4d7ebf7e-ce93-4d46-b31d-130b50bf1f64}</UniqueIdentifier>
     </Filter>
@@ -91,6 +79,36 @@
     <Filter Include="Source Files\Controllers">
       <UniqueIdentifier>{d595bd32-f84a-4e03-901a-d1d7eca87f03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Views\HomeScreen">
+      <UniqueIdentifier>{8def4405-30b8-4680-9e43-4f4afe45d8f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\HomeScreen\Buttons">
+      <UniqueIdentifier>{32758691-0e08-4057-a631-90205109ad46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\SelectionScreen">
+      <UniqueIdentifier>{f3b3e160-d863-46a1-bc5f-a0ad84660d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\HomeScreen">
+      <UniqueIdentifier>{a9581253-b33b-40e0-b1bd-77353c5843ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\HomeScreen\Buttons">
+      <UniqueIdentifier>{c0bed4d5-3443-4f39-84f1-f27b284fcc92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\TestScreen">
+      <UniqueIdentifier>{19d1fe5f-8d17-4e81-94d5-c9bacadeeb7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\TestScreen\Buttons">
+      <UniqueIdentifier>{dc63f397-f371-4a97-81dd-b17a346e6147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\SelectionScreen">
+      <UniqueIdentifier>{e5012fca-e3a3-444a-b316-6c3392442c19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\BaseScreen">
+      <UniqueIdentifier>{0ff6ecf5-d5f6-4bb0-999e-4b6c0af85e53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\BaseScreen">
+      <UniqueIdentifier>{6c23ff34-c267-4653-a457-4864aa35bdca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -115,24 +133,18 @@
       <Filter>Source Files\Views\TestScreen</Filter>
     </ClCompile>
     <ClCompile Include="HomeScreen.cpp">
-      <Filter>Source Files\HomeScreen</Filter>
+      <Filter>Source Files\Views\HomeScreen</Filter>
     </ClCompile>
     <ClCompile Include="SettingsButton.cpp">
-      <Filter>Source Files\HomeScreen\Buttons</Filter>
+      <Filter>Source Files\Views\HomeScreen\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="StoryModeButton.cpp">
-      <Filter>Source Files\HomeScreen\Buttons</Filter>
+      <Filter>Source Files\Views\HomeScreen\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="InfiniteModeButton.cpp">
-      <Filter>Source Files\HomeScreen\Buttons</Filter>
+      <Filter>Source Files\Views\HomeScreen\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="AbstractUIComponent.cpp">
-      <Filter>Source Files\Views\UIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\Views\UIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="BackButton.cpp">
       <Filter>Source Files\Views\UIComponents</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
@@ -162,9 +174,6 @@
     <ClCompile Include="PlayableCharacter.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="MenuScreen.cpp">
-      <Filter>Source Files\Views</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenController.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
@@ -174,14 +183,29 @@
     <ClCompile Include="KeyboardInputHandler.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
-    <ClCompile Include="AnimateBehaviour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectionScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimateBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="BackButton.cpp">
+      <Filter>Source Files\Views\TestScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\Views\TestScreen\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionScreen.cpp">
+      <Filter>Source Files\Views\SelectionScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScreen.cpp">
+      <Filter>Source Files\Views\BaseScreen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -191,29 +215,11 @@
     <ClInclude Include="AbstractUIComponent.h">
       <Filter>Header Files\Views\UIComponents</Filter>
     </ClInclude>
-    <ClInclude Include="BackButton.h">
-      <Filter>Header Files\Views\UIComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files\Views\UIComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuScreen.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
     <ClInclude Include="MusicController.h">
       <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="ScreenController.h">
       <Filter>Header Files\Controllers</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScreen.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayableCharacter.h">
-      <Filter>Header Files\Models\GameObjects\Characters\PC</Filter>
-    </ClInclude>
-    <ClInclude Include="NonPlayableCharacter.h">
-      <Filter>Header Files\Models\GameObjects\Characters\NPC</Filter>
     </ClInclude>
     <ClInclude Include="GameObjectFactory.h">
       <Filter>Header Files\Factories</Filter>
@@ -245,18 +251,6 @@
     <ClInclude Include="GameObject.h">
       <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="HomeScreen.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="InfiniteModeButton.h">
-      <Filter>Header Files\Views\UIComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsButton.h">
-      <Filter>Header Files\Views\UIComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="StoryModeButton.h">
-      <Filter>Header Files\Views\UIComponents</Filter>
-    </ClInclude>
     <ClInclude Include="KeyboardInputHandler.h">
       <Filter>Header Files\Controllers</Filter>
     </ClInclude>
@@ -269,11 +263,47 @@
     <ClInclude Include="Behaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
-    <ClInclude Include="SelectionScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NonPlayableCharacter.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayableCharacter.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeScreen.h">
+      <Filter>Header Files\Views\HomeScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="StoryModeButton.h">
+      <Filter>Header Files\Views\HomeScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="InfiniteModeButton.h">
+      <Filter>Header Files\Views\HomeScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsButton.h">
+      <Filter>Header Files\Views\HomeScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="BackButton.h">
+      <Filter>Header Files\Views\TestScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\Views\TestScreen\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScreen.h">
+      <Filter>Header Files\Views\TestScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionScreen.h">
+      <Filter>Header Files\Views\SelectionScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScreen.h">
+      <Filter>Header Files\Views\BaseScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

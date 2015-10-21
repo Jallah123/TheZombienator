@@ -25,6 +25,7 @@ public:
 	void SetPosition(int x, int y) { destRect = { x, y, width, height }; }
 
 	void SetSourceRect(SDL_Rect r) { sourceRect = r; }
+	void SetDestinationRect(SDL_Rect r) { destRect = r; }
 
 	SDL_Rect const GetSourceRect() { return this->sourceRect; }
 	SDL_Rect const GetDestinationRect() { return this->destRect; }

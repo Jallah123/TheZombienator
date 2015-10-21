@@ -3,20 +3,23 @@
 //#include "GameObjectRegistrar.h"
 #include "GameObjectFactory.h"
 #include "AnimateContainer.h"
+#include "MoveContainer.h"
 #include "iostream"
 
 SDL_Texture* texture = nullptr;
 Character* c = nullptr;
 DrawContainer drawContainer;
 AnimateContainer animateContainer;
+MoveContainer moveContainer;
 
 MenuScreen::MenuScreen(SDL_Renderer* ren)
 {
 	GameObjectFactory::Instance()->Register("character", [](void) -> GameObject* {return new Character(); });
 	c = GameObjectFactory::Instance()->CreateCharacter("character");
-	c->SetContainers(&drawContainer, &animateContainer);
+	c->SetContainers(&drawContainer, &animateContainer, &moveContainer);
 	c->SetDrawBehaviour("DrawBehaviour");
 	c->SetAnimateBehaviour("AnimateBehaviour");
+	c->SetMoveBehaviour("MoveBehaviour");
 	c->SetImage("assets/images/spritesheets/Boy1.png", *ren);
 	c->SetSize(40, 40);
 	c->SetPosition(200, 100);
@@ -44,31 +47,19 @@ void MenuScreen::ClickComponents(SDL_Point MousePosition)
 }
 
 void MenuScreen::Draw(SDL_Renderer& ren)
-{	//Draw background
+{	// Draw background
 	SDL_RenderCopy(&ren, BackgroundTexture, 0, 0);
 
 	std::vector<AbstractUIComponent*>::iterator it;
 	for (it = UIComponents.begin(); it != UIComponents.end(); it++) (*it)->Draw(ren);
 
-	//Draw GameObjects
+	// Deltatime
 	float dt = 1;
+
+	// Draw GameObjects
 	animateContainer.Animate(dt);
 	drawContainer.Draw(dt, ren);
-	
-	//static Registrar<Character> GameObjectRegistrar("name");
-	
-	/*
-	Uint32 ticks = SDL_GetTicks();
-	const int FRAMES = 3;
-	Uint32 sprite = (ticks / 100) % FRAMES;
-	int width = 40;
-	int height = 40;
-	SDL_Rect srcrect = { sprite * width, 0, width, height };
-	c->SetSourceRect(srcrect);
-	SDL_Rect dstrect = { 10, 10, width, height };
-
-	SDL_RenderCopy(&ren, texture, &srcrect, &dstrect);
-	*/
+	moveContainer.Move(dt);
 }
 
 void MenuScreen::ChangeBackground(SDL_Renderer* ren, std::string img_url)
