@@ -1,6 +1,5 @@
 #include "MenuScreen.h"
 #include "Character.h"
-//#include "GameObjectRegistrar.h"
 #include "GameObjectFactory.h"
 #include "AnimateContainer.h"
 #include "iostream"
@@ -10,7 +9,7 @@ Character* c = nullptr;
 DrawContainer drawContainer;
 AnimateContainer animateContainer;
 
-MenuScreen::MenuScreen(SDL_Renderer* ren)
+MenuScreen::MenuScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
 	GameObjectFactory::Instance()->Register("character", [](void) -> GameObject* {return new Character(); });
 	c = GameObjectFactory::Instance()->CreateCharacter("character");
@@ -25,10 +24,9 @@ MenuScreen::MenuScreen(SDL_Renderer* ren)
 	texture = SDL_CreateTextureFromSurface(ren, image);
 
 	std::cout << "Adress of character " << &c << std::endl;
-	
+
 	SDL_Surface *s = IMG_Load("assets/images/menu_bg.png");
 
-	
 	BackgroundTexture = SDL_CreateTextureFromSurface(ren, s);
 }
 

@@ -1,4 +1,5 @@
 #include "Program.h"
+#include "GameScreen.h"
 #include "SelectionScreen.h"
 
 Program::Program() {
@@ -27,10 +28,15 @@ TTF_Font * Program::GetFont() {
 	return Font;
 }
 
+
 int Program::Render() {
 	bool quit = false;
-	MenuScreen m = HomeScreen{ Sdl_Renderer };
-	//MenuScreen m = TestScreen{ Sdl_Renderer };
+
+	// GameScreen
+	GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/map1-final.json" };
+	
+	// MenuScreen
+	//MenuScreen* m = new HomeScreen{ Sdl_Renderer };
 
 	ScreenController::GetInstance().ChangeMenu(m);
 	while (!quit) {
@@ -44,7 +50,7 @@ int Program::Render() {
 				SDL_Point p = SDL_Point{};
 				p.x = e.button.x;
 				p.y = e.button.y;
-				ScreenController::GetInstance().GetCurrentMenu().ClickComponents(p);
+				ScreenController::GetInstance().GetCurrentMenu()->ClickComponents(p);
 			}
 			else if (e.type == SDL_KEYDOWN) {
 				keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_PRESSED);
@@ -62,7 +68,8 @@ int Program::Render() {
 
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(Sdl_Renderer);
-		ScreenController::GetInstance().GetCurrentMenu().Draw(*Sdl_Renderer);
+		ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer);
+		// ScreenController& sg = ScreenController::GetInstance();
 
 		//Update screen 
 		SDL_RenderPresent(Sdl_Renderer);
@@ -90,7 +97,7 @@ int Program::InitComponents() {
 	// More channels so we can play more sounds at the same time
 	Mix_AllocateChannels(16);
 
-	Sdl_Window = SDL_CreateWindow("Zombienator!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, height, width, SDL_WINDOW_SHOWN);
+	Sdl_Window = SDL_CreateWindow("Zombienator!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_SHOWN);
 	if (Sdl_Window == nullptr) {
 		cerr << "SDL_CreateWindow error: " << SDL_GetError() << endl;
 		SDL_Quit();

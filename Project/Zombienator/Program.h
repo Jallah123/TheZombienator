@@ -6,6 +6,7 @@
 #include "TestScreen.h"
 #include "SDL_ttf.h"
 #include "ScreenController.h"
+#include "MapRender.h"
 #include "KeyboardInputHandler.h"
 #include "ControllerInputHandler.h"
 
@@ -21,6 +22,8 @@ private:
 	KeyboardInputHandler* keyboardInputHandler;
 	ControllerInputHandler* controllerInputHandler;
 	TTF_Font* Font;
+
+	void xmlParseTest();
 	int width = 640;
 	int height = 1280;
 

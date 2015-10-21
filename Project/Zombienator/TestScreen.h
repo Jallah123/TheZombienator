@@ -7,4 +7,3 @@ public:
 	TestScreen(SDL_Renderer* ren);
 	~TestScreen();
 };
-

@@ -71,22 +71,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\include;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\include;$(ProjectDir)\thirdparty\SDL\SDL2\include;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\include;$(ProjectDir)\thirdparty\*;$(IncludePath);C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json</IncludePath>
+    <LibraryPath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2\lib\win32;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\lib\x86;$(ProjectDir)\thirdparty\*;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath);C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json</IncludePath>
     <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath);C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json</IncludePath>
     <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath);C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json</IncludePath>
     <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -96,14 +96,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)thirdparty\jsoncpp-0.10.5\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -113,11 +115,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)thirdparty\jsoncpp-0.10.5\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -129,6 +136,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)thirdparty\jsoncpp-0.10.5\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,6 +147,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,6 +159,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)thirdparty\jsoncpp-0.10.5\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,9 +170,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractScreen.cpp" />
     <ClCompile Include="AbstractContainer.cpp" />
     <ClCompile Include="AbstractUIComponent.cpp" />
     <ClCompile Include="AnimateBehaviour.cpp" />
@@ -165,6 +183,9 @@
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="BehaviourFactory.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CollisionLayer.cpp" />
+    <ClCompile Include="CollisionObject.cpp" />
+    <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DrawBehaviour.cpp" />
@@ -176,6 +197,10 @@
     <ClCompile Include="InputContainer.cpp" />
     <ClCompile Include="KeyboardInputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapLayer.cpp" />
+    <ClCompile Include="MapParser.cpp" />
+    <ClCompile Include="MapRender.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MoveDirection.cpp" />
     <ClCompile Include="MusicController.cpp" />
@@ -187,8 +212,10 @@
     <ClCompile Include="SettingsButton.cpp" />
     <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="TestScreen.cpp" />
+    <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractScreen.h" />
     <ClInclude Include="AbstractContainer.h" />
     <ClInclude Include="AbstractUIComponent.h" />
     <ClInclude Include="AnimateBehaviour.h" />
@@ -197,6 +224,13 @@
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="BehaviourFactory.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CollisionLayer.h" />
+    <ClInclude Include="CollisionObject.h" />
+    <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MapLayer.h" />
+    <ClInclude Include="MapParser.h" />
+    <ClInclude Include="MapRender.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="DrawBehaviour.h" />
@@ -219,6 +253,8 @@
     <ClInclude Include="SettingsButton.h" />
     <ClInclude Include="StoryModeButton.h" />
     <ClInclude Include="TestScreen.h" />
+    <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h" />
+    <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\button_spritesheet.png" />
