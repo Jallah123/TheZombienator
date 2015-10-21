@@ -234,7 +234,7 @@ _Pvt_Extensions
 *.sdf
 
 # Custom ignores
-Project/Zombienator/Debug/*
+# Project/Zombienator/Debug/*
 *.tlog
 *.idb
 *.log
