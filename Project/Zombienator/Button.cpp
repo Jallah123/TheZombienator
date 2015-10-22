@@ -27,7 +27,7 @@ void Button::Draw(SDL_Renderer& ren) {
 
 void Button::ClickAction() {
 	SDL_Renderer* ren = instance;
-	TestScreen m { ren };
+	TestScreen* m = new TestScreen{ ren };
 	ScreenController::GetInstance().ChangeMenu(m);
 }
 
