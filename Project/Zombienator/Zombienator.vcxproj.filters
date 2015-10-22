@@ -108,6 +108,23 @@
     </Filter>
     <Filter Include="Header Files\Views\BaseScreen">
       <UniqueIdentifier>{6c23ff34-c267-4653-a457-4864aa35bdca}</UniqueIdentifier>
+    <Filter Include="Source Files\Models\Collision">
+      <UniqueIdentifier>{9ede606f-6546-48b2-b97d-aea5e18686ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Map">
+      <UniqueIdentifier>{93814590-516a-477b-b9b3-cfcedaf8e00b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{20aa0f2b-082d-4c38-8abc-da6e9907406e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{443fc790-9292-4d9d-a6a2-d002984e76ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Collision">
+      <UniqueIdentifier>{8412e8c9-6b7d-441e-9234-80a34b35786a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Map">
+      <UniqueIdentifier>{045d5776-d39f-4767-981c-8543d5e0b5f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -206,33 +223,41 @@
     </ClCompile>
     <ClCompile Include="MenuScreen.cpp">
       <Filter>Source Files\Views\BaseScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="MapRender.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameScreen.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MapLayer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AnimateBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
     <ClCompile Include="AbstractScreen.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="MapParser.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SelectionScreen.cpp">
+      <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MapRender.cpp">
+      <Filter>Source Files\Views</Filter>
     </ClCompile>
     <ClCompile Include="CollisionObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Models\Collision</Filter>
     </ClCompile>
     <ClCompile Include="CollisionLayer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Models\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="MapLayer.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MapParser.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="ScreenController.h">
       <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScreen.h">
+      <Filter>Header Files\Views</Filter>
     </ClInclude>
     <ClInclude Include="GameObjectFactory.h">
       <Filter>Header Files\Factories</Filter>
@@ -334,33 +362,47 @@
 		</ClInclude>	
     <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapRender.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapLayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AbstractScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapParser.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AbstractScreen.h">
+      <Filter>Header Files\Views</Filter>
     </ClInclude>
     <ClInclude Include="CollisionLayer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Models\Collision</Filter>
     </ClInclude>
     <ClInclude Include="CollisionObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Models\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreen.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionScreen.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="MapRender.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="MapLayer.h">
+      <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MapParser.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="NonPlayableCharacter.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayableCharacter.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

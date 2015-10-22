@@ -31,28 +31,17 @@ TTF_Font * Program::GetFont() {
 
 int Program::Render() {
 	bool quit = false;
-
-	// GameScreen
-	//GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/map1-final.json" };
 	
 	// MenuScreen
 	MenuScreen* m = new HomeScreen{ Sdl_Renderer };
-
 	ScreenController::GetInstance().ChangeMenu(m);
-
-	// --- //
 	currentFrameTime = SDL_GetTicks();
-	// --- //
 
 	while (!quit) {
-
-		// --- //
+		// Calculate DeltaTime
 		lastFrameTime = currentFrameTime;
 		currentFrameTime = SDL_GetTicks();
 		deltaTime = float(currentFrameTime - lastFrameTime) / 10;
-
-		//cout << deltaTime << endl;
-		// --- //
 
 		//Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {

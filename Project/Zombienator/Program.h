@@ -27,11 +27,10 @@ private:
 	int width = 1280;
 	int height = 640;
 
-	// --- //
+	// DeltaTime
 	float deltaTime;
 	int lastFrameTime = 0;
 	int currentFrameTime = 0;
-	// --- //
 
 	Program();
 	~Program();

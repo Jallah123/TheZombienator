@@ -11,6 +11,7 @@ public:
 	void ClickAction();
 	~StoryModeButton();
 private:
+	SDL_Renderer* Sdl_Renderer;
 	SDL_Texture* Message;
 	SDL_Texture* Image;
 };
