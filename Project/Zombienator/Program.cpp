@@ -34,9 +34,15 @@ int Program::Render() {
 	
 	// MenuScreen
 	MenuScreen* m = new HomeScreen{ Sdl_Renderer };
-
 	ScreenController::GetInstance().ChangeMenu(m);
+	currentFrameTime = SDL_GetTicks();
+
 	while (!quit) {
+		// Calculate DeltaTime
+		lastFrameTime = currentFrameTime;
+		currentFrameTime = SDL_GetTicks();
+		deltaTime = float(currentFrameTime - lastFrameTime) / 10;
+
 		//Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
 			//User requests quit 
@@ -65,8 +71,7 @@ int Program::Render() {
 
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(Sdl_Renderer);
-		ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer);
-		// ScreenController& sg = ScreenController::GetInstance();
+		ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer, deltaTime);
 
 		//Update screen 
 		SDL_RenderPresent(Sdl_Renderer);

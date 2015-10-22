@@ -8,7 +8,7 @@ class GameScreen : public AbstractScreen
 {
 public:
 	GameScreen(SDL_Renderer* _ren, string path);
-	void Draw(SDL_Renderer& ren);
+	void Draw(SDL_Renderer& ren, float dt);
 	~GameScreen() {};
 private:
 	unique_ptr<Map> map{ nullptr };
