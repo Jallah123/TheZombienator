@@ -39,17 +39,17 @@ int Program::Render() {
 	// --- //
 
 	while (!quit) {
+
+		// --- //
+		lastFrameTime = currentFrameTime;
+		currentFrameTime = SDL_GetTicks();
+		deltaTime = float(currentFrameTime - lastFrameTime) / 1000;
+
+		cout << deltaTime << endl;
+		// --- //
+
 		//Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
-
-			// --- //
-			lastFrameTime = currentFrameTime;
-			currentFrameTime = SDL_GetTicks();
-			deltaTime = float(currentFrameTime - lastFrameTime) / 1000;
-			// --- //
-
-
-
 			//User requests quit 
 			if (e.type == SDL_QUIT) {
 				quit = true;
