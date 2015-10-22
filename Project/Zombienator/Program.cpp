@@ -33,10 +33,10 @@ int Program::Render() {
 	bool quit = false;
 
 	// GameScreen
-	GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/map1-final.json" };
+	//GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/map1-final.json" };
 	
 	// MenuScreen
-	//MenuScreen* m = new HomeScreen{ Sdl_Renderer };
+	MenuScreen* m = new HomeScreen{ Sdl_Renderer };
 
 	ScreenController::GetInstance().ChangeMenu(m);
 
@@ -112,7 +112,7 @@ int Program::InitComponents() {
 	// More channels so we can play more sounds at the same time
 	Mix_AllocateChannels(16);
 
-	Sdl_Window = SDL_CreateWindow("Zombienator!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_SHOWN);
+	Sdl_Window = SDL_CreateWindow("Zombienator!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
 	if (Sdl_Window == nullptr) {
 		cerr << "SDL_CreateWindow error: " << SDL_GetError() << endl;
 		SDL_Quit();
