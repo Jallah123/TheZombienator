@@ -1,9 +1,24 @@
 #include "GameScreen.h"
 #include <iostream>
+#include "Character.h"
+#include "GameObjectFactory.h"
+#include "AnimateContainer.h"
 
-GameScreen::GameScreen(SDL_Renderer* _ren, string path) : AbstractScreen(ren)
+Character* c = nullptr;
+DrawContainer drawContainer;
+AnimateContainer animateContainer;
+
+GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
-	ren = _ren;
+	GameObjectFactory::Instance()->Register("character", [](void) -> GameObject* {return new Character(); });
+	c = GameObjectFactory::Instance()->CreateCharacter("character");
+	c->SetContainers(&drawContainer, &animateContainer);
+	c->SetDrawBehaviour("DrawBehaviour");
+	c->SetAnimateBehaviour("AnimateBehaviour");
+	c->SetImage("assets/images/spritesheets/Boy1.png", *ren);
+	c->SetSize(40, 40);
+	c->SetPosition(200, 100);
+	c->SetFrames(3);
 	MapParser mp{};
 	map = mp.ParseJsonMap(path);
 	map.get()->setSprites(mp.GenerateSprites(path));
@@ -60,7 +75,7 @@ void GameScreen::Draw(SDL_Renderer& ren)
 		{
 			for (int y = 0; y < 32; y++)
 			{
-				DrawRect(x * 32, y * 32, sprites.at(layers.at(i).getGID(x, y)));
+				DrawRect(x * 32, y * 32, sprites.at(layers.at(i).getGID(x, y)), &ren);
 			}
 		}
 	}
@@ -72,10 +87,13 @@ void GameScreen::Draw(SDL_Renderer& ren)
 		for (int k = collisionObjects.size() - 1; k >= 0; k--)
 		{
 			/* For debugging purposes only */
-			DrawCollisionObject(collisionObjects[k].getY(), collisionObjects[k].getX(), collisionObjects[k].getWidth(), collisionObjects[k].getHeight());
+			DrawCollisionObject(collisionObjects[k].getY(), collisionObjects[k].getX(), collisionObjects[k].getWidth(), collisionObjects[k].getHeight(), &ren);
 		}
 
 	}
+	float dt = 1;
+	animateContainer.Animate(dt);
+	drawContainer.Draw(dt, ren);
 
 	/* For debugging purposes only */
 	//SDL_SetRenderDrawColor(&ren, 0xFF, 0x00, 0x00, 0xFF);
@@ -85,7 +103,7 @@ void GameScreen::Draw(SDL_Renderer& ren)
 	//cout << "checkCollision() : " << map->checkCollision(80, 80, 50, 50) << endl;
 }
 
-void GameScreen::DrawRect(int x, int y, SDL_Rect* clip) {
+void GameScreen::DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren) {
 	//Set rendering space and render to screen 
 	SDL_Rect renderQuad = { y, x, 32, 32 };
 	//Set clip rendering dimensions 
@@ -98,7 +116,7 @@ void GameScreen::DrawRect(int x, int y, SDL_Rect* clip) {
 }
 
 /* For debugging purposes only */
-void GameScreen::DrawCollisionObject(int x, int y, int width, int height) {
+void GameScreen::DrawCollisionObject(int x, int y, int width, int height, SDL_Renderer* ren) {
 	//Set rendering space and render to screen 
 	SDL_Rect rectangle = { y, x, width, height };
 	//Render to screen
