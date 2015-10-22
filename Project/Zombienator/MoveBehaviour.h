@@ -5,8 +5,6 @@ class KeyboardInputHandler;
 
 class MoveBehaviour : public Behaviour {
 	private:
-		float spriteDstY = 0.0f;
-		float spriteDstX = 0.0f;
 	public:
 		MoveBehaviour();
 		~MoveBehaviour();

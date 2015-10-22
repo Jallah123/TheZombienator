@@ -15,8 +15,9 @@ class Character :
 protected:
 	int damage = 0;
 	int health = 0;
-	int speed = 0;
+	float speed = 0;
 	int animationFrames = 0;
+
 	//Containers
 	AnimateContainer* animateContainer;
 	DrawContainer* drawContainer;
@@ -35,11 +36,11 @@ public:
 
 	void TakeHit(int damage);
 	int GetHealth() const { return health; }
-	int GetSpeed() const { return speed; }
+	float GetSpeed() const { return speed; }
 	int GetDamage() const { return damage; }
 	int GetFrames() const { return animationFrames; }
 
-	void SetSpeed(int s) { speed = s; }
+	void SetSpeed(float s) { speed = s; }
 	void SetFrames(int f) { animationFrames = f; }
 
 

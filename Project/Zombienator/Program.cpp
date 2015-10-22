@@ -49,9 +49,9 @@ int Program::Render() {
 		// --- //
 		lastFrameTime = currentFrameTime;
 		currentFrameTime = SDL_GetTicks();
-		deltaTime = float(currentFrameTime - lastFrameTime) / 1000;
+		deltaTime = float(currentFrameTime - lastFrameTime) / 10;
 
-		cout << deltaTime << endl;
+		//cout << deltaTime << endl;
 		// --- //
 
 		//Handle events on queue 
