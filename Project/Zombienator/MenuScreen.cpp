@@ -21,7 +21,7 @@ void MenuScreen::ClickComponents(SDL_Point MousePosition)
 	for (it = UIComponents.begin(); it != UIComponents.end(); it++) (*it)->OnClick(MousePosition);
 }
 
-void MenuScreen::Draw(SDL_Renderer& ren)
+void MenuScreen::Draw(SDL_Renderer& ren, float dt)
 {	//Draw background
 	SDL_RenderCopy(&ren, BackgroundTexture, 0, 0);
 

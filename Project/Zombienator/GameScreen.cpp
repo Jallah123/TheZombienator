@@ -7,14 +7,16 @@
 Character* c = nullptr;
 DrawContainer drawContainer;
 AnimateContainer animateContainer;
+MoveContainer moveContainer;
 
 GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
 	GameObjectFactory::Instance()->Register("character", [](void) -> GameObject* {return new Character(); });
 	c = GameObjectFactory::Instance()->CreateCharacter("character");
-	c->SetContainers(&drawContainer, &animateContainer);
+	c->SetContainers(&drawContainer, &animateContainer, &moveContainer);
 	c->SetDrawBehaviour("DrawBehaviour");
 	c->SetAnimateBehaviour("AnimateBehaviour");
+	c->SetMoveBehaviour("MoveBehaviour");
 	c->SetImage("assets/images/spritesheets/Boy1.png", *ren);
 	c->SetSize(40, 40);
 	c->SetPosition(200, 100);
@@ -63,7 +65,7 @@ void GameScreen::stopSound() {
 	Mix_CloseAudio();
 }
 
-void GameScreen::Draw(SDL_Renderer& ren)
+void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
 	vector<SDL_Rect*> sprites = map.get()->getSprites();
 	vector<MapLayer> layers = map.get()->getLayers();
@@ -91,8 +93,9 @@ void GameScreen::Draw(SDL_Renderer& ren)
 		}
 
 	}
-	float dt = 1;
+	//float dt = 1;
 	animateContainer.Animate(dt);
+	moveContainer.Move(dt);
 	drawContainer.Draw(dt, ren);
 
 	/* For debugging purposes only */

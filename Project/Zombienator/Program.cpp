@@ -71,9 +71,7 @@ int Program::Render() {
 
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(Sdl_Renderer);
-		ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer , deltaTime);
-		//ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer);
-		// ScreenController& sg = ScreenController::GetInstance();
+		ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer, deltaTime);
 
 		//Update screen 
 		SDL_RenderPresent(Sdl_Renderer);
