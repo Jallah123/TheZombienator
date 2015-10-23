@@ -7,7 +7,7 @@
 class GameObject
 {
 protected:
-	MoveDirection moveDirection = MoveDirection::NONE;
+	MoveDirection moveDirection = MoveDirection::SOUTH;
 	SDL_Texture* texture = nullptr;
 	int width = 0, height = 0;
 	SDL_Rect sourceRect = { 0,0,0,0 }, destRect= { 0,0,0,0 };
@@ -29,7 +29,7 @@ public:
 	}
 	void SetSize(int w, int h) { this->width = w; this->height = h; sourceRect.w = w; sourceRect.h = h; }
 	void SetPosition(float x, float y) { destRect = { (int)(x + 0.5f), (int)(y + 0.5f), width, height }; posX = x; posY = y; }
-
+	void SetMoveDir(MoveDirection d) { moveDirection = d; }
 	void SetSourceRect(SDL_Rect r) { sourceRect = r; }
 	void SetDestinationRect(SDL_Rect r) { destRect = r; }
 

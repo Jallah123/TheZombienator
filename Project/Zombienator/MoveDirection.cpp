@@ -1,11 +1,8 @@
 enum MoveDirection
 {
-	NONE,
-	NORTH,
-	NORTH_EAST,
 	SOUTH,
-	SOUTH_EAST,
-	SOUTH_WEST,
+	EAST,
+	NORTH,
 	WEST,
-	NORTH_WEST
+	NONE,
 };
