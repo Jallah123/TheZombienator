@@ -31,8 +31,7 @@ protected:
 	MoveBehaviour* moveBehaviour;
 public:
 	Character();
-	//Character(DrawContainer* drawC, AnimateContainer* animC);
-	~Character();
+	virtual ~Character();
 
 	void TakeHit(int damage);
 	int GetHealth() const { return health; }

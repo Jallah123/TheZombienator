@@ -258,6 +258,12 @@
     <ClCompile Include="MapRender.cpp">
       <Filter>Source Files\Views\GameScreen</Filter>
     </ClCompile>
+    <ClCompile Include="Mike.cpp">
+      <Filter>Source Files\Models\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files\Models\GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -385,6 +391,12 @@
     </ClInclude>
     <ClInclude Include="HomeScreen.h">
       <Filter>Header Files\Views\HomeScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Mike.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
