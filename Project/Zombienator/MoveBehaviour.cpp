@@ -22,17 +22,23 @@ void MoveBehaviour::Move(float dt, int ticks, KeyboardInputHandler& iC) {
 	bool down = iC.inputContainer->GetKeyState('s');
 	bool right = iC.inputContainer->GetKeyState('d');
 
+	c->SetMoveDir(MoveDirection::NONE);//Don't move if no button is pressed
+
 	// -- Get input from user
 	if (up) {
+		c->SetMoveDir(MoveDirection::NORTH);//Reset to south look dir
 		newY -= c->GetSpeed() * dt;
 	}
 	if (left) {
+		c->SetMoveDir(MoveDirection::WEST);//Reset to south look dir
 		newX -= c->GetSpeed() * dt;
 	}
 	if (down) {
+		c->SetMoveDir(MoveDirection::SOUTH);//Reset to south look dir
 		newY += c->GetSpeed() * dt;
 	}
 	if (right) {
+		c->SetMoveDir(MoveDirection::EAST);//Reset to south look dir
 		newX += c->GetSpeed() * dt;
 	}
 
