@@ -1,10 +1,6 @@
-#ifndef ABSTRACT_CONTAINER_H
-#define ABSTRACT_CONTAINER_H
-#include "Behaviour.h"
-#include <vector>
 #pragma once
-
-class Behaviour;
+#include <vector>
+#include "Behaviour.h"
 
 class AbstractContainer
 {
@@ -17,6 +13,4 @@ public:
 
 	void Add(Behaviour* b) { arr.push_back(b); }
 	void Remove(Behaviour* b) {}
-	virtual void Register() = 0;
 };
-#endif

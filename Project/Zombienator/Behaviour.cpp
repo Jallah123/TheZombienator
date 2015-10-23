@@ -6,7 +6,6 @@ Behaviour::Behaviour()
 {
 }
 
-
 Behaviour::~Behaviour()
 {
 }

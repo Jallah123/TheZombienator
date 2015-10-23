@@ -21,16 +21,13 @@ Button::Button(SDL_Renderer& ren, std::string text, std::string img_url) : Abstr
 }
 
 void Button::Draw(SDL_Renderer& ren) {
-	//TODO color
-	SDL_SetRenderDrawColor(&ren, 0x00, 0x00, 0x00, 0xFF);
-	SDL_RenderFillRect(&ren, this);
 	SDL_RenderCopy(&ren, Image, 0, this);
 	SDL_RenderCopy(&ren, Message, 0, this);
 }
 
 void Button::ClickAction() {
 	SDL_Renderer* ren = instance;
-	MenuScreen m = TestScreen{ ren };
+	TestScreen* m = new TestScreen{ ren };
 	ScreenController::GetInstance().ChangeMenu(m);
 }
 
