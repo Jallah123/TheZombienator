@@ -177,6 +177,7 @@
     <ClCompile Include="AbstractScreen.cpp" />
     <ClCompile Include="AbstractContainer.cpp" />
     <ClCompile Include="AbstractUIComponent.cpp" />
+    <ClCompile Include="AiMoveBehaviour.cpp" />
     <ClCompile Include="AnimateBehaviour.cpp" />
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
@@ -208,6 +209,7 @@
     <ClCompile Include="MoveDirection.cpp" />
     <ClCompile Include="MusicController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
+    <ClCompile Include="PcMoveBehaviour.cpp" />
     <ClCompile Include="PlayableCharacter.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ScreenController.cpp" />
@@ -222,6 +224,7 @@
     <ClInclude Include="AbstractScreen.h" />
     <ClInclude Include="AbstractContainer.h" />
     <ClInclude Include="AbstractUIComponent.h" />
+    <ClInclude Include="AiMoveBehaviour.h" />
     <ClInclude Include="AnimateBehaviour.h" />
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
@@ -252,6 +255,7 @@
     <ClInclude Include="MoveContainer.h" />
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="NonPlayableCharacter.h" />
+    <ClInclude Include="PcMoveBehaviour.h" />
     <ClInclude Include="PlayableCharacter.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="Registrar.h" />

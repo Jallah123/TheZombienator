@@ -5,8 +5,6 @@
 
 class MoveContainer : public AbstractContainer {
 	public:
-		KeyboardInputHandler& inputContainer = KeyboardInputHandler::GetInstance();
-
 		MoveContainer();
 		~MoveContainer();
 
