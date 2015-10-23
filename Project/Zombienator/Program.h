@@ -24,8 +24,13 @@ private:
 	TTF_Font* Font;
 
 	void xmlParseTest();
-	int width = 640;
-	int height = 1280;
+	int width = 1280;
+	int height = 640;
+
+	// DeltaTime
+	float deltaTime;
+	int lastFrameTime = 0;
+	int currentFrameTime = 0;
 
 	Program();
 	~Program();

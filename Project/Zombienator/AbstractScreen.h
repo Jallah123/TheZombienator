@@ -9,7 +9,7 @@ class AbstractScreen
 {
 public:
 	AbstractScreen(SDL_Renderer* ren);
-	virtual void Draw(SDL_Renderer& ren) {};
+	virtual void Draw(SDL_Renderer& ren, float dt) {};
 	virtual void ClickComponents(SDL_Point MousePosition) {};
 	~AbstractScreen();
 protected:

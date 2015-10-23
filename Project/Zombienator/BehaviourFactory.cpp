@@ -2,6 +2,7 @@
 #include "Behaviour.h"
 #include "DrawBehaviour.h"
 #include "AnimateBehaviour.h"
+#include "MoveBehaviour.h"
 #include "BehaviourFactory.h"
 
 
@@ -50,6 +51,24 @@ AnimateBehaviour* BehaviourFactory::CreateAnimateBehaviour(std::string name, Gam
 	if (instance != nullptr) {
 		instance->SetGameObject(obj);//link the behaviour to its gameObject
 		return (AnimateBehaviour*)instance;
+	}
+
+	return nullptr;
+}
+
+MoveBehaviour* BehaviourFactory::CreateMoveBehaviour(std::string name, GameObject * obj)
+{
+	Behaviour* instance = nullptr;
+
+	// find name in the registry and call factory method.
+	auto it = BehaviourFactory::registry.find(name);
+	if (it != BehaviourFactory::registry.end())
+		instance = it->second();
+
+	// wrap instance in a shared ptr and return
+	if (instance != nullptr) {
+		instance->SetGameObject(obj);//link the behaviour to its gameObject
+		return (MoveBehaviour*)instance;
 	}
 
 	return nullptr;

@@ -202,6 +202,9 @@
     <ClCompile Include="MapParser.cpp" />
     <ClCompile Include="MapRender.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
+    <ClCompile Include="Mike.cpp" />
+    <ClCompile Include="MoveBehaviour.cpp" />
+    <ClCompile Include="MoveContainer.cpp" />
     <ClCompile Include="MoveDirection.cpp" />
     <ClCompile Include="MusicController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
@@ -213,6 +216,7 @@
     <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="TestScreen.cpp" />
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScreen.h" />
@@ -243,6 +247,9 @@
     <ClInclude Include="InputContainer.h" />
     <ClInclude Include="KeyboardInputHandler.h" />
     <ClInclude Include="MenuScreen.h" />
+    <ClInclude Include="Mike.h" />
+    <ClInclude Include="MoveBehaviour.h" />
+    <ClInclude Include="MoveContainer.h" />
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="NonPlayableCharacter.h" />
     <ClInclude Include="PlayableCharacter.h" />
@@ -255,6 +262,7 @@
     <ClInclude Include="TestScreen.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\button_spritesheet.png" />

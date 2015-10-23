@@ -31,15 +31,18 @@ TTF_Font * Program::GetFont() {
 
 int Program::Render() {
 	bool quit = false;
-
-	// GameScreen
-	GameScreen* m = new GameScreen{ Sdl_Renderer, "assets/maps/map1-final.json" };
 	
 	// MenuScreen
-	//MenuScreen* m = new HomeScreen{ Sdl_Renderer };
-
+	MenuScreen* m = new HomeScreen{ Sdl_Renderer };
 	ScreenController::GetInstance().ChangeMenu(m);
+	currentFrameTime = SDL_GetTicks();
+
 	while (!quit) {
+		// Calculate DeltaTime
+		lastFrameTime = currentFrameTime;
+		currentFrameTime = SDL_GetTicks();
+		deltaTime = float(currentFrameTime - lastFrameTime) / 10;
+
 		//Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
 			//User requests quit 
@@ -68,8 +71,7 @@ int Program::Render() {
 
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(Sdl_Renderer);
-		ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer);
-		// ScreenController& sg = ScreenController::GetInstance();
+		ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer, deltaTime);
 
 		//Update screen 
 		SDL_RenderPresent(Sdl_Renderer);
@@ -97,7 +99,7 @@ int Program::InitComponents() {
 	// More channels so we can play more sounds at the same time
 	Mix_AllocateChannels(16);
 
-	Sdl_Window = SDL_CreateWindow("Zombienator!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_SHOWN);
+	Sdl_Window = SDL_CreateWindow("Zombienator!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
 	if (Sdl_Window == nullptr) {
 		cerr << "SDL_CreateWindow error: " << SDL_GetError() << endl;
 		SDL_Quit();
