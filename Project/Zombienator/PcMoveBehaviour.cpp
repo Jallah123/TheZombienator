@@ -25,10 +25,10 @@ void PcMoveBehaviour::Move(float dt)
 
 	
 	// -- Get input from user
-	bool up = iC->GetKeyState('w');
-	bool left = iC->GetKeyState('a');
-	bool down = iC->GetKeyState('s');
-	bool right = iC->GetKeyState('d');
+	bool up = iC->GetKeyState(SDLK_w);
+	bool left = iC->GetKeyState(SDLK_a);
+	bool down = iC->GetKeyState(SDLK_s);
+	bool right = iC->GetKeyState(SDLK_d);
 	float speed = c->GetSpeed() * dt;
 
 	c->SetMoveDir(MoveDirection::NONE);//Don't move if no button is pressed

@@ -13,7 +13,9 @@ BackButton::BackButton(SDL_Renderer& ren, std::string text, std::string img_url)
 	TTF_Font* Sans = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
 	SDL_Color Black = { 0, 0, 0 };
 	char tab2[1024];
-	SDL_Surface *s = IMG_Load(strcpy(tab2, img_url.c_str()));
+	const char* url = img_url.c_str();
+	
+	SDL_Surface *s = IMG_Load(url);
 
 	Image = SDL_CreateTextureFromSurface(&ren, s);
 	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, strcpy(tab2, text.c_str()), Black);

@@ -267,8 +267,17 @@
     <ClCompile Include="AiMoveBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
+    <ClCompile Include="ActionContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
     <ClCompile Include="PcMoveBehaviour.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="ShootActionBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -401,14 +410,23 @@
     <ClInclude Include="Mike.h">
       <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Zombie.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AiMoveBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
     <ClInclude Include="PcMoveBehaviour.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="ShootActionBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,12 +12,13 @@ public:
 
 	std::map<char, bool> GetKeys() { return keys; };
 	void SetKey(char c, bool b) { keys[c] = b; };
-	bool GetKeyState(char c) { return keys[c]; };
-
+	bool GetKeyState(char c);
+	
 private:
 	InputContainer() {};
 	~InputContainer() {};
 	InputContainer(InputContainer const&) = delete;
 	void operator=(InputContainer const&) = delete;
 	std::map<char, bool> keys;
+	bool KeyExists(char c);
 };

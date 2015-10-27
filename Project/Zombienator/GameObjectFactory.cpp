@@ -15,6 +15,7 @@ GameObject * GameObjectFactory::Find(std::string name)
 	auto it = GameObjectFactory::registry.find(name);
 	if (it != GameObjectFactory::registry.end())
 		instance = it->second();
+
 	if (instance != nullptr) return instance;
 	return nullptr;
 }
@@ -31,20 +32,18 @@ void GameObjectFactory::Register(std::string name, std::function<GameObject*(voi
 
 Mike* GameObjectFactory::CreateMike()
 {
-	GameObject* instance = Find("mike");
+	GameObject* instance = GameObjectFactory::Find("mike");
 	if (instance != nullptr) {
 		Mike* cInstance = dynamic_cast<Mike*>(instance);
-		std::cout << "GameObjectFactory Character: " << cInstance << std::endl;
 		return cInstance;
 	}
 	return nullptr;
 }
-Zombie* GameObjectFactory::CreateZombie(std::string name)
+Zombie* GameObjectFactory::CreateZombie()
 {
-	GameObject* instance = Find(name);
+	GameObject* instance = GameObjectFactory::Find("zombie");
 	if (instance != nullptr) {
 		Zombie* cInstance = dynamic_cast<Zombie*>(instance);
-		std::cout << "GameObjectFactory Zombie: " << cInstance << std::endl;
 		return cInstance;
 	}
 	return nullptr;

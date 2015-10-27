@@ -177,6 +177,8 @@
     <ClCompile Include="AbstractScreen.cpp" />
     <ClCompile Include="AbstractContainer.cpp" />
     <ClCompile Include="AbstractUIComponent.cpp" />
+    <ClCompile Include="ActionBehaviour.cpp" />
+    <ClCompile Include="ActionContainer.cpp" />
     <ClCompile Include="AiMoveBehaviour.cpp" />
     <ClCompile Include="AnimateBehaviour.cpp" />
     <ClCompile Include="AnimateContainer.cpp" />
@@ -215,6 +217,7 @@
     <ClCompile Include="ScreenController.cpp" />
     <ClCompile Include="SelectionScreen.cpp" />
     <ClCompile Include="SettingsButton.cpp" />
+    <ClCompile Include="ShootActionBehaviour.cpp" />
     <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="TestScreen.cpp" />
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
@@ -224,6 +227,8 @@
     <ClInclude Include="AbstractScreen.h" />
     <ClInclude Include="AbstractContainer.h" />
     <ClInclude Include="AbstractUIComponent.h" />
+    <ClInclude Include="ActionBehaviour.h" />
+    <ClInclude Include="ActionContainer.h" />
     <ClInclude Include="AiMoveBehaviour.h" />
     <ClInclude Include="AnimateBehaviour.h" />
     <ClInclude Include="AnimateContainer.h" />
@@ -262,6 +267,7 @@
     <ClInclude Include="ScreenController.h" />
     <ClInclude Include="SelectionScreen.h" />
     <ClInclude Include="SettingsButton.h" />
+    <ClInclude Include="ShootActionBehaviour.h" />
     <ClInclude Include="StoryModeButton.h" />
     <ClInclude Include="TestScreen.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h" />

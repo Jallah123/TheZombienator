@@ -7,11 +7,13 @@
 #include "AnimateContainer.h"
 #include "DrawContainer.h"
 #include "MoveContainer.h"
+#include "ActionContainer.h"
 
 Mike* mike = nullptr;
 Zombie* zombie = nullptr;
 DrawContainer drawContainer;
 AnimateContainer animateContainer;
+ActionContainer actionContainer;
 MoveContainer moveContainer;
 
 GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
@@ -19,12 +21,12 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
 	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 	mike = GameObjectFactory::Instance()->CreateMike();
-	mike->Init(&drawContainer, &animateContainer, &moveContainer, ren);
+	mike->Init(&drawContainer, &animateContainer, &moveContainer, &actionContainer, ren);
 	mike->SetPosition(200, 100);
 
-	zombie = GameObjectFactory::Instance()->CreateZombie("zombie");
-	zombie->Init(&drawContainer, &animateContainer, &moveContainer, ren);
-	zombie->SetPosition(10, 100);
+	zombie = GameObjectFactory::Instance()->CreateZombie();
+	zombie->Init(&drawContainer, &animateContainer, &moveContainer, &actionContainer, ren);
+	zombie->SetPosition(620, 200);
 	zombie->SetTarget(mike);
 	
 	MapParser mp{};
@@ -100,6 +102,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	}
 	//float dt = 1;
+	actionContainer.Update(dt);
 	animateContainer.Animate(dt);
 	moveContainer.Move(dt);
 	drawContainer.Draw(dt, ren);

@@ -12,6 +12,6 @@ class Mike :
 public:
 	Mike();//Default constructor
 	~Mike();
-	void Init(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, SDL_Renderer* ren);
+	void Init(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, ActionContainer* actionC, SDL_Renderer* ren);
 };
 
