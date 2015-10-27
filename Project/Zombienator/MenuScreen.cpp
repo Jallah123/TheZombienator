@@ -21,6 +21,8 @@ void MenuScreen::AddUIComponent(AbstractUIComponent* UIComponent)
 
 void MenuScreen::ClickComponents(SDL_Point MousePosition)
 {
+	MenuScreen::stopSound();
+
 	std::vector<AbstractUIComponent*>::iterator it;
 	for (it = UIComponents.begin(); it != UIComponents.end(); it++) (*it)->OnClick(MousePosition);
 }
@@ -60,6 +62,8 @@ void MenuScreen::playSound() {
 	if (channel == -1) {
 		std::cout << stderr << "Unable to play WAV file: %s\n" << Mix_GetError();
 	}
+
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 
 }
 
