@@ -37,6 +37,7 @@ private:
 	int Render();
 	int InitComponents();
 	int InitJoystick();
+	void CloseJoystick();
 public:
 
 	SDL_Renderer* GetRenderer();
