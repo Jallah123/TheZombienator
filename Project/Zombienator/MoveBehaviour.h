@@ -7,7 +7,8 @@ class MoveBehaviour : public Behaviour {
 	private:
 	public:
 		MoveBehaviour();
-		~MoveBehaviour();
+		virtual ~MoveBehaviour();
 
-		void Move(float dt, int ticks, KeyboardInputHandler& iC);
+		//virtual void Move(float dt, KeyboardInputHandler& iC);
+		virtual void Move(float dt) = 0;
 };

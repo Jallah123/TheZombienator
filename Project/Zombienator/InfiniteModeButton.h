@@ -10,7 +10,4 @@ public:
 	void Draw(SDL_Renderer & ren);
 	void ClickAction();
 	~InfiniteModeButton();
-private:
-	SDL_Texture* Message;
-	SDL_Texture* Image;
 };

@@ -1,13 +1,17 @@
 #pragma once
-
-#include "BehaviourFactory.h"
-#include "AnimateBehaviour.h"
-#include "DrawBehaviour.h"
-#include "MoveBehaviour.h"
-#include "AnimateContainer.h"
-#include "DrawContainer.h"
-#include "MoveContainer.h"
 #include "GameObject.h"
+
+//Containers
+class AnimateContainer;
+class DrawContainer;
+class MoveContainer;
+class InputContainer;
+
+//Behaviours
+class DrawBehaviour;
+class AnimateBehaviour;
+class MoveBehaviour;
+
 
 class Character : 
 	public GameObject
@@ -22,8 +26,8 @@ protected:
 	AnimateContainer* animateContainer;
 	DrawContainer* drawContainer;
 	MoveContainer* moveContainer;
-	/*InputContainer inputContainer;
-	CollideContainer collideContainer;*/
+	InputContainer* inputContainer;
+	/*CollideContainer collideContainer;*/
 
 	//Behaviours
 	DrawBehaviour* drawBehaviour;
@@ -43,8 +47,10 @@ public:
 	void SetFrames(int f) { animationFrames = f; }
 
 
-	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC);
+	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC);
 	void SetDrawBehaviour(std::string name);
 	void SetAnimateBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
+
+	InputContainer* GetInputContainer() { return inputContainer; }
 };

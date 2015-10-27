@@ -264,6 +264,12 @@
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="AiMoveBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="PcMoveBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -396,6 +402,12 @@
       <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Zombie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AiMoveBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="PcMoveBehaviour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
