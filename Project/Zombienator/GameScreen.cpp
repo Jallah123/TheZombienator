@@ -64,6 +64,8 @@ void GameScreen::playSound() {
 		cout << stderr << "Unable to play WAV file: %s\n" << Mix_GetError();
 	}
 
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
+
 }
 
 void GameScreen::stopSound() {
