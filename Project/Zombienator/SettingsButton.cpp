@@ -14,8 +14,10 @@ SettingsButton::SettingsButton(SDL_Renderer& ren, std::string text, std::string 
 	SDL_Surface *s = IMG_Load(strcpy(tab2, img_url.c_str()));
 
 	Image = SDL_CreateTextureFromSurface(&ren, s);
+	SDL_FreeSurface(s);
 	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(BlockCartoon, strcpy(tab2, text.c_str()), White);
 	Message = SDL_CreateTextureFromSurface(&ren, surfaceMessage);
+	SDL_FreeSurface(surfaceMessage);
 }
 
 void SettingsButton::Draw(SDL_Renderer& ren) {

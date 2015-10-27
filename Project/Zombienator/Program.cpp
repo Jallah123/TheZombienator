@@ -54,9 +54,11 @@ int Program::Render() {
 				p.x = e.button.x;
 				p.y = e.button.y;
 				ScreenController::GetInstance().GetCurrentMenu()->ClickComponents(p);
+				ScreenController::GetInstance().ChangeMenu(new HomeScreen(Sdl_Renderer));
 			}
 			else if (e.type == SDL_KEYDOWN) {
 				keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_PRESSED);
+				ScreenController::GetInstance().Back();
 			}
 			else if (e.type == SDL_KEYUP) {
 				keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_RELEASED);

@@ -270,6 +270,9 @@
     <ClCompile Include="PcMoveBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AbstractButton.cpp">
+      <Filter>Source Files\Views\UIComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -409,6 +412,9 @@
     </ClInclude>
     <ClInclude Include="PcMoveBehaviour.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractButton.h">
+      <Filter>Header Files\Views\UIComponents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
 #pragma once
-#include "AbstractUIComponent.h"
+#include "AbstractButton.h"
 #include "MusicController.h"
 #include "SDL.h"
 #include <vector>

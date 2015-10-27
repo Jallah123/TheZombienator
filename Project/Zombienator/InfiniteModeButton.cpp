@@ -16,6 +16,8 @@ InfiniteModeButton::InfiniteModeButton(SDL_Renderer& ren, std::string text, std:
 	Image = SDL_CreateTextureFromSurface(&ren, s);
 	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(BlockCartoon, strcpy(tab2, text.c_str()), White);
 	Message = SDL_CreateTextureFromSurface(&ren, surfaceMessage);
+	SDL_FreeSurface(s);
+	SDL_FreeSurface(surfaceMessage);
 }
 
 void InfiniteModeButton::Draw(SDL_Renderer& ren) {
@@ -44,4 +46,6 @@ void InfiniteModeButton::ClickAction()
 	std::cout << "InfiniteModeButton Clicked!" << std::endl;
 }
 
-InfiniteModeButton::~InfiniteModeButton() {}
+InfiniteModeButton::~InfiniteModeButton() 
+{
+}

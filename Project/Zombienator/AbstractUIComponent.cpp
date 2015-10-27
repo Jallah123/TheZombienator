@@ -1,4 +1,5 @@
 #include "AbstractUIComponent.h"
+#include <iostream>
 
 AbstractUIComponent::AbstractUIComponent(SDL_Renderer& ren)
 {
@@ -19,4 +20,9 @@ void AbstractUIComponent::OnClick(SDL_Point MousePosition)
 
 AbstractUIComponent::~AbstractUIComponent()
 {
+	std::cout << "Calling abstract destructor" << std::endl;
+	SDL_DestroyTexture(Message);
+	SDL_DestroyTexture(Image);
+	Message = NULL;
+	Image = NULL;
 }
