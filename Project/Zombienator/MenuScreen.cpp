@@ -40,7 +40,6 @@ void MenuScreen::ChangeBackground(SDL_Renderer* ren, std::string img_url)
 
 MenuScreen::~MenuScreen() 
 {
-	std::cout << "Calling MenuScreen destructor" << std::endl;
 	SDL_DestroyTexture(BackgroundTexture);
 	BackgroundTexture = NULL;
 }

@@ -20,7 +20,6 @@ void AbstractUIComponent::OnClick(SDL_Point MousePosition)
 
 AbstractUIComponent::~AbstractUIComponent()
 {
-	std::cout << "Calling AbstractUIComponent destructor" << std::endl;
 	SDL_DestroyTexture(Message);
 	SDL_DestroyTexture(Image);
 	Message = NULL;
