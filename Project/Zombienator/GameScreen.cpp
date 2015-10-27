@@ -1,9 +1,12 @@
+#pragma once
 #include "GameScreen.h"
 #include <iostream>
 #include "Mike.h"
 #include "Zombie.h"
 #include "GameObjectFactory.h"
 #include "AnimateContainer.h"
+#include "DrawContainer.h"
+#include "MoveContainer.h"
 
 Mike* mike = nullptr;
 Zombie* zombie = nullptr;
@@ -15,13 +18,14 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
 	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
 	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
-	/*mike = GameObjectFactory::Instance()->CreateMike();
+	mike = GameObjectFactory::Instance()->CreateMike();
 	mike->Init(&drawContainer, &animateContainer, &moveContainer, ren);
-	mike->SetPosition(200, 100);*/
+	mike->SetPosition(200, 100);
 
 	zombie = GameObjectFactory::Instance()->CreateZombie("zombie");
 	zombie->Init(&drawContainer, &animateContainer, &moveContainer, ren);
-	zombie->SetPosition(200, 100);
+	zombie->SetPosition(10, 100);
+	zombie->SetTarget(mike);
 	
 	MapParser mp{};
 	map = mp.ParseJsonMap(path);

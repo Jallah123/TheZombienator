@@ -17,6 +17,10 @@ public:
 	void ClickComponents(SDL_Point MousePosition);
 	void Draw(SDL_Renderer& ren, float dt);
 private:
+	Mix_Chunk *sound;
+	void loadSounds();
+	void playSound();
+	void stopSound();
 protected:
 	SDL_Texture* BackgroundTexture;
 	void ChangeBackground(SDL_Renderer* ren, std::string img_url);

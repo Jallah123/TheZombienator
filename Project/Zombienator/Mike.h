@@ -4,6 +4,7 @@
 class AnimateContainer;
 class DrawContainer;
 class MoveContainer;
+class InputContainer;
 
 class Mike :
 	public Character

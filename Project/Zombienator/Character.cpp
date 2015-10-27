@@ -1,5 +1,12 @@
 #include "Character.h"
 
+#include "BehaviourFactory.h"
+#include "AnimateBehaviour.h"
+#include "DrawBehaviour.h"
+#include "MoveBehaviour.h"
+#include "AnimateContainer.h"
+#include "DrawContainer.h"
+#include "MoveContainer.h"
 
 
 Character::Character() : GameObject() 
@@ -11,11 +18,12 @@ Character::~Character()
 {
 }
 
-void Character::SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC)
+void Character::SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC)
 {
 	drawContainer = drawC;
 	animateContainer = animC;
 	moveContainer = moveC;
+	inputContainer = inputC;
 }
 
 void Character::SetDrawBehaviour(std::string name)
