@@ -29,6 +29,4 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 HomeScreen::~HomeScreen()
 {
-	std::cout << "Deleting buttons" << std::endl;
-
 }

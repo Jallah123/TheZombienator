@@ -10,6 +10,4 @@ public:
 	void Draw(SDL_Renderer & ren);
 	void ClickAction();
 	~StoryModeButton();
-private:
-	SDL_Renderer* Sdl_Renderer;
 };
