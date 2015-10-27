@@ -185,6 +185,8 @@
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="BehaviourFactory.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletFactory.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CollisionLayer.cpp" />
     <ClCompile Include="CollisionObject.cpp" />
@@ -211,7 +213,9 @@
     <ClCompile Include="MoveDirection.cpp" />
     <ClCompile Include="MusicController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
+    <ClCompile Include="NormalBullet.cpp" />
     <ClCompile Include="PcMoveBehaviour.cpp" />
+    <ClCompile Include="Pistol.cpp" />
     <ClCompile Include="PlayableCharacter.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ScreenController.cpp" />
@@ -221,6 +225,7 @@
     <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="TestScreen.cpp" />
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
+    <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +240,8 @@
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="BehaviourFactory.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletFactory.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="CollisionObject.h" />
@@ -260,7 +267,9 @@
     <ClInclude Include="MoveContainer.h" />
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="NonPlayableCharacter.h" />
+    <ClInclude Include="NormalBullet.h" />
     <ClInclude Include="PcMoveBehaviour.h" />
+    <ClInclude Include="Pistol.h" />
     <ClInclude Include="PlayableCharacter.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="Registrar.h" />
@@ -272,6 +281,7 @@
     <ClInclude Include="TestScreen.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h" />
+    <ClInclude Include="Weapon.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>

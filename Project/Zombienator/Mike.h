@@ -1,13 +1,14 @@
 #pragma once
-#include "Character.h"
+#include "PlayableCharacter.h"
 
 class AnimateContainer;
 class DrawContainer;
 class MoveContainer;
 class InputContainer;
+class ActionContainer;
 
 class Mike :
-	public Character
+	public PlayableCharacter
 {
 public:
 	Mike();//Default constructor

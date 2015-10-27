@@ -17,7 +17,7 @@ class GameObject;
 class BehaviourFactory
 {
 private:
-	BehaviourFactory() { }// EMPTY CONSTRUCTOR IS IMPORTANT
+	BehaviourFactory() {};// EMPTY CONSTRUCTOR IS IMPORTANT
 public:
 	~BehaviourFactory();// Deconstructor
 	static BehaviourFactory* Instance() {//Singleton

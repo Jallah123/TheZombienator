@@ -1,6 +1,6 @@
 #include "ShootActionBehaviour.h"
 #include <iostream>
-#include "Character.h"
+#include "PlayableCharacter.h"
 #include "InputContainer.h"
 
 ShootActionBehaviour::ShootActionBehaviour()
@@ -16,11 +16,17 @@ ShootActionBehaviour::~ShootActionBehaviour()
 void ShootActionBehaviour::Update(float dt)
 {
 	if (!this->gameObject) return;
-	Character* c = dynamic_cast<Character*>(this->gameObject);
+	PlayableCharacter* c = dynamic_cast<PlayableCharacter*>(this->gameObject);
 	InputContainer* iC = c->GetInputContainer();
 	if (iC == nullptr) return;
-	//Draw Line
-
-	bool canShoot = iC->GetKeyState(this->action);
-	std::cout << "SHOOT ? " << canShoot << std::endl;
+	
+	//Performace check
+	if (elapsedTime < maxElapsed) elapsedTime += dt;
+	
+	bool keyPressed = iC->GetKeyState(this->action);
+	Weapon* w = c->GetWeapon();
+	if (keyPressed && elapsedTime > w->GetDelay()) {
+		w->Fire();//BLAST THOSE ZOMBIES
+		elapsedTime = 0;//Reset 
+	}
 }

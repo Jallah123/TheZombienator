@@ -12,6 +12,7 @@
 //
 std::map<std::string, std::function<Behaviour*(void)>> BehaviourFactory::registry;
 
+
 BehaviourFactory::~BehaviourFactory()
 {
 }
