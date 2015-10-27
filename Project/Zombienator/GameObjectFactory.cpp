@@ -27,7 +27,7 @@ GameObjectFactory::~GameObjectFactory()
 void GameObjectFactory::Register(std::string name, std::function<GameObject*(void)> fn)
 {
 	//we need to register an instance that already has all of the containers.
-	GameObjectFactory::registry[name] = fn;
+		GameObjectFactory::registry[name] = fn;
 }
 
 Mike* GameObjectFactory::CreateMike()

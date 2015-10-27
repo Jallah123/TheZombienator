@@ -1,21 +1,23 @@
 #include "Mike.h"
 #include "KeyboardInputHandler.h"
 #include "Pistol.h"
-
+#include "CharacterContainer.h"
 
 Mike::Mike() : PlayableCharacter(){}
 
-void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, SDL_Renderer* ren)
+void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CharacterContainer* characterC, SDL_Renderer* ren)
 {
 	KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
 	this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC);
 
 	this->SetWeapon(new Pistol());
-
-	SetDrawBehaviour("DrawBehaviour");
+	
+	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
-	SetMoveBehaviour("MoveBehaviour");
+	SetMoveBehaviour("PcMoveBehaviour");
 	SetActionBehaviour("ShootActionBehaviour");
+
+	characterC->AddCharacter(this);
 
 	SetImage("assets/images/spritesheets/Boy1.png", *ren);
 	SetSize(36, 38);

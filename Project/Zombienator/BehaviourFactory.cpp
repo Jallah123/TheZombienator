@@ -5,7 +5,7 @@
 #include "MoveBehaviour.h"
 #include "ActionBehaviour.h"
 #include "BehaviourFactory.h"
-
+#include "CollideBehaviour.h"
 
 //
 // DO NOT FORGET TO INITIALIZE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -77,6 +77,19 @@ ActionBehaviour * BehaviourFactory::CreateActionBehaviour(std::string name, Game
 
 	if (instance != nullptr) {
 		ActionBehaviour* cInstance = dynamic_cast<ActionBehaviour*>(instance);
+		cInstance->SetGameObject(obj);//link the behaviour to its gameObject
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+CollideBehaviour * BehaviourFactory::CreateCollideBehaviour(std::string name, GameObject * obj)
+{
+	Behaviour* instance = BehaviourFactory::Find(name);
+
+	if (instance != nullptr) {
+		CollideBehaviour* cInstance = dynamic_cast<CollideBehaviour*>(instance);
 		cInstance->SetGameObject(obj);//link the behaviour to its gameObject
 		return cInstance;
 	}

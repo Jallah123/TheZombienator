@@ -11,7 +11,6 @@ ActionContainer::ActionContainer() : AbstractContainer()
 	KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
 	this->inputContainer = kh.inputContainer;
 	BehaviourFactory::Instance()->Register("ShootActionBehaviour", [](void) -> Behaviour* { return new ShootActionBehaviour(); });
-
 }
 
 

@@ -1,5 +1,8 @@
 #pragma once
 #include <string>
+#include "DrawContainer.h"
+#include "MoveContainer.h"
+#include "CollideContainer.h"
 
 using std::string;
 class PlayableCharacter;

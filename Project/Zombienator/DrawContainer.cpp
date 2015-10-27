@@ -2,12 +2,14 @@
 #include "DrawBehaviour.h"
 #include "DrawContainer.h"
 #include "BehaviourFactory.h"
-
+#include "NormalBulletDrawBehaviour.h"
+#include "CharacterDrawBehaviour.h"
 
 DrawContainer::DrawContainer()
 {
 	//Register all Draw behaviours in the behaviour factory
-	BehaviourFactory::Instance()->Register("DrawBehaviour", [](void) -> Behaviour* { return new DrawBehaviour(); });
+	BehaviourFactory::Instance()->Register("CharacterDrawBehaviour", [](void) -> Behaviour* { return new CharacterDrawBehaviour(); });
+	BehaviourFactory::Instance()->Register("NormalBulletDrawBehaviour", [](void) -> Behaviour* { return new NormalBulletDrawBehaviour(); });
 }
 
 

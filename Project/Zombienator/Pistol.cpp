@@ -4,6 +4,8 @@
 #include <iostream>
 #include "BulletFactory.h"
 #include "NormalBullet.h"
+#include "BehaviourFactory.h"
+#include "ContainerContainer.h"
 
 Pistol::Pistol() : Weapon()
 {
@@ -22,7 +24,10 @@ Pistol::~Pistol()
 void Pistol::Fire()
 {
 	std::cout << "FIRE MI PISTOL ARR" <<  std::endl;
-	BulletFactory::Instance()->CreateNormalBullet(this->character);
+	NormalBullet* b = BulletFactory::Instance()->CreateNormalBullet(this->character);
+	b->SetContainers(ContainerContainer::GetInstance().GetDrawContainer(), ContainerContainer::GetInstance().GetMoveContainer(), ContainerContainer::GetInstance().GetCollideContainer());
+	b->SetDrawBehaviour("NormalBulletDrawBehaviour");
+	b->SetCollideBehaviour("NormalBulletCollideBehaviour");
 }
 
 

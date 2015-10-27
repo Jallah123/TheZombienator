@@ -11,6 +11,7 @@ class DrawBehaviour;
 class AnimateBehaviour;
 class MoveBehaviour;
 class ActionBehaviour;
+class CollideBehaviour;
 
 class GameObject;
 
@@ -31,6 +32,7 @@ public:
 	static AnimateBehaviour* CreateAnimateBehaviour(std::string name, GameObject* obj);
 	static MoveBehaviour* CreateMoveBehaviour(std::string name, GameObject* obj);
 	static ActionBehaviour* CreateActionBehaviour(std::string name, GameObject* obj);
+	static CollideBehaviour* CreateCollideBehaviour(std::string name, GameObject* obj);
 
 	static std::map<std::string, std::function<Behaviour*(void)>> registry;
 };

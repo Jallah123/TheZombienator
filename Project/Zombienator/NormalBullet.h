@@ -6,7 +6,5 @@ class NormalBullet :
 public:
 	NormalBullet();
 	~NormalBullet();
-
-
 };
 

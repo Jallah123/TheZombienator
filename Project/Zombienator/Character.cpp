@@ -23,6 +23,11 @@ Character::~Character()
 {
 }
 
+void Character::TakeHit(int damage)
+{
+	health -= damage;
+}
+
 void Character::SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC)
 {
 	drawContainer = drawC;

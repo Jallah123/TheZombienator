@@ -188,8 +188,13 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletFactory.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CharacterContainer.cpp" />
+    <ClCompile Include="CharacterDrawBehaviour.cpp" />
+    <ClCompile Include="CollideBehaviour.cpp" />
+    <ClCompile Include="CollideContainer.cpp" />
     <ClCompile Include="CollisionLayer.cpp" />
     <ClCompile Include="CollisionObject.cpp" />
+    <ClCompile Include="ContainerContainer.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Character.cpp" />
@@ -214,6 +219,8 @@
     <ClCompile Include="MusicController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
     <ClCompile Include="NormalBullet.cpp" />
+    <ClCompile Include="NormalBulletCollideBehaviour.cpp" />
+    <ClCompile Include="NormalBulletDrawBehaviour.cpp" />
     <ClCompile Include="PcMoveBehaviour.cpp" />
     <ClCompile Include="Pistol.cpp" />
     <ClCompile Include="PlayableCharacter.cpp" />
@@ -243,8 +250,13 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletFactory.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CharacterContainer.h" />
+    <ClInclude Include="CharacterDrawBehaviour.h" />
+    <ClInclude Include="CollideBehaviour.h" />
+    <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="CollisionObject.h" />
+    <ClInclude Include="ContainerContainer.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapLayer.h" />
@@ -268,6 +280,8 @@
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="NonPlayableCharacter.h" />
     <ClInclude Include="NormalBullet.h" />
+    <ClInclude Include="NormalBulletCollideBehaviour.h" />
+    <ClInclude Include="NormalBulletDrawBehaviour.h" />
     <ClInclude Include="PcMoveBehaviour.h" />
     <ClInclude Include="Pistol.h" />
     <ClInclude Include="PlayableCharacter.h" />

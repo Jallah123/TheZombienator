@@ -27,6 +27,5 @@ public:
 	static void Register(std::string name, std::function<Bullet*(void)> fn);
 	static NormalBullet* CreateNormalBullet(PlayableCharacter* obj);
 
-
 };
 #endif
