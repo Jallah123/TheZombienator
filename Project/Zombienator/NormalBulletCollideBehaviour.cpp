@@ -1,22 +1,31 @@
+#pragma once
+#include "Zombie.h"
 #include "NormalBulletCollideBehaviour.h"
 #include "Bullet.h"
 #include "PlayableCharacter.h"
 #include "ContainerContainer.h"
-
+#include <iostream>
+#include <vector>
 NormalBulletCollideBehaviour::~NormalBulletCollideBehaviour()
 {
 }
 
 bool NormalBulletCollideBehaviour::Collide(float dt)
 {
-	for (auto& c : ContainerContainer::GetInstance().GetCharacterContainer()->GetCharacters()) 
+	Bullet* bullet = dynamic_cast<Bullet*>(this->gameObject);
+	std::vector<Character*> characters = ContainerContainer::GetInstance().GetCharacterContainer()->GetCharacters();
+	for (auto& c : characters)
 	{
-		Bullet* bullet = dynamic_cast<Bullet*>(gameObject);
-		if (SDL_HasIntersection(&bullet->GetSourceRect(), &c->GetSourceRect()))
+		Zombie* target = dynamic_cast<Zombie*>(c);
+		if (target != nullptr && SDL_HasIntersection(&bullet->GetDestinationRect(), &c->GetDestinationRect()))
 		{
 			c->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
+			bullet->SetCollision(true);
+			bullet->SetTarget(c);
+			//std::cout << "Collision " << c->GetSpeed() << std::endl;
 			return true;
 		}
 	}
+	
 	return false;
 }

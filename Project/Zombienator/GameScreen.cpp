@@ -31,7 +31,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 
 	zombie = GameObjectFactory::Instance()->CreateZombie();
 	zombie->Init(drawContainer, animateContainer, moveContainer, actionContainer, characterContainer, ren);
-	zombie->SetPosition(620, 200);
+	zombie->SetPosition(200, 300);
 	zombie->SetTarget(mike);
 	
 	MapParser mp{};

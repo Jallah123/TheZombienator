@@ -1,5 +1,7 @@
 #pragma once
 #include "Behaviour.h"
+class Character;
+
 class CollideBehaviour :
 	public Behaviour
 {

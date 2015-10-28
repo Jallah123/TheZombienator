@@ -4,7 +4,7 @@
 
 NormalBullet::NormalBullet()
 {
-
+	//SetSourceRect({});
 }
 
 

@@ -17,6 +17,9 @@ class Bullet
 	: public GameObject
 {
 protected:
+	bool _hasCollision = false;
+	bool _locked = false;
+	Character* target = nullptr;
 
 	//MoveDirection direction;
 	PlayableCharacter* origin;
@@ -41,5 +44,14 @@ public:
 
 	void SetOrigin(PlayableCharacter* o) { this->origin = o; }
 	PlayableCharacter* GetOrigin() { return origin; }
+	
+	void SetLocked(bool l) { this->_locked = l; }
+	bool IsLocked() { return this->_locked; }
+
+	void SetCollision(bool c) { this->_hasCollision = c; }
+	bool HasCollision() { return this->_hasCollision; }
+
+	Character* GetTarget() { return this->target; }
+	void SetTarget(Character* c) { this->target = c; }
 };
 
