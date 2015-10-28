@@ -81,9 +81,9 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	for (int i = layers.size() - 1; i >= 0; i--)
 	{
-		for (int x = 0; x < 24; x++)
+		for (int x = 0; x < 20; x++)
 		{
-			for (int y = 0; y < 32; y++)
+			for (int y = 0; y < 40; y++)
 			{
 				DrawRect(x * 32, y * 32, sprites.at(layers.at(i).getGID(x, y)), &ren);
 			}

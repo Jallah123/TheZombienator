@@ -1,10 +1,9 @@
-﻿Build started 27-Oct-15 21:41:23.
+﻿Build started 28-Oct-15 13:16:42.
      1>Project "D:\Documents\School\Blok 13\Project\GitHub\Project\Zombienator\Zombienator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"D:\Documents\School\Blok 13\Project\GitHub\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt GameScreen.cpp MenuScreen.cpp
-         MenuScreen.cpp
-     1>d:\documents\school\blok 13\project\github\project\zombienator\menuscreen.cpp(41): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"D:\Documents\School\Blok 13\Project\GitHub\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt GameScreen.cpp MapParser.cpp
+         MapParser.cpp
+     1>d:\documents\school\blok 13\project\github\project\zombienator\mapparser.cpp(24): warning C4018: '<': signed/unsigned mismatch
          GameScreen.cpp
          Generating Code...
        Link:
@@ -58,4 +57,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.02
+Time Elapsed 00:00:02.18
