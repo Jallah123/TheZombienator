@@ -51,9 +51,6 @@ void PcMoveBehaviour::Move(float dt)
 		newX += speed;
 	}
 
-	// -- Set destination rect
-	std::cout << newX << " - " << newY << std::endl;
-
 	// -- Screen bounds
 	if (newX <= 0)
 		newX = 0;
@@ -66,5 +63,5 @@ void PcMoveBehaviour::Move(float dt)
 
 	// -- Map Collision
 	if(!c->getMap()->checkCollision(newX, newY, c->GetWidth(), c->GetHeight()))
-		c->SetPosition(newX, newY);
+		c->SetPosition(newX, newY);		// -- Set destination rect
 }
