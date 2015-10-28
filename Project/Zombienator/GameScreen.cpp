@@ -7,6 +7,7 @@
 #include "AnimateContainer.h"
 #include "DrawContainer.h"
 #include "MoveContainer.h"
+#include <SDL_mixer.h>
 
 Mike* mike = nullptr;
 Zombie* zombie = nullptr;
@@ -20,16 +21,20 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 	mike = GameObjectFactory::Instance()->CreateMike();
 	mike->Init(&drawContainer, &animateContainer, &moveContainer, ren);
-	mike->SetPosition(200, 100);
+	mike->SetPosition(800, 150);
 
 	zombie = GameObjectFactory::Instance()->CreateZombie("zombie");
 	zombie->Init(&drawContainer, &animateContainer, &moveContainer, ren);
-	zombie->SetPosition(10, 100);
+	zombie->SetPosition(100, 150);
 	zombie->SetTarget(mike);
 	
-	MapParser mp{};
-	map = mp.ParseJsonMap(path);
-	map.get()->setSprites(mp.GenerateSprites(path));
+	MapParser* mp{};
+	map = mp->ParseJsonMap(path);
+	// --
+	mike->setMap(map.get());
+	zombie->setMap(map.get());
+	// --
+	map.get()->setSprites(mp->GenerateSprites(path));
 	SDL_Surface* s;
 	s = IMG_Load(map->getImagePath().c_str());
 	if (!s) {
