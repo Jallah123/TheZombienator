@@ -24,39 +24,40 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren)
 	MoveDirection md = b->GetMoveDir();
 	SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
 
-	if (b->IsLocked()) {
-		//b->SetDestinationRect(rect);
-		std::cout << "hasCollision: " << b->HasCollision() << std::endl;
-		switch (md)
-		{
-		case MoveDirection::NORTH:
-			rect.x = b->getPosX() + (origin->GetWidth() - offsetX);
-			rect.y = b->HasCollision() ? target->getPosY() + (target->GetHeight() / 2) : 0;
-			rect.w = 2;
-			rect.h = b->HasCollision() ? (origin->getPosY() - target->getPosY()) : b->getPosY() - offsetY;
-			break;
-		case MoveDirection::EAST:
-			rect.x = b->getPosX() + origin->GetWidth() + offsetX;
-			rect.y = b->getPosY() + (origin->GetHeight() / 2);
-			rect.w = b->HasCollision() ? (target->getPosX() - b->getPosX()) - target->GetWidth() : maxLength;
-			rect.h = 2;
-			break;
-		case MoveDirection::SOUTH:
-		case MoveDirection::NONE:
-			rect.x = b->getPosX() + offsetX;
-			rect.y = (b->getPosY() + offsetY) + origin->GetHeight();
-			rect.w = 2;
-			rect.h = b->HasCollision() ? (target->getPosY() - b->getPosY()) - target->GetHeight() : maxLength;
-			break;
-		case MoveDirection::WEST:
-			rect.x = b->HasCollision() ? (target->getPosX() + target->GetWidth()) : 0;
-			rect.y = b->getPosY() + (origin->GetHeight() / 2);
-			rect.w = b->HasCollision() ? (b->getPosX() - target->getPosX()) - target->GetWidth() : b->getPosX() - offsetX;
-			rect.h = 2;
+	switch (md)
+	{
+	case MoveDirection::NORTH:
+		rect.x = b->getPosX() + (origin->GetWidth() - offsetX);
+		rect.y = b->HasCollision() ? target->getPosY() + (target->GetHeight() / 2) : 0;
+		rect.w = 2;
+		rect.h = b->HasCollision() ? (origin->getPosY() - target->getPosY()) : b->getPosY() - offsetY;
+		break;
+	case MoveDirection::EAST:
+		rect.x = b->getPosX() + origin->GetWidth() + offsetX;
+		rect.y = b->getPosY() + (origin->GetHeight() / 2);
+		rect.w = b->HasCollision() ? (target->getPosX() - b->getPosX()) - target->GetWidth() : maxLength;
+		rect.h = 2;
+		break;
+	case MoveDirection::SOUTH:
+	case MoveDirection::NONE:
+		rect.x = b->getPosX() + offsetX;
+		rect.y = (b->getPosY() + offsetY) + origin->GetHeight();
+		rect.w = 2;
+		rect.h = b->HasCollision() ? (target->getPosY() - b->getPosY()) - target->GetHeight() : maxLength;
+		break;
+	case MoveDirection::WEST:
+		rect.x = b->HasCollision() ? (target->getPosX() + target->GetWidth()) : 0;
+		rect.y = b->getPosY() + (origin->GetHeight() / 2);
+		rect.w = b->HasCollision() ? (b->getPosX() - target->getPosX()) - target->GetWidth() : b->getPosX() - offsetX;
+		rect.h = 2;
 
-			break;
-		}
-		b->SetDestinationRect(rect);
+		break;
+			
+	}
+	b->SetLocked(true);
+	b->SetDestinationRect(rect);
+	
+	if (b->IsLocked() && b->HasCollision()) {
 		SDL_RenderFillRect(&ren, &rect);
 	}
 	b->DecreaseLifeTime(dt);
