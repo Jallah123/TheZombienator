@@ -2,11 +2,12 @@
 
 
 
-PlayableCharacter::PlayableCharacter()
+PlayableCharacter::PlayableCharacter() : Character()
 {
 }
 
 
 PlayableCharacter::~PlayableCharacter()
 {
+	delete weapon;
 }

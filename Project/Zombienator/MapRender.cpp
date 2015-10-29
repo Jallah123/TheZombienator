@@ -8,12 +8,12 @@
 MapRender::MapRender(char* xml_url)
 {
 	Json::Value root;
-	std::ifstream config_doc("C:\\Users\\Tojba\\Documents\\TheZombienator\\Project\\Zombienator\\assets\\maps\\TestMap\\TestMap2.json", std::ifstream::binary);
+	std::ifstream config_doc("C:\\Users\\Tojba\\Documents\\TheZombienator\\Project\\Zombienator\\assets\\maps\\map-1280x640.json", std::ifstream::binary);
 	config_doc >> root;
 
 	string s = root.get("height", "1").asString();
 	Json::Value layers = root["layers"];
-	Map map{ "assets/maps/TestMap/mountain_landescape_23.png" };
+	Map map{ "assets/maps/sprites-landscape.png" };
 
 	for (int i = 0; i < layers.size(); i++) {
 		Json::Value layer = layers[i];

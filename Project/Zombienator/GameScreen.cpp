@@ -1,31 +1,48 @@
+#pragma once
 #include "GameScreen.h"
 #include <iostream>
 #include "Mike.h"
 #include "Zombie.h"
 #include "GameObjectFactory.h"
 #include "AnimateContainer.h"
+#include "DrawContainer.h"
+#include "MoveContainer.h"
+#include "ActionContainer.h"
+#include "CharacterContainer.h"
+#include "CollideContainer.h"
+#include "ContainerContainer.h"
+#include <SDL_mixer.h>
 
 Mike* mike = nullptr;
 Zombie* zombie = nullptr;
-DrawContainer drawContainer;
-AnimateContainer animateContainer;
-MoveContainer moveContainer;
+DrawContainer* drawContainer = ContainerContainer::GetInstance().GetDrawContainer();
+AnimateContainer* animateContainer = ContainerContainer::GetInstance().GetAnimateContainer();
+ActionContainer* actionContainer = ContainerContainer::GetInstance().GetActionContainer();
+MoveContainer* moveContainer = ContainerContainer::GetInstance().GetMoveContainer();
+CollideContainer* collideContainer = ContainerContainer::GetInstance().GetCollideContainer();
+CharacterContainer* characterContainer = ContainerContainer::GetInstance().GetCharacterContainer();
 
 GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
-	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
-	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
-	/*mike = GameObjectFactory::Instance()->CreateMike();
-	mike->Init(&drawContainer, &animateContainer, &moveContainer, ren);
-	mike->SetPosition(200, 100);*/
+	characterContainer->Init();
 
-	zombie = GameObjectFactory::Instance()->CreateZombie("zombie");
-	zombie->Init(&drawContainer, &animateContainer, &moveContainer, ren);
-	zombie->SetPosition(200, 100);
+	mike = GameObjectFactory::Instance()->CreateMike();
+	mike->Init(drawContainer, animateContainer, moveContainer, actionContainer, characterContainer, ren);
+	mike->SetPosition(800, 150);
+
+	zombie = GameObjectFactory::Instance()->CreateZombie();
+	zombie->Init(drawContainer, animateContainer, moveContainer, actionContainer, characterContainer, ren);
+	zombie->SetPosition(200, 300);
+
+	zombie->SetTarget(mike);
 	
-	MapParser mp{};
-	map = mp.ParseJsonMap(path);
-	map.get()->setSprites(mp.GenerateSprites(path));
+	MapParser* mp{};
+	map = mp->ParseJsonMap(path);
+	// --
+	mike->setMap(map.get());
+	zombie->setMap(map.get());
+	// --
+	map.get()->setSprites(mp->GenerateSprites(path));
 	SDL_Surface* s;
 	s = IMG_Load(map->getImagePath().c_str());
 	if (!s) {
@@ -59,7 +76,9 @@ void GameScreen::playSound() {
 	if (channel == -1) {
 		cout << stderr << "Unable to play WAV file: %s\n" << Mix_GetError();
 	}
+	Mix_Volume(channel, 25);
 
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 }
 
 void GameScreen::stopSound() {
@@ -75,9 +94,9 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	for (int i = layers.size() - 1; i >= 0; i--)
 	{
-		for (int x = 0; x < 24; x++)
+		for (int x = 0; x < 20; x++)
 		{
-			for (int y = 0; y < 32; y++)
+			for (int y = 0; y < 40; y++)
 			{
 				DrawRect(x * 32, y * 32, sprites.at(layers.at(i).getGID(x, y)), &ren);
 			}
@@ -96,9 +115,11 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	}
 	//float dt = 1;
-	animateContainer.Animate(dt);
-	moveContainer.Move(dt);
-	drawContainer.Draw(dt, ren);
+	actionContainer->Update(dt);
+	moveContainer->Move(dt);
+	collideContainer->Collide(dt);
+	animateContainer->Animate(dt);
+	drawContainer->Draw(dt, ren);
 
 	/* For debugging purposes only */
 	//SDL_SetRenderDrawColor(&ren, 0xFF, 0x00, 0x00, 0xFF);
