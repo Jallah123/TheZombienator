@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include <iostream>
+#include "Map.h"
 
 class GameObject
 {
@@ -14,6 +15,9 @@ protected:
 
 	float posY = 0.0f;
 	float posX = 0.0f;
+
+	// -- Map
+	Map* map;
 
 public:
 	GameObject() {}//Default constructer
@@ -39,4 +43,8 @@ public:
 	int const GetWidth() { return this->width; }
 	SDL_Texture* const GetTexture() { return this->texture; }
 	MoveDirection const GetMoveDir() { return this->moveDirection; }
+
+	// -- Map
+	Map* getMap() { return map; }
+	void setMap(Map* m) { map = m; }
 };

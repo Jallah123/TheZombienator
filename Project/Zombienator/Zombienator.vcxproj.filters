@@ -512,6 +512,9 @@
     <ClInclude Include="ContainerContainer.h">
       <Filter>Header Files\Containers</Filter>
     </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\button_spritesheet.png">

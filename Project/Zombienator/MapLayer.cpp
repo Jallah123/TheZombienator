@@ -23,6 +23,7 @@ vector<vector<int>> MapLayer::getGIDs()
 
 int MapLayer::getGID(int x, int y) 
 {
+
 	if (gIDs.at(x).at(y) < 0) {
 		return 0;
 	}

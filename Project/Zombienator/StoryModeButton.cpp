@@ -14,11 +14,15 @@ StoryModeButton::StoryModeButton(SDL_Renderer& ren, std::string text, std::strin
 	char tab2[1024];
 	SDL_Surface *s = IMG_Load(strcpy(tab2, img_url.c_str()));
 
-	Sdl_Renderer = &ren;
-
 	Image = SDL_CreateTextureFromSurface(&ren, s);
+	SDL_FreeSurface(s);
+
 	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(BlockCartoon, strcpy(tab2, text.c_str()), White);
 	Message = SDL_CreateTextureFromSurface(&ren, surfaceMessage);
+
+	SDL_FreeSurface(surfaceMessage);
+	TTF_CloseFont(BlockCartoon);
+	BlockCartoon = NULL;
 }
 
 void StoryModeButton::Draw(SDL_Renderer& ren) {
@@ -45,7 +49,9 @@ void StoryModeButton::Draw(SDL_Renderer& ren) {
 void StoryModeButton::ClickAction()
 {
 	std::cout << "StoryModeButton Clicked!" << std::endl;
-	ScreenController::GetInstance().ChangeMenu(new GameScreen{ Sdl_Renderer, "assets/maps/map1-final.json" });
+	ScreenController::GetInstance().ChangeMenu(new GameScreen{ instance, "assets/maps/map-1280x640.json" });
 }
 
-StoryModeButton::~StoryModeButton() {}
+StoryModeButton::~StoryModeButton() 
+{
+}

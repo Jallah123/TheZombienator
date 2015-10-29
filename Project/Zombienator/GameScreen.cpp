@@ -11,6 +11,7 @@
 #include "CharacterContainer.h"
 #include "CollideContainer.h"
 #include "ContainerContainer.h"
+#include <SDL_mixer.h>
 
 Mike* mike = nullptr;
 Zombie* zombie = nullptr;
@@ -27,16 +28,21 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 
 	mike = GameObjectFactory::Instance()->CreateMike();
 	mike->Init(drawContainer, animateContainer, moveContainer, actionContainer, characterContainer, ren);
-	mike->SetPosition(200, 100);
+	mike->SetPosition(800, 150);
 
 	zombie = GameObjectFactory::Instance()->CreateZombie();
 	zombie->Init(drawContainer, animateContainer, moveContainer, actionContainer, characterContainer, ren);
 	zombie->SetPosition(200, 300);
+
 	zombie->SetTarget(mike);
 	
-	MapParser mp{};
-	map = mp.ParseJsonMap(path);
-	map.get()->setSprites(mp.GenerateSprites(path));
+	MapParser* mp{};
+	map = mp->ParseJsonMap(path);
+	// --
+	mike->setMap(map.get());
+	zombie->setMap(map.get());
+	// --
+	map.get()->setSprites(mp->GenerateSprites(path));
 	SDL_Surface* s;
 	s = IMG_Load(map->getImagePath().c_str());
 	if (!s) {
@@ -71,6 +77,8 @@ void GameScreen::playSound() {
 		cout << stderr << "Unable to play WAV file: %s\n" << Mix_GetError();
 	}
 	Mix_Volume(channel, 25);
+
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 }
 
 void GameScreen::stopSound() {
@@ -86,9 +94,9 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	for (int i = layers.size() - 1; i >= 0; i--)
 	{
-		for (int x = 0; x < 24; x++)
+		for (int x = 0; x < 20; x++)
 		{
-			for (int y = 0; y < 32; y++)
+			for (int y = 0; y < 40; y++)
 			{
 				DrawRect(x * 32, y * 32, sprites.at(layers.at(i).getGID(x, y)), &ren);
 			}

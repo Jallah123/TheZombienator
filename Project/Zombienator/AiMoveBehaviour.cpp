@@ -52,5 +52,18 @@ void AiMoveBehaviour::Move(float dt)
 		newX += speed;
 	}
 
-	z->SetPosition(newX, newY);
+	// -- Screen bounds
+	if (newX <= 0)
+		newX = 0;
+	if (newX >= 1245)
+		newX = 1245;
+	if (newY <= 0)
+		newY = 0;
+	if (newY >= 600)
+		newY = 600;
+
+	// -- Map Collision
+	if (!z->getMap()->checkCollision(newX, newY, z->GetWidth(), z->GetHeight()))
+		z->SetPosition(newX, newY);
+	
 }

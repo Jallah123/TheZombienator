@@ -491,11 +491,11 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"spirtes-landscape.png",
+         "image":"sprites-landscape.png",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,
-         "name":"spirtes-landscape",
+         "name":"sprites-landscape",
          "properties":
             {
 
