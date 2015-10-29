@@ -102,18 +102,20 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 			}
 		}
 	}
-
+	/*
+	For debugging purposes only
 	for (int j = collisionLayers.size() - 1; j >= 0; j--)
 	{
 		vector<CollisionObject> collisionObjects = collisionLayers[j].getCollisionObjects();
 
 		for (int k = collisionObjects.size() - 1; k >= 0; k--)
 		{
-			/* For debugging purposes only */
-			DrawCollisionObject(collisionObjects[k].getY(), collisionObjects[k].getX(), collisionObjects[k].getWidth(), collisionObjects[k].getHeight(), &ren);
+			 
+			//DrawCollisionObject(collisionObjects[k].getY(), collisionObjects[k].getX(), collisionObjects[k].getWidth(), collisionObjects[k].getHeight(), &ren);
 		}
-
 	}
+	*/
+
 	//float dt = 1;
 	actionContainer->Update(dt);
 	moveContainer->Move(dt);
