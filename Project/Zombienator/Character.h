@@ -1,16 +1,18 @@
 #pragma once
 #include "GameObject.h"
-
+#include <vector>
 //Containers
 class AnimateContainer;
 class DrawContainer;
 class MoveContainer;
 class InputContainer;
+class ActionContainer;
 
 //Behaviours
 class DrawBehaviour;
 class AnimateBehaviour;
 class MoveBehaviour;
+class ActionBehaviour;
 
 
 class Character : 
@@ -27,12 +29,16 @@ protected:
 	DrawContainer* drawContainer;
 	MoveContainer* moveContainer;
 	InputContainer* inputContainer;
+	ActionContainer* actionContainer;
 	/*CollideContainer collideContainer;*/
 
 	//Behaviours
 	DrawBehaviour* drawBehaviour;
 	AnimateBehaviour* animateBehaviour;
 	MoveBehaviour* moveBehaviour;
+	//Character can have multiple actions
+	std::vector<ActionBehaviour*> actionBehaviours;
+
 public:
 	Character();
 	virtual ~Character();
@@ -47,10 +53,11 @@ public:
 	void SetFrames(int f) { animationFrames = f; }
 
 
-	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC);
+	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC);
 	void SetDrawBehaviour(std::string name);
 	void SetAnimateBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
+	void SetActionBehaviour(std::string name);
 
 	InputContainer* GetInputContainer() { return inputContainer; }
 };

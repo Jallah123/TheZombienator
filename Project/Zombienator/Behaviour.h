@@ -9,7 +9,7 @@ protected:
 public:
 	Behaviour();
 	virtual ~Behaviour();
-
+	GameObject* GetGameObject() { return gameObject; }
 	void SetGameObject(GameObject* go) { gameObject = go; }
 /*
 	virtual void Animate(float dt) = 0;

@@ -27,5 +27,5 @@ public:
 	
 
 	static Mike* CreateMike();
-	static Zombie* CreateZombie(std::string name);
+	static Zombie* CreateZombie();
 };

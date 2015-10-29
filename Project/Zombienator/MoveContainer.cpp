@@ -7,7 +7,7 @@
 
 MoveContainer::MoveContainer()
 {
-	BehaviourFactory::Instance()->Register("MoveBehaviour", [](void) -> Behaviour* { return new PcMoveBehaviour(); });
+	BehaviourFactory::Instance()->Register("PcMoveBehaviour", [](void) -> Behaviour* { return new PcMoveBehaviour(); });
 	BehaviourFactory::Instance()->Register("AiMoveBehaviour", [](void) -> Behaviour* { return new AiMoveBehaviour(); });
 }
 

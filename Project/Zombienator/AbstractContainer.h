@@ -12,5 +12,8 @@ public:
 	~AbstractContainer();
 
 	void Add(Behaviour* b) { arr.push_back(b); }
-	void Remove(Behaviour* b) {}
+	void Remove(Behaviour* b) {
+		auto index = find(arr.begin(), arr.end(), b);
+		arr.erase(index);
+	}
 };

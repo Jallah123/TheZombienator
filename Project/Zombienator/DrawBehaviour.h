@@ -4,8 +4,8 @@ class DrawBehaviour : public Behaviour
 {
 public:
 	DrawBehaviour();
-	~DrawBehaviour();
+	virtual ~DrawBehaviour();
 	
 	//Use Draw
-	void Draw(float dt, SDL_Renderer& ren);
+	virtual void Draw(float dt, SDL_Renderer& ren) = 0;
 };

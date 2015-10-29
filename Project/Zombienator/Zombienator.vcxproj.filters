@@ -133,6 +133,18 @@
     <Filter Include="Source Files\Views\SelectionScreen">
       <UniqueIdentifier>{a4081e78-5064-42a1-bfc9-2410868c4a94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Models\Guns">
+      <UniqueIdentifier>{1a1525e5-69ee-4907-9fba-b6a6098e7b36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Guns">
+      <UniqueIdentifier>{c773cd53-e40c-4f3f-bd5b-9c93e06c5701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Bullets">
+      <UniqueIdentifier>{b5d1d565-fe8d-4e7c-8351-f03353526cea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Bullets">
+      <UniqueIdentifier>{6308e380-0ab0-4650-9835-bde55ec00919}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -267,8 +279,53 @@
     <ClCompile Include="AiMoveBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
+    <ClCompile Include="ActionContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
     <ClCompile Include="PcMoveBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="ShootActionBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files\Models\Guns</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files\Models\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="Pistol.cpp">
+      <Filter>Source Files\Models\Guns</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBullet.cpp">
+      <Filter>Source Files\Models\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBulletDrawBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterDrawBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="CollideBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="CollideContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBulletCollideBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="ContainerContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -406,6 +463,54 @@
     </ClInclude>
     <ClInclude Include="PcMoveBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="ShootActionBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\Models\Guns</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files\Models\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="Pistol.h">
+      <Filter>Header Files\Models\Guns</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBullet.h">
+      <Filter>Header Files\Models\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBulletDrawBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="CollideBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterDrawBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="CollideContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBulletCollideBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="ContainerContainer.h">
+      <Filter>Header Files\Containers</Filter>
     </ClInclude>
     <ClInclude Include="Zombie.h">
       <Filter>Header Files\Models\GameObject</Filter>
