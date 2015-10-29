@@ -5,11 +5,11 @@
 #include "MoveContainer.h"
 #include "CollideContainer.h"
 #include "CollideBehaviour.h"
+#include "PlayableCharacter.h"
 
 class DrawContainer;
 class MoveContainer;
 
-class PlayableCharacter;
 class DrawBehaviour;
 class MoveBehaviour;
 
@@ -19,6 +19,7 @@ class Bullet
 protected:
 	bool _hasCollision = false;
 	bool _locked = false;
+	float lifeTime = 25;
 	Character* target = nullptr;
 
 	//MoveDirection direction;
@@ -42,7 +43,13 @@ public:
 	void SetMoveBehaviour(std::string name);
 	void SetCollideBehaviour(std::string name);
 
-	void SetOrigin(PlayableCharacter* o) { this->origin = o; }
+	void SetOrigin(PlayableCharacter* o) { 
+		origin = o; 
+		SetMoveDir(o->GetMoveDir()); 
+		posX = o->getPosX();
+		posY = o->getPosY();
+	}
+
 	PlayableCharacter* GetOrigin() { return origin; }
 	
 	void SetLocked(bool l) { this->_locked = l; }
@@ -53,5 +60,8 @@ public:
 
 	Character* GetTarget() { return this->target; }
 	void SetTarget(Character* c) { this->target = c; }
+
+	float GetLifeTime() { return lifeTime; }
+	void DecreaseLifeTime(float time) { lifeTime -= time; }
 };
 

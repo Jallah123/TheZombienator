@@ -23,7 +23,6 @@ Pistol::~Pistol()
 
 void Pistol::Fire()
 {
-	std::cout << "FIRE MI PISTOL ARR" <<  std::endl;
 	NormalBullet* b = BulletFactory::Instance()->CreateNormalBullet(this->character);
 	b->SetContainers(ContainerContainer::GetInstance().GetDrawContainer(), ContainerContainer::GetInstance().GetMoveContainer(), ContainerContainer::GetInstance().GetCollideContainer());
 	b->SetDrawBehaviour("NormalBulletDrawBehaviour");

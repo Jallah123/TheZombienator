@@ -16,16 +16,16 @@ bool NormalBulletCollideBehaviour::Collide(float dt)
 	std::vector<Character*> characters = ContainerContainer::GetInstance().GetCharacterContainer()->GetCharacters();
 	for (auto& c : characters)
 	{
+		bullet->SetLocked(true);
 		Zombie* target = dynamic_cast<Zombie*>(c);
 		if (target != nullptr && SDL_HasIntersection(&bullet->GetDestinationRect(), &c->GetDestinationRect()))
 		{
 			c->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
 			bullet->SetCollision(true);
 			bullet->SetTarget(c);
-			//std::cout << "Collision " << c->GetSpeed() << std::endl;
+			std::cout << "Collision " << c->GetSpeed() << std::endl;
 			return true;
 		}
 	}
-	
 	return false;
 }
