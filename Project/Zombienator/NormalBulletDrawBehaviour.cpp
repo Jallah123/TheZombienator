@@ -54,13 +54,13 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren)
 		break;
 			
 	}
-	b->SetLocked(true);
 	b->SetDestinationRect(rect);
 	
-	if (b->IsLocked() && b->HasCollision()) {
+	if (b->IsLocked()) {
 		SDL_RenderFillRect(&ren, &rect);
 	}
 	b->DecreaseLifeTime(dt);
+	b->SetLocked(true);
 	//std::cout << dt << std::endl;
 	//std::cout << b->IsLocked() << std::endl;
 	//b->SetLocked(true);
