@@ -268,7 +268,7 @@
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
     <ClCompile Include="PcMoveBehaviour.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -401,14 +401,14 @@
     <ClInclude Include="Mike.h">
       <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Zombie.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AiMoveBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
     <ClInclude Include="PcMoveBehaviour.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -38,7 +38,8 @@ unique_ptr<Map> MapParser::ParseJsonMap(string path)
 			for (int x = 1; x <= size; x++) {
 				int data = layer["data"][x - 1].asInt() - 1;
 				currentRow.push_back(data);
-				if (x % 32 == 0 && x != 0) {
+
+				if (x % 40 == 0 && x != 0) {
 					ml.addGID(currentRow);
 					currentRow.clear();
 				}

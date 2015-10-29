@@ -49,7 +49,7 @@ void StoryModeButton::Draw(SDL_Renderer& ren) {
 void StoryModeButton::ClickAction()
 {
 	std::cout << "StoryModeButton Clicked!" << std::endl;
-	ScreenController::GetInstance().ChangeMenu(new GameScreen{ instance, "assets/maps/map1-final.json" });
+	ScreenController::GetInstance().ChangeMenu(new GameScreen{ instance, "assets/maps/map-1280x640.json" });
 }
 
 StoryModeButton::~StoryModeButton() 

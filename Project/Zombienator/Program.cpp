@@ -67,6 +67,12 @@ int Program::Render() {
 			else if (e.type == SDL_CONTROLLERBUTTONUP) {
 				controllerInputHandler->SetButton(e.cbutton, SDL_RELEASED);
 			}
+			else if (e.type == SDL_CONTROLLERDEVICEADDED) {
+				InitJoystick();
+			}
+			else if (e.type == SDL_CONTROLLERDEVICEREMOVED) {
+				CloseJoystick();
+			}
 		}
 
 		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -118,7 +124,14 @@ int Program::InitComponents() {
 	return 0;
 }
 
+void Program::CloseJoystick() 
+{
+	cout << "Close controller" << endl;
+	SDL_GameControllerClose(controller);
+}
+
 int Program::InitJoystick() {
+	cout << "Init joystick" << endl;
 	for (int JoystickIndex = 0; JoystickIndex < SDL_NumJoysticks(); ++JoystickIndex)
 	{
 		if (!SDL_IsGameController(JoystickIndex))
