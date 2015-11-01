@@ -40,4 +40,5 @@ void DrawContainer::Draw(float dt, SDL_Renderer & ren)
 	{
 		Remove(behaviour);
 	}
+	
 }

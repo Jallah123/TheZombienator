@@ -327,6 +327,12 @@
     <ClCompile Include="ContainerContainer.cpp">
       <Filter>Source Files\Containers</Filter>
     </ClCompile>
+    <ClCompile Include="SpawnController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -514,6 +520,9 @@
     </ClInclude>
     <ClInclude Include="Zombie.h">
       <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnController.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

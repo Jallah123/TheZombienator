@@ -51,7 +51,7 @@ public:
 
 	void SetSpeed(float s) { speed = s; }
 	void SetFrames(int f) { animationFrames = f; }
-
+	void SetHealth(int h) { this->health = h; }
 
 	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC);
 	void SetDrawBehaviour(std::string name);
@@ -60,4 +60,6 @@ public:
 	void SetActionBehaviour(std::string name);
 
 	InputContainer* GetInputContainer() { return inputContainer; }
+
+	void Remove();
 };

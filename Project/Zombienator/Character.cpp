@@ -26,6 +26,10 @@ Character::~Character()
 void Character::TakeHit(int damage)
 {
 	health -= damage;
+	//#TODO still need to remove *this from the CharacterContainer
+	if (health <= 0)
+		Remove();
+	std::cout << "HEALTH: " << health << std::endl;
 }
 
 void Character::SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC)
@@ -64,5 +68,15 @@ void Character::SetActionBehaviour(std::string name)
 	if (moveBehaviour == nullptr) return;
 	this->actionBehaviours.push_back(a);
 	this->actionContainer->Add(a);
+}
+
+void Character::Remove()
+{
+	drawContainer->Remove(drawBehaviour);
+	animateContainer->Remove(animateBehaviour);
+	moveContainer->Remove(moveBehaviour);
+	for (const auto& ab : actionBehaviours) {
+		actionContainer->Remove(ab);
+	}
 }
 

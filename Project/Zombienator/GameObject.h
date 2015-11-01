@@ -26,11 +26,8 @@ public:
 	float getPosY() { return posY; }
 	float getPosX() { return posX; }
 	
-	void SetImage(const char* path, SDL_Renderer& ren) { 
-		SDL_Surface * image = IMG_Load(path);
-		this->texture = SDL_CreateTextureFromSurface(&ren, image);
-		std::cout << "Image Loaded";
-	}
+	void SetImage(const char* path, SDL_Renderer& ren); 
+	void SetTexture(SDL_Texture* t) { this->texture = t; }
 	void SetSize(int w, int h) { this->width = w; this->height = h; sourceRect.w = w; sourceRect.h = h; }
 	void SetPosition(float x, float y) { destRect = { (int)(x + 0.5f), (int)(y + 0.5f), width, height }; posX = x; posY = y; }
 	void SetMoveDir(MoveDirection d) { moveDirection = d; }

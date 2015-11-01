@@ -13,6 +13,7 @@ public:
 
 	void Add(Behaviour* b) { arr.push_back(b); }
 	void Remove(Behaviour* b) {
+		if (b == nullptr) return;
 		auto index = find(arr.begin(), arr.end(), b);
 		arr.erase(index);
 	}

@@ -22,7 +22,7 @@ void CollideContainer::Collide(float dt)
 		collideBehaviour->Collide(dt);
 
 		if (Bullet* bullet = dynamic_cast<Bullet*>(behaviour->GetGameObject())) {
-			if (bullet->GetLifeTime() <= 0) {
+			if (bullet->GetLifeTime() <= 0 || bullet->HasCollision()) {
 				collideToRemove.push_back(collideBehaviour);
 			}
 		}

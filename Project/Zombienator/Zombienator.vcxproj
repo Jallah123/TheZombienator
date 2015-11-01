@@ -195,6 +195,7 @@
     <ClCompile Include="CollisionLayer.cpp" />
     <ClCompile Include="CollisionObject.cpp" />
     <ClCompile Include="ContainerContainer.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Character.cpp" />
@@ -229,6 +230,7 @@
     <ClCompile Include="SelectionScreen.cpp" />
     <ClCompile Include="SettingsButton.cpp" />
     <ClCompile Include="ShootActionBehaviour.cpp" />
+    <ClCompile Include="SpawnController.cpp" />
     <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="TestScreen.cpp" />
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
@@ -291,6 +293,7 @@
     <ClInclude Include="SelectionScreen.h" />
     <ClInclude Include="SettingsButton.h" />
     <ClInclude Include="ShootActionBehaviour.h" />
+    <ClInclude Include="SpawnController.h" />
     <ClInclude Include="StoryModeButton.h" />
     <ClInclude Include="TestScreen.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h" />
