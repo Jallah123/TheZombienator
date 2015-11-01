@@ -22,7 +22,6 @@ void PcMoveBehaviour::Move(float dt)
 	// -- Get destination rect
 	float newX = c->getPosX();
 	float newY = c->getPosY();
-
 	
 	// -- Get input from user
 	bool up = iC->GetKeyState(SDLK_w);
@@ -51,17 +50,17 @@ void PcMoveBehaviour::Move(float dt)
 		newX += speed;
 	}
 
-	// -- Screen bounds
-	if (newX <= 0)
-		newX = 0;
-	if (newX >= 1245)
-		newX = 1245;
-	if (newY <= 0)
-		newY = 0;
-	if (newY >= 600)
-		newY = 600;
+	float finalX = newX;
+	float finalY = newY;
 
 	// -- Map Collision
-	if(!c->getMap()->checkCollision(newX, newY, c->GetWidth(), c->GetHeight()))
-		c->SetPosition(newX, newY);		// -- Set destination rect
+	// Check X
+	if (c->getMap()->checkCollision(newX, c->getPosY(), c->GetWidth(), c->GetHeight())) {
+		finalX = c->getPosX();
+	}
+	// Check Y
+	if (c->getMap()->checkCollision(c->getPosX(), newY, c->GetWidth(), c->GetHeight())) {
+		finalY = c->getPosY();
+	}
+	c->SetPosition(finalX, finalY);
 }
