@@ -48,7 +48,6 @@ bool Map::checkCollision(int _x, int _y, int _width, int _height) {
 
 		for (int k = collisionObjects.size() - 1; k >= 0; k--)
 		{
-
 			SDL_Rect collisionRectangle = { 
 				collisionObjects[k].getX(),
 				collisionObjects[k].getY(),
@@ -56,61 +55,12 @@ bool Map::checkCollision(int _x, int _y, int _width, int _height) {
 				collisionObjects[k].getHeight()
 			};
 
-			if (checkRectangleCollision(unitRectangle, collisionRectangle)) {
+			if (SDL_HasIntersection(&unitRectangle, &collisionRectangle)) {
 				return true;
 			}
-			
-
 		}
-
 	}
-
 	return false;
-
-}
-
-
-bool Map::checkRectangleCollision(SDL_Rect unitRectangle, SDL_Rect collisionRectangle) {
-	//The sides of the rectangles
-	int leftA, leftB;
-	int rightA, rightB;
-	int topA, topB;
-	int bottomA, bottomB;
-
-	//Calculate the sides of unitRectangle
-	leftA = unitRectangle.x;
-	rightA = unitRectangle.x + unitRectangle.w;
-	topA = unitRectangle.y;
-	bottomA = unitRectangle.y + unitRectangle.h;
-
-	//Calculate the sides of collisionRectangle
-	leftB = collisionRectangle.x;
-	rightB = collisionRectangle.x + collisionRectangle.w;
-	topB = collisionRectangle.y;
-	bottomB = collisionRectangle.y + collisionRectangle.h;
-
-	//If any of the sides from A are outside of B
-	if (bottomA <= topB)
-	{
-		return false;
-	}
-
-	if (topA >= bottomB)
-	{
-		return false;
-	}
-
-	if (rightA <= leftB)
-	{
-		return false;
-	}
-
-	if (leftA >= rightB)
-	{
-		return false;
-	}
-
-	return true;
 }
 
 Map::~Map() 

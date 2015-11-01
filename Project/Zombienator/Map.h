@@ -27,7 +27,6 @@ private:
 	string img_path;
 	vector<MapLayer> mapLayers;
 	vector<CollisionLayer> collisionLayers;
-	bool checkRectangleCollision(SDL_Rect unitRectangle, SDL_Rect collisionRectangle);
 protected:
 
 };
