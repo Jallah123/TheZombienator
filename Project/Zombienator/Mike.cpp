@@ -5,10 +5,10 @@
 
 Mike::Mike() : PlayableCharacter(){}
 
-void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CharacterContainer* characterC, SDL_Renderer* ren)
+void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren)
 {
 	KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
-	this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC);
+	this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC, collideC, characterC);
 
 	this->SetWeapon(new Pistol());
 	

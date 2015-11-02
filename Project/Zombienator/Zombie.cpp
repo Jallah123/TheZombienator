@@ -10,11 +10,11 @@ Zombie::~Zombie()
 }
 
 
-void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC,CharacterContainer* characterC, SDL_Renderer* ren)
+void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren)
 {
 	//Zombie doesn't have input from the InputContainer
 	SetImage("assets/images/spritesheets/1zombie.png", *ren);
-	this->SetContainers(drawC, animC, moveC, nullptr, nullptr);
+	this->SetContainers(drawC, animC, moveC, nullptr, nullptr, collideC, characterC);
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
 	SetMoveBehaviour("AiMoveBehaviour");

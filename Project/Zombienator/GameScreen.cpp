@@ -26,18 +26,19 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 	MapParser* mp{};
 	map = mp->ParseJsonMap(path);
 	GameObjectFactory::Instance()->mapLevel = map.get();
-	//spawnController.AddLocation(1280, 340);
-	//spawnController.AddLocation(640, 680);
-	//spawnController.AddLocation(0, 340);
+	
 	
 	characterContainer->Init();
 	spawnController = new SpawnController();
 	spawnController->AddLocation(640, 100);
+	spawnController->AddLocation(1280, 340);
+	spawnController->AddLocation(640, 680);
+	spawnController->AddLocation(0, 340);
 	spawnController->SetRenderer(ren);
 
 	mike = GameObjectFactory::Instance()->CreateMike();
 	mike->SetPosition(800, 150);
-	mike->Init(drawContainer, animateContainer, moveContainer, actionContainer, characterContainer, ren);
+	mike->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, ren);
 	
 	spawnController->AddTarget(mike);
 

@@ -7,6 +7,8 @@
 
 class GameObject
 {
+private:
+	bool canRemove = false;
 protected:
 	MoveDirection moveDirection = MoveDirection::SOUTH;
 	SDL_Texture* texture = nullptr;
@@ -44,4 +46,9 @@ public:
 	// -- Map
 	Map* getMap() { return map; }
 	void setMap(Map* m) { map = m; }
+
+
+	// -- Remove
+	bool CanBeRemoved() { return this->canRemove; }
+	void CanRemove(bool c) { this->canRemove = c; }
 };

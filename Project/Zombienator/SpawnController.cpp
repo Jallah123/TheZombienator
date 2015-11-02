@@ -41,7 +41,7 @@ void SpawnController::Spawn()
 		z->SetTarget(target);
 		z->SetPosition(p.first, p.second);
 		std::cout << p.first << "  ; " << p.second << std::endl;
-		z->Init(drawContainer, animateContainer, moveContainer, actionContainer, characterContainer, renderer);
+		z->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, renderer);
 		zombies++;
 	}
 }
