@@ -15,7 +15,6 @@ CollideContainer::~CollideContainer()
 
 void CollideContainer::Collide(float dt)
 {
-	vector<CollideBehaviour*> collideToRemove;
 	for (auto& behaviour : arr)
 	{
 		CollideBehaviour* collideBehaviour = dynamic_cast<CollideBehaviour*>(behaviour);
@@ -23,12 +22,9 @@ void CollideContainer::Collide(float dt)
 
 		if (Bullet* bullet = dynamic_cast<Bullet*>(behaviour->GetGameObject())) {
 			if (bullet->GetLifeTime() <= 0 || bullet->HasCollision()) {
-				collideToRemove.push_back(collideBehaviour);
+				arrRemove.push_back(behaviour);
 			}
 		}
 	}
-	for each (auto& behaviour in collideToRemove)
-	{
-		Remove(behaviour);
-	}
+	RemoveAll();
 }

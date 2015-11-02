@@ -72,11 +72,11 @@ void Character::SetActionBehaviour(std::string name)
 
 void Character::Remove()
 {
-	drawContainer->Remove(drawBehaviour);
-	animateContainer->Remove(animateBehaviour);
-	moveContainer->Remove(moveBehaviour);
+	drawBehaviour->CanRemove(true);
+	animateBehaviour->CanRemove(true);
+	moveBehaviour->CanRemove(true);
 	for (const auto& ab : actionBehaviours) {
-		actionContainer->Remove(ab);
+		ab->CanRemove(true);
 	}
 }
 
