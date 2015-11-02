@@ -7,6 +7,7 @@
 #include "DrawBehaviour.h"
 #include "MoveBehaviour.h"
 #include "ActionBehaviour.h"
+#include "CollideBehaviour.h"
 
 //Containers
 #include "AnimateContainer.h"
@@ -73,6 +74,13 @@ void Character::SetActionBehaviour(std::string name)
 	if (moveBehaviour == nullptr) return;
 	this->actionBehaviours.push_back(a);
 	this->actionContainer->Add(a);
+}
+
+void Character::SetCollideBehaviour(std::string name)
+{
+	this->collideBehaviour = BehaviourFactory::Instance()->CreateCollideBehaviour(name, this);
+	if (collideBehaviour != nullptr)
+		this->moveContainer->Add(collideBehaviour);
 }
 
 void Character::Remove()

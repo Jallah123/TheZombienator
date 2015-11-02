@@ -16,6 +16,7 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	SetAnimateBehaviour("AnimateBehaviour");
 	SetMoveBehaviour("PcMoveBehaviour");
 	SetActionBehaviour("ShootActionBehaviour");
+	SetCollideBehaviour("CharacterCollideBehaviour");
 
 	characterC->AddCharacter(this);
 

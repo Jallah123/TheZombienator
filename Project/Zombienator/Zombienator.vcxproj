@@ -188,6 +188,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletFactory.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CharacterCollideBehaviour.cpp" />
     <ClCompile Include="CharacterContainer.cpp" />
     <ClCompile Include="CharacterDrawBehaviour.cpp" />
     <ClCompile Include="CollideBehaviour.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletFactory.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CharacterCollideBehaviour.h" />
     <ClInclude Include="CharacterContainer.h" />
     <ClInclude Include="CharacterDrawBehaviour.h" />
     <ClInclude Include="CollideBehaviour.h" />

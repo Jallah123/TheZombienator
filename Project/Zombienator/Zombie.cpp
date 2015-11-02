@@ -18,6 +18,8 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
 	SetMoveBehaviour("AiMoveBehaviour");
+	SetCollideBehaviour("CharacterCollideBehaviour");
+
 	characterC->AddCharacter(this);
 	
 	SetSize(32, 36);

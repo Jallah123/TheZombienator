@@ -27,23 +27,25 @@ SpawnController::~SpawnController()
 
 void SpawnController::Update(float dt)
 {
-	if (zombies == 0) Spawn();
+	if (zombies == amountToSpawn) return;
+	elapsedtime += dt;
+	if (elapsedtime > spawnTime) Spawn();
 }
 
 void SpawnController::Spawn()
 {
 	if (locations.size() == 0) return;
-	for (size_t i = 0; i < amountToSpawn; i++)
-	{
-		int l = locationDist(dre);
-		xy p = locations.at(l);
-		Zombie* z = GameObjectFactory::Instance()->CreateZombie();
-		z->SetTarget(target);
-		z->SetPosition(p.first, p.second);
-		std::cout << p.first << "  ; " << p.second << std::endl;
-		z->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, renderer);
-		zombies++;
-	}
+
+	int l = locationDist(dre);
+	xy p = locations.at(l);
+
+	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
+	z->SetTarget(target);
+	z->SetPosition(p.first, p.second);
+	std::cout << p.first << "  ; " << p.second << std::endl;
+	z->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, renderer);
+	zombies++;
+	elapsedtime = 0;
 }
 
 void SpawnController::AddLocation(int x, int y)

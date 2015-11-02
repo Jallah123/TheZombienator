@@ -15,7 +15,7 @@ class DrawBehaviour;
 class AnimateBehaviour;
 class MoveBehaviour;
 class ActionBehaviour;
-
+class CollideBehaviour;
 
 class Character : 
 	public GameObject
@@ -39,6 +39,7 @@ protected:
 	DrawBehaviour* drawBehaviour;
 	AnimateBehaviour* animateBehaviour;
 	MoveBehaviour* moveBehaviour;
+	CollideBehaviour* collideBehaviour;
 	//Character can have multiple actions
 	std::vector<ActionBehaviour*> actionBehaviours;
 
@@ -61,6 +62,7 @@ public:
 	void SetAnimateBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
 	void SetActionBehaviour(std::string name);
+	void SetCollideBehaviour(std::string name);
 
 	InputContainer* GetInputContainer() { return inputContainer; }
 

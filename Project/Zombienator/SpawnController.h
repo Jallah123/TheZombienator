@@ -19,6 +19,8 @@ private:
 	vector<xy> locations;
 	int zombies = 0;
 	int amountToSpawn = 10;
+	float spawnTime = 100;
+	float elapsedtime = 0;
 	random_device dev;
 	default_random_engine dre{ dev() };
 	uniform_int_distribution<int> locationDist;
