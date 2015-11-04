@@ -7,13 +7,15 @@ class DrawContainer;
 class MoveContainer;
 class InputContainer;
 class ActionContainer;
+class CollideContainer;
+class CharacterContainer;
 
 //Behaviours
 class DrawBehaviour;
 class AnimateBehaviour;
 class MoveBehaviour;
 class ActionBehaviour;
-
+class CollideBehaviour;
 
 class Character : 
 	public GameObject
@@ -30,12 +32,14 @@ protected:
 	MoveContainer* moveContainer;
 	InputContainer* inputContainer;
 	ActionContainer* actionContainer;
-	/*CollideContainer collideContainer;*/
+	CollideContainer* collideContainer;
+	CharacterContainer* characterContainer;
 
 	//Behaviours
 	DrawBehaviour* drawBehaviour;
 	AnimateBehaviour* animateBehaviour;
 	MoveBehaviour* moveBehaviour;
+	CollideBehaviour* collideBehaviour;
 	//Character can have multiple actions
 	std::vector<ActionBehaviour*> actionBehaviours;
 
@@ -51,13 +55,16 @@ public:
 
 	void SetSpeed(float s) { speed = s; }
 	void SetFrames(int f) { animationFrames = f; }
+	void SetHealth(int h) { this->health = h; }
 
-
-	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC);
+	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC);
 	void SetDrawBehaviour(std::string name);
 	void SetAnimateBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
 	void SetActionBehaviour(std::string name);
+	void SetCollideBehaviour(std::string name);
 
 	InputContainer* GetInputContainer() { return inputContainer; }
+
+	void Remove();
 };

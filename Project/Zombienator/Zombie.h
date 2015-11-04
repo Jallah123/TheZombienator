@@ -14,7 +14,7 @@ private:
 public:
 	Zombie();
 	~Zombie();
-	void Init(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, ActionContainer* actionC,CharacterContainer* characterC, SDL_Renderer* ren);
+	void Init(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren);
 
 	void SetTarget(Character* c) { this->target = c; }
 	Character* GetTarget() { return this->target; }

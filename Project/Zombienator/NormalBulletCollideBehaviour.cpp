@@ -25,6 +25,5 @@ bool NormalBulletCollideBehaviour::Collide(float dt)
 			return true;
 		}
 	}
-	
 	return false;
 }
