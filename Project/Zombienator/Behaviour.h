@@ -4,6 +4,8 @@
 
 class Behaviour
 {
+private:
+	bool canRemove = false;
 protected:
 	GameObject* gameObject;
 public:
@@ -11,6 +13,8 @@ public:
 	virtual ~Behaviour();
 	GameObject* GetGameObject() { return gameObject; }
 	void SetGameObject(GameObject* go) { gameObject = go; }
+	bool CanBeRemove() { return this->canRemove; }
+	void CanRemove(bool c) { this->canRemove = c; }
 /*
 	virtual void Animate(float dt) = 0;
 	virtual void Update(float dt) = 0;

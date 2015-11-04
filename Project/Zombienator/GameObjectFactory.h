@@ -6,6 +6,7 @@
 class GameObject;
 class Mike;
 class Zombie;
+class Map;
 
 class GameObjectFactory
 {
@@ -14,6 +15,7 @@ private:
 	GameObjectFactory() { }// EMPTY CONSTRUCTOR IS IMPORTANT
 	
 public:
+	static Map* mapLevel;
 	~GameObjectFactory();
 	static std::map<std::string, std::function<GameObject*(void)>> registry;
 
