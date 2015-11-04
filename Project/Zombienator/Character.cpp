@@ -80,7 +80,7 @@ void Character::SetCollideBehaviour(std::string name)
 {
 	this->collideBehaviour = BehaviourFactory::Instance()->CreateCollideBehaviour(name, this);
 	if (collideBehaviour != nullptr)
-		this->moveContainer->Add(collideBehaviour);
+		this->collideContainer->Add(collideBehaviour);
 }
 
 void Character::Remove()
