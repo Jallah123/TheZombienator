@@ -22,6 +22,8 @@ void AnimateContainer::Animate(float dt)
 
 		//Draw each Behaviour
 		ab->Animate(dt, ticks);
+		if (ab->CanBeRemove()) arrRemove.push_back(ab);
 	}
+	RemoveAll();
 }
 

@@ -23,5 +23,7 @@ void ActionContainer::Update(float dt)
 	for (Behaviour* b : this->arr) {
 		ActionBehaviour* ab = dynamic_cast<ActionBehaviour*>(b);
 		ab->Update(dt);
+		if (ab->CanBeRemove()) arrRemove.push_back(ab);
 	}
+	RemoveAll();
 }

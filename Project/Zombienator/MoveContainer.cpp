@@ -21,9 +21,11 @@ void MoveContainer::Move(float dt)
 	if (this->arr.empty()) return;//Do nothing on empty
 	for (Behaviour* i : this->arr) {
 		MoveBehaviour* mb = dynamic_cast<MoveBehaviour*>(i);
-	
+
 		//Draw each Behaviour
 		mb->Move(dt);
+		if (i->CanBeRemove()) arrRemove.push_back(i);
 	}
+	RemoveAll();
 }
 

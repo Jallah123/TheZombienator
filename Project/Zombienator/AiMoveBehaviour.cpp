@@ -62,5 +62,6 @@ void AiMoveBehaviour::Move(float dt)
 	if (z->getMap()->checkCollision(z->getPosX(), newY, z->GetWidth(), z->GetHeight())) {
 		finalY = z->getPosY();
 	}
+
 	z->SetPosition(finalX, finalY);
 }

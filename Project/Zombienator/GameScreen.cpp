@@ -12,35 +12,36 @@
 #include "CollideContainer.h"
 #include "ContainerContainer.h"
 #include <SDL_mixer.h>
-
+#include "SpawnController.h"
 Mike* mike = nullptr;
-Zombie* zombie = nullptr;
 DrawContainer* drawContainer = ContainerContainer::GetInstance().GetDrawContainer();
 AnimateContainer* animateContainer = ContainerContainer::GetInstance().GetAnimateContainer();
 ActionContainer* actionContainer = ContainerContainer::GetInstance().GetActionContainer();
 MoveContainer* moveContainer = ContainerContainer::GetInstance().GetMoveContainer();
 CollideContainer* collideContainer = ContainerContainer::GetInstance().GetCollideContainer();
 CharacterContainer* characterContainer = ContainerContainer::GetInstance().GetCharacterContainer();
-
+SpawnController* spawnController;
 GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
-	characterContainer->Init();
-
-	mike = GameObjectFactory::Instance()->CreateMike();
-	mike->Init(drawContainer, animateContainer, moveContainer, actionContainer, characterContainer, ren);
-	mike->SetPosition(800, 150);
-
-	zombie = GameObjectFactory::Instance()->CreateZombie();
-	zombie->Init(drawContainer, animateContainer, moveContainer, actionContainer, characterContainer, ren);
-	zombie->SetPosition(200, 300);
-
-	zombie->SetTarget(mike);
-	
 	MapParser* mp{};
 	map = mp->ParseJsonMap(path);
-	// --
-	mike->setMap(map.get());
-	zombie->setMap(map.get());
+	GameObjectFactory::Instance()->mapLevel = map.get();
+	
+	
+	characterContainer->Init();
+	spawnController = new SpawnController();
+	spawnController->AddLocation(640, 100);
+	spawnController->AddLocation(1280, 340);
+	spawnController->AddLocation(640, 680);
+	spawnController->AddLocation(0, 340);
+	spawnController->SetRenderer(ren);
+
+	mike = GameObjectFactory::Instance()->CreateMike();
+	mike->SetPosition(800, 150);
+	mike->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, ren);
+	
+	spawnController->AddTarget(mike);
+
 	// --
 	map.get()->setSprites(mp->GenerateSprites(path));
 	SDL_Surface* s;
@@ -115,8 +116,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		}
 	}
 	*/
-
-	//float dt = 1;
+	spawnController->Update(dt);
 	actionContainer->Update(dt);
 	moveContainer->Move(dt);
 	collideContainer->Collide(dt);
@@ -129,6 +129,11 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	//SDL_RenderDrawRect(&ren, &rectangle);
 
 	//cout << "checkCollision() : " << map->checkCollision(80, 80, 50, 50) << endl;
+}
+
+GameScreen::~GameScreen()
+{
+	delete spawnController;
 }
 
 void GameScreen::DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren) {

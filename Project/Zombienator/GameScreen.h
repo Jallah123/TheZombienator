@@ -9,7 +9,7 @@ class GameScreen : public AbstractScreen
 public:
 	GameScreen(SDL_Renderer* _ren, string path);
 	void Draw(SDL_Renderer& ren, float dt);
-	~GameScreen() {};
+	~GameScreen();
 private:
 	unique_ptr<Map> map{ nullptr };
 	Mix_Chunk *sound;

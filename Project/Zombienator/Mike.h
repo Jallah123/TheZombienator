@@ -13,7 +13,7 @@ class Mike :
 {
 public:
 	Mike();
-	void Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer * actionC, CharacterContainer * characterC, SDL_Renderer * ren);
+	void Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer * actionC, CollideContainer* collideC, CharacterContainer * characterC, SDL_Renderer * ren);
 	//Default constructor
 	~Mike();
 };
