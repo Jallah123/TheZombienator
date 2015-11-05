@@ -1,18 +1,20 @@
 #pragma once
 #include "GameScreen.h"
+#include <SDL_mixer.h>
 #include <iostream>
 #include "Mike.h"
 #include "Zombie.h"
 #include "GameObjectFactory.h"
+#include "BehaviourFactory.h"
 #include "AnimateContainer.h"
 #include "DrawContainer.h"
 #include "MoveContainer.h"
 #include "ActionContainer.h"
 #include "CharacterContainer.h"
 #include "CollideContainer.h"
-#include <SDL_mixer.h>
 #include "SpawnController.h"
 
+GameObjectFactory* goFactory = GameObjectFactory::Instance();
 Mike* mike = nullptr;
 DrawContainer drawContainer;
 AnimateContainer animateContainer;
@@ -26,8 +28,8 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
 	MapParser* mp{};
 	map = mp->ParseJsonMap(path);
-	GameObjectFactory::Instance()->SetLevel( map.get() );
-	GameObjectFactory::Instance()->SetContainers(
+	goFactory->SetLevel( map.get() );
+	goFactory->SetContainers(
 		&drawContainer, 
 		&animateContainer, 
 		&moveContainer, 
@@ -36,7 +38,16 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 		&characterContainer, 
 		ren
 	);
-	
+	BehaviourFactory::Instance()->SetContainers(
+		&drawContainer,
+		&animateContainer,
+		&moveContainer,
+		&actionContainer,
+		&collideContainer,
+		&characterContainer,
+		ren
+	);
+	characterContainer.Init();
 	
 	spawnController = new SpawnController(&drawContainer, &animateContainer, &moveContainer, &actionContainer, &collideContainer, &characterContainer);
 	spawnController->AddLocation(640, 100);
@@ -45,7 +56,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 	spawnController->AddLocation(0, 340);
 	spawnController->SetRenderer(ren);
 
-	mike = GameObjectFactory::Instance()->CreateMike();
+	mike = goFactory->CreateMike();
 	mike->SetPosition(800, 150);
 	
 	spawnController->AddTarget(mike);

@@ -1,17 +1,20 @@
 #pragma once
 #include "AbstractUIComponent.h"
-#include "string"
-#include "SDL.h"
-#include "functional"
+#include <SDL_ttf.h>
 
 class Button : public AbstractUIComponent
 {
+protected:
+	TTF_Font* font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
+	SDL_Color color = { 255, 255, 255 };
+	SDL_Texture* message = nullptr;
+	SDL_Texture* image = nullptr;
+	
 public:
-	Button(SDL_Renderer& ren, std::string text, std::string img_url);
-	void Draw(SDL_Renderer & ren);
-	void ClickAction();
-	~Button();
-private:
-	SDL_Texture* Message;
-	SDL_Texture* Image;
+	Button();
+	Button(SDL_Renderer& ren, char* text, char* img_url);
+	virtual ~Button();
+	
+	void Draw(SDL_Renderer& ren);
+	virtual void ClickAction() = 0;
 };

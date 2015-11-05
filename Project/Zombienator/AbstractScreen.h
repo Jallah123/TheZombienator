@@ -8,6 +8,7 @@
 class AbstractScreen
 {
 public:
+	AbstractScreen();
 	AbstractScreen(SDL_Renderer* ren);
 	virtual ~AbstractScreen();
 

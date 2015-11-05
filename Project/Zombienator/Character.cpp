@@ -80,14 +80,17 @@ void Character::SetCollideBehaviour(std::string name)
 {
 	this->collideBehaviour = BehaviourFactory::Instance()->CreateCollideBehaviour(name, this);
 	if (collideBehaviour != nullptr)
-		this->moveContainer->Add(collideBehaviour);
+		this->collideContainer->Add(collideBehaviour);
 }
 
 void Character::Remove()
 {
+	std::cout << "REMOVE: "<< std::endl;
+
 	drawBehaviour->CanRemove(true);
 	animateBehaviour->CanRemove(true);
 	moveBehaviour->CanRemove(true);
+	collideBehaviour->CanRemove(true);
 	for (const auto& ab : actionBehaviours) {
 		ab->CanRemove(true);
 	}

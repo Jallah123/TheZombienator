@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <iostream>
 #include <memory>
 #include <functional>
 
@@ -19,14 +20,15 @@ class Zombie;
 class Map;
 class NormalBullet;
 class PlayableCharacter;
-
 class SDL_Renderer;
 
 class GameObjectFactory
 {
 	//http://www.codeproject.com/Articles/567242/AplusC-b-bplusObjectplusFactory
 private:
-	GameObjectFactory() { }// EMPTY CONSTRUCTOR IS IMPORTANT
+	GameObjectFactory() {
+		std::cout << "Init Factory" << std::endl;
+	};// EMPTY CONSTRUCTOR IS IMPORTANT
 	static DrawContainer* drawContainer;
 	static AnimateContainer* animateContainer;
 	static ActionContainer* actionContainer;
@@ -34,6 +36,7 @@ private:
 	static CollideContainer* collideContainer;
 	static CharacterContainer* characterContainer;
 	static SDL_Renderer* renderer;
+	
 	static std::map<std::string, std::function<GameObject*(void)>> registry;
 	static Map* mapLevel;
 public:

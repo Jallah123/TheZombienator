@@ -1,13 +1,12 @@
 #pragma once
-#include "AbstractUIComponent.h"
-#include "string"
-#include "SDL.h"
+#include "Button.h"
 
-class InfiniteModeButton : public AbstractUIComponent
+class InfiniteModeButton : public Button
 {
 public:
-	InfiniteModeButton(SDL_Renderer& ren, std::string text, std::string img_url);
-	void Draw(SDL_Renderer & ren);
-	void ClickAction();
+	InfiniteModeButton();
+	InfiniteModeButton(SDL_Renderer& ren, char* text, char* img_url);
 	~InfiniteModeButton();
+
+	virtual void ClickAction() override;
 };

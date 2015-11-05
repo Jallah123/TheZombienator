@@ -1,8 +1,12 @@
+#pragma once
 #include "MenuScreen.h"
-#include <iostream>
 #include "SDL_image.h"
 
 SDL_Texture* texture = nullptr;
+
+MenuScreen::MenuScreen() : AbstractScreen()
+{
+}
 
 MenuScreen::MenuScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
@@ -11,21 +15,19 @@ MenuScreen::MenuScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 	SDL_FreeSurface(s);
 
 	musicController->Load("assets/sounds/Undead-Rising.wav");
-	musicController->Play(-1, -1);
+	musicController->Play(1, -1);
 }
 
-void MenuScreen::ChangeBackground(SDL_Renderer* ren, std::string img_url)
+void MenuScreen::ChangeBackground(SDL_Renderer* ren, char* img_url)
 {
-	char tab2[1024];
-	SDL_Surface *s = IMG_Load(strcpy(tab2, img_url.c_str()));
+	SDL_Surface *s = IMG_Load(img_url);
 	BackgroundTexture = SDL_CreateTextureFromSurface(ren, s);
 	SDL_FreeSurface(s);
 }
 
 
 MenuScreen::~MenuScreen() 
-{
-	musicController->Stop();
+{ 
 	SDL_DestroyTexture(BackgroundTexture);
 	BackgroundTexture = NULL;
 }

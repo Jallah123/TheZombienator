@@ -1,13 +1,14 @@
 #pragma once
-#include "AbstractUIComponent.h"
+#include "Button.h"
 #include "string"
 #include "SDL.h"
 
-class StoryModeButton : public AbstractUIComponent
+class StoryModeButton : public Button
 {
 public:
-	StoryModeButton(SDL_Renderer& ren, std::string text, std::string img_url);
-	void Draw(SDL_Renderer & ren);
-	void ClickAction();
+	StoryModeButton();
+	StoryModeButton(SDL_Renderer& ren, char* text, char* img_url);
+	
+	virtual void ClickAction() override;
 	~StoryModeButton();
 };

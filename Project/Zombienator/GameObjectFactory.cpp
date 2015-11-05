@@ -1,3 +1,5 @@
+#include <SDL_render.h>
+#include <iostream>
 #include "GameObjectFactory.h"
 #include "GameObject.h"
 #include "Character.h"
@@ -6,11 +8,18 @@
 #include "Map.h"
 #include "NormalBullet.h"
 
+#include "DrawContainer.h"
+#include "AnimateContainer.h"
+#include "ActionContainer.h"
+#include "MoveContainer.h"
+#include "CollideContainer.h"
+#include "CharacterContainer.h"
+
 //
 // DO NOT FORGET TO INITIALIZE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //
-std::map<std::string, std::function<GameObject*(void)>> GameObjectFactory::registry;
-Map* GameObjectFactory::mapLevel = nullptr;
+std::map<std::string, std::function<GameObject*(void)>> GameObjectFactory::registry{};
+Map*				GameObjectFactory::mapLevel = nullptr;
 DrawContainer*		GameObjectFactory::drawContainer = nullptr;
 AnimateContainer*	GameObjectFactory::animateContainer = nullptr;
 ActionContainer*	GameObjectFactory::actionContainer = nullptr;
@@ -49,7 +58,8 @@ void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * 
 void GameObjectFactory::Register(std::string name, std::function<GameObject*(void)> fn)
 {
 	//we need to register an instance that already has all of the containers.
-	GameObjectFactory::registry[name] = fn;
+	GameObjectFactory::registry.insert({ name, fn });
+	//GameObjectFactory::registry[name] = fn;
 }
 
 void GameObjectFactory::SetLevel(Map * l)

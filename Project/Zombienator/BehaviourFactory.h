@@ -1,5 +1,3 @@
-#ifndef BEHAVIOUR_FACTORY
-#define BEHAVIOUR_FACTORY
 #pragma once
 #include <map>
 #include <memory>
@@ -55,4 +53,3 @@ public:
 	static ActionBehaviour* CreateActionBehaviour(std::string name, GameObject* obj);
 	static CollideBehaviour* CreateCollideBehaviour(std::string name, GameObject* obj);
 };
-#endif

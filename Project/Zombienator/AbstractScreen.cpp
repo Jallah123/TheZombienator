@@ -1,6 +1,10 @@
 #include "AbstractScreen.h"
 
 
+AbstractScreen::AbstractScreen()
+{
+}
+
 AbstractScreen::AbstractScreen(SDL_Renderer* ren)
 {
 }

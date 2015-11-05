@@ -7,9 +7,10 @@ class MenuScreen
 {
 protected:
 	SDL_Texture* BackgroundTexture;
-	void ChangeBackground(SDL_Renderer* ren, std::string img_url);
+	void ChangeBackground(SDL_Renderer* ren, char* img_url);
 
 public:
+	MenuScreen();
 	MenuScreen(SDL_Renderer* ren);//Constructor
 	virtual ~MenuScreen();//Destructor
 	

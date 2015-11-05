@@ -1,24 +1,30 @@
 #pragma once
-#include "SDL.h"
-#include "SDL_ttf.h"
+#include <SDL_render.h>
 
-class AbstractUIComponent : public SDL_Rect
+class AbstractUIComponent
 {
 public:
+	AbstractUIComponent();
 	AbstractUIComponent(SDL_Renderer& ren);
-	void SetDimension(SDL_Rect d) { SetDimensions(d.x, d.y, d.w, d.h); }
-	void SetLocation(int xx, int yy) { x = xx; y = yy; }
-	void SetDimensions(int xx, int yy, int ww, int hh) { SetLocation(xx, yy); SetSize(ww, hh); }
-	void SetSize(int ww, int hh) { w = ww; h = hh; };
-	SDL_Rect* const GetDimensions() { return this; }
-	void OnClick(SDL_Point MousePosition);
-	virtual void Draw(SDL_Renderer& ren) = 0;
 	virtual ~AbstractUIComponent();
+
+	void SetSize(int w, int h);
+	void SetDestLocation(int x, int y);
+	void SetSourceLocation(int x, int y);
+	
+	SDL_Rect const GetDestRect() { return destRect; }
+	SDL_Rect const GetSrcRect() { return srcRect; }
+
+	void OnClick(SDL_Point mousePosition);
+	virtual void Draw(SDL_Renderer& ren) = 0;
+	
 protected:
-	SDL_Renderer* instance;
-	SDL_Texture* Message;
-	SDL_Texture* Image;
-private:
+	SDL_Renderer* renderer;
+	SDL_Texture* message;
+	SDL_Texture* image;
+	SDL_Rect srcRect{};
+	SDL_Rect destRect{};
+
 	virtual void ClickAction() = 0;
 };
 

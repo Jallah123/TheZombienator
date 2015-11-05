@@ -1,16 +1,13 @@
 #pragma once
-#include "AbstractUIComponent.h"
-#include "string"
-#include "SDL.h"
+#include "Button.h"
 
-class BackButton : public AbstractUIComponent
+class BackButton 
+	: public Button
 {
 public:
-	BackButton(SDL_Renderer& ren, std::string text, std::string img_url);
-	void Draw(SDL_Renderer & ren);
-	void ClickAction();
+	BackButton();
+	BackButton(SDL_Renderer& ren, char* text, char* img_url);
 	~BackButton();
-private:
-	SDL_Texture* Message;
-	SDL_Texture* Image;
+
+	virtual void ClickAction() override;
 };

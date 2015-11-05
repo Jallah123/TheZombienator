@@ -293,7 +293,6 @@
     <ClInclude Include="ShootActionBehaviour.h" />
     <ClInclude Include="SpawnController.h" />
     <ClInclude Include="StoryModeButton.h" />
-    <ClInclude Include="TestScreen.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h" />
     <ClInclude Include="Weapon.h" />

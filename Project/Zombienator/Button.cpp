@@ -3,31 +3,28 @@
 #include "SDL_image.h"
 #include "SDL.h"
 
-Button::Button(SDL_Renderer& ren, std::string text, std::string img_url) : AbstractUIComponent(ren) {
-	// TODO: When singleton is working correctly, uncomment.
-	// TTF_Font* Sans = Program::shared_program()->GetFont();
-	TTF_Font* Sans = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
-	SDL_Color Black = { 0, 0, 0 };
-	char tab2[1024];
-	SDL_Surface *s = IMG_Load(strcpy(tab2, img_url.c_str()));
+Button::Button() : AbstractUIComponent()
+{
+}
 
-	Image = SDL_CreateTextureFromSurface(&ren, s);
-	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, strcpy(tab2, text.c_str()), Black);
-	Message = SDL_CreateTextureFromSurface(&ren, surfaceMessage);
+Button::Button(SDL_Renderer& ren, char* text, char* img_url) : AbstractUIComponent(ren) {
+	SDL_Surface *s = IMG_Load(img_url);
+	image = SDL_CreateTextureFromSurface(&ren, s);
+	SDL_FreeSurface(s);
+
+	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(font, text, color);
+	message = SDL_CreateTextureFromSurface(&ren, surfaceMessage);
+	SDL_FreeSurface(surfaceMessage);
+
+	TTF_CloseFont(font);
+	font = NULL;
+}
+Button::~Button()
+{
 }
 
 void Button::Draw(SDL_Renderer& ren) {
-	SDL_RenderCopy(&ren, Image, 0, this);
-	SDL_RenderCopy(&ren, Message, 0, this);
-}
 
-void Button::ClickAction() {
-	std::cout << "I am a asshole for creating, class TestScreen." << std::endl;
-	SDL_Renderer* ren = instance;
-	//TestScreen* m = new TestScreen{ ren };
-	//ScreenController::GetInstance().ChangeMenu(m);
-}
-
-Button::~Button()
-{
+	SDL_RenderCopy(&ren, image, &srcRect, &destRect);
+	SDL_RenderCopy(&ren, message, 0, &destRect);
 }

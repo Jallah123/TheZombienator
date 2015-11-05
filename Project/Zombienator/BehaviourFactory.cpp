@@ -1,4 +1,5 @@
-
+#pragma once
+#include <SDL_render.h>
 #include "Behaviour.h"
 #include "DrawBehaviour.h"
 #include "AnimateBehaviour.h"
@@ -17,6 +18,7 @@ ActionContainer*	BehaviourFactory::actionContainer = nullptr;
 MoveContainer*		BehaviourFactory::moveContainer = nullptr;
 CollideContainer*	BehaviourFactory::collideContainer = nullptr;
 CharacterContainer* BehaviourFactory::characterContainer = nullptr;
+SDL_Renderer*		BehaviourFactory::renderer = nullptr;
 
 BehaviourFactory::~BehaviourFactory()
 {

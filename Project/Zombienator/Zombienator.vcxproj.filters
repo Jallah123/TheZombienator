@@ -100,9 +100,6 @@
     <Filter Include="Header Files\Views\GameScreen">
       <UniqueIdentifier>{4286bc62-bacc-4ec6-a753-c9575c3bbc70}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Views\TestScreen">
-      <UniqueIdentifier>{17ac1c88-4a69-4e12-894f-de833fadf144}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Views\SelectionScreen">
       <UniqueIdentifier>{1d1cc560-4f1d-4f1a-949b-a53b5f5b46a9}</UniqueIdentifier>
     </Filter>
@@ -421,9 +418,6 @@
     </ClInclude>
     <ClInclude Include="MapRender.h">
       <Filter>Header Files\Views\GameScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScreen.h">
-      <Filter>Header Files\Views\TestScreen</Filter>
     </ClInclude>
     <ClInclude Include="SelectionScreen.h">
       <Filter>Header Files\Views\SelectionScreen</Filter>
