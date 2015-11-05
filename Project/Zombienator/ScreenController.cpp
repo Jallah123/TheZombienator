@@ -1,27 +1,21 @@
 #include "ScreenController.h"
 #include "MenuScreen.h"
 
-void ScreenController::ChangeMenu(AbstractScreen* NewMenu)
+void ScreenController::ChangeMenu(AbstractScreen* screen)
 {
-	MenuStack.push(NewMenu);
+	screenStack.push(screen);
 }
 
 void ScreenController::Back()
 {
-	if (MenuStack.size() > 1) {
-		AbstractScreen* Menu = MenuStack.top();
-		if (MenuScreen* screen = dynamic_cast<MenuScreen*>(Menu))
-		{
-			delete screen;
-		}
-		else {
-			delete Menu;
-		}
-		MenuStack.pop();
+	if (screenStack.size() > 1) {
+		AbstractScreen* screen = screenStack.top();
+		delete screen;
+		screenStack.pop();
 	}
 }
 
 int ScreenController::Size()
 {
-	return MenuStack.size();
+	return screenStack.size();
 }

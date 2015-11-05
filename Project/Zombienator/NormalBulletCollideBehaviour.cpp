@@ -1,11 +1,12 @@
 #pragma once
+#include <iostream>
+#include <vector>
 #include "Zombie.h"
 #include "NormalBulletCollideBehaviour.h"
 #include "Bullet.h"
 #include "PlayableCharacter.h"
-#include "ContainerContainer.h"
-#include <iostream>
-#include <vector>
+#include "CharacterContainer.h"
+
 NormalBulletCollideBehaviour::~NormalBulletCollideBehaviour()
 {
 }
@@ -13,7 +14,8 @@ NormalBulletCollideBehaviour::~NormalBulletCollideBehaviour()
 bool NormalBulletCollideBehaviour::Collide(float dt)
 {
 	Bullet* bullet = dynamic_cast<Bullet*>(this->gameObject);
-	std::vector<Character*> characters = ContainerContainer::GetInstance().GetCharacterContainer()->GetCharacters();
+	
+	std::vector<Character*> characters = characterContainer->GetCharacters();
 	for (auto& c : characters)
 	{
 		Zombie* target = dynamic_cast<Zombie*>(c);

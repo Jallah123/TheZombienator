@@ -38,6 +38,7 @@ private:
 
 public:
 	SpawnController();
+	SpawnController(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC);
 	~SpawnController();
 
 	void Update(float dt);

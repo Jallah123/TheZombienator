@@ -9,19 +9,21 @@
 #include "MapRender.h"
 #include "KeyboardInputHandler.h"
 #include "ControllerInputHandler.h"
+#include "GameState.cpp"
 
 using namespace std;
 
 class Program
 {
 private:
-	SDL_Window* Sdl_Window;
-	SDL_Renderer* Sdl_Renderer;
+	SDL_Window* Sdl_Window = nullptr;
+	SDL_Renderer* Sdl_Renderer = nullptr;
 	SDL_Event e;
-	SDL_GameController* controller;
-	KeyboardInputHandler* keyboardInputHandler;
-	ControllerInputHandler* controllerInputHandler;
-	TTF_Font* Font;
+	SDL_GameController* controller = nullptr;
+	KeyboardInputHandler* keyboardInputHandler = nullptr;
+	ControllerInputHandler* controllerInputHandler = nullptr;
+	TTF_Font* Font = nullptr;
+	GameState gameState = GameState::INIT;
 
 	void xmlParseTest();
 	int width = 1280;
@@ -34,7 +36,9 @@ private:
 
 	Program();
 	~Program();
-	int Render();
+	int Tick();
+	void Render(AbstractScreen* screen);
+	int Events(AbstractScreen* screen);
 	int InitComponents();
 	int InitJoystick();
 	void CloseJoystick();

@@ -1,9 +1,5 @@
 #include "Button.h"
-#include "string"
-#include "MenuScreen.h"
-#include "TestScreen.h"
-#include "ScreenController.h"
-#include "Program.h"
+#include <iostream>
 #include "SDL_image.h"
 #include "SDL.h"
 
@@ -26,9 +22,10 @@ void Button::Draw(SDL_Renderer& ren) {
 }
 
 void Button::ClickAction() {
+	std::cout << "I am a asshole for creating, class TestScreen." << std::endl;
 	SDL_Renderer* ren = instance;
-	TestScreen* m = new TestScreen{ ren };
-	ScreenController::GetInstance().ChangeMenu(m);
+	//TestScreen* m = new TestScreen{ ren };
+	//ScreenController::GetInstance().ChangeMenu(m);
 }
 
 Button::~Button()

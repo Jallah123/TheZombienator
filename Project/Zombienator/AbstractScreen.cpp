@@ -14,3 +14,14 @@ AbstractScreen::~AbstractScreen()
 	}
 	UIComponents.clear();
 }
+
+void AbstractScreen::AddUIComponent(AbstractUIComponent* UIComponent)
+{
+	UIComponents.push_back(UIComponent);
+}
+
+void AbstractScreen::ClickComponents(SDL_Point MousePosition)
+{
+	for (const auto& i : UIComponents)
+		i->OnClick(MousePosition);
+}

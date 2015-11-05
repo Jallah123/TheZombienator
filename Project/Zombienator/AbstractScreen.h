@@ -9,12 +9,15 @@ class AbstractScreen
 {
 public:
 	AbstractScreen(SDL_Renderer* ren);
-	virtual void Draw(SDL_Renderer& ren, float dt) {};
-	virtual void ClickComponents(SDL_Point MousePosition) {};
-	~AbstractScreen();
+	virtual ~AbstractScreen();
+
+	virtual void Update(float dt) = 0;
+	virtual void Draw(SDL_Renderer& ren, float dt) = 0;
+	virtual void AddUIComponent(AbstractUIComponent* UIComponent);
+	virtual void ClickComponents(SDL_Point MousePosition);
+	
 protected:
 	std::vector<AbstractUIComponent*> UIComponents;
-private:
-	MusicController *MusicController = &MusicController::GetInstance();
+	MusicController* musicController = &MusicController::GetInstance();
 };
 

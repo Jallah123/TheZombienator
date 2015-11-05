@@ -1,28 +1,22 @@
 #pragma once
 #include <vector>
-#include "AbstractUIComponent.h"
-#include "SDL.h"
-#include "MusicController.h"
-#include <algorithm>
-#include "SDL_image.h"
 #include "AbstractScreen.h"
 
-class MenuScreen : public AbstractScreen
+class MenuScreen 
+	: public AbstractScreen
 {
-public:
-	MenuScreen(SDL_Renderer* ren);
-	void AddUIComponent(AbstractUIComponent* UIComponent);
-	void SetBackgroundTexture(SDL_Texture& Texture) { BackgroundTexture = &Texture; }
-	SDL_Texture* const GetBackgroundTexture() { return BackgroundTexture; }
-	void ClickComponents(SDL_Point MousePosition);
-	void Draw(SDL_Renderer& ren, float dt);
-	~MenuScreen();
-private:
-	Mix_Chunk *sound;
-	void loadSounds();
-	void playSound();
-	void stopSound();
 protected:
 	SDL_Texture* BackgroundTexture;
 	void ChangeBackground(SDL_Renderer* ren, std::string img_url);
+
+public:
+	MenuScreen(SDL_Renderer* ren);//Constructor
+	virtual ~MenuScreen();//Destructor
+	
+	void SetBackgroundTexture(SDL_Texture& Texture) { BackgroundTexture = &Texture; }
+	SDL_Texture* const GetBackgroundTexture() { return BackgroundTexture; }
+	
+	virtual void Update(float dt) = 0;
+	virtual void Draw(SDL_Renderer& ren, float dt) = 0;
+	
 };

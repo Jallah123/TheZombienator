@@ -1,11 +1,6 @@
 #include "BackButton.h"
-#include "string"
-#include "MenuScreen.h"
-#include "TestScreen.h"
 #include "ScreenController.h"
-#include "Program.h"
 #include "SDL_image.h"
-#include "SDL.h"
 
 BackButton::BackButton(SDL_Renderer& ren, std::string text, std::string img_url) : AbstractUIComponent(ren) {
 	// TODO: When singleton is working correctly, uncomment.

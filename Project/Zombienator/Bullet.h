@@ -3,15 +3,17 @@
 #include "GameObject.h"
 #include "DrawContainer.h"
 #include "MoveContainer.h"
-#include "CollideContainer.h"
-#include "CollideBehaviour.h"
 #include "PlayableCharacter.h"
 
+//Containers
 class DrawContainer;
 class MoveContainer;
+class CollideContainer;
 
+//Behaviours
 class DrawBehaviour;
 class MoveBehaviour;
+class CollideBehaviour;
 
 class Bullet
 	: public GameObject
@@ -33,12 +35,13 @@ protected:
 	MoveBehaviour* moveBehaviour;
 	CollideBehaviour* collideBehaviour;
 
-	void Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc);
+	void SetContainers(DrawContainer* drawC, MoveContainer* moveC, CollideContainer* collideC);
+
 public:
 	Bullet();
 	virtual ~Bullet();
-
-	void SetContainers(DrawContainer* drawC, MoveContainer* moveC, CollideContainer* collideC);
+	void Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc);
+	
 	void SetDrawBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
 	void SetCollideBehaviour(std::string name);

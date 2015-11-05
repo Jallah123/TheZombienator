@@ -5,18 +5,24 @@
 class SelectionScreen :
 	public MenuScreen
 {
+private:
+	int currentImageIndex = 0;
+	Image* currentImage = nullptr;
+	std::vector<Image> images;
+
 public:
+	SelectionScreen();
 	SelectionScreen(SDL_Renderer* ren);
+	~SelectionScreen();
+
+	
 	void AddImage(Image img);
+
+	std::vector<Image> GetImages() { return images; };
 	int GetCurrentImageIndex() { return currentImageIndex; };
 	Image* GetCurrentImage() { return currentImage; };
-	std::vector<Image> GetImages() { return images; };
+	
 	void SetCurrentImageIndex(int index) { currentImageIndex = index; };
 	void SetCurrentImage(Image* image) { *currentImage = *image; };
-	~SelectionScreen();
-private:
-	int currentImageIndex{ 0 };
-	Image* currentImage{ nullptr };
-	std::vector<Image> images;
 };
 

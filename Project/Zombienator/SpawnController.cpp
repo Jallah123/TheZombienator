@@ -1,23 +1,22 @@
 #pragma once
 #include "SpawnController.h"
 #include "GameObjectFactory.h"
-#include "ContainerContainer.h"
 #include "AnimateContainer.h"
 #include "DrawContainer.h"
 #include "MoveContainer.h"
 #include "ActionContainer.h"
 #include "CharacterContainer.h"
 #include "CollideContainer.h"
-#include "ContainerContainer.h"
 #include <iostream>
-SpawnController::SpawnController()
+
+SpawnController::SpawnController(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC)
 {
-	drawContainer = ContainerContainer::GetInstance().GetDrawContainer();
-	animateContainer = ContainerContainer::GetInstance().GetAnimateContainer();
-	actionContainer = ContainerContainer::GetInstance().GetActionContainer();
-	moveContainer = ContainerContainer::GetInstance().GetMoveContainer();
-	collideContainer = ContainerContainer::GetInstance().GetCollideContainer();
-	characterContainer = ContainerContainer::GetInstance().GetCharacterContainer();
+	drawContainer = drawC;
+	animateContainer = animC;
+	actionContainer = actionC;
+	moveContainer = moveC;
+	collideContainer = collideC;
+	characterContainer = characterC;
 }
 
 

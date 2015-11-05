@@ -186,7 +186,6 @@
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="BehaviourFactory.cpp" />
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="BulletFactory.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CharacterCollideBehaviour.cpp" />
     <ClCompile Include="CharacterContainer.cpp" />
@@ -195,9 +194,9 @@
     <ClCompile Include="CollideContainer.cpp" />
     <ClCompile Include="CollisionLayer.cpp" />
     <ClCompile Include="CollisionObject.cpp" />
-    <ClCompile Include="ContainerContainer.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DrawBehaviour.cpp" />
@@ -233,7 +232,6 @@
     <ClCompile Include="ShootActionBehaviour.cpp" />
     <ClCompile Include="SpawnController.cpp" />
     <ClCompile Include="StoryModeButton.cpp" />
-    <ClCompile Include="TestScreen.cpp" />
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
@@ -251,7 +249,6 @@
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="BehaviourFactory.h" />
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="BulletFactory.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CharacterCollideBehaviour.h" />
     <ClInclude Include="CharacterContainer.h" />
@@ -260,7 +257,6 @@
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="CollisionObject.h" />
-    <ClInclude Include="ContainerContainer.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapLayer.h" />

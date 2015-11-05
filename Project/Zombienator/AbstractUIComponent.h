@@ -13,7 +13,7 @@ public:
 	SDL_Rect* const GetDimensions() { return this; }
 	void OnClick(SDL_Point MousePosition);
 	virtual void Draw(SDL_Renderer& ren) = 0;
-	~AbstractUIComponent();
+	virtual ~AbstractUIComponent();
 protected:
 	SDL_Renderer* instance;
 	SDL_Texture* Message;
