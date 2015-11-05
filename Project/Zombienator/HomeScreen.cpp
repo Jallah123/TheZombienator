@@ -1,7 +1,6 @@
+#pragma once
 #include "HomeScreen.h"
 #include <iostream>
-#include <random>
-#include <time.h>
 #include "SettingsButton.h"
 #include "StoryModeButton.h"
 #include "InfiniteModeButton.h"

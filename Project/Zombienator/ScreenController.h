@@ -12,9 +12,9 @@ public:
 		static ScreenController instance;
 		return instance;
 	}
-	void ChangeMenu(AbstractScreen* screen);
+	void ChangeScreen(AbstractScreen* screen);
 	void Back();
-	std::stack<AbstractScreen*> GetMenuStack() { return screenStack; };
+	std::stack<AbstractScreen*> GetScreenStack() { return screenStack; };
 	AbstractScreen* GetCurrentScreen() { return screenStack.top(); };
 	int Size();
 private:

@@ -35,7 +35,7 @@ int Program::Tick() {
 
 	// MenuScreen
 	MenuScreen* m = new HomeScreen{ Sdl_Renderer };
-	ScreenController::GetInstance().ChangeMenu(m);
+	ScreenController::GetInstance().ChangeScreen(m);
 	currentFrameTime = SDL_GetTicks();
 
 	while (gameState == GameState::RUNNING) {

@@ -16,6 +16,7 @@ SettingsButton::~SettingsButton()
 
 void SettingsButton::ClickAction() 
 {
+	//ScreenController::GetInstance().ChangeScreen(new SettingsScreen())
 	//std::cout << "SettingsButton Clicked!" << std::endl;
 }
 

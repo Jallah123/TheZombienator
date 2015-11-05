@@ -2,6 +2,7 @@
 #include "GameScreen.h"
 #include <SDL_mixer.h>
 #include <iostream>
+
 #include "Mike.h"
 #include "Zombie.h"
 #include "GameObjectFactory.h"
@@ -13,6 +14,7 @@
 #include "CharacterContainer.h"
 #include "CollideContainer.h"
 #include "SpawnController.h"
+#define DEBUG false
 
 GameObjectFactory* goFactory = GameObjectFactory::Instance();
 Mike* mike = nullptr;
@@ -69,9 +71,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 		cout << "Error image load : " << IMG_GetError() << endl;
 		return;
 	}
-	/*SDL_RenderCopy(&ren, BackgroundTexture, 0, 0);
-	for (const auto& i : UIComponents)
-		i->Draw(ren);*/
 	//Load && play sound
 	musicController->Load("assets/sounds/bgSound1.wav");
 	musicController->Play(1, -1);
@@ -87,33 +86,7 @@ void GameScreen::Update(float dt)
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
-	vector<SDL_Rect*> sprites = map.get()->getSprites();
-	vector<MapLayer> layers = map.get()->getLayers();
-	vector<CollisionLayer> collisionLayers = map.get()->getCollisionLayers();
-
-	for (int i = layers.size() - 1; i >= 0; i--)
-	{
-		for (int x = 0; x < 20; x++)
-		{
-			for (int y = 0; y < 40; y++)
-			{
-				DrawRect(x * 32, y * 32, sprites.at(layers.at(i).getGID(x, y)), &ren);
-			}
-		}
-	}
-	/*
-	For debugging purposes only
-	for (int j = collisionLayers.size() - 1; j >= 0; j--)
-	{
-		vector<CollisionObject> collisionObjects = collisionLayers[j].getCollisionObjects();
-
-		for (int k = collisionObjects.size() - 1; k >= 0; k--)
-		{
-			 
-			//DrawCollisionObject(collisionObjects[k].getY(), collisionObjects[k].getX(), collisionObjects[k].getWidth(), collisionObjects[k].getHeight(), &ren);
-		}
-	}
-	*/
+	DrawMap(ren);
 	spawnController->Update(dt);
 	actionContainer.Update(dt);
 	moveContainer.Move(dt);
@@ -125,8 +98,34 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	//SDL_SetRenderDrawColor(&ren, 0xFF, 0x00, 0x00, 0xFF);
 	//SDL_Rect rectangle = { 80, 80, 50, 50 };
 	//SDL_RenderDrawRect(&ren, &rectangle);
+}
 
-	//cout << "checkCollision() : " << map->checkCollision(80, 80, 50, 50) << endl;
+void GameScreen::DrawMap(SDL_Renderer & ren)
+{
+	vector<SDL_Rect*> sprites = map.get()->getSprites();
+	vector<MapLayer> layers = map.get()->getLayers();
+	vector<CollisionLayer> collisionLayers = map.get()->getCollisionLayers();
+
+	size_t i, x, y;
+	for (i = layers.size() - 1; i >= 0; i--) {
+		vector<vector<int>> ids = layers.at(i).getGIDs();
+		std::cout << "layers->i.size="<< layers.at(i).getGIDs().size() << std::endl;
+		for (x = 0; x < ids.size(); x++)
+			for (y = 0; y < ids.at(x).size(); y++)
+				DrawRect(x, y, sprites.at(y*ids.size() + x), &ren);
+	}
+
+
+	if (DEBUG) {
+		for (int j = collisionLayers.size() - 1; j >= 0; j--)
+		{
+			vector<CollisionObject> collisionObjects = collisionLayers[j].getCollisionObjects();
+
+			for (int k = collisionObjects.size() - 1; k >= 0; k--)
+				DrawCollisionObject(collisionObjects[k].getY(), collisionObjects[k].getX(), collisionObjects[k].getWidth(), collisionObjects[k].getHeight(), &ren);
+			
+		}
+	}		
 }
 
 GameScreen::~GameScreen()
@@ -135,8 +134,9 @@ GameScreen::~GameScreen()
 }
 
 void GameScreen::DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren) {
+	size_t size = 32;
 	//Set rendering space and render to screen 
-	SDL_Rect renderQuad = { y, x, 32, 32 };
+	SDL_Rect renderQuad = { y*size, x*size, size, size };
 	//Set clip rendering dimensions 
 	if (clip != NULL) {
 		renderQuad.w = clip->w;

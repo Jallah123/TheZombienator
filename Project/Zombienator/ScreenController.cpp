@@ -1,7 +1,7 @@
 #include "ScreenController.h"
 #include "MenuScreen.h"
 
-void ScreenController::ChangeMenu(AbstractScreen* screen)
+void ScreenController::ChangeScreen(AbstractScreen* screen)
 {
 	screenStack.push(screen);
 }
