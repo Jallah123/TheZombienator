@@ -11,7 +11,7 @@ public:
 	}
 
 	std::map<char, bool> GetKeys() { return keys; };
-	void SetKey(char c, bool b) { keys[c] = b; };
+	void SetKey(char c, bool b) { keys[c] = b; std::cout << c << std::endl; };
 	bool GetKeyState(char c);
 	
 private:

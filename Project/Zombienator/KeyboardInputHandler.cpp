@@ -28,5 +28,8 @@ void KeyboardInputHandler::SetKey(SDL_Keycode button, bool b)
 	case SDLK_q:
 		inputContainer->SetKey('q', b);
 		break;
+	case SDLK_ESCAPE:
+		inputContainer->SetKey(SDLK_ESCAPE, b);
+		break;
 	}
 }

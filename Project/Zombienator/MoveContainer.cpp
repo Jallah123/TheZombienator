@@ -4,6 +4,7 @@
 #include "BehaviourFactory.h"
 #include "AiMoveBehaviour.h"
 #include "PcMoveBehaviour.h"
+#include "CollideBehaviour.h"
 
 MoveContainer::MoveContainer()
 {
@@ -20,11 +21,13 @@ void MoveContainer::Move(float dt)
 {
 	if (this->arr.empty()) return;//Do nothing on empty
 	for (Behaviour* i : this->arr) {
-		MoveBehaviour* mb = dynamic_cast<MoveBehaviour*>(i);
+		MoveBehaviour* mb = static_cast<MoveBehaviour*>(i);
 
 		//Draw each Behaviour
-		mb->Move(dt);
-		if (i->CanBeRemove()) arrRemove.push_back(i);
+		if (mb) {
+			mb->Move(dt);
+			if (i->CanBeRemove()) arrRemove.push_back(i);
+		}
 	}
 	RemoveAll();
 }
