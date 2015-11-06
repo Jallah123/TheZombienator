@@ -8,15 +8,24 @@ Program::Program() {
 	if (InitJoystick() == 0) {
 		cout << "Init joystick" << endl;
 	}
-	if (Tick() == 0) {
-		cout << "Done tick" << endl;
-	} 
 }
 
+Program* Program::instance{ nullptr };
+
+Program* Program::getInstance()
+{
+	if (instance == nullptr) {
+		instance = new Program;
+	}
+	return instance;
+}
+
+/*
 Program& Program::shared_program() {
 	static Program instance;
 	return instance;
 }
+*/
 
 SDL_Renderer* Program::GetRenderer() {
 	return Sdl_Renderer;

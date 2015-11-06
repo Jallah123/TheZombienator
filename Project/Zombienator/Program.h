@@ -35,10 +35,14 @@ private:
 	int InitJoystick();
 	void CloseJoystick();
 
-public:
+	static Program* instance;
+	Program(Program const&) = delete;
+	void operator=(Program const&) = delete;
 	Program();
 	~Program();
-
+public:
+	int Start() { return Tick(); }
 	SDL_Renderer* GetRenderer();
-	static Program& shared_program();
+	// static Program& shared_program();
+	static Program* getInstance();
 };
