@@ -3,6 +3,7 @@
 #include <SDL_mixer.h>
 #include <iostream>
 
+#include "Map.h"
 #include "Mike.h"
 #include "Zombie.h"
 #include "GameObjectFactory.h"
@@ -14,6 +15,7 @@
 #include "CharacterContainer.h"
 #include "CollideContainer.h"
 #include "SpawnController.h"
+
 #define DEBUG false
 
 GameObjectFactory* goFactory = GameObjectFactory::Instance();
@@ -25,12 +27,12 @@ MoveContainer moveContainer;
 CollideContainer collideContainer;
 CharacterContainer characterContainer;
 SpawnController* spawnController;
-
-GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
+Map* map;
+GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 {
-	MapParser* mp{};
-	map = mp->ParseJsonMap(path);
-	goFactory->SetLevel( map.get() );
+	map = new Map(path, *ren);
+
+	goFactory->SetLevel( map );
 	goFactory->SetContainers(
 		&drawContainer, 
 		&animateContainer, 
@@ -63,22 +65,19 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 	
 	spawnController->AddTarget(mike);
 
-	// --
-	map.get()->setSprites(mp->GenerateSprites(path));
-	SDL_Surface* s;
-	s = IMG_Load(map->getImagePath().c_str());
-	if (!s) {
-		cout << "Error image load : " << IMG_GetError() << endl;
-		return;
-	}
 	//Load && play sound
 	musicController->Load("assets/sounds/bgSound1.wav");
 	musicController->Play(1, -1);
 	musicController->SetVolume(25, 1);
-	map.get()->setTexture(SDL_CreateTextureFromSurface(ren, s));
-	SDL_FreeSurface(s);
+	
 }
 
+
+GameScreen::~GameScreen()
+{
+	delete spawnController;
+	delete mike;
+}
 
 void GameScreen::Update(float dt)
 {
@@ -86,20 +85,15 @@ void GameScreen::Update(float dt)
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
-	DrawMap(ren);
+	map->Draw(ren);
 	spawnController->Update(dt);
 	actionContainer.Update(dt);
 	moveContainer.Move(dt);
 	collideContainer.Collide(dt);
 	animateContainer.Animate(dt);
 	drawContainer.Draw(dt, ren);
-
-	/* For debugging purposes only */
-	//SDL_SetRenderDrawColor(&ren, 0xFF, 0x00, 0x00, 0xFF);
-	//SDL_Rect rectangle = { 80, 80, 50, 50 };
-	//SDL_RenderDrawRect(&ren, &rectangle);
 }
-
+/*
 void GameScreen::DrawMap(SDL_Renderer & ren)
 {
 	vector<SDL_Rect*> sprites = map.get()->getSprites();
@@ -128,28 +122,4 @@ void GameScreen::DrawMap(SDL_Renderer & ren)
 	}		
 }
 
-GameScreen::~GameScreen()
-{
-	delete spawnController;
-}
-
-void GameScreen::DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren) {
-	size_t size = 32;
-	//Set rendering space and render to screen 
-	SDL_Rect renderQuad = { y*size, x*size, size, size };
-	//Set clip rendering dimensions 
-	if (clip != NULL) {
-		renderQuad.w = clip->w;
-		renderQuad.h = clip->h;
-	}
-	//Render to screen 
-	SDL_RenderCopy(ren, map.get()->getTexture(), clip, &renderQuad);
-}
-
-/* For debugging purposes only */
-void GameScreen::DrawCollisionObject(int x, int y, int width, int height, SDL_Renderer* ren) {
-	//Set rendering space and render to screen 
-	SDL_Rect rectangle = { y, x, width, height };
-	//Render to screen
-	SDL_RenderDrawRect(ren, &rectangle);
-}
+*/

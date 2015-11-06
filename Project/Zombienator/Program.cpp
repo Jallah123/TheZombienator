@@ -1,6 +1,4 @@
 #include "Program.h"
-#include "GameScreen.h"
-#include "SelectionScreen.h"
 
 Program::Program() {
 	cout << "Creating Program" << endl;
@@ -23,11 +21,6 @@ Program& Program::shared_program() {
 SDL_Renderer* Program::GetRenderer() {
 	return Sdl_Renderer;
 }
-
-TTF_Font * Program::GetFont() {
-	return Font;
-}
-
 
 int Program::Tick() {
 	gameState = GameState::RUNNING;
@@ -101,11 +94,6 @@ int Program::InitComponents() {
 		cerr << "SDL_Init error: " << SDL_GetError() << endl;
 		return 1;
 	}
-	if (TTF_Init() == -1) {
-		cerr << "TTF_Init: %s\n" << TTF_GetError() << endl;
-		return 2;
-	}
-	Font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
 
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		cerr << "SDL_Mixer Error: " << Mix_GetError() << endl;
@@ -151,6 +139,7 @@ int Program::InitJoystick() {
 	}
 	return 0;
 }
+
 Program::~Program() {
 	SDL_GameControllerClose(controller);
 	SDL_DestroyRenderer(Sdl_Renderer);

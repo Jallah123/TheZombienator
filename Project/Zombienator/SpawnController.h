@@ -3,6 +3,9 @@
 #include "Zombie.h"
 #include <random>
 using std::vector;
+using std::random_device;
+using std::default_random_engine;
+using std::uniform_int_distribution;
 #define xy std::pair<int, int>
 
 class DrawContainer;

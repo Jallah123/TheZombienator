@@ -76,9 +76,6 @@
     <Filter Include="Source Files\Views\HomeScreen">
       <UniqueIdentifier>{8def4405-30b8-4680-9e43-4f4afe45d8f2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Models\Collision">
-      <UniqueIdentifier>{9ede606f-6546-48b2-b97d-aea5e18686ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models\Map">
       <UniqueIdentifier>{93814590-516a-477b-b9b3-cfcedaf8e00b}</UniqueIdentifier>
     </Filter>
@@ -87,9 +84,6 @@
     </Filter>
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{443fc790-9292-4d9d-a6a2-d002984e76ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models\Collision">
-      <UniqueIdentifier>{8412e8c9-6b7d-441e-9234-80a34b35786a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Models\Map">
       <UniqueIdentifier>{045d5776-d39f-4767-981c-8543d5e0b5f4}</UniqueIdentifier>
@@ -207,15 +201,6 @@
     <ClCompile Include="AnimateBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionObject.cpp">
-      <Filter>Source Files\Models\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionLayer.cpp">
-      <Filter>Source Files\Models\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="MapLayer.cpp">
-      <Filter>Source Files\Models\Map</Filter>
-    </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files\Models\Map</Filter>
     </ClCompile>
@@ -242,9 +227,6 @@
     </ClCompile>
     <ClCompile Include="SelectionScreen.cpp">
       <Filter>Source Files\Views\SelectionScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="MapRender.cpp">
-      <Filter>Source Files\Views\GameScreen</Filter>
     </ClCompile>
     <ClCompile Include="Mike.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
@@ -297,9 +279,6 @@
     <ClCompile Include="NormalBulletCollideBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SpawnController.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
@@ -317,6 +296,21 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Models\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLayer.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLayer.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TileSet.cpp">
+      <Filter>Source Files\Models\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -380,15 +374,6 @@
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionLayer.h">
-      <Filter>Header Files\Models\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionObject.h">
-      <Filter>Header Files\Models\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="MapLayer.h">
-      <Filter>Header Files\Models\Map</Filter>
-    </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Header Files\Models\Map</Filter>
     </ClInclude>
@@ -414,9 +399,6 @@
       <Filter>Header Files\Views\MenuScreen</Filter>
     </ClInclude>
     <ClInclude Include="GameScreen.h">
-      <Filter>Header Files\Views\GameScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="MapRender.h">
       <Filter>Header Files\Views\GameScreen</Filter>
     </ClInclude>
     <ClInclude Include="SelectionScreen.h">
@@ -502,6 +484,18 @@
     </ClInclude>
     <ClInclude Include="AbstractScreen.h">
       <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLayer.h">
+      <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLayer.h">
+      <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="TileSet.h">
+      <Filter>Header Files\Models\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

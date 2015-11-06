@@ -1,7 +1,8 @@
 #pragma once
 #include "Button.h"
 
-class InfiniteModeButton : public Button
+class InfiniteModeButton 
+	: public Button
 {
 public:
 	InfiniteModeButton();

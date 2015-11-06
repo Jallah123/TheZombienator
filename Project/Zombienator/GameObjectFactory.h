@@ -20,7 +20,6 @@ class Zombie;
 class Map;
 class NormalBullet;
 class PlayableCharacter;
-class SDL_Renderer;
 
 class GameObjectFactory
 {

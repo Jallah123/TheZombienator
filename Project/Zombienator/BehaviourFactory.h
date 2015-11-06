@@ -2,6 +2,7 @@
 #include <map>
 #include <memory>
 #include <functional>
+#include <SDL_render.h>
 
 //containers
 class DrawContainer;
@@ -21,8 +22,6 @@ class ActionBehaviour;
 class CollideBehaviour;
 
 class GameObject;
-
-class SDL_Renderer;
 
 class BehaviourFactory
 {

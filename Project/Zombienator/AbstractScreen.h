@@ -1,8 +1,8 @@
 #pragma once
 #include "AbstractUIComponent.h"
 #include "MusicController.h"
-#include "SDL.h"
 #include <vector>
+#include <SDL_render.h>
 
 
 class AbstractScreen

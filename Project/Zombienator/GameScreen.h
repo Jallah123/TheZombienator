@@ -3,11 +3,12 @@
 #include "AbstractScreen.h"
 #include "MapParser.h"
 #include <memory>
+#include <SDL_render.h>
 
 class GameScreen : public AbstractScreen
 {
 public:
-	GameScreen(SDL_Renderer* _ren, string path);
+	GameScreen(SDL_Renderer* _ren, char* path);
 	~GameScreen();
 
 	virtual void Update(float dt) override;
@@ -15,9 +16,8 @@ public:
 	void DrawMap(SDL_Renderer& ren);
 	
 private:
-	unique_ptr<Map> map{ nullptr };
-	Mix_Chunk *sound;
+	Map* map = nullptr;
+	
 	void DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren);
 	void DrawCollisionObject(int x, int y, int width, int height, SDL_Renderer* ren);
-	
 };

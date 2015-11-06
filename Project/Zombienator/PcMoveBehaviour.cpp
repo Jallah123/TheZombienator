@@ -55,12 +55,12 @@ void PcMoveBehaviour::Move(float dt)
 
 	// -- Map Collision
 	// Check X
-	if (c->getMap()->checkCollision(newX, c->getPosY(), c->GetWidth(), c->GetHeight())) {
+	/*if (c->getMap()->checkCollision(newX, c->getPosY(), c->GetWidth(), c->GetHeight())) {
 		finalX = c->getPosX();
 	}
 	// Check Y
 	if (c->getMap()->checkCollision(c->getPosX(), newY, c->GetWidth(), c->GetHeight())) {
 		finalY = c->getPosY();
-	}
+	}*/
 	c->SetPosition(finalX, finalY);
 }

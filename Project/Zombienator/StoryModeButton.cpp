@@ -1,8 +1,9 @@
 #pragma once
-#include "MusicController.h"
 #include "StoryModeButton.h"
+#include "MusicController.h"
 #include "ScreenController.h"
 #include "GameScreen.h"
+
 
 StoryModeButton::StoryModeButton() : Button()
 {

@@ -1,6 +1,6 @@
 #pragma once
 #include "MenuScreen.h"
-#include "SDL_image.h"
+#include <SDL_image.h>
 
 SDL_Texture* texture = nullptr;
 

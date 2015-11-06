@@ -1,16 +1,22 @@
 #pragma once
 #include "Map.h"
-#include <SDL.h>
 #include <memory>
+#include <json.h>
 
 class MapParser
 {
-public:
-	MapParser();
-	unique_ptr<Map> ParseJsonMap(string path);
-	vector<SDL_Rect*> GenerateSprites(string path);
-	~MapParser() {};
 private:
+	Map* map = nullptr;
+	void ParseJson(char* path);
+	
+	Layer* ObjectType(Json::Value json);
+	Layer* TileType(Json::Value json);
 
+	void ParseTilesets(Json::Value json);
+	void SetBaseValues(Json::Value json, Layer* l);
+public:
+	MapParser(Map* map);
+	~MapParser();
+	
 };
 
