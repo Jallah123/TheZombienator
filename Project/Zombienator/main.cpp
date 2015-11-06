@@ -3,6 +3,7 @@
 
 int main(int argc, char* args[])
 {
-	Program::shared_program();
+	Program* p = Program::getInstance();
+	p->Start();
 	return 0;
 }
