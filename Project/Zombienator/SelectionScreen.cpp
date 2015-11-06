@@ -1,7 +1,6 @@
 #include "SelectionScreen.h"
 #include <iostream>
 #include <time.h>
-#include <SDL_image.h>
 #include "Button.h"
 #include "Image.h"
 

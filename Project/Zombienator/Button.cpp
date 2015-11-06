@@ -2,22 +2,16 @@
 #include <iostream>
 #include "SDL_image.h"
 #include "SDL.h"
+#include "TextureFactory.h"
 
 Button::Button() : AbstractUIComponent()
 {
 }
 
 Button::Button(SDL_Renderer& ren, char* text, char* img_url) : AbstractUIComponent(ren) {
-	SDL_Surface *s = IMG_Load(img_url);
-	image = SDL_CreateTextureFromSurface(&ren, s);
-	SDL_FreeSurface(s);
+	image = TextureFactory::GenerateTextureFromImgUrl(img_url);
 
-	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(font, text, color);
-	message = SDL_CreateTextureFromSurface(&ren, surfaceMessage);
-	SDL_FreeSurface(surfaceMessage);
-
-	TTF_CloseFont(font);
-	font = NULL;
+	message = TextureFactory::GenerateTextureFromText(text, color);
 }
 Button::~Button()
 {

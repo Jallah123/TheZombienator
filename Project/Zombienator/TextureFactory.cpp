@@ -4,18 +4,33 @@ TextureFactory::TextureFactory()
 {
 }
 
-
-SDL_Texture* TextureFactory::GenerateTexture(std::string url)
+SDL_Texture* GenerateTextureFromText(std::string text, SDL_Color color)
 {
-	SDL_Surface* s = IMG_Load(url.c_str());
+	static TTF_Font* font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
 
+	SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), color);
+
+	SDL_Texture* texture = GenerateTextureFromSurface(textSurface);
+
+	return texture;
+}
+
+SDL_Texture* TextureFactory::GenerateTextureFromImgUrl(std::string url)
+{
+	SDL_Surface* imgSurface = IMG_Load(url.c_str());
+	SDL_Texture* texture = GenerateTextureFromSurface(imgSurface);
+	// textures.insert(make_pair(url, texture));
+	return texture;
+}
+
+SDL_Texture* GenerateTextureFromSurface(SDL_Surface* surface)
+{
 	Program* p = Program::getInstance();
 
 	SDL_Renderer* ren = p->GetRenderer();
 
-	SDL_Texture* texture = SDL_CreateTextureFromSurface(ren, s);
-	SDL_FreeSurface(s);
-	// textures.insert(make_pair(url, texture));
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(ren, surface);
+	SDL_FreeSurface(surface);
 	return texture;
 }
 
