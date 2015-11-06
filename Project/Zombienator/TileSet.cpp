@@ -1,5 +1,4 @@
 #include "TileSet.h"
-#include <SDL_image.h>
 #include "TextureFactory.h"
 
 TileSet::TileSet()

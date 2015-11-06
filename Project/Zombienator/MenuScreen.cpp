@@ -1,6 +1,5 @@
 #pragma once
 #include "MenuScreen.h"
-#include <SDL_image.h>
 #include "TextureFactory.h"
 #include <iostream>
 
@@ -20,9 +19,7 @@ MenuScreen::MenuScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 
 void MenuScreen::ChangeBackground(SDL_Renderer* ren, char* img_url)
 {
-	SDL_Surface *s = IMG_Load(img_url);
-	BackgroundTexture = SDL_CreateTextureFromSurface(ren, s);
-	SDL_FreeSurface(s);
+	BackgroundTexture = TextureFactory::GenerateTextureFromImgUrl(img_url);
 }
 
 

@@ -5,7 +5,6 @@
 class Button : public AbstractUIComponent
 {
 protected:
-	TTF_Font* font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
 	SDL_Color color = { 255, 255, 255 };
 	SDL_Texture* message = nullptr;
 	SDL_Texture* image = nullptr;
