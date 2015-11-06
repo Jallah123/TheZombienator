@@ -1,13 +1,11 @@
 #pragma once
 #include "Image.h"
-#include <SDL_image.h>
+#include "TextureFactory.h"
 
 Image::Image(SDL_Renderer& ren, char* img_url) 
 	: AbstractUIComponent(ren) {
 	
-	SDL_Surface *s = IMG_Load(img_url);
-	texture = SDL_CreateTextureFromSurface(&ren, s);
-	SDL_FreeSurface(s);
+	texture = TextureFactory::GenerateTextureFromImgUrl(img_url);
 }
 
 void Image::Draw(SDL_Renderer& ren) {

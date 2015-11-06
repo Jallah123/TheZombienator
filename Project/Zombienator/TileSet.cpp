@@ -1,6 +1,6 @@
 #include "TileSet.h"
 #include <SDL_image.h>
-
+#include "TextureFactory.h"
 
 TileSet::TileSet()
 {
@@ -32,7 +32,5 @@ TileSet::~TileSet()
 void TileSet::Load(SDL_Renderer& ren)
 {
 	string path = assetsPath + image;
-	SDL_Surface *s = IMG_Load(path.c_str());
-	texture = SDL_CreateTextureFromSurface(&ren, s);
-	SDL_FreeSurface(s);
+	texture = TextureFactory::GenerateTextureFromImgUrl(path);
 }
