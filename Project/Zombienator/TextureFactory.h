@@ -1,5 +1,6 @@
 #pragma once
 #include "SDL.h"
+#include "SDL_Image.h"
 #include "Program.h"
 #include <map>
 #include <string>
@@ -12,8 +13,6 @@ public:
 private:
 	TextureFactory();
 	SDL_Texture* FindTexture(std::string url);
-	void SetRenderer(SDL_Renderer* _renderer) { renderer = _renderer; }
-	SDL_Renderer* renderer;
 	std::map<std::string, SDL_Texture*> textures;
 	~TextureFactory();
 };

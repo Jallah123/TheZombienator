@@ -1,5 +1,4 @@
 #include "TextureFactory.h"
-#include "SDL.h"
 
 TextureFactory::TextureFactory()
 {
@@ -10,9 +9,9 @@ SDL_Texture* TextureFactory::GenerateTexture(std::string url)
 {
 	SDL_Surface* s = IMG_Load(url.c_str());
 
-	Program& p = Program::shared_program();
+	Program* p = Program::getInstance();
 
-	SDL_Renderer* ren = p.GetRenderer();
+	SDL_Renderer* ren = p->GetRenderer();
 
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(ren, s);
 	SDL_FreeSurface(s);
