@@ -24,6 +24,11 @@ Character::Character() : GameObject()
 
 Character::~Character()
 {
+	std::vector<ActionBehaviour*>::reverse_iterator it;
+	for (it = actionBehaviours.rbegin(); it != actionBehaviours.rend(); ++it)
+		delete *it;
+
+	actionBehaviours.clear();
 }
 
 void Character::TakeHit(int damage)
@@ -32,7 +37,6 @@ void Character::TakeHit(int damage)
 	//#TODO still need to remove *this from the CharacterContainer
 	if (health <= 0)
 		Remove();
-	std::cout << "HEALTH: " << health << std::endl;
 }
 
 
@@ -85,8 +89,6 @@ void Character::SetCollideBehaviour(std::string name)
 
 void Character::Remove()
 {
-	std::cout << "REMOVE: "<< std::endl;
-
 	drawBehaviour->CanRemove(true);
 	animateBehaviour->CanRemove(true);
 	moveBehaviour->CanRemove(true);

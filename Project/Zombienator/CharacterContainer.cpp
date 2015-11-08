@@ -19,4 +19,14 @@ void CharacterContainer::Init()
 
 CharacterContainer::~CharacterContainer()
 {
+	std::vector<Character*>::reverse_iterator it;
+	for (it = characters.rbegin(); it != characters.rend(); ++it)
+		delete *it;
+
+	characters.clear();
+
+	for (it = arrRemove.rbegin(); it != arrRemove.rend(); ++it)
+		delete *it;
+
+	arrRemove.clear();
 }

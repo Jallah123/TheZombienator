@@ -1,5 +1,7 @@
+#pragma once
 #include "MusicController.h"
 #include <iostream>
+
 void MusicController::Load(const char* filename)
 {
 	chunk = Mix_LoadWAV(filename);

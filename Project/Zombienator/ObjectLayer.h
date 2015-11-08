@@ -17,5 +17,7 @@ public:
 
 	void AddRect(SDL_Rect* r) { rects.push_back(r); }
 	vector<SDL_Rect*> GetRects() { return this->rects; }
+
+	bool HasCollision(const SDL_Rect* src);
 };
 

@@ -26,6 +26,11 @@ TileSet::~TileSet()
 	SDL_DestroyTexture(texture);
 	texture = NULL;
 	delete rect;
+	std::vector<SDL_Rect*>::reverse_iterator it;
+	for (it = tiles.rbegin(); it != this->tiles.rend(); ++it)
+		delete *it;
+
+	tiles.clear();
 }
 
 void TileSet::Load(SDL_Renderer& ren)

@@ -18,7 +18,7 @@ bool CharacterCollideBehaviour::Collide(float dt)
 	for (auto& c : characters)
 	{
 		
-		if (SDL_HasIntersection(&_this->GetDestinationRect(), &c->GetDestinationRect()))
+		if (SDL_HasIntersection(_this->GetDestinationRect(), c->GetDestinationRect()))
 		{
 			return true;
 		}

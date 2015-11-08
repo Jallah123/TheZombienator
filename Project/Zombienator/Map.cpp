@@ -11,6 +11,19 @@ Map::Map(char* p, SDL_Renderer& ren) : path(p), renderer(&ren)
 
 Map::~Map()
 {
+	std::vector<TileSet*>::reverse_iterator its;
+	for (its = tilesets.rbegin(); its != tilesets.rend(); ++its)
+		delete *its;
+
+	tilesets.clear();
+
+	std::vector<SDL_Rect*>::reverse_iterator it;
+	for (it = rects.rbegin(); it != rects.rend(); ++it)
+		delete *it;
+
+	rects.clear();
+
+
 	delete parser;
 }
 
@@ -40,35 +53,6 @@ void Map::AddTileset(TileSet* ts)
 void Map::Draw(SDL_Renderer & ren)
 {
 	for (const auto& l : layers) {
-
 		l.second->Draw(ren);//Render each layer
 	}
 }
-/*
-
-bool Map::checkCollision(int _x, int _y, int _width, int _height) {
-	
-	SDL_Rect unitRectangle = { _x, _y, _width, _height };
-
-	for (int j = collisionLayers.size() - 1; j >= 0; j--)
-	{
-		vector<CollisionObject> collisionObjects = collisionLayers[j].getCollisionObjects();
-
-		for (int k = collisionObjects.size() - 1; k >= 0; k--)
-		{
-			SDL_Rect collisionRectangle = { 
-				collisionObjects[k].getX(),
-				collisionObjects[k].getY(),
-				collisionObjects[k].getWidth(),
-				collisionObjects[k].getHeight()
-			};
-
-			if (SDL_HasIntersection(&unitRectangle, &collisionRectangle)) {
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-*/

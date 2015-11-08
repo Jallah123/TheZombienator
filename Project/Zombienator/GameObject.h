@@ -21,8 +21,8 @@ protected:
 	Map* map;
 
 public:
-	GameObject() {}//Default constructer
-	virtual ~GameObject() {}
+	GameObject();//Default constructer
+	virtual ~GameObject();
 
 	float getPosY() { return posY; }
 	float getPosX() { return posX; }
@@ -36,7 +36,7 @@ public:
 	void SetDestinationRect(SDL_Rect r) { destRect = r; }
 
 	SDL_Rect const GetSourceRect() { return this->sourceRect; }
-	SDL_Rect const GetDestinationRect() { return this->destRect; }
+	SDL_Rect* GetDestinationRect() { return &this->destRect; }
 	int const GetHeight() { return this->height; }
 	int const GetWidth() { return this->width; }
 	SDL_Texture* const GetTexture() { return this->texture; }

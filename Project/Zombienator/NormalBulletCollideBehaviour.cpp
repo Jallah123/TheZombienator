@@ -19,11 +19,11 @@ bool NormalBulletCollideBehaviour::Collide(float dt)
 	for (auto& c : characters)
 	{
 		Zombie* target = dynamic_cast<Zombie*>(c);
-		if (target != nullptr && SDL_HasIntersection(&bullet->GetDestinationRect(), &c->GetDestinationRect()))
+		if (target != nullptr && SDL_HasIntersection(bullet->GetDestinationRect(), c->GetDestinationRect()))
 		{
 			c->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
 			bullet->SetCollision(true);
-			bullet->SetTarget(c);
+			bullet->SetTarget(c->GetDestinationRect());
 			return true;
 		}
 	}
