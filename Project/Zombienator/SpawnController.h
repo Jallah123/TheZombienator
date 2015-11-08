@@ -29,19 +29,11 @@ private:
 	uniform_int_distribution<int> locationDist;
 
 	SDL_Renderer* renderer = nullptr;
-
-	DrawContainer* drawContainer = nullptr;
-	AnimateContainer* animateContainer = nullptr;
-	ActionContainer* actionContainer = nullptr;
-	MoveContainer* moveContainer = nullptr;
-	CollideContainer* collideContainer = nullptr;
-	CharacterContainer* characterContainer = nullptr;
-
+	
 	Character* target = nullptr;
 
 public:
 	SpawnController();
-	SpawnController(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC);
 	~SpawnController();
 
 	void Update(float dt);

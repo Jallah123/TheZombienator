@@ -1,11 +1,20 @@
 #pragma once
 #include "Map.h"
+#include <SDL_render.h>
 #include "AbstractScreen.h"
 #include "MapParser.h"
-#include <memory>
-#include <SDL_render.h>
+#include "GameObjectFactory.h"
+#include "SpawnController.h"
+#include "BehaviourFactory.h"
+#include "AnimateContainer.h"
+#include "DrawContainer.h"
+#include "MoveContainer.h"
+#include "ActionContainer.h"
+#include "CharacterContainer.h"
+#include "CollideContainer.h"
 
-class GameScreen : public AbstractScreen
+class GameScreen 
+	: public AbstractScreen
 {
 public:
 	GameScreen(SDL_Renderer* _ren, char* path);
@@ -16,6 +25,17 @@ public:
 	void DrawMap(SDL_Renderer& ren);
 	
 private:
+	GameObjectFactory* goFactory = GameObjectFactory::Instance();
+	
+	DrawContainer drawContainer;
+	AnimateContainer animateContainer;
+	ActionContainer actionContainer;
+	MoveContainer moveContainer;
+	CollideContainer collideContainer;
+	CharacterContainer characterContainer;
+	SpawnController spawnController;
+	
+	Mike* mike = nullptr;
 	Map* map = nullptr;
 	
 	void DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren);

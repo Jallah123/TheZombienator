@@ -1,22 +1,9 @@
 #pragma once
 #include "SpawnController.h"
 #include "GameObjectFactory.h"
-#include "AnimateContainer.h"
-#include "DrawContainer.h"
-#include "MoveContainer.h"
-#include "ActionContainer.h"
-#include "CharacterContainer.h"
-#include "CollideContainer.h"
-#include <iostream>
 
-SpawnController::SpawnController(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC)
+SpawnController::SpawnController()
 {
-	drawContainer = drawC;
-	animateContainer = animC;
-	actionContainer = actionC;
-	moveContainer = moveC;
-	collideContainer = collideC;
-	characterContainer = characterC;
 }
 
 
@@ -41,8 +28,6 @@ void SpawnController::Spawn()
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
-	std::cout << p.first << "  ; " << p.second << std::endl;
-	z->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, renderer);
 	zombies++;
 	elapsedtime = 0;
 }
