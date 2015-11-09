@@ -15,6 +15,6 @@ public:
 	void SetCharacterContainer(CharacterContainer* c) { this->characterContainer = c; }
 	void SetMap(Map* m);
 	virtual ~CollideBehaviour();
-	virtual bool Collide(float dt) = 0;
+	virtual void Collide(float dt) = 0;
 };
 

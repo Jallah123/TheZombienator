@@ -9,6 +9,7 @@ class GameObject
 protected:
 	Direction moveDir = Direction::NONE;
 	Direction lookDir = Direction::SOUTH;
+	bool canMove = true;
 	SDL_Texture* texture = nullptr;
 	int width = 0, height = 0;
 	SDL_Rect sourceRect = { 0,0,0,0 }, destRect= { 0,0,0,0 };
@@ -39,4 +40,6 @@ public:
 	SDL_Texture* const GetTexture() { return this->texture; }
 	Direction const GetMoveDir() { return this->moveDir; }
 	Direction const GetLookDir() { return this->lookDir; }
+	bool CanMove() { return this->canMove; }
+	void CanMove(bool c) { this->canMove = c; }
 };

@@ -88,6 +88,7 @@ MoveBehaviour* BehaviourFactory::CreateMoveBehaviour(std::string name, GameObjec
 	if (instance != nullptr) {
 		MoveBehaviour* cInstance = dynamic_cast<MoveBehaviour*>(instance);
 		cInstance->SetGameObject(obj);//link the behaviour to its gameObject
+		cInstance->SetMap(map);
 		return cInstance;
 	}
 

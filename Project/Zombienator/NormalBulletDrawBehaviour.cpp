@@ -21,10 +21,10 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren)
 	NormalBullet* b = dynamic_cast<NormalBullet*>(gameObject);
 	Character* origin = b->GetOrigin();
 	SDL_Rect* target = b->GetTarget();
-	Direction md = b->GetMoveDir();
+	Direction md = b->GetLookDir();
 	SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
-	if(b->HasCollision())
-		std::cout << "x:" << target->x << ", y:" << target->y << ", w:" << target->w << ", h:" << target->h;
+	//if(b->HasCollision())
+		//std::cout << "x:" << target->x << ", y:" << target->y << ", w:" << target->w << ", h:" << target->h;
 	switch (md)
 	{
 	case SOUTH:
@@ -62,7 +62,4 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren)
 	}
 	b->DecreaseLifeTime(dt);
 	b->SetLocked(true);
-	//std::cout << dt << std::endl;
-	//std::cout << b->IsLocked() << std::endl;
-	//b->SetLocked(true);
 }

@@ -39,7 +39,6 @@ void AnimateBehaviour::Animate(float dt, int ticks)
 		int row = (height * c->GetLookDir());
 		srcR.x = col;
 		srcR.y = row;
-		std::cout << "MOvedir: " << c->GetLookDir() << std::endl;
 	}
 	//Set source rect
 	c->SetSourceRect(srcR);

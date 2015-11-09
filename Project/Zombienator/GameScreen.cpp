@@ -67,8 +67,8 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	map->Draw(ren);
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
-	moveContainer.Move(dt);
 	collideContainer.Collide(dt);
+	moveContainer.Move(dt);
 	animateContainer.Animate(dt);
 	drawContainer.Draw(dt, ren);
 }

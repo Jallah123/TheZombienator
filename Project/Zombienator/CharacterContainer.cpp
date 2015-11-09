@@ -6,9 +6,7 @@
 #include "GameObject.h"
 
 CharacterContainer::CharacterContainer()
-{
-	std::cout << "Init Character container" << std::endl;
-	
+{	
 }
 
 void CharacterContainer::Init()

@@ -24,10 +24,10 @@ void ObjectLayer::Draw(SDL_Renderer & ren)
 	}
 }
 
-bool ObjectLayer::HasCollision(const SDL_Rect* src)
+bool ObjectLayer::HasCollision(SDL_Rect src)
 {
 	for (const auto& r : rects) {
-		if (SDL_HasIntersection(src, r))
+		if (SDL_HasIntersection(&src, r))
 			return true;
 	}
 	return false;

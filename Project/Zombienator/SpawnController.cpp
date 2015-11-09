@@ -15,7 +15,7 @@ void SpawnController::Update(float dt)
 {
 	if (zombies == amountToSpawn) return;
 	elapsedtime += dt;
-	if (elapsedtime > spawnTime) Spawn();
+	//if (elapsedtime > spawnTime) Spawn();
 }
 
 void SpawnController::Spawn()

@@ -11,10 +11,18 @@ NormalBulletCollideBehaviour::~NormalBulletCollideBehaviour()
 {
 }
 
-bool NormalBulletCollideBehaviour::Collide(float dt)
+void NormalBulletCollideBehaviour::Collide(float dt)
 {
 	Bullet* bullet = dynamic_cast<Bullet*>(this->gameObject);
 	
+
+	for (auto& r : this->collisionLayer->GetRects()) {
+		if (SDL_HasIntersection(this->gameObject->GetDestinationRect(), r)) {
+			bullet->SetCollision(true);
+			bullet->SetTarget(r);
+		}
+	}
+
 	std::vector<Character*> characters = characterContainer->GetCharacters();
 	for (auto& c : characters)
 	{
@@ -24,8 +32,6 @@ bool NormalBulletCollideBehaviour::Collide(float dt)
 			c->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
 			bullet->SetCollision(true);
 			bullet->SetTarget(c->GetDestinationRect());
-			return true;
 		}
 	}
-	return false;
 }
