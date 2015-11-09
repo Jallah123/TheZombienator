@@ -17,7 +17,7 @@ void AiMoveBehaviour::Move(float dt)
 	Character* target = z->GetTarget();
 	if (target == nullptr) {
 		// No target found, don't move
-		z->SetMoveDir(MoveDirection::NONE);
+		z->SetMoveDir(Direction::NONE);
 		return;//stop
 	}
 
@@ -36,19 +36,19 @@ void AiMoveBehaviour::Move(float dt)
 	float speed = z->GetSpeed() * dt;
 
 	if (up) {
-		z->SetMoveDir(MoveDirection::NORTH);//Reset to south look dir
+		z->SetMoveDir(Direction::NORTH);//Reset to south look dir
 		newY -= speed;
 	}
 	if (left) {
-		z->SetMoveDir(MoveDirection::WEST);//Reset to south look dir
+		z->SetMoveDir(Direction::WEST);//Reset to south look dir
 		newX -= speed;
 	}
 	if (down) {
-		z->SetMoveDir(MoveDirection::SOUTH);//Reset to south look dir
+		z->SetMoveDir(Direction::SOUTH);//Reset to south look dir
 		newY += speed;
 	}
 	if (right) {
-		z->SetMoveDir(MoveDirection::EAST);//Reset to south look dir
+		z->SetMoveDir(Direction::EAST);//Reset to south look dir
 		newX += speed;
 	}
 

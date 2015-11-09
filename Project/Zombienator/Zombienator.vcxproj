@@ -192,6 +192,7 @@
     <ClCompile Include="CharacterDrawBehaviour.cpp" />
     <ClCompile Include="CollideBehaviour.cpp" />
     <ClCompile Include="CollideContainer.cpp" />
+    <ClCompile Include="Direction.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -213,7 +214,6 @@
     <ClCompile Include="Mike.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
-    <ClCompile Include="MoveDirection.cpp" />
     <ClCompile Include="MusicController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
     <ClCompile Include="NormalBullet.cpp" />

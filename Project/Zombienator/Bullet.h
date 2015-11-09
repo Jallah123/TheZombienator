@@ -1,5 +1,5 @@
 #pragma once
-//#include "MoveDirection.cpp"
+//#include "Direction.cpp"
 #include "GameObject.h"
 #include "DrawContainer.h"
 #include "MoveContainer.h"
@@ -24,7 +24,7 @@ protected:
 	float lifeTime = 25;
 	SDL_Rect* target = nullptr;
 
-	//MoveDirection direction;
+	//Direction direction;
 	PlayableCharacter* origin;
 
 	DrawContainer* drawContainer;

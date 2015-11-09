@@ -32,6 +32,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 		&characterContainer,
 		ren
 	);
+	BehaviourFactory::Instance()->SetMap(map);
 	characterContainer.Init();
 	
 	spawnController.AddLocation(640, 100);

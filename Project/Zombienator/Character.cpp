@@ -34,7 +34,6 @@ Character::~Character()
 void Character::TakeHit(int damage)
 {
 	health -= damage;
-	//#TODO still need to remove *this from the CharacterContainer
 	if (health <= 0)
 		Remove();
 }
@@ -96,7 +95,6 @@ void Character::Remove()
 	for (const auto& ab : actionBehaviours) {
 		ab->CanRemove(true);
 	}
-	this->CanRemove(true);
 	this->characterContainer->Remove(this);
 }
 

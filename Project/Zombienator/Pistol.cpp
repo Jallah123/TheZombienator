@@ -4,8 +4,8 @@
 #include <iostream>
 #include "NormalBullet.h"
 #include "BehaviourFactory.h"
-#include "ContainerContainer.h"
 #include "GameObjectFactory.h"
+
 Pistol::Pistol() : Weapon()
 {
 	this->rounds = INT_MAX;

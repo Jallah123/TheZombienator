@@ -7,7 +7,7 @@
 #include "ActionBehaviour.h"
 #include "BehaviourFactory.h"
 #include "CollideBehaviour.h"
-
+#include "Map.h"
 //
 // DO NOT FORGET TO INITIALIZE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //
@@ -19,7 +19,7 @@ MoveContainer*		BehaviourFactory::moveContainer = nullptr;
 CollideContainer*	BehaviourFactory::collideContainer = nullptr;
 CharacterContainer* BehaviourFactory::characterContainer = nullptr;
 SDL_Renderer*		BehaviourFactory::renderer = nullptr;
-
+Map*				BehaviourFactory::map = nullptr;
 BehaviourFactory::~BehaviourFactory()
 {
 }
@@ -33,6 +33,11 @@ void BehaviourFactory::SetContainers(DrawContainer * drawC, AnimateContainer * a
 	collideContainer = collideC;
 	characterContainer = characterC;
 	renderer = ren;
+}
+
+void BehaviourFactory::SetMap(Map * m)
+{
+	map = m;
 }
 
 Behaviour * BehaviourFactory::Find(std::string name)
@@ -110,6 +115,7 @@ CollideBehaviour * BehaviourFactory::CreateCollideBehaviour(std::string name, Ga
 		CollideBehaviour* cInstance = dynamic_cast<CollideBehaviour*>(instance);
 		cInstance->SetGameObject(obj);//link the behaviour to its gameObject
 		cInstance->SetCharacterContainer(characterContainer);
+		cInstance->SetMap(map);
 		return cInstance;
 	}
 

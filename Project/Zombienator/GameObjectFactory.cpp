@@ -77,7 +77,6 @@ Mike* GameObjectFactory::CreateMike()
 	GameObject* instance = GameObjectFactory::Find("mike");
 	if (instance != nullptr) {
 		Mike* cInstance = dynamic_cast<Mike*>(instance);
-		cInstance->setMap(mapLevel);
 		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, renderer);
 		return cInstance;
 	}
@@ -88,7 +87,6 @@ Zombie* GameObjectFactory::CreateZombie()
 	GameObject* instance = GameObjectFactory::Find("zombie");
 	if (instance != nullptr) {
 		Zombie* cInstance = dynamic_cast<Zombie*>(instance);
-		cInstance->setMap(mapLevel);
 		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, renderer);
 		return cInstance;
 	}

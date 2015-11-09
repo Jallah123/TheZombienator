@@ -56,3 +56,8 @@ void Map::Draw(SDL_Renderer & ren)
 		l.second->Draw(ren);//Render each layer
 	}
 }
+
+ObjectLayer * Map::GetObjectLayer(string key)
+{
+	return dynamic_cast<ObjectLayer*>(this->layers.at(key));
+}
