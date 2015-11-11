@@ -22,7 +22,7 @@ void TileLayer::Draw(SDL_Renderer& ren)
 {
 	//Get Tileset rect
 	
-	SDL_Rect src = { 0,0,tileSet->TileWidth(),tileSet->TileHeight() };
+	/*SDL_Rect src = { 0,0,tileSet->TileWidth(),tileSet->TileHeight() };
 	
 	int x, y;
 	for (y = 0; y < height; y++)
@@ -37,7 +37,7 @@ void TileLayer::Draw(SDL_Renderer& ren)
 				DrawRect(r, tileSet->Texture(), &src, ren);
 			}
 		}
-	}
+	}*/
 }
 
 void TileLayer::AddTileID(size_t id)

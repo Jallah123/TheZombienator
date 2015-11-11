@@ -1,8 +1,14 @@
 #pragma once
 #include "SpawnController.h"
 #include "GameObjectFactory.h"
-
+#include "GameScreen.h"
+#include "Quadtree.h"
 SpawnController::SpawnController()
+{
+}
+
+SpawnController::SpawnController(SDL_Renderer * ren, GameScreen * gs) :
+	renderer(ren), gameScreen(gs)
 {
 }
 
@@ -15,7 +21,7 @@ void SpawnController::Update(float dt)
 {
 	if (zombies == amountToSpawn) return;
 	elapsedtime += dt;
-	//if (elapsedtime > spawnTime) Spawn();
+	if (elapsedtime > spawnTime) Spawn();
 }
 
 void SpawnController::Spawn()
@@ -28,6 +34,7 @@ void SpawnController::Spawn()
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
+	gameScreen->GetTree()->AddObject(z);
 	zombies++;
 	elapsedtime = 0;
 }

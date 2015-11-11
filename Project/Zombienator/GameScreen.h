@@ -5,13 +5,14 @@
 #include "MapParser.h"
 #include "GameObjectFactory.h"
 #include "SpawnController.h"
-#include "BehaviourFactory.h"
 #include "AnimateContainer.h"
 #include "DrawContainer.h"
 #include "MoveContainer.h"
 #include "ActionContainer.h"
 #include "CharacterContainer.h"
 #include "CollideContainer.h"
+
+class Quadtree;
 
 class GameScreen 
 	: public AbstractScreen
@@ -22,8 +23,8 @@ public:
 
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
-	void DrawMap(SDL_Renderer& ren);
 	
+	Quadtree* GetTree() { return this->tree; }
 private:
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
 	
@@ -33,11 +34,11 @@ private:
 	MoveContainer moveContainer;
 	CollideContainer collideContainer;
 	CharacterContainer characterContainer;
-	SpawnController spawnController;
+
+	SpawnController* spawnController = nullptr;
 	
 	Mike* mike = nullptr;
 	Map* map = nullptr;
-	
-	void DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren);
-	void DrawCollisionObject(int x, int y, int width, int height, SDL_Renderer* ren);
+	Quadtree* tree = nullptr;
+		
 };

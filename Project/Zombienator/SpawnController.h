@@ -14,14 +14,14 @@ class ActionContainer;
 class MoveContainer;
 class CollideContainer;
 class CharacterContainer;
-
+class GameScreen;
 
 class SpawnController
 {
 private:
 	vector<xy> locations;
 	int zombies = 0;
-	int amountToSpawn = 10;
+	int amountToSpawn = 100;
 	float spawnTime = 100;
 	float elapsedtime = 0;
 	random_device dev;
@@ -29,11 +29,12 @@ private:
 	uniform_int_distribution<int> locationDist;
 
 	SDL_Renderer* renderer = nullptr;
-	
+	GameScreen* gameScreen = nullptr;
 	Character* target = nullptr;
 
 public:
 	SpawnController();
+	SpawnController(SDL_Renderer* ren, GameScreen* gs);
 	~SpawnController();
 
 	void Update(float dt);

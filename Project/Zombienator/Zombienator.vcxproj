@@ -224,6 +224,7 @@
     <ClCompile Include="Pistol.cpp" />
     <ClCompile Include="PlayableCharacter.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Quadtree.cpp" />
     <ClCompile Include="ScreenController.cpp" />
     <ClCompile Include="SelectionScreen.cpp" />
     <ClCompile Include="SettingsButton.cpp" />
@@ -285,6 +286,7 @@
     <ClInclude Include="Pistol.h" />
     <ClInclude Include="PlayableCharacter.h" />
     <ClInclude Include="Program.h" />
+    <ClInclude Include="Quadtree.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="ScreenController.h" />
     <ClInclude Include="SelectionScreen.h" />

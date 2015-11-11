@@ -1,5 +1,8 @@
 #pragma once
 #include "Behaviour.h"
+#include <vector>
+
+using std::vector;
 class Map;
 class CharacterContainer;
 
@@ -16,5 +19,7 @@ public:
 	void SetMap(Map* m);
 	virtual ~CollideBehaviour();
 	virtual void Collide(float dt) = 0;
+
+	SDL_Rect* Closest(vector<SDL_Rect> rects);
 };
 
