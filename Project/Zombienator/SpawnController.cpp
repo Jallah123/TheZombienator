@@ -4,6 +4,7 @@
 
 SpawnController::SpawnController()
 {
+	NextWave();
 }
 
 
@@ -13,13 +14,27 @@ SpawnController::~SpawnController()
 
 void SpawnController::Update(float dt)
 {
-	if (zombies == amountToSpawn) return;
+	if (completed) return;
+	//std::cout << "Current wave: " << currentWave << ", zombies: " << zombies << ", amount to spawn " << amountToSpawn << std::endl;
+	//std::cout << "elapsed time " << elapsedtime << std::endl;
 	elapsedtime += dt;
-	if (elapsedtime > spawnTime) Spawn();
+	if (waveFinished) {
+		NextWave();
+		return;
+	} else
+
+	Spawn();
 }
 
 void SpawnController::Spawn()
 {
+	if (elapsedtime < spawnTime) return;
+	if (zombies == amountToSpawn) {
+		waveFinished = true;
+		elapsedtime = 0;
+		return;
+	}
+	//No points to spawn on?
 	if (locations.size() == 0) return;
 
 	int l = locationDist(dre);
@@ -30,6 +45,26 @@ void SpawnController::Spawn()
 	z->SetPosition(p.first, p.second);
 	zombies++;
 	elapsedtime = 0;
+}
+
+void SpawnController::NextWave()
+{
+	if (elapsedtime < timeBetweenWaves) return;
+	if (currentWave == maxWaves) {
+		completed = true;
+		return;
+	}
+	currentWave++;
+	waveFinished = false;
+	zombies = 0;
+	elapsedtime = 0;
+}
+
+void SpawnController::Countdown()
+{
+	if (elapsedtime >= timeBetweenWaves) {
+		NextWave();		
+	}
 }
 
 void SpawnController::AddLocation(int x, int y)
