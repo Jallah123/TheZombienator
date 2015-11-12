@@ -60,15 +60,15 @@ GameScreen::~GameScreen()
 
 void GameScreen::Update(float dt)
 {
-}
-
-void GameScreen::Draw(SDL_Renderer& ren, float dt)
-{
-	map->Draw(ren);
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
 	collideContainer.Collide(dt);
 	moveContainer.Move(dt);
 	animateContainer.Animate(dt);
+}
+
+void GameScreen::Draw(SDL_Renderer& ren, float dt)
+{
+	map->Draw(ren);
 	drawContainer.Draw(dt, ren);
 }
