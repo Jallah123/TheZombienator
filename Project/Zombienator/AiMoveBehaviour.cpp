@@ -17,7 +17,7 @@ void AiMoveBehaviour::Move(float dt)
 	Character* target = z->GetTarget();
 	if (target == nullptr) {
 		// No target found, don't move
-		z->SetMoveDir(MoveDirection::NONE);
+		z->SetMoveDir(Direction::NONE);
 		return;//stop
 	}
 
@@ -35,20 +35,28 @@ void AiMoveBehaviour::Move(float dt)
 	bool right = destX + target->GetWidth() >= newX;
 	float speed = z->GetSpeed() * dt;
 
+	z->SetMoveDir(Direction::NONE);
+
+	// -- Move directions
+
 	if (up) {
-		z->SetMoveDir(MoveDirection::NORTH);//Reset to south look dir
+		z->SetMoveDir(Direction::NORTH);
+		z->SetLookDir(Direction::NORTH);
 		newY -= speed;
 	}
 	if (left) {
-		z->SetMoveDir(MoveDirection::WEST);//Reset to south look dir
+		z->SetMoveDir(Direction::WEST);
+		z->SetLookDir(Direction::WEST);
 		newX -= speed;
 	}
 	if (down) {
-		z->SetMoveDir(MoveDirection::SOUTH);//Reset to south look dir
+		z->SetMoveDir(Direction::SOUTH);
+		z->SetLookDir(Direction::SOUTH);
 		newY += speed;
 	}
 	if (right) {
-		z->SetMoveDir(MoveDirection::EAST);//Reset to south look dir
+		z->SetMoveDir(Direction::EAST);
+		z->SetLookDir(Direction::EAST);
 		newX += speed;
 	}
 
@@ -56,10 +64,10 @@ void AiMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	if (z->getMap()->checkCollision(newX, z->getPosY(), z->GetWidth(), z->GetHeight())) {
+	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(newX+.5f), static_cast<int>(z->getPosY()+.5f), z->GetWidth(), z->GetHeight() })) {
 		finalX = z->getPosX();
 	}
-	if (z->getMap()->checkCollision(z->getPosX(), newY, z->GetWidth(), z->GetHeight())) {
+	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(z->getPosX()+.5f), static_cast<int>(newY + .5f), z->GetWidth(), z->GetHeight() })) {
 		finalY = z->getPosY();
 	}
 

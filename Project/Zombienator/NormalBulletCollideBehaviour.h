@@ -8,6 +8,6 @@ class NormalBulletCollideBehaviour :
 public:
 	NormalBulletCollideBehaviour() {};
 	~NormalBulletCollideBehaviour();
-	virtual bool Collide(float dt) override;
+	virtual void Collide(float dt) override;
 };
 
