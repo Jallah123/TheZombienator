@@ -1,14 +1,19 @@
 #pragma once
 #include "Behaviour.h"
+class Map;
+class CharacterContainer;
 
-class KeyboardInputHandler;
+class MoveBehaviour 
+	: public Behaviour 
+{
+protected:
+	Map* map = nullptr;
+	ObjectLayer* collisionLayer = nullptr;
+public:
+	MoveBehaviour();
+	virtual ~MoveBehaviour();
 
-class MoveBehaviour : public Behaviour {
-	private:
-	public:
-		MoveBehaviour();
-		virtual ~MoveBehaviour();
+	void SetMap(Map* m);
 
-		//virtual void Move(float dt, KeyboardInputHandler& iC);
-		virtual void Move(float dt) = 0;
+	virtual void Move(float dt) = 0;
 };

@@ -1,9 +1,10 @@
 #pragma once
 #include "Character.h"
-
-class AnimateContainer;
 class DrawContainer;
+class AnimateContainer;
 class MoveContainer;
+class ActionContainer;
+class CollideContainer;
 class CharacterContainer;
 
 class Zombie :

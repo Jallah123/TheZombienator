@@ -30,23 +30,27 @@ void PcMoveBehaviour::Move(float dt)
 	bool right = iC->GetKeyState(SDLK_d);
 	float speed = c->GetSpeed() * dt;
 
-	c->SetMoveDir(MoveDirection::NONE);//Don't move if no button is pressed
+	c->SetMoveDir(Direction::NONE);
 
 	// -- Move directions
 	if (up) {
-		c->SetMoveDir(MoveDirection::NORTH);//Reset to south look dir
+		c->SetMoveDir(Direction::NORTH);
+		c->SetLookDir(Direction::NORTH);
 		newY -= speed;
 	}
 	if (left) {
-		c->SetMoveDir(MoveDirection::WEST);//Reset to south look dir
+		c->SetMoveDir(Direction::WEST);
+		c->SetLookDir(Direction::WEST);
 		newX -= speed;
 	}
 	if (down) {
-		c->SetMoveDir(MoveDirection::SOUTH);//Reset to south look dir
+		c->SetMoveDir(Direction::SOUTH);
+		c->SetLookDir(Direction::SOUTH);
 		newY += speed;
 	}
 	if (right) {
-		c->SetMoveDir(MoveDirection::EAST);//Reset to south look dir
+		c->SetMoveDir(Direction::EAST);
+		c->SetLookDir(Direction::EAST);
 		newX += speed;
 	}
 
@@ -54,13 +58,13 @@ void PcMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	// Check X
-	if (c->getMap()->checkCollision(newX, c->getPosY(), c->GetWidth(), c->GetHeight())) {
+	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(newX + .5f), static_cast<int>(c->getPosY() + .5f), c->GetWidth(), c->GetHeight() })) {
 		finalX = c->getPosX();
 	}
-	// Check Y
-	if (c->getMap()->checkCollision(c->getPosX(), newY, c->GetWidth(), c->GetHeight())) {
+	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(c->getPosX() + .5f), static_cast<int>(newY + .5f), c->GetWidth(), c->GetHeight() })) {
 		finalY = c->getPosY();
 	}
+
+	c->CanMove(true);
 	c->SetPosition(finalX, finalY);
 }

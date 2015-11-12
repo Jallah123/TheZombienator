@@ -4,10 +4,11 @@
 
 #include "DrawContainer.h"
 #include "MoveContainer.h"
+#include "CollideContainer.h"
 
 #include "MoveBehaviour.h"
 #include "DrawBehaviour.h"
-
+#include "CollideBehaviour.h"
 
 
 void Bullet::Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc)

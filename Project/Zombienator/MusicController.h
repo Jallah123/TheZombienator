@@ -1,22 +1,26 @@
 #pragma once
 #include "SDL_mixer.h"
+#include <string>
 class MusicController
 {
 private:
 	MusicController() {};
 	MusicController(MusicController const&) = delete;
 	void operator=(MusicController const&) = delete;
-	Mix_Music* CurrentMusic;
-	int Volume;
+	Mix_Music* currentMusic = nullptr;
+	Mix_Chunk* chunk = nullptr;
+	int volume;
 public:
 	static MusicController& GetInstance() {
 		static MusicController instance;
 		return instance;
 	}
-	void Play();
-	void Change();
+	~MusicController();
+	void Load(const char* filename);
+	void Play(int channel, int loops);
 	void Pause();
-	void SetVolume(int V);
-
+	void Stop();
+	void SetVolume(int volume, int channel);
+	int GetVolume() { return this->volume; }
 };
 

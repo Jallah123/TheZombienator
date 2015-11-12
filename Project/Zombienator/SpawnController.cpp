@@ -1,23 +1,9 @@
 #pragma once
 #include "SpawnController.h"
 #include "GameObjectFactory.h"
-#include "ContainerContainer.h"
-#include "AnimateContainer.h"
-#include "DrawContainer.h"
-#include "MoveContainer.h"
-#include "ActionContainer.h"
-#include "CharacterContainer.h"
-#include "CollideContainer.h"
-#include "ContainerContainer.h"
-#include <iostream>
+
 SpawnController::SpawnController()
 {
-	drawContainer = ContainerContainer::GetInstance().GetDrawContainer();
-	animateContainer = ContainerContainer::GetInstance().GetAnimateContainer();
-	actionContainer = ContainerContainer::GetInstance().GetActionContainer();
-	moveContainer = ContainerContainer::GetInstance().GetMoveContainer();
-	collideContainer = ContainerContainer::GetInstance().GetCollideContainer();
-	characterContainer = ContainerContainer::GetInstance().GetCharacterContainer();
 }
 
 
@@ -29,7 +15,7 @@ void SpawnController::Update(float dt)
 {
 	if (zombies == amountToSpawn) return;
 	elapsedtime += dt;
-	if (elapsedtime > spawnTime) Spawn();
+	//if (elapsedtime > spawnTime) Spawn();
 }
 
 void SpawnController::Spawn()
@@ -42,8 +28,6 @@ void SpawnController::Spawn()
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
-	std::cout << p.first << "  ; " << p.second << std::endl;
-	z->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, renderer);
 	zombies++;
 	elapsedtime = 0;
 }

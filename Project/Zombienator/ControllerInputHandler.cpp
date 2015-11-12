@@ -24,5 +24,8 @@ void ControllerInputHandler::SetButton(SDL_ControllerButtonEvent button, bool b)
 	case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
 		inputContainer->SetKey('d', b);
 		break;
+	case SDL_CONTROLLER_BUTTON_START:
+		inputContainer->SetKey(SDLK_ESCAPE, b);
+		break;
 	}
 }

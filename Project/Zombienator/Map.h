@@ -1,32 +1,55 @@
 #pragma once
-#include "MapLayer.h"
-#include "CollisionLayer.h"
-#include "SDL_image.h"
-#include <memory>
+#include <string>
+#include <map>
+#include <vector>
+#include <SDL_rect.h>
+#include <SDL_render.h>
 
-using namespace std;
+#include "Layer.h"
+#include "TileSet.h"
+#include "ObjectLayer.h"
+
+using std::string;
+using std::vector;
+
+class MapParser;
+class CollisionLayer;
 
 class Map
 {
-public:
-	Map(string _img_path);
-	string getImagePath();
-	void addMapLayer(MapLayer _mapLayer);
-	void addCollisionLayer(CollisionLayer _collisionLayer);
-	void setSprites(vector<SDL_Rect*> _sprites) { sprites = _sprites; };
-	vector<SDL_Rect*> getSprites() { return sprites; };
-	void setTexture(SDL_Texture* texture);
-	SDL_Texture* getTexture() { return texture; };
-	vector<MapLayer> getLayers() { return mapLayers; };
-	vector<CollisionLayer> getCollisionLayers() { return collisionLayers; };
-	bool checkCollision(int _x, int _y, int _width, int _height);
-	~Map();
 private:
-	SDL_Texture* texture;
-	vector<SDL_Rect*> sprites;
-	string img_path;
-	vector<MapLayer> mapLayers;
-	vector<CollisionLayer> collisionLayers;
-protected:
+	char* path = nullptr;
+	
+	int width = 0;
+	int height = 0;
+	int tileWidth = 0;
+	int tileHeight = 0;
+	MapParser* parser = nullptr;
 
+	std::map<string, Layer*> layers{};
+	vector<TileSet*> tilesets{};
+	vector<SDL_Rect*> rects{};
+	SDL_Renderer* renderer;
+public:
+	Map(char* path, SDL_Renderer& ren);
+	~Map();
+
+	char* GetPath() const { return this->path; }
+	void TileSize(int w, int h) { tileWidth = w; tileHeight = h; }
+	void Size(int w, int h);
+
+	int Width() { return width; }
+	int Height() { return height; }
+
+	int TileWidth() { return tileWidth; }
+	int TileHeight() { return tileHeight; }
+
+	void AddLayer(Layer* l) { layers.insert({ l->Name(), l }); }
+	void AddTileset(TileSet* ts);
+
+	void Draw(SDL_Renderer& ren);
+
+	ObjectLayer* GetObjectLayer(string key);
+	vector<SDL_Rect*> GetRects() { return this->rects; }
+	vector<TileSet*> GetTileSets() { return this->tilesets; }
 };

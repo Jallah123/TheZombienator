@@ -1,13 +1,13 @@
 #pragma once
-#include "AbstractUIComponent.h"
-#include "string"
-#include "SDL.h"
+#include "Button.h"
 
-class SettingsButton : public AbstractUIComponent
+class SettingsButton
+	: public Button
 {
 public:
-	SettingsButton(SDL_Renderer& ren, std::string text, std::string img_url);
-	void Draw(SDL_Renderer & ren);
-	void ClickAction();
+	SettingsButton();
+	SettingsButton(SDL_Renderer& ren, char* text, char* img_url);
 	~SettingsButton();
+
+	virtual void ClickAction() override;
 };
