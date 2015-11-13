@@ -2,6 +2,8 @@
 #include <vector>
 #include <algorithm>
 #include "Character.h"
+#include "Zombie.h"
+#include "StatsController.h"
 using std::vector;
 
 class CharacterContainer
@@ -13,8 +15,8 @@ public:
 	vector<Character*> GetCharacters() { return characters; };
 	void AddCharacter(Character* c) { characters.push_back(c); };
 	void Remove(Character* c) {
-		auto n = std::find(characters.begin(), characters.end(), c);
-		characters.erase(n);
+		if (dynamic_cast<Zombie*>(c)) StatsController::Instance()->AddKill();
+		characters.erase(std::remove(characters.begin(),characters.end(),c),characters.end());
 	};
 	void RemoveAll() {
 		if (arrRemove.size() == 0) return;

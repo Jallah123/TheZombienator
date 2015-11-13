@@ -15,6 +15,7 @@ class MoveContainer;
 class CollideContainer;
 class CharacterContainer;
 
+class StatsController;
 
 class SpawnController
 {
@@ -25,6 +26,7 @@ private:
 	int currentWave = 0;
 
 	int zombies = 0;
+	int zombiesWave = 0;
 	int amountToSpawn = 3;
 	
 	float spawnTime = 100;
@@ -42,6 +44,9 @@ private:
 	
 	Character* target = nullptr;
 
+	StatsController* statsController = nullptr;
+
+	bool IsFinished();
 public:
 	SpawnController();
 	~SpawnController();

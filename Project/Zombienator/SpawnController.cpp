@@ -1,9 +1,19 @@
 #pragma once
 #include "SpawnController.h"
 #include "GameObjectFactory.h"
+#include "StatsController.h"
+bool SpawnController::IsFinished()
+{
+	if (statsController->GetKills() == zombiesWave) {
+		waveFinished = true;
+		elapsedtime = 0;
+	}
 
+	return waveFinished;
+}
 SpawnController::SpawnController()
 {
+	statsController = StatsController::Instance();
 	NextWave();
 }
 
@@ -15,25 +25,20 @@ SpawnController::~SpawnController()
 void SpawnController::Update(float dt)
 {
 	if (completed) return;
-	//std::cout << "Current wave: " << currentWave << ", zombies: " << zombies << ", amount to spawn " << amountToSpawn << std::endl;
-	//std::cout << "elapsed time " << elapsedtime << std::endl;
+	std::cout << "Current wave: " << currentWave << ", zombies: " << zombiesWave << ", amount to spawn " << amountToSpawn << std::endl;
+	std::cout << "elapsed time " << elapsedtime << std::endl;
+	std::cout << "kills " << statsController->GetKills() << std::endl;
 	elapsedtime += dt;
-	if (waveFinished) {
-		NextWave();
+	if (IsFinished()) {
+		Countdown();
 		return;
-	} else
-
-	Spawn();
+	} 
+	else Spawn();
 }
 
 void SpawnController::Spawn()
 {
 	if (elapsedtime < spawnTime) return;
-	if (zombies == amountToSpawn) {
-		waveFinished = true;
-		elapsedtime = 0;
-		return;
-	}
 	//No points to spawn on?
 	if (locations.size() == 0) return;
 
@@ -43,28 +48,28 @@ void SpawnController::Spawn()
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
+	zombiesWave++;
 	zombies++;
 	elapsedtime = 0;
 }
 
 void SpawnController::NextWave()
 {
-	if (elapsedtime < timeBetweenWaves) return;
 	if (currentWave == maxWaves) {
 		completed = true;
 		return;
 	}
 	currentWave++;
 	waveFinished = false;
-	zombies = 0;
+	zombiesWave = 0;//reset wave count
 	elapsedtime = 0;
 }
 
 void SpawnController::Countdown()
 {
-	if (elapsedtime >= timeBetweenWaves) {
-		NextWave();		
-	}
+	if (elapsedtime < timeBetweenWaves) return;
+
+	NextWave();
 }
 
 void SpawnController::AddLocation(int x, int y)
