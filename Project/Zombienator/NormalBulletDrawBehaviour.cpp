@@ -23,11 +23,15 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren)
 	SDL_Rect* target = b->GetTarget();
 	Direction md = b->GetLookDir();
 	SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
+	SDL_Point end = { origin->getPosX(), origin->getPosY() };
 	//if(b->HasCollision())
 		//std::cout << "x:" << target->x << ", y:" << target->y << ", w:" << target->w << ", h:" << target->h;
-	switch (md)
+	/*switch (md)
 	{
 	case SOUTH:
+		end.x = target->x;
+		end.y = target->y;
+
 		rect.x = b->getPosX() + offsetX;
 		rect.y = (b->getPosY() + offsetY) + origin->GetHeight();
 		rect.w = 2;
@@ -53,12 +57,19 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren)
 		break;
 	case NONE:
 		break;
-	}
+	}*/
+	
+		end.x = b->HasCollision() ? target->x : 0 ;
+		end.y = b->HasCollision() ? target->y : 0;
+		SDL_RenderDrawLine(&ren, origin->getPosX(), origin->getPosY(), end.x, end.y);
+
+	b->SetDirection(md);
 
 	b->SetDestinationRect(rect);
 	
 	if (b->IsLocked()) {
-		SDL_RenderFillRect(&ren, &rect);
+		
+		//SDL_RenderFillRect(&ren, &rect);
 	}
 	b->DecreaseLifeTime(dt);
 	b->SetLocked(true);

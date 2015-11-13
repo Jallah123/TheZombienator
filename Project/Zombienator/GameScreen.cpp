@@ -9,8 +9,6 @@
 #include "Mike.h"
 #include "Zombie.h"
 
-
-
 GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
@@ -83,9 +81,8 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	tree->Display(&ren);
 	
 	map->Draw(ren);
-	/*
 	collideContainer.Collide(dt);
 	
-	animateContainer.Animate(dt);*/
+	animateContainer.Animate(dt);
 	drawContainer.Draw(dt, ren);
 }

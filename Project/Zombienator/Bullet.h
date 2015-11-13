@@ -19,6 +19,7 @@ class Bullet
 	: public GameObject
 {
 protected:
+	Direction direction = Direction::NONE;
 	bool _hasCollision = false;
 	bool _locked = false;
 	float lifeTime = 25;
@@ -66,5 +67,8 @@ public:
 
 	float GetLifeTime() { return lifeTime; }
 	void DecreaseLifeTime(float time) { lifeTime -= time; }
+
+	Direction GetDirection() { return this->direction; }
+	void SetDirection(Direction d) { this->direction = d; }
 };
 
