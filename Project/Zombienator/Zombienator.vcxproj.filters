@@ -507,7 +507,7 @@
       <Filter>Header Files\Factories</Filter>
     </ClInclude>
     <ClInclude Include="StatsController.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

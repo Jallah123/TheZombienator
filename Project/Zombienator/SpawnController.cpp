@@ -4,7 +4,7 @@
 #include "StatsController.h"
 bool SpawnController::IsFinished()
 {
-	if (statsController->GetKills() == zombiesWave) {
+	if (!waveFinished && statsController->GetKills() == zombies) {
 		waveFinished = true;
 		elapsedtime = 0;
 	}
@@ -25,9 +25,9 @@ SpawnController::~SpawnController()
 void SpawnController::Update(float dt)
 {
 	if (completed) return;
-	std::cout << "Current wave: " << currentWave << ", zombies: " << zombiesWave << ", amount to spawn " << amountToSpawn << std::endl;
-	std::cout << "elapsed time " << elapsedtime << std::endl;
-	std::cout << "kills " << statsController->GetKills() << std::endl;
+	//std::cout << "Current wave: " << currentWave << ", zombies: " << zombiesWave << ", amount to spawn " << amountToSpawn << std::endl;
+	//std::cout << "elapsed time " << elapsedtime << std::endl;
+	//std::cout << "kills " << statsController->GetKills() << std::endl;
 	elapsedtime += dt;
 	if (IsFinished()) {
 		Countdown();
@@ -37,7 +37,8 @@ void SpawnController::Update(float dt)
 }
 
 void SpawnController::Spawn()
-{
+{	
+	if (zombiesWave == amountToSpawn) return;
 	if (elapsedtime < spawnTime) return;
 	//No points to spawn on?
 	if (locations.size() == 0) return;
@@ -49,7 +50,6 @@ void SpawnController::Spawn()
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
 	zombiesWave++;
-	zombies++;
 	elapsedtime = 0;
 }
 
@@ -62,6 +62,7 @@ void SpawnController::NextWave()
 	currentWave++;
 	waveFinished = false;
 	zombiesWave = 0;//reset wave count
+	zombies += amountToSpawn;
 	elapsedtime = 0;
 }
 
