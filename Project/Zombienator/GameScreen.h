@@ -19,12 +19,14 @@ class GameScreen
 public:
 	GameScreen(SDL_Renderer* _ren, char* path);
 	~GameScreen();
-
+	void Shake(float time, int intensity = 20);
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 	void DrawMap(SDL_Renderer& ren);
 	
 private:
+	float shake = 0;
+	int shakeIntensity = 20;
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
 	
 	DrawContainer drawContainer;

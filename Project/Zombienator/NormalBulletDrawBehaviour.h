@@ -12,6 +12,6 @@ private:
 public:
 	NormalBulletDrawBehaviour();
 	~NormalBulletDrawBehaviour();
-	virtual void Draw(float dt, SDL_Renderer& ren) override;
+	virtual void Draw(float dt, SDL_Renderer& ren, int XOffset, int YOffset) override;
 };
 

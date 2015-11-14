@@ -50,10 +50,10 @@ void Map::AddTileset(TileSet* ts)
 	tilesets.push_back(ts);
 }
 
-void Map::Draw(SDL_Renderer & ren)
+void Map::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
 {
 	for (const auto& l : layers) {
-		l.second->Draw(ren);//Render each layer
+		l.second->Draw(ren, XOffset, YOffset);//Render each layer
 	}
 }
 
