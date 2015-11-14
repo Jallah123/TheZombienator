@@ -60,10 +60,26 @@ GameScreen::~GameScreen()
 
 void GameScreen::Update(float dt)
 {
+
 }
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
+	if (InputContainer::GetInstance().GetKeyState('['))
+	{
+		speed += 0.1;
+	}
+	else if (InputContainer::GetInstance().GetKeyState(']'))
+	{
+		speed -= 0.1;
+		if(speed < 0)
+			speed = 0;
+	}
+	else if (InputContainer::GetInstance().GetKeyState('\\'))
+	{
+		speed = 1.0;
+	}
+	dt *= speed;
 	map->Draw(ren);
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
