@@ -37,6 +37,8 @@ private:
 	
 	Mike* mike = nullptr;
 	Map* map = nullptr;
+
+	float speed = 1.0;
 	
 	void DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren);
 	void DrawCollisionObject(int x, int y, int width, int height, SDL_Renderer* ren);
