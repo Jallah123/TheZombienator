@@ -39,5 +39,13 @@ void ControllerInputHandler::SetAxis(SDL_ControllerAxisEvent axisEvent, bool b)
 	case SDL_CONTROLLER_AXIS_TRIGGERRIGHT:
 		inputContainer->SetKey(']', (axisEvent.value > 0));
 		break;
+	case SDL_CONTROLLER_AXIS_LEFTX:
+		inputContainer->SetKey('a', (axisEvent.value < -500));
+		inputContainer->SetKey('d', (axisEvent.value > 4000));
+		break;
+	case SDL_CONTROLLER_AXIS_LEFTY:
+		inputContainer->SetKey('w', (axisEvent.value < -500));
+		inputContainer->SetKey('s', (axisEvent.value > 4000));
+		break;
 	}
 }
