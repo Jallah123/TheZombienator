@@ -2,41 +2,97 @@
 #include "MusicController.h"
 #include <iostream>
 
-void MusicController::Load(const char* filename)
+MusicController::MusicController()
 {
-	chunk = Mix_LoadWAV(filename);
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
+	{
+		cout << "Mix_OpenAudio error: " << Mix_GetError() << endl;
+		return;
+	}
+	Mix_VolumeMusic(volume);
+	Mix_AllocateChannels(64);
+}
+
+Mix_Chunk* MusicController::Load(string path)
+{
+	if (Exists(path))
+	{
+		return sounds.at(path);
+	}
+
+	Mix_Chunk* chunk = Mix_LoadWAV(path.c_str());
 	if (chunk == NULL) {
 		std::cout << stderr << "Unable to load WAV file: %s\n" << Mix_GetError();
 	}
+	
+	Mix_VolumeChunk(chunk, volume);
+	sounds.insert(sounds.begin(), make_pair(path, chunk));
+	return chunk;
+}
+
+bool MusicController::Exists(string path)
+{
+	return sounds.find(path) != sounds.end();
 }
 
 /*
  * Channel to play on which channel
- * loops, amount of times to play ( -1 = infinite )
+ * loops, amount of times to play ( -1 = infinite ) default = 1 time
  */
-void MusicController::Play(int channel, int loops)
+void MusicController::PlaySound(string path, int loops)
 {
-	int mix_channel = -1;
 
-	mix_channel = Mix_PlayChannel(channel, chunk, loops);
-	if (mix_channel == -1) {
-		std::cout << stderr << "Unable to play WAV file: %s\n" << Mix_GetError();
+	Mix_Chunk* sound = Load(path);
+	if (Mix_PlayChannel(-1, sound, loops) == -1) {
+		std::cout << "Unable to play WAV file: %s\n" << Mix_GetError();
 	}
-	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 }
 
-void MusicController::Stop()
+void MusicController::ChangeMusic(string path)
 {
-	Mix_FreeChunk(chunk);
-	Mix_CloseAudio();
+	if (currentMusic != nullptr)
+	{
+		Mix_FreeMusic(currentMusic);
+	}
+	Mix_Music* music;
+
+	// Load music
+	music = Mix_LoadMUS(path.c_str());
+	if (!music)
+	{
+		cout << "Mix_LoadMUS error: " << Mix_GetError() << endl;
+		return;
+	}
+	// Play music
+	if (Mix_PlayMusic(music, -1) == -1)
+	{
+		cout << "Mix_PlayMusic error : " << Mix_GetError() << endl;
+	}
+
+	currentMusic = music;
 }
 
-void MusicController::SetVolume(int volume, int channel)
+void MusicController::StopAllSounds()
 {
-	this->volume = volume; 
-	Mix_Volume(channel, this->volume);
+	for each (auto& sound in sounds)
+	{
+		Mix_FreeChunk(sound.second);
+	}
+	Mix_FreeMusic(currentMusic);
+}
+
+void MusicController::SetVolume(int volume)
+{
+	for each (auto& sound in sounds)
+	{
+		Mix_VolumeChunk(sound.second, volume);
+	}
+	Mix_VolumeMusic(volume);
+	this->volume = volume;
 }
 
 MusicController::~MusicController()
 {
+	StopAllSounds();
+	Mix_CloseAudio();
 }

@@ -21,7 +21,7 @@ StoryModeButton::~StoryModeButton()
 
 void StoryModeButton::ClickAction()
 {
-	MusicController::GetInstance().Stop();
+	MusicController::GetInstance().StopAllSounds();
 	ScreenController::GetInstance().ChangeScreen(new GameScreen{ renderer, "assets/maps/map-1280x640.json" });
 }
 

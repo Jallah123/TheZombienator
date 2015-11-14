@@ -47,9 +47,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 	spawnController.AddTarget(mike);
 
 	//Load && play sound
-	musicController->Load("assets/sounds/bgSound1.wav");
-	musicController->Play(1, -1);
-	musicController->SetVolume(25, 1);
+	musicController->ChangeMusic("assets/sounds/bgSound1.wav");
 }
 
 

@@ -300,13 +300,6 @@
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\images\button_spritesheet.png" />
-    <Image Include="assets\images\menu_bg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="assets\fonts\Block-Cartoon.ttf" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
