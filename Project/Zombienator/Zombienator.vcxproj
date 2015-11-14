@@ -214,7 +214,7 @@
     <ClCompile Include="Mike.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
-    <ClCompile Include="MusicController.cpp" />
+    <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
     <ClCompile Include="NormalBullet.cpp" />
     <ClCompile Include="NormalBulletCollideBehaviour.cpp" />
@@ -275,7 +275,7 @@
     <ClInclude Include="Mike.h" />
     <ClInclude Include="MoveBehaviour.h" />
     <ClInclude Include="MoveContainer.h" />
-    <ClInclude Include="MusicController.h" />
+    <ClInclude Include="SoundController.h" />
     <ClInclude Include="NonPlayableCharacter.h" />
     <ClInclude Include="NormalBullet.h" />
     <ClInclude Include="NormalBulletCollideBehaviour.h" />

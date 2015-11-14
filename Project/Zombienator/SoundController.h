@@ -4,23 +4,23 @@
 #include <map>
 
 using namespace std;
-class MusicController
+class SoundController
 {
 private:
-	MusicController();
-	MusicController(MusicController const&) = delete;
-	void operator=(MusicController const&) = delete;
+	SoundController();
+	SoundController(SoundController const&) = delete;
+	void operator=(SoundController const&) = delete;
 	Mix_Music* currentMusic = nullptr;
 	map<string, Mix_Chunk*> sounds;
 	Mix_Chunk* Load(string filename);
 	bool Exists(string path);
 	int volume = 25;
 public:
-	static MusicController& GetInstance() {
-		static MusicController instance;
+	static SoundController& GetInstance() {
+		static SoundController instance;
 		return instance;
 	}
-	~MusicController();
+	~SoundController();
 	void PlaySound(string path, int loops = 1);
 	void ChangeMusic(string path);
 	void Pause();

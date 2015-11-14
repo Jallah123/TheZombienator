@@ -1,6 +1,6 @@
 #pragma once
 #include "StoryModeButton.h"
-#include "MusicController.h"
+#include "SoundController.h"
 #include "ScreenController.h"
 #include "GameScreen.h"
 
@@ -21,7 +21,7 @@ StoryModeButton::~StoryModeButton()
 
 void StoryModeButton::ClickAction()
 {
-	MusicController::GetInstance().StopAllSounds();
+	SoundController::GetInstance().StopAllSounds();
 	ScreenController::GetInstance().ChangeScreen(new GameScreen{ renderer, "assets/maps/map-1280x640.json" });
 }
 

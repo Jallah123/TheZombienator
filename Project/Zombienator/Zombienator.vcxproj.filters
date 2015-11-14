@@ -171,9 +171,6 @@
     <ClCompile Include="BehaviourFactory.cpp">
       <Filter>Source Files\Factories</Filter>
     </ClCompile>
-    <ClCompile Include="MusicController.cpp">
-      <Filter>Source Files\Controllers</Filter>
-    </ClCompile>
     <ClCompile Include="NonPlayableCharacter.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
@@ -309,6 +306,9 @@
     <ClCompile Include="Direction.cpp">
       <Filter>Source Files\Enums</Filter>
     </ClCompile>
+    <ClCompile Include="SoundController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -316,9 +316,6 @@
     </ClInclude>
     <ClInclude Include="AbstractUIComponent.h">
       <Filter>Header Files\Views\UIComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="MusicController.h">
-      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="ScreenController.h">
       <Filter>Header Files\Controllers</Filter>
@@ -496,6 +493,9 @@
     </ClInclude>
     <ClInclude Include="TextureFactory.h">
       <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundController.h">
+      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
