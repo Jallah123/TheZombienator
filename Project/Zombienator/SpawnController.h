@@ -20,7 +20,7 @@ class SpawnController
 {
 private:
 	vector<xy> locations;
-	int zombies = 50;
+	int zombies = 0;
 	int amountToSpawn = 10;
 	float spawnTime = 100;
 	float elapsedtime = 0;
