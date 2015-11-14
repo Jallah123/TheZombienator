@@ -35,10 +35,13 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 	BehaviourFactory::Instance()->SetMap(map);
 	characterContainer.Init();
 	
-	spawnController.AddLocation(640, 100);
-	spawnController.AddLocation(1280, 340);
-	spawnController.AddLocation(640, 680);
-	spawnController.AddLocation(0, 340);
+	ObjectLayer* ol = map->GetObjectLayer("SpawnPoints");
+
+	for each (auto spawnPoint in ol->GetRects())
+	{
+		spawnController.AddLocation(spawnPoint->x, spawnPoint->y);
+	}
+
 	spawnController.SetRenderer(ren);
 
 	mike = goFactory->CreateMike();
