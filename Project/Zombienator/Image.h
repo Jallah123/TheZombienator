@@ -1,17 +1,17 @@
 #pragma once
 #include "AbstractUIComponent.h"
-#include "string"
-#include "SDL.h"
 
 class Image :
 	public AbstractUIComponent
 {
 public:
-	Image(SDL_Renderer& ren, std::string img_url);
-	void Draw(SDL_Renderer & ren);
-	void ClickAction();
+	Image(SDL_Renderer& ren, char* img_url);
 	~Image();
+
+	virtual void Draw(SDL_Renderer& ren) override;
+	virtual void ClickAction() override;
+	
 private:
-	SDL_Texture* Background;
+	SDL_Texture* texture;
 };
 

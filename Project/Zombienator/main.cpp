@@ -1,15 +1,9 @@
 #include <iostream>
-#include "windows.h"
 #include "Program.h"
-
-using namespace std;
-
-SDL_Window *win = nullptr;
-SDL_Renderer *ren = nullptr;
-SDL_Event e;
 
 int main(int argc, char* args[])
 {
-	Program::shared_program();
+	Program* p = Program::getInstance();
+	p->Start();
 	return 0;
 }

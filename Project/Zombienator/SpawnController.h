@@ -3,6 +3,9 @@
 #include "Zombie.h"
 #include <random>
 using std::vector;
+using std::random_device;
+using std::default_random_engine;
+using std::uniform_int_distribution;
 #define xy std::pair<int, int>
 
 class DrawContainer;
@@ -26,14 +29,7 @@ private:
 	uniform_int_distribution<int> locationDist;
 
 	SDL_Renderer* renderer = nullptr;
-
-	DrawContainer* drawContainer = nullptr;
-	AnimateContainer* animateContainer = nullptr;
-	ActionContainer* actionContainer = nullptr;
-	MoveContainer* moveContainer = nullptr;
-	CollideContainer* collideContainer = nullptr;
-	CharacterContainer* characterContainer = nullptr;
-
+	
 	Character* target = nullptr;
 
 public:

@@ -24,5 +24,28 @@ void ControllerInputHandler::SetButton(SDL_ControllerButtonEvent button, bool b)
 	case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
 		inputContainer->SetKey('d', b);
 		break;
+	case SDL_CONTROLLER_BUTTON_START:
+		inputContainer->SetKey(SDLK_ESCAPE, b);
+		break;
+	}
+}
+
+void ControllerInputHandler::SetAxis(SDL_ControllerAxisEvent axisEvent, bool b)
+{
+	switch (axisEvent.axis) {
+	case SDL_CONTROLLER_AXIS_TRIGGERLEFT:
+		inputContainer->SetKey('[', (axisEvent.value > 0));
+		break;
+	case SDL_CONTROLLER_AXIS_TRIGGERRIGHT:
+		inputContainer->SetKey(']', (axisEvent.value > 0));
+		break;
+	case SDL_CONTROLLER_AXIS_LEFTX:
+		inputContainer->SetKey('a', (axisEvent.value < -500));
+		inputContainer->SetKey('d', (axisEvent.value > 4000));
+		break;
+	case SDL_CONTROLLER_AXIS_LEFTY:
+		inputContainer->SetKey('w', (axisEvent.value < -500));
+		inputContainer->SetKey('s', (axisEvent.value > 4000));
+		break;
 	}
 }
