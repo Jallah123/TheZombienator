@@ -29,3 +29,15 @@ void ControllerInputHandler::SetButton(SDL_ControllerButtonEvent button, bool b)
 		break;
 	}
 }
+
+void ControllerInputHandler::SetAxis(SDL_ControllerAxisEvent axisEvent, bool b)
+{
+	switch (axisEvent.axis) {
+	case SDL_CONTROLLER_AXIS_TRIGGERLEFT:
+		inputContainer->SetKey('[', (axisEvent.value > 0));
+		break;
+	case SDL_CONTROLLER_AXIS_TRIGGERRIGHT:
+		inputContainer->SetKey(']', (axisEvent.value > 0));
+		break;
+	}
+}

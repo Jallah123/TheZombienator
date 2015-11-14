@@ -89,6 +89,9 @@ int Program::Events(AbstractScreen* screen)
 	else if (e.type == SDL_CONTROLLERBUTTONUP) {
 		controllerInputHandler->SetButton(e.cbutton, SDL_RELEASED);
 	}
+	else if (e.type == SDL_CONTROLLERAXISMOTION) {
+		controllerInputHandler->SetAxis(e.caxis, SDL_RELEASED);
+	}
 	else if (e.type == SDL_CONTROLLERDEVICEADDED) {
 		InitJoystick();
 	}
