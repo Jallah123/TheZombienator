@@ -13,7 +13,7 @@ public:
 	ObjectLayer();
 	~ObjectLayer();
 
-	virtual void Draw(SDL_Renderer& ren) override;
+	virtual void Draw(SDL_Renderer& ren, int XOffset, int YOffset) override;
 
 	void AddRect(SDL_Rect* r) { rects.push_back(r); }
 	vector<SDL_Rect*> GetRects() { return this->rects; }

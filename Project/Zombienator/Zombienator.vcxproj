@@ -219,6 +219,7 @@
     <ClCompile Include="NormalBullet.cpp" />
     <ClCompile Include="NormalBulletCollideBehaviour.cpp" />
     <ClCompile Include="NormalBulletDrawBehaviour.cpp" />
+    <ClCompile Include="NumberUtility.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />
     <ClCompile Include="PcMoveBehaviour.cpp" />
     <ClCompile Include="Pistol.cpp" />
@@ -281,6 +282,7 @@
     <ClInclude Include="NormalBullet.h" />
     <ClInclude Include="NormalBulletCollideBehaviour.h" />
     <ClInclude Include="NormalBulletDrawBehaviour.h" />
+    <ClInclude Include="NumberUtility.h" />
     <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="PcMoveBehaviour.h" />
     <ClInclude Include="Pistol.h" />

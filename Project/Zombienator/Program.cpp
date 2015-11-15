@@ -61,7 +61,7 @@ int Program::Tick() {
 
 void Program::Render(AbstractScreen* screen)
 {
-	SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_SetRenderDrawColor(Sdl_Renderer, 0, 0, 0, 255);
 	SDL_RenderClear(Sdl_Renderer);
 
 	screen->Draw(*Sdl_Renderer, deltaTime);
@@ -88,6 +88,9 @@ int Program::Events(AbstractScreen* screen)
 	}
 	else if (e.type == SDL_CONTROLLERBUTTONUP) {
 		controllerInputHandler->SetButton(e.cbutton, SDL_RELEASED);
+	}
+	else if (e.type == SDL_CONTROLLERAXISMOTION) {
+		controllerInputHandler->SetAxis(e.caxis, SDL_RELEASED);
 	}
 	else if (e.type == SDL_CONTROLLERDEVICEADDED) {
 		InitJoystick();

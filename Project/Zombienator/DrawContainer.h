@@ -9,5 +9,5 @@ public:
 	DrawContainer();
 	~DrawContainer();
 
-	void Draw(float dt, SDL_Renderer& ren);
+	void Draw(float dt, SDL_Renderer& ren, int XOffset, int YOffset);
 };

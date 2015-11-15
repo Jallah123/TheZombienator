@@ -47,7 +47,7 @@ public:
 	void AddLayer(Layer* l) { layers.insert({ l->Name(), l }); }
 	void AddTileset(TileSet* ts);
 
-	void Draw(SDL_Renderer& ren);
+	void Draw(SDL_Renderer& ren, int XOffset, int YOffset);
 
 	ObjectLayer* GetObjectLayer(string key);
 	vector<SDL_Rect*> GetRects() { return this->rects; }

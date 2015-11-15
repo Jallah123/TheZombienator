@@ -12,7 +12,7 @@ NormalBulletDrawBehaviour::~NormalBulletDrawBehaviour()
 {
 }
 
-void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren)
+void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset, int YOffset)
 {
 	if (!this->gameObject) {
 		return;
@@ -54,7 +54,8 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren)
 	case NONE:
 		break;
 	}
-
+	rect.x -= XOffset;
+	rect.y -= YOffset;
 	b->SetDestinationRect(rect);
 	
 	if (b->IsLocked()) {

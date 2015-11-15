@@ -7,5 +7,5 @@ public:
 	virtual ~DrawBehaviour();
 	
 	//Use Draw
-	virtual void Draw(float dt, SDL_Renderer& ren) = 0;
+	virtual void Draw(float dt, SDL_Renderer& ren, int XOffset, int YOffset) = 0;
 };

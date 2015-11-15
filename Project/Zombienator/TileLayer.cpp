@@ -18,7 +18,7 @@ TileLayer::~TileLayer()
 {
 }
 
-void TileLayer::Draw(SDL_Renderer& ren)
+void TileLayer::Draw(SDL_Renderer& ren, int XOffset, int YOffset)
 {
 	//Get Tileset rect
 	
@@ -31,8 +31,8 @@ void TileLayer::Draw(SDL_Renderer& ren)
 		{
 			size_t gid = tilesIDs.at(y*width + x);
 			if (gid < INT_MAX) {
-				src.x = x * tileSet->TileWidth();
-				src.y = y * tileSet->TileHeight();
+				src.x = x * tileSet->TileWidth() - XOffset;
+				src.y = y * tileSet->TileHeight() - YOffset;
 				SDL_Rect* r = tileSet->GetTile(gid);
 				DrawRect(r, tileSet->Texture(), &src, ren);
 			}

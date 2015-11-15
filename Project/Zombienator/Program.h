@@ -26,7 +26,6 @@ private:
 	float deltaTime;
 	int lastFrameTime = 0;
 	int currentFrameTime = 0;
-
 	
 	int Tick();
 	void Render(AbstractScreen* screen);
