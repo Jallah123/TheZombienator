@@ -315,6 +315,9 @@
     <ClCompile Include="Direction.cpp">
       <Filter>Source Files\Enums</Filter>
     </ClCompile>
+    <ClCompile Include="StatsController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="NumberUtility.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
@@ -505,6 +508,9 @@
     </ClInclude>
     <ClInclude Include="TextureFactory.h">
       <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="StatsController.h">
+      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="NumberUtility.h">
       <Filter>Header Files\Utils</Filter>

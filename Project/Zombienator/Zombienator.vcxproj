@@ -230,6 +230,7 @@
     <ClCompile Include="SettingsButton.cpp" />
     <ClCompile Include="ShootActionBehaviour.cpp" />
     <ClCompile Include="SpawnController.cpp" />
+    <ClCompile Include="StatsController.cpp" />
     <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="TextureFactory.cpp" />
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
@@ -293,6 +294,7 @@
     <ClInclude Include="SettingsButton.h" />
     <ClInclude Include="ShootActionBehaviour.h" />
     <ClInclude Include="SpawnController.h" />
+    <ClInclude Include="StatsController.h" />
     <ClInclude Include="StoryModeButton.h" />
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h" />

@@ -1,5 +1,4 @@
 #include <SDL_render.h>
-#include <iostream>
 #include "GameObjectFactory.h"
 #include "GameObject.h"
 #include "Character.h"

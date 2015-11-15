@@ -13,16 +13,16 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
 
-	goFactory->SetLevel( map );
+	goFactory->SetLevel(map);
 	goFactory->SetContainers(
-		&drawContainer, 
-		&animateContainer, 
-		&moveContainer, 
-		&actionContainer, 
-		&collideContainer, 
-		&characterContainer, 
+		&drawContainer,
+		&animateContainer,
+		&moveContainer,
+		&actionContainer,
+		&collideContainer,
+		&characterContainer,
 		ren
-	);
+		);
 	BehaviourFactory::Instance()->SetContainers(
 		&drawContainer,
 		&animateContainer,
@@ -31,10 +31,10 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 		&collideContainer,
 		&characterContainer,
 		ren
-	);
+		);
 	BehaviourFactory::Instance()->SetMap(map);
 	characterContainer.Init();
-	
+
 	ObjectLayer* ol = map->GetObjectLayer("SpawnPoints");
 
 	for each (auto spawnPoint in ol->GetRects())
@@ -46,7 +46,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 
 	mike = goFactory->CreateMike();
 	mike->SetPosition(800, 150);
-	
+
 	spawnController.AddTarget(mike);
 
 	//Load && play sound
@@ -62,16 +62,6 @@ GameScreen::~GameScreen()
 
 void GameScreen::Update(float dt)
 {
-
-}
-
-void GameScreen::Shake(float time, int intensity) {
-	shake = time;
-	shakeIntensity = intensity;
-}
-
-void GameScreen::Draw(SDL_Renderer& ren, float dt)
-{
 	int XOffset = 0;
 	int YOffset = 0;
 	if (shake > 0) {
@@ -86,7 +76,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	else if (InputContainer::GetInstance().GetKeyState(']'))
 	{
 		speed -= 0.1;
-		if(speed < 0)
+		if (speed < 0)
 			speed = 0;
 	}
 	else if (InputContainer::GetInstance().GetKeyState('\\'))
@@ -94,11 +84,21 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		speed = 1.0;
 	}
 	dt *= speed;
-	map->Draw(ren, XOffset, YOffset);
+
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
 	collideContainer.Collide(dt);
 	moveContainer.Move(dt);
 	animateContainer.Animate(dt);
+}
+
+void GameScreen::Shake(float time, int intensity) {
+	shake = time;
+	shakeIntensity = intensity;
+}
+
+void GameScreen::Draw(SDL_Renderer& ren, float dt)
+{
+	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
 }

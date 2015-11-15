@@ -17,5 +17,4 @@ int NumberUtility::RandomNumber(int min, int max) {
 	std::uniform_int_distribution<int> dist{ min, max };
 
 	return dist(dre);
-
 }

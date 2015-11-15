@@ -9,7 +9,7 @@ GameObject::~GameObject()
 {
 }
 
-void GameObject::SetImage(const char * path, SDL_Renderer & ren)
+void GameObject::SetImage(std::string path, SDL_Renderer & ren)
 {
 	texture = TextureFactory::GenerateTextureFromImgUrl(path);
 }
