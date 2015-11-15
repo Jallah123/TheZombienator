@@ -25,9 +25,7 @@ SpawnController::~SpawnController()
 void SpawnController::Update(float dt)
 {
 	if (completed) return;
-	//std::cout << "Current wave: " << currentWave << ", zombies: " << zombiesWave << ", amount to spawn " << amountToSpawn << std::endl;
-	//std::cout << "elapsed time " << elapsedtime << std::endl;
-	//std::cout << "kills " << statsController->GetKills() << std::endl;
+
 	elapsedtime += dt;
 	if (IsFinished()) {
 		Countdown();
