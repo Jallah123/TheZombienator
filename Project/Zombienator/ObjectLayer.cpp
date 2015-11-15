@@ -16,7 +16,7 @@ ObjectLayer::~ObjectLayer()
 	rects.clear();
 }
 
-void ObjectLayer::Draw(SDL_Renderer & ren)
+void ObjectLayer::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
 {
 	size_t x, y;
 	for (auto& r : rects) {

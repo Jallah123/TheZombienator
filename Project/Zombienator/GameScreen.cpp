@@ -2,7 +2,7 @@
 #include "GameScreen.h"
 #include <SDL_mixer.h>
 #include <iostream>
-
+#include "NumberUtility.h"
 #include "Map.h"
 #include "Mike.h"
 #include "Zombie.h"
@@ -55,7 +55,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 	musicController->SetVolume(25, 1);
 }
 
-
 GameScreen::~GameScreen()
 {
 	delete mike;
@@ -66,8 +65,20 @@ void GameScreen::Update(float dt)
 
 }
 
+void GameScreen::Shake(float time, int intensity) {
+	shake = time;
+	shakeIntensity = intensity;
+}
+
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
+	int XOffset = 0;
+	int YOffset = 0;
+	if (shake > 0) {
+		shake -= dt;
+		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
+		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
+	}
 	if (InputContainer::GetInstance().GetKeyState('['))
 	{
 		speed += 0.1;
@@ -83,11 +94,11 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		speed = 1.0;
 	}
 	dt *= speed;
-	map->Draw(ren);
+	map->Draw(ren, XOffset, YOffset);
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
 	collideContainer.Collide(dt);
 	moveContainer.Move(dt);
 	animateContainer.Animate(dt);
-	drawContainer.Draw(dt, ren);
+	drawContainer.Draw(dt, ren, XOffset, YOffset);
 }
