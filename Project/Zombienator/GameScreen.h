@@ -41,6 +41,8 @@ private:
 	Map* map = nullptr;
 
 	float speed = 1.0;
+	int XOffset = 0;
+	int YOffset = 0;
 	
 	void DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren);
 	void DrawCollisionObject(int x, int y, int width, int height, SDL_Renderer* ren);

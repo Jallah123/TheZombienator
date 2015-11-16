@@ -62,8 +62,6 @@ GameScreen::~GameScreen()
 
 void GameScreen::Update(float dt)
 {
-	int XOffset = 0;
-	int YOffset = 0;
 	if (shake > 0) {
 		shake -= dt;
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
