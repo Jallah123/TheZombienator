@@ -111,6 +111,8 @@ int Program::InitComponents() {
 		cerr << "SDL_Mixer Error: " << Mix_GetError() << endl;
 	}
 
+
+
 	// More channels so we can play more sounds at the same time
 	Mix_AllocateChannels(16);
 

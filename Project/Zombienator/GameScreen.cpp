@@ -99,6 +99,6 @@ void GameScreen::Shake(float time, int intensity) {
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
-	map->Draw(ren, XOffset, YOffset);
-	drawContainer.Draw(dt, ren, XOffset, YOffset);
+	map->Draw(ren, 0, 0);
+	drawContainer.Draw(dt, ren, 0, 0);
 }
