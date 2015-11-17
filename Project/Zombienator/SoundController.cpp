@@ -26,7 +26,7 @@ Mix_Chunk* SoundController::Load(string path)
 	}
 	
 	Mix_VolumeChunk(chunk, volume);
-	sounds.insert(sounds.begin(), make_pair(path, chunk));
+	sounds.insert({ path, chunk });
 	return chunk;
 }
 
