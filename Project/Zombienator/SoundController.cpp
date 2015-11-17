@@ -74,7 +74,7 @@ void SoundController::ChangeMusic(string path)
 
 void SoundController::StopAllSounds()
 {
-	for each (auto& sound in sounds)
+	for (auto& sound: sounds)
 	{
 		Mix_FreeChunk(sound.second);
 	}
