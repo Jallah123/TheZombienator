@@ -1,4 +1,5 @@
 #include "Program.h"
+#include "SDL_TTF.h"
 
 Program::Program() {
 	cout << "Creating Program" << endl;
@@ -109,6 +110,11 @@ int Program::InitComponents() {
 
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		cerr << "SDL_Mixer Error: " << Mix_GetError() << endl;
+	}
+
+	if (TTF_Init() == -1) {
+		cerr << "Error loading Open_TTF : " << SDL_GetError() << endl;
+		return 1;
 	}
 
 	// More channels so we can play more sounds at the same time
