@@ -6,8 +6,10 @@ TextureFactory::TextureFactory()
 
 SDL_Texture* TextureFactory::GenerateTextureFromText(std::string text, SDL_Color color)
 {
-	static TTF_Font* font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
-
+	static TTF_Font* font;
+	if (font == nullptr) {
+		font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 64);
+	}
 	if (font == nullptr) {
 		cout << "Error opening font" << endl;
 		return nullptr;

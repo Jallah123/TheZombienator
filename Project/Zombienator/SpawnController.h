@@ -68,6 +68,10 @@ public:
 	void Waves(int w) { this->maxWaves = w; }
 
 	int Waves() { return this->maxWaves; }
+
+	int GetAmountToSpawn() { return amountToSpawn; };
+
+	int GetAmountOfZombies() { return zombies; };
 	
 	int CurrentWave() { return this->currentWave; }
 
