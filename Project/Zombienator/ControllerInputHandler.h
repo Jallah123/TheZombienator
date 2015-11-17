@@ -11,6 +11,7 @@ public:
 	}
 
 	void SetButton(SDL_ControllerButtonEvent button, bool b);
+	void ControllerInputHandler::SetAxis(SDL_ControllerAxisEvent axisEvent, bool b);
 
 	InputContainer* inputContainer = &InputContainer::GetInstance();
 

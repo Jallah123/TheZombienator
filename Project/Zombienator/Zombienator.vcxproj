@@ -219,6 +219,7 @@
     <ClCompile Include="NormalBullet.cpp" />
     <ClCompile Include="NormalBulletCollideBehaviour.cpp" />
     <ClCompile Include="NormalBulletDrawBehaviour.cpp" />
+    <ClCompile Include="NumberUtility.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />
     <ClCompile Include="PcMoveBehaviour.cpp" />
     <ClCompile Include="Pistol.cpp" />
@@ -229,6 +230,7 @@
     <ClCompile Include="SettingsButton.cpp" />
     <ClCompile Include="ShootActionBehaviour.cpp" />
     <ClCompile Include="SpawnController.cpp" />
+    <ClCompile Include="StatsController.cpp" />
     <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="TextureFactory.cpp" />
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
@@ -280,6 +282,7 @@
     <ClInclude Include="NormalBullet.h" />
     <ClInclude Include="NormalBulletCollideBehaviour.h" />
     <ClInclude Include="NormalBulletDrawBehaviour.h" />
+    <ClInclude Include="NumberUtility.h" />
     <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="PcMoveBehaviour.h" />
     <ClInclude Include="Pistol.h" />
@@ -291,6 +294,7 @@
     <ClInclude Include="SettingsButton.h" />
     <ClInclude Include="ShootActionBehaviour.h" />
     <ClInclude Include="SpawnController.h" />
+    <ClInclude Include="StatsController.h" />
     <ClInclude Include="StoryModeButton.h" />
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h" />

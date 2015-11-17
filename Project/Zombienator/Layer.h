@@ -22,7 +22,7 @@ public:
 	Layer(Map* map);
 	virtual ~Layer();
 
-	virtual void Draw(SDL_Renderer& ren) = 0;
+	virtual void Draw(SDL_Renderer& ren, int XOffset, int YOffset) = 0;
 
 	void Width(size_t w) { this->width = w; }
 	size_t Width() { return this->width; }

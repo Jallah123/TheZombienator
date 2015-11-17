@@ -1,4 +1,5 @@
 #include "Program.h"
+#include "SDL_TTF.h"
 
 Program::Program() {
 	cout << "Creating Program" << endl;
@@ -61,7 +62,7 @@ int Program::Tick() {
 
 void Program::Render(AbstractScreen* screen)
 {
-	SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_SetRenderDrawColor(Sdl_Renderer, 0, 0, 0, 255);
 	SDL_RenderClear(Sdl_Renderer);
 
 	screen->Draw(*Sdl_Renderer, deltaTime);
@@ -89,6 +90,9 @@ int Program::Events(AbstractScreen* screen)
 	else if (e.type == SDL_CONTROLLERBUTTONUP) {
 		controllerInputHandler->SetButton(e.cbutton, SDL_RELEASED);
 	}
+	else if (e.type == SDL_CONTROLLERAXISMOTION) {
+		controllerInputHandler->SetAxis(e.caxis, SDL_RELEASED);
+	}
 	else if (e.type == SDL_CONTROLLERDEVICEADDED) {
 		InitJoystick();
 	}
@@ -106,6 +110,11 @@ int Program::InitComponents() {
 
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		cerr << "SDL_Mixer Error: " << Mix_GetError() << endl;
+	}
+
+	if (TTF_Init() == -1) {
+		cerr << "Error loading Open_TTF : " << SDL_GetError() << endl;
+		return 1;
 	}
 
 	// More channels so we can play more sounds at the same time

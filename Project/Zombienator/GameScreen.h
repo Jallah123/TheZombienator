@@ -19,12 +19,15 @@ class GameScreen
 public:
 	GameScreen(SDL_Renderer* _ren, char* path);
 	~GameScreen();
-
+	void Shake(float time, int intensity = 20);
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 	void DrawMap(SDL_Renderer& ren);
-	
 private:
+	float shake = 0;
+	int shakeIntensity = 20;
+	int XOffset = 0;
+	int YOffset = 0;
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
 	
 	DrawContainer drawContainer;
@@ -37,6 +40,8 @@ private:
 	
 	Mike* mike = nullptr;
 	Map* map = nullptr;
+
+	float speed = 1.0;
 	
 	void DrawRect(int x, int y, SDL_Rect* clip, SDL_Renderer* ren);
 	void DrawCollisionObject(int x, int y, int width, int height, SDL_Renderer* ren);

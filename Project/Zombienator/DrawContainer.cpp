@@ -19,7 +19,7 @@ DrawContainer::~DrawContainer()
 }
 
 
-void DrawContainer::Draw(float dt, SDL_Renderer & ren)
+void DrawContainer::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 {
 	if (this->arr.empty()) return;//Do nothing on empty
 	
@@ -27,7 +27,7 @@ void DrawContainer::Draw(float dt, SDL_Renderer & ren)
 		DrawBehaviour* db = dynamic_cast<DrawBehaviour*>(i);
 		
 		//Draw each Behaviour
-		db->Draw(dt, ren);
+		db->Draw(dt, ren, XOffset, YOffset);
 		if (NormalBulletDrawBehaviour* b = dynamic_cast<NormalBulletDrawBehaviour*>(db)) {
 			if (Bullet* bullet = dynamic_cast<Bullet*>(b->GetGameObject())) {
 				if (bullet->GetLifeTime() <= 0) {
