@@ -186,6 +186,7 @@
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="BehaviourFactory.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletMoveBehaviour.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CharacterCollideBehaviour.cpp" />
     <ClCompile Include="CharacterContainer.cpp" />
@@ -207,6 +208,8 @@
     <ClCompile Include="InputContainer.cpp" />
     <ClCompile Include="KeyboardInputHandler.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="MachineGun.cpp" />
+    <ClCompile Include="MachineGunBullet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapParser.cpp" />
@@ -214,6 +217,7 @@
     <ClCompile Include="Mike.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
+    <ClCompile Include="MovingBulletDrawBehaviour.cpp" />
     <ClCompile Include="MusicController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
     <ClCompile Include="NormalBullet.cpp" />
@@ -252,6 +256,7 @@
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="BehaviourFactory.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletMoveBehaviour.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CharacterCollideBehaviour.h" />
     <ClInclude Include="CharacterContainer.h" />
@@ -260,6 +265,8 @@
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="MachineGun.h" />
+    <ClInclude Include="MachineGunBullet.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapParser.h" />
     <ClInclude Include="Image.h" />
@@ -277,6 +284,7 @@
     <ClInclude Include="Mike.h" />
     <ClInclude Include="MoveBehaviour.h" />
     <ClInclude Include="MoveContainer.h" />
+    <ClInclude Include="MovingBulletDrawBehaviour.h" />
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="NonPlayableCharacter.h" />
     <ClInclude Include="NormalBullet.h" />

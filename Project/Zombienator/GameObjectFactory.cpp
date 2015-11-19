@@ -6,6 +6,7 @@
 #include "Zombie.h"
 #include "Map.h"
 #include "NormalBullet.h"
+#include "MachineGunBullet.h"
 
 #include "DrawContainer.h"
 #include "AnimateContainer.h"
@@ -98,6 +99,20 @@ NormalBullet * GameObjectFactory::CreateNormalBullet(PlayableCharacter * obj)
 
 	if (instance != nullptr) {
 		NormalBullet* cInstance = dynamic_cast<NormalBullet*>(instance);
+		cInstance->Init(drawContainer, moveContainer, collideContainer);
+		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+MachineGunBullet * GameObjectFactory::CreateMachineGunBullet(PlayableCharacter * obj)
+{
+	GameObject* instance = GameObjectFactory::Find("MachineGunBullet");
+
+	if (instance != nullptr) {
+		MachineGunBullet* cInstance = dynamic_cast<MachineGunBullet*>(instance);
 		cInstance->Init(drawContainer, moveContainer, collideContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
 		return cInstance;

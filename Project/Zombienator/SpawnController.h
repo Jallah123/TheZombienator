@@ -27,7 +27,8 @@ private:
 
 	int zombies = 0;
 	int zombiesWave = 0;
-	int amountToSpawn = 3;
+	int zombiesPlus = 2;
+	int amountToSpawn = 1;
 	
 	float spawnTime = 100;
 	float elapsedtime = 0;

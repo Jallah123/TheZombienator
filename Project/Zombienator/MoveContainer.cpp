@@ -5,11 +5,13 @@
 #include "AiMoveBehaviour.h"
 #include "PcMoveBehaviour.h"
 #include "CollideBehaviour.h"
+#include "BulletMoveBehaviour.h"
 
 MoveContainer::MoveContainer()
 {
 	BehaviourFactory::Instance()->Register("PcMoveBehaviour", [](void) -> Behaviour* { return new PcMoveBehaviour(); });
 	BehaviourFactory::Instance()->Register("AiMoveBehaviour", [](void) -> Behaviour* { return new AiMoveBehaviour(); });
+	BehaviourFactory::Instance()->Register("BulletMoveBehaviour", [](void) -> Behaviour* { return new BulletMoveBehaviour(); });
 }
 
 

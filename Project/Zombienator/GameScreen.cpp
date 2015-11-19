@@ -66,11 +66,11 @@ void GameScreen::Update(float dt)
 {
 	XOffset = 0;
 	YOffset = 0;
-	if (shake > 0) {
+	/*if (shake > 0) {
 		shake -= dt;
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
-	}
+	}*/
 	if (InputContainer::GetInstance().GetKeyState('['))
 	{
 		speed += 0.1;

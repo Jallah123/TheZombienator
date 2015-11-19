@@ -60,6 +60,7 @@ void SpawnController::NextWave()
 	currentWave++;
 	waveFinished = false;
 	zombiesWave = 0;//reset wave count
+	amountToSpawn += zombiesPlus;
 	zombies += amountToSpawn;
 	elapsedtime = 0;
 }

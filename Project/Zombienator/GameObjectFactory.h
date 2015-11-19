@@ -20,6 +20,7 @@ class Zombie;
 class Map;
 class NormalBullet;
 class PlayableCharacter;
+class MachineGunBullet;
 
 class GameObjectFactory
 {
@@ -54,4 +55,5 @@ public:
 	static Mike* CreateMike();
 	static Zombie* CreateZombie();
 	static NormalBullet* CreateNormalBullet(PlayableCharacter* obj);
+	static MachineGunBullet* CreateMachineGunBullet(PlayableCharacter* obj);
 };

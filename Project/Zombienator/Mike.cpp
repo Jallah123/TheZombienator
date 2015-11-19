@@ -1,6 +1,7 @@
 #include "Mike.h"
 #include "KeyboardInputHandler.h"
 #include "Pistol.h"
+#include "MachineGun.h"
 #include "CharacterContainer.h"
 
 Mike::Mike() : PlayableCharacter(){}
@@ -10,7 +11,7 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
 	this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC, collideC, characterC);
 
-	this->SetWeapon(new Pistol());
+	this->SetWeapon(new MachineGun());
 	
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");

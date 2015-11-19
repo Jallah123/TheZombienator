@@ -49,6 +49,7 @@ public:
 	void SetOrigin(PlayableCharacter* o) { 
 		origin = o; 
 		SetLookDir(o->GetLookDir()); 
+		SetMoveDir(o->GetLookDir());
 		posX = o->getPosX();
 		posY = o->getPosY();
 	}
