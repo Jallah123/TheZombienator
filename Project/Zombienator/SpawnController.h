@@ -75,6 +75,10 @@ public:
 	
 	int CurrentWave() { return this->currentWave; }
 
+	int GetTimeTillNextWave() { return timeBetweenWaves - elapsedtime; }
+
+	int GetAmountSpawned() { return zombiesWave; }
+
 	bool WaveCompleted() { return this->waveFinished; }
 
 	bool Completed() { return completed; }
