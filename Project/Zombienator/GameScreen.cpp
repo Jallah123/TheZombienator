@@ -54,7 +54,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 	musicController->Play(1, -1);
 	musicController->SetVolume(25, 1);
 
-	Shake(500);
+	// Shake(500);
 }
 
 GameScreen::~GameScreen()
