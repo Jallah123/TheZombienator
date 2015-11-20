@@ -1,4 +1,5 @@
-
+#pragma once
+#include <SDL_render.h>
 #include "Behaviour.h"
 #include "DrawBehaviour.h"
 #include "AnimateBehaviour.h"
@@ -6,15 +7,37 @@
 #include "ActionBehaviour.h"
 #include "BehaviourFactory.h"
 #include "CollideBehaviour.h"
-
+#include "Map.h"
 //
 // DO NOT FORGET TO INITIALIZE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //
 std::map<std::string, std::function<Behaviour*(void)>> BehaviourFactory::registry;
-
-
+DrawContainer*		BehaviourFactory::drawContainer = nullptr;
+AnimateContainer*	BehaviourFactory::animateContainer = nullptr;
+ActionContainer*	BehaviourFactory::actionContainer = nullptr;
+MoveContainer*		BehaviourFactory::moveContainer = nullptr;
+CollideContainer*	BehaviourFactory::collideContainer = nullptr;
+CharacterContainer* BehaviourFactory::characterContainer = nullptr;
+SDL_Renderer*		BehaviourFactory::renderer = nullptr;
+Map*				BehaviourFactory::map = nullptr;
 BehaviourFactory::~BehaviourFactory()
 {
+}
+
+void BehaviourFactory::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren)
+{
+	drawContainer = drawC;
+	animateContainer = animC;
+	moveContainer = moveC;
+	actionContainer = actionC;
+	collideContainer = collideC;
+	characterContainer = characterC;
+	renderer = ren;
+}
+
+void BehaviourFactory::SetMap(Map * m)
+{
+	map = m;
 }
 
 Behaviour * BehaviourFactory::Find(std::string name)
@@ -65,6 +88,7 @@ MoveBehaviour* BehaviourFactory::CreateMoveBehaviour(std::string name, GameObjec
 	if (instance != nullptr) {
 		MoveBehaviour* cInstance = dynamic_cast<MoveBehaviour*>(instance);
 		cInstance->SetGameObject(obj);//link the behaviour to its gameObject
+		cInstance->SetMap(map);
 		return cInstance;
 	}
 
@@ -91,6 +115,8 @@ CollideBehaviour * BehaviourFactory::CreateCollideBehaviour(std::string name, Ga
 	if (instance != nullptr) {
 		CollideBehaviour* cInstance = dynamic_cast<CollideBehaviour*>(instance);
 		cInstance->SetGameObject(obj);//link the behaviour to its gameObject
+		cInstance->SetCharacterContainer(characterContainer);
+		cInstance->SetMap(map);
 		return cInstance;
 	}
 

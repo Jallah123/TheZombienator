@@ -1,69 +1,63 @@
+#pragma once
 #include "Map.h"
-#include "MapLayer.h"
-#include "CollisionLayer.h"
-#include <iostream>
-using namespace std;
+#include "MapParser.h"
 
-Map::Map(string _img_path)
+using std::string;
+
+Map::Map(char* p, SDL_Renderer& ren) : path(p), renderer(&ren)
+{	
+	this->parser = new MapParser(this);
+}
+
+Map::~Map()
 {
-	img_path = _img_path;
+	std::vector<TileSet*>::reverse_iterator its;
+	for (its = tilesets.rbegin(); its != tilesets.rend(); ++its)
+		delete *its;
+
+	tilesets.clear();
+
+	std::vector<SDL_Rect*>::reverse_iterator it;
+	for (it = rects.rbegin(); it != rects.rend(); ++it)
+		delete *it;
+
+	rects.clear();
+
+
+	delete parser;
 }
 
-void Map::setTexture(SDL_Texture* text)
+void Map::Size(int w, int h)
 {
-	texture = text;
-}
+	this->width = w; 
+	this->height = h;
 
-string Map::getImagePath() {
-	return img_path;
-}
-
-void Map::addMapLayer(MapLayer _mapLayer)
-{
-	std::vector<MapLayer>::iterator it;
-
-	it = mapLayers.begin();
-	mapLayers.insert(it, _mapLayer);
-
-	cout << "MapLayer rendered - " << _mapLayer.getName().c_str() << endl;
-}
-
-void Map::addCollisionLayer(CollisionLayer _collisionLayer)
-{
-	std::vector<CollisionLayer>::iterator it;
-
-	it = collisionLayers.begin();
-	collisionLayers.insert(it, _collisionLayer);
-
-	cout << "CollisionLayer rendered" << endl;
-}
-
-bool Map::checkCollision(int _x, int _y, int _width, int _height) {
-	
-	SDL_Rect unitRectangle = { _x, _y, _width, _height };
-
-	for (int j = collisionLayers.size() - 1; j >= 0; j--)
+	int x, y;
+	for (y = 0; y < height; y++)
 	{
-		vector<CollisionObject> collisionObjects = collisionLayers[j].getCollisionObjects();
-
-		for (int k = collisionObjects.size() - 1; k >= 0; k--)
+		for (x = 0; x < width; x++)
 		{
-			SDL_Rect collisionRectangle = { 
-				collisionObjects[k].getX(),
-				collisionObjects[k].getY(),
-				collisionObjects[k].getWidth(),
-				collisionObjects[k].getHeight()
-			};
-
-			if (SDL_HasIntersection(&unitRectangle, &collisionRectangle)) {
-				return true;
-			}
+			int pX = x * tileWidth;
+			int pY = y* tileHeight;
+			rects.push_back(new SDL_Rect{ pX,pY, tileWidth, tileHeight });
 		}
 	}
-	return false;
 }
 
-Map::~Map() 
+void Map::AddTileset(TileSet* ts)
 {
-	
+	ts->Load(*renderer);
+	tilesets.push_back(ts);
+}
+
+void Map::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
+{
+	for (const auto& l : layers) {
+		l.second->Draw(ren, XOffset, YOffset);//Render each layer
+	}
+}
+
+ObjectLayer * Map::GetObjectLayer(string key)
+{
+	return dynamic_cast<ObjectLayer*>(this->layers.at(key));
 }

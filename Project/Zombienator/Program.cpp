@@ -1,6 +1,5 @@
 #include "Program.h"
-#include "GameScreen.h"
-#include "SelectionScreen.h"
+#include "SDL_TTF.h"
 
 Program::Program() {
 	cout << "Creating Program" << endl;
@@ -10,34 +9,39 @@ Program::Program() {
 	if (InitJoystick() == 0) {
 		cout << "Init joystick" << endl;
 	}
-	if (Render() == 0) {
-		cout << "Done rendering" << endl;
-	} 
 }
 
+Program* Program::instance{ nullptr };
+
+Program* Program::getInstance()
+{
+	if (instance == nullptr) {
+		instance = new Program;
+	}
+	return instance;
+}
+
+/*
 Program& Program::shared_program() {
 	static Program instance;
 	return instance;
 }
+*/
 
 SDL_Renderer* Program::GetRenderer() {
 	return Sdl_Renderer;
 }
 
-TTF_Font * Program::GetFont() {
-	return Font;
-}
+int Program::Tick() {
+	gameState = GameState::RUNNING;
+	ScreenController* sc = &ScreenController::GetInstance();
 
-
-int Program::Render() {
-	bool quit = false;
-	
 	// MenuScreen
 	MenuScreen* m = new HomeScreen{ Sdl_Renderer };
-	ScreenController::GetInstance().ChangeMenu(m);
+	ScreenController::GetInstance().ChangeScreen(m);
 	currentFrameTime = SDL_GetTicks();
 
-	while (!quit) {
+	while (gameState == GameState::RUNNING) {
 		// Calculate DeltaTime
 		lastFrameTime = currentFrameTime;
 		currentFrameTime = SDL_GetTicks();
@@ -45,45 +49,56 @@ int Program::Render() {
 
 		//Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
-			//User requests quit 
-			if (e.type == SDL_QUIT) {
-				quit = true;
-			}
-			else if (e.type == SDL_MOUSEBUTTONDOWN) {
-				SDL_Point p = SDL_Point{};
-				p.x = e.button.x;
-				p.y = e.button.y;
-				ScreenController::GetInstance().GetCurrentMenu()->ClickComponents(p);
-			}
-			else if (e.type == SDL_KEYDOWN) {
-				keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_PRESSED);
-			}
-			else if (e.type == SDL_KEYUP) {
-				keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_RELEASED);
-			}
-			else if (e.type == SDL_CONTROLLERBUTTONDOWN) {
-				controllerInputHandler->SetButton(e.cbutton, SDL_PRESSED);
-			}
-			else if (e.type == SDL_CONTROLLERBUTTONUP) {
-				controllerInputHandler->SetButton(e.cbutton, SDL_RELEASED);
-			}
-			else if (e.type == SDL_CONTROLLERDEVICEADDED) {
-				InitJoystick();
-			}
-			else if (e.type == SDL_CONTROLLERDEVICEREMOVED) {
-				CloseJoystick();
-			}
+			Events(sc->GetCurrentScreen());
 		}
-
-		SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-		SDL_RenderClear(Sdl_Renderer);
-		ScreenController::GetInstance().GetCurrentMenu()->Draw(*Sdl_Renderer, deltaTime);
-
+		sc->GetCurrentScreen()->Update(deltaTime);
+		Render(sc->GetCurrentScreen());
 		//Update screen 
 		SDL_RenderPresent(Sdl_Renderer);
 	}
 
+	return 0;
+}
 
+void Program::Render(AbstractScreen* screen)
+{
+	SDL_SetRenderDrawColor(Sdl_Renderer, 0, 0, 0, 255);
+	SDL_RenderClear(Sdl_Renderer);
+
+	screen->Draw(*Sdl_Renderer, deltaTime);
+}
+
+int Program::Events(AbstractScreen* screen)
+{
+	//User requests quit 
+	if (e.type == SDL_QUIT) {
+		gameState = GameState::QUIT;
+	}
+	else if (e.type == SDL_MOUSEBUTTONDOWN) {
+		SDL_Point p = SDL_Point{ e.button.x , e.button.y };
+		screen->ClickComponents(p);
+	}
+	else if (e.type == SDL_KEYDOWN) {
+		keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_PRESSED);
+	}
+	else if (e.type == SDL_KEYUP) {
+		keyboardInputHandler->SetKey(e.key.keysym.sym, SDL_RELEASED);
+	}
+	else if (e.type == SDL_CONTROLLERBUTTONDOWN) {
+		controllerInputHandler->SetButton(e.cbutton, SDL_PRESSED);
+	}
+	else if (e.type == SDL_CONTROLLERBUTTONUP) {
+		controllerInputHandler->SetButton(e.cbutton, SDL_RELEASED);
+	}
+	else if (e.type == SDL_CONTROLLERAXISMOTION) {
+		controllerInputHandler->SetAxis(e.caxis, SDL_RELEASED);
+	}
+	else if (e.type == SDL_CONTROLLERDEVICEADDED) {
+		InitJoystick();
+	}
+	else if (e.type == SDL_CONTROLLERDEVICEREMOVED) {
+		CloseJoystick();
+	}
 	return 0;
 }
 
@@ -92,14 +107,14 @@ int Program::InitComponents() {
 		cerr << "SDL_Init error: " << SDL_GetError() << endl;
 		return 1;
 	}
-	if (TTF_Init() == -1) {
-		cerr << "TTF_Init: %s\n" << TTF_GetError() << endl;
-		return 2;
-	}
-	Font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 1024);
 
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		cerr << "SDL_Mixer Error: " << Mix_GetError() << endl;
+	}
+
+	if (TTF_Init() == -1) {
+		cerr << "Error loading Open_TTF : " << SDL_GetError() << endl;
+		return 1;
 	}
 
 	// More channels so we can play more sounds at the same time
@@ -142,6 +157,7 @@ int Program::InitJoystick() {
 	}
 	return 0;
 }
+
 Program::~Program() {
 	SDL_GameControllerClose(controller);
 	SDL_DestroyRenderer(Sdl_Renderer);

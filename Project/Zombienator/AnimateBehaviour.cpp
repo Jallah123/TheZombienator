@@ -23,22 +23,23 @@ void AnimateBehaviour::Animate(float dt, int ticks)
 	if (frames == 0) return;
 	
 	Uint32 sprite = (ticks / 100) % frames;
-	//MoveDirection::SOUTH  == 0;//UP
-	//MoveDirection::EAST == 1;//RIGHT
-	//MoveDirection::NORTH == 2;//DOWN
-	//MoveDirection::WEST == 3;//LEFT
+	//Direction::SOUTH  == 0;//UP
+	//Direction::EAST == 1;//RIGHT
+	//Direction::NORTH == 2;//DOWN
+	//Direction::WEST == 3;//LEFT5
 
 	//get source rect
 	SDL_Rect srcR = c->GetSourceRect();
-	int width = c->GetWidth();
-	int height = c->GetHeight();
+	if (c->GetMoveDir() != Direction::NONE) {
+		int width = c->GetWidth();
+		int height = c->GetHeight();
 
-	//Animate
-	int col = c->GetMoveDir() == MoveDirection::NONE ? width : (sprite * width);
-	int row = c->GetMoveDir() == MoveDirection::NONE ? 0 : (height * c->GetMoveDir());//Still frame
-	srcR.x = col;
-	srcR.y = row;
-
+		//Animate
+		int col = (sprite * width);
+		int row = (height * c->GetLookDir());
+		srcR.x = col;
+		srcR.y = row;
+	}
 	//Set source rect
 	c->SetSourceRect(srcR);
 }
