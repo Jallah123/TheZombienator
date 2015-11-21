@@ -16,12 +16,6 @@
     <Filter Include="Resource Files\assets">
       <UniqueIdentifier>{3c6fe461-11f6-4863-b721-447bd9667eb0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\assets\images">
-      <UniqueIdentifier>{140b9604-87f6-4da6-accb-461d61bee22e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\assets\fonts">
-      <UniqueIdentifier>{4e9fa2c9-6869-47aa-b9da-d4b5de30c338}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Enums">
       <UniqueIdentifier>{d2c021e6-0e7b-4941-a887-f244005becb7}</UniqueIdentifier>
     </Filter>
@@ -177,9 +171,6 @@
     <ClCompile Include="BehaviourFactory.cpp">
       <Filter>Source Files\Factories</Filter>
     </ClCompile>
-    <ClCompile Include="MusicController.cpp">
-      <Filter>Source Files\Controllers</Filter>
-    </ClCompile>
     <ClCompile Include="NonPlayableCharacter.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
@@ -315,11 +306,14 @@
     <ClCompile Include="Direction.cpp">
       <Filter>Source Files\Enums</Filter>
     </ClCompile>
-    <ClCompile Include="StatsController.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SoundController.cpp">
+      <Filter>Source Files\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="NumberUtility.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="StatsController.cpp">
+      <Filter>Source Files\Controllers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -328,9 +322,6 @@
     </ClInclude>
     <ClInclude Include="AbstractUIComponent.h">
       <Filter>Header Files\Views\UIComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="MusicController.h">
-      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="ScreenController.h">
       <Filter>Header Files\Controllers</Filter>
@@ -509,24 +500,14 @@
     <ClInclude Include="TextureFactory.h">
       <Filter>Header Files\Factories</Filter>
     </ClInclude>
+    <ClInclude Include="SoundController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
     <ClInclude Include="StatsController.h">
       <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="NumberUtility.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\images\button_spritesheet.png">
-      <Filter>Resource Files\assets\images</Filter>
-    </Image>
-    <Image Include="assets\images\menu_bg.png">
-      <Filter>Resource Files\assets\images</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="assets\fonts\Block-Cartoon.ttf">
-      <Filter>Resource Files\assets\fonts</Filter>
-    </Font>
   </ItemGroup>
 </Project>

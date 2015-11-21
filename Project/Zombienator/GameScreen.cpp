@@ -50,9 +50,9 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 	spawnController.AddTarget(mike);
 
 	//Load && play sound
-	musicController->Load("assets/sounds/bgSound1.wav");
-	musicController->Play(1, -1);
-	musicController->SetVolume(25, 1);
+	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
+
+	// Shake(500);
 }
 
 GameScreen::~GameScreen()
@@ -62,8 +62,8 @@ GameScreen::~GameScreen()
 
 void GameScreen::Update(float dt)
 {
-	int XOffset = 0;
-	int YOffset = 0;
+	XOffset = 0;
+	YOffset = 0;
 	if (shake > 0) {
 		shake -= dt;
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
