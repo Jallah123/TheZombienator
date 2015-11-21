@@ -1,6 +1,6 @@
 #pragma once
 #include "AbstractUIComponent.h"
-#include "MusicController.h"
+#include "SoundController.h"
 #include <vector>
 #include <SDL_render.h>
 
@@ -19,6 +19,6 @@ public:
 	
 protected:
 	std::vector<AbstractUIComponent*> UIComponents;
-	MusicController* musicController = &MusicController::GetInstance();
+	SoundController* SoundController = &SoundController::GetInstance();
 };
 
