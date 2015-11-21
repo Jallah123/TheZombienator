@@ -22,6 +22,6 @@ StoryModeButton::~StoryModeButton()
 void StoryModeButton::ClickAction()
 {
 	MusicController::GetInstance().Stop();
-	ScreenController::GetInstance().ChangeScreen(new GameScreen{ renderer, "assets/maps/map-1280x640_spawns.json" });
+	ScreenController::GetInstance().ChangeScreen(new GameScreen{ renderer, "assets/maps/landscape-1280x640.json" });
 }
 

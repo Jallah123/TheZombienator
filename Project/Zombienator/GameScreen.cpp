@@ -101,4 +101,5 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
+	map->DrawFrontLayer(ren, XOffset, YOffset);
 }

@@ -25,6 +25,7 @@ void AiMoveBehaviour::Move(float dt)
 	float destY = target->getPosY();
 
 	// -- Get destination rect
+	SDL_Rect cRect = z->GetCollideRect();
 	float newX = z->getPosX();
 	float newY = z->getPosY();
 
@@ -64,10 +65,10 @@ void AiMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(newX+.5f), static_cast<int>(z->getPosY()+.5f), z->GetWidth(), z->GetHeight() })) {
+	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(newX+.5f), static_cast<int>(z->getPosY()+.5f) + cRect.h, cRect.w, cRect.h })) {
 		finalX = z->getPosX();
 	}
-	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(z->getPosX()+.5f), static_cast<int>(newY + .5f), z->GetWidth(), z->GetHeight() })) {
+	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(z->getPosX()+.5f), static_cast<int>(newY + .5f) + cRect.h, cRect.w, cRect.h })) {
 		finalY = z->getPosY();
 	}
 

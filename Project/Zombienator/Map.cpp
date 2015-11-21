@@ -52,12 +52,19 @@ void Map::AddTileset(TileSet* ts)
 
 void Map::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
 {
-	for (const auto& l : layers) {
+	for (const auto& l : backLayers) {
+		l.second->Draw(ren, XOffset, YOffset);//Render each layer
+	}
+}
+
+void Map::DrawFrontLayer(SDL_Renderer& ren, int XOffset, int YOffset)
+{
+	for (const auto& l : frontLayers) {
 		l.second->Draw(ren, XOffset, YOffset);//Render each layer
 	}
 }
 
 ObjectLayer * Map::GetObjectLayer(string key)
 {
-	return dynamic_cast<ObjectLayer*>(this->layers.at(key));
+	return dynamic_cast<ObjectLayer*>(this->backLayers.at(key));
 }
