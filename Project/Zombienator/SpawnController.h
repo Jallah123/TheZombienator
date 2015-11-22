@@ -2,6 +2,8 @@
 #include <vector>
 #include "Zombie.h"
 #include <random>
+#include <math.h>
+
 using std::vector;
 using std::random_device;
 using std::default_random_engine;
@@ -22,12 +24,12 @@ class SpawnController
 private:
 	vector<xy> locations;
 	
-	int maxWaves = 3;
+	int maxWaves = 5;
 	int currentWave = 0;
 
 	int zombies = 0;
-	int zombiesWave = 0;
-	int amountToSpawn = 3;
+	int amountSpawned = 0;
+	int amountToSpawn = 0;
 	
 	float spawnTime = 100;
 	float elapsedtime = 0;
@@ -70,6 +72,8 @@ public:
 	int Waves() { return this->maxWaves; }
 	
 	int CurrentWave() { return this->currentWave; }
+
+	int GetAmountToSpawn() { return round(pow((currentWave + 1), (3.0 / 2.0)));	};
 
 	bool WaveCompleted() { return this->waveFinished; }
 
