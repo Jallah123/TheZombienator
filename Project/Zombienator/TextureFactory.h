@@ -11,7 +11,7 @@ class TextureFactory
 {
 public:
 	static SDL_Texture* GenerateTextureFromImgUrl(std::string url);
-	static SDL_Texture* GenerateTextureFromText(std::string text, SDL_Color color, int fontSize, SDL_Renderer* renderer);
+	static SDL_Texture* GenerateTextureFromText(std::string text, SDL_Color color);
 private:
 	TextureFactory();
 	static SDL_Texture* GenerateTextureFromSurface(SDL_Surface* surface);

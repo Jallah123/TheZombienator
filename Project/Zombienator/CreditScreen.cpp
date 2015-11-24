@@ -26,6 +26,7 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	musicController->Play(1, -1);
 
 
+	//Credit text
 	addTextToSet("Made by", ren);
 	addTextToSet(" ", ren);
 
@@ -55,10 +56,7 @@ void CreditScreen::addTextToSet(string message, SDL_Renderer* ren)
 		textSet[messageTexture] = messageRectange;
 
 		startY += 50;
-		
 	}
-
-	
 }
 
 
@@ -100,7 +98,6 @@ void CreditScreen::Draw(SDL_Renderer & ren, float dt)
 		i->Draw(ren);
 
 	drawText(ren);
-
 }
 
 void CreditScreen::drawText(SDL_Renderer& ren)
@@ -109,5 +106,4 @@ void CreditScreen::drawText(SDL_Renderer& ren)
 	for (it_type iterator = textSet.begin(); iterator != textSet.end(); iterator++) {
 		SDL_RenderCopy(&ren, iterator->first, NULL, &iterator->second);
 	}
-
 }
