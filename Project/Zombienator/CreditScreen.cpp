@@ -5,6 +5,7 @@
 CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {	
 
+
 	// Console Update
 	std::cout << "Made CreditSCreen" << std::endl;
 
@@ -18,6 +19,11 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	if( font == NULL ) { 
 		std::cout << "Error loading font" << std::endl;
 	}
+	
+
+	//plays sound:
+	musicController->Load("assets/sounds/StandByMe.wav");
+	musicController->Play(1, -1);
 
 
 	addTextToSet("Made by", ren);
