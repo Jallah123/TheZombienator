@@ -66,5 +66,11 @@ public:
 
 	InputContainer* GetInputContainer() { return inputContainer; }
 
+	void SetMap(Map * m);
+	ObjectLayer* GetCollisionLayer() { return collisionLayer; };
+
 	void Remove();
+private:
+	Map* map;
+	ObjectLayer* collisionLayer;
 };

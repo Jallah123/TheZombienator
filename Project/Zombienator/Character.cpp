@@ -86,6 +86,12 @@ void Character::SetCollideBehaviour(std::string name)
 		this->collideContainer->Add(collideBehaviour);
 }
 
+void Character::SetMap(Map * m)
+{
+	map = m;
+	collisionLayer = m->GetObjectLayer("Collision");
+}
+
 void Character::Remove()
 {
 	drawBehaviour->CanRemove(true);
