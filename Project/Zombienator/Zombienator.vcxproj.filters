@@ -121,6 +121,12 @@
     <Filter Include="Source Files\Views\UIComponents\Buttons">
       <UniqueIdentifier>{32758691-0e08-4057-a631-90205109ad46}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Views\LoadingScreen">
+      <UniqueIdentifier>{cc7bf64c-012e-46a5-89f8-c0758e290eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\LoadingScreen">
+      <UniqueIdentifier>{edf8da70-511d-47a5-8545-f11d2ea657ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -329,6 +335,8 @@
     </ClCompile>
     <ClCompile Include="GameObjectContainer.cpp">
       <Filter>Source Files\Containers</Filter>
+    <ClCompile Include="LoadingScreen.cpp">
+      <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -538,6 +546,8 @@
     </ClInclude>
     <ClInclude Include="GameObjectContainer.h">
       <Filter>Header Files\Containers</Filter>
+    <ClInclude Include="LoadingScreen.h">
+      <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
