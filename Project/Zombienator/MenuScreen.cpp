@@ -1,7 +1,6 @@
 #pragma once
 #include "MenuScreen.h"
 #include "TextureFactory.h"
-#include <iostream>
 
 SDL_Texture* texture = nullptr;
 

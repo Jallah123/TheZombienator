@@ -8,7 +8,6 @@ using std::vector;
 class GameScreen;
 class Map;
 class StatsController;
->>>>>>> refs/remotes/origin/f/switch-weapon
 
 class SpawnController
 {

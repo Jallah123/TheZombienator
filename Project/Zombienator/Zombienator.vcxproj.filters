@@ -526,19 +526,6 @@
     <ClInclude Include="Quadtree.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\images\button_spritesheet.png">
-      <Filter>Resource Files\assets\images</Filter>
-    </Image>
-    <Image Include="assets\images\menu_bg.png">
-      <Filter>Resource Files\assets\images</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="assets\fonts\Block-Cartoon.ttf">
-      <Filter>Resource Files\assets\fonts</Filter>
-    </Font>
     <ClInclude Include="SoundController.h">
       <Filter>Header Files\Controllers</Filter>
     </ClInclude>
@@ -568,5 +555,18 @@
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\button_spritesheet.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+    <Image Include="assets\images\menu_bg.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+	<Font Include="assets\fonts\Block-Cartoon.ttf">
+      <Filter>Resource Files\assets\fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>

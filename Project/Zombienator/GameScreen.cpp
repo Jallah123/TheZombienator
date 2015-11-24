@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Quadtree.h"
 #include "NumberUtility.h"
+#include "BehaviourFactory.h"
 #include "Map.h"
 #include "Mike.h"
 #include "Zombie.h"
@@ -12,6 +13,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
 	tree = new Quadtree(SDL_Rect{ 0,0,1280,640 });
+	spawnController = SpawnController{ ren, this };
 	gameObjectContainer.SetMap(map);
 	spawnController.SetMap(map);
 
@@ -43,13 +45,12 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 	spawnController.AddTarget(mike);
 
 	//Load && play sound
-	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
+	//SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
 }
 
 GameScreen::~GameScreen()
 {
 	delete mike;
-	delete spawnController;
 	delete mike;
 	delete tree;
 }
@@ -57,7 +58,7 @@ GameScreen::~GameScreen()
 void GameScreen::Update(float dt)
 {
 	tree->Clear();
-	for (auto& c : characterContainer.GetCharacters()) {
+	for (auto& c : gameObjectContainer.GetGameObjects()) {
 		tree->AddObject(c);
 	}
 	XOffset = 0;
@@ -82,7 +83,7 @@ void GameScreen::Update(float dt)
 		speed = 1.0;
 	}
 	dt *= speed;
-	spawnController->Update(dt);
+	spawnController.Update(dt);
 	actionContainer.Update(dt);
 	collideContainer.Collide(dt);
 	moveContainer.Move(dt);
@@ -97,7 +98,7 @@ void GameScreen::Shake(float time, int intensity) {
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
-	three->Display(&ren);
-	map->Draw(ren, XOffset, YOffset);
+	tree->Display(&ren);
+	//map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
 }
