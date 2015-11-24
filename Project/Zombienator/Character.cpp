@@ -96,7 +96,8 @@ void Character::Remove()
 {
 	drawBehaviour->CanRemove(true);
 	animateBehaviour->CanRemove(true);
-	moveBehaviour->CanRemove(true);
+	if(moveBehaviour != nullptr)
+		moveBehaviour->CanRemove(true);
 	collideBehaviour->CanRemove(true);
 	for (const auto& ab : actionBehaviours) {
 		ab->CanRemove(true);
