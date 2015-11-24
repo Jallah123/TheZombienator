@@ -11,12 +11,14 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
 	this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC, collideC, characterC);
 
-	this->SetWeapon(new MachineGun());
+	this->AddWeapon(new MachineGun());
+	this->AddWeapon(new Pistol());
 	
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
 	SetMoveBehaviour("PcMoveBehaviour");
 	SetActionBehaviour("ShootActionBehaviour");
+	SetActionBehaviour("SwitchWeaponActionBehaviour");
 	SetCollideBehaviour("CharacterCollideBehaviour");
 
 	characterC->AddCharacter(this);
