@@ -112,6 +112,9 @@ void Quadtree::Display(SDL_Renderer *renderer)
 
 bool Quadtree::contains(GameObject *object)
 {
+	/*SDL_Rect* r = object->GetDestinationRect();
+	int xMiddle = r->x + (r->w / 2);
+	int yMiddle = r->y + (r->h / 2);*/
 	return SDL_HasIntersection(&rectangle, object->GetDestinationRect());
 }
 

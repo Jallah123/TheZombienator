@@ -4,11 +4,13 @@
 #include "NormalBulletCollideBehaviour.h"
 #include "Bullet.h"
 #include "CharacterCollideBehaviour.h"
+#include "MovingBulletCollideBehaviour.h"
 
 CollideContainer::CollideContainer()
 {
 	BehaviourFactory::Instance()->Register("NormalBulletCollideBehaviour", [](void) -> Behaviour* { return new NormalBulletCollideBehaviour(); });
 	BehaviourFactory::Instance()->Register("CharacterCollideBehaviour", [](void) -> Behaviour* { return new CharacterCollideBehaviour(); });
+	BehaviourFactory::Instance()->Register("MovingBulletCollideBehaviour", [](void) -> Behaviour* { return new MovingBulletCollideBehaviour(); });
 }
 
 CollideContainer::~CollideContainer()

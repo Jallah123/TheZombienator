@@ -56,3 +56,11 @@ void Bullet::SetCollideBehaviour(std::string name)
 		this->collideContainer->Add(collideBehaviour);
 	}
 }
+
+void Bullet::Remove()
+{
+	drawBehaviour->CanRemove(true);
+	moveBehaviour->CanRemove(true);
+	collideBehaviour->CanRemove(true);
+	this->gameObjectContainer->Remove(this);
+}

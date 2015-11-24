@@ -1,13 +1,13 @@
 #pragma once
 #include <vector>
 #include "Zombie.h"
-#include <random>
+#include "StatsController.h"
 using std::vector;
 #define xy std::pair<int, int>
 
 class GameScreen;
 class Map;
-class StatsController;
+
 
 class SpawnController
 {
@@ -25,21 +25,21 @@ private:
 	float spawnTime = 200;
 	float elapsedtime = 0;
 	float timeBetweenWaves = 500;//5 seconds
+	float maxElapsedTime = 1000;
 	
 	bool waveFinished = false;
 	bool completed = false;
 	
-	SDL_Renderer* renderer = nullptr;
 	GameScreen* gameScreen = nullptr;
 	Character* target = nullptr;
 
-	StatsController* statsController = nullptr;
+	StatsController* statsController = StatsController::Instance();
 
 	bool IsFinished();
 	Map* map;
 public:
 	SpawnController();
-	SpawnController(SDL_Renderer* ren, GameScreen* gs);
+	SpawnController(GameScreen* gs);
 	~SpawnController();
 
 	void SetMap(Map* m);
@@ -51,9 +51,7 @@ public:
 	void NextWave();
 
 	void Countdown();
-
-	void SetRenderer(SDL_Renderer* r) { this->renderer = r; }
-
+	
 	void AddLocation(int x, int y);
 
 	void AddTarget(Character* c) { this->target = c; }

@@ -14,7 +14,7 @@ void NormalBulletCollideBehaviour::Collide(float dt)
 {
 	Bullet* bullet = dynamic_cast<Bullet*>(this->gameObject);
 		
-	std::vector<GameObject*> gos = gameObjectContainer->GetGameObjects();
+	std::vector<GameObject*> gos = gameObjectContainer->GetGameObjects(bullet->getPosX(), bullet->getPosY());
 	for (auto& g : gos)
 	{
 		Zombie* target = dynamic_cast<Zombie*>(g);

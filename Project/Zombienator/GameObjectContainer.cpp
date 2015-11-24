@@ -3,12 +3,24 @@
 #include "Mike.h"
 #include "Zombie.h"
 #include "Map.h"
+#include "Quadtree.h"
 
 
 GameObjectContainer::GameObjectContainer()
 {
 	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
 	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
+}
+
+GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t): map(m), tree(t)
+{
+	ObjectLayer* col = map->GetObjectLayer("Collision");
+	for (auto& r : col->GetRects()) {
+		GameObject* go = new GameObject();
+		go->SetSize(r->w, r->h);
+		go->SetPosition(r->x, r->y);
+		AddGameObject(go);
+	}
 }
 
 
@@ -24,6 +36,11 @@ GameObjectContainer::~GameObjectContainer()
 		delete *it;
 
 	arrRemove.clear();
+}
+
+vector<GameObject*> GameObjectContainer::GetGameObjects(float x, float y)
+{
+	return tree->GetObjectsAt(x, y);
 }
 
 void GameObjectContainer::AddGameObject(GameObject * c)

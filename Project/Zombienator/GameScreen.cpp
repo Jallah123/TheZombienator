@@ -12,8 +12,10 @@
 GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
-	tree = new Quadtree(SDL_Rect{ 0,0,1280,640 });
-	spawnController = SpawnController{ ren, this };
+	tree = new Quadtree(map->GetBounds());
+
+	gameObjectContainer = GameObjectContainer{ map, tree };
+	spawnController = SpawnController{ this };
 	gameObjectContainer.SetMap(map);
 	spawnController.SetMap(map);
 
@@ -35,17 +37,14 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 		&gameObjectContainer,
 		ren
 		);
-
-
-	spawnController.SetRenderer(ren);
-
+	
 	mike = goFactory->CreateMike();
 	mike->SetPosition(800, 150);
 
 	spawnController.AddTarget(mike);
 
 	//Load && play sound
-	//SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
+	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
 }
 
 GameScreen::~GameScreen()
@@ -98,7 +97,7 @@ void GameScreen::Shake(float time, int intensity) {
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
-	tree->Display(&ren);
-	//map->Draw(ren, XOffset, YOffset);
+	//tree->Display(&ren);
+	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
 }

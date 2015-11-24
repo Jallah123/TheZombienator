@@ -45,7 +45,7 @@ public:
 	void SetDrawBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
 	void SetCollideBehaviour(std::string name);
-
+	void Remove();
 	void SetOrigin(PlayableCharacter* o) { 
 		origin = o; 
 		SetLookDir(o->GetLookDir()); 

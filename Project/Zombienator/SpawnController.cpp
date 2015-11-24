@@ -3,12 +3,14 @@
 #include "GameObjectFactory.h"
 #include "GameScreen.h"
 #include "Quadtree.h"
-#include "StatsController.h"
+
 #include "NumberUtility.h"
 #include "Map.h"
+
 bool SpawnController::IsFinished()
 {
-	if (!waveFinished && statsController->GetKills() == zombies) {
+	int kills = statsController->GetKills();
+	if (!waveFinished && kills == zombies) {
 		waveFinished = true;
 		elapsedtime = 0;
 	}
@@ -17,17 +19,13 @@ bool SpawnController::IsFinished()
 }
 
 SpawnController::SpawnController()
-{
-	statsController = StatsController::Instance();
-	
+{	
 	NextWave();
 }
 
-SpawnController::SpawnController(SDL_Renderer * ren, GameScreen * gs) :
-	renderer(ren), gameScreen(gs)
-{
-	statsController = StatsController::Instance();
-	
+SpawnController::SpawnController(GameScreen * gs) :
+	gameScreen(gs)
+{	
 	NextWave();
 }
 
@@ -52,8 +50,6 @@ void SpawnController::Update(float dt)
 
 	elapsedtime += dt;
 
-	if (elapsedtime > spawnTime) Spawn();
-
 	if (IsFinished()) {
 		Countdown();
 		return;
@@ -74,8 +70,6 @@ void SpawnController::Spawn()
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
-	gameScreen->GetTree()->AddObject(z);
-	zombies++;
 	zombiesWave++;
 	elapsedtime = 0;
 }
@@ -87,10 +81,12 @@ void SpawnController::NextWave()
 		return;
 	}
 	currentWave++;
-	waveFinished = false;
+	
 	zombiesWave = 0;//reset wave count
 	amountToSpawn += zombiesPlus;
 	zombies += amountToSpawn;
+
+	waveFinished = false;
 	elapsedtime = 0;
 }
 
