@@ -9,7 +9,7 @@
 #include "DrawContainer.h"
 #include "MoveContainer.h"
 #include "ActionContainer.h"
-#include "CharacterContainer.h"
+#include "GameObjectContainer.h"
 #include "CollideContainer.h"
 
 class Quadtree;
@@ -18,14 +18,19 @@ class GameScreen
 	: public AbstractScreen
 {
 public:
+	GameScreen();
 	GameScreen(SDL_Renderer* _ren, char* path);
 	~GameScreen();
-
+	void Shake(float time, int intensity = 20);
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
-	
 	Quadtree* GetTree() { return this->tree; }
 private:
+	float shake = 0;
+	int shakeIntensity = 20;
+	int XOffset = 0;
+	int YOffset = 0;
+	float speed = 1.0;
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
 	
 	DrawContainer drawContainer;
@@ -33,12 +38,10 @@ private:
 	ActionContainer actionContainer;
 	MoveContainer moveContainer;
 	CollideContainer collideContainer;
-	CharacterContainer characterContainer;
-
-	SpawnController* spawnController = nullptr;
+	GameObjectContainer gameObjectContainer;
+	SpawnController spawnController;
 	
 	Mike* mike = nullptr;
 	Map* map = nullptr;
 	Quadtree* tree = nullptr;
-		
 };

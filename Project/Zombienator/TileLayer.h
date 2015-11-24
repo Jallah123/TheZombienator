@@ -17,7 +17,7 @@ public:
 	TileLayer(Map* map);
 	~TileLayer();
 
-	virtual void Draw(SDL_Renderer& ren) override;
+	virtual void Draw(SDL_Renderer& ren, int XOffset, int YOffset) override;
 
 	vector<size_t> TilesIDs() { return this->tilesIDs; }
 	void AddTileID(size_t id);

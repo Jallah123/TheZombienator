@@ -25,6 +25,7 @@ private:
 	int tileWidth = 0;
 	int tileHeight = 0;
 	MapParser* parser = nullptr;
+	SDL_Rect bounds = { 0,0,0,0 };
 
 	std::map<string, Layer*> layers{};
 	vector<TileSet*> tilesets{};
@@ -47,9 +48,10 @@ public:
 	void AddLayer(Layer* l) { layers.insert({ l->Name(), l }); }
 	void AddTileset(TileSet* ts);
 
-	void Draw(SDL_Renderer& ren);
+	void Draw(SDL_Renderer& ren, int XOffset, int YOffset);
 
 	ObjectLayer* GetObjectLayer(string key);
 	vector<SDL_Rect*> GetRects() { return this->rects; }
 	vector<TileSet*> GetTileSets() { return this->tilesets; }
+	SDL_Rect GetBounds() { return bounds; }
 };

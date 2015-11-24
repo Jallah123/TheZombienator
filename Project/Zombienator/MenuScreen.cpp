@@ -13,8 +13,7 @@ MenuScreen::MenuScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
 	BackgroundTexture = TextureFactory::GenerateTextureFromImgUrl("assets/images/menu_bg.png");
 
-	musicController->Load("assets/sounds/Undead-Rising.wav");
-	musicController->Play(1, -1);
+	SoundController->ChangeMusic("assets/sounds/Undead-Rising.wav");
 }
 
 void MenuScreen::ChangeBackground(SDL_Renderer* ren, char* img_url)

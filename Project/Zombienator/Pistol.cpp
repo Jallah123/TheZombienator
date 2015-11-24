@@ -9,7 +9,7 @@
 Pistol::Pistol() : Weapon()
 {
 	this->rounds = INT_MAX;
-	this->delay = 20;
+	this->delay = 80;
 	this->damage = 20;  // 1/5 of a zombie's health
 	this->bulletType = "bullet";
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new NormalBullet(); });

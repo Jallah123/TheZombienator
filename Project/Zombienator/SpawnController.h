@@ -3,45 +3,70 @@
 #include "Zombie.h"
 #include <random>
 using std::vector;
-using std::random_device;
-using std::default_random_engine;
-using std::uniform_int_distribution;
 #define xy std::pair<int, int>
 
-class DrawContainer;
-class AnimateContainer;
-class ActionContainer;
-class MoveContainer;
-class CollideContainer;
-class CharacterContainer;
 class GameScreen;
+class Map;
+class StatsController;
+>>>>>>> refs/remotes/origin/f/switch-weapon
 
 class SpawnController
 {
 private:
 	vector<xy> locations;
-	int zombies = 0;
-	int amountToSpawn = 100;
-	float spawnTime = 100;
-	float elapsedtime = 0;
-	random_device dev;
-	default_random_engine dre{ dev() };
-	uniform_int_distribution<int> locationDist;
+	
+	int maxWaves = 3;
+	int currentWave = 0;
 
+	int zombies = 0;
+	int zombiesWave = 0;
+	int zombiesPlus = 2;
+	int amountToSpawn = 1;
+	
+	float spawnTime = 200;
+	float elapsedtime = 0;
+	float timeBetweenWaves = 500;//5 seconds
+	
+	bool waveFinished = false;
+	bool completed = false;
+	
 	SDL_Renderer* renderer = nullptr;
 	GameScreen* gameScreen = nullptr;
 	Character* target = nullptr;
 
+	StatsController* statsController = nullptr;
+
+	bool IsFinished();
+	Map* map;
 public:
 	SpawnController();
 	SpawnController(SDL_Renderer* ren, GameScreen* gs);
 	~SpawnController();
 
+	void SetMap(Map* m);
+	
 	void Update(float dt);
+
 	void Spawn();
 
+	void NextWave();
+
+	void Countdown();
+
 	void SetRenderer(SDL_Renderer* r) { this->renderer = r; }
+
 	void AddLocation(int x, int y);
+
 	void AddTarget(Character* c) { this->target = c; }
+
+	void Waves(int w) { this->maxWaves = w; }
+
+	int Waves() { return this->maxWaves; }
+	
+	int CurrentWave() { return this->currentWave; }
+
+	bool WaveCompleted() { return this->waveFinished; }
+
+	bool Completed() { return completed; }
 };
 

@@ -3,13 +3,32 @@
 #include "GameObjectFactory.h"
 #include "GameScreen.h"
 #include "Quadtree.h"
+#include "StatsController.h"
+#include "NumberUtility.h"
+#include "Map.h"
+bool SpawnController::IsFinished()
+{
+	if (!waveFinished && statsController->GetKills() == zombies) {
+		waveFinished = true;
+		elapsedtime = 0;
+	}
+
+	return waveFinished;
+}
+
 SpawnController::SpawnController()
 {
+	statsController = StatsController::Instance();
+	
+	NextWave();
 }
 
 SpawnController::SpawnController(SDL_Renderer * ren, GameScreen * gs) :
 	renderer(ren), gameScreen(gs)
 {
+	statsController = StatsController::Instance();
+	
+	NextWave();
 }
 
 
@@ -17,18 +36,39 @@ SpawnController::~SpawnController()
 {
 }
 
+void SpawnController::SetMap(Map * m)
+{
+	map = m;
+	ObjectLayer* ol = map->GetObjectLayer("SpawnPoints");
+	for (auto& spawnPoint : ol->GetRects())
+	{
+		AddLocation(spawnPoint->x, spawnPoint->y);
+	}
+}
+
 void SpawnController::Update(float dt)
 {
-	if (zombies == amountToSpawn) return;
+	if (completed) return;
+
 	elapsedtime += dt;
+
 	if (elapsedtime > spawnTime) Spawn();
+
+	if (IsFinished()) {
+		Countdown();
+		return;
+	} 
+	else Spawn();
 }
 
 void SpawnController::Spawn()
-{
+{	
+	if (zombiesWave == amountToSpawn) return;
+	if (elapsedtime < spawnTime) return;
+	//No points to spawn on?
 	if (locations.size() == 0) return;
 
-	int l = locationDist(dre);
+	int l = NumberUtility::RandomNumber(0, locations.size() - 1);
 	xy p = locations.at(l);
 
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
@@ -36,11 +76,32 @@ void SpawnController::Spawn()
 	z->SetPosition(p.first, p.second);
 	gameScreen->GetTree()->AddObject(z);
 	zombies++;
+	zombiesWave++;
 	elapsedtime = 0;
+}
+
+void SpawnController::NextWave()
+{
+	if (currentWave == maxWaves) {
+		completed = true;
+		return;
+	}
+	currentWave++;
+	waveFinished = false;
+	zombiesWave = 0;//reset wave count
+	amountToSpawn += zombiesPlus;
+	zombies += amountToSpawn;
+	elapsedtime = 0;
+}
+
+void SpawnController::Countdown()
+{
+	if (elapsedtime < timeBetweenWaves) return;
+
+	NextWave();
 }
 
 void SpawnController::AddLocation(int x, int y)
 {
 	this->locations.push_back({ x,y });
-	locationDist = std::uniform_int_distribution<int>(0, this->locations.size() - 1);
 }

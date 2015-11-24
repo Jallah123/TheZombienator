@@ -10,7 +10,6 @@ CollideBehaviour::CollideBehaviour()
 void CollideBehaviour::SetMap(Map * m)
 {
 	this->map = m;
-	this->collisionLayer = map->GetObjectLayer("Collision");
 }
 
 CollideBehaviour::~CollideBehaviour()

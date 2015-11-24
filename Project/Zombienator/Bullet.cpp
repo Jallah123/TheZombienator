@@ -5,15 +5,20 @@
 #include "DrawContainer.h"
 #include "MoveContainer.h"
 #include "CollideContainer.h"
+#include "GameObjectContainer.h"
 
 #include "MoveBehaviour.h"
 #include "DrawBehaviour.h"
 #include "CollideBehaviour.h"
 
 
-void Bullet::Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc)
+void Bullet::Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc, GameObjectContainer* goc)
 {
-	SetContainers(dc, mc, cc);
+	this->drawContainer = dc;
+	this->moveContainer = mc;
+	this->collideContainer = cc;
+	this->gameObjectContainer = goc;
+	this->gameObjectContainer->AddGameObject(this);
 }
 
 Bullet::Bullet()
@@ -25,12 +30,6 @@ Bullet::~Bullet()
 {
 }
 
-void Bullet::SetContainers(DrawContainer * drawC, MoveContainer * moveC, CollideContainer* collideC)
-{
-	this->drawContainer = drawC;
-	this->moveContainer = moveC;
-	this->collideContainer = collideC;
-}
 
 void Bullet::SetDrawBehaviour(std::string name)
 {

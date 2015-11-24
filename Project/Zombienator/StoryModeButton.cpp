@@ -1,6 +1,6 @@
 #pragma once
 #include "StoryModeButton.h"
-#include "MusicController.h"
+#include "SoundController.h"
 #include "ScreenController.h"
 #include "GameScreen.h"
 
@@ -15,13 +15,13 @@ StoryModeButton::StoryModeButton(SDL_Renderer& ren, char* text, char* img_url)
 	destRect = { 515, 220, 238, 102 };
 }
 
+void StoryModeButton::ClickAction()
+{
+
+	SoundController::GetInstance().StopAllSounds();
+	ScreenController::GetInstance().ChangeScreen(new GameScreen{ renderer, "assets/maps/map-1280x640_spawns.json" });
+}
+
 StoryModeButton::~StoryModeButton()
 {
 }
-
-void StoryModeButton::ClickAction()
-{
-	MusicController::GetInstance().Stop();
-	ScreenController::GetInstance().ChangeScreen(new GameScreen{ renderer, "assets/maps/map-1280x640.json" });
-}
-

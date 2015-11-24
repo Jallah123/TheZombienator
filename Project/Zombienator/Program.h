@@ -7,6 +7,7 @@
 #include "KeyboardInputHandler.h"
 #include "ControllerInputHandler.h"
 #include "GameState.cpp"
+#include "LoadingScreen.h"
 
 class Program
 {
@@ -26,13 +27,13 @@ private:
 	float deltaTime;
 	int lastFrameTime = 0;
 	int currentFrameTime = 0;
-
 	
 	int Tick();
 	void Render(AbstractScreen* screen);
 	int Events(AbstractScreen* screen);
 	int InitComponents();
 	int InitJoystick();
+	void ShowLoadingScreen();
 	void CloseJoystick();
 
 	static Program* instance;

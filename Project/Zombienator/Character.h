@@ -8,7 +8,7 @@ class MoveContainer;
 class InputContainer;
 class ActionContainer;
 class CollideContainer;
-class CharacterContainer;
+class GameObjectContainer;
 
 //Behaviours
 class DrawBehaviour;
@@ -33,7 +33,7 @@ protected:
 	InputContainer* inputContainer;
 	ActionContainer* actionContainer;
 	CollideContainer* collideContainer;
-	CharacterContainer* characterContainer;
+	GameObjectContainer* gameObjectContainer;
 
 	//Behaviours
 	DrawBehaviour* drawBehaviour;
@@ -57,7 +57,7 @@ public:
 	void SetFrames(int f) { animationFrames = f; }
 	void SetHealth(int h) { this->health = h; }
 
-	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC);
+	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC);
 	void SetDrawBehaviour(std::string name);
 	void SetAnimateBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
@@ -65,6 +65,6 @@ public:
 	void SetCollideBehaviour(std::string name);
 
 	InputContainer* GetInputContainer() { return inputContainer; }
-
+	GameObjectContainer* GetGameObjectContainer() { return this->gameObjectContainer; }
 	void Remove();
 };
