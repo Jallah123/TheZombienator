@@ -12,38 +12,49 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 		std::cout << "SDL_TTF Error" << std::endl;
 	}
 
-	font = 	TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 24); //this opens a font style and sets a size
+	font = 	TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 40); //this opens a font style and sets a size
 
-	 //Render the text
 	 //If there was an error in loading the font 
 	if( font == NULL ) { 
 		std::cout << "Error loading font" << std::endl;
 	}
 
-	//Message = renderText("TTF fonts are cool!", ren);
-	//int iW, iH;
-	//SDL_QueryTexture(Message, NULL, NULL, &iW, &iH);
-	//int x = 1024 / 2 - iW / 2;
-	//int y = 800 / 2 - iH / 2;
 
+	addTextToSet("Made by", ren);
+	addTextToSet(" ", ren);
 
-	SDL_Surface*  message = TTF_RenderText_Solid( font, "Credit screen", fontColor); //If there was an error in rendering the text if( message == NULL ) { return 1; }
-	Message = SDL_CreateTextureFromSurface(ren, message); //now you can convert it into a texture
-	Message_rect.x = 400;  //controls the rect's x coordinate 
-	Message_rect.y = 300; // controls the rect's y coordinte
-	Message_rect.w = 100; // controls the width of the rect
-	Message_rect.h = 100; // controls the height of the rect
+	addTextToSet("Sander de Haas", ren);
+	addTextToSet("Paul Laros", ren);
+	addTextToSet("Kenneth Mauriks", ren);
+	addTextToSet("Thomas Reijnders", ren);
+	addTextToSet("Sebastian Daeke", ren);
+	addTextToSet("Jelle van Es", ren);
+
+	addTextToSet(" ", ren);
+	addTextToSet(" ", ren);
+
+	addTextToSet("Special thanks to", ren);
+	addTextToSet(" ", ren);
+	addTextToSet("Bob", ren);
+
 }
 
-SDL_Texture* CreditScreen::renderText(const std::string &message, SDL_Renderer *renderer)
+void CreditScreen::addTextToSet(string message, SDL_Renderer* ren)
 {
-	//We need to first render to a surface as that's what TTF_RenderText
-	//returns, then load that surface into a texture
-	SDL_Surface *surf = TTF_RenderText_Blended(font, message.c_str(), fontColor);
-	SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surf);
+	SDL_Surface * surface = TTF_RenderText_Blended(font, message.c_str(), fontColor);
+	if (surface)
+	{
+		SDL_Texture* messageTexture = SDL_CreateTextureFromSurface(ren, surface);
+		SDL_Rect messageRectange = { 600 - (surface->w / 2), startY - (surface->h / 2), surface->w, surface->h };
+		textSet[messageTexture] = messageRectange;
+
+		startY += 50;
+		
+	}
+
 	
-	return texture;
 }
+
 
 
 CreditScreen::~CreditScreen()
@@ -52,10 +63,28 @@ CreditScreen::~CreditScreen()
 	TTF_Quit();
 }
 
-
+void CreditScreen::resetTextSet()
+{
+	startY = 650;
+	typedef map<SDL_Texture*, SDL_Rect>::iterator it_type;
+	for (it_type it = textSet.begin(); it != textSet.end(); it++) {
+		it->second.y = startY;
+		startY += 50;
+	}
+}
 
 void CreditScreen::Update(float dt)
 {
+	typedef map<SDL_Texture*, SDL_Rect>::iterator it_type;
+	for (it_type iterator = textSet.begin(); iterator != textSet.end(); iterator++) {
+		iterator->second.y -= 1;
+		if (iterator == --textSet.end()) {
+			if (iterator->second.y < -50) {
+				resetTextSet();
+			}
+		}
+	}
+
 }
 
 void CreditScreen::Draw(SDL_Renderer & ren, float dt)
@@ -63,6 +92,16 @@ void CreditScreen::Draw(SDL_Renderer & ren, float dt)
 	SDL_RenderCopy(&ren, BackgroundTexture, 0, 0);
 	for (const auto& i : UIComponents)
 		i->Draw(ren);
-	SDL_RenderCopy(&ren, Message, NULL,&Message_rect);
+
+	drawText(ren);
+
+}
+
+void CreditScreen::drawText(SDL_Renderer& ren)
+{
+	typedef map<SDL_Texture*, SDL_Rect>::iterator it_type;
+	for (it_type iterator = textSet.begin(); iterator != textSet.end(); iterator++) {
+		SDL_RenderCopy(&ren, iterator->first, NULL, &iterator->second);
+	}
 
 }
