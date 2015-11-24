@@ -8,6 +8,5 @@ public:
 	~CharacterCollideBehaviour();
 
 	virtual void Collide(float dt) override;
-	void Stop(GameObject* c, SDL_Rect* rect);
 };
 

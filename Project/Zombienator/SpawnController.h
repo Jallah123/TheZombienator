@@ -3,18 +3,9 @@
 #include "Zombie.h"
 #include <random>
 using std::vector;
-using std::random_device;
-using std::default_random_engine;
-using std::uniform_int_distribution;
 #define xy std::pair<int, int>
 
-class DrawContainer;
-class AnimateContainer;
-class ActionContainer;
-class MoveContainer;
-class CollideContainer;
-class CharacterContainer;
-
+class Map;
 class StatsController;
 
 class SpawnController
@@ -30,17 +21,13 @@ private:
 	int zombiesPlus = 2;
 	int amountToSpawn = 1;
 	
-	float spawnTime = 100;
+	float spawnTime = 200;
 	float elapsedtime = 0;
 	float timeBetweenWaves = 500;//5 seconds
 	bool waveFinished = false;
 
 	bool completed = false;
-
-	random_device dev;
-	default_random_engine dre{ dev() };
-	uniform_int_distribution<int> locationDist;
-
+	
 	SDL_Renderer* renderer = nullptr;
 	
 	Character* target = nullptr;
@@ -48,10 +35,13 @@ private:
 	StatsController* statsController = nullptr;
 
 	bool IsFinished();
+	Map* map;
 public:
 	SpawnController();
 	~SpawnController();
 
+	void SetMap(Map* m);
+	
 	void Update(float dt);
 
 	void Spawn();

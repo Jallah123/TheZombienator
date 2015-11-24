@@ -2,14 +2,14 @@
 #include "KeyboardInputHandler.h"
 #include "Pistol.h"
 #include "MachineGun.h"
-#include "CharacterContainer.h"
+#include "GameObjectContainer.h"
 
 Mike::Mike() : PlayableCharacter(){}
 
-void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren)
+void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
 {
 	KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
-	this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC, collideC, characterC);
+	this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC, collideC, gameObjectC);
 
 	this->AddWeapon(new MachineGun());
 	this->AddWeapon(new Pistol());
@@ -21,7 +21,7 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	SetActionBehaviour("SwitchWeaponActionBehaviour");
 	SetCollideBehaviour("CharacterCollideBehaviour");
 
-	characterC->AddCharacter(this);
+	gameObjectC->AddGameObject(this);
 
 	SetImage("assets/images/spritesheets/Boy1.png", *ren);
 	SetSize(36, 38);

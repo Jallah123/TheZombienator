@@ -30,13 +30,6 @@ void DrawContainer::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 		
 		//Draw each Behaviour
 		db->Draw(dt, ren, XOffset, YOffset);
-		if (NormalBulletDrawBehaviour* b = dynamic_cast<NormalBulletDrawBehaviour*>(db)) {
-			if (Bullet* bullet = dynamic_cast<Bullet*>(b->GetGameObject())) {
-				if (bullet->GetLifeTime() <= 0) {
-					i->CanRemove(true);
-				}
-			}
-		}
 		if (i->CanBeRemove()) arrRemove.push_back(i);
 	}
 	RemoveAll();

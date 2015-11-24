@@ -189,12 +189,12 @@
     <ClCompile Include="BulletMoveBehaviour.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CharacterCollideBehaviour.cpp" />
-    <ClCompile Include="CharacterContainer.cpp" />
     <ClCompile Include="CharacterDrawBehaviour.cpp" />
     <ClCompile Include="CollideBehaviour.cpp" />
     <ClCompile Include="CollideContainer.cpp" />
     <ClCompile Include="Direction.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectContainer.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -260,10 +260,10 @@
     <ClInclude Include="BulletMoveBehaviour.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CharacterCollideBehaviour.h" />
-    <ClInclude Include="CharacterContainer.h" />
     <ClInclude Include="CharacterDrawBehaviour.h" />
     <ClInclude Include="CollideBehaviour.h" />
     <ClInclude Include="CollideContainer.h" />
+    <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MachineGun.h" />

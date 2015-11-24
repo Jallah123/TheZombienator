@@ -12,15 +12,16 @@
 GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
+	gameObjectContainer.SetMap(map);
+	spawnController.SetMap(map);
 
-	goFactory->SetLevel(map);
 	goFactory->SetContainers(
 		&drawContainer,
 		&animateContainer,
 		&moveContainer,
 		&actionContainer,
 		&collideContainer,
-		&characterContainer,
+		&gameObjectContainer,
 		ren
 		);
 	BehaviourFactory::Instance()->SetContainers(
@@ -29,18 +30,10 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 		&moveContainer,
 		&actionContainer,
 		&collideContainer,
-		&characterContainer,
+		&gameObjectContainer,
 		ren
 		);
 	BehaviourFactory::Instance()->SetMap(map);
-	characterContainer.Init();
-
-	ObjectLayer* ol = map->GetObjectLayer("SpawnPoints");
-
-	for each (auto spawnPoint in ol->GetRects())
-	{
-		spawnController.AddLocation(spawnPoint->x, spawnPoint->y);
-	}
 
 	spawnController.SetRenderer(ren);
 
@@ -52,7 +45,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 	//Load && play sound
 	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
 
-	// Shake(500);
 }
 
 GameScreen::~GameScreen()

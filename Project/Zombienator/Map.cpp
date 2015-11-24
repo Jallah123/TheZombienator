@@ -5,8 +5,9 @@
 using std::string;
 
 Map::Map(char* p, SDL_Renderer& ren) : path(p), renderer(&ren)
-{	
+{
 	this->parser = new MapParser(this);
+	bounds = { 0, 0, tileWidth * width, tileHeight * height };
 }
 
 Map::~Map()
@@ -29,7 +30,7 @@ Map::~Map()
 
 void Map::Size(int w, int h)
 {
-	this->width = w; 
+	this->width = w;
 	this->height = h;
 
 	int x, y;

@@ -1,7 +1,7 @@
 #include "MoveBehaviour.h"
 #include "AiMoveBehaviour.h"
 #include "Zombie.h"
-
+#include "GameObjectContainer.h"
 AiMoveBehaviour::AiMoveBehaviour() : MoveBehaviour() {}
 
 
@@ -15,6 +15,7 @@ void AiMoveBehaviour::Move(float dt)
 
 	Zombie* z = dynamic_cast<Zombie*>(this->gameObject);
 	Character* target = z->GetTarget();
+	GameObjectContainer* goc = z->GetGameObjectContainer();
 	if (target == nullptr) {
 		// No target found, don't move
 		z->SetMoveDir(Direction::NONE);
@@ -64,12 +65,21 @@ void AiMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(newX+.5f), static_cast<int>(z->getPosY()+.5f), z->GetWidth(), z->GetHeight() })) {
-		finalX = z->getPosX();
-	}
-	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(z->getPosX()+.5f), static_cast<int>(newY + .5f), z->GetWidth(), z->GetHeight() })) {
-		finalY = z->getPosY();
-	}
+	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
+	for (auto& g : gameObjects)
+	{
+		if (g != this->gameObject) {
+			SDL_Rect* r = this->gameObject->GetDestinationRect();
+			r->x = static_cast<int>(newX + .5f);
+			r->y = static_cast<int>(z->getPosY() + .5f);
+			if (SDL_HasIntersection(r, g->GetDestinationRect()))
+				finalX = z->getPosX();
 
+			r->x = static_cast<int>(z->getPosX() + .5f);
+			r->y = static_cast<int>(newY + .5f);
+			if (SDL_HasIntersection(r, g->GetDestinationRect()))
+				finalY = z->getPosY();
+		}
+	}
 	z->SetPosition(finalX, finalY);
 }

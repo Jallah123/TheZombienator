@@ -1,6 +1,5 @@
 #pragma once
 #include "CollideBehaviour.h"
-#include "CharacterContainer.h"
 
 class NormalBulletCollideBehaviour :
 	public CollideBehaviour
