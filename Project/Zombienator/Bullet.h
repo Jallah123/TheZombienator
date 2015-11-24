@@ -1,5 +1,4 @@
 #pragma once
-//#include "Direction.cpp"
 #include "GameObject.h"
 #include "DrawContainer.h"
 #include "MoveContainer.h"
@@ -9,6 +8,7 @@
 class DrawContainer;
 class MoveContainer;
 class CollideContainer;
+class GameObjectContainer;
 
 //Behaviours
 class DrawBehaviour;
@@ -30,17 +30,16 @@ protected:
 	DrawContainer* drawContainer;
 	MoveContainer* moveContainer;
 	CollideContainer* collideContainer;
+	GameObjectContainer* gameObjectContainer;
 
 	DrawBehaviour* drawBehaviour;
 	MoveBehaviour* moveBehaviour;
 	CollideBehaviour* collideBehaviour;
 
-	void SetContainers(DrawContainer* drawC, MoveContainer* moveC, CollideContainer* collideC);
-
 public:
 	Bullet();
 	virtual ~Bullet();
-	void Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc);
+	void Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc, GameObjectContainer* goc);
 	
 	void SetDrawBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
@@ -49,6 +48,7 @@ public:
 	void SetOrigin(PlayableCharacter* o) { 
 		origin = o; 
 		SetLookDir(o->GetLookDir()); 
+		SetMoveDir(o->GetLookDir());
 		posX = o->getPosX();
 		posY = o->getPosY();
 	}

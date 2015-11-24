@@ -6,25 +6,25 @@
 #include "Zombie.h"
 #include "Map.h"
 #include "NormalBullet.h"
+#include "MachineGunBullet.h"
 
 #include "DrawContainer.h"
 #include "AnimateContainer.h"
 #include "ActionContainer.h"
 #include "MoveContainer.h"
 #include "CollideContainer.h"
-#include "CharacterContainer.h"
+#include "GameObjectContainer.h"
 
 //
 // DO NOT FORGET TO INITIALIZE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //
 std::map<std::string, std::function<GameObject*(void)>> GameObjectFactory::registry{};
-Map*				GameObjectFactory::mapLevel = nullptr;
 DrawContainer*		GameObjectFactory::drawContainer = nullptr;
 AnimateContainer*	GameObjectFactory::animateContainer = nullptr;
 ActionContainer*	GameObjectFactory::actionContainer = nullptr;
 MoveContainer*		GameObjectFactory::moveContainer = nullptr;
 CollideContainer*	GameObjectFactory::collideContainer = nullptr;
-CharacterContainer* GameObjectFactory::characterContainer = nullptr;
+GameObjectContainer* GameObjectFactory::gameObjectContainer = nullptr;
 SDL_Renderer*		GameObjectFactory::renderer = nullptr;
 
 
@@ -43,14 +43,14 @@ GameObjectFactory::~GameObjectFactory()
 {
 }
 
-void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren)
+void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
 {
 	drawContainer = drawC;
 	animateContainer = animC;
 	moveContainer = moveC;
 	actionContainer = actionC;
 	collideContainer = collideC;
-	characterContainer = characterC;
+	gameObjectContainer = gameObjectC;
 	renderer = ren;
 }
 
@@ -58,17 +58,6 @@ void GameObjectFactory::Register(std::string name, std::function<GameObject*(voi
 {
 	//we need to register an instance that already has all of the containers.
 	GameObjectFactory::registry.insert({ name, fn });
-	//GameObjectFactory::registry[name] = fn;
-}
-
-void GameObjectFactory::SetLevel(Map * l)
-{
-	mapLevel = l;
-}
-
-Map * GameObjectFactory::GetLevel()
-{
-	return mapLevel;
 }
 
 Mike* GameObjectFactory::CreateMike()
@@ -76,7 +65,7 @@ Mike* GameObjectFactory::CreateMike()
 	GameObject* instance = GameObjectFactory::Find("mike");
 	if (instance != nullptr) {
 		Mike* cInstance = dynamic_cast<Mike*>(instance);
-		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, renderer);
+		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer);
 		return cInstance;
 	}
 	return nullptr;
@@ -86,7 +75,7 @@ Zombie* GameObjectFactory::CreateZombie()
 	GameObject* instance = GameObjectFactory::Find("zombie");
 	if (instance != nullptr) {
 		Zombie* cInstance = dynamic_cast<Zombie*>(instance);
-		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, characterContainer, renderer);
+		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer);
 		return cInstance;
 	}
 	return nullptr;
@@ -98,7 +87,21 @@ NormalBullet * GameObjectFactory::CreateNormalBullet(PlayableCharacter * obj)
 
 	if (instance != nullptr) {
 		NormalBullet* cInstance = dynamic_cast<NormalBullet*>(instance);
-		cInstance->Init(drawContainer, moveContainer, collideContainer);
+		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
+		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+MachineGunBullet * GameObjectFactory::CreateMachineGunBullet(PlayableCharacter * obj)
+{
+	GameObject* instance = GameObjectFactory::Find("MachineGunBullet");
+
+	if (instance != nullptr) {
+		MachineGunBullet* cInstance = dynamic_cast<MachineGunBullet*>(instance);
+		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
 		return cInstance;
 	}

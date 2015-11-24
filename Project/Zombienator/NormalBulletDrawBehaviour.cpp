@@ -23,8 +23,7 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset, i
 	SDL_Rect* target = b->GetTarget();
 	Direction md = b->GetLookDir();
 	SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
-	//if(b->HasCollision())
-		//std::cout << "x:" << target->x << ", y:" << target->y << ", w:" << target->w << ", h:" << target->h;
+
 	switch (md)
 	{
 	case SOUTH:
@@ -60,7 +59,10 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset, i
 	
 	if (b->IsLocked()) {
 		SDL_RenderFillRect(&ren, &rect);
+		b->DecreaseLifeTime(dt);
 	}
-	b->DecreaseLifeTime(dt);
+	
+	if (b->GetLifeTime() <= 0) CanRemove(true);
+	
 	b->SetLocked(true);
 }

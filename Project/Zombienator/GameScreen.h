@@ -10,13 +10,14 @@
 #include "DrawContainer.h"
 #include "MoveContainer.h"
 #include "ActionContainer.h"
-#include "CharacterContainer.h"
+#include "GameObjectContainer.h"
 #include "CollideContainer.h"
 
 class GameScreen 
 	: public AbstractScreen
 {
 public:
+	GameScreen();
 	GameScreen(SDL_Renderer* _ren, char* path);
 	~GameScreen();
 	void Shake(float time, int intensity = 20);
@@ -35,7 +36,7 @@ private:
 	ActionContainer actionContainer;
 	MoveContainer moveContainer;
 	CollideContainer collideContainer;
-	CharacterContainer characterContainer;
+	GameObjectContainer gameObjectContainer;
 	SpawnController spawnController;
 	
 	Mike* mike = nullptr;
