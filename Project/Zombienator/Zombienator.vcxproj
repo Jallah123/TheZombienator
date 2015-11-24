@@ -215,6 +215,8 @@
     <ClCompile Include="Mike.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
+    <ClCompile Include="ScreenEnum.cpp" />
+    <ClCompile Include="ScreenFactory.cpp" />
     <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
     <ClCompile Include="NormalBullet.cpp" />
@@ -279,6 +281,7 @@
     <ClInclude Include="Mike.h" />
     <ClInclude Include="MoveBehaviour.h" />
     <ClInclude Include="MoveContainer.h" />
+    <ClInclude Include="ScreenFactory.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="NonPlayableCharacter.h" />
     <ClInclude Include="NormalBullet.h" />

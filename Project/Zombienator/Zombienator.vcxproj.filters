@@ -324,6 +324,12 @@
     <ClCompile Include="LoadingScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
+    <ClCompile Include="ScreenEnum.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -520,6 +526,9 @@
     </ClInclude>
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenFactory.h">
+      <Filter>Header Files\Factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
