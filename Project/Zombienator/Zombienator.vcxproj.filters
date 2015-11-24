@@ -335,6 +335,7 @@
     </ClCompile>
     <ClCompile Include="GameObjectContainer.cpp">
       <Filter>Source Files\Containers</Filter>
+	</ClCompile>
     <ClCompile Include="LoadingScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
@@ -546,6 +547,7 @@
     </ClInclude>
     <ClInclude Include="GameObjectContainer.h">
       <Filter>Header Files\Containers</Filter>
+	</ClInclude>
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
