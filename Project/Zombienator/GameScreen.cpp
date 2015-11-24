@@ -6,7 +6,7 @@
 #include "Map.h"
 #include "Mike.h"
 #include "Zombie.h"
-
+#include "TextureFactory.h"
 
 
 GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
@@ -50,9 +50,9 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 	spawnController.AddTarget(mike);
 
 	//Load && play sound
-	musicController->Load("assets/sounds/bgSound1.wav");
-	musicController->Play(1, -1);
-	musicController->SetVolume(25, 1);
+	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
+
+	// Shake(500);
 }
 
 GameScreen::~GameScreen()
@@ -62,8 +62,8 @@ GameScreen::~GameScreen()
 
 void GameScreen::Update(float dt)
 {
-	int XOffset = 0;
-	int YOffset = 0;
+	XOffset = 0;
+	YOffset = 0;
 	if (shake > 0) {
 		shake -= dt;
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
@@ -99,6 +99,21 @@ void GameScreen::Shake(float time, int intensity) {
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
-	map->Draw(ren, 0, 0);
-	drawContainer.Draw(dt, ren, 0, 0);
+
+	map->Draw(ren, XOffset, YOffset);
+	drawContainer.Draw(dt, ren, XOffset, YOffset);
+	int zombiesOnScreen = spawnController.GetAmountSpawned();
+	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
+	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
+	if (zombiesLeft == 0) {
+		s = "Kill all zombies";
+		if (spawnController.WaveCompleted()) {
+			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
+		}
+	}
+	auto* text = TextureFactory::GenerateTextureFromTextHud(s);
+	SDL_Rect r{ 0,0,200,40 };
+	SDL_RenderCopy(&ren, text, 0, &r);
+	SDL_DestroyTexture(text);
+
 }

@@ -4,19 +4,36 @@ TextureFactory::TextureFactory()
 {
 }
 
-SDL_Texture* TextureFactory::GenerateTextureFromText(std::string text, SDL_Color color)
+SDL_Texture* TextureFactory::GenerateTextureFromTextMenu(std::string text, SDL_Color color)
 {
-	static TTF_Font* font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 24);
 
-	SDL_Surface * surface = TTF_RenderText_Blended(font, text.c_str(), color);
-
-	if (surface)
-	{
-		//SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surface);
-		SDL_FreeSurface(surface);
-		//SDL_DestroyTexture(texture);
+	static TTF_Font* font;
+	if (font == nullptr) {
+		font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 64);
 	}
-	return nullptr;
+	if (font == nullptr) {
+		cout << "Error opening font" << endl;
+		return nullptr;
+	}
+
+}
+
+SDL_Texture* TextureFactory::GenerateTextureFromTextHud(std::string text, SDL_Color color)
+{
+	static TTF_Font* font;
+	if (font == nullptr) {
+		font = TTF_OpenFont("assets/fonts/Roboto-Medium.ttf", 128);
+	}
+	if (font == nullptr) {
+		cout << "Error opening font" << endl;
+		return nullptr;
+	}
+
+	SDL_Surface* textSurface = TTF_RenderText_Blended(font, text.c_str(), color);
+
+	SDL_Texture* texture = GenerateTextureFromSurface(textSurface);
+
+	return texture;
 }
 
 SDL_Texture* TextureFactory::GenerateTextureFromImgUrl(std::string url)
@@ -24,7 +41,7 @@ SDL_Texture* TextureFactory::GenerateTextureFromImgUrl(std::string url)
 	SDL_Surface* imgSurface = IMG_Load(url.c_str());
 	if (imgSurface == NULL)
 	{
-		// log something
+		cout << "Error loading file" << endl;
 	}
 	SDL_Texture* texture = GenerateTextureFromSurface(imgSurface);
 	if (texture == NULL)

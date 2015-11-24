@@ -1,7 +1,10 @@
 #include "Program.h"
+#include "SDL_TTF.h"
+#include "LoadingScreen.h"
 
 Program::Program() {
 	cout << "Creating Program" << endl;
+
 	if (InitComponents() == 0) {
 		cout << "Init complete" << endl;
 	}
@@ -27,6 +30,22 @@ Program& Program::shared_program() {
 }
 */
 
+void Program::ShowLoadingScreen() {
+	LoadingScreen* l = new LoadingScreen{ Sdl_Renderer };
+	ScreenController::GetInstance().AddLoadingScreen(l);
+
+	// SDL Render
+	SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_RenderClear(Sdl_Renderer);
+	ScreenController::GetInstance().GetLoadingScreen()->Draw(*Sdl_Renderer, 0);
+
+	// Update screen 
+	SDL_RenderPresent(Sdl_Renderer);
+
+	// Sleep
+	SDL_Delay(1000);
+}
+
 SDL_Renderer* Program::GetRenderer() {
 	return Sdl_Renderer;
 }
@@ -35,10 +54,16 @@ int Program::Tick() {
 	gameState = GameState::RUNNING;
 	ScreenController* sc = &ScreenController::GetInstance();
 
+	// LoadingScreen
+	ShowLoadingScreen();
+
 	// MenuScreen
 	MenuScreen* m = new HomeScreen{ Sdl_Renderer };
 	ScreenController::GetInstance().ChangeScreen(m);
 	currentFrameTime = SDL_GetTicks();
+
+	AbstractScreen * previousScreen = sc->GetCurrentScreen();
+	AbstractScreen * currentScreen = nullptr;
 
 	while (gameState == GameState::RUNNING) {
 		// Calculate DeltaTime
@@ -46,13 +71,27 @@ int Program::Tick() {
 		currentFrameTime = SDL_GetTicks();
 		deltaTime = float(currentFrameTime - lastFrameTime) / 10;
 
-		//Handle events on queue 
+		// Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
 			Events(sc->GetCurrentScreen());
 		}
-		sc->GetCurrentScreen()->Update(deltaTime);
-		Render(sc->GetCurrentScreen());
-		//Update screen 
+
+		// Get currentScreen
+		currentScreen = sc->GetCurrentScreen();
+
+		// Check if screen has changed
+		if (previousScreen != currentScreen) {
+			ShowLoadingScreen();
+		}
+
+		// Update & render currentScreen
+		currentScreen->Update(deltaTime);
+		Render(currentScreen);
+
+		// Update previousScreen
+		previousScreen = currentScreen;
+
+		// Update screen 
 		SDL_RenderPresent(Sdl_Renderer);
 	}
 
@@ -112,6 +151,10 @@ int Program::InitComponents() {
 	}
 
 
+	if (TTF_Init() == -1) {
+		cerr << "Error loading Open_TTF : " << SDL_GetError() << endl;
+		return 1;
+	}
 
 	// More channels so we can play more sounds at the same time
 	Mix_AllocateChannels(16);

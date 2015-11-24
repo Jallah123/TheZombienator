@@ -22,8 +22,7 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	
 
 	//plays sound:
-	musicController->Load("assets/sounds/StandByMe.wav");
-	musicController->Play(1, -1);
+	SoundController->ChangeMusic("assets/sounds/StandByMe.wav");
 
 
 	//Credit text

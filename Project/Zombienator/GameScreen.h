@@ -23,10 +23,11 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 	void DrawMap(SDL_Renderer& ren);
-	
 private:
 	float shake = 0;
 	int shakeIntensity = 20;
+	int XOffset = 0;
+	int YOffset = 0;
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
 	
 	DrawContainer drawContainer;

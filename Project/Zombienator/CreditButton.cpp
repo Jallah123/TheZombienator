@@ -1,5 +1,5 @@
 #include "CreditButton.h"
-#include "MusicController.h"
+#include "SoundController.h"
 #include "ScreenController.h"
 #include "CreditScreen.h"
 
@@ -22,7 +22,7 @@ CreditButton::~CreditButton()
 
 void CreditButton::ClickAction()
 {
-	MusicController::GetInstance().Stop();
+	SoundController::GetInstance().StopAllSounds();
 	ScreenController::GetInstance().ChangeScreen(new CreditScreen{ renderer});
 }
 

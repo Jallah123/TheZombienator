@@ -8,6 +8,7 @@
 #include "KeyboardInputHandler.h"
 #include "ControllerInputHandler.h"
 #include "GameState.cpp"
+#include "LoadingScreen.h"
 
 class Program
 {
@@ -33,6 +34,7 @@ private:
 	int Events(AbstractScreen* screen);
 	int InitComponents();
 	int InitJoystick();
+	void ShowLoadingScreen();
 	void CloseJoystick();
 
 	static Program* instance;
