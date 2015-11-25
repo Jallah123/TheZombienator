@@ -37,6 +37,7 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	SetSize(32, 36);
 	SetFrames(3);
 	SetSpeed(0.2f);
+	SetMaxHealth(50);
 	SetHealth(50);
 }
 

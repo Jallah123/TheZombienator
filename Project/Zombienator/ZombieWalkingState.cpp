@@ -37,6 +37,7 @@ void ZombieWalkingState::Update(float dt)
 	float destY = target->getPosY();
 
 	// -- Get destination rect
+	SDL_Rect cRect = z->GetCollideRect();
 	float newX = z->getPosX();
 	float newY = z->getPosY();
 

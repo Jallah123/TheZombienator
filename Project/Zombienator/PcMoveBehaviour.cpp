@@ -20,6 +20,7 @@ void PcMoveBehaviour::Move(float dt)
 	if (frames == 0) return;
 
 	// -- Get destination rect
+	SDL_Rect cRect = c->GetCollideRect();
 	float newX = c->getPosX();
 	float newY = c->getPosY();
 	
@@ -58,10 +59,10 @@ void PcMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(newX + .5f), static_cast<int>(c->getPosY() + .5f), c->GetWidth(), c->GetHeight() })) {
+	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(newX + .5f), static_cast<int>(c->getPosY() + .5f) + cRect.h, cRect.w, cRect.h })) {
 		finalX = c->getPosX();
 	}
-	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(c->getPosX() + .5f), static_cast<int>(newY + .5f), c->GetWidth(), c->GetHeight() })) {
+	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(c->getPosX() + .5f), static_cast<int>(newY + .5f) + cRect.h, cRect.w, cRect.h })) {
 		finalY = c->getPosY();
 	}
 
