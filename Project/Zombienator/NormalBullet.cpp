@@ -39,3 +39,10 @@ void NormalBullet::CalculateEndPoint()
 	}
 }
 
+SDL_Point * NormalBullet::GetBeginPoint()
+{
+	begin->x = posX;
+	begin->y = posY;
+	return begin;
+}
+

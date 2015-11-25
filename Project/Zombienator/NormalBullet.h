@@ -11,7 +11,7 @@ public:
 	~NormalBullet();
 	void CalculateEndPoint();
 	SDL_Point* GetEndPoint() { return end; }
-	SDL_Point* GetBeginPoint() { return begin; }
+	SDL_Point* GetBeginPoint();
 	void SetBeginPoint(SDL_Point* p) { begin = p; }
 };
 
