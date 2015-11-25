@@ -44,7 +44,7 @@ void Program::ShowLoadingScreen() {
 	SDL_RenderPresent(Sdl_Renderer);
 
 	// Sleep
-	SDL_Delay(1000);
+	SDL_Delay(400);
 }
 
 SDL_Renderer* Program::GetRenderer() {
