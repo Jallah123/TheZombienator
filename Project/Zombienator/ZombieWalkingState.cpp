@@ -1,25 +1,37 @@
-#include "MoveBehaviour.h"
-#include "AiMoveBehaviour.h"
-#include "Zombie.h"
-
-AiMoveBehaviour::AiMoveBehaviour() : MoveBehaviour() {}
+#include "ZombieWalkingState.h"
+#include "ZombieStateFactory.h"
 
 
-AiMoveBehaviour::~AiMoveBehaviour()
+ZombieWalkingState::ZombieWalkingState()
 {
 }
 
-void AiMoveBehaviour::Move(float dt)
-{
-	if (!this->gameObject) return;
 
-	Zombie* z = dynamic_cast<Zombie*>(this->gameObject);
+ZombieWalkingState::~ZombieWalkingState()
+{
+}
+
+
+void ZombieWalkingState::CheckState()
+{
+	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 	if (target == nullptr) {
-		// No target found, don't move
-		z->SetMoveDir(Direction::NONE);
-		return;//stop
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
+		return;
 	}
+	else if (z->IsInAttackRadius(target)) {
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::ATTACKING, z));
+		return;
+	}
+}
+
+void ZombieWalkingState::Update(float dt)
+{
+	CheckState();
+
+	Zombie* z = GetOwner();
+	Character* target = z->GetTarget();
 
 	float destX = target->getPosX();
 	float destY = target->getPosY();
@@ -30,7 +42,7 @@ void AiMoveBehaviour::Move(float dt)
 	float newY = z->getPosY();
 
 	// -- Move directions
-	bool up = destY + target->GetHeight() <= newY ;
+	bool up = destY + target->GetHeight() <= newY;
 	bool left = destX <= newX + z->GetWidth();
 	bool down = destY >= newY + z->GetHeight();
 	bool right = destX + target->GetWidth() >= newX;
@@ -65,10 +77,10 @@ void AiMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(newX+.5f), static_cast<int>(z->getPosY()+.5f) + cRect.h, cRect.w, cRect.h })) {
+	if (z->GetCollisionLayer()->HasCollision(SDL_Rect{ static_cast<int>(newX + .5f), static_cast<int>(z->getPosY() + .5f), z->GetWidth(), z->GetHeight() })) {
 		finalX = z->getPosX();
 	}
-	if (collisionLayer->HasCollision(SDL_Rect{ static_cast<int>(z->getPosX()+.5f), static_cast<int>(newY + .5f) + cRect.h, cRect.w, cRect.h })) {
+	if (z->GetCollisionLayer()->HasCollision(SDL_Rect{ static_cast<int>(z->getPosX() + .5f), static_cast<int>(newY + .5f), z->GetWidth(), z->GetHeight() })) {
 		finalY = z->getPosY();
 	}
 

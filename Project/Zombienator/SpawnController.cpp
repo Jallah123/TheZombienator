@@ -18,7 +18,6 @@ SpawnController::SpawnController()
 	NextWave();
 }
 
-
 SpawnController::~SpawnController()
 {
 }
@@ -46,6 +45,7 @@ void SpawnController::Spawn()
 	xy p = locations.at(l);
 
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
+	z->SetMap(map);
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
 	amountSpawned++;

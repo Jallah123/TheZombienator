@@ -89,11 +89,18 @@ void Character::SetCollideBehaviour(std::string name)
 		this->collideContainer->Add(collideBehaviour);
 }
 
+void Character::SetMap(Map * m)
+{
+	map = m;
+	collisionLayer = m->GetObjectLayer("Collision");
+}
+
 void Character::Remove()
 {
 	drawBehaviour->CanRemove(true);
 	animateBehaviour->CanRemove(true);
-	moveBehaviour->CanRemove(true);
+	if(moveBehaviour != nullptr)
+		moveBehaviour->CanRemove(true);
 	collideBehaviour->CanRemove(true);
 	for (const auto& ab : actionBehaviours) {
 		ab->CanRemove(true);

@@ -179,7 +179,6 @@
     <ClCompile Include="AbstractUIComponent.cpp" />
     <ClCompile Include="ActionBehaviour.cpp" />
     <ClCompile Include="ActionContainer.cpp" />
-    <ClCompile Include="AiMoveBehaviour.cpp" />
     <ClCompile Include="AnimateBehaviour.cpp" />
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
@@ -241,6 +240,12 @@
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
+    <ClCompile Include="ZombieAttackState.cpp" />
+    <ClCompile Include="ZombieStandStillState.cpp" />
+    <ClCompile Include="ZombieState.cpp" />
+    <ClCompile Include="ZombieStateEnum.cpp" />
+    <ClCompile Include="ZombieStateFactory.cpp" />
+    <ClCompile Include="ZombieWalkingState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScreen.h" />
@@ -248,7 +253,6 @@
     <ClInclude Include="AbstractUIComponent.h" />
     <ClInclude Include="ActionBehaviour.h" />
     <ClInclude Include="ActionContainer.h" />
-    <ClInclude Include="AiMoveBehaviour.h" />
     <ClInclude Include="AnimateBehaviour.h" />
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
@@ -308,6 +312,11 @@
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Zombie.h" />
+    <ClInclude Include="ZombieAttackState.h" />
+    <ClInclude Include="ZombieStandStillState.h" />
+    <ClInclude Include="ZombieState.h" />
+    <ClInclude Include="ZombieStateFactory.h" />
+    <ClInclude Include="ZombieWalkingState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -12,6 +12,7 @@
 GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
+	spawnController.SetMap(map);
 
 	goFactory->SetLevel(map);
 	goFactory->SetContainers(
@@ -84,6 +85,14 @@ void GameScreen::Update(float dt)
 		speed = 1.0;
 	}
 	dt *= speed;
+
+	for (auto& character : characterContainer.GetCharacters())
+	{
+		if (Zombie* z = dynamic_cast<Zombie*>(character))
+		{
+			z->Update(dt);
+		}
+	}
 
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
