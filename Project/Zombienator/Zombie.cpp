@@ -44,11 +44,11 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 bool Zombie::InAttackRadius(Character * target)
 {
 	SDL_Rect* targetRadius = target->GetDestinationRect();
-	targetRadius->h += 4;
-	targetRadius->w += 4;
-	targetRadius->x += 2;
-	targetRadius->y += 2;
-	if (SDL_HasIntersection(GetDestinationRect(), targetRadius)) 
+	targetRadius->h += 2;
+	targetRadius->w += 2;
+	targetRadius->x -= 1;
+	targetRadius->y -= 1;
+	if (SDL_HasIntersection(GetDestinationRect(),targetRadius)) 
 	{
 		return true;
 	}
