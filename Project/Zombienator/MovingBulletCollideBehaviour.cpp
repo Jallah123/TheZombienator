@@ -18,9 +18,9 @@ void MovingBulletCollideBehaviour::Collide(float dt)
 	std::vector<GameObject*> gos = gameObjectContainer->GetGameObjects(gameObject->getPosX(), gameObject->getPosY());
 	for (auto& g : gos)
 	{
-		if (g != bullet->GetOrigin()) {
-			Zombie* target = dynamic_cast<Zombie*>(g);
-			if (SDL_HasIntersection(gameObject->GetDestinationRect(), g->GetDestinationRect())) {
+		if (g != bullet->GetOrigin() && g != bullet) {
+			if (SDL_HasIntersection(bullet->GetDestinationRect(), g->GetDestinationRect())) {
+				Zombie* target = dynamic_cast<Zombie*>(g);
 				if (target != nullptr)
 				{
 					target->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());

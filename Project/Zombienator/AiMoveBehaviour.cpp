@@ -30,7 +30,7 @@ void AiMoveBehaviour::Move(float dt)
 	float newY = z->getPosY();
 
 	// -- Move directions
-	bool up = destY + target->GetHeight() <= newY ;
+	bool up = destY + target->GetHeight() <= newY;
 	bool left = destX <= newX + z->GetWidth();
 	bool down = destY >= newY + z->GetHeight();
 	bool right = destX + target->GetWidth() >= newX;

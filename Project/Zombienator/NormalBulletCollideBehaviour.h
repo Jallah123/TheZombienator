@@ -8,5 +8,6 @@ public:
 	NormalBulletCollideBehaviour() {};
 	~NormalBulletCollideBehaviour();
 	virtual void Collide(float dt) override;
+	GameObject* GetClosest(std::vector<GameObject*> objects, GameObject& origin);
 };
 

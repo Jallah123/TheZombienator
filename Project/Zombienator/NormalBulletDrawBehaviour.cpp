@@ -23,11 +23,11 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset, i
 	SDL_Rect* target = b->GetTarget();
 	Direction md = b->GetLookDir();
 	SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
-
-	SDL_Point end = { origin->getPosX(), origin->getPosY() };
+	SDL_Point end = b->GetEndPoint();
 	
-	end.x = b->HasCollision() ? target->x : 0 ;
-	end.y = b->HasCollision() ? target->y : 0;
+	
+	end.x = b->HasCollision() ? target->x : end.x;
+	end.y = b->HasCollision() ? target->y : end.y;
 		
 	b->SetDirection(md);
 

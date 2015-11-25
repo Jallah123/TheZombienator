@@ -24,11 +24,11 @@ void CollideContainer::Collide(float dt)
 		CollideBehaviour* collideBehaviour = dynamic_cast<CollideBehaviour*>(behaviour);
 		collideBehaviour->Collide(dt);
 
-		if (Bullet* bullet = dynamic_cast<Bullet*>(behaviour->GetGameObject())) {
+		/*if (Bullet* bullet = dynamic_cast<Bullet*>(behaviour->GetGameObject())) {
 			if (bullet->GetLifeTime() <= 0 || bullet->HasCollision()) {
 				behaviour->CanRemove(true);
 			}
-		}
+		}*/
 		if(behaviour->CanBeRemove()) arrRemove.push_back(behaviour);
 	}
 	RemoveAll();

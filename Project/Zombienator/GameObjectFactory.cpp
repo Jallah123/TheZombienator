@@ -89,6 +89,7 @@ NormalBullet * GameObjectFactory::CreateNormalBullet(PlayableCharacter * obj)
 		NormalBullet* cInstance = dynamic_cast<NormalBullet*>(instance);
 		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		cInstance->CalculateEndPoint();
 		return cInstance;
 	}
 
