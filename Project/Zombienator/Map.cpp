@@ -1,6 +1,8 @@
 #pragma once
 #include "Map.h"
 #include "MapParser.h"
+#include "TileLayer.h"
+#include "ObjectLayer.h"
 
 using std::string;
 
@@ -60,11 +62,14 @@ void Map::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
 void Map::DrawFrontLayer(SDL_Renderer& ren, int XOffset, int YOffset)
 {
 	for (const auto& l : frontLayers) {
-		l.second->Draw(ren, XOffset, YOffset);//Render each layer
+		TileLayer* layer = dynamic_cast<TileLayer*>(l.second);
+		if (layer != nullptr) {
+			layer->Draw(ren, XOffset, YOffset);
+		}
 	}
 }
 
-ObjectLayer * Map::GetObjectLayer(string key)
+ObjectLayer* Map::GetObjectLayer(string key)
 {
 	return dynamic_cast<ObjectLayer*>(this->backLayers.at(key));
 }

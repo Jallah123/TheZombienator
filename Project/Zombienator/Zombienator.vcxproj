@@ -207,6 +207,7 @@
     <ClCompile Include="InputContainer.cpp" />
     <ClCompile Include="KeyboardInputHandler.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapParser.cpp" />
@@ -260,6 +261,7 @@
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapParser.h" />
     <ClInclude Include="Image.h" />

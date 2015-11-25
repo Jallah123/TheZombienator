@@ -2,13 +2,14 @@
 #include "SpawnController.h"
 #include "GameObjectFactory.h"
 #include "StatsController.h"
+
 bool SpawnController::IsFinished()
 {
 	if (!waveFinished && statsController->GetKills() == zombies) {
 		waveFinished = true;
 		elapsedtime = 0;
 	}
-
+	
 	return waveFinished;
 }
 SpawnController::SpawnController()
@@ -36,7 +37,7 @@ void SpawnController::Update(float dt)
 
 void SpawnController::Spawn()
 {	
-	if (zombiesWave == amountToSpawn) return;
+	if (amountSpawned == amountToSpawn) return;
 	if (elapsedtime < spawnTime) return;
 	//No points to spawn on?
 	if (locations.size() == 0) return;
@@ -47,7 +48,7 @@ void SpawnController::Spawn()
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
-	zombiesWave++;
+	amountSpawned++;
 	elapsedtime = 0;
 }
 
@@ -59,7 +60,8 @@ void SpawnController::NextWave()
 	}
 	currentWave++;
 	waveFinished = false;
-	zombiesWave = 0;//reset wave count
+	amountSpawned = 0;//reset wave count
+	amountToSpawn = GetAmountToSpawn();
 	zombies += amountToSpawn;
 	elapsedtime = 0;
 }
