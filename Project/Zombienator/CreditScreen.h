@@ -1,16 +1,19 @@
 #pragma once
 #include "MenuScreen.h"
+#include "TextureFactory.h"
 #include <SDL_ttf.h>
 #include <set>
 #include <map>
+#include <iostream>
+
 
 using namespace std;
 class CreditScreen :
 	public MenuScreen
 {
 protected:
-	map<SDL_Texture*, SDL_Rect> textSet;
-	TTF_Font* font = NULL;
+	map<SDL_Texture*, SDL_Rect> textSet = {};
+	TTF_Font* font = nullptr;
 	SDL_Color fontColor = { 0, 0, 0 };
 	int startY = 300;
 	void addTextToSet(string message, SDL_Renderer* ren);

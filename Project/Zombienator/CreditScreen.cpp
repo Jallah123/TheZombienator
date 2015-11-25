@@ -1,6 +1,4 @@
 #include "CreditScreen.h"
-#include <iostream>
-
 
 CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {	
@@ -47,15 +45,11 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 void CreditScreen::addTextToSet(string message, SDL_Renderer* ren)
 {
-	SDL_Surface * surface = TTF_RenderText_Blended(font, message.c_str(), fontColor);
-	if (surface)
-	{
-		SDL_Texture* messageTexture = SDL_CreateTextureFromSurface(ren, surface);
-		SDL_Rect messageRectange = { 600 - (surface->w / 2), startY - (surface->h / 2), surface->w, surface->h };
-		textSet[messageTexture] = messageRectange;
+	textSet.insert(TextureFactory::GenerateText(message, *ren, 40, 600, startY));
 
-		startY += 50;
-	}
+
+
+	startY += 50;
 }
 
 
@@ -101,8 +95,7 @@ void CreditScreen::Draw(SDL_Renderer & ren, float dt)
 
 void CreditScreen::drawText(SDL_Renderer& ren)
 {
-	typedef map<SDL_Texture*, SDL_Rect>::iterator it_type;
-	for (it_type iterator = textSet.begin(); iterator != textSet.end(); iterator++) {
-		SDL_RenderCopy(&ren, iterator->first, NULL, &iterator->second);
+	for (auto& i : textSet) {
+		SDL_RenderCopy(&ren, i.first, NULL, &i.second);
 	}
 }
