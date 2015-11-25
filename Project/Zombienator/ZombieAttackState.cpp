@@ -16,7 +16,7 @@ void ZombieAttackState::CheckState()
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 
-	if (!z->InAttackRadius(target)) {
+	if (!z->IsInAttackRadius(target)) {
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::WALKING, z));
 		return;
 	}

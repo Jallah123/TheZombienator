@@ -23,7 +23,7 @@ public:
 	void Update(float dt) { currentState->Update(dt); }
 	
 	void SetCurrentState(ZombieState* newState) { currentState = newState; };
-	bool InAttackRadius(Character* target);
+	bool IsInAttackRadius(Character* target);
 private:
 	Character* target = nullptr;//Mike||Arnold
 	ZombieState* currentState = nullptr;

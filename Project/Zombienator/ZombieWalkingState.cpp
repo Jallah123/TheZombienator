@@ -20,7 +20,7 @@ void ZombieWalkingState::CheckState()
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
 		return;
 	}
-	else if (z->InAttackRadius(target)) {
+	else if (z->IsInAttackRadius(target)) {
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::ATTACKING, z));
 		return;
 	}

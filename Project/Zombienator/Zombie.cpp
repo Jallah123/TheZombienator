@@ -41,7 +41,7 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	SetHealth(50);
 }
 
-bool Zombie::InAttackRadius(Character * target)
+bool Zombie::IsInAttackRadius(Character * target)
 {
 	SDL_Rect* targetRadius = target->GetDestinationRect();
 	targetRadius->h += 2;
