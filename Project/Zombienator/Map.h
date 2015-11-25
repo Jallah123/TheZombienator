@@ -26,7 +26,8 @@ private:
 	int tileHeight = 0;
 	MapParser* parser = nullptr;
 
-	std::map<string, Layer*> layers{};
+	std::map<string, Layer*> backLayers{};
+	std::map<string, Layer*> frontLayers{};
 	vector<TileSet*> tilesets{};
 	vector<SDL_Rect*> rects{};
 	SDL_Renderer* renderer;
@@ -44,10 +45,13 @@ public:
 	int TileWidth() { return tileWidth; }
 	int TileHeight() { return tileHeight; }
 
-	void AddLayer(Layer* l) { layers.insert({ l->Name(), l }); }
+	void AddBackLayer(Layer* l) { backLayers.insert({ l->Name(), l }); }
+	void AddFrontLayer(Layer* l) { frontLayers.insert({ l->Name(), l }); }
+
 	void AddTileset(TileSet* ts);
 
 	void Draw(SDL_Renderer& ren, int XOffset, int YOffset);
+	void DrawFrontLayer(SDL_Renderer& ren, int XOffset, int YOffset);
 
 	ObjectLayer* GetObjectLayer(string key);
 	vector<SDL_Rect*> GetRects() { return this->rects; }
