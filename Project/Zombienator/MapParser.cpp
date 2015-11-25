@@ -19,7 +19,7 @@ MapParser::~MapParser()
 {
 }
 
-void MapParser::ParseJson(char * path)
+void MapParser::ParseJson(string path)
 {
 	string tileType = "tilelayer";
 	string objectType = "objectgroup";

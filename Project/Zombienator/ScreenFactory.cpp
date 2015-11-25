@@ -16,13 +16,19 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> ScreenFactory::ScreenMap = fillMap();
 
-AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum)
+AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string map)
 {
 	AbstractScreen* screen = nullptr;
-	auto it = ScreenMap.find(screenEnum);
-	if (it != ScreenMap.end())
+	if (screenEnum == ScreenEnum::GAMESCREEN && map != "")
 	{
-		screen = it->second();
+		screen = new GameScreen(Program::getInstance()->GetRenderer(), map);
+	}
+	else {
+		auto it = ScreenMap.find(screenEnum);
+		if (it != ScreenMap.end())
+		{
+			screen = it->second();
+		}
 	}
 	return screen;
 }
