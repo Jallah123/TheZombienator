@@ -6,7 +6,7 @@
 
 using std::string;
 
-Map::Map(char* p, SDL_Renderer& ren) : path(p), renderer(&ren)
+Map::Map(string p, SDL_Renderer& ren) : path(p), renderer(&ren)
 {	
 	this->parser = new MapParser(this);
 }

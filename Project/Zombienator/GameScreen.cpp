@@ -9,7 +9,7 @@
 #include "TextureFactory.h"
 
 
-GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
+GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
 	spawnController.SetMap(map);
