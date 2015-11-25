@@ -54,27 +54,22 @@ void Map::AddTileset(TileSet* ts)
 
 void Map::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
 {
+	for (const auto& l : backLayers) {
+		l.second->Draw(ren, XOffset, YOffset);//Render each layer
+	}
+}
 
-	// Only draw TileLayers
-	for (auto& l : layers) {
+void Map::DrawFrontLayer(SDL_Renderer& ren, int XOffset, int YOffset)
+{
+	for (const auto& l : frontLayers) {
 		TileLayer* layer = dynamic_cast<TileLayer*>(l.second);
 		if (layer != nullptr) {
 			layer->Draw(ren, XOffset, YOffset);
 		}
 	}
-
-	// For objectlayer debugging
-	/*
-	for (auto& l : layers) {
-		ObjectLayer* layer = dynamic_cast<ObjectLayer*>(l.second);
-		if (layer != nullptr) {
-			layer->Draw(ren, XOffset, YOffset);
-		}
-	}
-	*/
 }
 
-ObjectLayer * Map::GetObjectLayer(string key)
+ObjectLayer* Map::GetObjectLayer(string key)
 {
-	return dynamic_cast<ObjectLayer*>(this->layers.at(key));
+	return dynamic_cast<ObjectLayer*>(this->backLayers.at(key));
 }
