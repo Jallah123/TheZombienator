@@ -24,6 +24,8 @@ class SpawnController
 private:
 	vector<xy> locations;
 	
+	Map* map = nullptr;
+
 	int maxWaves = 5;
 	int currentWave = 0;
 
@@ -52,6 +54,8 @@ private:
 public:
 	SpawnController();
 	~SpawnController();
+
+	void SetMap(Map* _map) { map = _map; };
 
 	void Update(float dt);
 

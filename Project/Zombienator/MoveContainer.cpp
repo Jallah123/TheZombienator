@@ -2,14 +2,12 @@
 #include "MoveContainer.h"
 #include "MoveBehaviour.h"
 #include "BehaviourFactory.h"
-#include "AiMoveBehaviour.h"
 #include "PcMoveBehaviour.h"
 #include "CollideBehaviour.h"
 
 MoveContainer::MoveContainer()
 {
 	BehaviourFactory::Instance()->Register("PcMoveBehaviour", [](void) -> Behaviour* { return new PcMoveBehaviour(); });
-	BehaviourFactory::Instance()->Register("AiMoveBehaviour", [](void) -> Behaviour* { return new AiMoveBehaviour(); });
 }
 
 
