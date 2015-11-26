@@ -25,8 +25,6 @@ void HudDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffs
 	PlayableCharacter* pc = static_cast<PlayableCharacter*>(gameObject);
 	SDL_Texture* weaponTexture = pc->GetWeapon()->GetHudTexture();
 	SDL_Rect r{0, 50, 81, 50};
-	// SDL_SetRenderTarget()
-	SDL_SetTextureBlendMode(weaponTexture, SDL_BLENDMODE_BLEND);
 	SDL_RenderCopy(&ren, weaponTexture, 0, &r);
 
 	// Only create texture if weapon actually has a name
@@ -37,16 +35,21 @@ void HudDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffs
 		{
 			weaponNameTexture = TextureFactory::GenerateTextureFromTextHud(pc->GetWeapon()->GetName());
 			weaponName = pc->GetWeapon()->GetName();
-			std::cout << "New weapon name texture" << '\n';
 		}
 	}
 
+	SDL_Rect weaponTextTexture{ 45, 75, 60, 28 };
 	// Draw pistol text
 	if (weaponNameTexture != nullptr)
 	{
-		SDL_Rect weaponTextTexture{ 45, 75, 60, 28 };
 		SDL_RenderCopy(&ren, weaponNameTexture, 0, &weaponTextTexture);
 	}
+	SDL_Texture* roundsTextTexture = TextureFactory::GenerateTextureFromTextHud("rounds : " + to_string(pc->GetWeapon()->GetRounds()));
+	weaponTextTexture.w += 40;
+	weaponTextTexture.x += 150;
+	weaponTextTexture.y += 15;
+	SDL_RenderCopy(&ren, roundsTextTexture, 0, &weaponTextTexture);
+	SDL_DestroyTexture(roundsTextTexture);
 
 }
 
