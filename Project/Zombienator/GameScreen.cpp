@@ -6,7 +6,7 @@
 #include "Map.h"
 #include "Mike.h"
 #include "Zombie.h"
-
+#include "TextureFactory.h"
 
 
 GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
@@ -110,4 +110,17 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
+	int zombiesOnScreen = spawnController.GetAmountSpawned();
+	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
+	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
+	if (zombiesLeft == 0) {
+		s = "Kill all zombies";
+		if (spawnController.WaveCompleted()) {
+			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
+		}
+	}
+	auto* text = TextureFactory::GenerateTextureFromTextHud(s);
+	SDL_Rect r{ 0,0,200,40 };
+	SDL_RenderCopy(&ren, text, 0, &r);
+	SDL_DestroyTexture(text);
 }

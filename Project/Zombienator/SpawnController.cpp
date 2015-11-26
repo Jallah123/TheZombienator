@@ -8,7 +8,7 @@ bool SpawnController::IsFinished()
 		waveFinished = true;
 		elapsedtime = 0;
 	}
-
+	
 	return waveFinished;
 }
 SpawnController::SpawnController()
