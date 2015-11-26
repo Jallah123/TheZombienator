@@ -327,6 +327,12 @@
     <ClCompile Include="LoadingScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
+    <ClCompile Include="ScreenEnum.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
     <ClCompile Include="ZombieStateEnum.cpp">
       <Filter>Source Files\Enums</Filter>
     </ClCompile>
@@ -538,6 +544,9 @@
     </ClInclude>
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenFactory.h">
+      <Filter>Header Files\Factories</Filter>
     </ClInclude>
     <ClInclude Include="ZombieState.h">
       <Filter>Header Files\Models\States</Filter>

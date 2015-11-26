@@ -1,10 +1,12 @@
 #pragma once
 #include "Map.h"
 #include "MapParser.h"
+#include "TileLayer.h"
+#include "ObjectLayer.h"
 
 using std::string;
 
-Map::Map(char* p, SDL_Renderer& ren) : path(p), renderer(&ren)
+Map::Map(string p, SDL_Renderer& ren) : path(p), renderer(&ren)
 {	
 	this->parser = new MapParser(this);
 }
@@ -52,12 +54,22 @@ void Map::AddTileset(TileSet* ts)
 
 void Map::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
 {
-	for (const auto& l : layers) {
+	for (const auto& l : backLayers) {
 		l.second->Draw(ren, XOffset, YOffset);//Render each layer
 	}
 }
 
-ObjectLayer * Map::GetObjectLayer(string key)
+void Map::DrawFrontLayer(SDL_Renderer& ren, int XOffset, int YOffset)
 {
-	return dynamic_cast<ObjectLayer*>(this->layers.at(key));
+	for (const auto& l : frontLayers) {
+		TileLayer* layer = dynamic_cast<TileLayer*>(l.second);
+		if (layer != nullptr) {
+			layer->Draw(ren, XOffset, YOffset);
+		}
+	}
+}
+
+ObjectLayer* Map::GetObjectLayer(string key)
+{
+	return dynamic_cast<ObjectLayer*>(this->backLayers.at(key));
 }

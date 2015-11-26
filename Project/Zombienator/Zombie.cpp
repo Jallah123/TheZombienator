@@ -37,17 +37,18 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	SetSize(32, 36);
 	SetFrames(3);
 	SetSpeed(0.2f);
+	SetMaxHealth(50);
 	SetHealth(50);
 }
 
-bool Zombie::InAttackRadius(Character * target)
+bool Zombie::IsInAttackRadius(Character * target)
 {
 	SDL_Rect* targetRadius = target->GetDestinationRect();
-	targetRadius->h += 4;
-	targetRadius->w += 4;
-	targetRadius->x += 2;
-	targetRadius->y += 2;
-	if (SDL_HasIntersection(GetDestinationRect(), targetRadius)) 
+	targetRadius->h += 2;
+	targetRadius->w += 2;
+	targetRadius->x -= 1;
+	targetRadius->y -= 1;
+	if (SDL_HasIntersection(GetDestinationRect(),targetRadius)) 
 	{
 		return true;
 	}

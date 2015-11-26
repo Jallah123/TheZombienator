@@ -20,7 +20,7 @@ void ZombieWalkingState::CheckState()
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
 		return;
 	}
-	else if (z->InAttackRadius(target)) {
+	else if (z->IsInAttackRadius(target)) {
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::ATTACKING, z));
 		return;
 	}
@@ -37,6 +37,7 @@ void ZombieWalkingState::Update(float dt)
 	float destY = target->getPosY();
 
 	// -- Get destination rect
+	SDL_Rect cRect = z->GetCollideRect();
 	float newX = z->getPosX();
 	float newY = z->getPosY();
 

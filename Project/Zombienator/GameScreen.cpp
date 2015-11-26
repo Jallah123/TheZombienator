@@ -9,7 +9,7 @@
 #include "TextureFactory.h"
 
 
-GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
+GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
 	spawnController.SetMap(map);
@@ -110,6 +110,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
+	map->DrawFrontLayer(ren, XOffset, YOffset);
 	int zombiesOnScreen = spawnController.GetAmountSpawned();
 	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
 	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
