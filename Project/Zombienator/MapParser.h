@@ -7,7 +7,7 @@ class MapParser
 {
 private:
 	Map* map = nullptr;
-	void ParseJson(char* path);
+	void ParseJson(string path);
 	
 	Layer* ObjectType(Json::Value json);
 	Layer* TileType(Json::Value json);

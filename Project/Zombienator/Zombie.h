@@ -1,5 +1,7 @@
 #pragma once
 #include "Character.h"
+#include "ZombieState.h"
+
 class DrawContainer;
 class AnimateContainer;
 class MoveContainer;
@@ -10,8 +12,6 @@ class CharacterContainer;
 class Zombie :
 	public Character
 {
-private:
-	Character* target = nullptr;//Mike||Arnold
 public:
 	Zombie();
 	~Zombie();
@@ -19,5 +19,13 @@ public:
 
 	void SetTarget(Character* c) { this->target = c; }
 	Character* GetTarget() { return this->target; }
+
+	void Update(float dt) { currentState->Update(dt); }
+	
+	void SetCurrentState(ZombieState* newState) { currentState = newState; };
+	bool IsInAttackRadius(Character* target);
+private:
+	Character* target = nullptr;//Mike||Arnold
+	ZombieState* currentState = nullptr;
 };
 
