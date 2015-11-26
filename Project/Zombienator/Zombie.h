@@ -22,10 +22,18 @@ public:
 
 	void Update(float dt) { currentState->Update(dt); }
 	
-	void SetCurrentState(ZombieState* newState) { currentState = newState; };
+	ZombieState* GetCurrentState() { return this->currentState; }
+	void SetCurrentState(ZombieState* newState);
 	bool IsInAttackRadius(Character* target);
+
+	void SetNormalTexture(string path);
+	void SetAttackTexture(string path);
+	void ChangeTexture(bool isAttack);
 private:
 	Character* target = nullptr;//Mike||Arnold
 	ZombieState* currentState = nullptr;
+
+	SDL_Texture* normalTexture = nullptr;
+	SDL_Texture* AttackTexture = nullptr;
 };
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "SoundController.h"
 class Zombie;
 
 class ZombieState
@@ -12,4 +13,6 @@ public:
 	virtual void Update(float dt) = 0;
 private:
 	Zombie* owner = nullptr;
+protected:
+	SoundController* SoundController = &SoundController::GetInstance();
 };

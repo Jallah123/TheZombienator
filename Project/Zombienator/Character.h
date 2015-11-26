@@ -59,6 +59,7 @@ public:
 	void SetFrames(int f) { animationFrames = f; }
 	void SetHealth(int h) { this->health = h; if (health > maxHealth) health = maxHealth; }
 	void SetMaxHealth(int h) { this->maxHealth = h; }
+	bool IsDeath() { if (!this->health) return true; return false; }
 
 	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC);
 	void SetDrawBehaviour(std::string name);
