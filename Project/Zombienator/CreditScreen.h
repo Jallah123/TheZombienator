@@ -4,6 +4,7 @@
 #include <SDL_ttf.h>
 #include <set>
 #include <map>
+#include <list>
 #include <iostream>
 
 
@@ -12,7 +13,7 @@ class CreditScreen :
 	public MenuScreen
 {
 protected:
-	map<SDL_Texture*, SDL_Rect> textSet = {};
+	std::list<std::pair<SDL_Texture*, SDL_Rect>> textList = {};
 	TTF_Font* font = nullptr;
 	SDL_Color fontColor = { 0, 0, 0 };
 	int startY = 300;

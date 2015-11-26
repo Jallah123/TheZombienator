@@ -4,21 +4,6 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {	
 
 
-	// Console Update
-	std::cout << "Made CreditSCreen" << std::endl;
-
-	if (TTF_Init() < 0) {
-		std::cout << "SDL_TTF Error" << std::endl;
-	}
-
-	font = 	TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 40); //this opens a font style and sets a size
-
-	 //If there was an error in loading the font 
-	if( font == NULL ) { 
-		std::cout << "Error loading font" << std::endl;
-	}
-	
-
 	//plays sound:
 	SoundController->ChangeMusic("assets/sounds/StandByMe.wav");
 
@@ -45,10 +30,7 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 void CreditScreen::addTextToSet(string message, SDL_Renderer* ren)
 {
-	textSet.insert(TextureFactory::GenerateText(message, *ren, 40, 600, startY));
-
-
-
+	textList.push_back(TextureFactory::GenerateText(message, *ren, 40, 600, startY));
 	startY += 50;
 }
 
@@ -63,23 +45,24 @@ CreditScreen::~CreditScreen()
 void CreditScreen::resetTextSet()
 {
 	startY = 650;
-	typedef map<SDL_Texture*, SDL_Rect>::iterator it_type;
-	for (it_type it = textSet.begin(); it != textSet.end(); it++) {
-		it->second.y = startY;
+	for (auto& i : textList) {
+		i.second.y = startY;
 		startY += 50;
 	}
+
 }
 
 void CreditScreen::Update(float dt)
 {
-	typedef map<SDL_Texture*, SDL_Rect>::iterator it_type;
-	for (it_type iterator = textSet.begin(); iterator != textSet.end(); iterator++) {
-		iterator->second.y -= 1;
-		if (iterator == --textSet.end()) {
-			if (iterator->second.y < -50) {
-				resetTextSet();
-			}
-		}
+
+	SDL_Rect last = {};
+	for (auto& i : textList) {
+		i.second.y -= 1;
+		last = i.second;
+	}
+
+	if (last.y < -50) {
+		resetTextSet();
 	}
 
 }
@@ -95,7 +78,8 @@ void CreditScreen::Draw(SDL_Renderer & ren, float dt)
 
 void CreditScreen::drawText(SDL_Renderer& ren)
 {
-	for (auto& i : textSet) {
+	for (auto& i : textList) {
 		SDL_RenderCopy(&ren, i.first, NULL, &i.second);
 	}
+
 }
