@@ -2,13 +2,11 @@
 #include "Character.h"
 #include "Weapon.h"
 
-class HudDrawBehaviour;
 class PlayableCharacter
 	: public Character
 {
 protected:
 	Weapon* weapon;
-	HudDrawBehaviour* hudDrawBehaviour;
 public:
 	PlayableCharacter();
 	virtual ~PlayableCharacter();

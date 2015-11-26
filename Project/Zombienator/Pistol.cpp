@@ -6,7 +6,7 @@
 #include "BehaviourFactory.h"
 #include "GameObjectFactory.h"
 
-Pistol::Pistol() : Weapon("Pistol.png")
+Pistol::Pistol() : Weapon("assets/images/Pistol.png")
 {
 	this->rounds = INT_MAX;
 	this->delay = 20;

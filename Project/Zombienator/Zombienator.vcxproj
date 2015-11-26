@@ -196,7 +196,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameState.cpp" />
-    <ClCompile Include="HudDrawbehaviour.cpp" />
+    <ClCompile Include="HudDrawBehaviour.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DrawBehaviour.cpp" />
@@ -261,7 +261,7 @@
     <ClInclude Include="CollideBehaviour.h" />
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="GameScreen.h" />
-    <ClInclude Include="HudDrawbehaviour.h" />
+    <ClInclude Include="HudDrawBehaviour.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="Map.h" />

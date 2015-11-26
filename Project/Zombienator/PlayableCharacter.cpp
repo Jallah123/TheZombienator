@@ -1,10 +1,11 @@
 #include "PlayableCharacter.h"
 #include "BehaviourFactory.h"
-#include "HudDrawbehaviour.h"
+#include "HudDrawBehaviour.h"
 
 PlayableCharacter::PlayableCharacter() : Character()
 {
-	this->hudDrawBehaviour = new HudDrawBehaviour;
+	// this->SetDrawBehaviour("HudDrawBehaviour");
+	// this->drawContainer->Add(new HudDrawBehaviour);
 }
 
 PlayableCharacter::~PlayableCharacter()

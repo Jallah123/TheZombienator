@@ -1,12 +1,12 @@
 #pragma once
 #include "DrawBehaviour.h"
 
-class HudDrawbehaviour :
+class HudDrawBehaviour :
 	public DrawBehaviour
 {
 public:
-	HudDrawbehaviour();
+	HudDrawBehaviour(GameObject* _gameObject);
 	void Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset);
-	~HudDrawbehaviour();
+	~HudDrawBehaviour();
 };
 

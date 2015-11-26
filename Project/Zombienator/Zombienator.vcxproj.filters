@@ -324,7 +324,7 @@
     <ClCompile Include="LoadingScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
-    <ClCompile Include="HudDrawbehaviour.cpp">
+    <ClCompile Include="HudDrawBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
   </ItemGroup>
@@ -524,7 +524,7 @@
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
-    <ClInclude Include="HudDrawbehaviour.h">
+    <ClInclude Include="HudDrawBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
   </ItemGroup>
