@@ -28,6 +28,7 @@ public:
 	int GetDelay() { return this->delay; }
 	int GetRounds() { return this->rounds; }
 	int GetDamage() { return this->damage; }
+	string GetName() { return name; };
 	SDL_Texture* GetHudTexture() { return hudTexture;  }
 
 	void GiveTo(PlayableCharacter* c) { this->character = c; }
