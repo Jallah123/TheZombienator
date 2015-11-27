@@ -3,9 +3,9 @@
 #include "GameObjectFactory.h"
 #include "GameScreen.h"
 #include "Quadtree.h"
-
 #include "NumberUtility.h"
 #include "Map.h"
+#include "StatsController.h"
 
 bool SpawnController::IsFinished()
 {
@@ -14,7 +14,7 @@ bool SpawnController::IsFinished()
 		waveFinished = true;
 		elapsedtime = 0;
 	}
-
+	
 	return waveFinished;
 }
 
@@ -28,7 +28,6 @@ SpawnController::SpawnController(GameScreen * gs) :
 {	
 	NextWave();
 }
-
 
 SpawnController::~SpawnController()
 {
@@ -59,7 +58,7 @@ void SpawnController::Update(float dt)
 
 void SpawnController::Spawn()
 {	
-	if (zombiesWave == amountToSpawn) return;
+	if (amountSpawned == amountToSpawn) return;
 	if (elapsedtime < spawnTime) return;
 	//No points to spawn on?
 	if (locations.size() == 0) return;
@@ -68,9 +67,10 @@ void SpawnController::Spawn()
 	xy p = locations.at(l);
 
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
+	z->SetMap(map);
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
-	zombiesWave++;
+	amountSpawned++;
 	elapsedtime = 0;
 }
 
@@ -81,9 +81,9 @@ void SpawnController::NextWave()
 		return;
 	}
 	currentWave++;
-	
-	zombiesWave = 0;//reset wave count
-	amountToSpawn += zombiesPlus;
+	waveFinished = false;
+	amountSpawned = 0;//reset wave count
+	amountToSpawn = GetAmountToSpawn();
 	zombies += amountToSpawn;
 
 	waveFinished = false;

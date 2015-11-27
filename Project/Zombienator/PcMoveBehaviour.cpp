@@ -21,6 +21,7 @@ void PcMoveBehaviour::Move(float dt)
 	if (frames == 0) return;
 
 	// -- Get destination rect
+	SDL_Rect cRect = c->GetCollideRect();
 	float newX = c->getPosX();
 	float newY = c->getPosY();
 	

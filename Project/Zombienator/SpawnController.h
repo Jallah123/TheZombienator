@@ -1,7 +1,9 @@
 #pragma once
 #include <vector>
+#include <math.h>
 #include "Zombie.h"
 #include "StatsController.h"
+
 using std::vector;
 #define xy std::pair<int, int>
 
@@ -14,13 +16,14 @@ class SpawnController
 private:
 	vector<xy> locations;
 	
-	int maxWaves = 3;
+	Map* map = nullptr;
+
+	int maxWaves = 5;
 	int currentWave = 0;
 
 	int zombies = 0;
-	int zombiesWave = 0;
-	int zombiesPlus = 2;
-	int amountToSpawn = 1;
+	int amountSpawned = 0;
+	int amountToSpawn = 0;
 	
 	float spawnTime = 200;
 	float elapsedtime = 0;
@@ -59,8 +62,16 @@ public:
 	void Waves(int w) { this->maxWaves = w; }
 
 	int Waves() { return this->maxWaves; }
+
+	int GetAmountOfZombies() { return zombies; };
 	
 	int CurrentWave() { return this->currentWave; }
+
+	int GetAmountToSpawn() { return round(pow((currentWave + 1), (3.0 / 2.0)));	};
+
+	int GetTimeTillNextWave() { return timeBetweenWaves - elapsedtime; }
+
+	int GetAmountSpawned() { return amountSpawned; }
 
 	bool WaveCompleted() { return this->waveFinished; }
 

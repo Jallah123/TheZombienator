@@ -1,11 +1,9 @@
 #include "PlayableCharacter.h"
 #include <algorithm>
 
-
 PlayableCharacter::PlayableCharacter() : Character()
 {
 }
-
 
 PlayableCharacter::~PlayableCharacter()
 {

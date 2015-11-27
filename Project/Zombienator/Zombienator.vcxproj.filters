@@ -127,6 +127,12 @@
     <Filter Include="Source Files\Views\LoadingScreen">
       <UniqueIdentifier>{edf8da70-511d-47a5-8545-f11d2ea657ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Models\States">
+      <UniqueIdentifier>{02bb5746-9a97-47b1-b6b1-55e27cc38450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\States">
+      <UniqueIdentifier>{facbf6da-2e39-4ccd-be3b-97f0cca04439}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -227,9 +233,6 @@
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="AiMoveBehaviour.cpp">
-      <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
     <ClCompile Include="ActionContainer.cpp">
       <Filter>Source Files\Containers</Filter>
@@ -347,6 +350,33 @@
     </ClCompile>
     <ClCompile Include="GameMath.cpp">
       <Filter>Source Files</Filter>
+	</ClCompile>
+    <ClCompile Include="HudDrawBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenEnum.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieStateEnum.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieStateFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieWalkingState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieStandStillState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieAttackState.cpp">
+      <Filter>Source Files\Models\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -448,9 +478,6 @@
     </ClInclude>
     <ClInclude Include="Mike.h">
       <Filter>Header Files\Models\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="AiMoveBehaviour.h">
-      <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
     <ClInclude Include="PcMoveBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
@@ -568,6 +595,27 @@
     </ClInclude>
     <ClInclude Include="GameMath.h">
       <Filter>Header Files</Filter>
+	</ClInclude>
+    <ClInclude Include="HudDrawBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieState.h">
+      <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieStateFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieWalkingState.h">
+      <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieStandStillState.h">
+      <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieAttackState.h">
+      <Filter>Header Files\Models\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

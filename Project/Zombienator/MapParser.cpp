@@ -19,7 +19,7 @@ MapParser::~MapParser()
 {
 }
 
-void MapParser::ParseJson(char * path)
+void MapParser::ParseJson(string path)
 {
 	string tileType = "tilelayer";
 	string objectType = "objectgroup";
@@ -38,9 +38,9 @@ void MapParser::ParseJson(char * path)
 	size_t height = root.get("height", 0).asInt();
 	map->Size(width, height);
 
-	
-
 	Json::Value layers = root["layers"];
+
+	std::string prefix = "Min";
 
 	for (auto& lval : layers) {
 		Layer* l = nullptr;
@@ -52,7 +52,13 @@ void MapParser::ParseJson(char * path)
 		if (type == objectType)
 			l = ObjectType(lval);
 				
-		map->AddLayer(l);
+
+		string name = lval.get("name", "unknownType").asString();
+
+		if (name.rfind(prefix, 0) == 0)
+			map->AddFrontLayer(l);
+		else
+			map->AddBackLayer(l);
 	}
 	
 	config_doc.close();

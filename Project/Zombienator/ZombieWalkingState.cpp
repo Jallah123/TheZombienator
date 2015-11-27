@@ -1,31 +1,43 @@
-#include "MoveBehaviour.h"
-#include "AiMoveBehaviour.h"
-#include "Zombie.h"
-#include "GameObjectContainer.h"
-AiMoveBehaviour::AiMoveBehaviour() : MoveBehaviour() {}
+#include "ZombieWalkingState.h"
+#include "ZombieStateFactory.h"
 
 
-AiMoveBehaviour::~AiMoveBehaviour()
+ZombieWalkingState::ZombieWalkingState()
 {
 }
 
-void AiMoveBehaviour::Move(float dt)
-{
-	if (!this->gameObject) return;
 
-	Zombie* z = dynamic_cast<Zombie*>(this->gameObject);
+ZombieWalkingState::~ZombieWalkingState()
+{
+}
+
+
+void ZombieWalkingState::CheckState()
+{
+	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
-	GameObjectContainer* goc = z->GetGameObjectContainer();
 	if (target == nullptr) {
-		// No target found, don't move
-		z->SetMoveDir(Direction::NONE);
-		return;//stop
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
+		return;
 	}
+	else if (z->IsInAttackRadius(target)) {
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::ATTACKING, z));
+		return;
+	}
+}
+
+void ZombieWalkingState::Update(float dt)
+{
+	CheckState();
+
+	Zombie* z = GetOwner();
+	Character* target = z->GetTarget();
 
 	float destX = target->getPosX();
 	float destY = target->getPosY();
 
 	// -- Get destination rect
+	SDL_Rect cRect = z->GetCollideRect();
 	float newX = z->getPosX();
 	float newY = z->getPosY();
 
@@ -65,21 +77,12 @@ void AiMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
-	for (auto& g : gameObjects)
-	{
-		if (g != this->gameObject) {
-			SDL_Rect* r = this->gameObject->GetDestinationRect();
-			r->x = static_cast<int>(newX + .5f);
-			r->y = static_cast<int>(z->getPosY() + .5f);
-			if (SDL_HasIntersection(r, g->GetDestinationRect()))
-				finalX = z->getPosX();
-
-			r->x = static_cast<int>(z->getPosX() + .5f);
-			r->y = static_cast<int>(newY + .5f);
-			if (SDL_HasIntersection(r, g->GetDestinationRect()))
-				finalY = z->getPosY();
-		}
+	if (z->GetCollisionLayer()->HasCollision(SDL_Rect{ static_cast<int>(newX + .5f), static_cast<int>(z->getPosY() + .5f), z->GetWidth(), z->GetHeight() })) {
+		finalX = z->getPosX();
 	}
+	if (z->GetCollisionLayer()->HasCollision(SDL_Rect{ static_cast<int>(z->getPosX() + .5f), static_cast<int>(newY + .5f), z->GetWidth(), z->GetHeight() })) {
+		finalY = z->getPosY();
+	}
+
 	z->SetPosition(finalX, finalY);
 }
