@@ -40,6 +40,11 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	SetSpeed(0.2f);
 	SetMaxHealth(50);
 	SetHealth(50);
+
+	// -- Zombie Attack
+	SetAttackDamage(1);
+	SetAttackSpeed(2);
+	SetSoundSpeed(4);
 }
 
 void Zombie::SetCurrentState(ZombieState* newState)

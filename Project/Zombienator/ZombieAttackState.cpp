@@ -33,7 +33,7 @@ void ZombieAttackState::PlaySound() // 1 Sound per 4 seconds
 {
 	if (timeTillNewSound <= GetPassedTime(soundBegin)) {
 		if (!timeTillNewSound)
-			timeTillNewSound = 4;
+			timeTillNewSound = GetOwner()->GetSoundSpeed();
 		soundBegin = clock();
 		this->SoundController->PlaySound("assets/sounds/zombie-attack.wav");
 	}
@@ -43,8 +43,8 @@ void ZombieAttackState::DoDamage() // 0.5 DPS
 {
 	if (timeTillNewDamage <= GetPassedTime(damageBegin)) {
 		if (!timeTillNewDamage)
-			timeTillNewDamage = 2;
+			timeTillNewDamage = GetOwner()->GetAttackSpeed();
 		damageBegin = clock();
-		GetOwner()->GetTarget()->TakeHit(1);
+		GetOwner()->GetTarget()->TakeHit(GetOwner()->GetAttackDamage());
 	}
 }

@@ -29,11 +29,21 @@ public:
 	void SetNormalTexture(string path);
 	void SetAttackTexture(string path);
 	void ChangeTexture(bool isAttack);
+
+	void SetAttackDamage(float ad) { this->attackDamage = ad; }
+	void SetAttackSpeed(float as) { this->attackSpeed = as; }
+	void SetSoundSpeed(float ss) { this->soundSpeed = ss; }
+	float GetAttackDamage() { return this->attackDamage; }
+	float GetAttackSpeed() { return this->attackSpeed; }
+	float GetSoundSpeed() { return this->soundSpeed; }
 private:
 	Character* target = nullptr;//Mike||Arnold
 	ZombieState* currentState = nullptr;
-
 	SDL_Texture* normalTexture = nullptr;
 	SDL_Texture* AttackTexture = nullptr;
+	
+	float attackDamage;
+	float attackSpeed;
+	float soundSpeed;
 };
 
