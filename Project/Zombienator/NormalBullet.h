@@ -6,6 +6,11 @@ class NormalBullet :
 private:
 	SDL_Point* end = {};
 	SDL_Point* begin = { };
+	const int xFrontOffset = 7;
+	const int yFrontOffset = 8;
+
+	const int xSideOffset = 3;
+	const int ySideOffset = 5;
 public:
 	NormalBullet();
 	~NormalBullet();

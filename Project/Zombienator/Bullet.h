@@ -23,7 +23,7 @@ protected:
 	bool _hasCollision = false;
 	bool _locked = false;
 	float lifeTime = 25;
-	SDL_Rect* target = nullptr;
+	GameObject* target = nullptr;
 
 	//Direction direction;
 	PlayableCharacter* origin;
@@ -62,8 +62,8 @@ public:
 	void SetCollision(bool c) { this->_hasCollision = c; }
 	bool HasCollision() { return this->_hasCollision; }
 
-	SDL_Rect* GetTarget() { return this->target; }
-	void SetTarget(SDL_Rect* c) { this->target = c; }
+	GameObject* GetTarget() { return this->target; }
+	void SetTarget(GameObject* c) { this->target = c; }
 
 	float GetLifeTime() { return lifeTime; }
 	void DecreaseLifeTime(float time) { lifeTime -= time; }

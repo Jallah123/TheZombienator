@@ -15,8 +15,8 @@ void CharacterDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int
 	if (!this->gameObject) return;
 	//Do casting here:
 	Character* c = dynamic_cast<Character*>(gameObject);
-	SDL_Rect Destination = *c->GetDestinationRect();
-	Destination.x -= XOffset;
-	Destination.y -= YOffset;
-	SDL_RenderCopy(&ren, c->GetTexture(), &c->GetSourceRect(), &Destination);
+	SDL_Rect dest = *c->GetDestinationRect();
+	dest.x -= XOffset;
+	dest.y -= YOffset;
+	SDL_RenderCopy(&ren, c->GetTexture(), &c->GetSourceRect(), &dest);
 }
