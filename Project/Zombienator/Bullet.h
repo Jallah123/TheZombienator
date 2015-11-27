@@ -41,7 +41,7 @@ public:
 	Bullet();
 	virtual ~Bullet();
 	void Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc, GameObjectContainer* goc);
-	
+	virtual void SetBehaviours() = 0;
 	void SetDrawBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
 	void SetCollideBehaviour(std::string name);

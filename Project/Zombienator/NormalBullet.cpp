@@ -6,8 +6,7 @@ NormalBullet::NormalBullet()
 {
 	begin = new SDL_Point();
 	end = new SDL_Point();
-	SetDrawBehaviour("NormalBulletDrawBehaviour");
-	SetCollideBehaviour("NormalBulletCollideBehaviour");
+	
 }
 
 
@@ -15,6 +14,12 @@ NormalBullet::~NormalBullet()
 {
 	delete end;
 	delete begin;
+}
+
+void NormalBullet::SetBehaviours()
+{
+	SetDrawBehaviour("NormalBulletDrawBehaviour");
+	SetCollideBehaviour("NormalBulletCollideBehaviour");
 }
 
 void NormalBullet::CalculateEndPoint()

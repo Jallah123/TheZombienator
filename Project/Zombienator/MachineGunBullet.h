@@ -6,5 +6,7 @@ class MachineGunBullet :
 public:
 	MachineGunBullet();
 	~MachineGunBullet();
+
+	virtual void SetBehaviours() override;
 };
 

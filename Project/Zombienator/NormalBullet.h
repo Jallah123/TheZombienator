@@ -9,9 +9,13 @@ private:
 public:
 	NormalBullet();
 	~NormalBullet();
+	virtual void SetBehaviours() override;
+
+	
 	void CalculateEndPoint();
 	SDL_Point* GetEndPoint() { return end; }
 	SDL_Point* GetBeginPoint();
 	void SetBeginPoint(SDL_Point* p) { begin = p; }
+
 };
 
