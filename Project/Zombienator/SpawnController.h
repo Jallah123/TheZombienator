@@ -39,7 +39,6 @@ private:
 	StatsController* statsController = StatsController::Instance();
 
 	bool IsFinished();
-	Map* map;
 public:
 	SpawnController();
 	SpawnController(GameScreen* gs);

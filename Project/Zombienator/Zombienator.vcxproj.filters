@@ -348,9 +348,6 @@
     <ClCompile Include="MovingBulletCollideBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
-    <ClCompile Include="GameMath.cpp">
-      <Filter>Source Files</Filter>
-	</ClCompile>
     <ClCompile Include="HudDrawBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
@@ -377,6 +374,9 @@
     </ClCompile>
     <ClCompile Include="ZombieAttackState.cpp">
       <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMath.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -593,9 +593,6 @@
     <ClInclude Include="MovingBulletCollideBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
-    <ClInclude Include="GameMath.h">
-      <Filter>Header Files</Filter>
-	</ClInclude>
     <ClInclude Include="HudDrawBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
@@ -616,6 +613,9 @@
     </ClInclude>
     <ClInclude Include="ZombieAttackState.h">
       <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMath.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

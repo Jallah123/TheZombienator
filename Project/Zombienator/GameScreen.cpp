@@ -86,9 +86,9 @@ void GameScreen::Update(float dt)
 	dt *= speed;
 	
 
-	for (auto& character : characterContainer.GetCharacters())
+	for (auto& g : gameObjectContainer.GetGameObjects())
 	{
-		if (Zombie* z = dynamic_cast<Zombie*>(character))
+		if (Zombie* z = dynamic_cast<Zombie*>(g))
 		{
 			z->Update(dt);
 		}
