@@ -6,8 +6,9 @@
 #include "BehaviourFactory.h"
 #include "GameObjectFactory.h"
 
-Pistol::Pistol() : Weapon()
+Pistol::Pistol() : Weapon("assets/images/Pistol.png")
 {
+	this->name = "Pistol";
 	this->rounds = INT_MAX;
 	this->delay = 20;
 	this->damage = 20;  // 1/5 of a zombie's health

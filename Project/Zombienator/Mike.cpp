@@ -2,8 +2,11 @@
 #include "KeyboardInputHandler.h"
 #include "Pistol.h"
 #include "CharacterContainer.h"
+#include "HudDrawBehaviour.h"
 
-Mike::Mike() : PlayableCharacter(){}
+Mike::Mike() : PlayableCharacter()
+{
+}
 
 void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren)
 {
@@ -25,6 +28,7 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	SetFrames(3);
 	SetMaxHealth(50);
 	SetHealth(50);
+	this->drawContainer->Add(new HudDrawBehaviour{this});
 }
 
 
