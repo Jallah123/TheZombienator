@@ -108,6 +108,7 @@ void GameScreen::Shake(float time, int intensity) {
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
+
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
 	map->DrawFrontLayer(ren, XOffset, YOffset);
@@ -124,4 +125,5 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	SDL_Rect r{ 0,0,200,40 };
 	SDL_RenderCopy(&ren, text, 0, &r);
 	SDL_DestroyTexture(text);
+
 }

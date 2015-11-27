@@ -121,6 +121,12 @@
     <Filter Include="Source Files\Views\UIComponents\Buttons">
       <UniqueIdentifier>{32758691-0e08-4057-a631-90205109ad46}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Views\CreditScreen">
+      <UniqueIdentifier>{652aa2bb-3876-464d-836f-98efbf8b5ebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\CreditScreen">
+      <UniqueIdentifier>{3036f219-9347-4310-abd1-a40c78f7de3e}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\Views\LoadingScreen">
       <UniqueIdentifier>{cc7bf64c-012e-46a5-89f8-c0758e290eed}</UniqueIdentifier>
     </Filter>
@@ -320,6 +326,12 @@
     </ClCompile>
     <ClCompile Include="NumberUtility.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditScreen.cpp">
+      <Filter>Source Files\Views\CreditScreen</Filter>
     </ClCompile>
     <ClCompile Include="StatsController.cpp">
       <Filter>Source Files\Controllers</Filter>
@@ -545,6 +557,25 @@
     <ClInclude Include="NumberUtility.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="CreditButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditScreen.h">
+      <Filter>Header Files\Views\CreditScreen</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\button_spritesheet.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+    <Image Include="assets\images\menu_bg.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Block-Cartoon.ttf">
+      <Filter>Resource Files\assets\fonts</Filter>
+    </Font>
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
