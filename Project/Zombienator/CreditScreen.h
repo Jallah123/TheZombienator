@@ -1,6 +1,7 @@
 #pragma once
 #include "MenuScreen.h"
 #include "TextureFactory.h"
+#include "BackButton.h"
 #include <SDL_ttf.h>
 #include <set>
 #include <map>
@@ -17,7 +18,7 @@ protected:
 	TTF_Font* font = nullptr;
 	SDL_Color fontColor = { 0, 0, 0 };
 	int startY = 300;
-	void addTextToSet(string message, SDL_Renderer* ren);
+	void addTextToSet(string message);
 	void drawText(SDL_Renderer& ren);
 	void updatePositions();
 	void resetTextSet();

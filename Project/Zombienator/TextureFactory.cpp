@@ -63,7 +63,7 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 	return texture;
 }
  
- std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, SDL_Renderer &ren, int fontSize, int xPos, int yPos, SDL_Color color) {
+ std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, int fontSize, int xPos, int yPos, SDL_Color color) {
 	
 	std::pair<SDL_Texture*, SDL_Rect> returnObject = {};
 
@@ -79,9 +79,8 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 	SDL_Surface * surface = TTF_RenderText_Blended(font, text.c_str(), color);
 	if (surface)
 	{
-		SDL_Texture* messageTexture = SDL_CreateTextureFromSurface(&ren, surface);
 		SDL_Rect messageRectange = { xPos - (surface->w / 2), yPos - (surface->h / 2), surface->w, surface->h };
-		returnObject = std::make_pair(messageTexture, messageRectange);
+		returnObject = std::make_pair(GenerateTextureFromSurface(surface), messageRectange);
 		return returnObject;
 	}
 }

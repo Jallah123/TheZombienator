@@ -2,35 +2,39 @@
 
 CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {	
+	//back button
+	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
+	AddUIComponent(b);
 
 
 	//plays sound:
-	SoundController->ChangeMusic("assets/sounds/StandByMe.wav");
+	SoundController->StopAllSounds();
+	SoundController->PlaySound("assets/sounds/StandByMe.wav", -1);
 
 
 	//Credit text
-	addTextToSet("Made by", ren);
-	addTextToSet(" ", ren);
+	addTextToSet("Made by");
+	addTextToSet(" ");
 
-	addTextToSet("Sander de Haas", ren);
-	addTextToSet("Paul Laros", ren);
-	addTextToSet("Kenneth Mauriks", ren);
-	addTextToSet("Thomas Reijnders", ren);
-	addTextToSet("Sebastian Daeke", ren);
-	addTextToSet("Jelle van Es", ren);
+	addTextToSet("Sander de Haas");
+	addTextToSet("Paul Laros");
+	addTextToSet("Kenneth Mauriks");
+	addTextToSet("Thomas Reijnders");
+	addTextToSet("Sebastian Daeke");
+	addTextToSet("Jelle van Es");
 
-	addTextToSet(" ", ren);
-	addTextToSet(" ", ren);
+	addTextToSet(" ");
+	addTextToSet(" ");
 
-	addTextToSet("Special thanks to", ren);
-	addTextToSet(" ", ren);
-	addTextToSet("Bob", ren);
+	addTextToSet("Special thanks to");
+	addTextToSet(" ");
+	addTextToSet("Bob");
 
 }
 
-void CreditScreen::addTextToSet(string message, SDL_Renderer* ren)
+void CreditScreen::addTextToSet(string message)
 {
-	textList.push_back(TextureFactory::GenerateText(message, *ren, 40, 600, startY));
+	textList.push_back(TextureFactory::GenerateText(message, 40, 600, startY));
 	startY += 50;
 }
 
@@ -38,8 +42,7 @@ void CreditScreen::addTextToSet(string message, SDL_Renderer* ren)
 
 CreditScreen::~CreditScreen()
 {
-	//Quit SDL_ttf 
-	TTF_Quit();
+
 }
 
 void CreditScreen::resetTextSet()
