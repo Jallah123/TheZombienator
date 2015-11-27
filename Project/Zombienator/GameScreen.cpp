@@ -59,8 +59,12 @@ GameScreen::~GameScreen()
 void GameScreen::Update(float dt)
 {
 	tree->Clear();
-	for (auto& c : gameObjectContainer.GetGameObjects()) {
-		tree->AddObject(c);
+	for (auto& g : gameObjectContainer.GetGameObjects()) {
+		tree->AddObject(g);
+		if (Zombie* z = dynamic_cast<Zombie*>(g))
+		{
+			z->Update(dt);
+		}
 	}
 	XOffset = 0;
 	YOffset = 0;
@@ -86,13 +90,6 @@ void GameScreen::Update(float dt)
 	dt *= speed;
 	
 
-	for (auto& g : gameObjectContainer.GetGameObjects())
-	{
-		if (Zombie* z = dynamic_cast<Zombie*>(g))
-		{
-			z->Update(dt);
-		}
-	}
 
 	spawnController.Update(dt);
 	actionContainer.Update(dt);

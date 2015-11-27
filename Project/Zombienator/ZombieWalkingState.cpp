@@ -78,7 +78,7 @@ void ZombieWalkingState::Update(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
+	std::vector<GameObject*> gameObjects = goc->GetGameObjects(z->getPosX(), z->getPosY());
 	for (auto& g : gameObjects)
 	{
 		if (g != z) {
