@@ -13,7 +13,7 @@ BulletMoveBehaviour::~BulletMoveBehaviour()
 
 void BulletMoveBehaviour::Move(float dt)
 {
-	int speed = 5;
+	int dtSpeed = speed * dt;
 	// -- Get destination rect
 	float newX = gameObject->getPosX();
 	float newY = gameObject->getPosY();
@@ -21,16 +21,16 @@ void BulletMoveBehaviour::Move(float dt)
 	switch (gameObject->GetLookDir())
 	{
 	case NORTH:
-		newY -= speed;
+		newY -= dtSpeed;
 		break;
 	case EAST:
-		newX += speed;
+		newX += dtSpeed;
 		break;
 	case SOUTH:
-		newY += speed;
+		newY += dtSpeed;
 		break;
 	case WEST:
-		newX -= speed;
+		newX -= dtSpeed;
 		break;
 	}
 	gameObject->SetPosition(newX, newY);

@@ -18,7 +18,4 @@ MachineGun::~MachineGun()
 void MachineGun::Fire()
 {
 	MachineGunBullet* b = GameObjectFactory::Instance()->CreateMachineGunBullet(this->character);
-	b->SetDrawBehaviour("MovingBulletDrawBehaviour");
-	b->SetMoveBehaviour("BulletMoveBehaviour");
-	b->SetCollideBehaviour("NormalBulletCollideBehaviour");
 }

@@ -4,7 +4,8 @@
 
 NormalBullet::NormalBullet()
 {
-	
+	SetDrawBehaviour("NormalBulletDrawBehaviour");
+	SetCollideBehaviour("NormalBulletCollideBehaviour");
 }
 
 
