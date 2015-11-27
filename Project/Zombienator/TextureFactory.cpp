@@ -46,6 +46,7 @@ SDL_Texture* TextureFactory::GenerateTextureFromImgUrl(std::string url)
 	if (imgSurface == NULL)
 	{
 		cout << "Error loading file" << endl;
+		cout << url << endl;
 	}
 	SDL_Texture* texture = GenerateTextureFromSurface(imgSurface);
 	if (texture == NULL)
