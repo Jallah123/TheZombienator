@@ -37,7 +37,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 		&gameObjectContainer,
 		ren
 		);
-	
+	BehaviourFactory::Instance()->SetMap(map);
 	mike = goFactory->CreateMike();
 	mike->SetPosition(800, 150);
 

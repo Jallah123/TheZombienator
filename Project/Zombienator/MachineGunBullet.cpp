@@ -18,5 +18,5 @@ void MachineGunBullet::SetBehaviours()
 {
 	SetDrawBehaviour("MovingBulletDrawBehaviour");
 	SetMoveBehaviour("BulletMoveBehaviour");
-	SetCollideBehaviour("NormalBulletCollideBehaviour");
+	SetCollideBehaviour("MovingBulletCollideBehaviour");
 }

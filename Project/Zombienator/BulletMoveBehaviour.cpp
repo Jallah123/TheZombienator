@@ -1,6 +1,6 @@
 #include "BulletMoveBehaviour.h"
-
-
+#include "Map.h"
+#include "Bullet.h"
 
 BulletMoveBehaviour::BulletMoveBehaviour()
 {
@@ -32,6 +32,11 @@ void BulletMoveBehaviour::Move(float dt)
 	case WEST:
 		newX -= dtSpeed;
 		break;
+	}
+	SDL_Point p = { newX, newY };
+	if (!SDL_PointInRect(&p, &this->map->GetBounds())) {
+		Bullet* b = static_cast<Bullet*>(this->gameObject);
+		b->Remove();
 	}
 	gameObject->SetPosition(newX, newY);
 }
