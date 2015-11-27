@@ -6,6 +6,8 @@ NormalBullet::NormalBullet()
 {
 	begin = new SDL_Point();
 	end = new SDL_Point();
+	SetDrawBehaviour("NormalBulletDrawBehaviour");
+	SetCollideBehaviour("NormalBulletCollideBehaviour");
 }
 
 

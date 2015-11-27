@@ -23,8 +23,6 @@ Pistol::~Pistol()
 void Pistol::Fire()
 {
 	NormalBullet* b = GameObjectFactory::Instance()->CreateNormalBullet(this->character);
-	b->SetDrawBehaviour("NormalBulletDrawBehaviour");
-	b->SetCollideBehaviour("NormalBulletCollideBehaviour");
 }
 
 
