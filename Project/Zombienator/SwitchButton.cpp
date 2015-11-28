@@ -10,7 +10,13 @@ SwitchButton::SwitchButton(SDL_Renderer& ren, char* text, char* img_url, int pos
 	this->enableStatus = _enableStatus;
 	this->value = value;
 	buttonText = TextureFactory::GenerateText(string(text), 24, posX + (destRect.w / 2), posY + (destRect.h / 2), { 248 ,248 ,255 });
-	updateLayout();
+
+	if (enableStatus) {
+		srcRect = enableRect;
+	}
+	else {
+		srcRect = disableRect;
+	}
 }
 
 
@@ -25,6 +31,7 @@ void SwitchButton::setUpdateFunction(std::function<void(const bool&)> func) {
 
 
 void SwitchButton::updateLayout() {
+	enableStatus = !enableStatus;
 	if (enableStatus) {
 		srcRect = enableRect;
 	}

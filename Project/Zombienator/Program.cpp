@@ -56,11 +56,11 @@ int Program::Tick() {
 	ScreenController* sc = &ScreenController::GetInstance();
 
 	// LoadingScreen
-	//ShowLoadingScreen();
+	ShowLoadingScreen();
 
 	// MenuScreen
-	//MenuScreen* m = new HomeScreen{ Sdl_Renderer 
-	SettingsScreen* m = new SettingsScreen{ Sdl_Renderer };
+	MenuScreen* m = new HomeScreen{ Sdl_Renderer };
+	
 	ScreenController::GetInstance().ChangeScreen(m);
 	currentFrameTime = SDL_GetTicks();
 
