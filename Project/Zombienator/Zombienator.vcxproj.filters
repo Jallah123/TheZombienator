@@ -133,6 +133,18 @@
     <Filter Include="Source Files\Views\LoadingScreen">
       <UniqueIdentifier>{edf8da70-511d-47a5-8545-f11d2ea657ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Views\UIComponents\Label">
+      <UniqueIdentifier>{9af7e912-e0f9-46b7-bbe7-39dc4bffdb0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\UIComponents\Label">
+      <UniqueIdentifier>{64f62efb-7d6e-40bd-80b0-0c206c9d4bfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\SettingsScreen">
+      <UniqueIdentifier>{37015632-a35b-4f14-8ad9-461d49358eae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\SettingsScreen">
+      <UniqueIdentifier>{e3e43db9-5930-4ef2-9228-f60e475c2e4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -336,6 +348,15 @@
     <ClCompile Include="LoadingScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Source Files\Views\UIComponents\Label</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsScreen.cpp">
+      <Filter>Source Files\Views\SettingsScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -536,19 +557,17 @@
     <ClInclude Include="CreditScreen.h">
       <Filter>Header Files\Views\CreditScreen</Filter>
     </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Header Files\Views\UIComponents\Label</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsScreen.h">
+      <Filter>Header Files\Views\SettingsScreen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\images\button_spritesheet.png">
-      <Filter>Resource Files\assets\images</Filter>
-    </Image>
-    <Image Include="assets\images\menu_bg.png">
-      <Filter>Resource Files\assets\images</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="assets\fonts\Block-Cartoon.ttf">
-      <Filter>Resource Files\assets\fonts</Filter>
-    </Font>
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>

@@ -8,6 +8,5 @@ public:
 	BackButton();
 	BackButton(SDL_Renderer& ren, char* text, char* img_url);
 	~BackButton();
-
 	virtual void ClickAction() override;
 };

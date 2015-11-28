@@ -5,6 +5,7 @@
 #include "StoryModeButton.h"
 #include "InfiniteModeButton.h"
 #include "CreditButton.h"
+#include "SettingsButton.h"
 
 HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
@@ -26,6 +27,7 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	// CreditScreenButton
 	CreditButton* d = new CreditButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(d);
+
 }
 
 HomeScreen::~HomeScreen()
