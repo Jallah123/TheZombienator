@@ -9,37 +9,14 @@
 #include "Mike.h"
 #include "Zombie.h"
 #include "TextureFactory.h"
+#include "MapFactory.h"
 
 GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
-	map = new Map(path, *ren);
-	tree = new Quadtree(map->GetBounds());
-
-	gameObjectContainer = GameObjectContainer{ map, tree };
-	spawnController = SpawnController{ this };
-	gameObjectContainer.SetMap(map);
-	spawnController.SetMap(map);
-	BehaviourFactory::Instance()->SetMap(map);
+	// Get next map
+	NextMap(ren);
 	
-	goFactory->SetContainers(
-		&drawContainer,
-		&animateContainer,
-		&moveContainer,
-		&actionContainer,
-		&collideContainer,
-		&gameObjectContainer,
-		ren
-		);
-	BehaviourFactory::Instance()->SetContainers(
-		&drawContainer,
-		&animateContainer,
-		&moveContainer,
-		&actionContainer,
-		&collideContainer,
-		&gameObjectContainer,
-		ren
-		);
-	
+	// Create character(s)
 	mike = goFactory->CreateMike();
 	mike->SetPosition(800, 150);
 
@@ -51,7 +28,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 
 GameScreen::~GameScreen()
 {
-	delete mike;
 	delete mike;
 	delete tree;
 }
@@ -89,8 +65,6 @@ void GameScreen::Update(float dt)
 	}
 	dt *= speed;
 	
-
-
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
 	collideContainer.Collide(dt);
@@ -98,6 +72,38 @@ void GameScreen::Update(float dt)
 	animateContainer.Animate(dt);
 }
 
+void GameScreen::NextMap(SDL_Renderer* ren) {
+
+	map = MapFactory::NextMap(ren);
+	tree = new Quadtree(map->GetBounds());
+
+	gameObjectContainer = GameObjectContainer{ map, tree };
+	spawnController = SpawnController{ this };
+	gameObjectContainer.SetMap(map);
+	spawnController.SetMap(map);
+	BehaviourFactory::Instance()->SetMap(map);
+
+	goFactory->SetContainers(
+		&drawContainer,
+		&animateContainer,
+		&moveContainer,
+		&actionContainer,
+		&collideContainer,
+		&gameObjectContainer,
+		ren
+	);
+
+	BehaviourFactory::Instance()->SetContainers(
+		&drawContainer,
+		&animateContainer,
+		&moveContainer,
+		&actionContainer,
+		&collideContainer,
+		&gameObjectContainer,
+		ren
+	);
+
+}
 
 void GameScreen::Shake(float time, int intensity) {
 	shake = time;
@@ -123,5 +129,12 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	SDL_Rect r{ 0,0,200,40 };
 	SDL_RenderCopy(&ren, text, 0, &r);
 	SDL_DestroyTexture(text);
+
+	if (spawnController.Completed()) {
+
+		cout << "NIEUWE MAP" << endl;
+
+		NextMap(&ren);
+	}
 
 }

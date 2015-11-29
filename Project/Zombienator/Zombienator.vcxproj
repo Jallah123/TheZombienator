@@ -216,6 +216,8 @@
     <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapEnum.cpp" />
+    <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="MapParser.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Mike.cpp" />
@@ -287,6 +289,7 @@
     <ClInclude Include="MachineGunBullet.h" />
     <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MapFactory.h" />
     <ClInclude Include="MapParser.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Character.h" />

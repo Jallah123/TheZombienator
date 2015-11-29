@@ -24,6 +24,7 @@ public:
 	void Shake(float time, int intensity = 20);
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
+	void NextMap(SDL_Renderer* ren);
 	Quadtree* GetTree() { return this->tree; }
 private:
 	float shake = 0;

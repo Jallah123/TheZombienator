@@ -1,0 +1,5 @@
+enum MapEnum
+{
+	LANDSCAPE,
+	SNOW
+};

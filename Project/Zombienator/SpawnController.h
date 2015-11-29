@@ -18,7 +18,7 @@ private:
 	
 	Map* map = nullptr;
 
-	int maxWaves = 5;
+	int maxWaves = 1;
 	int currentWave = 0;
 
 	int zombies = 0;
