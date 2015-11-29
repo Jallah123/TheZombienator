@@ -1,20 +1,31 @@
 #pragma once
 #include "SpawnController.h"
 #include "GameObjectFactory.h"
+#include "GameScreen.h"
+#include "Quadtree.h"
+#include "NumberUtility.h"
+#include "Map.h"
 #include "StatsController.h"
 
 bool SpawnController::IsFinished()
 {
-	if (!waveFinished && statsController->GetKills() == zombies) {
+	int kills = statsController->GetKills();
+	if (!waveFinished && kills == zombies) {
 		waveFinished = true;
 		elapsedtime = 0;
 	}
 	
 	return waveFinished;
 }
+
 SpawnController::SpawnController()
-{
-	statsController = StatsController::Instance();
+{	
+	NextWave();
+}
+
+SpawnController::SpawnController(GameScreen * gs) :
+	gameScreen(gs)
+{	
 	NextWave();
 }
 
@@ -22,11 +33,22 @@ SpawnController::~SpawnController()
 {
 }
 
+void SpawnController::SetMap(Map * m)
+{
+	map = m;
+	ObjectLayer* ol = map->GetObjectLayer("SpawnPoints");
+	for (auto& spawnPoint : ol->GetRects())
+	{
+		AddLocation(spawnPoint->x, spawnPoint->y);
+	}
+}
+
 void SpawnController::Update(float dt)
 {
 	if (completed) return;
 
 	elapsedtime += dt;
+
 	if (IsFinished()) {
 		Countdown();
 		return;
@@ -41,11 +63,10 @@ void SpawnController::Spawn()
 	//No points to spawn on?
 	if (locations.size() == 0) return;
 
-	int l = locationDist(dre);
+	int l = NumberUtility::RandomNumber(0, locations.size() - 1);
 	xy p = locations.at(l);
 
 	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
-	z->SetMap(map);
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
 	amountSpawned++;
@@ -63,6 +84,8 @@ void SpawnController::NextWave()
 	amountSpawned = 0;//reset wave count
 	amountToSpawn = GetAmountToSpawn();
 	zombies += amountToSpawn;
+
+	waveFinished = false;
 	elapsedtime = 0;
 }
 
@@ -76,5 +99,4 @@ void SpawnController::Countdown()
 void SpawnController::AddLocation(int x, int y)
 {
 	this->locations.push_back({ x,y });
-	locationDist = std::uniform_int_distribution<int>(0, this->locations.size() - 1);
 }

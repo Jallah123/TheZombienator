@@ -17,21 +17,21 @@ AnimateContainer*	BehaviourFactory::animateContainer = nullptr;
 ActionContainer*	BehaviourFactory::actionContainer = nullptr;
 MoveContainer*		BehaviourFactory::moveContainer = nullptr;
 CollideContainer*	BehaviourFactory::collideContainer = nullptr;
-CharacterContainer* BehaviourFactory::characterContainer = nullptr;
+GameObjectContainer* BehaviourFactory::gameObjectContainer = nullptr;
 SDL_Renderer*		BehaviourFactory::renderer = nullptr;
 Map*				BehaviourFactory::map = nullptr;
 BehaviourFactory::~BehaviourFactory()
 {
 }
 
-void BehaviourFactory::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren)
+void BehaviourFactory::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
 {
 	drawContainer = drawC;
 	animateContainer = animC;
 	moveContainer = moveC;
 	actionContainer = actionC;
 	collideContainer = collideC;
-	characterContainer = characterC;
+	gameObjectContainer = gameObjectC;
 	renderer = ren;
 }
 
@@ -115,7 +115,7 @@ CollideBehaviour * BehaviourFactory::CreateCollideBehaviour(std::string name, Ga
 	if (instance != nullptr) {
 		CollideBehaviour* cInstance = dynamic_cast<CollideBehaviour*>(instance);
 		cInstance->SetGameObject(obj);//link the behaviour to its gameObject
-		cInstance->SetCharacterContainer(characterContainer);
+		cInstance->SetGameObjectContainer(gameObjectContainer);
 		cInstance->SetMap(map);
 		return cInstance;
 	}

@@ -6,6 +6,5 @@ MoveBehaviour::~MoveBehaviour() {}
 void MoveBehaviour::SetMap(Map * m)
 {
 	this->map = m;
-	this->collisionLayer = map->GetObjectLayer("Collision");
 }
 

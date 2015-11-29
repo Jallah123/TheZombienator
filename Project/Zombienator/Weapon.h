@@ -1,9 +1,6 @@
 #pragma once
 #include <string>
 #include <SDL_image.h>
-#include "DrawContainer.h"
-#include "MoveContainer.h"
-#include "CollideContainer.h"
 
 using std::string;
 class PlayableCharacter;
@@ -16,7 +13,7 @@ protected:
 	int damage = 0;
 	int delay = 0;//Milliseconds
 	string bulletType = "";
-	SDL_Texture* hudTexture;
+	SDL_Texture* hudTexture = nullptr;
 	PlayableCharacter* character = nullptr;
 public:
 	Weapon();
