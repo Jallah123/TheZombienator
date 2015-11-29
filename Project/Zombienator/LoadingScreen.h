@@ -2,7 +2,7 @@
 #include "MenuScreen.h"
 #include "TextureFactory.h"
 
-class LoadingScreen : public MenuScreen
+class LoadingScreen : public AbstractScreen
 {
 public:
 	LoadingScreen(SDL_Renderer* ren);

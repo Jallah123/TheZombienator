@@ -1,6 +1,6 @@
 #pragma once
 #include "Direction.cpp"
-#include "SDL.h"
+#include <SDL.h>
 #include <iostream>
 #include "Map.h"
 

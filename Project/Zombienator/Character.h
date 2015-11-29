@@ -8,7 +8,7 @@ class MoveContainer;
 class InputContainer;
 class ActionContainer;
 class CollideContainer;
-class CharacterContainer;
+class GameObjectContainer;
 
 //Behaviours
 class DrawBehaviour;
@@ -34,7 +34,7 @@ protected:
 	InputContainer* inputContainer;
 	ActionContainer* actionContainer;
 	CollideContainer* collideContainer;
-	CharacterContainer* characterContainer;
+	GameObjectContainer* gameObjectContainer;
 
 	//Behaviours
 	DrawBehaviour* drawBehaviour;
@@ -60,7 +60,7 @@ public:
 	void SetHealth(int h) { this->health = h; if (health > maxHealth) health = maxHealth; }
 	void SetMaxHealth(int h) { this->maxHealth = h; }
 
-	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC);
+	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC);
 	void SetDrawBehaviour(std::string name);
 	void SetAnimateBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
@@ -68,12 +68,7 @@ public:
 	void SetCollideBehaviour(std::string name);
 
 	InputContainer* GetInputContainer() { return inputContainer; }
-
-	void SetMap(Map * m);
-	ObjectLayer* GetCollisionLayer() { return collisionLayer; };
+	GameObjectContainer* GetGameObjectContainer() { return this->gameObjectContainer; }
 
 	void Remove();
-private:
-	Map* map;
-	ObjectLayer* collisionLayer;
 };

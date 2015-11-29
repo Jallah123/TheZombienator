@@ -15,7 +15,7 @@
 #include "MoveContainer.h"
 #include "ActionContainer.h"
 #include "CollideContainer.h"
-#include "CharacterContainer.h"
+#include "GameObjectContainer.h"
 
 Character::Character() : GameObject()
 {
@@ -42,7 +42,7 @@ void Character::TakeHit(int damage)
 }
 
 
-void Character::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, InputContainer * inputC, ActionContainer * actionC, CollideContainer * collideC, CharacterContainer * characterC)
+void Character::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, InputContainer * inputC, ActionContainer * actionC, CollideContainer * collideC, GameObjectContainer * gameObjectC)
 {
 	drawContainer = drawC;
 	animateContainer = animC;
@@ -50,7 +50,7 @@ void Character::SetContainers(DrawContainer * drawC, AnimateContainer * animC, M
 	inputContainer = inputC;
 	actionContainer = actionC;
 	collideContainer = collideC;
-	characterContainer = characterC;
+	gameObjectContainer = gameObjectC;
 }
 
 void Character::SetDrawBehaviour(std::string name)
@@ -89,12 +89,6 @@ void Character::SetCollideBehaviour(std::string name)
 		this->collideContainer->Add(collideBehaviour);
 }
 
-void Character::SetMap(Map * m)
-{
-	map = m;
-	collisionLayer = m->GetObjectLayer("Collision");
-}
-
 void Character::Remove()
 {
 	drawBehaviour->CanRemove(true);
@@ -105,6 +99,6 @@ void Character::Remove()
 	for (const auto& ab : actionBehaviours) {
 		ab->CanRemove(true);
 	}
-	this->characterContainer->Remove(this);
+	this->gameObjectContainer->Remove(this);
 }
 

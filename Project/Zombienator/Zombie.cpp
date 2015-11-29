@@ -1,5 +1,5 @@
 #include "Zombie.h"
-#include "CharacterContainer.h"
+#include "GameObjectContainer.h"
 #include "ZombieStateFactory.h"
 #include "NumberUtility.h"
 #include <string>
@@ -17,7 +17,7 @@ Zombie::~Zombie()
 }
 
 
-void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren)
+void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
 {
 	//Zombie doesn't have input from the InputContainer	
 	int dice_roll = NumberUtility::RandomNumber(1, 6);
@@ -26,14 +26,14 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	string spriteSheet = std::to_string(dice_roll) + "zombie.png";
 
 	SetImage(basePath+spriteSheet, *ren);
-	this->SetContainers(drawC, animC, moveC, nullptr, nullptr, collideC, characterC);
+	this->SetContainers(drawC, animC, moveC, nullptr, nullptr, collideC, gameObjectC);
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
 	SetMoveBehaviour("AiMoveBehaviour");
 	SetCollideBehaviour("CharacterCollideBehaviour");
 
-	characterC->AddCharacter(this);
-
+	gameObjectC->AddGameObject(this);
+	
 	SetSize(32, 36);
 	SetFrames(3);
 	SetSpeed(0.2f);

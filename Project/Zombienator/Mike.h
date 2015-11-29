@@ -6,14 +6,14 @@ class DrawContainer;
 class MoveContainer;
 class InputContainer;
 class ActionContainer;
-class CharacterContainer;
+class GameObjectContainer;
 
 class Mike :
 	public PlayableCharacter
 {
 public:
 	Mike();
-	void Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer * actionC, CollideContainer* collideC, CharacterContainer * characterC, SDL_Renderer * ren);
+	void Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer * actionC, CollideContainer* collideC, GameObjectContainer * gameObjectC, SDL_Renderer * ren);
 	//Default constructor
 	~Mike();
 };

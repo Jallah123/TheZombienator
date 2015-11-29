@@ -11,7 +11,7 @@ class AnimateContainer;
 class ActionContainer;
 class MoveContainer;
 class CollideContainer;
-class CharacterContainer;
+class GameObjectContainer;
 
 //Behaviours
 class Behaviour;
@@ -33,7 +33,7 @@ private:
 	static ActionContainer* actionContainer;
 	static MoveContainer* moveContainer;
 	static CollideContainer* collideContainer;
-	static CharacterContainer* characterContainer;
+	static GameObjectContainer* gameObjectContainer;
 	static SDL_Renderer* renderer;
 	static Map* map;
 	static std::map<std::string, std::function<Behaviour*(void)>> registry;
@@ -46,7 +46,7 @@ public:
 	static Behaviour* Find(std::string name);
 
 	static void Register(std::string name, std::function<Behaviour*(void)> fn);
-	static void SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, CharacterContainer* characterC, SDL_Renderer* ren);
+	static void SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren);
 	static void SetMap(Map* m);
 
 	static DrawBehaviour* CreateDrawBehaviour(std::string name, GameObject* obj);

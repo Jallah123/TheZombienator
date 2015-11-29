@@ -1,6 +1,5 @@
 #pragma once
 #include "ActionBehaviour.h"
-#include "PlayableCharacter.h"
 class ShootActionBehaviour :
 	public ActionBehaviour
 {
