@@ -151,6 +151,7 @@ int Program::InitComponents() {
 		cerr << "SDL_Mixer Error: " << Mix_GetError() << endl;
 	}
 
+
 	if (TTF_Init() == -1) {
 		cerr << "Error loading Open_TTF : " << SDL_GetError() << endl;
 		return 1;

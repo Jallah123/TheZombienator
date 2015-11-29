@@ -28,8 +28,17 @@ void AbstractScreen::AddUIComponent(AbstractUIComponent* UIComponent)
 
 void AbstractScreen::ClickComponents(SDL_Point MousePosition)
 {
-	for (const auto& i : UIComponents)
-		i->OnClick(MousePosition);
+	std::vector<AbstractUIComponent*>::iterator i = UIComponents.begin();
+	while (i != UIComponents.end())
+	{
+		(*i)->OnClick(MousePosition);
+
+		if (UIComponents.size() <= 0) {
+			break;
+		}
+
+		i++;
+	}
 }
 
 void AbstractScreen::ChangeBackground(SDL_Renderer * ren, char * img_url)

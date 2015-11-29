@@ -41,7 +41,9 @@ void AbstractUIComponent::OnClick(SDL_Point p)
 
 AbstractUIComponent::~AbstractUIComponent()
 {
-	SDL_DestroyTexture(message);
+	if (message != nullptr) {
+		SDL_DestroyTexture(message);
+	}
 	SDL_DestroyTexture(image);
 	message = NULL;
 	image = NULL;

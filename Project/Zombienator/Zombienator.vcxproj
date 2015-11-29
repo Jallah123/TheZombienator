@@ -191,6 +191,8 @@
     <ClCompile Include="CharacterDrawBehaviour.cpp" />
     <ClCompile Include="CollideBehaviour.cpp" />
     <ClCompile Include="CollideContainer.cpp" />
+    <ClCompile Include="CreditButton.cpp" />
+    <ClCompile Include="CreditScreen.cpp" />
     <ClCompile Include="Direction.cpp" />
     <ClCompile Include="GameMath.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -276,6 +278,8 @@
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="GameMath.h" />
     <ClInclude Include="GameObjectContainer.h" />
+    <ClInclude Include="CreditButton.h" />
+    <ClInclude Include="CreditScreen.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="HudDrawBehaviour.h" />
     <ClInclude Include="Layer.h" />
