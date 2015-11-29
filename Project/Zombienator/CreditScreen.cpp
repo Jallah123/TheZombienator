@@ -40,7 +40,9 @@ void CreditScreen::addTextToSet(string message)
 
 CreditScreen::~CreditScreen()
 {
-
+	for (auto& i : textList) {
+		SDL_DestroyTexture(i.first);
+	}
 }
 
 void CreditScreen::resetTextSet()

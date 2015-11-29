@@ -12,6 +12,7 @@ void ScreenController::Back()
 		AbstractScreen* screen = screenStack.top();
 		delete screen;
 		screenStack.pop();
+		screenStack.top()->ReceiveFocus();
 	}
 }
 

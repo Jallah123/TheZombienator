@@ -26,6 +26,12 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	// CreditScreenButton
 	CreditButton* d = new CreditButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(d);
+	SoundController->ChangeMusic("assets/sounds/Undead-Rising.flac");
+}
+
+void HomeScreen::ReceiveFocus()
+{
+	SoundController->ChangeMusic("assets/sounds/Undead-Rising.flac");
 }
 
 HomeScreen::~HomeScreen()

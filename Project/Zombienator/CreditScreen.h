@@ -15,7 +15,6 @@ class CreditScreen :
 {
 protected:
 	std::list<std::pair<SDL_Texture*, SDL_Rect>> textList = {};
-	TTF_Font* font = nullptr;
 	SDL_Color fontColor = { 0, 0, 0 };
 	int startY = 300;
 	void addTextToSet(string message);

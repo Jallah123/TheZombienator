@@ -50,6 +50,11 @@ void SoundController::PlaySound(string path, int loops)
 
 void SoundController::ChangeMusic(string path)
 {
+	if (path == currentMusicPath)
+	{
+		return;
+	}
+
 	if (currentMusic != nullptr)
 	{
 		Mix_FreeMusic(currentMusic);
@@ -63,6 +68,7 @@ void SoundController::ChangeMusic(string path)
 		cout << "Mix_LoadMUS error: " << Mix_GetError() << endl;
 		return;
 	}
+
 	// Play music
 	if (Mix_PlayMusic(music, -1) == -1)
 	{
@@ -70,6 +76,7 @@ void SoundController::ChangeMusic(string path)
 	}
 
 	currentMusic = music;
+	currentMusicPath = path;
 }
 
 void SoundController::StopAllSounds()

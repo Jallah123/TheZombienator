@@ -11,6 +11,7 @@ private:
 	SoundController(SoundController const&) = delete;
 	void operator=(SoundController const&) = delete;
 	Mix_Music* currentMusic = nullptr;
+	string currentMusicPath = "";
 	map<string, Mix_Chunk*> sounds;
 	Mix_Chunk* Load(string filename);
 	bool Exists(string path);
