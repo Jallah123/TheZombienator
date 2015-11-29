@@ -4,9 +4,6 @@ class InputContainer;
 class ActionContainer
 	: public AbstractContainer
 {
-private:
-	InputContainer* inputContainer = nullptr;
-	
 public:
 	ActionContainer();
 	~ActionContainer();

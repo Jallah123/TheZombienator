@@ -12,32 +12,33 @@ CharacterDrawBehaviour::~CharacterDrawBehaviour()
 
 void CharacterDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 {
-		if (!this->gameObject) return;
-		//Do casting here:
-		Character* c = dynamic_cast<Character*>(gameObject);
-		SDL_Rect Destination = *c->GetDestinationRect();
-		Destination.x -= XOffset;
-		Destination.y -= YOffset;
-		SDL_RenderCopy(&ren, c->GetTexture(), &c->GetSourceRect(), &Destination);
 
-		double healthPercentage = (double)c->GetHealth() / (double)c->GetMaxHealth();
-		if (healthPercentage != 1) {
-			// Black bar around actual health bar
-			int healthSize = (36 * healthPercentage);
-			SDL_Rect healthBarSurround{ Destination.x - 1, Destination.y - 11, 38, 7 };
-			// Black
-			SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
-			SDL_RenderFillRect(&ren, &healthBarSurround);
+	if (!this->gameObject) return;
+	//Do casting here:
+	Character* c = dynamic_cast<Character*>(gameObject);
+	SDL_Rect Destination = *c->GetDestinationRect();
+	Destination.x -= XOffset;
+	Destination.y -= YOffset;
+	SDL_RenderCopy(&ren, c->GetTexture(), &c->GetSourceRect(), &Destination);
 
-			SDL_Rect damageBar{ Destination.x, Destination.y - 10, 36, 5 };
-			// Red
-			SDL_SetRenderDrawColor(&ren, 255, 0, 0, 255);
-			SDL_RenderFillRect(&ren, &damageBar);
+	double healthPercentage = (double)c->GetHealth() / (double)c->GetMaxHealth();
+	if (healthPercentage != 1) {
+		// Black bar around actual health bar
+		int healthSize = (36 * healthPercentage);
+		SDL_Rect healthBarSurround{ Destination.x - 1, Destination.y - 11, 38, 7 };
+		// Black
+		SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
+		SDL_RenderFillRect(&ren, &healthBarSurround);
 
-			// Actual health bar
-			SDL_Rect healthBar{ Destination.x, Destination.y - 10, healthSize, 5 };
-			// Green
-			SDL_SetRenderDrawColor(&ren, 0, 255, 0, 255);
-			SDL_RenderFillRect(&ren, &healthBar);
-		}
+		SDL_Rect damageBar{ Destination.x, Destination.y - 10, 36, 5 };
+		// Red
+		SDL_SetRenderDrawColor(&ren, 255, 0, 0, 255);
+		SDL_RenderFillRect(&ren, &damageBar);
+
+		// Actual health bar
+		SDL_Rect healthBar{ Destination.x, Destination.y - 10, healthSize, 5 };
+		// Green
+		SDL_SetRenderDrawColor(&ren, 0, 255, 0, 255);
+		SDL_RenderFillRect(&ren, &healthBar);
+	}
 }

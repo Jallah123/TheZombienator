@@ -10,7 +10,7 @@ Pistol::Pistol() : Weapon("assets/images/Pistol.png")
 {
 	this->name = "Pistol";
 	this->rounds = INT_MAX;
-	this->delay = 20;
+	this->delay = 80;
 	this->damage = 20;  // 1/5 of a zombie's health
 	this->bulletType = "bullet";
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new NormalBullet(); });
@@ -24,8 +24,6 @@ Pistol::~Pistol()
 void Pistol::Fire()
 {
 	NormalBullet* b = GameObjectFactory::Instance()->CreateNormalBullet(this->character);
-	b->SetDrawBehaviour("NormalBulletDrawBehaviour");
-	b->SetCollideBehaviour("NormalBulletCollideBehaviour");
 }
 
 
