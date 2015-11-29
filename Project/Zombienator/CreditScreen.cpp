@@ -8,9 +8,7 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 
 	//plays sound:
-	SoundController->StopAllSounds();
-	SoundController->PlaySound("assets/sounds/StandByMe.wav", -1);
-
+	SoundController->ChangeMusic("assets/sounds/StandByMe.wav");
 
 	//Credit text
 	addTextToSet("Made by");

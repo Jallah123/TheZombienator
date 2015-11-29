@@ -79,6 +79,7 @@ void SoundController::StopAllSounds()
 		Mix_FreeChunk(sound.second);
 	}
 	Mix_FreeMusic(currentMusic);
+	currentMusic = nullptr;
 }
 
 void SoundController::SetVolume(int volume)
