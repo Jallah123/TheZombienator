@@ -60,7 +60,7 @@ void PcMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	std::vector<GameObject*> gameObjects = goc->GetGameObjects(c->getPosX(), c->getPosY());
+	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
 	for (auto& g : gameObjects)
 	{
 		if (g != this->gameObject) {

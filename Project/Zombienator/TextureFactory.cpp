@@ -70,6 +70,9 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 
 	static TTF_Font* font;
 	if (font == nullptr) {
+		
+		//font = TTF_OpenFont("assets/fonts/Roboto-Medium.ttf", fontSize);
+
 		font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", fontSize);
 	}
 	if (font == nullptr) {

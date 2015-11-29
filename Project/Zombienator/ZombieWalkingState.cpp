@@ -38,7 +38,7 @@ void ZombieWalkingState::Update(float dt)
 	float destY = target->getPosY();
 
 	// -- Get destination rect
-	SDL_Rect cRect = z->GetCollideRect();
+	SDL_Rect r = z->GetCollideRect();
 	float newX = z->getPosX();
 	float newY = z->getPosY();
 
@@ -78,19 +78,18 @@ void ZombieWalkingState::Update(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	std::vector<GameObject*> gameObjects = goc->GetGameObjects(z->getPosX(), z->getPosY());
+	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
 	for (auto& g : gameObjects)
 	{
 		if (g != z) {
-			SDL_Rect* r = z->GetDestinationRect();
-			r->x = static_cast<int>(newX + .5f);
-			r->y = static_cast<int>(z->getPosY() + .5f);
-			if (SDL_HasIntersection(r, g->GetDestinationRect()))
+			r.x = static_cast<int>(newX + .5f);
+			r.y = static_cast<int>(z->getPosY() + .5f);
+			if (SDL_HasIntersection(&r, g->GetDestinationRect()))
 				finalX = z->getPosX();
 
-			r->x = static_cast<int>(z->getPosX() + .5f);
-			r->y = static_cast<int>(newY + .5f);
-			if (SDL_HasIntersection(r, g->GetDestinationRect()))
+			r.x = static_cast<int>(z->getPosX() + .5f);
+			r.y = static_cast<int>(newY + .5f);
+			if (SDL_HasIntersection(&r, g->GetDestinationRect()))
 				finalY = z->getPosY();
 		}
 	}

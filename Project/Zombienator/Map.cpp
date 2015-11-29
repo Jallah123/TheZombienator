@@ -41,7 +41,7 @@ void Map::Size(int w, int h)
 		for (x = 0; x < width; x++)
 		{
 			int pX = x * tileWidth;
-			int pY = y* tileHeight;
+			int pY = y * tileHeight;
 			rects.push_back(new SDL_Rect{ pX,pY, tileWidth, tileHeight });
 		}
 	}
