@@ -84,6 +84,10 @@ void GameScreen::Update(float dt)
 	{
 		speed = 1.0;
 	}
+	else if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
+	{
+		ScreenController::GetInstance().Back();
+	}
 	dt *= speed;
 
 	for (auto& character : characterContainer.GetCharacters())
