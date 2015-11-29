@@ -77,6 +77,22 @@ void GameScreen::Update(float dt)
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 	}*/
+
+	HandleInput(dt);
+
+	dt *= speed;
+
+	if (currentState == GameState::RUNNING) {
+		spawnController.Update(dt);
+		actionContainer.Update(dt);
+		collideContainer.Collide(dt);
+		moveContainer.Move(dt);
+		animateContainer.Animate(dt);
+	}
+}
+
+void GameScreen::HandleInput(float dt) 
+{
 	if (InputContainer::GetInstance().GetKeyState('['))
 	{
 		speed += 0.1;
@@ -109,16 +125,6 @@ void GameScreen::Update(float dt)
 		}
 	}
 	timeLastStateChange -= dt;
-
-	dt *= speed;
-
-	if (currentState == GameState::RUNNING) {
-		spawnController.Update(dt);
-		actionContainer.Update(dt);
-		collideContainer.Collide(dt);
-		moveContainer.Move(dt);
-		animateContainer.Animate(dt);
-	}
 }
 
 

@@ -33,9 +33,11 @@ private:
 	int YOffset = 0;
 	float speed = 1.0;
 	GameState currentState = GameState::INIT;
-	int stateChangeDelay = 200;
-	int timeLastStateChange = 200;
+	int stateChangeDelay = 50;
+	int timeLastStateChange = 0;
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
+
+	void HandleInput(float dt);
 	
 	DrawContainer drawContainer;
 	AnimateContainer animateContainer;
