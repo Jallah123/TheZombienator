@@ -11,6 +11,7 @@
 #include "ActionContainer.h"
 #include "GameObjectContainer.h"
 #include "CollideContainer.h"
+#include "GameState.h"
 
 class Quadtree;
 
@@ -31,6 +32,9 @@ private:
 	int XOffset = 0;
 	int YOffset = 0;
 	float speed = 1.0;
+	GameState currentState = GameState::INIT;
+	int stateChangeDelay = 200;
+	int timeLastStateChange = 200;
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
 	
 	DrawContainer drawContainer;

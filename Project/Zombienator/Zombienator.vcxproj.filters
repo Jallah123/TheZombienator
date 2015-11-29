@@ -285,9 +285,6 @@
     <ClCompile Include="CharacterCollideBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Source Files\Enums</Filter>
-    </ClCompile>
     <ClCompile Include="AbstractScreen.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
@@ -389,6 +386,9 @@
     </ClCompile>
     <ClCompile Include="GameMath.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.h">
+      <Filter>Source Files\Enums</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -607,17 +607,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\images\button_spritesheet.png">
-      <Filter>Resource Files\assets\images</Filter>
-    </Image>
-    <Image Include="assets\images\menu_bg.png">
-      <Filter>Resource Files\assets\images</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="assets\fonts\Block-Cartoon.ttf">
-      <Filter>Resource Files\assets\fonts</Filter>
-    </Font>
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>

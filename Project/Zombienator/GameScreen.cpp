@@ -47,11 +47,11 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 
 	//Load && play sound
 	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
+	currentState = GameState::RUNNING;
 }
 
 GameScreen::~GameScreen()
 {
-	delete mike;
 	delete mike;
 	delete tree;
 }
@@ -59,11 +59,15 @@ GameScreen::~GameScreen()
 void GameScreen::Update(float dt)
 {
 	tree->Clear();
-	for (auto& g : gameObjectContainer.GetGameObjects()) {
-		tree->AddObject(g);
-		if (Zombie* z = dynamic_cast<Zombie*>(g))
-		{
-			z->Update(dt);
+	// Only update objects while running
+	if (currentState == GameState::RUNNING)
+	{
+		for (auto& g : gameObjectContainer.GetGameObjects()) {
+			tree->AddObject(g);
+			if (Zombie* z = dynamic_cast<Zombie*>(g))
+			{
+				z->Update(dt);
+			}
 		}
 	}
 	XOffset = 0;
@@ -91,15 +95,30 @@ void GameScreen::Update(float dt)
 	{
 		ScreenController::GetInstance().Back();
 	}
+	else if (InputContainer::GetInstance().GetKeyState(SDLK_p))
+	{
+		if (timeLastStateChange <= 0) {
+			if (currentState == GameState::PAUSE)
+			{
+				currentState = GameState::RUNNING;
+			}
+			else {
+				currentState = GameState::PAUSE;
+			}
+			timeLastStateChange = stateChangeDelay;
+		}
+	}
+	timeLastStateChange -= dt;
+
 	dt *= speed;
-	
 
-
-	spawnController.Update(dt);
-	actionContainer.Update(dt);
-	collideContainer.Collide(dt);
-	moveContainer.Move(dt);
-	animateContainer.Animate(dt);
+	if (currentState == GameState::RUNNING) {
+		spawnController.Update(dt);
+		actionContainer.Update(dt);
+		collideContainer.Collide(dt);
+		moveContainer.Move(dt);
+		animateContainer.Animate(dt);
+	}
 }
 
 

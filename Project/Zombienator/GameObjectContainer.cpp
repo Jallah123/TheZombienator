@@ -5,7 +5,6 @@
 #include "Map.h"
 #include "Quadtree.h"
 
-
 GameObjectContainer::GameObjectContainer()
 {
 	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
@@ -26,13 +25,11 @@ GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t): map(m), tree(t)
 
 GameObjectContainer::~GameObjectContainer()
 {
-	std::vector<GameObject*>::reverse_iterator it;
-	for (it = objects.rbegin(); it != objects.rend(); ++it)
-		delete *it;
+	for (GameObject* obj : objects)
+		delete obj;
 
 	objects.clear();
-
-	for (it = arrRemove.rbegin(); it != arrRemove.rend(); ++it)
+	for (std::vector<GameObject*>::iterator it = arrRemove.begin(); it != arrRemove.end(); ++it)
 		delete *it;
 
 	arrRemove.clear();

@@ -198,7 +198,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectContainer.cpp" />
     <ClCompile Include="GameScreen.cpp" />
-    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameState.h" />
     <ClCompile Include="HudDrawBehaviour.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Character.cpp" />
