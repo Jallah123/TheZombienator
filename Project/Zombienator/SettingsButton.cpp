@@ -1,6 +1,7 @@
 #pragma once
 #include "SettingsButton.h"
 #include "ScreenController.h"
+#include "SettingsScreen.h"
 
 SettingsButton::SettingsButton() : Button()
 {
@@ -16,8 +17,7 @@ SettingsButton::~SettingsButton()
 
 void SettingsButton::ClickAction() 
 {
-	//ScreenController::GetInstance().ChangeScreen(new SettingsScreen())
-	//std::cout << "SettingsButton Clicked!" << std::endl;
+	ScreenController::GetInstance().ChangeScreen(new SettingsScreen{renderer});
 }
 
 
