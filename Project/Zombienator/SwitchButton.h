@@ -12,7 +12,7 @@ class SwitchButton
 {
 protected:
 	void updateLayout();
-	SDL_Rect disableRect = { 0 , 239, 130, 90 };
+	SDL_Rect disableRect = { 0 , 239, 130, 95 };
 	SDL_Rect enableRect = { 137 , 239, 130, 95 };
 	bool value = false;
 	bool enableStatus = false;
