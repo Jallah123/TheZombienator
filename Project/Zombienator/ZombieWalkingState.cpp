@@ -36,7 +36,7 @@ void ZombieWalkingState::Update(float dt)
 	float destY = target->getPosY();
 
 	// -- Get destination rect
-	SDL_Rect* r = z->GetCollideRect();
+	SDL_Rect* goRect = z->GetDestinationRect();
 	float newX = z->getPosX();
 	float newY = z->getPosY();
 
@@ -46,6 +46,8 @@ void ZombieWalkingState::Update(float dt)
 	bool down = destY >= newY + z->GetHeight();
 	bool right = destX + target->GetWidth() >= newX;
 	float speed = z->GetSpeed() * dt;
+
+	z->SetMoveDir(Direction::NONE);
 
 	// -- Move directions
 	if (up) {
@@ -77,14 +79,14 @@ void ZombieWalkingState::Update(float dt)
 	for (auto& g : gameObjects)
 	{
 		if (g != z) {
-			r->x = static_cast<int>(newX + .5f);
-			r->y = static_cast<int>(z->getPosY() + .5f);
-			if (SDL_HasIntersection(r, g->GetCollideRect()))
+			goRect->x = static_cast<int>(newX + .5f);
+			goRect->y = static_cast<int>(z->getPosY() + .5f);
+			if (SDL_HasIntersection(goRect, g->GetDestinationRect()))
 				finalX = z->getPosX();
 
-			r->x = static_cast<int>(z->getPosX() + .5f);
-			r->y = static_cast<int>(newY + .5f);
-			if (SDL_HasIntersection(r, g->GetCollideRect()))
+			goRect->x = static_cast<int>(z->getPosX() + .5f);
+			goRect->y = static_cast<int>(newY + .5f);
+			if (SDL_HasIntersection(goRect, g->GetDestinationRect()))
 				finalY = z->getPosY();
 		}
 	}

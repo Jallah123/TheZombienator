@@ -61,13 +61,13 @@ void Zombie::SetCurrentState(ZombieState* newState)
 
 bool Zombie::IsInAttackRadius(Character * target)
 {
-	SDL_Rect* targetRadius = target->GetDestinationRect();
+	/*SDL_Rect* targetRadius = target->GetDestinationRect();
 	targetRadius->h += 2;
 	targetRadius->w += 2;
 	targetRadius->x -= 1;
 	targetRadius->y -= 1;
 
-	/* DIRTY QUICKFIX */
+	/* DIRTY QUICKFIX 
 	SDL_Rect* zombieRadius = this->GetDestinationRect();
 	zombieRadius->h += 2;
 	zombieRadius->w += 2;
@@ -84,7 +84,7 @@ bool Zombie::IsInAttackRadius(Character * target)
 	zombieRadius->y += 1;
 	/* DIRTY QUICKFIX */
 
-	return b;
+	return false;
 }
 
 void Zombie::SetNormalTexture(string path)
