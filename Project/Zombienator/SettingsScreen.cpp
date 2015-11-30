@@ -36,27 +36,27 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	AddUIComponent(musicLabel);
 
 	//buttons
-	musicOnBtn = new SwitchButton(ren, "On", spriteSheet ,600, 550, true, music, *this); //renderer, text,spritesheet,posx,posy, swithvalue, switchEnabledstatus, update void,AbstractScreen
+	musicOnBtn = new SwitchButton(ren, "On", spriteSheet ,600, 550, true, Settings->getMusic(), *this); //renderer, text,spritesheet,posx,posy, swithvalue, switchEnabledstatus, update void,AbstractScreen
 	musicOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setMusic, this, std::placeholders::_1));
 	AddUIComponent(musicOnBtn);
 
-	musicOffBtn = new SwitchButton(ren, "Off", spriteSheet, 705, 550, false, !music, *this);
+	musicOffBtn = new SwitchButton(ren, "Off", spriteSheet, 705, 550, false, !Settings->getMusic(), *this);
 	musicOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setMusic, this, std::placeholders::_1));
 	AddUIComponent(musicOffBtn);
 
-	soundOnBtn = new SwitchButton(ren, "On", spriteSheet, 600, 470, true, sound, *this);
+	soundOnBtn = new SwitchButton(ren, "On", spriteSheet, 600, 470, true, Settings->getSound(), *this);
 	soundOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setSound, this, std::placeholders::_1));
 	AddUIComponent(soundOnBtn);
 
-	soundOffBtn = new SwitchButton(ren, "Off", spriteSheet, 705, 470, false, !sound, *this);
+	soundOffBtn = new SwitchButton(ren, "Off", spriteSheet, 705, 470, false, !Settings->getSound(), *this);
 	soundOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setSound, this, std::placeholders::_1));
 	AddUIComponent(soundOffBtn);
 
-	friendlyFireOnBtn = new SwitchButton(ren, "On", spriteSheet, 600, 400, true, friendlyFire, *this);
+	friendlyFireOnBtn = new SwitchButton(ren, "On", spriteSheet, 600, 400, true, Settings->getFiendlyFire(), *this);
 	friendlyFireOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
 	AddUIComponent(friendlyFireOnBtn);
 
-	friendlyFireOffBtn = new SwitchButton(ren, "Off", spriteSheet, 705, 400, false, !friendlyFire, *this);
+	friendlyFireOffBtn = new SwitchButton(ren, "Off", spriteSheet, 705, 400, false, !Settings->getFiendlyFire(), *this);
 	friendlyFireOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
 	AddUIComponent(friendlyFireOffBtn);
 }

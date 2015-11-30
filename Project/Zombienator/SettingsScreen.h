@@ -4,6 +4,7 @@
 #include "BackButton.h"
 #include "Label.h"
 #include "SwitchButton.h"
+#include "Settings.h"
 #include <functional>
 
 using namespace std;
@@ -11,10 +12,9 @@ class SettingsScreen :
 	public MenuScreen
 {
 protected:
-	bool friendlyFire = false;
-	bool sound = true;
-	bool music = true;
+
 	void initCompontents(SDL_Renderer &ren);
+
 	SwitchButton* musicOnBtn = nullptr;
 	SwitchButton* musicOffBtn = nullptr;
 
@@ -24,6 +24,8 @@ protected:
 	SwitchButton* friendlyFireOnBtn = nullptr;
 	SwitchButton* friendlyFireOffBtn = nullptr;
 
+	Settings* Settings = &Settings::GetInstance();
+
 public:
 	SettingsScreen(SDL_Renderer* ren);
 	SettingsScreen();
@@ -31,28 +33,26 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 
-	bool getFiendlyFire() { return friendlyFire; };
+	
 	void setFriendlyFire(bool value) {
-		if (friendlyFire != value) {
-			friendlyFire = value;
+		if (Settings->getFiendlyFire() != value) {
+			Settings->setFriendlyFire(value);
 			friendlyFireOnBtn->toggleEnabledStatus();
 			friendlyFireOffBtn->toggleEnabledStatus();
 		}
 	};
 
-	bool getSound() { return sound; };
 	void setSound(bool value) {
-		if (sound != value) {
-			sound = value;
+		if (Settings->getSound() != value) {
+			Settings->setSound(value);
 			soundOnBtn->toggleEnabledStatus();
 			soundOffBtn->toggleEnabledStatus();
 		}
 	};
 
-	bool getMusic() { return music; };
 	void setMusic(bool value) {
-		if (music != value) {
-			music = value;
+		if (Settings->getMusic() != value) {
+			Settings->setMusic(value);
 			musicOnBtn->toggleEnabledStatus();
 			musicOffBtn->toggleEnabledStatus();
 		}
@@ -60,4 +60,3 @@ public:
 
 };
 
-#pragma once

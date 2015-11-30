@@ -144,7 +144,7 @@
     </Filter>
     <Filter Include="Header Files\Views\SettingsScreen">
       <UniqueIdentifier>{e3e43db9-5930-4ef2-9228-f60e475c2e4e}</UniqueIdentifier>
-    </Filter>    
+    </Filter>
     <Filter Include="Source Files\Models\States">
       <UniqueIdentifier>{02bb5746-9a97-47b1-b6b1-55e27cc38450}</UniqueIdentifier>
     </Filter>
@@ -411,6 +411,9 @@
     <ClCompile Include="GameMath.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -634,6 +637,9 @@
     </ClInclude>
     <ClInclude Include="SettingsScreen.h">
       <Filter>Header Files\Views\SettingsScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Header Files\Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
