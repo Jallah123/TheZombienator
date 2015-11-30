@@ -1,20 +1,22 @@
 #pragma once
 #include "Character.h"
 #include "Weapon.h"
+
 class PlayableCharacter
 	: public Character
 {
 protected:
-	Weapon* weapon;
+	std::vector<Weapon*> weapons = {};
+	Weapon* weapon = nullptr;
 
 public:
 	PlayableCharacter();
 	virtual ~PlayableCharacter();
 
+	void AddWeapon(Weapon* w);
 	Weapon* GetWeapon() { return this->weapon; }
-	void SetWeapon(Weapon* w) { 
-		this->weapon = w; 
-		this->weapon->GiveTo(this);
-	}
+	void SetWeapon(Weapon* w);
+	void NextWeapon();
+	void PreviousWeapon();
 };
 

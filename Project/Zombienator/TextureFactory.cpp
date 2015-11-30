@@ -42,6 +42,7 @@ SDL_Texture* TextureFactory::GenerateTextureFromImgUrl(std::string url)
 	if (imgSurface == NULL)
 	{
 		cout << "Error loading file" << endl;
+		cout << url << endl;
 	}
 	SDL_Texture* texture = GenerateTextureFromSurface(imgSurface);
 	if (texture == NULL)
@@ -69,6 +70,9 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 
 	static TTF_Font* font;
 	if (font == nullptr) {
+		
+		//font = TTF_OpenFont("assets/fonts/Roboto-Medium.ttf", fontSize);
+
 		font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", fontSize);
 	}
 	if (font == nullptr) {

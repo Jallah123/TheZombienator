@@ -58,10 +58,6 @@ struct SelectButton : Button {
 	}
 };
 
-SelectionScreen::SelectionScreen() : MenuScreen()
-{
-}
-
 SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
 	std::cout << "Made SelectionScreen" << std::endl;

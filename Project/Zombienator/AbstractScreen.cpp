@@ -1,17 +1,19 @@
 #include "AbstractScreen.h"
-
+#include "TextureFactory.h"
 
 AbstractScreen::AbstractScreen()
 {
 }
 
-AbstractScreen::AbstractScreen(SDL_Renderer* ren)
+AbstractScreen::AbstractScreen(SDL_Renderer * ren) : renderer(ren)
 {
 }
 
 
 AbstractScreen::~AbstractScreen()
 {
+	SDL_DestroyTexture(backgroundTexture);
+	backgroundTexture = NULL;
 	for each (auto component in UIComponents)
 	{
 		delete component;
@@ -37,4 +39,9 @@ void AbstractScreen::ClickComponents(SDL_Point MousePosition)
 
 		i++;
 	}
+}
+
+void AbstractScreen::ChangeBackground(SDL_Renderer * ren, char * img_url)
+{
+	backgroundTexture = TextureFactory::GenerateTextureFromImgUrl(img_url);
 }

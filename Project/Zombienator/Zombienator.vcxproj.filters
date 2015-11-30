@@ -144,6 +144,12 @@
     </Filter>
     <Filter Include="Header Files\Views\SettingsScreen">
       <UniqueIdentifier>{e3e43db9-5930-4ef2-9228-f60e475c2e4e}</UniqueIdentifier>
+    </Filter>    
+    <Filter Include="Source Files\Models\States">
+      <UniqueIdentifier>{02bb5746-9a97-47b1-b6b1-55e27cc38450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\States">
+      <UniqueIdentifier>{facbf6da-2e39-4ccd-be3b-97f0cca04439}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -246,9 +252,6 @@
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="AiMoveBehaviour.cpp">
-      <Filter>Source Files\Models\Behaviour</Filter>
-    </ClCompile>
     <ClCompile Include="ActionContainer.cpp">
       <Filter>Source Files\Containers</Filter>
     </ClCompile>
@@ -283,9 +286,6 @@
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
     <ClCompile Include="CollideContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterContainer.cpp">
       <Filter>Source Files\Containers</Filter>
     </ClCompile>
     <ClCompile Include="NormalBulletCollideBehaviour.cpp">
@@ -330,11 +330,26 @@
     <ClCompile Include="Direction.cpp">
       <Filter>Source Files\Enums</Filter>
     </ClCompile>
-    <ClCompile Include="SoundController.cpp">
-      <Filter>Source Files\Controllers</Filter>
+    <ClCompile Include="Quadtree.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="NumberUtility.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineGun.cpp">
+      <Filter>Source Files\Models\Guns</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineGunBullet.cpp">
+      <Filter>Source Files\Models\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletMoveBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingBulletDrawBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundController.cpp">
+      <Filter>Source Files\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="CreditButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
@@ -344,6 +359,12 @@
     </ClCompile>
     <ClCompile Include="StatsController.cpp">
       <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchWeaponActionBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
     </ClCompile>
     <ClCompile Include="LoadingScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
@@ -356,6 +377,39 @@
     </ClCompile>
     <ClCompile Include="SwitchButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingBulletCollideBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="HudDrawBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenEnum.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieStateEnum.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieStateFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieWalkingState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieStandStillState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieAttackState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMath.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -458,9 +512,6 @@
     <ClInclude Include="Mike.h">
       <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="AiMoveBehaviour.h">
-      <Filter>Header Files\Models\Behaviour</Filter>
-    </ClInclude>
     <ClInclude Include="PcMoveBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
@@ -498,9 +549,6 @@
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
     <ClInclude Include="CollideContainer.h">
-      <Filter>Header Files\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterContainer.h">
       <Filter>Header Files\Containers</Filter>
     </ClInclude>
     <ClInclude Include="NormalBulletCollideBehaviour.h">
@@ -542,6 +590,9 @@
     <ClInclude Include="TextureFactory.h">
       <Filter>Header Files\Factories</Filter>
     </ClInclude>
+    <ClInclude Include="Quadtree.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="SoundController.h">
       <Filter>Header Files\Controllers</Filter>
     </ClInclude>
@@ -550,6 +601,24 @@
     </ClInclude>
     <ClInclude Include="NumberUtility.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineGunBullet.h">
+      <Filter>Header Files\Models\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineGun.h">
+      <Filter>Header Files\Models\Guns</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletMoveBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingBulletDrawBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchWeaponActionBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectContainer.h">
+      <Filter>Header Files\Containers</Filter>
     </ClInclude>
     <ClInclude Include="CreditButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
@@ -570,6 +639,33 @@
   <ItemGroup>
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingBulletCollideBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="HudDrawBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieState.h">
+      <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieStateFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieWalkingState.h">
+      <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieStandStillState.h">
+      <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieAttackState.h">
+      <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMath.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

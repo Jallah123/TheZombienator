@@ -1,5 +1,4 @@
 #include "ShootActionBehaviour.h"
-#include <iostream>
 #include "PlayableCharacter.h"
 #include "InputContainer.h"
 
@@ -16,7 +15,7 @@ ShootActionBehaviour::~ShootActionBehaviour()
 void ShootActionBehaviour::Update(float dt)
 {
 	if (!this->gameObject) return;
-	PlayableCharacter* c = dynamic_cast<PlayableCharacter*>(this->gameObject);
+	PlayableCharacter* c = static_cast<PlayableCharacter*>(this->gameObject);
 	InputContainer* iC = c->GetInputContainer();
 	if (iC == nullptr) return;
 	

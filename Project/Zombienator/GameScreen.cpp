@@ -2,25 +2,32 @@
 #include "GameScreen.h"
 #include <SDL_mixer.h>
 #include <iostream>
+#include "Quadtree.h"
 #include "NumberUtility.h"
+#include "BehaviourFactory.h"
 #include "Map.h"
 #include "Mike.h"
 #include "Zombie.h"
 #include "TextureFactory.h"
 
-
-GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
+GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
+	tree = new Quadtree(map->GetBounds());
 
-	goFactory->SetLevel(map);
+	gameObjectContainer = GameObjectContainer{ map, tree };
+	spawnController = SpawnController{ this };
+	gameObjectContainer.SetMap(map);
+	spawnController.SetMap(map);
+	BehaviourFactory::Instance()->SetMap(map);
+	
 	goFactory->SetContainers(
 		&drawContainer,
 		&animateContainer,
 		&moveContainer,
 		&actionContainer,
 		&collideContainer,
-		&characterContainer,
+		&gameObjectContainer,
 		ren
 		);
 	BehaviourFactory::Instance()->SetContainers(
@@ -29,21 +36,10 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 		&moveContainer,
 		&actionContainer,
 		&collideContainer,
-		&characterContainer,
+		&gameObjectContainer,
 		ren
 		);
-	BehaviourFactory::Instance()->SetMap(map);
-	characterContainer.Init();
-
-	ObjectLayer* ol = map->GetObjectLayer("SpawnPoints");
-
-	for each (auto spawnPoint in ol->GetRects())
-	{
-		spawnController.AddLocation(spawnPoint->x, spawnPoint->y);
-	}
-
-	spawnController.SetRenderer(ren);
-
+	
 	mike = goFactory->CreateMike();
 	mike->SetPosition(800, 150);
 
@@ -51,24 +47,32 @@ GameScreen::GameScreen(SDL_Renderer* ren, char* path) : AbstractScreen(ren)
 
 	//Load && play sound
 	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
-
-	// Shake(500);
 }
 
 GameScreen::~GameScreen()
 {
 	delete mike;
+	delete mike;
+	delete tree;
 }
 
 void GameScreen::Update(float dt)
 {
+	tree->Clear();
+	for (auto& g : gameObjectContainer.GetGameObjects()) {
+		tree->AddObject(g);
+		if (Zombie* z = dynamic_cast<Zombie*>(g))
+		{
+			z->Update(dt);
+		}
+	}
 	XOffset = 0;
 	YOffset = 0;
-	if (shake > 0) {
+	/*if (shake > 0) {
 		shake -= dt;
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
-	}
+	}*/
 	if (InputContainer::GetInstance().GetKeyState('['))
 	{
 		speed += 0.1;
@@ -84,6 +88,8 @@ void GameScreen::Update(float dt)
 		speed = 1.0;
 	}
 	dt *= speed;
+	
+
 
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
@@ -92,6 +98,7 @@ void GameScreen::Update(float dt)
 	animateContainer.Animate(dt);
 }
 
+
 void GameScreen::Shake(float time, int intensity) {
 	shake = time;
 	shakeIntensity = intensity;
@@ -99,9 +106,10 @@ void GameScreen::Shake(float time, int intensity) {
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
-
+	//tree->Display(&ren);
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
+	map->DrawFrontLayer(ren, XOffset, YOffset);
 	int zombiesOnScreen = spawnController.GetAmountSpawned();
 	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
 	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);

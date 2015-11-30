@@ -2,14 +2,17 @@
 
 CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {	
+	//default background
+	ChangeBackground(ren, "assets/images/default_bg.png");
+
 	//back button
 	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(b);
 
 
 	//plays sound:
-	SoundController->StopAllSounds();
-	SoundController->PlaySound("assets/sounds/StandByMe.wav", -1);
+	/*SoundController->StopAllSounds();
+	SoundController->PlaySound("assets/sounds/StandByMe.wav", -1);*/
 
 
 	//Credit text
@@ -42,7 +45,7 @@ void CreditScreen::addTextToSet(string message)
 
 CreditScreen::~CreditScreen()
 {
-
+	SoundController->StopAllSounds();
 }
 
 void CreditScreen::resetTextSet()
@@ -72,7 +75,7 @@ void CreditScreen::Update(float dt)
 
 void CreditScreen::Draw(SDL_Renderer & ren, float dt)
 {
-	SDL_RenderCopy(&ren, BackgroundTexture, 0, 0);
+	SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
 	for (const auto& i : UIComponents)
 		i->Draw(ren);
 

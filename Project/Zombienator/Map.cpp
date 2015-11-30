@@ -6,9 +6,10 @@
 
 using std::string;
 
-Map::Map(char* p, SDL_Renderer& ren) : path(p), renderer(&ren)
-{	
+Map::Map(string p, SDL_Renderer& ren) : path(p), renderer(&ren)
+{
 	this->parser = new MapParser(this);
+	bounds = { 0, 0, tileWidth * width, tileHeight * height };
 }
 
 Map::~Map()
@@ -31,7 +32,7 @@ Map::~Map()
 
 void Map::Size(int w, int h)
 {
-	this->width = w; 
+	this->width = w;
 	this->height = h;
 
 	int x, y;
@@ -40,7 +41,7 @@ void Map::Size(int w, int h)
 		for (x = 0; x < width; x++)
 		{
 			int pX = x * tileWidth;
-			int pY = y* tileHeight;
+			int pY = y * tileHeight;
 			rects.push_back(new SDL_Rect{ pX,pY, tileWidth, tileHeight });
 		}
 	}
@@ -54,27 +55,22 @@ void Map::AddTileset(TileSet* ts)
 
 void Map::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
 {
+	for (const auto& l : backLayers) {
+		l.second->Draw(ren, XOffset, YOffset);//Render each layer
+	}
+}
 
-	// Only draw TileLayers
-	for (auto& l : layers) {
+void Map::DrawFrontLayer(SDL_Renderer& ren, int XOffset, int YOffset)
+{
+	for (const auto& l : frontLayers) {
 		TileLayer* layer = dynamic_cast<TileLayer*>(l.second);
 		if (layer != nullptr) {
 			layer->Draw(ren, XOffset, YOffset);
 		}
 	}
-
-	// For objectlayer debugging
-	/*
-	for (auto& l : layers) {
-		ObjectLayer* layer = dynamic_cast<ObjectLayer*>(l.second);
-		if (layer != nullptr) {
-			layer->Draw(ren, XOffset, YOffset);
-		}
-	}
-	*/
 }
 
-ObjectLayer * Map::GetObjectLayer(string key)
+ObjectLayer* Map::GetObjectLayer(string key)
 {
-	return dynamic_cast<ObjectLayer*>(this->layers.at(key));
+	return dynamic_cast<ObjectLayer*>(this->backLayers.at(key));
 }
