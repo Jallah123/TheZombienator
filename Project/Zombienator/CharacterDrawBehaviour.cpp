@@ -41,4 +41,7 @@ void CharacterDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int
 		SDL_SetRenderDrawColor(&ren, 0, 255, 0, 255);
 		SDL_RenderFillRect(&ren, &healthBar);
 	}
+
+	SDL_SetRenderDrawColor(&ren, 255, 0, 0, 255);
+	SDL_RenderFillRect(&ren, c->GetCollideRect());
 }

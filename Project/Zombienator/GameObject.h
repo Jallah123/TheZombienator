@@ -26,7 +26,7 @@ public:
 	
 	void SetImage(std::string path, SDL_Renderer& ren); 
 	void SetTexture(SDL_Texture* t) { this->texture = t; }
-	void SetSize(int w, int h) { this->width = w; this->height = h; sourceRect.w = w; sourceRect.h = h; collRect.w = w; collRect.h = h / 2; }
+	void SetSize(int w, int h);
 	void SetPosition(float x, float y);
 	void SetMoveDir(Direction d) { if (moveDir != d) moveDir = d; }
 	void SetLookDir(Direction d) { if(lookDir != d) lookDir = d; }
