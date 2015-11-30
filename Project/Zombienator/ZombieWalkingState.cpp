@@ -16,7 +16,7 @@ void ZombieWalkingState::CheckState()
 {
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
-	if (target == nullptr) {
+	if (target == nullptr && !target->IsDeath()) {
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
 		return;
 	}

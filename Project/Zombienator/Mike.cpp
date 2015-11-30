@@ -30,6 +30,8 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	SetImage("assets/images/spritesheets/Boy1.png", *ren);
 	SetSize(36, 38);
 	SetFrames(3);
+	SetMaxHealth(50);
+	SetHealth(50);
 	drawContainer->Add(new HudDrawBehaviour{this});
 }
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "SoundController.h"
 class Zombie;
 
 class ZombieState
