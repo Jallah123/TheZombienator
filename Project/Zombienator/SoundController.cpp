@@ -96,10 +96,7 @@ void SoundController::StopMusic()
 
 void SoundController::StopSounds()
 {
-	for (auto& sound : sounds)
-	{
-		Mix_FreeChunk(sound.second);
-	}
+	Mix_HaltChannel(-1);
 }
 
 void SoundController::SetVolume(int volume)
