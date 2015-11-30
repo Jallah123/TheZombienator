@@ -5,7 +5,7 @@
 #include "NumberUtility.h"
 #include <string>
 #include "TextureFactory.h"
-
+#include "GameMath.h"
 using std::string;
 
 Zombie::Zombie() : Character() 
@@ -61,14 +61,12 @@ void Zombie::SetCurrentState(ZombieState* newState)
 
 bool Zombie::IsInAttackRadius(Character * target)
 {
-	SDL_Rect* targetRadius = target->GetDestinationRect();
-	targetRadius->h += 2;
-	targetRadius->w += 2;
-	targetRadius->x -= 1;
-	targetRadius->y -= 1;
-	if (SDL_HasIntersection(GetDestinationRect(),targetRadius)) 
+	double sweetspot = 30;
+	double dist = GameMath::Distance(*target, *this);
+	std::cout << "Distantce: " << dist << "\n";
+	if (dist < sweetspot) 
 	{
-		return true;
+	//	return true;
 	}
 	return false;
 }

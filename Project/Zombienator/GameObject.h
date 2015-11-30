@@ -36,7 +36,7 @@ public:
 
 	SDL_Rect const GetSourceRect() { return this->sourceRect; }
 	SDL_Rect* GetDestinationRect() { return &this->destRect; }
-	SDL_Rect const GetCollideRect() { return this->collRect; }
+	SDL_Rect* GetCollideRect() { return &this->collRect; }
 	int const GetHeight() { return this->height; }
 	int const GetWidth() { return this->width; }
 	SDL_Texture* const GetTexture() { return this->texture; }
