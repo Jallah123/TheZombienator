@@ -3,14 +3,12 @@
 #include "ActionContainer.h"
 #include "ActionBehaviour.h"
 #include "ShootActionBehaviour.h"
-#include "InputContainer.h"
-#include "KeyboardInputHandler.h"
+#include "SwitchWeaponActionBehaviour.h"
 
 ActionContainer::ActionContainer() : AbstractContainer()
 {
-	KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
-	this->inputContainer = kh.inputContainer;
 	BehaviourFactory::Instance()->Register("ShootActionBehaviour", [](void) -> Behaviour* { return new ShootActionBehaviour(); });
+	BehaviourFactory::Instance()->Register("SwitchWeaponActionBehaviour", [](void) -> Behaviour* { return new SwitchWeaponActionBehaviour(); });
 }
 
 

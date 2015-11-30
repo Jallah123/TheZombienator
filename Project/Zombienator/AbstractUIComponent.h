@@ -20,8 +20,8 @@ public:
 	
 protected:
 	SDL_Renderer* renderer;
-	SDL_Texture* message;
-	SDL_Texture* image;
+	SDL_Texture* message = nullptr;
+	SDL_Texture* image = nullptr;
 	SDL_Rect srcRect{};
 	SDL_Rect destRect{};
 

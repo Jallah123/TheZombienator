@@ -1,6 +1,6 @@
 #include "ZombieWalkingState.h"
 #include "ZombieStateFactory.h"
-
+#include "GameObjectContainer.h"
 
 ZombieWalkingState::ZombieWalkingState()
 {
@@ -32,12 +32,13 @@ void ZombieWalkingState::Update(float dt)
 
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
+	GameObjectContainer* goc = z->GetGameObjectContainer();
 
 	float destX = target->getPosX();
 	float destY = target->getPosY();
 
 	// -- Get destination rect
-	SDL_Rect cRect = z->GetCollideRect();
+	SDL_Rect r = z->GetCollideRect();
 	float newX = z->getPosX();
 	float newY = z->getPosY();
 
@@ -77,11 +78,20 @@ void ZombieWalkingState::Update(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	if (z->GetCollisionLayer()->HasCollision(SDL_Rect{ static_cast<int>(newX + .5f), static_cast<int>(z->getPosY() + .5f), z->GetWidth(), z->GetHeight() })) {
-		finalX = z->getPosX();
-	}
-	if (z->GetCollisionLayer()->HasCollision(SDL_Rect{ static_cast<int>(z->getPosX() + .5f), static_cast<int>(newY + .5f), z->GetWidth(), z->GetHeight() })) {
-		finalY = z->getPosY();
+	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
+	for (auto& g : gameObjects)
+	{
+		if (g != z) {
+			r.x = static_cast<int>(newX + .5f);
+			r.y = static_cast<int>(z->getPosY() + .5f);
+			if (SDL_HasIntersection(&r, g->GetDestinationRect()))
+				finalX = z->getPosX();
+
+			r.x = static_cast<int>(z->getPosX() + .5f);
+			r.y = static_cast<int>(newY + .5f);
+			if (SDL_HasIntersection(&r, g->GetDestinationRect()))
+				finalY = z->getPosY();
+		}
 	}
 
 	z->SetPosition(finalX, finalY);

@@ -121,6 +121,12 @@
     <Filter Include="Source Files\Views\UIComponents\Buttons">
       <UniqueIdentifier>{32758691-0e08-4057-a631-90205109ad46}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Views\CreditScreen">
+      <UniqueIdentifier>{652aa2bb-3876-464d-836f-98efbf8b5ebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\CreditScreen">
+      <UniqueIdentifier>{3036f219-9347-4310-abd1-a40c78f7de3e}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\Views\LoadingScreen">
       <UniqueIdentifier>{cc7bf64c-012e-46a5-89f8-c0758e290eed}</UniqueIdentifier>
     </Filter>
@@ -270,9 +276,6 @@
     <ClCompile Include="CollideContainer.cpp">
       <Filter>Source Files\Containers</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterContainer.cpp">
-      <Filter>Source Files\Containers</Filter>
-    </ClCompile>
     <ClCompile Include="NormalBulletCollideBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
@@ -315,17 +318,47 @@
     <ClCompile Include="Direction.cpp">
       <Filter>Source Files\Enums</Filter>
     </ClCompile>
-    <ClCompile Include="SoundController.cpp">
-      <Filter>Source Files\Controllers</Filter>
+    <ClCompile Include="Quadtree.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="NumberUtility.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="MachineGun.cpp">
+      <Filter>Source Files\Models\Guns</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineGunBullet.cpp">
+      <Filter>Source Files\Models\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletMoveBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingBulletDrawBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditScreen.cpp">
+      <Filter>Source Files\Views\CreditScreen</Filter>
+    </ClCompile>
     <ClCompile Include="StatsController.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
+    <ClCompile Include="SwitchWeaponActionBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectContainer.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
     <ClCompile Include="LoadingScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingBulletCollideBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
     <ClCompile Include="HudDrawBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
@@ -353,6 +386,9 @@
     </ClCompile>
     <ClCompile Include="ZombieAttackState.cpp">
       <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMath.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -494,9 +530,6 @@
     <ClInclude Include="CollideContainer.h">
       <Filter>Header Files\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterContainer.h">
-      <Filter>Header Files\Containers</Filter>
-    </ClInclude>
     <ClInclude Include="NormalBulletCollideBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
@@ -536,6 +569,9 @@
     <ClInclude Include="TextureFactory.h">
       <Filter>Header Files\Factories</Filter>
     </ClInclude>
+    <ClInclude Include="Quadtree.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="SoundController.h">
       <Filter>Header Files\Controllers</Filter>
     </ClInclude>
@@ -545,8 +581,48 @@
     <ClInclude Include="NumberUtility.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="MachineGunBullet.h">
+      <Filter>Header Files\Models\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineGun.h">
+      <Filter>Header Files\Models\Guns</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletMoveBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingBulletDrawBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchWeaponActionBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectContainer.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditScreen.h">
+      <Filter>Header Files\Views\CreditScreen</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\button_spritesheet.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+    <Image Include="assets\images\menu_bg.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Block-Cartoon.ttf">
+      <Filter>Resource Files\assets\fonts</Filter>
+    </Font>
     <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingBulletCollideBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
     <ClInclude Include="HudDrawBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
@@ -568,6 +644,9 @@
     </ClInclude>
     <ClInclude Include="ZombieAttackState.h">
       <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMath.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

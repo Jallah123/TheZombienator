@@ -7,8 +7,9 @@
 using std::string;
 
 Map::Map(string p, SDL_Renderer& ren) : path(p), renderer(&ren)
-{	
+{
 	this->parser = new MapParser(this);
+	bounds = { 0, 0, tileWidth * width, tileHeight * height };
 }
 
 Map::~Map()
@@ -31,7 +32,7 @@ Map::~Map()
 
 void Map::Size(int w, int h)
 {
-	this->width = w; 
+	this->width = w;
 	this->height = h;
 
 	int x, y;
@@ -40,7 +41,7 @@ void Map::Size(int w, int h)
 		for (x = 0; x < width; x++)
 		{
 			int pX = x * tileWidth;
-			int pY = y* tileHeight;
+			int pY = y * tileHeight;
 			rects.push_back(new SDL_Rect{ pX,pY, tileWidth, tileHeight });
 		}
 	}
