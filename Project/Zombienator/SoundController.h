@@ -16,6 +16,8 @@ private:
 	Mix_Chunk* Load(string filename);
 	bool Exists(string path);
 	int volume = 25;
+	bool playSounds = true;
+	bool playMusic = true;
 public:
 	static SoundController& GetInstance() {
 		static SoundController instance;
@@ -25,8 +27,14 @@ public:
 	void PlaySound(string path, int loops = 1);
 	void ChangeMusic(string path);
 	void Pause();
+	void StopMusic();
+	void StopSounds();
 	void StopAllSounds();
 	void SetVolume(int volume);
+	void SetPlayMusic(bool _playMusic) { playMusic = _playMusic; if (!playMusic) StopMusic(); };
+	void SetPlaySounds(bool _playSounds) { playSounds = _playSounds; if (!playSounds) StopSounds(); };
+	bool getPlaySounds() { return playSounds; };
+	bool getPlayMusic() { return playMusic; };
 	int GetVolume() { return this->volume; }
 };
 
