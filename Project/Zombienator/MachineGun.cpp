@@ -1,6 +1,7 @@
 #include "MachineGun.h"
 #include "GameObjectFactory.h"
 #include "MachineGunBullet.h"
+#include "SoundController.h"
 
 MachineGun::MachineGun() : Weapon("assets/images/Pistol.png")
 {
@@ -18,4 +19,5 @@ MachineGun::~MachineGun()
 void MachineGun::Fire()
 {
 	MachineGunBullet* b = GameObjectFactory::Instance()->CreateMachineGunBullet(this->character);
+	SoundController::GetInstance().PlaySound("assets/sounds/pistol.wav", 0);
 }
