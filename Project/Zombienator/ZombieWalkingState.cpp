@@ -79,12 +79,12 @@ void ZombieWalkingState::Update(float dt)
 		if (g != z) {
 			r->x = static_cast<int>(newX + .5f);
 			r->y = static_cast<int>(z->getPosY() + .5f);
-			if (SDL_HasIntersection(r, g->GetCollideRect()))
+			if (SDL_HasIntersection(r, g->GetDestinationRect()))
 				finalX = z->getPosX();
 
 			r->x = static_cast<int>(z->getPosX() + .5f);
 			r->y = static_cast<int>(newY + .5f);
-			if (SDL_HasIntersection(r, g->GetCollideRect()))
+			if (SDL_HasIntersection(r, g->GetDestinationRect()))
 				finalY = z->getPosY();
 		}
 	}

@@ -64,15 +64,15 @@ void PcMoveBehaviour::Move(float dt)
 	for (auto& g : gameObjects)
 	{
 		if (g != this->gameObject) {
-			SDL_Rect* r = this->gameObject->GetCollideRect();
+			SDL_Rect* r = this->gameObject->GetDestinationRect();
 			r->x = static_cast<int>(newX + .5f);
 			r->y = static_cast<int>(c->getPosY() + .5f);
-			if (SDL_HasIntersection(r, g->GetCollideRect()))
+			if (SDL_HasIntersection(r, g->GetDestinationRect()))
 				finalX = c->getPosX();
 
 			r->x = static_cast<int>(c->getPosX() + .5f);
 			r->y = static_cast<int>(newY + .5f);
-			if (SDL_HasIntersection(r, g->GetCollideRect()))
+			if (SDL_HasIntersection(r, g->GetDestinationRect()))
 				finalY = c->getPosY();
 		}
 	}

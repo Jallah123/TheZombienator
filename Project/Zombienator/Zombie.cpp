@@ -61,14 +61,30 @@ void Zombie::SetCurrentState(ZombieState* newState)
 
 bool Zombie::IsInAttackRadius(Character * target)
 {
-	double sweetspot = 30;
-	double dist = GameMath::Distance(*target, *this);
-	std::cout << "Distantce: " << dist << "\n";
-	if (dist < sweetspot) 
-	{
-	//	return true;
-	}
-	return false;
+	SDL_Rect* targetRadius = target->GetDestinationRect();
+	targetRadius->h += 2;
+	targetRadius->w += 2;
+	targetRadius->x -= 1;
+	targetRadius->y -= 1;
+
+	/* DIRTY QUICKFIX */
+	SDL_Rect* zombieRadius = this->GetDestinationRect();
+	zombieRadius->h += 2;
+	zombieRadius->w += 2;
+	zombieRadius->x -= 1;
+	zombieRadius->y -= 1;
+
+	bool b = false;
+	if (SDL_HasIntersection(zombieRadius, targetRadius))
+		b = true;
+
+	zombieRadius->h -= 2;
+	zombieRadius->w -= 2;
+	zombieRadius->x += 1;
+	zombieRadius->y += 1;
+	/* DIRTY QUICKFIX */
+
+	return b;
 }
 
 void Zombie::SetNormalTexture(string path)
