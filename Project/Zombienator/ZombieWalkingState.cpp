@@ -36,7 +36,7 @@ void ZombieWalkingState::Update(float dt)
 	float destY = target->getPosY();
 
 	// -- Get destination rect
-	SDL_Rect* goRect = z->GetDestinationRect();
+	SDL_Rect* goRect = z->GetCollideRect();
 	float newX = z->getPosX();
 	float newY = z->getPosY();
 
@@ -80,13 +80,13 @@ void ZombieWalkingState::Update(float dt)
 	{
 		if (g != z) {
 			goRect->x = static_cast<int>(newX + .5f);
-			goRect->y = static_cast<int>(z->getPosY() + .5f);
-			if (SDL_HasIntersection(goRect, g->GetDestinationRect()))
+			goRect->y = static_cast<int>(z->getPosY() + .5f + (goRect->h));
+			if (SDL_HasIntersection(goRect, g->GetCollideRect()))
 				finalX = z->getPosX();
 
 			goRect->x = static_cast<int>(z->getPosX() + .5f);
-			goRect->y = static_cast<int>(newY + .5f);
-			if (SDL_HasIntersection(goRect, g->GetDestinationRect()))
+			goRect->y = static_cast<int>(newY + .5f + (goRect->h));
+			if (SDL_HasIntersection(goRect, g->GetCollideRect()))
 				finalY = z->getPosY();
 		}
 	}
