@@ -52,8 +52,8 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 
 GameScreen::~GameScreen()
 {
-	delete mike;
 	delete tree;
+	delete gameObjectContainer;
 }
 
 void GameScreen::Update(float dt)
