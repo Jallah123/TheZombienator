@@ -13,26 +13,17 @@ GameObjectContainer::GameObjectContainer()
 
 GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t): map(m), tree(t)
 {
-	ObjectLayer* col = map->GetObjectLayer("Collision");
-	for (auto& r : col->GetRects()) {
-		GameObject* go = new GameObject();
-		go->SetSize(r->w, r->h);
-		go->SetPosition(r->x, r->y);
-		AddGameObject(go);
-	}
+	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
+	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 }
 
 
 GameObjectContainer::~GameObjectContainer()
 {
-	for (GameObject* obj : objects)
-		delete obj;
-
-	objects.clear();
-	for (std::vector<GameObject*>::iterator it = arrRemove.begin(); it != arrRemove.end(); ++it)
+	for (std::vector<GameObject*>::iterator it = objects.begin(); it != objects.end(); ++it)
 		delete *it;
 
-	arrRemove.clear();
+	objects.clear();
 }
 
 vector<GameObject*> GameObjectContainer::GetGameObjects(float x, float y)

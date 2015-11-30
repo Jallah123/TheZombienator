@@ -44,7 +44,7 @@ private:
 	ActionContainer actionContainer;
 	MoveContainer moveContainer;
 	CollideContainer collideContainer;
-	GameObjectContainer gameObjectContainer;
+	GameObjectContainer* gameObjectContainer;
 	SpawnController spawnController;
 	
 	Mike* mike = nullptr;

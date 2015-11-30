@@ -19,7 +19,7 @@ StoryModeButton::StoryModeButton(SDL_Renderer& ren, char* text, char* img_url)
 void StoryModeButton::ClickAction()
 {
 	SoundController::GetInstance().StopAllSounds();
-	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, "assets/maps/map-1280x640_spawns.json"));
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, "assets/maps/landscape-1280x640.json"));
 }
 
 StoryModeButton::~StoryModeButton()

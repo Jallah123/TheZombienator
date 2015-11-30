@@ -15,9 +15,9 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 	map = new Map(path, *ren);
 	tree = new Quadtree(map->GetBounds());
 
-	gameObjectContainer = GameObjectContainer{ map, tree };
+	gameObjectContainer = new GameObjectContainer{ map, tree };
 	spawnController = SpawnController{ this };
-	gameObjectContainer.SetMap(map);
+	gameObjectContainer->SetMap(map);
 	spawnController.SetMap(map);
 	BehaviourFactory::Instance()->SetMap(map);
 	
@@ -27,7 +27,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 		&moveContainer,
 		&actionContainer,
 		&collideContainer,
-		&gameObjectContainer,
+		gameObjectContainer,
 		ren
 		);
 	BehaviourFactory::Instance()->SetContainers(
@@ -36,7 +36,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 		&moveContainer,
 		&actionContainer,
 		&collideContainer,
-		&gameObjectContainer,
+		gameObjectContainer,
 		ren
 		);
 	
@@ -62,7 +62,7 @@ void GameScreen::Update(float dt)
 	// Only update objects while running
 	if (currentState == GameState::RUNNING)
 	{
-		for (auto& g : gameObjectContainer.GetGameObjects()) {
+		for (auto& g : gameObjectContainer->GetGameObjects()) {
 			tree->AddObject(g);
 			if (Zombie* z = dynamic_cast<Zombie*>(g))
 			{
