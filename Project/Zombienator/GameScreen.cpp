@@ -11,7 +11,7 @@
 #include "TextureFactory.h"
 #include "MapFactory.h"
 
-GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
+GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
 	// Initialize storymode TODO: move this
 	MapFactory::Instance()->StoryMode(ren);
@@ -78,33 +78,40 @@ void GameScreen::Update(float dt)
 void GameScreen::NextMap(SDL_Renderer* ren) {
 
 	map = MapFactory::Instance()->NextMap(ren);
-	tree = new Quadtree(map->GetBounds());
 
-	gameObjectContainer = GameObjectContainer{ map, tree };
-	spawnController = SpawnController{ this };
-	gameObjectContainer.SetMap(map);
-	spawnController.SetMap(map);
-	BehaviourFactory::Instance()->SetMap(map);
+	if (map != nullptr) {
+		tree = new Quadtree(map->GetBounds());
 
-	goFactory->SetContainers(
-		&drawContainer,
-		&animateContainer,
-		&moveContainer,
-		&actionContainer,
-		&collideContainer,
-		&gameObjectContainer,
-		ren
-	);
+		gameObjectContainer = GameObjectContainer{ map, tree };
+		spawnController = SpawnController{ this };
+		gameObjectContainer.SetMap(map);
+		spawnController.SetMap(map);
+		BehaviourFactory::Instance()->SetMap(map);
 
-	BehaviourFactory::Instance()->SetContainers(
-		&drawContainer,
-		&animateContainer,
-		&moveContainer,
-		&actionContainer,
-		&collideContainer,
-		&gameObjectContainer,
-		ren
-	);
+		goFactory->SetContainers(
+			&drawContainer,
+			&animateContainer,
+			&moveContainer,
+			&actionContainer,
+			&collideContainer,
+			&gameObjectContainer,
+			ren
+		);
+
+		BehaviourFactory::Instance()->SetContainers(
+			&drawContainer,
+			&animateContainer,
+			&moveContainer,
+			&actionContainer,
+			&collideContainer,
+			&gameObjectContainer,
+			ren
+		);
+	}
+	else {
+		cout << "GAME OVER" << endl;
+	}
+	
 
 }
 
@@ -137,6 +144,8 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	if (spawnController.Completed()) {
 		cout << "Start next map" << endl;
 		NextMap(&ren);
+
+		mike->SetPosition(600, 250);
 	}
 
 }

@@ -19,9 +19,9 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> ScreenFactory::Screen
 AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string map)
 {
 	AbstractScreen* screen = nullptr;
-	if (screenEnum == ScreenEnum::GAMESCREEN && map != "")
+	if (screenEnum == ScreenEnum::GAMESCREEN)
 	{
-		screen = new GameScreen(Program::getInstance()->GetRenderer(), map);
+		screen = new GameScreen(Program::getInstance()->GetRenderer());
 	}
 	else {
 		auto it = ScreenMap.find(screenEnum);
