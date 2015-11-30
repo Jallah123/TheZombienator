@@ -5,7 +5,7 @@
 #include "NumberUtility.h"
 #include <string>
 #include "TextureFactory.h"
-
+#include "GameMath.h"
 using std::string;
 
 Zombie::Zombie() : Character() 
@@ -66,11 +66,25 @@ bool Zombie::IsInAttackRadius(Character * target)
 	targetRadius->w += 2;
 	targetRadius->x -= 1;
 	targetRadius->y -= 1;
-	if (SDL_HasIntersection(GetDestinationRect(),targetRadius)) 
-	{
-		return true;
-	}
-	return false;
+
+	/* DIRTY QUICKFIX */
+	SDL_Rect* zombieRadius = this->GetDestinationRect();
+	zombieRadius->h += 2;
+	zombieRadius->w += 2;
+	zombieRadius->x -= 1;
+	zombieRadius->y -= 1;
+
+	bool b = false;
+	if (SDL_HasIntersection(zombieRadius, targetRadius))
+		b = true;
+
+	zombieRadius->h -= 2;
+	zombieRadius->w -= 2;
+	zombieRadius->x += 1;
+	zombieRadius->y += 1;
+	/* DIRTY QUICKFIX */
+
+	return b;
 }
 
 void Zombie::SetNormalTexture(string path)
