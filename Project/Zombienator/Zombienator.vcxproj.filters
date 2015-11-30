@@ -391,7 +391,7 @@
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="CollideObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -609,7 +609,7 @@
       <Filter>Header Files\Views\CreditScreen</Filter>
     </ClInclude>
     <ClInclude Include="CollideObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
