@@ -5,6 +5,7 @@
 #include "NormalBullet.h"
 #include "BehaviourFactory.h"
 #include "GameObjectFactory.h"
+#include "SoundController.h"
 
 Pistol::Pistol() : Weapon("assets/images/Pistol.png")
 {
@@ -24,6 +25,7 @@ Pistol::~Pistol()
 void Pistol::Fire()
 {
 	NormalBullet* b = GameObjectFactory::Instance()->CreateNormalBullet(this->character);
+	SoundController::GetInstance().PlaySound("assets/sounds/cg1.wav", 0);
 }
 
 
