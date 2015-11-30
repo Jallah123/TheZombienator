@@ -13,12 +13,15 @@
 
 GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 {
+	// Initialize storymode TODO: move this
+	MapFactory::Instance()->StoryMode(ren);
+
 	// Get next map
 	NextMap(ren);
 	
 	// Create character(s)
 	mike = goFactory->CreateMike();
-	mike->SetPosition(800, 150);
+	mike->SetPosition(600, 250);
 
 	spawnController.AddTarget(mike);
 
@@ -37,10 +40,10 @@ void GameScreen::Update(float dt)
 	tree->Clear();
 	for (auto& g : gameObjectContainer.GetGameObjects()) {
 		tree->AddObject(g);
-		if (Zombie* z = dynamic_cast<Zombie*>(g))
+		/*if (Zombie* z = dynamic_cast<Zombie*>(g))
 		{
 			z->Update(dt);
-		}
+		}*/
 	}
 	XOffset = 0;
 	YOffset = 0;
@@ -74,7 +77,7 @@ void GameScreen::Update(float dt)
 
 void GameScreen::NextMap(SDL_Renderer* ren) {
 
-	map = MapFactory::NextMap(ren);
+	map = MapFactory::Instance()->NextMap(ren);
 	tree = new Quadtree(map->GetBounds());
 
 	gameObjectContainer = GameObjectContainer{ map, tree };
@@ -130,10 +133,9 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	SDL_RenderCopy(&ren, text, 0, &r);
 	SDL_DestroyTexture(text);
 
+	// If all waves defeated
 	if (spawnController.Completed()) {
-
-		cout << "NIEUWE MAP" << endl;
-
+		cout << "Start next map" << endl;
 		NextMap(&ren);
 	}
 

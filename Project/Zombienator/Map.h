@@ -18,7 +18,7 @@ class CollisionLayer;
 class Map
 {
 private:
-	std::string path;
+	std::string path = "";
 	
 	int width = 0;
 	int height = 0;

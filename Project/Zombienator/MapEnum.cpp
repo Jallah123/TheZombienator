@@ -1,5 +1,0 @@
-enum MapEnum
-{
-	LANDSCAPE,
-	SNOW
-};
