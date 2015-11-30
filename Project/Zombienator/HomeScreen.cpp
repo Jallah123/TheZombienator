@@ -20,9 +20,9 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	StoryModeButton* b = new StoryModeButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(b);
 
-	// StoryModeButton
-	InfiniteModeButton* c = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
-	AddUIComponent(c);
+	// InfiniteModeButton -- Uncomment for presentation
+	//InfiniteModeButton* c = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
+	//AddUIComponent(c);
 
 	// CreditScreenButton
 	CreditButton* d = new CreditButton(*ren, "", "assets/images/button_spritesheet.png");
