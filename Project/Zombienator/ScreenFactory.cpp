@@ -16,7 +16,7 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> ScreenFactory::ScreenMap = fillMap();
 
-AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string map)
+AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum)
 {
 	AbstractScreen* screen = nullptr;
 	if (screenEnum == ScreenEnum::GAMESCREEN)
