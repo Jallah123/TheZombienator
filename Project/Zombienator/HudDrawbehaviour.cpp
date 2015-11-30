@@ -44,7 +44,9 @@ void HudDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffs
 	{
 		SDL_RenderCopy(&ren, weaponNameTexture, 0, &weaponTextTexture);
 	}
-	SDL_Texture* roundsTextTexture = TextureFactory::GenerateTextureFromTextHud("rounds : " + to_string(pc->GetWeapon()->GetRounds()));
+	int rounds = pc->GetWeapon()->GetRounds();
+	std::string s_rounds = rounds == INT_MAX ? "INFINITE" : to_string(rounds);
+	SDL_Texture* roundsTextTexture = TextureFactory::GenerateTextureFromTextHud("rounds : " + s_rounds);
 	weaponTextTexture.w += 40;
 	weaponTextTexture.x += 150;
 	weaponTextTexture.y += 15;
