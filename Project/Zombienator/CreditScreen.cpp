@@ -2,6 +2,9 @@
 
 CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {	
+	//default background
+	ChangeBackground(ren, "assets/images/default_bg.png");
+
 	//back button
 	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(b);

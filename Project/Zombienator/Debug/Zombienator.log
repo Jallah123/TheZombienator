@@ -1,19 +1,139 @@
-﻿Build started 30-Nov-15 22:28:19.
-     1>Project "D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\Zombienator.vcxproj" on node 2 (Build target(s)).
+﻿Build started 30-Nov-15 22:32:58.
+     1>Project "D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\Zombienator.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Direction.cpp GameState.cpp ScreenFactory.cpp StoryModeButton.cpp
-         ScreenFactory.cpp
-     1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-     1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-         Generating Code...
-         Compiling...
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AbstractScreen.cpp AbstractContainer.cpp AbstractUIComponent.cpp ActionBehaviour.cpp ActionContainer.cpp AnimateBehaviour.cpp AnimateContainer.cpp BackButton.cpp Behaviour.cpp BehaviourFactory.cpp Bullet.cpp BulletMoveBehaviour.cpp Button.cpp CharacterCollideBehaviour.cpp CharacterDrawBehaviour.cpp CollideBehaviour.cpp CollideContainer.cpp CreditButton.cpp CreditScreen.cpp Direction.cpp GameMath.cpp GameObject.cpp GameObjectContainer.cpp GameScreen.cpp GameState.cpp HudDrawBehaviour.cpp Image.cpp Character.cpp DrawBehaviour.cpp GameObjectFactory.cpp DrawContainer.cpp HomeScreen.cpp InfiniteModeButton.cpp ControllerInputHandler.cpp InputContainer.cpp KeyboardInputHandler.cpp LandscapeMap.cpp Layer.cpp MachineGun.cpp MachineGunBullet.cpp LoadingScreen.cpp main.cpp Map.cpp MapFactory.cpp MapParser.cpp MenuScreen.cpp Mike.cpp MoveBehaviour.cpp MoveContainer.cpp MovingBulletCollideBehaviour.cpp MovingBulletDrawBehaviour.cpp ScreenEnum.cpp ScreenFactory.cpp SnowMap.cpp SoundController.cpp NonPlayableCharacter.cpp NormalBullet.cpp NormalBulletCollideBehaviour.cpp NormalBulletDrawBehaviour.cpp NumberUtility.cpp ObjectLayer.cpp PcMoveBehaviour.cpp Pistol.cpp PlayableCharacter.cpp Program.cpp Quadtree.cpp ScreenController.cpp SelectionScreen.cpp SettingsButton.cpp ShootActionBehaviour.cpp SpawnController.cpp StatsController.cpp StoryModeButton.cpp SwitchWeaponActionBehaviour.cpp TextureFactory.cpp "thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" TileLayer.cpp TileSet.cpp Weapon.cpp Zombie.cpp ZombieAttackState.cpp ZombieStandStillState.cpp ZombieState.cpp ZombieStateEnum.cpp ZombieStateFactory.cpp ZombieWalkingState.cpp
+         ZombieWalkingState.cpp
+         ZombieStateFactory.cpp
+         ZombieStateEnum.cpp
+         ZombieState.cpp
+         ZombieStandStillState.cpp
+         ZombieAttackState.cpp
+         Zombie.cpp
+         Weapon.cpp
+         TileSet.cpp
+         TileLayer.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\tilelayer.cpp(28): warning C4018: '<': signed/unsigned mismatch
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\tilelayer.cpp(30): warning C4018: '<': signed/unsigned mismatch
+         jsoncpp.cpp
+         TextureFactory.cpp
+         SwitchWeaponActionBehaviour.cpp
          StoryModeButton.cpp
      1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
      1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+         StatsController.cpp
+         SpawnController.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.cpp(71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+         ShootActionBehaviour.cpp
+         SettingsButton.cpp
+         SelectionScreen.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\selectionscreen.cpp(35): warning C4018: '>=': signed/unsigned mismatch
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\selectionscreen.cpp(53): warning C4018: '>=': signed/unsigned mismatch
+         ScreenController.cpp
          Generating Code...
-         Skipping... (no relevant changes detected)
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\texturefactory.cpp(19): warning C4715: 'TextureFactory::GenerateTextureFromTextMenu': not all control paths return a value
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\texturefactory.cpp(87): warning C4715: 'TextureFactory::GenerateText': not all control paths return a value
+         Compiling...
+         Quadtree.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\quadtree.cpp(118): warning C4800: 'SDL_bool': forcing value to bool 'true' or 'false' (performance warning)
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\quadtree.cpp(129): warning C4018: '>=': signed/unsigned mismatch
+         Program.cpp
+         PlayableCharacter.cpp
+         Pistol.cpp
+         PcMoveBehaviour.cpp
+         ObjectLayer.cpp
+         NumberUtility.cpp
+         NormalBulletDrawBehaviour.cpp
+         NormalBulletCollideBehaviour.cpp
+         NormalBullet.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(47): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(77): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(78): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(81): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(82): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(85): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(86): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\normalbullet.cpp(90): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+         NonPlayableCharacter.cpp
+         SoundController.cpp
+         SnowMap.cpp
+         ScreenFactory.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+         ScreenEnum.cpp
+         MovingBulletDrawBehaviour.cpp
+         MovingBulletCollideBehaviour.cpp
+         MoveContainer.cpp
+         MoveBehaviour.cpp
+         Mike.cpp
+         Generating Code...
+         Compiling...
+         MenuScreen.cpp
+         MapParser.cpp
+         MapFactory.cpp
+         Map.cpp
+         main.cpp
+         LoadingScreen.cpp
+         MachineGunBullet.cpp
+         MachineGun.cpp
+         Layer.cpp
+         LandscapeMap.cpp
+         KeyboardInputHandler.cpp
+         InputContainer.cpp
+         ControllerInputHandler.cpp
+         InfiniteModeButton.cpp
+         HomeScreen.cpp
+         DrawContainer.cpp
+         GameObjectFactory.cpp
+         DrawBehaviour.cpp
+         Character.cpp
+         Image.cpp
+         Generating Code...
+         Compiling...
+         HudDrawBehaviour.cpp
          GameState.cpp
+         GameScreen.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\gamescreen.cpp(57): warning C4305: '+=': truncation from 'double' to 'float'
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\gamescreen.cpp(61): warning C4305: '-=': truncation from 'double' to 'float'
+         GameObjectContainer.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\gameobjectcontainer.cpp(21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\gameobjectcontainer.cpp(74): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+         GameObject.cpp
+         GameMath.cpp
          Direction.cpp
+         CreditScreen.cpp
+         CreditButton.cpp
+         CollideContainer.cpp
+         CollideBehaviour.cpp
+         CharacterDrawBehaviour.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\characterdrawbehaviour.cpp(27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+         CharacterCollideBehaviour.cpp
+         Button.cpp
+         BulletMoveBehaviour.cpp
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\bulletmovebehaviour.cpp(16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\bulletmovebehaviour.cpp(36): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+     1>d:\documents\school\blok 14\zombienator\project\zombienator\bulletmovebehaviour.cpp(36): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+         Bullet.cpp
+         BehaviourFactory.cpp
+         Behaviour.cpp
+         BackButton.cpp
+         AnimateContainer.cpp
+         Generating Code...
+         Compiling...
+         AnimateBehaviour.cpp
+         ActionContainer.cpp
+         ActionBehaviour.cpp
+         AbstractUIComponent.cpp
+         AbstractContainer.cpp
+         AbstractScreen.cpp
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\Debug\Zombienator.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\Debug\Zombienator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\Debug\Zombienator.lib" /MACHINE:X86 Debug\AbstractScreen.obj
          Debug\AbstractContainer.obj
@@ -102,8 +222,8 @@
          Debug\ZombieStateFactory.obj
          Debug\ZombieWalkingState.obj
          Zombienator.vcxproj -> D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\Debug\Zombienator.exe
-     1>Done Building Project "D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\Zombienator.vcxproj" (Build target(s)).
+     1>Done Building Project "D:\Documents\School\Blok 14\Zombienator\Project\Zombienator\Zombienator.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.73
+Time Elapsed 00:00:55.16

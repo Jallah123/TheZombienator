@@ -14,7 +14,6 @@ public:
 	GameObjectContainer();
 	GameObjectContainer(Map* m, Quadtree* t);
 	~GameObjectContainer();
-	void Init();
 	vector<GameObject*> GetGameObjects() { return objects; };
 	vector<GameObject*> GetGameObjects(float x, float y);
 	void AddGameObject(GameObject* c);

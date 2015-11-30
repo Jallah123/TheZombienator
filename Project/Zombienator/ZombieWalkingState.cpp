@@ -16,7 +16,7 @@ void ZombieWalkingState::CheckState()
 {
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
-	if (target == nullptr) {
+	if (target == nullptr && !target->IsDeath()) {
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
 		return;
 	}
@@ -28,8 +28,6 @@ void ZombieWalkingState::CheckState()
 
 void ZombieWalkingState::Update(float dt)
 {
-	CheckState();
-
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 	GameObjectContainer* goc = z->GetGameObjectContainer();
@@ -38,7 +36,7 @@ void ZombieWalkingState::Update(float dt)
 	float destY = target->getPosY();
 
 	// -- Get destination rect
-	SDL_Rect cRect = z->GetCollideRect();
+	SDL_Rect* r = z->GetCollideRect();
 	float newX = z->getPosX();
 	float newY = z->getPosY();
 
@@ -49,10 +47,7 @@ void ZombieWalkingState::Update(float dt)
 	bool right = destX + target->GetWidth() >= newX;
 	float speed = z->GetSpeed() * dt;
 
-	z->SetMoveDir(Direction::NONE);
-
 	// -- Move directions
-
 	if (up) {
 		z->SetMoveDir(Direction::NORTH);
 		z->SetLookDir(Direction::NORTH);
@@ -78,11 +73,10 @@ void ZombieWalkingState::Update(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	std::vector<GameObject*> gameObjects = goc->GetGameObjects(z->getPosX(), z->getPosY());
+	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
 	for (auto& g : gameObjects)
 	{
 		if (g != z) {
-			SDL_Rect* r = z->GetDestinationRect();
 			r->x = static_cast<int>(newX + .5f);
 			r->y = static_cast<int>(z->getPosY() + .5f);
 			if (SDL_HasIntersection(r, g->GetDestinationRect()))
@@ -96,4 +90,5 @@ void ZombieWalkingState::Update(float dt)
 	}
 
 	z->SetPosition(finalX, finalY);
+	CheckState();
 }
