@@ -145,6 +145,13 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	SDL_RenderCopy(&ren, text, 0, &r);
 	SDL_DestroyTexture(text);
 
+	//fps:
+	if (settings->getShowFps()) {
+		std::pair<SDL_Texture*, SDL_Rect> fpsTexture = TextureFactory::GenerateText("FPS: " + to_string(this->fps), 30, 1225, 15, false);
+		SDL_RenderCopy(&ren, fpsTexture.first, NULL, &fpsTexture.second);
+		SDL_DestroyTexture(fpsTexture.first);
+	}
+
 }
 
 void GameScreen::Transition(SDL_Renderer& ren) {

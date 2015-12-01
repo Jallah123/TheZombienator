@@ -9,6 +9,7 @@ private:
 	bool friendlyFire = false;
 	bool sound = true;
 	bool music = true;
+	bool showFps = true;
 
 public:
 	static Settings& GetInstance() {
@@ -24,6 +25,9 @@ public:
 
 	bool getMusic() { return music; };
 	void setMusic(bool value) {	music = value; };
+
+	bool getShowFps() { return showFps; };
+	void setShowFps(bool value) { showFps = value; };
 
 };
 
