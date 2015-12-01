@@ -9,6 +9,7 @@ HudDrawBehaviour::HudDrawBehaviour(GameObject* _gameObject) : DrawBehaviour()
 
 void HudDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 {
+	/*
 	SDL_SetRenderDrawBlendMode(&ren, SDL_BLENDMODE_BLEND);
 
 	// Border
@@ -52,7 +53,7 @@ void HudDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffs
 	weaponTextTexture.y += 15;
 	SDL_RenderCopy(&ren, roundsTextTexture, 0, &weaponTextTexture);
 	SDL_DestroyTexture(roundsTextTexture);
-
+	*/
 }
 
 HudDrawBehaviour::~HudDrawBehaviour()
