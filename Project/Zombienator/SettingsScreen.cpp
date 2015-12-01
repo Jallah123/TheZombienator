@@ -78,11 +78,8 @@ SettingsScreen::~SettingsScreen()
 	SoundController->StopAllSounds();
 }
 
-
-
 void SettingsScreen::Update(float dt)
 {
-
 
 }
 

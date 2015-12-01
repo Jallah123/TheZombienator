@@ -5,6 +5,7 @@
 #include "TextureFactory.h"
 #include "ScreenFactory.h"
 #include "ScreenController.h"
+#include "BackButton.h"
 
 struct PreviousButton : Button {
 	SelectionScreen* _ss;
@@ -46,6 +47,10 @@ struct SelectButton : Button {
 	SelectButton(SDL_Renderer& ren, char* text, char* img_url, SelectionScreen* ss)
 		: Button(ren, text, img_url) {
 		_ss = ss;
+		SetSourceLocation(0, 238);
+		SetSize(239, 97);
+		SetDestLocation(500, 500);
+		buttonText = TextureFactory::GenerateText(string(text), 24, destRect.x + (destRect.w / 2), destRect.y + (destRect.h / 2), true, { 248 ,248 ,255 });
 	}
 
 	void ClickAction() {
@@ -63,7 +68,7 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	//Init buttons
 	char* ssUrl = "assets/images/button_spritesheet.png";
 
-	title = TextureFactory::GenerateText("Character selection", 32, 625, 100, true);
+	title = TextureFactory::GenerateText("Character selection", 32, 625, 100, true, { 248 ,248 ,255 });
 
 	PreviousButton* pbtn = new PreviousButton(*ren, "Previous", ssUrl, this);
 	pbtn->SetSourceLocation(0, 0);
@@ -78,10 +83,10 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	AddUIComponent(nbtn);
 
 	SelectButton* sbtn = new SelectButton(*ren, "Select", ssUrl, this);
-	sbtn->SetSourceLocation(0, 238);
-	sbtn->SetSize(239, 97);
-	sbtn->SetDestLocation(500, 500);
 	AddUIComponent(sbtn);
+
+	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
+	AddUIComponent(b);
 
 	for (auto& image : images)
 	{
