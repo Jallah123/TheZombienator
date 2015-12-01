@@ -18,18 +18,18 @@ private:
 	
 	Map* map = nullptr;
 
-	int maxWaves = 1;
+	int maxWaves = 5;
 	int currentWave = 0;
 
 	int zombies = 0;
 	int amountSpawned = 0;
 	int amountToSpawn = 0;
-	
+
 	float spawnTime = 200;
 	float elapsedtime = 0;
 	float timeBetweenWaves = 500;//5 seconds
 	float maxElapsedTime = 1000;
-	
+
 	bool waveFinished = false;
 	bool completed = false;
 	bool allWavesCompleted = false;
