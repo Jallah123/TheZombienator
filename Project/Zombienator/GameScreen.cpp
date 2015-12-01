@@ -10,7 +10,7 @@
 #include "Zombie.h"
 #include "TextureFactory.h"
 
-GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
+GameScreen::GameScreen(SDL_Renderer* ren, string path, string char_img_url) : AbstractScreen(ren)
 {
 	map = new Map(path, *ren);
 	tree = new Quadtree(map->GetBounds());
@@ -42,7 +42,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 		ren
 		);
 	
-	mike = goFactory->CreateMike();
+	mike = goFactory->CreateMike(char_img_url);
 	mike->SetPosition(800, 150);
 
 	spawnController.AddTarget(mike);

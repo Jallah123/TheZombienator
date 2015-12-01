@@ -2,15 +2,15 @@
 #include "Image.h"
 #include "TextureFactory.h"
 
-Image::Image(SDL_Renderer& ren, char* img_url) 
+Image::Image(SDL_Renderer& ren, string _img_url) 
 	: AbstractUIComponent(ren) {
-	
+	img_url = _img_url;
 	texture = TextureFactory::GenerateTextureFromImgUrl(img_url);
 }
 
 void Image::Draw(SDL_Renderer& ren) {
 	SDL_SetRenderDrawColor(&ren, 0x00, 0x00, 0x00, 0xFF);
-	SDL_RenderCopy(&ren, texture, 0, &srcRect);
+	SDL_RenderCopy(&ren, texture, &srcRect, &destRect);
 }
 
 void Image::ClickAction() {

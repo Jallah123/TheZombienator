@@ -9,7 +9,7 @@ Mike::Mike() : PlayableCharacter()
 {
 }
 
-void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
+void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren, string img_url)
 {
 	KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
 	this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC, collideC, gameObjectC);
@@ -26,13 +26,12 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 
 	gameObjectC->AddGameObject(this);
 
-	SetImage("assets/images/spritesheets/Boy1.png", *ren);
+	SetImage(img_url, *ren);
 	SetSize(36, 38);
 	SetFrames(3);
 	SetMaxHealth(50);
 	SetHealth(50);
 }
-
 
 Mike::~Mike()
 {

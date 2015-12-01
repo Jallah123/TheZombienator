@@ -198,9 +198,6 @@
     <ClCompile Include="MapParser.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Image.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
@@ -396,6 +393,9 @@
     <ClCompile Include="SettingsScreen.cpp">
       <Filter>Source Files\Views\MenuScreens</Filter>
     </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -466,9 +466,6 @@
     </ClInclude>
     <ClInclude Include="PlayableCharacter.h">
       <Filter>Header Files\Models\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="MoveContainer.h">
       <Filter>Header Files\Containers</Filter>

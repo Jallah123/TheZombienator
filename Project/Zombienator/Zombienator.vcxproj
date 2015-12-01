@@ -202,12 +202,12 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="HudDrawBehaviour.cpp" />
     <ClCompile Include="HudVisitor.cpp" />
-    <ClCompile Include="Image.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DrawBehaviour.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="DrawContainer.cpp" />
     <ClCompile Include="HomeScreen.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="InfiniteModeButton.cpp" />
     <ClCompile Include="ControllerInputHandler.cpp" />
     <ClCompile Include="InputContainer.cpp" />
@@ -297,7 +297,6 @@
     <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapParser.h" />
-    <ClInclude Include="Image.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="DrawBehaviour.h" />
     <ClInclude Include="GameObjectFactory.h" />
