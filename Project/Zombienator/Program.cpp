@@ -2,6 +2,7 @@
 #include "SDL_TTF.h"
 #include "LoadingScreen.h"
 #include "ScreenFactory.h"
+#include "SettingsScreen.h"
 
 Program::Program() {
 	cout << "Creating Program" << endl;
@@ -59,10 +60,11 @@ int Program::Tick() {
 	ScreenController* sc = &ScreenController::GetInstance();
 
 	// LoadingScreen
-	ShowLoadingScreen();
+	//ShowLoadingScreen();
 
 	// MenuScreen
 	MenuScreen* m = dynamic_cast<HomeScreen*>(ScreenFactory::Create(ScreenEnum::HOMESCREEN));
+	//SettingsScreen* m = new SettingsScreen{ GetRenderer() };
 	ScreenController::GetInstance().ChangeScreen(m);
 	currentFrameTime = SDL_GetTicks();
 

@@ -32,7 +32,6 @@ private:
 	int shakeIntensity = 20;
 	int XOffset = 0;
 	int YOffset = 0;
-	float speed = 1.0;
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
 	Settings* settings = &Settings::GetInstance();
 	DrawContainer drawContainer;

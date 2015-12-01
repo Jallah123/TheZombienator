@@ -420,6 +420,21 @@
     <ClCompile Include="HudVisitor.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
+    <ClCompile Include="SwitchButtonGameSpeed.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSpeed.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDifficulty.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchButtonGameDifficulty.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -652,6 +667,15 @@
     </ClInclude>
     <ClInclude Include="HudVisitor.h">
       <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchButtonGameSpeed.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchButtonGameDifficulty.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

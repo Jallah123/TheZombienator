@@ -69,21 +69,8 @@ void GameScreen::Update(float dt)
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 	}*/
-	if (InputContainer::GetInstance().GetKeyState('['))
-	{
-		speed += 0.1;
-	}
-	else if (InputContainer::GetInstance().GetKeyState(']'))
-	{
-		speed -= 0.1;
-		if (speed < 0)
-			speed = 0;
-	}
-	else if (InputContainer::GetInstance().GetKeyState('\\'))
-	{
-		speed = 1.0;
-	}
-	dt *= speed;
+	
+	dt *= (float)settings->getGameSpeed() / 10;
 	
 
 	for (auto& g : gameObjectContainer.GetGameObjects()) {
