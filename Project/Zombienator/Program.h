@@ -46,6 +46,7 @@ private:
 	int InitComponents();
 	int InitJoystick();
 	void ShowLoadingScreen();
+	void ShowGameOverScreen();
 	void CloseJoystick();
 
 	int CalculateFPS();

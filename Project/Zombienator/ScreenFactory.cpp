@@ -4,6 +4,7 @@
 #include "SelectionScreen.h"
 #include "MenuScreen.h"
 #include "GameScreen.h"
+#include "GameOverScreen.h"
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 {
@@ -11,6 +12,7 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 	map[ScreenEnum::HOMESCREEN] = [](void) -> AbstractScreen * { return new HomeScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::LOADINGSCREEN] = [](void) -> AbstractScreen * { return new LoadingScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::SELECTIONSCREEN] = [](void) -> AbstractScreen * { return new SelectionScreen{ Program::getInstance()->GetRenderer() }; };
+	map[ScreenEnum::GAMEOVERSCREEN] = [](void) -> AbstractScreen * { return new GameOverScreen{ Program::getInstance()->GetRenderer() }; };
 	return map;
 }
 

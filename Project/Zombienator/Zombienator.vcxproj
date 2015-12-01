@@ -198,6 +198,7 @@
     <ClCompile Include="GameMath.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectContainer.cpp" />
+    <ClCompile Include="GameOverScreen.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="HudDrawBehaviour.cpp" />
@@ -287,6 +288,7 @@
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="CreditButton.h" />
     <ClInclude Include="CreditScreen.h" />
+    <ClInclude Include="GameOverScreen.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="HudVisitor.h" />
     <ClInclude Include="Label.h" />

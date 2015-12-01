@@ -14,6 +14,7 @@
 #include "TextureFactory.h"
 #include "CollideContainer.h"
 #include "HudVisitor.h"
+#include "Mike.h"
 
 class Quadtree;
 class GameScreen 
@@ -27,6 +28,7 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 	Quadtree* GetTree() { return this->tree; }
+	bool IsGameOver() { return mike->IsDeath(); }
 private:
 	float shake = 0;
 	int shakeIntensity = 20;

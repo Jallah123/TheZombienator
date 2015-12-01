@@ -396,6 +396,9 @@
     <ClCompile Include="SettingsScreen.cpp">
       <Filter>Source Files\Views\MenuScreens</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverScreen.cpp">
+      <Filter>Source Files\Views\LoadingScreen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -628,6 +631,9 @@
     </ClInclude>
     <ClInclude Include="CreditScreen.h">
       <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScreen.h">
+      <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
