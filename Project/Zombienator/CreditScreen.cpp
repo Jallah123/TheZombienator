@@ -11,8 +11,8 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 
 	//plays sound:
-	SoundController->StopAllSounds();
-	SoundController->PlaySound("assets/sounds/StandByMe.wav", -1);
+	/*SoundController->StopAllSounds();
+	SoundController->PlaySound("assets/sounds/StandByMe.wav", -1);*/
 
 
 	//Credit text
@@ -45,7 +45,7 @@ void CreditScreen::addTextToSet(string message)
 
 CreditScreen::~CreditScreen()
 {
-
+	SoundController->StopAllSounds();
 }
 
 void CreditScreen::resetTextSet()
