@@ -42,8 +42,12 @@ void CharacterDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int
 		SDL_RenderFillRect(&ren, &healthBar);
 	}
 
+	/*==== Draw Collision && Dest Rectangle
+	
 	SDL_SetRenderDrawColor(&ren, 0, 0, 255, 255);
 	SDL_RenderFillRect(&ren, c->GetDestinationRect());
 	SDL_SetRenderDrawColor(&ren, 255, 0, 0, 255);
 	SDL_RenderFillRect(&ren, c->GetCollideRect());
+	
+	*/
 }

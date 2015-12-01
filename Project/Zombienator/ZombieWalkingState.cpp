@@ -41,35 +41,37 @@ void ZombieWalkingState::Update(float dt)
 	float newY = z->getPosY();
 
 	// -- Move directions
-	bool up = destY + target->GetHeight() <= newY;
-	bool left = destX <= newX + z->GetWidth();
-	bool down = destY >= newY + z->GetHeight();
-	bool right = destX + target->GetWidth() >= newX;
+	bool left = destX + target->GetWidth() <= newX;
+	bool right = destX >= newX + z->GetWidth();
+	bool up = destY + (target->GetHeight()/2) <= newY;
+	bool down = destY >= newY + (z->GetHeight() / 2);
+	
 	float speed = z->GetSpeed() * dt;
 
 	z->SetMoveDir(Direction::NONE);
 
 	// -- Move directions
-	if (up) {
-		z->SetMoveDir(Direction::NORTH);
-		z->SetLookDir(Direction::NORTH);
-		newY -= speed;
-	}
 	if (left) {
 		z->SetMoveDir(Direction::WEST);
 		z->SetLookDir(Direction::WEST);
 		newX -= speed;
-	}
-	if (down) {
-		z->SetMoveDir(Direction::SOUTH);
-		z->SetLookDir(Direction::SOUTH);
-		newY += speed;
 	}
 	if (right) {
 		z->SetMoveDir(Direction::EAST);
 		z->SetLookDir(Direction::EAST);
 		newX += speed;
 	}
+	if (up) {
+		z->SetMoveDir(Direction::NORTH);
+		z->SetLookDir(Direction::NORTH);
+		newY -= speed;
+	}
+	if (down) {
+		z->SetMoveDir(Direction::SOUTH);
+		z->SetLookDir(Direction::SOUTH);
+		newY += speed;
+	}
+	
 
 	float finalX = newX;
 	float finalY = newY;

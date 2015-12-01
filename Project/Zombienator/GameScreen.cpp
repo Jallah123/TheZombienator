@@ -123,13 +123,4 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	SDL_Rect r{ 0,0,200,40 };
 	SDL_RenderCopy(&ren, text, 0, &r);
 	SDL_DestroyTexture(text);
-
-	for (auto& g : gameObjectContainer.GetGameObjects()) {
-		SDL_SetRenderDrawColor(&ren, 0, 0, 255, 255);
-		SDL_RenderFillRect(&ren, g->GetDestinationRect());
-
-		SDL_SetRenderDrawColor(&ren, 255, 0, 0, 255);
-		SDL_RenderDrawRect(&ren, g->GetCollideRect());
-		
-	}
 }
