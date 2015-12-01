@@ -54,7 +54,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path) : AbstractScreen(ren)
 GameScreen::~GameScreen()
 {
 	delete mike;
-	delete mike;
 	delete tree;
 }
 

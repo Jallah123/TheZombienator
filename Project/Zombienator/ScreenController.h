@@ -17,7 +17,9 @@ public:
 	std::stack<AbstractScreen*> GetScreenStack() { return screenStack; };
 	AbstractScreen* GetCurrentScreen() { return screenStack.top(); };
 	AbstractScreen* GetLoadingScreen() { return loadingScreen; };
-	void AddLoadingScreen(AbstractScreen* NewLoadingScreen) { loadingScreen = NewLoadingScreen; };
+	AbstractScreen* GetGameOverScreen() { return gameoverScreen; };
+	void AddLoadingScreen(AbstractScreen* s) { loadingScreen = s; };
+	void AddGameOverScreen(AbstractScreen* s) { gameoverScreen = s; };
 	int Size();
 private:
 	ScreenController() {};
@@ -26,6 +28,7 @@ private:
 	void operator=(ScreenController const&) = delete;
 	stack<AbstractScreen*> screenStack;
 	AbstractScreen* loadingScreen;
+	AbstractScreen* gameoverScreen;
 };
 
 
