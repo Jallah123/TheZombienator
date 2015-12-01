@@ -64,14 +64,12 @@ bool Zombie::IsInAttackRadius(Character * target)
 	double sweetspotX = 35;
 	double sweetspotY = 25;
 	double dist = GameMath::Distance(*this->GetCollideRect(), *target->GetCollideRect());
-	std::cout << "Lookdir: " << lookDir << "\n";
 	if (lookDir == Direction::NORTH || lookDir == Direction::SOUTH) {
 		return dist < sweetspotY;
 	}
 	else if (lookDir == Direction::EAST || lookDir == Direction::WEST) {
 		return dist < sweetspotX;
 	}
-	std::cout << "Distance " << dist << "\n";
 	return false;
 }
 

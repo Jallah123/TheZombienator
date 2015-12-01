@@ -23,7 +23,7 @@ private:
 
 	int zombies = 0;
 	int amountSpawned = 0;
-	int amountToSpawn = 1;
+	int amountToSpawn = 0;
 	
 	float spawnTime = 200;
 	float elapsedtime = 0;
