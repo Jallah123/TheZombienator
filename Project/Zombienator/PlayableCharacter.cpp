@@ -47,7 +47,7 @@ void PlayableCharacter::Teleport(SDL_Renderer* ren) {
 	// Set flare
 	SetImage("assets/images/flare.png", *ren);
 	SetSize(256, 256);
-	SetPosition(getPosX(), getPosY() - 2);
+	SetPosition(getPosX(), getPosY() - 3);
 
 }
 

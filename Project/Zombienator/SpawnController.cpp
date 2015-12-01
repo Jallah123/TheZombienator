@@ -26,6 +26,9 @@ SpawnController::SpawnController()
 SpawnController::SpawnController(GameScreen * gs) :
 	gameScreen(gs)
 {	
+
+	statsController->SetKills(0);
+
 	NextWave();
 }
 

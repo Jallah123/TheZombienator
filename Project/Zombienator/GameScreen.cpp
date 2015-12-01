@@ -157,9 +157,6 @@ void GameScreen::Transition(SDL_Renderer& ren) {
 
 	if (mike->getPosY() < -256) {
 
-		// Map fadeout
-		Program::getInstance()->FadeOutScreen();
-
 		/*// Check if final map
 		if (MapFactory::Instance()->IsQueueEmpty()) {
 			// Return to menu
