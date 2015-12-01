@@ -24,6 +24,9 @@ protected:
 	SwitchButton* friendlyFireOnBtn = nullptr;
 	SwitchButton* friendlyFireOffBtn = nullptr;
 
+	SwitchButton* fpsOnBtn = nullptr;
+	SwitchButton* fpsOffBtn = nullptr;
+
 	Settings* Settings = &Settings::GetInstance();
 
 public:
@@ -33,7 +36,7 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 
-	
+
 	void setFriendlyFire(bool value) {
 		if (Settings->getFiendlyFire() != value) {
 			Settings->setFriendlyFire(value);
@@ -55,6 +58,14 @@ public:
 			Settings->setMusic(value);
 			musicOnBtn->toggleEnabledStatus();
 			musicOffBtn->toggleEnabledStatus();
+		}
+	};
+
+	void setFPS(bool value) {
+		if (Settings->getShowFps() != value) {
+			Settings->setShowFps(value);
+			fpsOnBtn->toggleEnabledStatus();
+			fpsOffBtn->toggleEnabledStatus();
 		}
 	};
 
