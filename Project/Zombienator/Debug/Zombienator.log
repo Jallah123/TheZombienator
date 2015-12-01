@@ -1,19 +1,144 @@
-﻿Build started 30-11-2015 23:04:59.
-     1>Project "C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Zombienator.vcxproj" on node 2 (Build target(s)).
+﻿Build started 12/1/2015 2:47:05 AM.
+     1>Project "C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\Zombienator.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt GameScreen.cpp ObjectLayer.cpp TileLayer.cpp
+         I:\Visual Studio\VC\bin\CL.exe /c /I"C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AbstractScreen.cpp AbstractContainer.cpp AbstractUIComponent.cpp ActionBehaviour.cpp ActionContainer.cpp AnimateBehaviour.cpp AnimateContainer.cpp BackButton.cpp Behaviour.cpp BehaviourFactory.cpp Bullet.cpp BulletMoveBehaviour.cpp Button.cpp CharacterCollideBehaviour.cpp CharacterDrawBehaviour.cpp CollideBehaviour.cpp CollideContainer.cpp CollideObject.cpp CreditButton.cpp CreditScreen.cpp Direction.cpp GameMath.cpp GameObject.cpp GameObjectContainer.cpp GameScreen.cpp GameState.cpp HudDrawBehaviour.cpp Image.cpp Character.cpp DrawBehaviour.cpp GameObjectFactory.cpp DrawContainer.cpp HomeScreen.cpp InfiniteModeButton.cpp ControllerInputHandler.cpp InputContainer.cpp KeyboardInputHandler.cpp Label.cpp Layer.cpp MachineGun.cpp MachineGunBullet.cpp LoadingScreen.cpp main.cpp Map.cpp MapParser.cpp MenuScreen.cpp Mike.cpp MoveBehaviour.cpp MoveContainer.cpp Settings.cpp SettingsScreen.cpp MovingBulletCollideBehaviour.cpp MovingBulletDrawBehaviour.cpp ScreenEnum.cpp ScreenFactory.cpp SoundController.cpp NonPlayableCharacter.cpp NormalBullet.cpp NormalBulletCollideBehaviour.cpp NormalBulletDrawBehaviour.cpp NumberUtility.cpp ObjectLayer.cpp PcMoveBehaviour.cpp Pistol.cpp PlayableCharacter.cpp Program.cpp Quadtree.cpp ScreenController.cpp SelectionScreen.cpp SettingsButton.cpp ShootActionBehaviour.cpp SpawnController.cpp StatsController.cpp StoryModeButton.cpp SwitchButton.cpp SwitchWeaponActionBehaviour.cpp TextureFactory.cpp "thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" TileLayer.cpp TileSet.cpp Weapon.cpp Zombie.cpp ZombieAttackState.cpp ZombieStandStillState.cpp ZombieState.cpp ZombieStateEnum.cpp ZombieStateFactory.cpp ZombieWalkingState.cpp
+         ZombieWalkingState.cpp
+         ZombieStateFactory.cpp
+         ZombieStateEnum.cpp
+         ZombieState.cpp
+         ZombieStandStillState.cpp
+         ZombieAttackState.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\zombieattackstate.cpp(48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+         Zombie.cpp
+         Weapon.cpp
+         TileSet.cpp
          TileLayer.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\tilelayer.cpp(28): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\tilelayer.cpp(30): warning C4018: '<': signed/unsigned mismatch
+         jsoncpp.cpp
+         TextureFactory.cpp
+         SwitchWeaponActionBehaviour.cpp
+         SwitchButton.cpp
+         StoryModeButton.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+         StatsController.cpp
+         SpawnController.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\spawncontroller.cpp(71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+         ShootActionBehaviour.cpp
+         SettingsButton.cpp
+         SelectionScreen.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\selectionscreen.cpp(35): warning C4018: '>=': signed/unsigned mismatch
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\selectionscreen.cpp(53): warning C4018: '>=': signed/unsigned mismatch
+         Generating Code...
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\texturefactory.cpp(19): warning C4715: 'TextureFactory::GenerateTextureFromTextMenu': not all control paths return a value
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\texturefactory.cpp(90): warning C4715: 'TextureFactory::GenerateText': not all control paths return a value
+         Compiling...
+         ScreenController.cpp
+         Quadtree.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\quadtree.cpp(121): warning C4800: 'SDL_bool': forcing value to bool 'true' or 'false' (performance warning)
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\quadtree.cpp(132): warning C4018: '>=': signed/unsigned mismatch
+         Program.cpp
+         PlayableCharacter.cpp
+         Pistol.cpp
+         PcMoveBehaviour.cpp
          ObjectLayer.cpp
-     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\objectlayer.cpp(16): warning C4101: 'y': unreferenced local variable
-     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\objectlayer.cpp(16): warning C4101: 'x': unreferenced local variable
+         NumberUtility.cpp
+         NormalBulletDrawBehaviour.cpp
+         NormalBulletCollideBehaviour.cpp
+         NormalBullet.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(47): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(77): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(78): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(81): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(82): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(85): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(86): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\normalbullet.cpp(90): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+         NonPlayableCharacter.cpp
+         SoundController.cpp
+         ScreenFactory.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+         ScreenEnum.cpp
+         MovingBulletDrawBehaviour.cpp
+         MovingBulletCollideBehaviour.cpp
+         SettingsScreen.cpp
+         Settings.cpp
+         MoveContainer.cpp
+         Generating Code...
+         Compiling...
+         MoveBehaviour.cpp
+         Mike.cpp
+         MenuScreen.cpp
+         MapParser.cpp
+         Map.cpp
+         main.cpp
+         LoadingScreen.cpp
+         MachineGunBullet.cpp
+         MachineGun.cpp
+         Layer.cpp
+         Label.cpp
+         KeyboardInputHandler.cpp
+         InputContainer.cpp
+         ControllerInputHandler.cpp
+         InfiniteModeButton.cpp
+         HomeScreen.cpp
+         DrawContainer.cpp
+         GameObjectFactory.cpp
+         DrawBehaviour.cpp
+         Character.cpp
+         Generating Code...
+         Compiling...
+         Image.cpp
+         HudDrawBehaviour.cpp
+         GameState.cpp
          GameScreen.cpp
-     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\gamescreen.cpp(78): warning C4305: '+=': truncation from 'double' to 'float'
-     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\gamescreen.cpp(82): warning C4305: '-=': truncation from 'double' to 'float'
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\gamescreen.cpp(78): warning C4305: '+=': truncation from 'double' to 'float'
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\gamescreen.cpp(82): warning C4305: '-=': truncation from 'double' to 'float'
+         GameObjectContainer.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\gameobjectcontainer.cpp(68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+         GameObject.cpp
+         GameMath.cpp
+         Direction.cpp
+         CreditScreen.cpp
+         CreditButton.cpp
+         CollideObject.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\collideobject.cpp(10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+         CollideContainer.cpp
+         CollideBehaviour.cpp
+         CharacterDrawBehaviour.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\characterdrawbehaviour.cpp(27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+         CharacterCollideBehaviour.cpp
+         Button.cpp
+         BulletMoveBehaviour.cpp
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\bulletmovebehaviour.cpp(16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\bulletmovebehaviour.cpp(36): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+     1>c:\users\tojba\documents\thezombienator\project\zombienator\bulletmovebehaviour.cpp(36): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+         Bullet.cpp
+         BehaviourFactory.cpp
+         Behaviour.cpp
+         Generating Code...
+         Compiling...
+         BackButton.cpp
+         AnimateContainer.cpp
+         AnimateBehaviour.cpp
+         ActionContainer.cpp
+         ActionBehaviour.cpp
+         AbstractUIComponent.cpp
+         AbstractContainer.cpp
+         AbstractScreen.cpp
          Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Debug\Zombienator.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Debug\Zombienator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Debug\Zombienator.lib" /MACHINE:X86 Debug\AbstractScreen.obj
+         I:\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\Debug\Zombienator.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\Debug\Zombienator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\Debug\Zombienator.lib" /MACHINE:X86 Debug\AbstractScreen.obj
          Debug\AbstractContainer.obj
          Debug\AbstractUIComponent.obj
          Debug\ActionBehaviour.obj
@@ -50,6 +175,7 @@
          Debug\ControllerInputHandler.obj
          Debug\InputContainer.obj
          Debug\KeyboardInputHandler.obj
+         Debug\Label.obj
          Debug\Layer.obj
          Debug\MachineGun.obj
          Debug\MachineGunBullet.obj
@@ -61,6 +187,8 @@
          Debug\Mike.obj
          Debug\MoveBehaviour.obj
          Debug\MoveContainer.obj
+         Debug\Settings.obj
+         Debug\SettingsScreen.obj
          Debug\MovingBulletCollideBehaviour.obj
          Debug\MovingBulletDrawBehaviour.obj
          Debug\ScreenEnum.obj
@@ -84,6 +212,7 @@
          Debug\SpawnController.obj
          Debug\StatsController.obj
          Debug\StoryModeButton.obj
+         Debug\SwitchButton.obj
          Debug\SwitchWeaponActionBehaviour.obj
          Debug\TextureFactory.obj
          Debug\jsoncpp.obj
@@ -97,9 +226,9 @@
          Debug\ZombieStateEnum.obj
          Debug\ZombieStateFactory.obj
          Debug\ZombieWalkingState.obj
-         Zombienator.vcxproj -> C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Debug\Zombienator.exe
-     1>Done Building Project "C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Zombienator.vcxproj" (Build target(s)).
+         Zombienator.vcxproj -> C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\Debug\Zombienator.exe
+     1>Done Building Project "C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\Zombienator.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.32
+Time Elapsed 00:01:06.39

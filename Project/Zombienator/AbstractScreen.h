@@ -25,7 +25,8 @@ public:
 	virtual void Draw(SDL_Renderer& ren, float dt) = 0;
 	virtual void AddUIComponent(AbstractUIComponent* UIComponent);
 	virtual void ClickComponents(SDL_Point MousePosition);
-	
+	virtual void ReceiveFocus() {};
+protected:
 	void SetBackgroundTexture(SDL_Texture& Texture) { backgroundTexture = &Texture; }
 	SDL_Texture* const GetBackgroundTexture() { return backgroundTexture; }
 };

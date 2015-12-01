@@ -9,5 +9,6 @@ public:
 
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
+	virtual void ReceiveFocus() override;
 };
 
