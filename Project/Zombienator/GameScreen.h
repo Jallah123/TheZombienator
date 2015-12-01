@@ -10,6 +10,8 @@
 #include "MoveContainer.h"
 #include "ActionContainer.h"
 #include "GameObjectContainer.h"
+#include "Settings.h"
+#include "TextureFactory.h"
 #include "CollideContainer.h"
 #include "HudVisitor.h"
 
@@ -32,7 +34,7 @@ private:
 	int YOffset = 0;
 	float speed = 1.0;
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
-	
+	Settings* settings = &Settings::GetInstance();
 	DrawContainer drawContainer;
 	AnimateContainer animateContainer;
 	ActionContainer actionContainer;
@@ -41,6 +43,7 @@ private:
 	GameObjectContainer gameObjectContainer;
 	SpawnController spawnController;
 	HudVisitor hudVisitor;
+	
 	
 	Mike* mike = nullptr;
 	Map* map = nullptr;
