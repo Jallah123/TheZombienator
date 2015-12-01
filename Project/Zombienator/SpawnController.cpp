@@ -82,7 +82,7 @@ void SpawnController::NextWave()
 	currentWave++;
 	waveFinished = false;
 	amountSpawned = 0;//reset wave count
-	amountToSpawn = GetAmountToSpawn();
+	//amountToSpawn = GetAmountToSpawn();
 	zombies += amountToSpawn;
 
 	waveFinished = false;

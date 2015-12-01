@@ -16,12 +16,10 @@ void PcMoveBehaviour::Move(float dt)
 	Character* c = dynamic_cast<Character*>(this->gameObject);
 	InputContainer* iC = c->GetInputContainer();
 	GameObjectContainer* goc = c->GetGameObjectContainer();
+	SDL_Rect* goRect = c->GetCollideRect();
 	if (iC == nullptr) return;
-	int frames = c->GetFrames();
-	if (frames == 0) return;
 
 	// -- Get destination rect
-	SDL_Rect* cRect = c->GetCollideRect();
 	float newX = c->getPosX();
 	float newY = c->getPosY();
 	
@@ -64,24 +62,23 @@ void PcMoveBehaviour::Move(float dt)
 	for (auto& g : gameObjects)
 	{
 		if (g != this->gameObject) {
-			SDL_Rect* r = this->gameObject->GetDestinationRect();
-			r->x = static_cast<int>(newX + .5f);
-			r->y = static_cast<int>(c->getPosY() + .5f);
-			if (SDL_HasIntersection(r, g->GetDestinationRect()))
+			goRect->x = static_cast<int>(newX + .5f);
+			goRect->y = static_cast<int>(c->getPosY() + .5f + (goRect->h));
+			if (SDL_HasIntersection(goRect, g->GetCollideRect()))
 				finalX = c->getPosX();
 
-			r->x = static_cast<int>(c->getPosX() + .5f);
-			r->y = static_cast<int>(newY + .5f);
-			if (SDL_HasIntersection(r, g->GetDestinationRect()))
+			goRect->x = static_cast<int>(c->getPosX() + .5f);
+			goRect->y = static_cast<int>(newY + .5f + (goRect->h));
+			if (SDL_HasIntersection(goRect, g->GetCollideRect()))
 				finalY = c->getPosY();
 		}
 	}
+
 	//Player must stay within level bounds
 	if(finalX < 0 || finalX > goc->GetBounds().w - c->GetWidth())
 		finalX = c->getPosX();
 	if (finalY < 0 || finalY > goc->GetBounds().h - c->GetHeight())
 		finalY = c->getPosY();
 
-	c->CanMove(true);
 	c->SetPosition(finalX, finalY);
 }

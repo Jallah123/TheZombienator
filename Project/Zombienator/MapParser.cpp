@@ -7,8 +7,6 @@
 #include <fstream>
 #include <iostream>
 
-
-
 MapParser::MapParser(Map* map) :map(map)
 {
 	ParseJson(map->GetPath());

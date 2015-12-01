@@ -411,6 +411,9 @@
     <ClCompile Include="GameMath.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="CollideObject.cpp">
+      <Filter>Source Files\Models\GameObject</Filter>
+		</ClCompile>
     <ClCompile Include="Settings.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
@@ -629,6 +632,9 @@
     <ClInclude Include="CreditScreen.h">
       <Filter>Header Files\Views\CreditScreen</Filter>
     </ClInclude>
+    <ClInclude Include="CollideObject.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+		</ClInclude>
     <ClInclude Include="Label.h">
       <Filter>Header Files\Views\UIComponents\Label</Filter>
     </ClInclude>

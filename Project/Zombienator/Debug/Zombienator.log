@@ -1,0 +1,105 @@
+﻿Build started 30-11-2015 23:04:59.
+     1>Project "C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Zombienator.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt GameScreen.cpp ObjectLayer.cpp TileLayer.cpp
+         TileLayer.cpp
+         ObjectLayer.cpp
+     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\objectlayer.cpp(16): warning C4101: 'y': unreferenced local variable
+     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\objectlayer.cpp(16): warning C4101: 'x': unreferenced local variable
+         GameScreen.cpp
+     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\spawncontroller.h(69): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\spawncontroller.h(71): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\gamescreen.cpp(78): warning C4305: '+=': truncation from 'double' to 'float'
+     1>c:\users\kenneth\desktop\thezombienator\project\zombienator\gamescreen.cpp(82): warning C4305: '-=': truncation from 'double' to 'float'
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Debug\Zombienator.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Debug\Zombienator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Debug\Zombienator.lib" /MACHINE:X86 Debug\AbstractScreen.obj
+         Debug\AbstractContainer.obj
+         Debug\AbstractUIComponent.obj
+         Debug\ActionBehaviour.obj
+         Debug\ActionContainer.obj
+         Debug\AnimateBehaviour.obj
+         Debug\AnimateContainer.obj
+         Debug\BackButton.obj
+         Debug\Behaviour.obj
+         Debug\BehaviourFactory.obj
+         Debug\Bullet.obj
+         Debug\BulletMoveBehaviour.obj
+         Debug\Button.obj
+         Debug\CharacterCollideBehaviour.obj
+         Debug\CharacterDrawBehaviour.obj
+         Debug\CollideBehaviour.obj
+         Debug\CollideContainer.obj
+         Debug\CollideObject.obj
+         Debug\CreditButton.obj
+         Debug\CreditScreen.obj
+         Debug\Direction.obj
+         Debug\GameMath.obj
+         Debug\GameObject.obj
+         Debug\GameObjectContainer.obj
+         Debug\GameScreen.obj
+         Debug\GameState.obj
+         Debug\HudDrawBehaviour.obj
+         Debug\Image.obj
+         Debug\Character.obj
+         Debug\DrawBehaviour.obj
+         Debug\GameObjectFactory.obj
+         Debug\DrawContainer.obj
+         Debug\HomeScreen.obj
+         Debug\InfiniteModeButton.obj
+         Debug\ControllerInputHandler.obj
+         Debug\InputContainer.obj
+         Debug\KeyboardInputHandler.obj
+         Debug\Layer.obj
+         Debug\MachineGun.obj
+         Debug\MachineGunBullet.obj
+         Debug\LoadingScreen.obj
+         Debug\main.obj
+         Debug\Map.obj
+         Debug\MapParser.obj
+         Debug\MenuScreen.obj
+         Debug\Mike.obj
+         Debug\MoveBehaviour.obj
+         Debug\MoveContainer.obj
+         Debug\MovingBulletCollideBehaviour.obj
+         Debug\MovingBulletDrawBehaviour.obj
+         Debug\ScreenEnum.obj
+         Debug\ScreenFactory.obj
+         Debug\SoundController.obj
+         Debug\NonPlayableCharacter.obj
+         Debug\NormalBullet.obj
+         Debug\NormalBulletCollideBehaviour.obj
+         Debug\NormalBulletDrawBehaviour.obj
+         Debug\NumberUtility.obj
+         Debug\ObjectLayer.obj
+         Debug\PcMoveBehaviour.obj
+         Debug\Pistol.obj
+         Debug\PlayableCharacter.obj
+         Debug\Program.obj
+         Debug\Quadtree.obj
+         Debug\ScreenController.obj
+         Debug\SelectionScreen.obj
+         Debug\SettingsButton.obj
+         Debug\ShootActionBehaviour.obj
+         Debug\SpawnController.obj
+         Debug\StatsController.obj
+         Debug\StoryModeButton.obj
+         Debug\SwitchWeaponActionBehaviour.obj
+         Debug\TextureFactory.obj
+         Debug\jsoncpp.obj
+         Debug\TileLayer.obj
+         Debug\TileSet.obj
+         Debug\Weapon.obj
+         Debug\Zombie.obj
+         Debug\ZombieAttackState.obj
+         Debug\ZombieStandStillState.obj
+         Debug\ZombieState.obj
+         Debug\ZombieStateEnum.obj
+         Debug\ZombieStateFactory.obj
+         Debug\ZombieWalkingState.obj
+         Zombienator.vcxproj -> C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Debug\Zombienator.exe
+     1>Done Building Project "C:\Users\Kenneth\Desktop\TheZombienator\Project\Zombienator\Zombienator.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.32
