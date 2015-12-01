@@ -15,9 +15,10 @@ private:
 public:
 	~MapFactory();
 
-	Map * MapFactory::NextMap(SDL_Renderer* ren);
-	void MapFactory::StoryMode(SDL_Renderer* ren);
+	Map * MapFactory::NextMap();
+	void MapFactory::StoryMode();
 	void MapFactory::EmptyQueue();
+	bool MapFactory::IsQueueEmpty();
 
 	static MapFactory* Instance() {
 		static MapFactory f;

@@ -4,6 +4,6 @@
 class LandscapeMap : public Map
 {
 public:
-	LandscapeMap(SDL_Renderer& ren);
+	LandscapeMap();
 	~LandscapeMap();
 };

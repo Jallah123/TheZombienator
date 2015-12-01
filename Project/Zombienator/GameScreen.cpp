@@ -10,15 +10,43 @@
 #include "Zombie.h"
 #include "TextureFactory.h"
 #include "MapFactory.h"
+#include "ScreenFactory.h"
 
 GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
 
-	// Initialize storymode TODO: move this
-	MapFactory::Instance()->StoryMode(ren);
+	// Get map
+	map = MapFactory::Instance()->NextMap();
 
-	// Get next map
-	NextMap(ren);
+	tree = new Quadtree(map->GetBounds());
+
+	gameObjectContainer = GameObjectContainer{ map, tree };
+	spawnController = SpawnController{ this };
+	gameObjectContainer.SetMap(map);
+	spawnController.SetMap(map);
+	BehaviourFactory::Instance()->SetMap(map);
+
+	hudVisitor = HudVisitor{ ren };
+
+	goFactory->SetContainers(
+		&drawContainer,
+		&animateContainer,
+		&moveContainer,
+		&actionContainer,
+		&collideContainer,
+		&gameObjectContainer,
+		ren
+		);
+
+	BehaviourFactory::Instance()->SetContainers(
+		&drawContainer,
+		&animateContainer,
+		&moveContainer,
+		&actionContainer,
+		&collideContainer,
+		&gameObjectContainer,
+		ren
+		);
 	
 	// Create character(s)
 	mike = goFactory->CreateMike();
@@ -78,82 +106,6 @@ void GameScreen::Update(float dt)
 	animateContainer.Animate(dt);
 }
 
-void GameScreen::NextMap(SDL_Renderer* ren) {
-
-	map = MapFactory::Instance()->NextMap(ren);
-	tree = new Quadtree(map->GetBounds());
-
-	gameObjectContainer = GameObjectContainer{ map, tree };
-	spawnController = SpawnController{ this };
-	gameObjectContainer.SetMap(map);
-	spawnController.SetMap(map);
-	BehaviourFactory::Instance()->SetMap(map);
-	
-	hudVisitor = HudVisitor{ ren };
-
-	goFactory->SetContainers(
-		&drawContainer,
-		&animateContainer,
-		&moveContainer,
-		&actionContainer,
-		&collideContainer,
-		&gameObjectContainer,
-		ren
-	);
-
-	BehaviourFactory::Instance()->SetContainers(
-		&drawContainer,
-		&animateContainer,
-		&moveContainer,
-		&actionContainer,
-		&collideContainer,
-		&gameObjectContainer,
-		ren
-	);
-
-
-
-
-
-
-	/*map = MapFactory::Instance()->NextMap(ren);
-
-	if (map != nullptr) {
-		tree = new Quadtree(map->GetBounds());
-
-		gameObjectContainer = GameObjectContainer{ map, tree };
-		spawnController = SpawnController{ this };
-		gameObjectContainer.SetMap(map);
-		spawnController.SetMap(map);
-		BehaviourFactory::Instance()->SetMap(map);
-
-		goFactory->SetContainers(
-			&drawContainer,
-			&animateContainer,
-			&moveContainer,
-			&actionContainer,
-			&collideContainer,
-			&gameObjectContainer,
-			ren
-		);
-
-		BehaviourFactory::Instance()->SetContainers(
-			&drawContainer,
-			&animateContainer,
-			&moveContainer,
-			&actionContainer,
-			&collideContainer,
-			&gameObjectContainer,
-			ren
-		);
-	}
-	else {
-		cout << "GAME OVER" << endl;
-	}*/
-	
-
-}
-
 void GameScreen::Shake(float time, int intensity) {
 	shake = time;
 	shakeIntensity = intensity;
@@ -186,9 +138,19 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	// If all waves defeated
 	if (spawnController.Completed()) {
 		cout << "Start next map" << endl;
-		NextMap(&ren);
+		
+		// Check if final map
+		if (MapFactory::Instance()->IsQueueEmpty()) {
+			// Return to menu
+			ScreenController::GetInstance().Back();
+		}
 
-		mike->SetPosition(600, 250);
+		// Remove this screen
+		ScreenController::GetInstance().PopCurrentScreen();
+
+		// Set next screen
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN));
+
 	}
 
 }

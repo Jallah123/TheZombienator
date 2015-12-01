@@ -1,13 +1,13 @@
 #include "MapFactory.h"
 
-void MapFactory::StoryMode(SDL_Renderer* ren) {
+void MapFactory::StoryMode() {
 
-	mapQueue.push(new LandscapeMap(*ren));
-	mapQueue.push(new SnowMap(*ren));
+	mapQueue.push(new LandscapeMap());
+	mapQueue.push(new SnowMap());
 
 }
 
-Map * MapFactory::NextMap(SDL_Renderer* ren) {
+Map * MapFactory::NextMap() {
 
 	if(mapQueue.size() > 0){
 		Map * nextMap = mapQueue.front();
@@ -17,6 +17,15 @@ Map * MapFactory::NextMap(SDL_Renderer* ren) {
 	}
 	return nullptr;
 
+}
+
+bool MapFactory::IsQueueEmpty() {
+
+	if (mapQueue.size() > 0) {
+		return false;
+	}
+
+	return true;
 }
 
 void MapFactory::EmptyQueue() {

@@ -4,6 +4,6 @@
 class SnowMap : public Map
 {
 public:
-	SnowMap(SDL_Renderer& ren);
+	SnowMap();
 	~SnowMap();
 };

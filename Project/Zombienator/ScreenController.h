@@ -15,6 +15,7 @@ public:
 	void ChangeScreen(AbstractScreen* screen);
 	void Back();
 	std::stack<AbstractScreen*> GetScreenStack() { return screenStack; };
+	void PopCurrentScreen() { screenStack.pop(); };
 	AbstractScreen* GetCurrentScreen() { return screenStack.top(); };
 	AbstractScreen* GetLoadingScreen() { return loadingScreen; };
 	void AddLoadingScreen(AbstractScreen* NewLoadingScreen) { loadingScreen = NewLoadingScreen; };

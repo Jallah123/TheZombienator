@@ -6,9 +6,9 @@
 MachineGun::MachineGun() : Weapon("assets/images/MachineGun.png")
 {
 	this->name = "MachineGun";
-	this->delay = 20;
-	this->damage = 20;  // 1/5 of a zombie's health
-	this->rounds = 20;
+	this->delay = 5;
+	this->damage = 200;  // 1/5 of a zombie's health
+	this->rounds = 2000;
 	this->bulletType = "MachineGunBullet";
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new MachineGunBullet(); });
 }
