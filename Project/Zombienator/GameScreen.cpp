@@ -61,13 +61,7 @@ GameScreen::~GameScreen()
 void GameScreen::Update(float dt)
 {
 	tree->Clear();
-	for (auto& g : gameObjectContainer.GetGameObjects()) {
-		tree->AddObject(g);
-		if (Zombie* z = dynamic_cast<Zombie*>(g))
-		{
-			z->Update(dt);
-		}
-	}
+	
 	XOffset = 0;
 	YOffset = 0;
 	/*if (shake > 0) {
@@ -92,7 +86,13 @@ void GameScreen::Update(float dt)
 	dt *= speed;
 	
 
-
+	for (auto& g : gameObjectContainer.GetGameObjects()) {
+		tree->AddObject(g);
+		if (Zombie* z = dynamic_cast<Zombie*>(g))
+		{
+			z->Update(dt);
+		}
+	}
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
 	collideContainer.Collide(dt);
