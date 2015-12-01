@@ -3,8 +3,9 @@
 #include "MachineGunBullet.h"
 #include "SoundController.h"
 
-MachineGun::MachineGun() : Weapon("assets/images/Pistol.png")
+MachineGun::MachineGun() : Weapon("assets/images/MachineGun.png")
 {
+	this->name = "MachineGun";
 	this->delay = 20;
 	this->damage = 20;  // 1/5 of a zombie's health
 	this->rounds = 20;
