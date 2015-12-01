@@ -16,6 +16,7 @@ public:
 	static std::pair<SDL_Texture*,SDL_Rect> GenerateText(std::string text, int fontSize, int xPos, int yPos, bool cartoonFont,  SDL_Color color = { 0,0,0 });
 private:
 	TextureFactory();
+	
 	static SDL_Texture* GenerateTextureFromSurface(SDL_Surface* surface);
 	SDL_Texture* FindTexture(std::string url);
 	std::map<std::string, SDL_Texture*> textures;
