@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 #include <SDL_image.h>
+#include "HudVisitor.h"
 
 using std::string;
 class PlayableCharacter;
-
 class Weapon
 {
 protected:
@@ -21,7 +21,7 @@ public:
 	virtual ~Weapon();
 
 	virtual void Fire() = 0;
-
+	void Accept(HudVisitor* visitor) { visitor->Visit(this); };
 	int GetDelay() { return this->delay; }
 	int GetRounds() { return this->rounds; }
 	int GetDamage() { return this->damage; }

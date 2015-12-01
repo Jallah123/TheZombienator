@@ -413,8 +413,11 @@
     </ClCompile>
     <ClCompile Include="CollideObject.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
-		</ClCompile>
+    </ClCompile>
     <ClCompile Include="Settings.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="HudVisitor.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
   </ItemGroup>
@@ -634,7 +637,7 @@
     </ClInclude>
     <ClInclude Include="CollideObject.h">
       <Filter>Header Files\Models\GameObject</Filter>
-		</ClInclude>
+    </ClInclude>
     <ClInclude Include="Label.h">
       <Filter>Header Files\Views\UIComponents\Label</Filter>
     </ClInclude>
@@ -645,6 +648,9 @@
       <Filter>Header Files\Views\SettingsScreen</Filter>
     </ClInclude>
     <ClInclude Include="Settings.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="HudVisitor.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
   </ItemGroup>
