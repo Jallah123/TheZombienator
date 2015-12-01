@@ -30,7 +30,7 @@ private:
 	int currentFrameTime = 0;
 
 	//fps
-	#define FRAME_VALUES 10
+	#define FRAME_VALUES 100
 	// An array to store frame times:
 	Uint32 frametimes[FRAME_VALUES];
 	// Last calculated SDL_GetTicks
