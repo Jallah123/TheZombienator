@@ -87,7 +87,7 @@ int Program::Tick() {
 
 		// Update & render currentScreen
 		currentScreen->Update(deltaTime);
-		Render(currentScreen);
+		Render(sc->GetCurrentScreen());
 
 		// Update previousScreen
 		previousScreen = currentScreen;
@@ -103,8 +103,8 @@ void Program::Render(AbstractScreen* screen)
 {
 	SDL_SetRenderDrawColor(Sdl_Renderer, 0, 0, 0, 255);
 	SDL_RenderClear(Sdl_Renderer);
-
-	screen->Draw(*Sdl_Renderer, deltaTime);
+	if (screen != nullptr)
+		screen->Draw(*Sdl_Renderer, deltaTime);
 }
 
 int Program::Events(AbstractScreen* screen)
@@ -179,7 +179,7 @@ int Program::InitComponents() {
 	return 0;
 }
 
-void Program::CloseJoystick() 
+void Program::CloseJoystick()
 {
 	cout << "Close controller" << endl;
 	SDL_GameControllerClose(controller);
