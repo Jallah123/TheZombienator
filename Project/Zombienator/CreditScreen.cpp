@@ -11,9 +11,7 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 
 	//plays sound:
-	SoundController->StopAllSounds();
-	SoundController->PlaySound("assets/sounds/StandByMe.wav", -1);
-
+	SoundController->ChangeMusic("assets/sounds/StandByMe.wav");
 
 	//Credit text
 	addTextToSet("Made by");
@@ -45,7 +43,9 @@ void CreditScreen::addTextToSet(string message)
 
 CreditScreen::~CreditScreen()
 {
-
+	for (auto& i : textList) {
+		SDL_DestroyTexture(i.first);
+	}
 }
 
 void CreditScreen::resetTextSet()

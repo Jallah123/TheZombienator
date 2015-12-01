@@ -51,6 +51,8 @@ void Character::SetContainers(DrawContainer * drawC, AnimateContainer * animC, M
 	actionContainer = actionC;
 	collideContainer = collideC;
 	gameObjectContainer = gameObjectC;
+
+
 }
 
 void Character::SetDrawBehaviour(std::string name)

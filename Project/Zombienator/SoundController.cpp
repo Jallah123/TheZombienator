@@ -41,44 +41,62 @@ bool SoundController::Exists(string path)
  */
 void SoundController::PlaySound(string path, int loops)
 {
-
-	Mix_Chunk* sound = Load(path);
-	if (Mix_PlayChannel(-1, sound, loops) == -1) {
-		std::cout << "Unable to play WAV file: %s\n" << Mix_GetError();
+	if (settings->getSound()) {
+		Mix_Chunk* sound = Load(path);
+		if (Mix_PlayChannel(-1, sound, loops) == -1) {
+			std::cout << "Unable to play WAV file: %s\n" << Mix_GetError();
+		}
 	}
 }
 
 void SoundController::ChangeMusic(string path)
 {
-	if (currentMusic != nullptr)
-	{
-		Mix_FreeMusic(currentMusic);
-	}
-	Mix_Music* music;
+	if (settings->getMusic()) {
+		if (path == currentMusicPath)
+		{
+			return;
+		}
 
-	// Load music
-	music = Mix_LoadMUS(path.c_str());
-	if (!music)
-	{
-		cout << "Mix_LoadMUS error: " << Mix_GetError() << endl;
-		return;
-	}
-	// Play music
-	if (Mix_PlayMusic(music, -1) == -1)
-	{
-		cout << "Mix_PlayMusic error : " << Mix_GetError() << endl;
-	}
+		if (currentMusic != nullptr)
+		{
+			Mix_FreeMusic(currentMusic);
+		}
+		Mix_Music* music;
 
-	currentMusic = music;
+		// Load music
+		music = Mix_LoadMUS(path.c_str());
+		if (!music)
+		{
+			cout << "Mix_LoadMUS error: " << Mix_GetError() << endl;
+			return;
+		}
+
+		// Play music
+		if (Mix_PlayMusic(music, -1) == -1)
+		{
+			cout << "Mix_PlayMusic error : " << Mix_GetError() << endl;
+		}
+
+		currentMusic = music;
+		currentMusicPath = path;
+	}
 }
 
 void SoundController::StopAllSounds()
 {
-	for (auto& sound: sounds)
-	{
-		Mix_FreeChunk(sound.second);
-	}
+	StopMusic();
+	StopSounds();
+}
+
+void SoundController::StopMusic()
+{
 	Mix_FreeMusic(currentMusic);
+	currentMusic = nullptr;
+}
+
+void SoundController::StopSounds()
+{
+	Mix_HaltChannel(-1);
 }
 
 void SoundController::SetVolume(int volume)

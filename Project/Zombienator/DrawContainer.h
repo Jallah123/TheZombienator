@@ -10,4 +10,5 @@ public:
 	~DrawContainer();
 
 	void Draw(float dt, SDL_Renderer& ren, int XOffset, int YOffset);
+	void Sort_zIndex();
 };

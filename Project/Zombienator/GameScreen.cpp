@@ -13,6 +13,7 @@
 
 GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
+
 	// Initialize storymode TODO: move this
 	MapFactory::Instance()->StoryMode(ren);
 
@@ -38,13 +39,7 @@ GameScreen::~GameScreen()
 void GameScreen::Update(float dt)
 {
 	tree->Clear();
-	for (auto& g : gameObjectContainer.GetGameObjects()) {
-		tree->AddObject(g);
-		/*if (Zombie* z = dynamic_cast<Zombie*>(g))
-		{
-			z->Update(dt);
-		}*/
-	}
+
 	XOffset = 0;
 	YOffset = 0;
 	/*if (shake > 0) {
@@ -67,7 +62,15 @@ void GameScreen::Update(float dt)
 		speed = 1.0;
 	}
 	dt *= speed;
-	
+
+	for (auto& g : gameObjectContainer.GetGameObjects()) {
+		tree->AddObject(g);
+		if (Zombie* z = dynamic_cast<Zombie*>(g))
+		{
+			z->Update(dt);
+		}
+	}
+
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
 	collideContainer.Collide(dt);
@@ -78,6 +81,42 @@ void GameScreen::Update(float dt)
 void GameScreen::NextMap(SDL_Renderer* ren) {
 
 	map = MapFactory::Instance()->NextMap(ren);
+	tree = new Quadtree(map->GetBounds());
+
+	gameObjectContainer = GameObjectContainer{ map, tree };
+	spawnController = SpawnController{ this };
+	gameObjectContainer.SetMap(map);
+	spawnController.SetMap(map);
+	BehaviourFactory::Instance()->SetMap(map);
+	
+	hudVisitor = HudVisitor{ ren };
+
+	goFactory->SetContainers(
+		&drawContainer,
+		&animateContainer,
+		&moveContainer,
+		&actionContainer,
+		&collideContainer,
+		&gameObjectContainer,
+		ren
+	);
+
+	BehaviourFactory::Instance()->SetContainers(
+		&drawContainer,
+		&animateContainer,
+		&moveContainer,
+		&actionContainer,
+		&collideContainer,
+		&gameObjectContainer,
+		ren
+	);
+
+
+
+
+
+
+	/*map = MapFactory::Instance()->NextMap(ren);
 
 	if (map != nullptr) {
 		tree = new Quadtree(map->GetBounds());
@@ -110,7 +149,7 @@ void GameScreen::NextMap(SDL_Renderer* ren) {
 	}
 	else {
 		cout << "GAME OVER" << endl;
-	}
+	}*/
 	
 
 }
@@ -126,6 +165,10 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
 	map->DrawFrontLayer(ren, XOffset, YOffset);
+
+	hudVisitor.DrawBase();
+	mike->GetWeapon()->Accept(&hudVisitor);
+
 	int zombiesOnScreen = spawnController.GetAmountSpawned();
 	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
 	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);

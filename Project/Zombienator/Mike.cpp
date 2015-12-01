@@ -4,7 +4,6 @@
 #include "MachineGun.h"
 #include "GameObjectContainer.h"
 #include "DrawContainer.h"
-#include "HudDrawBehaviour.h"
 
 Mike::Mike() : PlayableCharacter()
 {
@@ -32,7 +31,6 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	SetFrames(3);
 	SetMaxHealth(50);
 	SetHealth(50);
-	drawContainer->Add(new HudDrawBehaviour{this});
 }
 
 
