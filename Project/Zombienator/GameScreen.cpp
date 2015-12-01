@@ -36,7 +36,7 @@ GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 		&collideContainer,
 		&gameObjectContainer,
 		ren
-		);
+	);
 
 	BehaviourFactory::Instance()->SetContainers(
 		&drawContainer,
@@ -46,7 +46,7 @@ GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 		&collideContainer,
 		&gameObjectContainer,
 		ren
-		);
+	);
 	
 	// Create character(s)
 	mike = goFactory->CreateMike();
@@ -56,6 +56,7 @@ GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 
 	//Load && play sound
 	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
+	
 }
 
 GameScreen::~GameScreen()
@@ -104,6 +105,7 @@ void GameScreen::Update(float dt)
 	collideContainer.Collide(dt);
 	moveContainer.Move(dt);
 	animateContainer.Animate(dt);
+
 }
 
 void GameScreen::Shake(float time, int intensity) {
@@ -121,32 +123,51 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	hudVisitor.DrawBase();
 	mike->GetWeapon()->Accept(&hudVisitor);
 
+	// If all waves defeated
+	if (spawnController.Completed())
+		this->Transition(ren);
+
 	int zombiesOnScreen = spawnController.GetAmountSpawned();
 	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
 	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
 	if (zombiesLeft == 0) {
 		s = "Kill all zombies";
-		if (spawnController.WaveCompleted()) {
+		if (spawnController.AllWavesCompleted()) {
+			s = "Next map in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
+		}
+		else if (spawnController.WaveCompleted()) {
 			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
 		}
+		
 	}
 	auto* text = TextureFactory::GenerateTextureFromTextHud(s);
 	SDL_Rect r{ 0,0,200,40 };
 	SDL_RenderCopy(&ren, text, 0, &r);
 	SDL_DestroyTexture(text);
 
-	// If all waves defeated
-	if (spawnController.Completed()) {
-		cout << "Start next map" << endl;
-		
-		// Check if final map
+}
+
+void GameScreen::Transition(SDL_Renderer& ren) {
+
+	mike->Teleport(&ren);
+
+	// Draw on top off everything
+	mike->Remove();
+	SDL_RenderCopy(&ren, mike->GetTexture(), &mike->GetSourceRect(), mike->GetDestinationRect());
+
+	if (mike->getPosY() < -256) {
+
+		// Map fadeout
+		Program::getInstance()->FadeOutScreen();
+
+		/*// Check if final map
 		if (MapFactory::Instance()->IsQueueEmpty()) {
 			// Return to menu
 			ScreenController::GetInstance().Back();
-		}
+		}*/
 
 		// Remove this screen
-		ScreenController::GetInstance().PopCurrentScreen();
+		//ScreenController::GetInstance().Back();
 
 		// Set next screen
 		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN));

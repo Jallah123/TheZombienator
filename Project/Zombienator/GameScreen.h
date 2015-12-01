@@ -14,8 +14,7 @@
 #include "HudVisitor.h"
 
 class Quadtree;
-class GameScreen 
-	: public AbstractScreen
+class GameScreen : public AbstractScreen
 {
 public:
 	GameScreen();
@@ -25,7 +24,12 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 	void NextMap(SDL_Renderer* ren);
+	void Transition(SDL_Renderer& ren);
+	void NextMap(SDL_Renderer & ren);
 	Quadtree* GetTree() { return this->tree; }
+
+	InputContainer* inputContainer = &InputContainer::GetInstance();
+	void EndMap();
 private:
 	float shake = 0;
 	int shakeIntensity = 20;

@@ -13,6 +13,8 @@ PcMoveBehaviour::~PcMoveBehaviour()
 void PcMoveBehaviour::Move(float dt)
 {
 	if (!this->gameObject) return;
+	if (!this->gameObject->CanMove()) return;
+
 	Character* c = dynamic_cast<Character*>(this->gameObject);
 	InputContainer* iC = c->GetInputContainer();
 	GameObjectContainer* goc = c->GetGameObjectContainer();
@@ -81,4 +83,5 @@ void PcMoveBehaviour::Move(float dt)
 		finalY = c->getPosY();
 
 	c->SetPosition(finalX, finalY);
+
 }

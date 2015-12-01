@@ -50,6 +50,9 @@ void SpawnController::Update(float dt)
 	elapsedtime += dt;
 
 	if (IsFinished()) {
+
+		allWavesCompleted = true;
+
 		Countdown();
 		return;
 	} 
