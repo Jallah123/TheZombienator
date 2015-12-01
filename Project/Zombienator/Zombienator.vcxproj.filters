@@ -408,10 +408,9 @@
     <ClCompile Include="GameMath.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="GameState.h">
       <Filter>Source Files\Enums</Filter>
-=======
+	</ClCompile>
     <ClCompile Include="CollideObject.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
@@ -420,7 +419,6 @@
     </ClCompile>
     <ClCompile Include="HudVisitor.cpp">
       <Filter>Source Files\Models</Filter>
->>>>>>> refs/remotes/origin/dev
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
