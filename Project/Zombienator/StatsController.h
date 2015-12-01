@@ -12,5 +12,6 @@ public:
 	}
 	static void AddKill();
 	static int GetKills();
+	static void SetKills(int _kills) { kills = _kills; };
 };
 

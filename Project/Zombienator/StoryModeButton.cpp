@@ -4,7 +4,7 @@
 #include "ScreenController.h"
 #include "GameScreen.h"
 #include "ScreenFactory.h"
-
+#include "MapFactory.h"
 
 StoryModeButton::StoryModeButton() : Button()
 {
@@ -19,7 +19,10 @@ StoryModeButton::StoryModeButton(SDL_Renderer& ren, char* text, char* img_url)
 void StoryModeButton::ClickAction()
 {
 	SoundController::GetInstance().StopAllSounds();
-	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, "assets/maps/landscape-1280x640.json"));
+
+	MapFactory::Instance()->StoryMode();
+
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN));
 }
 
 StoryModeButton::~StoryModeButton()

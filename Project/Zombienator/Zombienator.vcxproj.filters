@@ -375,6 +375,15 @@
     <ClCompile Include="GameMath.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="MapFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="LandscapeMap.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="SnowMap.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
     <ClCompile Include="CollideObject.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
@@ -601,6 +610,18 @@
     </ClInclude>
     <ClInclude Include="CreditButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditScreen.h">
+      <Filter>Header Files\Views\CreditScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="MapFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="LandscapeMap.h">
+      <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="SnowMap.h">
+      <Filter>Header Files\Models\Map</Filter>
     </ClInclude>
     <ClInclude Include="CollideObject.h">
       <Filter>Header Files\Models\GameObject</Filter>

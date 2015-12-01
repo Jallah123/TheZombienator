@@ -212,6 +212,7 @@
     <ClCompile Include="ControllerInputHandler.cpp" />
     <ClCompile Include="InputContainer.cpp" />
     <ClCompile Include="KeyboardInputHandler.cpp" />
+    <ClCompile Include="LandscapeMap.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="MachineGun.cpp" />
@@ -219,6 +220,7 @@
     <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="MapParser.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Mike.cpp" />
@@ -230,6 +232,7 @@
     <ClCompile Include="MovingBulletDrawBehaviour.cpp" />
     <ClCompile Include="ScreenEnum.cpp" />
     <ClCompile Include="ScreenFactory.cpp" />
+    <ClCompile Include="SnowMap.cpp" />
     <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
     <ClCompile Include="NormalBullet.cpp" />
@@ -291,11 +294,13 @@
     <ClInclude Include="HudVisitor.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="HudDrawBehaviour.h" />
+    <ClInclude Include="LandscapeMap.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MachineGun.h" />
     <ClInclude Include="MachineGunBullet.h" />
     <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MapFactory.h" />
     <ClInclude Include="MapParser.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Character.h" />
@@ -317,6 +322,7 @@
     <ClInclude Include="MovingBulletCollideBehaviour.h" />
     <ClInclude Include="MovingBulletDrawBehaviour.h" />
     <ClInclude Include="ScreenFactory.h" />
+    <ClInclude Include="SnowMap.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="NonPlayableCharacter.h" />
     <ClInclude Include="NormalBullet.h" />
