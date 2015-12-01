@@ -6,7 +6,8 @@
 #include "MovingBulletDrawBehaviour.h"
 #include "CharacterDrawBehaviour.h"
 #include "Bullet.h"
-
+#include <algorithm>
+#include "GameObject.h"
 DrawContainer::DrawContainer()
 {
 	//Register all Draw behaviours in the behaviour factory
@@ -24,7 +25,7 @@ DrawContainer::~DrawContainer()
 void DrawContainer::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 {
 	if (this->arr.empty()) return;//Do nothing on empty
-	
+	Sort_zIndex();
 	for (Behaviour* i : this->arr) {
 		DrawBehaviour* db = dynamic_cast<DrawBehaviour*>(i);
 		
@@ -33,4 +34,9 @@ void DrawContainer::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 		if (i->CanBeRemove()) arrRemove.push_back(i);
 	}
 	RemoveAll();
+}
+
+void DrawContainer::Sort_zIndex()
+{
+	std::sort(arr.begin(), arr.end(), [](Behaviour* a, Behaviour* b) { return a->GetGameObject()->getPosY() < b->GetGameObject()->getPosY(); });
 }

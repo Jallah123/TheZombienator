@@ -191,6 +191,7 @@
     <ClCompile Include="CharacterDrawBehaviour.cpp" />
     <ClCompile Include="CollideBehaviour.cpp" />
     <ClCompile Include="CollideContainer.cpp" />
+    <ClCompile Include="CollideObject.cpp" />
     <ClCompile Include="CreditButton.cpp" />
     <ClCompile Include="CreditScreen.cpp" />
     <ClCompile Include="Direction.cpp" />
@@ -200,6 +201,7 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameState.h" />
     <ClCompile Include="HudDrawBehaviour.cpp" />
+    <ClCompile Include="HudVisitor.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DrawBehaviour.cpp" />
@@ -210,6 +212,7 @@
     <ClCompile Include="ControllerInputHandler.cpp" />
     <ClCompile Include="InputContainer.cpp" />
     <ClCompile Include="KeyboardInputHandler.cpp" />
+    <ClCompile Include="Label.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="MachineGun.cpp" />
     <ClCompile Include="MachineGunBullet.cpp" />
@@ -221,6 +224,8 @@
     <ClCompile Include="Mike.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="SettingsScreen.cpp" />
     <ClCompile Include="MovingBulletCollideBehaviour.cpp" />
     <ClCompile Include="MovingBulletDrawBehaviour.cpp" />
     <ClCompile Include="ScreenEnum.cpp" />
@@ -244,6 +249,7 @@
     <ClCompile Include="SpawnController.cpp" />
     <ClCompile Include="StatsController.cpp" />
     <ClCompile Include="StoryModeButton.cpp" />
+    <ClCompile Include="SwitchButton.cpp" />
     <ClCompile Include="SwitchWeaponActionBehaviour.cpp" />
     <ClCompile Include="TextureFactory.cpp" />
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
@@ -276,11 +282,14 @@
     <ClInclude Include="CharacterDrawBehaviour.h" />
     <ClInclude Include="CollideBehaviour.h" />
     <ClInclude Include="CollideContainer.h" />
+    <ClInclude Include="CollideObject.h" />
     <ClInclude Include="GameMath.h" />
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="CreditButton.h" />
     <ClInclude Include="CreditScreen.h" />
     <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="HudVisitor.h" />
+    <ClInclude Include="Label.h" />
     <ClInclude Include="HudDrawBehaviour.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MachineGun.h" />
@@ -303,6 +312,8 @@
     <ClInclude Include="Mike.h" />
     <ClInclude Include="MoveBehaviour.h" />
     <ClInclude Include="MoveContainer.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="SettingsScreen.h" />
     <ClInclude Include="MovingBulletCollideBehaviour.h" />
     <ClInclude Include="MovingBulletDrawBehaviour.h" />
     <ClInclude Include="ScreenFactory.h" />
@@ -326,6 +337,7 @@
     <ClInclude Include="SpawnController.h" />
     <ClInclude Include="StatsController.h" />
     <ClInclude Include="StoryModeButton.h" />
+    <ClInclude Include="SwitchButton.h" />
     <ClInclude Include="SwitchWeaponActionBehaviour.h" />
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json-forwards.h" />

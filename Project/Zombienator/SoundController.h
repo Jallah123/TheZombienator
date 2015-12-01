@@ -2,6 +2,7 @@
 #include "SDL_mixer.h"
 #include <string>
 #include <map>
+#include "Settings.h"
 
 using namespace std;
 class SoundController
@@ -11,10 +12,12 @@ private:
 	SoundController(SoundController const&) = delete;
 	void operator=(SoundController const&) = delete;
 	Mix_Music* currentMusic = nullptr;
+	string currentMusicPath = "";
 	map<string, Mix_Chunk*> sounds;
 	Mix_Chunk* Load(string filename);
 	bool Exists(string path);
 	int volume = 25;
+	Settings* settings = &Settings::GetInstance();
 public:
 	static SoundController& GetInstance() {
 		static SoundController instance;
@@ -24,6 +27,8 @@ public:
 	void PlaySound(string path, int loops = 1);
 	void ChangeMusic(string path);
 	void Pause();
+	void StopMusic();
+	void StopSounds();
 	void StopAllSounds();
 	void SetVolume(int volume);
 	int GetVolume() { return this->volume; }

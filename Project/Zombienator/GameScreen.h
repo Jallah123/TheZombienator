@@ -12,9 +12,9 @@
 #include "GameObjectContainer.h"
 #include "CollideContainer.h"
 #include "GameState.h"
+#include "HudVisitor.h"
 
 class Quadtree;
-
 class GameScreen 
 	: public AbstractScreen
 {
@@ -46,6 +46,7 @@ private:
 	CollideContainer collideContainer;
 	GameObjectContainer* gameObjectContainer;
 	SpawnController spawnController;
+	HudVisitor hudVisitor;
 	
 	Mike* mike = nullptr;
 	Map* map = nullptr;

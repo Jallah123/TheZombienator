@@ -5,7 +5,7 @@
 #include <SDL_render.h>
 #include <algorithm>
 #include "GameObject.h"
-
+#include "TextureFactory.h"
 Quadtree::Quadtree() :
 	isLeaf(true)
 {
@@ -102,20 +102,23 @@ void Quadtree::Display(SDL_Renderer *renderer)
 {
 	SDL_SetRenderDrawColor(renderer, 48, 10, 36, 255);
 	SDL_RenderDrawRect(renderer, &rectangle);
-
+	
 	if (!isLeaf) {
+		
 		for (auto& n : nodes) {
 			n->Display(renderer);
 		}
+	}
+	else {
+		std::string s = std::to_string(objects.size());
+		std::pair<SDL_Texture*, SDL_Rect> t = TextureFactory::GenerateText(s, 12, rectangle.x + (rectangle.w / 2), rectangle.y + (rectangle.h / 2), SDL_Color{ 22,74, 38 });
+		SDL_RenderCopy(renderer, t.first, NULL, &t.second);
 	}
 }
 
 bool Quadtree::contains(GameObject *object)
 {
-	/*SDL_Rect* r = object->GetDestinationRect();
-	int xMiddle = r->x + (r->w / 2);
-	int yMiddle = r->y + (r->h / 2);*/
-	return SDL_HasIntersection(&rectangle, object->GetDestinationRect());
+	return SDL_HasIntersection(object->GetDestinationRect(), &rectangle);
 }
 
 bool Quadtree::contains(double x, double y)

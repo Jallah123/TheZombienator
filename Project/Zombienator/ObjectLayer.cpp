@@ -1,11 +1,6 @@
 #include "ObjectLayer.h"
 
-
-
-ObjectLayer::ObjectLayer() : Layer()
-{
-}
-
+ObjectLayer::ObjectLayer() : Layer() {}
 
 ObjectLayer::~ObjectLayer()
 {
@@ -22,13 +17,4 @@ void ObjectLayer::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
 	for (auto& r : rects) {
 		DrawRect(r, ren);
 	}*/
-}
-
-bool ObjectLayer::HasCollision(SDL_Rect src)
-{
-	for (const auto& r : rects) {
-		if (SDL_HasIntersection(&src, r))
-			return true;
-	}
-	return false;
 }

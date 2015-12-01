@@ -4,6 +4,7 @@
 #include "Zombie.h"
 #include "Map.h"
 #include "Quadtree.h"
+#include "CollideObject.h"
 
 GameObjectContainer::GameObjectContainer()
 {
@@ -57,10 +58,8 @@ void GameObjectContainer::SetMap(Map * m)
 	map = m;
 	ObjectLayer* col = map->GetObjectLayer("Collision");
 	for (auto& r : col->GetRects()) {
-		GameObject* go = new GameObject();
-		go->SetSize(r->w, r->h);
-		go->SetPosition(r->x, r->y);
-		AddGameObject(go);
+		CollideObject* co = new CollideObject(r->x, r->y, r->w, r->h);
+		AddGameObject(co);
 	}
 }
 
