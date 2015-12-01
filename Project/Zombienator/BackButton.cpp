@@ -4,8 +4,8 @@
 
 BackButton::BackButton(SDL_Renderer& ren, char* text, char* img_url) 
 	: Button(ren, text, img_url) {
-	srcRect = { 170 , 0, 110, 105 };
-	destRect = { 10, 10, 110, 105 };
+	srcRect = { 87 , 160, 82, 81 };
+	destRect = { 10, 12, 82, 82 };
 }
 
 

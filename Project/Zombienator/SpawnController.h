@@ -1,23 +1,15 @@
 #pragma once
 #include <vector>
-#include "Zombie.h"
-#include <random>
 #include <math.h>
+#include "Zombie.h"
+#include "StatsController.h"
 
 using std::vector;
-using std::random_device;
-using std::default_random_engine;
-using std::uniform_int_distribution;
 #define xy std::pair<int, int>
 
-class DrawContainer;
-class AnimateContainer;
-class ActionContainer;
-class MoveContainer;
-class CollideContainer;
-class CharacterContainer;
+class GameScreen;
+class Map;
 
-class StatsController;
 
 class SpawnController
 {
@@ -33,30 +25,27 @@ private:
 	int amountSpawned = 0;
 	int amountToSpawn = 0;
 	
-	float spawnTime = 100;
+	float spawnTime = 200;
 	float elapsedtime = 0;
 	float timeBetweenWaves = 500;//5 seconds
-	bool waveFinished = false;
-
-	bool completed = false;
-
-	random_device dev;
-	default_random_engine dre{ dev() };
-	uniform_int_distribution<int> locationDist;
-
-	SDL_Renderer* renderer = nullptr;
+	float maxElapsedTime = 1000;
 	
+	bool waveFinished = false;
+	bool completed = false;
+	
+	GameScreen* gameScreen = nullptr;
 	Character* target = nullptr;
 
-	StatsController* statsController = nullptr;
+	StatsController* statsController = StatsController::Instance();
 
 	bool IsFinished();
 public:
 	SpawnController();
+	SpawnController(GameScreen* gs);
 	~SpawnController();
 
-	void SetMap(Map* _map) { map = _map; };
-
+	void SetMap(Map* m);
+	
 	void Update(float dt);
 
 	void Spawn();
@@ -64,9 +53,7 @@ public:
 	void NextWave();
 
 	void Countdown();
-
-	void SetRenderer(SDL_Renderer* r) { this->renderer = r; }
-
+	
 	void AddLocation(int x, int y);
 
 	void AddTarget(Character* c) { this->target = c; }

@@ -41,7 +41,7 @@ bool SoundController::Exists(string path)
  */
 void SoundController::PlaySound(string path, int loops)
 {
-	if (playSounds) {
+	if (settings->getSound()) {
 		Mix_Chunk* sound = Load(path);
 		if (Mix_PlayChannel(-1, sound, loops) == -1) {
 			std::cout << "Unable to play WAV file: %s\n" << Mix_GetError();
@@ -51,7 +51,7 @@ void SoundController::PlaySound(string path, int loops)
 
 void SoundController::ChangeMusic(string path)
 {
-	if (playMusic) {
+	if (settings->getMusic()) {
 		if (path == currentMusicPath)
 		{
 			return;

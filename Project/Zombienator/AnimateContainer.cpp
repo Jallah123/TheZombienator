@@ -2,7 +2,6 @@
 #include "AnimateContainer.h"
 #include "AnimateBehaviour.h"
 #include "BehaviourFactory.h"
-
 AnimateContainer::AnimateContainer()
 {
 	BehaviourFactory::Instance()->Register("AnimateBehaviour", [](void) -> Behaviour* { return new AnimateBehaviour(); });

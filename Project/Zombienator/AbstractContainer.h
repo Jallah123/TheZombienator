@@ -5,8 +5,8 @@
 class AbstractContainer
 {
 protected:
-	std::vector<Behaviour*> arr;
-	std::vector<Behaviour*> arrRemove;
+	std::vector<Behaviour*> arr = {};
+	std::vector<Behaviour*> arrRemove = {};
 	
 public:
 	AbstractContainer();

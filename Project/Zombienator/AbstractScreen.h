@@ -3,10 +3,19 @@
 #include "SoundController.h"
 #include <vector>
 #include <SDL_render.h>
+#include <SDL_image.h>
 
 
 class AbstractScreen
 {
+protected:
+	SDL_Renderer* renderer = nullptr;
+	SDL_Texture* backgroundTexture = nullptr;
+	std::vector<AbstractUIComponent*> UIComponents;
+	SoundController* SoundController = &SoundController::GetInstance();
+
+	void ChangeBackground(SDL_Renderer* ren, char* img_url);
+
 public:
 	AbstractScreen();
 	AbstractScreen(SDL_Renderer* ren);
@@ -18,7 +27,7 @@ public:
 	virtual void ClickComponents(SDL_Point MousePosition);
 	virtual void ReceiveFocus() {};
 protected:
-	std::vector<AbstractUIComponent*> UIComponents;
-	SoundController* SoundController = &SoundController::GetInstance();
+	void SetBackgroundTexture(SDL_Texture& Texture) { backgroundTexture = &Texture; }
+	SDL_Texture* const GetBackgroundTexture() { return backgroundTexture; }
 };
 
