@@ -115,6 +115,7 @@ void GameScreen::Shake(float time, int intensity) {
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
+
 	//tree->Display(&ren);
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
@@ -163,17 +164,16 @@ void GameScreen::Transition(SDL_Renderer& ren) {
 
 	if (mike->getPosY() < -mike->GetHeight()) {
 
-		/*// Check if final map
+		ScreenController::GetInstance().PopLatestScreen();
+
+		// Check if final map
 		if (MapFactory::Instance()->IsQueueEmpty()) {
-			// Return to menu
-			ScreenController::GetInstance().Back();
-		}*/
-
-		// Remove this screen
-		//ScreenController::GetInstance().Back();
-
-		// Set next screen
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN));
+			ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::WINSCREEN));
+		}
+		else {
+			// Set next screen
+			ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN));
+		}
 
 	}
 

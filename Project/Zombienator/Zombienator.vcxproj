@@ -182,6 +182,7 @@
     <ClCompile Include="AnimateBehaviour.cpp" />
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
+    <ClCompile Include="BackToMenuButton.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="BehaviourFactory.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -277,6 +278,7 @@
     <ClInclude Include="AnimateBehaviour.h" />
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
+    <ClInclude Include="BackToMenuButton.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="BehaviourFactory.h" />
     <ClInclude Include="Bullet.h" />

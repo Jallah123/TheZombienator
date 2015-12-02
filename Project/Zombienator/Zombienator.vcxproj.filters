@@ -408,6 +408,9 @@
     <ClCompile Include="WinScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
+    <ClCompile Include="BackToMenuButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -655,6 +658,9 @@
     </ClInclude>
     <ClInclude Include="WinScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="BackToMenuButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

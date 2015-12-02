@@ -83,6 +83,7 @@ void SpawnController::NextWave()
 		completed = true;
 		return;
 	}
+	StatsController::Instance()->AddWaveDefeated();
 	currentWave++;
 	waveFinished = false;
 	amountSpawned = 0;//reset wave count
