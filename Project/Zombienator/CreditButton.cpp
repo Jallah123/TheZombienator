@@ -22,7 +22,6 @@ CreditButton::~CreditButton()
 
 void CreditButton::ClickAction()
 {
-	// SoundController::GetInstance().StopAllSounds();
 	ScreenController::GetInstance().ChangeScreen(new CreditScreen{ renderer});
 }
 

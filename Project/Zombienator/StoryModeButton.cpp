@@ -18,7 +18,6 @@ StoryModeButton::StoryModeButton(SDL_Renderer& ren, char* text, char* img_url)
 
 void StoryModeButton::ClickAction()
 {
-	SoundController::GetInstance().StopAllSounds();
 	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SELECTIONSCREEN, "assets/maps/landscape-1280x640.json"));
 }
 
