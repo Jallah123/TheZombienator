@@ -69,21 +69,8 @@ void GameScreen::Update(float dt)
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 	}*/
-	if (InputContainer::GetInstance().GetKeyState('['))
-	{
-		speed += 0.1;
-	}
-	else if (InputContainer::GetInstance().GetKeyState(']'))
-	{
-		speed -= 0.1;
-		if (speed < 0)
-			speed = 0;
-	}
-	else if (InputContainer::GetInstance().GetKeyState('\\'))
-	{
-		speed = 1.0;
-	}
-	dt *= speed;
+	
+	dt *= (float)settings->getGameSpeed() / 10;
 	
 
 	for (auto& g : gameObjectContainer.GetGameObjects()) {
@@ -129,6 +116,13 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	SDL_Rect r{ 0,0,200,40 };
 	SDL_RenderCopy(&ren, text, 0, &r);
 	SDL_DestroyTexture(text);
+
+	//fps:
+	if (settings->getShowFps()) {
+		std::pair<SDL_Texture*, SDL_Rect> fpsTexture = TextureFactory::GenerateText("FPS: " + to_string(this->fps), 30, 1225, 15, false);
+		SDL_RenderCopy(&ren, fpsTexture.first, NULL, &fpsTexture.second);
+		SDL_DestroyTexture(fpsTexture.first);
+	}
 
 
 }

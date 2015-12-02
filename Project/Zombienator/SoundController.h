@@ -16,7 +16,9 @@ private:
 	map<string, Mix_Chunk*> sounds;
 	Mix_Chunk* Load(string filename);
 	bool Exists(string path);
-	int volume = 25;
+	int defaultVolume = 25;
+	int musicVolume = 25;
+	int soundVolume = 25;
 	Settings* settings = &Settings::GetInstance();
 public:
 	static SoundController& GetInstance() {
@@ -30,7 +32,9 @@ public:
 	void StopMusic();
 	void StopSounds();
 	void StopAllSounds();
+	void MuteUnmuteMusic();
+	void MuteUnmuteSound();
 	void SetVolume(int volume);
-	int GetVolume() { return this->volume; }
+	int GetVolume() { return defaultVolume; };
 };
 

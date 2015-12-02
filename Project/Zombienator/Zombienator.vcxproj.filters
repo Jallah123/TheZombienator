@@ -67,9 +67,6 @@
     <Filter Include="Source Files\Controllers">
       <UniqueIdentifier>{d595bd32-f84a-4e03-901a-d1d7eca87f03}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Views\HomeScreen">
-      <UniqueIdentifier>{8def4405-30b8-4680-9e43-4f4afe45d8f2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models\Map">
       <UniqueIdentifier>{93814590-516a-477b-b9b3-cfcedaf8e00b}</UniqueIdentifier>
     </Filter>
@@ -88,20 +85,8 @@
     <Filter Include="Header Files\Views\GameScreen">
       <UniqueIdentifier>{4286bc62-bacc-4ec6-a753-c9575c3bbc70}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Views\SelectionScreen">
-      <UniqueIdentifier>{1d1cc560-4f1d-4f1a-949b-a53b5f5b46a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Views\HomeScreen">
-      <UniqueIdentifier>{1c10050b-fb4a-42b7-b2df-487b65d1870d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Views\MenuScreen">
-      <UniqueIdentifier>{8fbfc372-f45f-4b48-b4a1-93c5c8e2ff7f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Views\GameScreen">
       <UniqueIdentifier>{77491585-fcea-489f-b9ee-3d743ffe7e4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Views\SelectionScreen">
-      <UniqueIdentifier>{a4081e78-5064-42a1-bfc9-2410868c4a94}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Models\Guns">
       <UniqueIdentifier>{1a1525e5-69ee-4907-9fba-b6a6098e7b36}</UniqueIdentifier>
@@ -121,12 +106,6 @@
     <Filter Include="Source Files\Views\UIComponents\Buttons">
       <UniqueIdentifier>{32758691-0e08-4057-a631-90205109ad46}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Views\CreditScreen">
-      <UniqueIdentifier>{652aa2bb-3876-464d-836f-98efbf8b5ebd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Views\CreditScreen">
-      <UniqueIdentifier>{3036f219-9347-4310-abd1-a40c78f7de3e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Views\LoadingScreen">
       <UniqueIdentifier>{cc7bf64c-012e-46a5-89f8-c0758e290eed}</UniqueIdentifier>
     </Filter>
@@ -139,17 +118,14 @@
     <Filter Include="Header Files\Views\UIComponents\Label">
       <UniqueIdentifier>{64f62efb-7d6e-40bd-80b0-0c206c9d4bfb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Views\SettingsScreen">
-      <UniqueIdentifier>{37015632-a35b-4f14-8ad9-461d49358eae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Views\SettingsScreen">
-      <UniqueIdentifier>{e3e43db9-5930-4ef2-9228-f60e475c2e4e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models\States">
       <UniqueIdentifier>{02bb5746-9a97-47b1-b6b1-55e27cc38450}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Models\States">
       <UniqueIdentifier>{facbf6da-2e39-4ccd-be3b-97f0cca04439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\MenuScreens">
+      <UniqueIdentifier>{8fbfc372-f45f-4b48-b4a1-93c5c8e2ff7f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +143,6 @@
     </ClCompile>
     <ClCompile Include="DrawContainer.cpp">
       <Filter>Source Files\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="HomeScreen.cpp">
-      <Filter>Source Files\Views\HomeScreen</Filter>
     </ClCompile>
     <ClCompile Include="SettingsButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
@@ -238,13 +211,10 @@
       <Filter>Source Files\Containers</Filter>
     </ClCompile>
     <ClCompile Include="MenuScreen.cpp">
-      <Filter>Source Files\Views\MenuScreen</Filter>
+      <Filter>Source Files\Views\MenuScreens</Filter>
     </ClCompile>
     <ClCompile Include="GameScreen.cpp">
       <Filter>Source Files\Views\GameScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectionScreen.cpp">
-      <Filter>Source Files\Views\SelectionScreen</Filter>
     </ClCompile>
     <ClCompile Include="Mike.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
@@ -354,9 +324,6 @@
     <ClCompile Include="CreditButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
-    <ClCompile Include="CreditScreen.cpp">
-      <Filter>Source Files\Views\CreditScreen</Filter>
-    </ClCompile>
     <ClCompile Include="StatsController.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
@@ -371,9 +338,6 @@
     </ClCompile>
     <ClCompile Include="Label.cpp">
       <Filter>Source Files\Views\UIComponents\Label</Filter>
-    </ClCompile>
-    <ClCompile Include="SettingsScreen.cpp">
-      <Filter>Source Files\Views\SettingsScreen</Filter>
     </ClCompile>
     <ClCompile Include="SwitchButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
@@ -419,6 +383,33 @@
     </ClCompile>
     <ClCompile Include="HudVisitor.cpp">
       <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchButtonGameSpeed.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSpeed.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDifficulty.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchButtonGameDifficulty.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionScreen.cpp">
+      <Filter>Source Files\Views\MenuScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeScreen.cpp">
+      <Filter>Source Files\Views\MenuScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditScreen.cpp">
+      <Filter>Source Files\Views\MenuScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsScreen.cpp">
+      <Filter>Source Files\Views\MenuScreens</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -506,17 +497,11 @@
     <ClInclude Include="GameScreen.h">
       <Filter>Header Files\Views\GameScreen</Filter>
     </ClInclude>
-    <ClInclude Include="SelectionScreen.h">
-      <Filter>Header Files\Views\SelectionScreen</Filter>
-    </ClInclude>
     <ClInclude Include="BackButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="HomeScreen.h">
-      <Filter>Header Files\Views\HomeScreen</Filter>
     </ClInclude>
     <ClInclude Include="Mike.h">
       <Filter>Header Files\Models\GameObject</Filter>
@@ -632,9 +617,6 @@
     <ClInclude Include="CreditButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="CreditScreen.h">
-      <Filter>Header Files\Views\CreditScreen</Filter>
-    </ClInclude>
     <ClInclude Include="CollideObject.h">
       <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
@@ -644,14 +626,32 @@
     <ClInclude Include="SwitchButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="SettingsScreen.h">
-      <Filter>Header Files\Views\SettingsScreen</Filter>
-    </ClInclude>
     <ClInclude Include="Settings.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="HudVisitor.h">
       <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchButtonGameSpeed.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchButtonGameDifficulty.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
