@@ -42,6 +42,7 @@ void PlayableCharacter::Teleport(SDL_Renderer* ren) {
 
 	if (!this->isFlare) {
 		SetFlare(true);
+		this->Remove();
 	}
 
 	// Set flare

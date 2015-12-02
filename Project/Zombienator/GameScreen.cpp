@@ -145,7 +145,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	SDL_RenderCopy(&ren, text, 0, &r);
 	SDL_DestroyTexture(text);
 
-	//fps:
+	// FPS
 	if (settings->getShowFps()) {
 		std::pair<SDL_Texture*, SDL_Rect> fpsTexture = TextureFactory::GenerateText("FPS: " + to_string(this->fps), 30, 1225, 15, false);
 		SDL_RenderCopy(&ren, fpsTexture.first, NULL, &fpsTexture.second);
@@ -159,7 +159,6 @@ void GameScreen::Transition(SDL_Renderer& ren) {
 	mike->Teleport(&ren);
 
 	// Draw on top off everything
-	mike->Remove();
 	SDL_RenderCopy(&ren, mike->GetTexture(), &mike->GetSourceRect(), mike->GetDestinationRect());
 
 	if (mike->getPosY() < -mike->GetHeight()) {
