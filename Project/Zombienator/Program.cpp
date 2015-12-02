@@ -54,21 +54,8 @@ void Program::ShowLoadingScreen() {
 
 void Program::ShowGameOverScreen()
 {
-	GameOverScreen* l = dynamic_cast<GameOverScreen*>(ScreenFactory::Create(ScreenEnum::GAMEOVERSCREEN));
-	ScreenController::GetInstance().AddGameOverScreen(l);
-
-	// SDL Render
-	SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	SDL_RenderClear(Sdl_Renderer);
-	ScreenController::GetInstance().GetGameOverScreen()->Draw(*Sdl_Renderer, 0);
-
-	// Update screen 
-	SDL_RenderPresent(Sdl_Renderer);
-
-	// Sleep
-	SDL_Delay(22000); // 22 seconde till music 
-	SoundController::GetInstance().StopAllSounds();
 	ScreenController::GetInstance().Back();
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMEOVERSCREEN));
 }
 
 SDL_Renderer* Program::GetRenderer() {
@@ -96,22 +83,22 @@ int Program::Tick() {
 		currentFrameTime = SDL_GetTicks();
 		deltaTime = float(currentFrameTime - lastFrameTime) / 10;
 
+		// Handle events on queue 
+		while (SDL_PollEvent(&e) != 0) {
+			Events(currentScreen);
+		}
+
 		// Get currentScreen
 		currentScreen = sc->GetCurrentScreen();
 
 		// Check Gameover
-		if(GameScreen* g = dynamic_cast<GameScreen*>(currentScreen))
+		if (GameScreen* g = dynamic_cast<GameScreen*>(currentScreen))
 		{
-			if(g->IsGameOver())
+			if (g->IsGameOver())
 			{
 				ShowGameOverScreen();
 				currentScreen = sc->GetCurrentScreen();
 			}
-		}
-
-		// Handle events on queue 
-		while (SDL_PollEvent(&e) != 0) {
-			Events(currentScreen);
 		}
 
 		// Check if screen has changed
@@ -123,7 +110,6 @@ int Program::Tick() {
 		currentScreen->setFPS(this->CalculateFPS());
 		currentScreen->Update(deltaTime);
 		Render(currentScreen);
-
 
 		// Update previousScreen
 		previousScreen = currentScreen;

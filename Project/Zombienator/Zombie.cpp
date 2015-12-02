@@ -42,7 +42,7 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	SetHealth(50);
 
 	// -- Zombie Attack
-	SetAttackDamage(1);
+	SetAttackDamage(50);
 	SetAttackSpeed(2);
 	SetSoundSpeed(2);
 }

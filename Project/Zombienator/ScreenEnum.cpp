@@ -5,5 +5,4 @@ enum ScreenEnum {
 	GAMESCREEN,
 	GAMEOVERSCREEN,
 	WINSCREEN
->>>>>>> refs/remotes/origin/f/NextLevel
 };

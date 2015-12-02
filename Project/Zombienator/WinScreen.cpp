@@ -8,27 +8,16 @@
 WinScreen::WinScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
 	ChangeBackground(ren, "assets/images/win_bg.png");
+	//std::string fontUrl = "assets/fonts/OCR-A-Extended.ttf";
 
-	// Get stats
-	int totalKills = StatsController::Instance()->GetTotalKills();
-	int totalWavesDefeated = StatsController::Instance()->GetTotalWavesDefeated();
-
-	// Convert to char
-	char totalKillsConverted[32];
-	sprintf(totalKillsConverted, "%d", totalKills);
-	char totalWavesDefeatedConverted[32];
-	sprintf(totalWavesDefeatedConverted, "%d", totalWavesDefeated);
-
-	// Add to string
-	char totalKillsString[64] = " Kills: ";
-	strcat(totalKillsString, totalKillsConverted);
-	char totalWavesDefeatedString[64] = " Waves Defeated: ";
-	strcat(totalWavesDefeatedString, totalWavesDefeatedConverted);
+	string fontUrl = "assets/fonts/Block-Cartoon.ttf";
+	string totalKillsString = "Kills: " + std::to_string(StatsController::Instance()->GetTotalKills());
+	string totalWavesDefeatedString = "Waves Defeated: " + std::to_string(StatsController::Instance()->GetTotalWavesDefeated());
 
 	// Elements
 	BackToMenuButton* aButton = new BackToMenuButton(*ren, "", "assets/images/button_backtomenu.png");
-	Label* aLabel = new Label(*ren, totalKillsString, 642, 335, 20, { 255,255,255 });
-	Label* bLabel = new Label(*ren, totalWavesDefeatedString, 642, 365, 20, { 255,255,255 });
+	Label* aLabel = new Label(*ren, strdup(totalKillsString.c_str()), 642, 335, 18, fontUrl, { 255,255,255 });
+	Label* bLabel = new Label(*ren, strdup(totalWavesDefeatedString.c_str()), 642, 365, 18, fontUrl, { 255,255,255 });
 	
 	// Add to UI
 	AddUIComponent(aButton);

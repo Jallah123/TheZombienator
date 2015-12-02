@@ -18,9 +18,7 @@ public:
 	AbstractScreen* GetCurrentScreen() { return screenStack.top(); };
 	void PopLatestScreen() { screenStack.pop(); };
 	AbstractScreen* GetLoadingScreen() { return loadingScreen; };
-	AbstractScreen* GetGameOverScreen() { return gameoverScreen; };
 	void AddLoadingScreen(AbstractScreen* s) { loadingScreen = s; };
-	void AddGameOverScreen(AbstractScreen* s) { gameoverScreen = s; };
 	int Size();
 private:
 	ScreenController() {};
@@ -29,7 +27,6 @@ private:
 	void operator=(ScreenController const&) = delete;
 	stack<AbstractScreen*> screenStack;
 	AbstractScreen* loadingScreen;
-	AbstractScreen* gameoverScreen;
 };
 
 

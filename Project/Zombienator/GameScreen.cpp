@@ -148,7 +148,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	// FPS
 	if (settings->getShowFps()) {
-		std::pair<SDL_Texture*, SDL_Rect> fpsTexture = TextureFactory::GenerateText("FPS: " + to_string(this->fps), 30, 1225, 15, false);
+		std::pair<SDL_Texture*, SDL_Rect> fpsTexture = TextureFactory::GenerateText("FPS: " + to_string(this->fps), 30, 1225, 15, "assets/fonts/Roboto-Medium.ttf");
 		SDL_RenderCopy(&ren, fpsTexture.first, NULL, &fpsTexture.second);
 		SDL_DestroyTexture(fpsTexture.first);
 	}

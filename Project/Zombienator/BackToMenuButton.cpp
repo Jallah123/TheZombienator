@@ -9,6 +9,7 @@ BackToMenuButton::BackToMenuButton(SDL_Renderer& ren, char* text, char* img_url)
 }
 
 void BackToMenuButton::ClickAction() {
+	SoundController::GetInstance().StopAllSounds();
 	ScreenController::GetInstance().Back();
 }
 
