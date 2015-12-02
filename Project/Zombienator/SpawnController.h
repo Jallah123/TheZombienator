@@ -24,14 +24,15 @@ private:
 	int zombies = 0;
 	int amountSpawned = 0;
 	int amountToSpawn = 0;
-	
+
 	float spawnTime = 200;
 	float elapsedtime = 0;
 	float timeBetweenWaves = 500;//5 seconds
 	float maxElapsedTime = 1000;
-	
+
 	bool waveFinished = false;
 	bool completed = false;
+	bool allWavesCompleted = false;
 	
 	GameScreen* gameScreen = nullptr;
 	Character* target = nullptr;
@@ -73,6 +74,8 @@ public:
 	int GetAmountSpawned() { return amountSpawned; }
 
 	bool WaveCompleted() { return this->waveFinished; }
+
+	bool AllWavesCompleted() { return this->allWavesCompleted; }
 
 	bool Completed() { return completed; }
 };
