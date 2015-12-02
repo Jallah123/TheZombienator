@@ -64,7 +64,10 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	backgroundTexture = TextureFactory::GenerateTextureFromImgUrl("assets/images/default_bg.png");
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy1.png"));
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy2.png"));
-
+	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy3.png"));
+	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy4.png"));
+	images.push_back(new Image(*ren, "assets/images/spritesheets/Girl1.png"));
+	images.push_back(new Image(*ren, "assets/images/spritesheets/Girl2.png"));
 	//Init buttons
 	char* ssUrl = "assets/images/button_spritesheet.png";
 
