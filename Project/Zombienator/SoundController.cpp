@@ -60,6 +60,7 @@ void SoundController::ChangeMusic(string path)
 		if (currentMusic != nullptr)
 		{
 			Mix_FreeMusic(currentMusic);
+			currentMusic = nullptr;
 		}
 		Mix_Music* music;
 

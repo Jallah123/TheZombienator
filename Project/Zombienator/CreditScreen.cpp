@@ -39,13 +39,13 @@ void CreditScreen::addTextToSet(string message)
 	startY += 50;
 }
 
-
-
 CreditScreen::~CreditScreen()
 {
 	for (auto& i : textList) {
 		SDL_DestroyTexture(i.first);
+		i.first = nullptr;
 	}
+	textList.clear();
 }
 
 void CreditScreen::resetTextSet()

@@ -12,6 +12,7 @@ Label::Label(SDL_Renderer& ren, char* text, int posX, int posY, int fontSize, SD
 
 Label::~Label()
 {
+	SDL_DestroyTexture(label.first);
 }
 
 void Label::Draw(SDL_Renderer& ren) {
