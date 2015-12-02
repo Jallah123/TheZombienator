@@ -114,5 +114,8 @@ void SelectionScreen::Draw(SDL_Renderer & ren, float dt)
 
 SelectionScreen::~SelectionScreen()
 {
-
+	for (auto& image: images)
+	{
+		delete image;
+	}
 }
