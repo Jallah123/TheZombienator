@@ -9,5 +9,6 @@ class GameOverScreen : public AbstractScreen
 
 		virtual void Update(float dt) override;
 		virtual void Draw(SDL_Renderer& ren, float dt) override;
+		void DrawStats(SDL_Renderer& ren);
 };
 

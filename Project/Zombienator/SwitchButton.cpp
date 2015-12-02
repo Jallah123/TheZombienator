@@ -9,7 +9,7 @@ SwitchButton::SwitchButton(SDL_Renderer& ren, char* text, char* img_url, int pos
 	this->parentScreen = &_parentScreen;
 	this->enableStatus = _enableStatus;
 	this->value = value;
-	buttonText = TextureFactory::GenerateText(string(text), 24, posX + (destRect.w / 2), posY + (destRect.h / 2), true, { 248 ,248 ,255 });
+	buttonText = TextureFactory::GenerateText(string(text), 24, posX + (destRect.w / 2), posY + (destRect.h / 2), "assets/fonts/Block-Cartoon.ttf", { 248 ,248 ,255 });
 
 	if (enableStatus) {
 		srcRect = enableRect;

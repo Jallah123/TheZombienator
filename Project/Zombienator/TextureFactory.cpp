@@ -63,22 +63,15 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 	SDL_FreeSurface(surface);
 	return texture;
 }
- 
- std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, int fontSize, int xPos, int yPos, bool cartoonFont, SDL_Color color) {
-	
+
+std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, int fontSize, int xPos, int yPos, std::string fontUrl, SDL_Color color) 
+{	
 	std::pair<SDL_Texture*, SDL_Rect> returnObject = {};
-	static bool fontCartoonBoolean;
 	static TTF_Font* font;
-	if (font == nullptr || fontCartoonBoolean != cartoonFont) {
-		
-		if (cartoonFont) {
-			font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", fontSize);
-		}
-		else {
-			font = TTF_OpenFont("assets/fonts/Roboto-Medium.ttf", fontSize);
-		}
-		fontCartoonBoolean = cartoonFont;
+	if (font == nullptr) {
+		font = TTF_OpenFont(fontUrl.c_str(), fontSize);
 	}
+
 	if (font == nullptr) {
 		cout << "Error opening font" << endl;
 		return returnObject;
