@@ -162,7 +162,7 @@ void GameScreen::Transition(SDL_Renderer& ren) {
 	mike->Remove();
 	SDL_RenderCopy(&ren, mike->GetTexture(), &mike->GetSourceRect(), mike->GetDestinationRect());
 
-	if (mike->getPosY() < -256) {
+	if (mike->getPosY() < -mike->GetHeight()) {
 
 		/*// Check if final map
 		if (MapFactory::Instance()->IsQueueEmpty()) {
