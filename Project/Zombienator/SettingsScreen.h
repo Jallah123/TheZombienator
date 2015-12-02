@@ -4,9 +4,12 @@
 #include "BackButton.h"
 #include "Label.h"
 #include "SwitchButton.h"
+#include "SwitchButtonGameSpeed.h"
+#include "SwitchButtonGameDifficulty.h"
+#include "VolumeButton.h"
 #include "Settings.h"
 #include <functional>
-
+#include <list>
 using namespace std;
 class SettingsScreen :
 	public MenuScreen
@@ -14,6 +17,8 @@ class SettingsScreen :
 protected:
 
 	void initCompontents(SDL_Renderer &ren);
+
+	Label* currentVolumeLabel;
 
 	SwitchButton* musicOnBtn = nullptr;
 	SwitchButton* musicOffBtn = nullptr;
@@ -26,6 +31,13 @@ protected:
 
 	SwitchButton* fpsOnBtn = nullptr;
 	SwitchButton* fpsOffBtn = nullptr;
+
+	VolumeButton* volumeIncBtn = nullptr;
+	VolumeButton* volumeDecBtn = nullptr;
+
+	std::list<SwitchButtonGameSpeed*> gameSpeedBtns = {};
+
+	std::list<SwitchButtonGameDifficulty*> gameDifficultyBtns = {};
 
 	Settings* Settings = &Settings::GetInstance();
 
@@ -48,6 +60,7 @@ public:
 	void setSound(bool value) {
 		if (Settings->getSound() != value) {
 			Settings->setSound(value);
+			SoundController->MuteUnmuteSound();
 			soundOnBtn->toggleEnabledStatus();
 			soundOffBtn->toggleEnabledStatus();
 		}
@@ -56,6 +69,7 @@ public:
 	void setMusic(bool value) {
 		if (Settings->getMusic() != value) {
 			Settings->setMusic(value);
+			SoundController->MuteUnmuteMusic();
 			musicOnBtn->toggleEnabledStatus();
 			musicOffBtn->toggleEnabledStatus();
 		}
@@ -66,6 +80,36 @@ public:
 			Settings->setShowFps(value);
 			fpsOnBtn->toggleEnabledStatus();
 			fpsOffBtn->toggleEnabledStatus();
+		}
+	};
+
+	void setGameSpeed(GameSpeed value) {
+		if (Settings->getGameSpeed() != value) {
+			Settings->setGameSpeed(value);
+			for (const auto& i : gameSpeedBtns)
+				i->toggleEnabledStatus();
+		}
+	};
+
+	void setGameDifficulty(GameDifficulty value) {
+		if (Settings->getGameDifficulty() != value) {
+			Settings->setGameDifficulty(value);
+			for (const auto& i : gameDifficultyBtns)
+				i->toggleEnabledStatus();
+		}
+	};
+
+	void increaseVolume(int value) {
+		if (SoundController->GetVolume() < 100) {
+			SoundController->SetVolume(SoundController->GetVolume() + value);
+			currentVolumeLabel->updateText(SoundController->GetVolume());
+		}
+	};
+
+	void decreaseVolume(int value) {
+		if (SoundController->GetVolume() > 0) {
+			SoundController->SetVolume(SoundController->GetVolume() - value);
+			currentVolumeLabel->updateText(SoundController->GetVolume());
 		}
 	};
 
