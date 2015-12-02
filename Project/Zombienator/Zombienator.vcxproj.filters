@@ -405,6 +405,9 @@
     <ClCompile Include="SettingsScreen.cpp">
       <Filter>Source Files\Views\MenuScreens</Filter>
     </ClCompile>
+    <ClCompile Include="WinScreen.cpp">
+      <Filter>Source Files\Views\LoadingScreen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -611,9 +614,6 @@
     <ClInclude Include="CreditButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="CreditScreen.h">
-      <Filter>Header Files\Views\CreditScreen</Filter>
-    </ClInclude>
     <ClInclude Include="MapFactory.h">
       <Filter>Header Files\Factories</Filter>
     </ClInclude>
@@ -649,6 +649,12 @@
     </ClInclude>
     <ClInclude Include="CreditScreen.h">
       <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinScreen.h">
+      <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

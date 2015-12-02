@@ -259,6 +259,7 @@
     <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WinScreen.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieAttackState.cpp" />
     <ClCompile Include="ZombieStandStillState.cpp" />
@@ -351,6 +352,7 @@
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WinScreen.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieAttackState.h" />
     <ClInclude Include="ZombieStandStillState.h" />

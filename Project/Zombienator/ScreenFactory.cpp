@@ -1,6 +1,7 @@
 #include "ScreenFactory.h"
 #include "HomeScreen.h"
 #include "LoadingScreen.h"
+#include "WinScreen.h"
 #include "SelectionScreen.h"
 #include "MenuScreen.h"
 #include "GameScreen.h"
@@ -10,6 +11,7 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 	std::map<ScreenEnum, std::function<AbstractScreen*(void)>> map;
 	map[ScreenEnum::HOMESCREEN] = [](void) -> AbstractScreen * { return new HomeScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::LOADINGSCREEN] = [](void) -> AbstractScreen * { return new LoadingScreen{ Program::getInstance()->GetRenderer() }; };
+	map[ScreenEnum::WINSCREEN] = [](void) -> AbstractScreen * { return new WinScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::SELECTIONSCREEN] = [](void) -> AbstractScreen * { return new SelectionScreen{ Program::getInstance()->GetRenderer() }; };
 	return map;
 }
