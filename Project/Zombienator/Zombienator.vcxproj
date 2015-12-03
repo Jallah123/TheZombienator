@@ -194,6 +194,7 @@
     <ClCompile Include="CollideObject.cpp" />
     <ClCompile Include="CreditButton.cpp" />
     <ClCompile Include="CreditScreen.cpp" />
+    <ClCompile Include="CustomFuncButton.cpp" />
     <ClCompile Include="Direction.cpp" />
     <ClCompile Include="GameDifficulty.cpp" />
     <ClCompile Include="GameMath.cpp" />
@@ -202,7 +203,6 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameState.h" />
     <ClCompile Include="GameSpeed.cpp" />
-    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="HudDrawBehaviour.cpp" />
     <ClCompile Include="HudVisitor.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -227,6 +227,7 @@
     <ClCompile Include="Mike.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
+    <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SettingsScreen.cpp" />
     <ClCompile Include="MovingBulletCollideBehaviour.cpp" />
@@ -289,6 +290,7 @@
     <ClInclude Include="CollideBehaviour.h" />
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="CollideObject.h" />
+    <ClInclude Include="CustomFuncButton.h" />
     <ClInclude Include="GameMath.h" />
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="CreditButton.h" />
@@ -318,6 +320,7 @@
     <ClInclude Include="Mike.h" />
     <ClInclude Include="MoveBehaviour.h" />
     <ClInclude Include="MoveContainer.h" />
+    <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="SettingsScreen.h" />
     <ClInclude Include="MovingBulletCollideBehaviour.h" />
