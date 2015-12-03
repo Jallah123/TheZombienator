@@ -42,8 +42,11 @@ private:
 	SDL_Texture* normalTexture = nullptr;
 	SDL_Texture* AttackTexture = nullptr;
 	
-	float attackDamage;
-	float attackSpeed;
-	float soundSpeed;
+	float attackDamage = 0;
+	float attackSpeed = 0;
+	float soundSpeed = 0;
+
+	const double sweetspotX = 35;
+	const double sweetspotY = 25;
 };
 

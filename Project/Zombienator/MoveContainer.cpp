@@ -9,7 +9,6 @@
 MoveContainer::MoveContainer()
 {
 	BehaviourFactory::Instance()->Register("PcMoveBehaviour", [](void) -> Behaviour* { return new PcMoveBehaviour(); });
-	//BehaviourFactory::Instance()->Register("AiMoveBehaviour", [](void) -> Behaviour* { return new AiMoveBehaviour(); });
 	BehaviourFactory::Instance()->Register("BulletMoveBehaviour", [](void) -> Behaviour* { return new BulletMoveBehaviour(); });
 }
 
@@ -21,6 +20,7 @@ MoveContainer::~MoveContainer()
 void MoveContainer::Move(float dt)
 {
 	if (this->arr.empty()) return;//Do nothing on empty
+
 	for (Behaviour* i : this->arr) {
 		MoveBehaviour* mb = static_cast<MoveBehaviour*>(i);
 

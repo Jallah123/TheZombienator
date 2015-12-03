@@ -18,7 +18,7 @@ void BackToMenuButton::ClickAction()
 	MapFactory::GetInstance()->EmptyQueue();
 	SoundController::GetInstance().StopAllSounds();
 	ScreenController::GetInstance().EmptyStack();
-	ScreenController::GetInstance().ChangeScreen(new HomeScreen{ renderer });
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::HOMESCREEN));
 }
 
 BackToMenuButton::BackToMenuButton() {}

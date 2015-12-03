@@ -93,13 +93,13 @@ void Character::SetCollideBehaviour(std::string name)
 
 void Character::Remove()
 {
-	drawBehaviour->CanRemove(true);
-	animateBehaviour->CanRemove(true);
-	if(moveBehaviour != nullptr)
-		moveBehaviour->CanRemove(true);
-	collideBehaviour->CanRemove(true);
+	if (drawBehaviour != nullptr) drawBehaviour->CanRemove(true);
+	if (animateBehaviour != nullptr) animateBehaviour->CanRemove(true);
+	if (moveBehaviour != nullptr) moveBehaviour->CanRemove(true);
+	if (collideBehaviour != nullptr) collideBehaviour->CanRemove(true);
 	for (const auto& ab : actionBehaviours) {
-		ab->CanRemove(true);
+		if (ab != nullptr)
+			ab->CanRemove(true);
 	}
 	this->gameObjectContainer->Remove(this);
 }

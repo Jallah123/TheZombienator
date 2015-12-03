@@ -61,8 +61,8 @@ void Bullet::SetCollideBehaviour(std::string name)
 
 void Bullet::Remove()
 {
-	drawBehaviour->CanRemove(true);
-	moveBehaviour->CanRemove(true);
-	collideBehaviour->CanRemove(true);
+	if (drawBehaviour != nullptr) drawBehaviour->CanRemove(true);
+	if (moveBehaviour != nullptr) moveBehaviour->CanRemove(true);
+	if (collideBehaviour != nullptr) collideBehaviour->CanRemove(true);
 	this->gameObjectContainer->Remove(this);
 }
