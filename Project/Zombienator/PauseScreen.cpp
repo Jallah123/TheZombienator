@@ -50,6 +50,7 @@ void PauseScreen::Settings()
 
 void PauseScreen::Quit()
 {
+	MapFactory::GetInstance()->EmptyQueue();
 	ScreenController::GetInstance().EmptyStack();
 	ScreenController::GetInstance().ChangeScreen(new HomeScreen{ renderer });
 }
