@@ -59,6 +59,11 @@ GameScreen::~GameScreen()
 	delete gameObjectContainer;
 }
 
+void GameScreen::ReceiveFocus()
+{
+	currentState = GameState::RUNNING;
+}
+
 void GameScreen::Update(float dt)
 {
 	dt *= (float)settings->getGameSpeed() / 10;
@@ -91,25 +96,8 @@ void GameScreen::Update(float dt)
 
 void GameScreen::HandleInput(float dt) 
 {
-	if (InputContainer::GetInstance().GetKeyState('['))
-	{
-		speed += 0.1;
-	}
-	else if (InputContainer::GetInstance().GetKeyState(']'))
-	{
-		speed -= 0.1;
-		if (speed < 0)
-			speed = 0;
-	}
-	else if (InputContainer::GetInstance().GetKeyState('\\'))
-	{
-		speed = 1.0;
-	}
-	else if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
-	{
-		ScreenController::GetInstance().Back();
-	}
-	else if (InputContainer::GetInstance().GetKeyState(SDLK_p))
+
+ if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
 	{
 		if (timeLastStateChange <= 0) {
 			if (currentState == GameState::PAUSE)
@@ -118,10 +106,12 @@ void GameScreen::HandleInput(float dt)
 			}
 			else {
 				currentState = GameState::PAUSE;
+				ScreenController::GetInstance().ChangeScreen(new PauseScreen{ renderer });
 			}
 			timeLastStateChange = stateChangeDelay;
 		}
 	}
+
 	timeLastStateChange -= dt;
 }
 

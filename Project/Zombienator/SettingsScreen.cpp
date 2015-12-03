@@ -128,7 +128,6 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 
 SettingsScreen::~SettingsScreen()
 {
-	SoundController->StopAllSounds();
 }
 
 

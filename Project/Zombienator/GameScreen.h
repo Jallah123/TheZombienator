@@ -15,6 +15,8 @@
 #include "CollideContainer.h"
 #include "GameState.h"
 #include "HudVisitor.h"
+#include "PauseScreen.h"
+
 
 class Quadtree;
 class GameScreen 
@@ -26,6 +28,7 @@ public:
 	~GameScreen();
 	void Shake(float time, int intensity = 20);
 	virtual void Update(float dt) override;
+	virtual void ReceiveFocus() override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 	Quadtree* GetTree() { return this->tree; }
 private:
