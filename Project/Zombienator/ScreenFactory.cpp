@@ -19,7 +19,6 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 }
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> ScreenFactory::ScreenMap = fillMap();
-
 AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string map, string img_url)
 {
 	AbstractScreen* screen = nullptr;

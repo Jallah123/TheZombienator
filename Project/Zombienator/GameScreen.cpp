@@ -50,7 +50,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path, string char_img_url) : Ab
 	mike = goFactory->CreateMike(char_img_url);
 	mike->SetPosition(800, 150);
 
-
 	spawnController.AddTarget(mike);
 
 	//Load && play sound

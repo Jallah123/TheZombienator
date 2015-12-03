@@ -419,7 +419,7 @@
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>Source Files</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="GameOverScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
@@ -431,7 +431,7 @@
     </ClCompile>
     <ClCompile Include="LabelEndScreen.cpp">
       <Filter>Source Files\Views\UIComponents\Label</Filter>
-		</ClCompile>
+    </ClCompile>
     <ClCompile Include="StatsScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
@@ -703,7 +703,7 @@
     </ClInclude>
     <ClInclude Include="LabelEndScreen.h">
       <Filter>Header Files\Views\UIComponents\Label</Filter>
-		</ClInclude>
+    </ClInclude>
     <ClInclude Include="StatsScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
