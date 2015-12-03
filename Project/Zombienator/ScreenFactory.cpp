@@ -1,27 +1,31 @@
 #include "ScreenFactory.h"
 #include "HomeScreen.h"
 #include "LoadingScreen.h"
+#include "WinScreen.h"
 #include "SelectionScreen.h"
 #include "MenuScreen.h"
 #include "GameScreen.h"
+#include "GameOverScreen.h"
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 {
 	std::map<ScreenEnum, std::function<AbstractScreen*(void)>> map;
 	map[ScreenEnum::HOMESCREEN] = [](void) -> AbstractScreen * { return new HomeScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::LOADINGSCREEN] = [](void) -> AbstractScreen * { return new LoadingScreen{ Program::getInstance()->GetRenderer() }; };
+	map[ScreenEnum::WINSCREEN] = [](void) -> AbstractScreen * { return new WinScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::SELECTIONSCREEN] = [](void) -> AbstractScreen * { return new SelectionScreen{ Program::getInstance()->GetRenderer() }; };
+	map[ScreenEnum::GAMEOVERSCREEN] = [](void) -> AbstractScreen * { return new GameOverScreen{ Program::getInstance()->GetRenderer() }; };
 	return map;
 }
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> ScreenFactory::ScreenMap = fillMap();
 
-AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string map)
+AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum)
 {
 	AbstractScreen* screen = nullptr;
-	if (screenEnum == ScreenEnum::GAMESCREEN && map != "")
+	if (screenEnum == ScreenEnum::GAMESCREEN)
 	{
-		screen = new GameScreen(Program::getInstance()->GetRenderer(), map);
+		screen = new GameScreen(Program::getInstance()->GetRenderer());
 	}
 	else {
 		auto it = ScreenMap.find(screenEnum);

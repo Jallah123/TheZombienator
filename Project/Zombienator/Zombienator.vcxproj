@@ -182,6 +182,7 @@
     <ClCompile Include="AnimateBehaviour.cpp" />
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
+    <ClCompile Include="BackToMenuButton.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="BehaviourFactory.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -200,6 +201,7 @@
     <ClCompile Include="GameMath.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectContainer.cpp" />
+    <ClCompile Include="GameOverScreen.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameState.h" />
     <ClCompile Include="GameSpeed.cpp" />
@@ -215,6 +217,8 @@
     <ClCompile Include="ControllerInputHandler.cpp" />
     <ClCompile Include="InputContainer.cpp" />
     <ClCompile Include="KeyboardInputHandler.cpp" />
+    <ClCompile Include="LabelEndScreen.cpp" />
+    <ClCompile Include="LandscapeMap.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="MachineGun.cpp" />
@@ -222,6 +226,7 @@
     <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="MapParser.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Mike.cpp" />
@@ -234,6 +239,7 @@
     <ClCompile Include="MovingBulletDrawBehaviour.cpp" />
     <ClCompile Include="ScreenEnum.cpp" />
     <ClCompile Include="ScreenFactory.cpp" />
+    <ClCompile Include="SnowMap.cpp" />
     <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="NonPlayableCharacter.cpp" />
     <ClCompile Include="NormalBullet.cpp" />
@@ -252,6 +258,7 @@
     <ClCompile Include="ShootActionBehaviour.cpp" />
     <ClCompile Include="SpawnController.cpp" />
     <ClCompile Include="StatsController.cpp" />
+    <ClCompile Include="StatsScreen.cpp" />
     <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="SwitchButton.cpp" />
     <ClCompile Include="SwitchButtonGameDifficulty.cpp" />
@@ -263,6 +270,7 @@
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="VolumeButton.cpp" />
     <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WinScreen.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieAttackState.cpp" />
     <ClCompile Include="ZombieStandStillState.cpp" />
@@ -280,6 +288,7 @@
     <ClInclude Include="AnimateBehaviour.h" />
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
+    <ClInclude Include="BackToMenuButton.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="BehaviourFactory.h" />
     <ClInclude Include="Bullet.h" />
@@ -295,15 +304,19 @@
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="CreditButton.h" />
     <ClInclude Include="CreditScreen.h" />
+    <ClInclude Include="GameOverScreen.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="HudVisitor.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="HudDrawBehaviour.h" />
+    <ClInclude Include="LabelEndScreen.h" />
+    <ClInclude Include="LandscapeMap.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MachineGun.h" />
     <ClInclude Include="MachineGunBullet.h" />
     <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MapFactory.h" />
     <ClInclude Include="MapParser.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Character.h" />
@@ -326,6 +339,7 @@
     <ClInclude Include="MovingBulletCollideBehaviour.h" />
     <ClInclude Include="MovingBulletDrawBehaviour.h" />
     <ClInclude Include="ScreenFactory.h" />
+    <ClInclude Include="SnowMap.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="NonPlayableCharacter.h" />
     <ClInclude Include="NormalBullet.h" />
@@ -345,6 +359,7 @@
     <ClInclude Include="ShootActionBehaviour.h" />
     <ClInclude Include="SpawnController.h" />
     <ClInclude Include="StatsController.h" />
+    <ClInclude Include="StatsScreen.h" />
     <ClInclude Include="StoryModeButton.h" />
     <ClInclude Include="SwitchButton.h" />
     <ClInclude Include="SwitchButtonGameDifficulty.h" />
@@ -357,6 +372,7 @@
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="VolumeButton.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WinScreen.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieAttackState.h" />
     <ClInclude Include="ZombieStandStillState.h" />
