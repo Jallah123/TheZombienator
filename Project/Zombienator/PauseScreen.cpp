@@ -1,4 +1,5 @@
 #include "PauseScreen.h"
+#include "ScreenFactory.h"
 
 PauseScreen::PauseScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
@@ -28,10 +29,6 @@ PauseScreen::PauseScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 }
 
-
-
-
-
 PauseScreen::~PauseScreen()
 {
 	
@@ -44,15 +41,14 @@ void PauseScreen::Resume()
 
 void PauseScreen::Settings()
 {
-	ScreenController::GetInstance().ChangeScreen(new SettingsScreen{ renderer });
-
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SETTINGSSCREEN));
 }
 
 void PauseScreen::Quit()
 {
 	MapFactory::GetInstance()->EmptyQueue();
 	ScreenController::GetInstance().EmptyStack();
-	ScreenController::GetInstance().ChangeScreen(new HomeScreen{ renderer });
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::HOMESCREEN));
 }
 
 

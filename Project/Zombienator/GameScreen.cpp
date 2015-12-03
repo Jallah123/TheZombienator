@@ -75,11 +75,11 @@ void GameScreen::Update(float dt)
 
 	XOffset = 0;
 	YOffset = 0;
-	/*if (shake > 0) {
+	if (shake > 0) {
 		shake -= dt;
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
-	}*/
+	}
 	HandleInput(dt);
 
 	if (currentState == GameState::RUNNING) {
@@ -113,7 +113,7 @@ void GameScreen::HandleInput(float dt)
 			}
 			else {
 				currentState = GameState::PAUSE;
-				ScreenController::GetInstance().ChangeScreen(new PauseScreen{ renderer });
+				ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::PAUSESCREEN));
 			}
 			timeLastStateChange = stateChangeDelay;
 		}

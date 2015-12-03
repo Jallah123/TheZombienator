@@ -2,6 +2,7 @@
 #include "SettingsButton.h"
 #include "ScreenController.h"
 #include "SettingsScreen.h"
+#include "ScreenFactory.h"
 
 SettingsButton::SettingsButton() : Button()
 {
@@ -17,7 +18,7 @@ SettingsButton::~SettingsButton()
 
 void SettingsButton::ClickAction() 
 {
-	ScreenController::GetInstance().ChangeScreen(new SettingsScreen{renderer});
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SETTINGSSCREEN));
 }
 
 
