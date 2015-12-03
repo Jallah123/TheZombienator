@@ -411,6 +411,9 @@
     <ClCompile Include="SettingsScreen.cpp">
       <Filter>Source Files\Views\MenuScreens</Filter>
     </ClCompile>
+    <ClCompile Include="HelpScreen.cpp">
+      <Filter>Source Files\Views\MenuScreens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -651,6 +654,9 @@
       <Filter>Header Files\Views\MenuScreen</Filter>
     </ClInclude>
     <ClInclude Include="CreditScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpScreen.h">
       <Filter>Header Files\Views\MenuScreen</Filter>
     </ClInclude>
   </ItemGroup>

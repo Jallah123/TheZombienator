@@ -202,6 +202,7 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameSpeed.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="HelpScreen.cpp" />
     <ClCompile Include="HudDrawBehaviour.cpp" />
     <ClCompile Include="HudVisitor.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -293,6 +294,7 @@
     <ClInclude Include="CreditButton.h" />
     <ClInclude Include="CreditScreen.h" />
     <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="HelpScreen.h" />
     <ClInclude Include="HudVisitor.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="HudDrawBehaviour.h" />

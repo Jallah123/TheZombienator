@@ -1,32 +1,45 @@
 #pragma once
 #include "HomeScreen.h"
-#include <iostream>
 #include "SettingsButton.h"
 #include "StoryModeButton.h"
 #include "InfiniteModeButton.h"
 #include "CreditButton.h"
 #include "SettingsButton.h"
+#include "ScreenController.h"
+#include "ScreenFactory.h"
+
+
+struct HelpButton : Button {
+
+	HelpButton(SDL_Renderer& ren, char* text, char* img_url)
+		: Button(ren, text, img_url)
+	{
+		srcRect = { 0 , 442, 238, 102 };
+		destRect = { 515, 322, 238, 102 };
+	}
+
+	void ClickAction() {
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::HELPSCREEN));
+	}
+};
 
 HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
-	// Console Update
-	std::cout << "Made HomeScreen" << std::endl;
-
+	helpBtn = new HelpButton(*ren, "Help", "assets/images/button_spritesheet.png");
 	// SettingsButton
-	SettingsButton* a = new SettingsButton(*ren, "", "assets/images/button_spritesheet.png");
-	AddUIComponent(a);
-
+	settingsBtn = new SettingsButton(*ren, "", "assets/images/button_spritesheet.png");
 	// StoryModeButton
-	StoryModeButton* b = new StoryModeButton(*ren, "", "assets/images/button_spritesheet.png");
-	AddUIComponent(b);
-
+	storyModeBtn = new StoryModeButton(*ren, "", "assets/images/button_spritesheet.png");
 	// InfiniteModeButton -- Uncomment for presentation
-	//InfiniteModeButton* c = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
-	//AddUIComponent(c);
-
+	// infiniteModeBtn = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
 	// CreditScreenButton
-	CreditButton* d = new CreditButton(*ren, "", "assets/images/button_spritesheet.png");
-	AddUIComponent(d);
+	creditsButton = new CreditButton(*ren, "", "assets/images/button_spritesheet.png");
+	
+	AddUIComponent(helpBtn);
+	AddUIComponent(settingsBtn);
+	AddUIComponent(storyModeBtn);
+	//AddUIComponent(infiniteModeBtn);
+	AddUIComponent(creditsButton);
 	SoundController->ChangeMusic("assets/sounds/Undead-Rising.flac");
 }
 
@@ -37,6 +50,11 @@ void HomeScreen::ReceiveFocus()
 
 HomeScreen::~HomeScreen()
 {
+	delete helpBtn;
+	delete settingsBtn;
+	delete storyModeBtn;
+	delete infiniteModeBtn;
+	delete creditsButton;
 }
 
 void HomeScreen::Update(float dt)
