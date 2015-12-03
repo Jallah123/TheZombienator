@@ -4,12 +4,23 @@ TextureFactory::TextureFactory()
 {
 }
 
+std::map<FontEnum, char*> fillMap()
+{
+	std::map<FontEnum, char*> map;
+	map[FontEnum::CARTOON] = "assets/fonts/Block-Cartoon.ttf";
+	map[FontEnum::ROBOTO] = "assets/fonts/Roboto-Medium.ttf";
+	map[FontEnum::OCR] = "assets/fonts/OCR-A-Ectended.ttf";
+	return map;
+}
+
+std::map<FontEnum, char*> TextureFactory::FontMap = fillMap();
+
 SDL_Texture* TextureFactory::GenerateTextureFromTextMenu(std::string text, SDL_Color color)
 {
 
 	static TTF_Font* font;
 	if (font == nullptr) {
-		font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", 64);
+		font = TTF_OpenFont(FontMap[FontEnum::CARTOON], 64);
 	}
 	if (font == nullptr) {
 		cout << "Error opening font" << endl;
@@ -22,7 +33,7 @@ SDL_Texture* TextureFactory::GenerateTextureFromTextHud(std::string text, SDL_Co
 {
 	static TTF_Font* font;
 	if (font == nullptr) {
-		font = TTF_OpenFont("assets/fonts/Roboto-Medium.ttf", 128);
+		font = TTF_OpenFont(FontMap[FontEnum::ROBOTO], 128);
 	}
 	if (font == nullptr) {
 		cout << "Error opening font" << endl;
@@ -63,23 +74,22 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 	SDL_FreeSurface(surface);
 	return texture;
 }
- 
- std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, int fontSize, int xPos, int yPos, bool cartoonFont, SDL_Color color) {
-	
+
+std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, int fontSize, int xPos, int yPos, FontEnum fontEnum, SDL_Color color)
+{	
 	std::pair<SDL_Texture*, SDL_Rect> returnObject = {};
-	static bool fontCartoonBoolean;
-	static bool _fontSize;
+	static FontEnum currentFont;
+	static int _fontSize;
 	static TTF_Font* font;
-	if (font == nullptr || fontCartoonBoolean != cartoonFont || _fontSize != fontSize) {
-		
-		if (cartoonFont) {
-			font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", fontSize);
+
+	if (font == nullptr || fontEnum != currentFont || _fontSize != fontSize) {
+		if (font != nullptr)
+		{
+			TTF_CloseFont(font);
 		}
-		else {
-			font = TTF_OpenFont("assets/fonts/Roboto-Medium.ttf", fontSize);
-		}
-		fontCartoonBoolean = cartoonFont;
+		font = TTF_OpenFont(FontMap[fontEnum], fontSize);
 	}
+
 	if (font == nullptr) {
 		cout << "Error opening font" << endl;
 		return returnObject;
@@ -89,12 +99,12 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 	if (surface)
 	{
 		SDL_Rect messageRectange = { xPos - (surface->w / 2), yPos - (surface->h / 2), surface->w, surface->h };
+		if(fontEnum == FontEnum::OCR)
+			messageRectange = { xPos, yPos, surface->w, surface->h };
 		returnObject = std::make_pair(GenerateTextureFromSurface(surface), messageRectange);
 		return returnObject;
 	}
 }
-
-
 
 SDL_Texture* TextureFactory::FindTexture(std::string url)
 {

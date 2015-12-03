@@ -23,6 +23,4 @@ void ZombieStandStillState::CheckState()
 void ZombieStandStillState::Update(float dt)
 {
 	CheckState();
-	Zombie* z = GetOwner();
-	z->SetMoveDir(Direction::NONE);
 }

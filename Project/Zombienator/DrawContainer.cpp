@@ -24,7 +24,8 @@ DrawContainer::~DrawContainer()
 
 void DrawContainer::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 {
-	if (this->arr.empty()) return;//Do nothing on empty
+	if (arr.empty()) return;//Do nothing on empty
+
 	Sort_zIndex();
 	for (Behaviour* i : this->arr) {
 		DrawBehaviour* db = dynamic_cast<DrawBehaviour*>(i);

@@ -127,6 +127,12 @@
     <Filter Include="Source Files\Views\MenuScreens">
       <UniqueIdentifier>{8fbfc372-f45f-4b48-b4a1-93c5c8e2ff7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Views\UIComponents\Images">
+      <UniqueIdentifier>{320d3b22-ef96-409a-bac2-7a7b7d4d4889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\UIComponents\Images">
+      <UniqueIdentifier>{4233e3d9-6d9a-479d-9582-f474fae886fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -198,9 +204,6 @@
     <ClCompile Include="MapParser.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Image.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
@@ -266,9 +269,6 @@
     </ClCompile>
     <ClCompile Include="CharacterCollideBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
-    </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Source Files\Enums</Filter>
     </ClCompile>
     <ClCompile Include="AbstractScreen.cpp">
       <Filter>Source Files\Views</Filter>
@@ -375,6 +375,18 @@
     <ClCompile Include="GameMath.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="MapFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="LandscapeMap.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="SnowMap.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.h">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
     <ClCompile Include="CollideObject.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
@@ -413,6 +425,33 @@
     </ClCompile>
     <ClCompile Include="HelpScreen.cpp">
       <Filter>Source Files\Views\MenuScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScreen.cpp">
+      <Filter>Source Files\Views\LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="WinScreen.cpp">
+      <Filter>Source Files\Views\LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="BackToMenuButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="LabelEndScreen.cpp">
+      <Filter>Source Files\Views\UIComponents\Label</Filter>
+    </ClCompile>
+    <ClCompile Include="StatsScreen.cpp">
+      <Filter>Source Files\Views\LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Source Files\Views\MenuScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomFuncButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="FontEnum.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\Views\UIComponents\Images</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -484,9 +523,6 @@
     </ClInclude>
     <ClInclude Include="PlayableCharacter.h">
       <Filter>Header Files\Models\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="MoveContainer.h">
       <Filter>Header Files\Containers</Filter>
@@ -620,6 +656,15 @@
     <ClInclude Include="CreditButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="MapFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="LandscapeMap.h">
+      <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="SnowMap.h">
+      <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
     <ClInclude Include="CollideObject.h">
       <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
@@ -658,6 +703,33 @@
     </ClInclude>
     <ClInclude Include="HelpScreen.h">
       <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScreen.h">
+      <Filter>Header Files\Views\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinScreen.h">
+      <Filter>Header Files\Views\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="BackToMenuButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="LabelEndScreen.h">
+      <Filter>Header Files\Views\UIComponents\Label</Filter>
+    </ClInclude>
+    <ClInclude Include="StatsScreen.h">
+      <Filter>Header Files\Views\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomFuncButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\Views\UIComponents\Images</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

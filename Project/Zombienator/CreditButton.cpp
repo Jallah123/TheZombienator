@@ -2,7 +2,7 @@
 #include "SoundController.h"
 #include "ScreenController.h"
 #include "CreditScreen.h"
-
+#include "ScreenFactory.h"
 
 
 CreditButton::CreditButton(SDL_Renderer& ren, char* text, char* img_url)
@@ -22,7 +22,6 @@ CreditButton::~CreditButton()
 
 void CreditButton::ClickAction()
 {
-	// SoundController::GetInstance().StopAllSounds();
-	ScreenController::GetInstance().ChangeScreen(new CreditScreen{ renderer});
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::CREDITSCREEN));
 }
 

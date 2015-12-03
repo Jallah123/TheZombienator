@@ -14,14 +14,16 @@ public:
 	}
 	void ChangeScreen(AbstractScreen* screen);
 	void Back();
+	void EmptyStack();
 	std::stack<AbstractScreen*> GetScreenStack() { return screenStack; };
 	AbstractScreen* GetCurrentScreen() { return screenStack.top(); };
+	void PopLatestScreen() { screenStack.pop(); };
 	AbstractScreen* GetLoadingScreen() { return loadingScreen; };
-	void AddLoadingScreen(AbstractScreen* NewLoadingScreen) { loadingScreen = NewLoadingScreen; };
+	void AddLoadingScreen(AbstractScreen* s) { loadingScreen = s; };
 	int Size();
 private:
 	ScreenController() {};
-	~ScreenController() {};
+	~ScreenController() { delete loadingScreen; };
 	ScreenController(ScreenController const&) = delete;
 	void operator=(ScreenController const&) = delete;
 	stack<AbstractScreen*> screenStack;

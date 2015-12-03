@@ -14,7 +14,8 @@ AnimateContainer::~AnimateContainer()
 
 void AnimateContainer::Animate(float dt)
 {
-	if (this->arr.empty()) return;//Do nothing on empty
+	if (arr.empty()) return;//Do nothing on empty
+
 	Uint32 ticks = SDL_GetTicks();
 	for (Behaviour* i : this->arr) {
 		AnimateBehaviour* ab = dynamic_cast<AnimateBehaviour*>(i);

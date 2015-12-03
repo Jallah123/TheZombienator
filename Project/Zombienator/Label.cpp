@@ -11,7 +11,7 @@ Label::Label(SDL_Renderer& ren, string text, int posX, int posY, int fontSize, S
 	this->_posY = posY;
 	this->_fontSize = fontSize;
 	this->_color = color;
-	label = TextureFactory::GenerateText(text, fontSize, posX, posY, true, color);
+	label = TextureFactory::GenerateText(text, fontSize, posX, posY, FontEnum::CARTOON, color);
 }
 
 Label::Label(SDL_Renderer& ren, int number, int posX, int posY, int fontSize, SDL_Color color) : AbstractUIComponent(ren) {
@@ -19,19 +19,20 @@ Label::Label(SDL_Renderer& ren, int number, int posX, int posY, int fontSize, SD
 	this->_posY = posY;
 	this->_fontSize = fontSize;
 	this->_color = color;
-	label = TextureFactory::GenerateText(to_string(number), fontSize, posX, posY, false, color);
+	label = TextureFactory::GenerateText(to_string(number), fontSize, posX, posY, FontEnum::ROBOTO, color);
 }
 
 Label::~Label()
 {
+	SDL_DestroyTexture(label.first);
 }
 
 void Label::updateText(string text) {
-	label = TextureFactory::GenerateText(text, _fontSize, _posX, _posY, true, _color);
+	label = TextureFactory::GenerateText(text, _fontSize, _posX, _posY, FontEnum::CARTOON, _color);
 }
 
 void Label::updateText(int text) {
-	label = TextureFactory::GenerateText(to_string(text), _fontSize, _posX, _posY, false, _color);
+	label = TextureFactory::GenerateText(to_string(text), _fontSize, _posX, _posY, FontEnum::ROBOTO, _color);
 }
 
 void Label::Draw(SDL_Renderer& ren) {

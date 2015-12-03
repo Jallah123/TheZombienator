@@ -30,14 +30,13 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	this->SetContainers(drawC, animC, moveC, nullptr, nullptr, collideC, gameObjectC);
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
-	SetMoveBehaviour("AiMoveBehaviour");
 	SetCollideBehaviour("CharacterCollideBehaviour");
 
 	gameObjectC->AddGameObject(this);
 	
 	SetSize(32, 36);
 	SetFrames(3);
-	SetSpeed(0.2f);
+	SetSpeed(0.4f);
 	SetMaxHealth(50);
 	SetHealth(50);
 
@@ -49,6 +48,7 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 
 void Zombie::SetCurrentState(ZombieState* newState)
 {	
+	
 	if(this->currentState != newState)
 	{
 		if (dynamic_cast<ZombieAttackState*>(newState))
@@ -61,8 +61,7 @@ void Zombie::SetCurrentState(ZombieState* newState)
 
 bool Zombie::IsInAttackRadius(Character * target)
 {
-	double sweetspotX = 35;
-	double sweetspotY = 25;
+	
 	double dist = GameMath::Distance(*this->GetCollideRect(), *target->GetCollideRect());
 	if (lookDir == Direction::NORTH || lookDir == Direction::SOUTH) {
 		return dist < sweetspotY;

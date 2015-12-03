@@ -7,11 +7,20 @@ Button::Button() : AbstractUIComponent()
 {
 }
 
-Button::Button(SDL_Renderer& ren, char* text, char* img_url) : AbstractUIComponent(ren) {
+Button::Button(SDL_Renderer& ren, char* text, char* img_url) : AbstractUIComponent(ren) 
+{
 	image = TextureFactory::GenerateTextureFromImgUrl(img_url);
 }
+
 Button::~Button()
 {
+	SDL_DestroyTexture(image);
+	image = nullptr;
+	if (buttonText.first != nullptr)
+	{
+		SDL_DestroyTexture(buttonText.first);
+		buttonText.first = nullptr;
+	}
 }
 
 void Button::Draw(SDL_Renderer& ren) {

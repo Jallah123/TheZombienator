@@ -19,6 +19,8 @@ CollideContainer::~CollideContainer()
 
 void CollideContainer::Collide(float dt)
 {
+	if (arr.empty()) return;
+
 	for (auto& behaviour : arr)
 	{
 		CollideBehaviour* collideBehaviour = dynamic_cast<CollideBehaviour*>(behaviour);

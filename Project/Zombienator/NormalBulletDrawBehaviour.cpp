@@ -19,7 +19,10 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset, i
 	}
 
 	NormalBullet* b = dynamic_cast<NormalBullet*>(gameObject);
-
+	if (b->GetLifeTime() <= 0) {
+		b->Remove();
+		return;
+	}
 	
 	b->CalculateEndPoint();
 	SDL_Point* end = b->GetEndPoint();
@@ -31,8 +34,6 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset, i
 		SDL_RenderDrawLine(&ren, begin->x - XOffset, begin->y - YOffset, end->x - XOffset, end->y - YOffset);
 		b->DecreaseLifeTime(dt);
 	}
-	
-	if (b->GetLifeTime() <= 0) CanRemove(true);
-	
 	b->SetLocked(true);
+	
 }

@@ -35,17 +35,17 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 void CreditScreen::addTextToSet(string message)
 {
-	textList.push_back(TextureFactory::GenerateText(message, 40, 600, startY,true));
+	textList.push_back(TextureFactory::GenerateText(message, 40, 600, startY, FontEnum::CARTOON));
 	startY += 50;
 }
-
-
 
 CreditScreen::~CreditScreen()
 {
 	for (auto& i : textList) {
 		SDL_DestroyTexture(i.first);
+		i.first = nullptr;
 	}
+	textList.clear();
 }
 
 void CreditScreen::resetTextSet()
