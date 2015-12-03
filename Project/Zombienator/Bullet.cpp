@@ -34,6 +34,7 @@ Bullet::~Bullet()
 
 void Bullet::SetDrawBehaviour(std::string name)
 {
+	StatsController::GetInstance()->AddBullet();
 	this->drawBehaviour = BehaviourFactory::Instance()->CreateDrawBehaviour(name, this);
 	if (drawBehaviour != nullptr) {
 		drawBehaviour->SetGameObject(this);
