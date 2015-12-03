@@ -26,19 +26,19 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	AddUIComponent(b);
 
 	//labels:
-	Label* difficultyLabel = new Label(ren, "Difficulty", 500, 120, 30, { 0,0,0 });  //ren, text, xpos,ypos, fontsize, color
+	//Label* difficultyLabel = new Label(ren, "Difficulty", 500, 120, 30, { 0,0,0 });  //ren, text, xpos,ypos, fontsize, color
 	Label* gamespeedLabel = new Label(ren, "Game speed", 500, 190, 30, { 0,0,0 });
 	Label* fpsLabel = new Label(ren, "FPS", 500, 265, 30, { 0,0,0 });
-	Label* ffLabel = new Label(ren, "Friendly fire", 500, 335, 30, { 0,0,0 });
+	//Label* ffLabel = new Label(ren, "Friendly fire", 500, 335, 30, { 0,0,0 });
 	Label* soundLabel = new Label(ren, "Sound", 500, 410, 30, { 0,0,0 });
 	Label* musicLabel = new Label(ren, "Music", 500, 480, 30, { 0,0,0 });
 	Label* volumeLabel = new Label(ren, "Volume", 500, 550, 30, { 0,0,0 });
 	currentVolumeLabel = new Label(ren, SoundController->GetVolume(), 825, 545, 30, { 248 ,248 ,255 });
 
-	AddUIComponent(difficultyLabel);
+	//AddUIComponent(difficultyLabel);
 	AddUIComponent(gamespeedLabel);
 	AddUIComponent(fpsLabel);
-	AddUIComponent(ffLabel);
+	//AddUIComponent(ffLabel);
 	AddUIComponent(soundLabel);
 	AddUIComponent(musicLabel);
 	AddUIComponent(volumeLabel);
@@ -61,9 +61,9 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	soundOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setSound, this, std::placeholders::_1));
 	AddUIComponent(soundOffBtn);
 	//friendlyfirebtns
-	friendlyFireOnBtn = new SwitchButton(ren, "On", spriteSheet, 725, 300, true, Settings->getFiendlyFire(), *this);
-	friendlyFireOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
-	AddUIComponent(friendlyFireOnBtn);
+	//friendlyFireOnBtn = new SwitchButton(ren, "On", spriteSheet, 725, 300, true, Settings->getFiendlyFire(), *this);
+	//friendlyFireOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
+	//AddUIComponent(friendlyFireOnBtn);
 
 	friendlyFireOffBtn = new SwitchButton(ren, "Off", spriteSheet, 830, 300, false, !Settings->getFiendlyFire(), *this);
 	friendlyFireOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
@@ -103,6 +103,7 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	gameSpeedBtns.push_front(gameSpeedFastBtn);
 
 	//gamedifficulty buttons
+	/*
 	SwitchButtonGameDifficulty* gameDiffEasy = new SwitchButtonGameDifficulty(ren, "Easy", spriteSheet, 725, 85, GameDifficulty::EASY, *this);
 	gameDiffEasy->setUpdateFunction(std::bind(&SettingsScreen::setGameDifficulty, this, std::placeholders::_1));
 	gameDifficultyBtns.push_front(gameDiffEasy);
@@ -114,15 +115,16 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	SwitchButtonGameDifficulty* gameDiffhard = new SwitchButtonGameDifficulty(ren, "Hard", spriteSheet, 935, 85, GameDifficulty::HARD, *this);
 	gameDiffhard->setUpdateFunction(std::bind(&SettingsScreen::setGameDifficulty, this, std::placeholders::_1));
 	gameDifficultyBtns.push_front(gameDiffhard);
-
+	for (const auto& g : gameDifficultyBtns)
+		AddUIComponent(g);
+	*/
 
 
 
 	//add gameSpeed buttons && gameDifficulty buttons
 	for (const auto& i : gameSpeedBtns)
 		AddUIComponent(i);
-	for (const auto& g : gameDifficultyBtns)
-		AddUIComponent(g);
+	
 
 }
 
@@ -135,8 +137,6 @@ SettingsScreen::~SettingsScreen()
 
 void SettingsScreen::Update(float dt)
 {
-
-
 }
 
 void SettingsScreen::Draw(SDL_Renderer & ren, float dt)

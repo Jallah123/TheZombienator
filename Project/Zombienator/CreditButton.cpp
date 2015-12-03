@@ -7,8 +7,8 @@
 
 CreditButton::CreditButton(SDL_Renderer& ren, char* text, char* img_url)
 	: Button(ren, text, img_url) {
-	srcRect = { 286 , 160, 82, 81 };
-	destRect = { 1189, 100, 82, 81 };
+	srcRect = { 286 , 160, 82, 75 };
+	destRect = { 1190, 102, 82, 75 };
 }
 
 CreditButton::CreditButton()

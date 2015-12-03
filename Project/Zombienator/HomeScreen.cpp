@@ -14,8 +14,8 @@ struct HelpButton : Button {
 	HelpButton(SDL_Renderer& ren, char* text, char* img_url)
 		: Button(ren, text, img_url)
 	{
-		srcRect = { 0 , 442, 238, 102 };
-		destRect = { 515, 322, 238, 102 };
+		srcRect = { 286, 240, 82, 75 };
+		destRect = { 1190, 184, 82, 75 };
 	}
 
 	void ClickAction() {
@@ -50,11 +50,6 @@ void HomeScreen::ReceiveFocus()
 
 HomeScreen::~HomeScreen()
 {
-	delete helpBtn;
-	delete settingsBtn;
-	delete storyModeBtn;
-	delete infiniteModeBtn;
-	delete creditsButton;
 }
 
 void HomeScreen::Update(float dt)
