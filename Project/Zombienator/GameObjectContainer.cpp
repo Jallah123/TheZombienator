@@ -6,7 +6,6 @@
 #include "Quadtree.h"
 #include "CollideObject.h"
 
-
 GameObjectContainer::GameObjectContainer()
 {
 	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
@@ -22,16 +21,10 @@ GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t): map(m), tree(t)
 
 GameObjectContainer::~GameObjectContainer()
 {
-	std::vector<GameObject*>::reverse_iterator it;
-	for (it = objects.rbegin(); it != objects.rend(); ++it)
+	for (std::vector<GameObject*>::iterator it = objects.begin(); it != objects.end(); ++it)
 		delete *it;
 
 	objects.clear();
-
-	for (it = arrRemove.rbegin(); it != arrRemove.rend(); ++it)
-		delete *it;
-
-	arrRemove.clear();
 }
 
 vector<GameObject*> GameObjectContainer::GetGameObjects(float x, float y)
@@ -46,7 +39,7 @@ void GameObjectContainer::AddGameObject(GameObject * c)
 
 void GameObjectContainer::Remove(GameObject * c)
 {
-	if (dynamic_cast<Zombie*>(c)) StatsController::Instance()->AddKill();
+	if (dynamic_cast<Zombie*>(c)) StatsController::GetInstance()->AddKill();
 	objects.erase(std::remove(objects.begin(), objects.end(), c), objects.end());
 }
 

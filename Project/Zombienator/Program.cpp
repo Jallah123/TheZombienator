@@ -2,6 +2,8 @@
 #include "SDL_TTF.h"
 #include "LoadingScreen.h"
 #include "ScreenFactory.h"
+#include "GameScreen.h"
+#include "GameOverScreen.h"
 
 Program::Program() {
 	cout << "Creating Program" << endl;
@@ -52,6 +54,12 @@ void Program::ShowLoadingScreen() {
 	SDL_Delay(400);
 }
 
+void Program::ShowGameOverScreen()
+{
+	ScreenController::GetInstance().Back();
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMEOVERSCREEN));
+}
+
 SDL_Renderer* Program::GetRenderer() {
 	return Sdl_Renderer;
 }
@@ -77,15 +85,23 @@ int Program::Tick() {
 		currentFrameTime = SDL_GetTicks();
 		deltaTime = float(currentFrameTime - lastFrameTime) / 10;
 
-
-
 		// Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
-			Events(sc->GetCurrentScreen());
+			Events(currentScreen);
 		}
 
 		// Get currentScreen
 		currentScreen = sc->GetCurrentScreen();
+
+		// Check Gameover
+		if (GameScreen* g = dynamic_cast<GameScreen*>(currentScreen))
+		{
+			if (g->IsGameOver())
+			{
+				ShowGameOverScreen();
+				currentScreen = sc->GetCurrentScreen();
+			}
+		}
 
 		// Check if screen has changed
 		if (previousScreen != currentScreen) {
@@ -95,8 +111,7 @@ int Program::Tick() {
 		// Update & render currentScreen
 		currentScreen->setFPS(this->CalculateFPS());
 		currentScreen->Update(deltaTime);
-		Render(currentScreen);
-
+		Render(sc->GetCurrentScreen());
 
 		// Update previousScreen
 		previousScreen = currentScreen;
@@ -177,8 +192,8 @@ void Program::Render(AbstractScreen* screen)
 {
 	SDL_SetRenderDrawColor(Sdl_Renderer, 0, 0, 0, 255);
 	SDL_RenderClear(Sdl_Renderer);
-
-	screen->Draw(*Sdl_Renderer, deltaTime);
+	if (screen != nullptr)
+		screen->Draw(*Sdl_Renderer, deltaTime);
 }
 
 int Program::Events(AbstractScreen* screen)
@@ -253,7 +268,7 @@ int Program::InitComponents() {
 	return 0;
 }
 
-void Program::CloseJoystick() 
+void Program::CloseJoystick()
 {
 	cout << "Close controller" << endl;
 	SDL_GameControllerClose(controller);
