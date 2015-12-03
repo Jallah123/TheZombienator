@@ -13,7 +13,10 @@
 #include "Settings.h"
 #include "TextureFactory.h"
 #include "CollideContainer.h"
+#include "GameState.h"
 #include "HudVisitor.h"
+#include "PauseScreen.h"
+
 
 class Quadtree;
 class GameScreen 
@@ -25,6 +28,7 @@ public:
 	~GameScreen();
 	void Shake(float time, int intensity = 20);
 	virtual void Update(float dt) override;
+	virtual void ReceiveFocus() override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 	Quadtree* GetTree() { return this->tree; }
 private:
@@ -32,15 +36,20 @@ private:
 	int shakeIntensity = 20;
 	int XOffset = 0;
 	int YOffset = 0;
-	float speed = 1.0;
-	GameObjectFactory* goFactory = GameObjectFactory::Instance();
+	int stateChangeDelay = 50;
+	int timeLastStateChange = 0;
+	GameState currentState = GameState::INIT;
 	Settings* settings = &Settings::GetInstance();
+	GameObjectFactory* goFactory = GameObjectFactory::Instance();
+
+	void HandleInput(float dt);
+	
 	DrawContainer drawContainer;
 	AnimateContainer animateContainer;
 	ActionContainer actionContainer;
 	MoveContainer moveContainer;
 	CollideContainer collideContainer;
-	GameObjectContainer gameObjectContainer;
+	GameObjectContainer* gameObjectContainer;
 	SpawnController spawnController;
 	HudVisitor hudVisitor;
 	
