@@ -3,12 +3,6 @@
 #include "SettingsScreen.h"
 #include "Label.h"
 #include "CustomFuncButton.h"
-#include "TextureFactory.h"
-#include <SDL_ttf.h>
-#include <set>
-#include <map>
-#include <list>
-#include <iostream>
 
 
 using namespace std;
