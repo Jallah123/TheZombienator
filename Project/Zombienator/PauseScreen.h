@@ -1,5 +1,6 @@
 #pragma once
 #include "MenuScreen.h"
+#include "MapFactory.h"
 #include "SettingsScreen.h"
 #include "HomeScreen.h"
 #include "Label.h"

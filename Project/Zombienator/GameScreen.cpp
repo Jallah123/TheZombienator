@@ -99,6 +99,8 @@ void GameScreen::Update(float dt)
 		animateContainer.Animate(dt);
 		tree->Clear();
 	}
+
+	timeLastStateChange -= dt;
 }
 
 void GameScreen::HandleInput(float dt) 
@@ -118,13 +120,6 @@ void GameScreen::HandleInput(float dt)
 			timeLastStateChange = stateChangeDelay;
 		}
 	}
-	spawnController.Update(dt);
-	actionContainer.Update(dt);
-	collideContainer.Collide(dt);
-	moveContainer.Move(dt);
-	animateContainer.Animate(dt);
-	timeLastStateChange -= dt;
-
 }
 
 void GameScreen::Shake(float time, int intensity) {
