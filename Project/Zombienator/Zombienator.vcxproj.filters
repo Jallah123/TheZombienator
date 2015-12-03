@@ -127,6 +127,12 @@
     <Filter Include="Source Files\Views\MenuScreens">
       <UniqueIdentifier>{8fbfc372-f45f-4b48-b4a1-93c5c8e2ff7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Views\UIComponents\Images">
+      <UniqueIdentifier>{320d3b22-ef96-409a-bac2-7a7b7d4d4889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\UIComponents\Images">
+      <UniqueIdentifier>{4233e3d9-6d9a-479d-9582-f474fae886fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -417,9 +423,6 @@
     <ClCompile Include="SettingsScreen.cpp">
       <Filter>Source Files\Views\MenuScreens</Filter>
     </ClCompile>
-    <ClCompile Include="Image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameOverScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
@@ -443,6 +446,9 @@
     </ClCompile>
     <ClCompile Include="FontEnum.cpp">
       <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\Views\UIComponents\Images</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -715,6 +721,9 @@
     </ClInclude>
     <ClInclude Include="CustomFuncButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\Views\UIComponents\Images</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
