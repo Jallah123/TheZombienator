@@ -7,7 +7,7 @@ CustomFuncButton::CustomFuncButton(SDL_Renderer& ren, char* text, char* img_url,
 	srcRect = { 0 , 239, 238, 102 };
 	destRect = { posX, posY, 238, 102 };
 	this->parentScreen = &_parentScreen;
-	buttonText = TextureFactory::GenerateText(string(text), 30, posX + (destRect.w / 2), posY + (destRect.h / 2), false, { 248 ,248 ,255 });
+	buttonText = TextureFactory::GenerateText(string(text), 30, posX + (destRect.w / 2), posY + (destRect.h / 2), FontEnum::ROBOTO, { 248 ,248 ,255 });
 }
 
 

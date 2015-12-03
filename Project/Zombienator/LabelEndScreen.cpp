@@ -4,7 +4,7 @@
 LabelEndScreen::LabelEndScreen() : AbstractUIComponent() {}
 
 LabelEndScreen::LabelEndScreen(SDL_Renderer& ren, std::string text, int posX, int posY) : AbstractUIComponent(ren) {
-	label = TextureFactory::GenerateTextForEndScreen(text, posX, posY);
+	label = TextureFactory::GenerateText(text, 19, posX, posY, FontEnum::OCR, { 255,255,255 });
 }
 
 LabelEndScreen::~LabelEndScreen() {}

@@ -43,13 +43,12 @@ void PlayableCharacter::Teleport(SDL_Renderer* ren) {
 	if (!this->isFlare) {
 		SetFlare(true);
 		this->Remove();
+		// Set flare
+		SetImage("assets/images/flare.png", *ren);
 	}
 
-	// Set flare
-	SetImage("assets/images/flare.png", *ren);
 	SetSize(256, 256);
 	SetPosition(getPosX(), getPosY() - 3);
-
 }
 
 void PlayableCharacter::SetFlare(bool newFlare) {

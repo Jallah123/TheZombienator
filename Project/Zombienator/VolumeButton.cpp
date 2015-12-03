@@ -8,7 +8,7 @@ VolumeButton::VolumeButton(SDL_Renderer& ren, char* text, char* img_url, int pos
 	destRect = { posX, posY, 70, 60 };
 	this->parentScreen = &_parentScreen;
 	this->value = value;
-	buttonText = TextureFactory::GenerateText(string(text), 24, posX + (destRect.w / 2), posY + (destRect.h / 2), false, { 248 ,248 ,255 });
+	buttonText = TextureFactory::GenerateText(string(text), 24, posX + (destRect.w / 2), posY + (destRect.h / 2), FontEnum::ROBOTO, { 248 ,248 ,255 });
 }
 
 

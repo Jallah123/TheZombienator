@@ -7,7 +7,7 @@ SwitchButtonGameDifficulty::SwitchButtonGameDifficulty(SDL_Renderer& ren, char* 
 	destRect = { posX, posY, 100, 60 };
 	this->parentScreen = &_parentScreen;
 	this->value = value;
-	buttonText = TextureFactory::GenerateText(string(text), 18, posX + (destRect.w / 2), posY + (destRect.h / 2), true, { 248 ,248 ,255 });
+	buttonText = TextureFactory::GenerateText(string(text), 18, posX + (destRect.w / 2), posY + (destRect.h / 2), FontEnum::CARTOON, { 248 ,248 ,255 });
 
 	updateLayout();
 }

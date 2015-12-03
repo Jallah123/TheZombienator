@@ -30,4 +30,3 @@ protected:
 	void SetBackgroundTexture(SDL_Texture& Texture) { backgroundTexture = &Texture; }
 	SDL_Texture* const GetBackgroundTexture() { return backgroundTexture; }
 };
-

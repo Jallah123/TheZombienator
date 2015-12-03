@@ -38,6 +38,10 @@ void HudVisitor::Visit(Weapon* weapon)
 		// Create new texture if weapon changed
 		if (weapon->GetName() != weaponName)
 		{
+			if(weaponNameTexture != nullptr)
+			{
+				SDL_DestroyTexture(weaponNameTexture);
+			}
 			weaponNameTexture = TextureFactory::GenerateTextureFromTextHud(weapon->GetName());
 			weaponName = weapon->GetName();
 		}

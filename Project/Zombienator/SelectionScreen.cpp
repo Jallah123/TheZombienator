@@ -50,7 +50,7 @@ struct SelectButton : Button {
 		SetSourceLocation(0, 238);
 		SetSize(239, 97);
 		SetDestLocation(500, 500);
-		buttonText = TextureFactory::GenerateText(string(text), 24, destRect.x + (destRect.w / 2), destRect.y + (destRect.h / 2), true, { 248 ,248 ,255 });
+		buttonText = TextureFactory::GenerateText(string(text), 24, destRect.x + (destRect.w / 2), destRect.y + (destRect.h / 2), FontEnum::CARTOON, { 248 ,248 ,255 });
 	}
 
 	void ClickAction() {
@@ -71,7 +71,7 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	//Init buttons
 	char* ssUrl = "assets/images/button_spritesheet.png";
 
-	title = TextureFactory::GenerateText("Character selection", 32, 625, 100, true, { 248 ,248 ,255 });
+	title = TextureFactory::GenerateText("Character selection", 32, 625, 100, FontEnum::CARTOON, { 248 ,248 ,255 });
 
 	PreviousButton* pbtn = new PreviousButton(*ren, "Previous", ssUrl, this);
 	pbtn->SetSourceLocation(0, 0);
