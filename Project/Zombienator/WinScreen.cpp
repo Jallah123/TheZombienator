@@ -4,33 +4,13 @@
 #include "BackToMenuButton.h"
 #include "LabelEndScreen.h"
 
-WinScreen::WinScreen(SDL_Renderer* ren) : AbstractScreen(ren)
+WinScreen::WinScreen(SDL_Renderer* ren) : StatsScreen(ren)
 {
 	ChangeBackground(ren, "assets/images/win_bg.png");
-
-	string tKills = "Kills: " + std::to_string(StatsController::GetInstance()->GetTotalKills());
-	string tWaves = "Waves Defeated: " + std::to_string(StatsController::GetInstance()->GetTotalWavesDefeated());
-
-	// Elements
-	BackToMenuButton* aButton = new BackToMenuButton(*ren, "", "assets/images/button_backtomenu.png");
-	LabelEndScreen* aLabel = new LabelEndScreen(*ren, tKills, 642, 335);
-	LabelEndScreen* bLabel = new LabelEndScreen(*ren, tWaves, 642, 365);
-	
-	// Add to UI
-	AddUIComponent(aButton);
-	AddUIComponent(aLabel);
-	AddUIComponent(bLabel);
-
 }
 
-WinScreen::~WinScreen()
-{
-}
-
-void WinScreen::Update(float dt)
-{
-
-}
+WinScreen::~WinScreen() {}
+void WinScreen::Update(float dt) {}
 
 void WinScreen::Draw(SDL_Renderer & ren, float dt)
 {

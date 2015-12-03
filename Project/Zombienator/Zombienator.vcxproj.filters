@@ -416,6 +416,9 @@
     </ClCompile>
     <ClCompile Include="LabelEndScreen.cpp">
       <Filter>Source Files\Views\UIComponents\Label</Filter>
+		</ClCompile>
+    <ClCompile Include="StatsScreen.cpp">
+      <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -673,6 +676,9 @@
     </ClInclude>
     <ClInclude Include="LabelEndScreen.h">
       <Filter>Header Files\Views\UIComponents\Label</Filter>
+		</ClInclude>
+    <ClInclude Include="StatsScreen.h">
+      <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
