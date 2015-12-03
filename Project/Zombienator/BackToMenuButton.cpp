@@ -1,6 +1,7 @@
 #pragma once
 #include "BackToMenuButton.h"
 #include "ScreenController.h"
+#include "HomeScreen.h"
 #include "ScreenFactory.h"
 #include "StatsController.h"
 #include "MapFactory.h"
@@ -16,7 +17,8 @@ void BackToMenuButton::ClickAction()
 	StatsController::GetInstance()->Reset();
 	MapFactory::GetInstance()->EmptyQueue();
 	SoundController::GetInstance().StopAllSounds();
-	ScreenController::GetInstance().Back();
+	ScreenController::GetInstance().EmptyStack();
+	ScreenController::GetInstance().ChangeScreen(new HomeScreen{ renderer });
 }
 
 BackToMenuButton::BackToMenuButton() {}

@@ -85,7 +85,7 @@ int Program::Tick() {
 
 		// Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
-			Events(currentScreen);
+			Events(sc->GetCurrentScreen());
 		}
 
 		// Get currentScreen
@@ -105,6 +105,7 @@ int Program::Tick() {
 		if (previousScreen != currentScreen) {
 			ShowLoadingScreen();
 		}
+
 
 		// Update & render currentScreen
 		currentScreen->setFPS(this->CalculateFPS());

@@ -54,7 +54,7 @@ struct SelectButton : Button {
 	}
 
 	void ClickAction() {
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, "assets/maps/landscape-1280x640.json", _ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl()));
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, _ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl()));
 	}
 };
 

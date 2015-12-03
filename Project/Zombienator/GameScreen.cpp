@@ -12,7 +12,7 @@
 #include "MapFactory.h"
 #include "ScreenFactory.h"
 
-GameScreen::GameScreen(SDL_Renderer* ren, string path, string char_img_url) : AbstractScreen(ren)
+GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(ren)
 {
 
 	// Get map
@@ -48,7 +48,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string path, string char_img_url) : Ab
 	);
 	
 	mike = goFactory->CreateMike(char_img_url);
-	mike->SetPosition(800, 150);
+	mike->SetPosition(800, 300);
 
 	spawnController.AddTarget(mike);
 
