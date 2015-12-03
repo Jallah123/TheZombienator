@@ -6,7 +6,7 @@
 
 using std::string;
 
-Map::Map(string p) : path(p)
+Map::Map(string p, SDL_Renderer& ren) : path(p), renderer(&ren)
 {
 	this->parser = new MapParser(this);
 	bounds = { 0, 0, tileWidth * width, tileHeight * height };

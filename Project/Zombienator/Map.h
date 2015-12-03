@@ -18,7 +18,7 @@ class CollisionLayer;
 class Map
 {
 private:
-	std::string path = "";
+	std::string path;
 	
 	int width = 0;
 	int height = 0;
@@ -33,7 +33,7 @@ private:
 	vector<SDL_Rect*> rects{};
 	SDL_Renderer* renderer;
 public:
-	Map(std::string path);
+	Map(std::string path, SDL_Renderer& ren);
 	~Map();
 
 	std::string GetPath() const { return this->path; }

@@ -23,9 +23,9 @@ SpawnController::SpawnController()
 	NextWave();
 }
 
-SpawnController::SpawnController(GameScreen * gs) : gameScreen(gs)
+SpawnController::SpawnController(GameScreen * gs) :
+	gameScreen(gs)
 {	
-	statsController->SetKills(0);
 	NextWave();
 }
 
@@ -50,10 +50,6 @@ void SpawnController::Update(float dt)
 	elapsedtime += dt;
 
 	if (IsFinished()) {
-
-		if((currentWave) == maxWaves)
-			allWavesCompleted = true;
-
 		Countdown();
 		return;
 	} 
@@ -98,7 +94,6 @@ void SpawnController::Countdown()
 	if (elapsedtime < timeBetweenWaves) return;
 
 	NextWave();
-	StatsController::GetInstance()->AddWaveDefeated();
 }
 
 void SpawnController::AddLocation(int x, int y)

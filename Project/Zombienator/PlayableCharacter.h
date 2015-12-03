@@ -8,7 +8,7 @@ class PlayableCharacter
 protected:
 	std::vector<Weapon*> weapons = {};
 	Weapon* weapon = nullptr;
-	bool isFlare = false;
+
 public:
 	PlayableCharacter();
 	virtual ~PlayableCharacter();
@@ -18,7 +18,5 @@ public:
 	void SetWeapon(Weapon* w);
 	void NextWeapon();
 	void PreviousWeapon();
-	void Teleport(SDL_Renderer* ren);
-	void SetFlare(bool newFlare);
 };
 

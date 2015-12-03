@@ -37,31 +37,3 @@ void PlayableCharacter::PreviousWeapon()
 	int index = pos == 0 ? weapons.size() - 1 : pos - 1;
 	SetWeapon(weapons.at(index));
 }
-
-void PlayableCharacter::Teleport(SDL_Renderer* ren) {
-
-	if (!this->isFlare) {
-		SetFlare(true);
-		this->Remove();
-	}
-
-	// Set flare
-	SetImage("assets/images/flare.png", *ren);
-	SetSize(256, 256);
-	SetPosition(getPosX(), getPosY() - 3);
-
-}
-
-void PlayableCharacter::SetFlare(bool newFlare) {
-
-	if(newFlare){
-		CanMove(false);
-		SetPosition(getPosX() - 100, getPosY() - 100);
-		isFlare = true;
-	}
-	else {
-		CanMove(true);
-		isFlare = false;
-	}
-
-}

@@ -17,9 +17,8 @@ public:
 	void EmptyStack();
 	std::stack<AbstractScreen*> GetScreenStack() { return screenStack; };
 	AbstractScreen* GetCurrentScreen() { return screenStack.top(); };
-	void PopLatestScreen() { screenStack.pop(); };
 	AbstractScreen* GetLoadingScreen() { return loadingScreen; };
-	void AddLoadingScreen(AbstractScreen* s) { loadingScreen = s; };
+	void AddLoadingScreen(AbstractScreen* NewLoadingScreen) { loadingScreen = NewLoadingScreen; };
 	int Size();
 private:
 	ScreenController() {};

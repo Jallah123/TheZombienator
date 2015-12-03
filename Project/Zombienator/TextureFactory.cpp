@@ -63,15 +63,15 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 	SDL_FreeSurface(surface);
 	return texture;
 }
-
-std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, int fontSize, int xPos, int yPos, bool cartoonFont, SDL_Color color)
-{	
+ 
+ std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, int fontSize, int xPos, int yPos, bool cartoonFont, SDL_Color color) {
+	
 	std::pair<SDL_Texture*, SDL_Rect> returnObject = {};
 	static bool fontCartoonBoolean;
 	static bool _fontSize;
 	static TTF_Font* font;
-
 	if (font == nullptr || fontCartoonBoolean != cartoonFont || _fontSize != fontSize) {
+		
 		if (cartoonFont) {
 			font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", fontSize);
 		}
@@ -80,7 +80,6 @@ std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text,
 		}
 		fontCartoonBoolean = cartoonFont;
 	}
-
 	if (font == nullptr) {
 		cout << "Error opening font" << endl;
 		return returnObject;
@@ -95,28 +94,6 @@ std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text,
 	}
 }
 
-std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateTextForEndScreen(string text, int xPos, int yPos)
-{
-	std::pair<SDL_Texture*, SDL_Rect> returnObject = {};
-	static TTF_Font* fontOCR;
-	if (fontOCR == nullptr) {
-		fontOCR = TTF_OpenFont("assets/fonts/OCR-A-Ectended.ttf", 19);
-	}
-
-	if (fontOCR == nullptr) {
-		cout << "Error opening font" << endl;
-		return returnObject;
-	}
-
-	SDL_Surface * surface = TTF_RenderText_Blended(fontOCR, text.c_str(), { 255,255,255 });
-	if (surface)
-	{
-		SDL_Rect messageRectange = { xPos, yPos, surface->w, surface->h };
-		returnObject = std::make_pair(GenerateTextureFromSurface(surface), messageRectange);
-		return returnObject;
-	}
-	return returnObject;
-}
 
 
 SDL_Texture* TextureFactory::FindTexture(std::string url)
