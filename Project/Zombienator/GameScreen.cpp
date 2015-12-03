@@ -12,12 +12,11 @@
 #include "MapFactory.h"
 #include "ScreenFactory.h"
 
-GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
+GameScreen::GameScreen(SDL_Renderer* ren, string path, string char_img_url) : AbstractScreen(ren)
 {
 
 	// Get map
 	map = MapFactory::GetInstance()->NextMap();
-
 	tree = new Quadtree(map->GetBounds());
 
 	gameObjectContainer = new GameObjectContainer{ map, tree };
@@ -48,9 +47,8 @@ GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 		ren
 	);
 	
-	// Create character(s)
-	mike = goFactory->CreateMike();
-	mike->SetPosition(600, 250);
+	mike = goFactory->CreateMike(char_img_url);
+	mike->SetPosition(800, 150);
 
 	spawnController.AddTarget(mike);
 

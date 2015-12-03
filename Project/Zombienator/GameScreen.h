@@ -23,7 +23,7 @@ class GameScreen : public AbstractScreen
 {
 public:
 	GameScreen();
-	GameScreen(SDL_Renderer* _ren);
+	GameScreen(SDL_Renderer* _ren, string path, string char_img_url);
 	~GameScreen();
 	void Shake(float time, int intensity = 20);
 	virtual void Update(float dt) override;

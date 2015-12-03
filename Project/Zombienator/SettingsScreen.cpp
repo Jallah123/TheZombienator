@@ -10,7 +10,6 @@ SettingsScreen::SettingsScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	ChangeBackground(ren, "assets/images/default_bg.png");
 
 	//stop sound:
-	//SoundController->StopAllSounds();
 
 	initCompontents(*ren);
 
@@ -130,11 +129,8 @@ SettingsScreen::~SettingsScreen()
 {
 }
 
-
-
 void SettingsScreen::Update(float dt)
 {
-
 
 }
 

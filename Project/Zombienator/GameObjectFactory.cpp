@@ -60,12 +60,12 @@ void GameObjectFactory::Register(std::string name, std::function<GameObject*(voi
 	GameObjectFactory::registry.insert({ name, fn });
 }
 
-Mike* GameObjectFactory::CreateMike()
+Mike* GameObjectFactory::CreateMike(std::string img_url)
 {
 	GameObject* instance = GameObjectFactory::Find("mike");
 	if (instance != nullptr) {
 		Mike* cInstance = dynamic_cast<Mike*>(instance);
-		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer);
+		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer, img_url);
 		return cInstance;
 	}
 	return nullptr;

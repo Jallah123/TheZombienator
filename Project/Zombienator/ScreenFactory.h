@@ -7,7 +7,7 @@
 class ScreenFactory
 {
 public:
-	static AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum);
+	static AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string map = "", string img_url = "");
 private:
 	static std::map<ScreenEnum, std::function<AbstractScreen*(void)>> ScreenMap;
 };
