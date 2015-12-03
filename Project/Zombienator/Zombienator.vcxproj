@@ -253,6 +253,7 @@
     <ClCompile Include="ShootActionBehaviour.cpp" />
     <ClCompile Include="SpawnController.cpp" />
     <ClCompile Include="StatsController.cpp" />
+    <ClCompile Include="StatsScreen.cpp" />
     <ClCompile Include="StoryModeButton.cpp" />
     <ClCompile Include="SwitchButton.cpp" />
     <ClCompile Include="SwitchWeaponActionBehaviour.cpp" />
@@ -347,6 +348,7 @@
     <ClInclude Include="ShootActionBehaviour.h" />
     <ClInclude Include="SpawnController.h" />
     <ClInclude Include="StatsController.h" />
+    <ClInclude Include="StatsScreen.h" />
     <ClInclude Include="StoryModeButton.h" />
     <ClInclude Include="SwitchButton.h" />
     <ClInclude Include="SwitchWeaponActionBehaviour.h" />

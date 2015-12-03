@@ -1,8 +1,9 @@
 #pragma once
 #include "MenuScreen.h"
 #include "TextureFactory.h"
+#include "StatsScreen.h"
 
-class WinScreen : public AbstractScreen
+class WinScreen : public StatsScreen
 {
 public:
 	WinScreen(SDL_Renderer* ren);
