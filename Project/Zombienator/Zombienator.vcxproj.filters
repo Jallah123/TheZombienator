@@ -267,9 +267,6 @@
     <ClCompile Include="CharacterCollideBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Source Files\Enums</Filter>
-    </ClCompile>
     <ClCompile Include="AbstractScreen.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
@@ -375,6 +372,9 @@
     <ClCompile Include="GameMath.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="GameState.h">
+      <Filter>Source Files\Enums</Filter>
+	</ClCompile>
     <ClCompile Include="CollideObject.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>

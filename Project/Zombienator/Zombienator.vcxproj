@@ -200,6 +200,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectContainer.cpp" />
     <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="GameState.h" />
     <ClCompile Include="GameSpeed.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="HudDrawBehaviour.cpp" />

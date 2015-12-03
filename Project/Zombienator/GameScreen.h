@@ -13,6 +13,7 @@
 #include "Settings.h"
 #include "TextureFactory.h"
 #include "CollideContainer.h"
+#include "GameState.h"
 #include "HudVisitor.h"
 
 class Quadtree;
@@ -32,14 +33,20 @@ private:
 	int shakeIntensity = 20;
 	int XOffset = 0;
 	int YOffset = 0;
-	GameObjectFactory* goFactory = GameObjectFactory::Instance();
+	int stateChangeDelay = 50;
+	int timeLastStateChange = 0;
+	GameState currentState = GameState::INIT;
 	Settings* settings = &Settings::GetInstance();
+	GameObjectFactory* goFactory = GameObjectFactory::Instance();
+
+	void HandleInput(float dt);
+	
 	DrawContainer drawContainer;
 	AnimateContainer animateContainer;
 	ActionContainer actionContainer;
 	MoveContainer moveContainer;
 	CollideContainer collideContainer;
-	GameObjectContainer gameObjectContainer;
+	GameObjectContainer* gameObjectContainer;
 	SpawnController spawnController;
 	HudVisitor hudVisitor;
 	
