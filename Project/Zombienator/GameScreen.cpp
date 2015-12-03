@@ -73,9 +73,8 @@ void GameScreen::ReceiveFocus()
 
 void GameScreen::Update(float dt)
 {
-
-	//tree->Clear();
 	dt *= (float)settings->getGameSpeed() / 10;
+
 	XOffset = 0;
 	YOffset = 0;
 	/*if (shake > 0) {
@@ -100,7 +99,6 @@ void GameScreen::Update(float dt)
 		animateContainer.Animate(dt);
 		tree->Clear();
 	}
-	dt *= speed;
 }
 
 void GameScreen::HandleInput(float dt) 
