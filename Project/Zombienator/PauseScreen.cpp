@@ -21,7 +21,7 @@ PauseScreen::PauseScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	AddUIComponent(settingsBtn);
 
 	//quit button
-	CustomFuncButton* quitBtn = new CustomFuncButton(*ren, "Quit", spriteSheet, 540, 420, *this);
+	CustomFuncButton* quitBtn = new CustomFuncButton(*ren, "Quit game", spriteSheet, 540, 420, *this);
 	quitBtn->setUpdateFunction(std::bind(&PauseScreen::Quit, this));
 	AddUIComponent(quitBtn);
 
@@ -50,7 +50,8 @@ void PauseScreen::Settings()
 
 void PauseScreen::Quit()
 {
-	exit(EXIT_SUCCESS);
+	ScreenController::GetInstance().EmptyStack();
+	ScreenController::GetInstance().ChangeScreen(new HomeScreen{ renderer });
 }
 
 

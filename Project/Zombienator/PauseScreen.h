@@ -1,6 +1,7 @@
 #pragma once
 #include "MenuScreen.h"
 #include "SettingsScreen.h"
+#include "HomeScreen.h"
 #include "Label.h"
 #include "CustomFuncButton.h"
 

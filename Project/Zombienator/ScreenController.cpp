@@ -6,6 +6,11 @@ void ScreenController::ChangeScreen(AbstractScreen* screen)
 	screenStack.push(screen);
 }
 
+void ScreenController::EmptyStack()
+{
+	screenStack.empty();
+}
+
 void ScreenController::Back()
 {
 	if (screenStack.size() > 1) {
