@@ -214,6 +214,7 @@
     <ClCompile Include="ControllerInputHandler.cpp" />
     <ClCompile Include="InputContainer.cpp" />
     <ClCompile Include="KeyboardInputHandler.cpp" />
+    <ClCompile Include="LabelEndScreen.cpp" />
     <ClCompile Include="LandscapeMap.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Layer.cpp" />
@@ -299,6 +300,7 @@
     <ClInclude Include="HudVisitor.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="HudDrawBehaviour.h" />
+    <ClInclude Include="LabelEndScreen.h" />
     <ClInclude Include="LandscapeMap.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MachineGun.h" />

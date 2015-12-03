@@ -16,7 +16,7 @@ GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
 
 	// Get map
-	map = MapFactory::Instance()->NextMap();
+	map = MapFactory::GetInstance()->NextMap();
 
 	tree = new Quadtree(map->GetBounds());
 
@@ -148,7 +148,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	// FPS
 	if (settings->getShowFps()) {
-		std::pair<SDL_Texture*, SDL_Rect> fpsTexture = TextureFactory::GenerateText("FPS: " + to_string(this->fps), 30, 1225, 15, "assets/fonts/Roboto-Medium.ttf");
+		std::pair<SDL_Texture*, SDL_Rect> fpsTexture = TextureFactory::GenerateText("FPS: " + to_string(this->fps), 30, 1225, 15, false);
 		SDL_RenderCopy(&ren, fpsTexture.first, NULL, &fpsTexture.second);
 		SDL_DestroyTexture(fpsTexture.first);
 	}
@@ -167,7 +167,7 @@ void GameScreen::Transition(SDL_Renderer& ren) {
 		ScreenController::GetInstance().PopLatestScreen();
 
 		// Check if final map
-		if (MapFactory::Instance()->IsQueueEmpty()) {
+		if (MapFactory::GetInstance()->IsQueueEmpty()) {
 			ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::WINSCREEN));
 		}
 		else {

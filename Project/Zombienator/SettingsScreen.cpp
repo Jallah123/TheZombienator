@@ -19,7 +19,6 @@ SettingsScreen::SettingsScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 void SettingsScreen::initCompontents(SDL_Renderer &ren)
 {
-	std::string fontUrl = "assets/fonts/Block-Cartoon.ttf";
 	char* spriteSheet = "assets/images/button_spritesheet_settings.png";
 
 	//back button
@@ -29,10 +28,10 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	//labels:
 	//Label* difficultyLabel = new Label(ren, "Difficulty", 275, 250, 30, fontUrl, { 255,50,50 });  //ren, text, xpos,ypos, fontsize, color
 	//Label* gamespeedLabel = new Label(ren, "Game speed", 275, 300, 30, fontUrl, { 255,50,50 });
-	Label* fpsLabel = new Label(ren, "FPS", 500, 265, 30, fontUrl, { 0,0,0 });
-	Label* ffLabel = new Label(ren, "Friendly fire", 500, 335, 30, fontUrl, { 0,0,0 });
-	Label* soundLabel = new Label(ren, "Sound", 500, 410, 30, fontUrl, { 0,0,0 });
-	Label* musicLabel = new Label(ren, "Music", 500, 480, 30, fontUrl, { 0,0,0 });
+	Label* fpsLabel = new Label(ren, "FPS", 500, 265, 30, { 0,0,0 });
+	Label* ffLabel = new Label(ren, "Friendly fire", 500, 335, 30, { 0,0,0 });
+	Label* soundLabel = new Label(ren, "Sound", 500, 410, 30, { 0,0,0 });
+	Label* musicLabel = new Label(ren, "Music", 500, 480, 30, { 0,0,0 });
 	//AddUIComponent(difficultyLabel);
 	//AddUIComponent(gamespeedLabel);
 	AddUIComponent(fpsLabel);

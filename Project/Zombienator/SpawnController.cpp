@@ -83,7 +83,6 @@ void SpawnController::NextWave()
 		completed = true;
 		return;
 	}
-	StatsController::Instance()->AddWaveDefeated();
 	currentWave++;
 	waveFinished = false;
 	amountSpawned = 0;//reset wave count
@@ -99,6 +98,7 @@ void SpawnController::Countdown()
 	if (elapsedtime < timeBetweenWaves) return;
 
 	NextWave();
+	StatsController::GetInstance()->AddWaveDefeated();
 }
 
 void SpawnController::AddLocation(int x, int y)

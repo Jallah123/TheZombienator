@@ -37,7 +37,7 @@ private:
 	GameScreen* gameScreen = nullptr;
 	Character* target = nullptr;
 
-	StatsController* statsController = StatsController::Instance();
+	StatsController* statsController = StatsController::GetInstance();
 
 	bool IsFinished();
 public:

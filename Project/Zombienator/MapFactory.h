@@ -20,7 +20,7 @@ public:
 	void MapFactory::EmptyQueue();
 	bool MapFactory::IsQueueEmpty();
 
-	static MapFactory* Instance() {
+	static MapFactory* GetInstance() {
 		static MapFactory f;
 		return &f;
 	}

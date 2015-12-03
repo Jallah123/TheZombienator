@@ -111,7 +111,7 @@ void Quadtree::Display(SDL_Renderer *renderer)
 	}
 	else {
 		std::string s = std::to_string(objects.size());
-		std::pair<SDL_Texture*, SDL_Rect> t = TextureFactory::GenerateText(s, 12, rectangle.x + (rectangle.w / 2), rectangle.y + (rectangle.h / 2), "assets/fonts/Block-Cartoon.ttf", SDL_Color{ 22,74, 38 });
+		std::pair<SDL_Texture*, SDL_Rect> t = TextureFactory::GenerateText(s, 12, rectangle.x + (rectangle.w / 2), rectangle.y + (rectangle.h / 2), true, SDL_Color{ 22,74, 38 });
 		SDL_RenderCopy(renderer, t.first, NULL, &t.second);
 	}
 }

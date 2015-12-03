@@ -414,6 +414,9 @@
     <ClCompile Include="BackToMenuButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
+    <ClCompile Include="LabelEndScreen.cpp">
+      <Filter>Source Files\Views\UIComponents\Label</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -667,6 +670,9 @@
     </ClInclude>
     <ClInclude Include="BackToMenuButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="LabelEndScreen.h">
+      <Filter>Header Files\Views\UIComponents\Label</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
