@@ -14,6 +14,7 @@ public:
 	}
 	void ChangeScreen(AbstractScreen* screen);
 	void Back();
+	void EmptyStack();
 	std::stack<AbstractScreen*> GetScreenStack() { return screenStack; };
 	AbstractScreen* GetCurrentScreen() { return screenStack.top(); };
 	void PopLatestScreen() { screenStack.pop(); };

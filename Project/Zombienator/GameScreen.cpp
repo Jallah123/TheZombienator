@@ -20,9 +20,9 @@ GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 
 	tree = new Quadtree(map->GetBounds());
 
-	gameObjectContainer = GameObjectContainer{ map, tree };
+	gameObjectContainer = new GameObjectContainer{ map, tree };
 	spawnController = SpawnController{ this };
-	gameObjectContainer.SetMap(map);
+	gameObjectContainer->SetMap(map);
 	spawnController.SetMap(map);
 	BehaviourFactory::Instance()->SetMap(map);
 
@@ -34,7 +34,7 @@ GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 		&moveContainer,
 		&actionContainer,
 		&collideContainer,
-		&gameObjectContainer,
+		gameObjectContainer,
 		ren
 	);
 
@@ -44,7 +44,7 @@ GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 		&moveContainer,
 		&actionContainer,
 		&collideContainer,
-		&gameObjectContainer,
+		gameObjectContainer,
 		ren
 	);
 	
@@ -56,19 +56,26 @@ GameScreen::GameScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 
 	//Load && play sound
 	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
-	
+	currentState = GameState::RUNNING;
 }
 
 GameScreen::~GameScreen()
 {
-	delete mike;
+	StatsController::Reset();
 	delete tree;
+	delete gameObjectContainer;
+}
+
+void GameScreen::ReceiveFocus()
+{
+	currentState = GameState::RUNNING;
 }
 
 void GameScreen::Update(float dt)
 {
-	tree->Clear();
 
+	//tree->Clear();
+	dt *= (float)settings->getGameSpeed() / 10;
 	XOffset = 0;
 	YOffset = 0;
 	/*if (shake > 0) {
@@ -76,35 +83,49 @@ void GameScreen::Update(float dt)
 		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
 	}*/
-	if (InputContainer::GetInstance().GetKeyState('['))
-	{
-		speed += 0.1;
-	}
-	else if (InputContainer::GetInstance().GetKeyState(']'))
-	{
-		speed -= 0.1;
-		if (speed < 0)
-			speed = 0;
-	}
-	else if (InputContainer::GetInstance().GetKeyState('\\'))
-	{
-		speed = 1.0;
+	HandleInput(dt);
+
+	if (currentState == GameState::RUNNING) {
+		for (auto& g : gameObjectContainer->GetGameObjects()) {
+			tree->AddObject(g);
+			if (Zombie* z = dynamic_cast<Zombie*>(g))
+			{
+				z->Update(dt);
+			}
+		}
+		spawnController.Update(dt);
+		actionContainer.Update(dt);
+		collideContainer.Collide(dt);
+		moveContainer.Move(dt);
+		animateContainer.Animate(dt);
+		tree->Clear();
 	}
 	dt *= speed;
+}
 
-	for (auto& g : gameObjectContainer.GetGameObjects()) {
-		tree->AddObject(g);
-		if (Zombie* z = dynamic_cast<Zombie*>(g))
-		{
-			z->Update(dt);
+void GameScreen::HandleInput(float dt) 
+{
+
+ if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
+	{
+		if (timeLastStateChange <= 0) {
+			if (currentState == GameState::PAUSE)
+			{
+				currentState = GameState::RUNNING;
+			}
+			else {
+				currentState = GameState::PAUSE;
+				ScreenController::GetInstance().ChangeScreen(new PauseScreen{ renderer });
+			}
+			timeLastStateChange = stateChangeDelay;
 		}
 	}
-
 	spawnController.Update(dt);
 	actionContainer.Update(dt);
 	collideContainer.Collide(dt);
 	moveContainer.Move(dt);
 	animateContainer.Animate(dt);
+	timeLastStateChange -= dt;
 
 }
 

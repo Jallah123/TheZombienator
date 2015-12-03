@@ -267,9 +267,6 @@
     <ClCompile Include="CharacterCollideBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Source Files\Enums</Filter>
-    </ClCompile>
     <ClCompile Include="AbstractScreen.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
@@ -384,6 +381,9 @@
     <ClCompile Include="SnowMap.cpp">
       <Filter>Source Files\Models\Map</Filter>
     </ClCompile>
+    <ClCompile Include="GameState.h">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
     <ClCompile Include="CollideObject.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
@@ -392,6 +392,21 @@
     </ClCompile>
     <ClCompile Include="HudVisitor.cpp">
       <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchButtonGameSpeed.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSpeed.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDifficulty.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchButtonGameDifficulty.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="SelectionScreen.cpp">
       <Filter>Source Files\Views\MenuScreens</Filter>
@@ -419,6 +434,12 @@
 		</ClCompile>
     <ClCompile Include="StatsScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Source Files\Views\MenuScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomFuncButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -650,6 +671,15 @@
     <ClInclude Include="HudVisitor.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
+    <ClInclude Include="SwitchButtonGameSpeed.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchButtonGameDifficulty.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
     <ClInclude Include="SettingsScreen.h">
       <Filter>Header Files\Views\MenuScreen</Filter>
     </ClInclude>
@@ -679,6 +709,12 @@
 		</ClInclude>
     <ClInclude Include="StatsScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomFuncButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

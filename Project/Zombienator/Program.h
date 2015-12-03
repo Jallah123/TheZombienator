@@ -7,7 +7,7 @@
 #include "ScreenController.h"
 #include "KeyboardInputHandler.h"
 #include "ControllerInputHandler.h"
-#include "GameState.cpp"
+#include "GameState.h"
 #include "LoadingScreen.h"
 
 class Program

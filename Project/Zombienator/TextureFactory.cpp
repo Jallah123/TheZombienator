@@ -68,8 +68,10 @@ std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text,
 {	
 	std::pair<SDL_Texture*, SDL_Rect> returnObject = {};
 	static bool fontCartoonBoolean;
+	static bool _fontSize;
 	static TTF_Font* font;
-	if (font == nullptr || fontCartoonBoolean != cartoonFont) {
+
+	if (font == nullptr || fontCartoonBoolean != cartoonFont || _fontSize != fontSize) {
 		if (cartoonFont) {
 			font = TTF_OpenFont("assets/fonts/Block-Cartoon.ttf", fontSize);
 		}
