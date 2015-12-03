@@ -441,6 +441,9 @@
     <ClCompile Include="CustomFuncButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
+    <ClCompile Include="FontEnum.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">

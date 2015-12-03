@@ -14,6 +14,13 @@ Button::Button(SDL_Renderer& ren, char* text, char* img_url) : AbstractUICompone
 
 Button::~Button()
 {
+	SDL_DestroyTexture(image);
+	image = nullptr;
+	if (buttonText.first != nullptr)
+	{
+		SDL_DestroyTexture(buttonText.first);
+		buttonText.first = nullptr;
+	}
 }
 
 void Button::Draw(SDL_Renderer& ren) {

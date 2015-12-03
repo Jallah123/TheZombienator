@@ -45,7 +45,7 @@ AbstractUIComponent::~AbstractUIComponent()
 		SDL_DestroyTexture(message);
 	}
 	SDL_DestroyTexture(image);
-	message = NULL;
-	image = NULL;
+	message = nullptr;
+	image = nullptr;
 	renderer = nullptr;
 }

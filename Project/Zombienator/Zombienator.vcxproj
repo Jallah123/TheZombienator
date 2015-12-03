@@ -197,6 +197,7 @@
     <ClCompile Include="CreditScreen.cpp" />
     <ClCompile Include="CustomFuncButton.cpp" />
     <ClCompile Include="Direction.cpp" />
+    <ClCompile Include="FontEnum.cpp" />
     <ClCompile Include="GameDifficulty.cpp" />
     <ClCompile Include="GameMath.cpp" />
     <ClCompile Include="GameObject.cpp" />

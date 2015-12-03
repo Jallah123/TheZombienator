@@ -37,14 +37,16 @@ Program& Program::shared_program() {
 */
 
 void Program::ShowLoadingScreen() {
-	LoadingScreen* l = dynamic_cast<LoadingScreen*>(ScreenFactory::Create(ScreenEnum::LOADINGSCREEN));
-	ScreenController::GetInstance().AddLoadingScreen(l);
+	if (ScreenController::GetInstance().GetLoadingScreen() == nullptr)
+	{
+		LoadingScreen* l = dynamic_cast<LoadingScreen*>(ScreenFactory::Create(ScreenEnum::LOADINGSCREEN));
+		ScreenController::GetInstance().AddLoadingScreen(l);
+	}
 
 	// SDL Render
 	SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(Sdl_Renderer);
 	ScreenController::GetInstance().GetLoadingScreen()->Draw(*Sdl_Renderer, 0);
-
 	// Update screen 
 	SDL_RenderPresent(Sdl_Renderer);
 
