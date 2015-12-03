@@ -23,7 +23,7 @@ public:
 	int Size();
 private:
 	ScreenController() {};
-	~ScreenController() {};
+	~ScreenController() { delete loadingScreen; };
 	ScreenController(ScreenController const&) = delete;
 	void operator=(ScreenController const&) = delete;
 	stack<AbstractScreen*> screenStack;

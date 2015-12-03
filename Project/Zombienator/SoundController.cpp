@@ -58,10 +58,9 @@ void SoundController::ChangeMusic(string path)
 	{
 		Mix_FreeMusic(currentMusic);
 	}
-	Mix_Music* music;
 
 	// Load music
-	music = Mix_LoadMUS(path.c_str());
+	Mix_Music* music = Mix_LoadMUS(path.c_str());
 	if (!music)
 	{
 		cout << "Mix_LoadMUS error: " << Mix_GetError() << endl;

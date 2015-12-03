@@ -24,6 +24,7 @@ Label::Label(SDL_Renderer& ren, int number, int posX, int posY, int fontSize, SD
 
 Label::~Label()
 {
+	SDL_DestroyTexture(label.first);
 }
 
 void Label::updateText(string text) {
