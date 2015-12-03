@@ -28,21 +28,21 @@ protected:
 	int animationFrames = 0;
 
 	//Containers
-	AnimateContainer* animateContainer;
-	DrawContainer* drawContainer;
-	MoveContainer* moveContainer;
-	InputContainer* inputContainer;
-	ActionContainer* actionContainer;
-	CollideContainer* collideContainer;
-	GameObjectContainer* gameObjectContainer;
+	AnimateContainer* animateContainer = nullptr;
+	DrawContainer* drawContainer = nullptr;
+	MoveContainer* moveContainer = nullptr;
+	InputContainer* inputContainer = nullptr;
+	ActionContainer* actionContainer = nullptr;
+	CollideContainer* collideContainer = nullptr;
+	GameObjectContainer* gameObjectContainer = nullptr;
 
 	//Behaviours
-	DrawBehaviour* drawBehaviour;
-	AnimateBehaviour* animateBehaviour;
-	MoveBehaviour* moveBehaviour;
-	CollideBehaviour* collideBehaviour;
+	DrawBehaviour* drawBehaviour = nullptr;
+	AnimateBehaviour* animateBehaviour = nullptr;
+	MoveBehaviour* moveBehaviour = nullptr;
+	CollideBehaviour* collideBehaviour = nullptr;
 	//Character can have multiple actions
-	std::vector<ActionBehaviour*> actionBehaviours;
+	std::vector<ActionBehaviour*> actionBehaviours = {};
 
 public:
 	Character();

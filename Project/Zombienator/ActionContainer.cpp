@@ -18,6 +18,8 @@ ActionContainer::~ActionContainer()
 
 void ActionContainer::Update(float dt)
 {
+	if (arr.empty()) return;
+	
 	for (Behaviour* b : this->arr) {
 		ActionBehaviour* ab = dynamic_cast<ActionBehaviour*>(b);
 		ab->Update(dt);

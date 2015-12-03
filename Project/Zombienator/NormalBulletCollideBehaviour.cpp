@@ -32,6 +32,7 @@ void NormalBulletCollideBehaviour::Collide(float dt)
 	if (collision.size() > 0) {
 		HandleClosest( GetClosest(collision, *bullet), bullet );
 	}
+	CanRemove(true);
 }
 
 GameObject * NormalBulletCollideBehaviour::GetClosest(std::vector<GameObject*> objects, GameObject & origin)
@@ -58,6 +59,7 @@ void NormalBulletCollideBehaviour::HandleClosest(GameObject * closest, Bullet* b
 			zombie->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
 		}
 		bullet->SetCollision(true);
+		
 	}
 }
 

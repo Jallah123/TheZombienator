@@ -26,16 +26,16 @@ protected:
 	GameObject* target = nullptr;
 
 	//Direction direction;
-	PlayableCharacter* origin;
+	PlayableCharacter* origin = nullptr;
 
-	DrawContainer* drawContainer;
-	MoveContainer* moveContainer;
-	CollideContainer* collideContainer;
-	GameObjectContainer* gameObjectContainer;
+	DrawContainer* drawContainer = nullptr;
+	MoveContainer* moveContainer = nullptr;
+	CollideContainer* collideContainer = nullptr;
+	GameObjectContainer* gameObjectContainer = nullptr;
 
-	DrawBehaviour* drawBehaviour;
-	MoveBehaviour* moveBehaviour;
-	CollideBehaviour* collideBehaviour;
+	DrawBehaviour* drawBehaviour = nullptr;
+	MoveBehaviour* moveBehaviour = nullptr;
+	CollideBehaviour* collideBehaviour = nullptr;
 
 public:
 	Bullet();
