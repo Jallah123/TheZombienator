@@ -1,7 +1,7 @@
 #pragma once
-#include "AbstractScreen.h"
+#include "StatsScreen.h"
 
-class GameOverScreen : public AbstractScreen
+class GameOverScreen : public StatsScreen
 {
 	public:
 		GameOverScreen(SDL_Renderer* ren);

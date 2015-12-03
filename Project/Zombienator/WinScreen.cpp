@@ -1,12 +1,13 @@
 #pragma once
 #include "WinScreen.h"
-#include "StatsController.h"
-#include "BackToMenuButton.h"
-#include "LabelEndScreen.h"
 
 WinScreen::WinScreen(SDL_Renderer* ren) : StatsScreen(ren)
 {
+	SoundController::GetInstance().StopAllSounds();
 	ChangeBackground(ren, "assets/images/win_bg.png");
+	SoundController->GetInstance().PlaySound("assets/sounds/youvewon.wav", 1);
+
+	AddStats(ren);
 }
 
 WinScreen::~WinScreen() {}

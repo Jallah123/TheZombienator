@@ -10,4 +10,6 @@ public:
 
 	virtual void Update(float dt) = 0;
 	virtual void Draw(SDL_Renderer& ren, float dt) = 0;
+
+	void AddStats(SDL_Renderer* ren);
 };
