@@ -13,14 +13,14 @@ protected:
 	SDL_Texture* backgroundTexture = nullptr;
 	std::vector<AbstractUIComponent*> UIComponents;
 	SoundController* SoundController = &SoundController::GetInstance();
-
+	int fps = 0;
 	void ChangeBackground(SDL_Renderer* ren, char* img_url);
 
 public:
 	AbstractScreen();
 	AbstractScreen(SDL_Renderer* ren);
 	virtual ~AbstractScreen();
-
+	void setFPS(int value) { this->fps = value; };
 	virtual void Update(float dt) = 0;
 	virtual void Draw(SDL_Renderer& ren, float dt) = 0;
 	virtual void AddUIComponent(AbstractUIComponent* UIComponent);

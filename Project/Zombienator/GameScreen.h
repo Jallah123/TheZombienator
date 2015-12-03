@@ -10,6 +10,8 @@
 #include "MoveContainer.h"
 #include "ActionContainer.h"
 #include "GameObjectContainer.h"
+#include "Settings.h"
+#include "TextureFactory.h"
 #include "CollideContainer.h"
 #include "GameState.h"
 #include "HudVisitor.h"
@@ -31,10 +33,10 @@ private:
 	int shakeIntensity = 20;
 	int XOffset = 0;
 	int YOffset = 0;
-	float speed = 1.0;
-	GameState currentState = GameState::INIT;
 	int stateChangeDelay = 50;
 	int timeLastStateChange = 0;
+	GameState currentState = GameState::INIT;
+	Settings* settings = &Settings::GetInstance();
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
 
 	void HandleInput(float dt);
@@ -47,6 +49,7 @@ private:
 	GameObjectContainer* gameObjectContainer;
 	SpawnController spawnController;
 	HudVisitor hudVisitor;
+	
 	
 	Mike* mike = nullptr;
 	Map* map = nullptr;

@@ -12,6 +12,9 @@ Program::Program() {
 	if (InitJoystick() == 0) {
 		cout << "Init joystick" << endl;
 	}
+
+	//init fps
+	this->InitFPS();
 }
 
 Program* Program::instance{ nullptr };
@@ -72,6 +75,8 @@ int Program::Tick() {
 		currentFrameTime = SDL_GetTicks();
 		deltaTime = float(currentFrameTime - lastFrameTime) / 10;
 
+
+
 		// Handle events on queue 
 		while (SDL_PollEvent(&e) != 0) {
 			Events(sc->GetCurrentScreen());
@@ -86,8 +91,10 @@ int Program::Tick() {
 		}
 
 		// Update & render currentScreen
+		currentScreen->setFPS(this->CalculateFPS());
 		currentScreen->Update(deltaTime);
 		Render(sc->GetCurrentScreen());
+
 
 		// Update previousScreen
 		previousScreen = currentScreen;
@@ -97,6 +104,71 @@ int Program::Tick() {
 	}
 
 	return 0;
+}
+
+void Program::InitFPS()
+{
+	// Set all frame times to 0ms.
+	memset(frametimes, 0, sizeof(frametimes));
+	framecount = 0;
+	framespersecond = 0;
+	frametimelast = SDL_GetTicks();
+}
+
+int Program::CalculateFPS()
+{
+	Uint32 frametimesindex;
+	Uint32 getticks;
+	Uint32 count;
+	Uint32 i;
+
+	// frametimesindex is the position in the array. It ranges from 0 to FRAME_VALUES.
+	// This value rotates back to 0 after it hits FRAME_VALUES.
+	frametimesindex = framecount % FRAME_VALUES;
+
+	// store the current time
+	getticks = SDL_GetTicks();
+
+	// save the frame time value
+	frametimes[frametimesindex] = getticks - frametimelast;
+
+	// save the last frame time for the next fpsthink
+	frametimelast = getticks;
+
+	// increment the frame count
+	framecount++;
+
+	// Work out the current framerate
+
+	// The code below could be moved into another function if you don't need the value every frame.
+
+	// I've included a test to see if the whole array has been written to or not. This will stop
+	// strange values on the first few (FRAME_VALUES) frames.
+	if (framecount < FRAME_VALUES) {
+
+		count = framecount;
+
+	}
+	else {
+
+		count = FRAME_VALUES;
+
+	}
+
+	// add up all the values and divide to get the average frame time.
+	framespersecond = 0;
+	for (i = 0; i < count; i++) {
+
+		framespersecond += frametimes[i];
+
+	}
+
+	framespersecond /= count;
+
+	// now to make it an actual frames per second value...
+	framespersecond = 1000.f / framespersecond;
+
+	return framespersecond;
 }
 
 void Program::Render(AbstractScreen* screen)

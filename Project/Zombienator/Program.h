@@ -28,6 +28,17 @@ private:
 	float deltaTime;
 	int lastFrameTime = 0;
 	int currentFrameTime = 0;
+
+	//fps
+	#define FRAME_VALUES 100
+	// An array to store frame times:
+	Uint32 frametimes[FRAME_VALUES];
+	// Last calculated SDL_GetTicks
+	Uint32 frametimelast;
+	// total frames rendered
+	Uint32 framecount;
+	// the value you want
+	float framespersecond;
 	
 	int Tick();
 	void Render(AbstractScreen* screen);
@@ -36,6 +47,9 @@ private:
 	int InitJoystick();
 	void ShowLoadingScreen();
 	void CloseJoystick();
+
+	int CalculateFPS();
+	void InitFPS();
 
 	static Program* instance;
 	Program(Program const&) = delete;
