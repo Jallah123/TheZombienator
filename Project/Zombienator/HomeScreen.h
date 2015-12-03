@@ -1,8 +1,20 @@
 #pragma once
 #include "MenuScreen.h"
+class SettingsButton;
+class StoryModeButton;
+class InfiniteModeButton;
+class CreditButton;
+struct HelpButton;
+
 class HomeScreen :
 	public MenuScreen
 {
+private:
+	HelpButton* helpBtn = nullptr;
+	SettingsButton* settingsBtn = nullptr;
+	StoryModeButton* storyModeBtn = nullptr;
+	InfiniteModeButton* infiniteModeBtn = nullptr;
+	CreditButton* creditsButton = nullptr;
 public:
 	HomeScreen(SDL_Renderer* ren);
 	~HomeScreen();

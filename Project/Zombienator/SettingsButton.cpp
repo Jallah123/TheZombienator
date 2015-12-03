@@ -8,8 +8,8 @@ SettingsButton::SettingsButton() : Button()
 {
 }
 SettingsButton::SettingsButton(SDL_Renderer& ren, char* text, char* img_url) : Button(ren, text, img_url) {
-	srcRect = { 286 , 0, 82, 81 };
-	destRect = { 1189, 12, 82, 81 };
+	srcRect = { 286 , 0, 82, 75 };
+	destRect = { 1190, 20, 82, 75 };
 }
 
 SettingsButton::~SettingsButton()
