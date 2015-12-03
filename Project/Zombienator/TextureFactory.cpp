@@ -99,6 +99,8 @@ std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text,
 	if (surface)
 	{
 		SDL_Rect messageRectange = { xPos - (surface->w / 2), yPos - (surface->h / 2), surface->w, surface->h };
+		if(fontEnum == FontEnum::OCR)
+			messageRectange = { xPos, yPos, surface->w, surface->h };
 		returnObject = std::make_pair(GenerateTextureFromSurface(surface), messageRectange);
 		return returnObject;
 	}
