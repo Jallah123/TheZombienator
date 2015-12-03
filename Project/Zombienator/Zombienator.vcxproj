@@ -206,8 +206,7 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameState.h" />
     <ClCompile Include="GameSpeed.cpp" />
-    <ClCompile Include="GameState.cpp" />
-    <ClCompile Include="HelpScreen.cpp" /
+    <ClCompile Include="HelpScreen.cpp" />
     <ClCompile Include="HudDrawBehaviour.cpp" />
     <ClCompile Include="HudVisitor.cpp" />
     <ClCompile Include="Character.cpp" />
