@@ -9,7 +9,7 @@
 
 MapParser::MapParser(Map* map) :map(map)
 {
-	ParseJson(map->GetPath());
+	ParseJson(map->GetMapPath());
 	std::cout << "finished Parsing" << std::endl;
 }
 

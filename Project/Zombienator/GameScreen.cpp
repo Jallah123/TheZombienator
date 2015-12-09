@@ -53,7 +53,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 	spawnController.AddTarget(mike);
 
 	//Load && play sound
-	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
+	map->PlaySounds();
 	currentState = GameState::RUNNING;
 }
 

@@ -1,12 +1,9 @@
 #pragma once
 #include "Map.h"
-#include "MapParser.h"
-#include "TileLayer.h"
-#include "ObjectLayer.h"
 
 using std::string;
 
-Map::Map(string p) : path(p)
+Map::Map(string m, string s) : mapPath(m), soundPath(s)
 {
 	this->parser = new MapParser(this);
 	bounds = { 0, 0, tileWidth * width, tileHeight * height };
@@ -26,8 +23,11 @@ Map::~Map()
 
 	rects.clear();
 
-
 	delete parser;
+}
+
+void Map::PlaySounds() {
+	SoundController->ChangeMusic(soundPath);
 }
 
 void Map::Size(int w, int h)
