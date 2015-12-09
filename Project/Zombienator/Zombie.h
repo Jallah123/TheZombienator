@@ -1,6 +1,7 @@
 #pragma once
 #include "Character.h"
 #include "ZombieState.h"
+#include <string>
 
 class DrawContainer;
 class AnimateContainer;
@@ -9,13 +10,19 @@ class ActionContainer;
 class CollideContainer;
 class GameObjectContainer;
 
+using std::string;
+
 class Zombie :
 	public Character
 {
+private:
+	const string basePath = "assets/images/spritesheets/";
+	const string baseAttackPath = "assets/images/spritesheets/attack/";
 public:
 	Zombie();
+	Zombie(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, CollideContainer* collideC, ActionContainer* actionC, GameObjectContainer* gameObjectC);
 	~Zombie();
-	void Init(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren);
+	void Init();
 
 	void SetTarget(Character* c) { this->target = c; }
 	Character* GetTarget() { return this->target; }

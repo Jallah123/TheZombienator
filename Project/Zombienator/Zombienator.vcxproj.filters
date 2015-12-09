@@ -133,6 +133,12 @@
     <Filter Include="Source Files\Views\UIComponents\Images">
       <UniqueIdentifier>{4233e3d9-6d9a-479d-9582-f474fae886fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Models\Pickups">
+      <UniqueIdentifier>{36cbebd9-203d-4d29-83d5-d8231a23e06e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Pickups">
+      <UniqueIdentifier>{a5673afb-0121-4afd-9a43-30adaa9c70fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -453,6 +459,12 @@
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\Views\UIComponents\Images</Filter>
     </ClCompile>
+    <ClCompile Include="Pickup.cpp">
+      <Filter>Source Files\Models\Pickups</Filter>
+    </ClCompile>
+    <ClCompile Include="Medkit.cpp">
+      <Filter>Source Files\Models\Pickups</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -730,6 +742,12 @@
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files\Views\UIComponents\Images</Filter>
+    </ClInclude>
+    <ClInclude Include="Pickup.h">
+      <Filter>Header Files\Models\Pickups</Filter>
+    </ClInclude>
+    <ClInclude Include="Medkit.h">
+      <Filter>Header Files\Models\Pickups</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

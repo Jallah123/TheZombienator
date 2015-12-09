@@ -8,14 +8,10 @@
 
 GameObjectContainer::GameObjectContainer()
 {
-	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
-	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 }
 
-GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t): map(m), tree(t)
+GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t) : map(m), tree(t)
 {
-	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
-	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 }
 
 

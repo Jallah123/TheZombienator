@@ -19,7 +19,7 @@ void CharacterDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int
 	SDL_Rect Destination = *c->GetDestinationRect();
 	Destination.x -= XOffset;
 	Destination.y -= YOffset;
-	SDL_RenderCopy(&ren, c->GetTexture(), &c->GetSourceRect(), &Destination);
+	SDL_RenderCopy(&ren, c->GetTexture(), c->GetSourceRect(), &Destination);
 	
 	double healthPercentage = (double)c->GetHealth() / (double)c->GetMaxHealth();
 	if (healthPercentage != 1) {

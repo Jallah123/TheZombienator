@@ -1,7 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include "DrawContainer.h"
-#include "MoveContainer.h"
 #include "PlayableCharacter.h"
 
 //Containers

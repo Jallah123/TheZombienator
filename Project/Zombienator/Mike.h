@@ -1,5 +1,6 @@
 #pragma once
 #include "PlayableCharacter.h"
+#include <string>
 
 class AnimateContainer;
 class DrawContainer;
@@ -12,9 +13,10 @@ class Mike :
 	public PlayableCharacter
 {
 public:
+	//=== Constructors
 	Mike();
-	void Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer * actionC, CollideContainer* collideC, GameObjectContainer * gameObjectC, SDL_Renderer * ren, string img_url);
-	//Default constructor
+	Mike(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, CollideContainer* collideC, ActionContainer* actionC, GameObjectContainer* gameObjectC);
+	void Init(string img_url);
 	~Mike();
 };
 

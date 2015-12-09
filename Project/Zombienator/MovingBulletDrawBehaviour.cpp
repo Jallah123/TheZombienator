@@ -32,5 +32,5 @@ void MovingBulletDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, 
 		break;
 	}
 
-	SDL_RenderCopyEx(&ren, gameObject->GetTexture(), &gameObject->GetSourceRect(), gameObject->GetDestinationRect(), angle, NULL, flipType);
+	SDL_RenderCopyEx(&ren, gameObject->GetTexture(), gameObject->GetSourceRect(), gameObject->GetDestinationRect(), angle, NULL, flipType);
 }

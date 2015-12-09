@@ -3,36 +3,40 @@
 #include "ZombieStateFactory.h"
 #include "ZombieAttackState.h"
 #include "NumberUtility.h"
-#include <string>
 #include "TextureFactory.h"
 #include "GameMath.h"
-using std::string;
 
-Zombie::Zombie() : Character() 
+
+Zombie::Zombie() 
+	: Character() 
+{
+	SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, this));
+}
+
+Zombie::Zombie(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, CollideContainer * collideC, ActionContainer * actionC, GameObjectContainer * gameObjectC)
+	: Character(drawC, animC, moveC, collideC, actionC, gameObjectC)
 {
 	SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, this));
 }
 
 Zombie::~Zombie() {}
 
-void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
+void Zombie::Init()
 {
 	//Zombie doesn't have input from the InputContainer	
 	int dice_roll = NumberUtility::RandomNumber(1, 6);
 
-	string basePath = "assets/images/spritesheets/";
-	string baseAttackPath = "assets/images/spritesheets/attack/";
 	string spriteSheet = std::to_string(dice_roll) + "zombie.png";
 
-	SetImage(basePath + spriteSheet, *ren);
+	SetImage(basePath + spriteSheet);
 	SetNormalTexture(basePath + spriteSheet);
 	SetAttackTexture(baseAttackPath + spriteSheet);
-	this->SetContainers(drawC, animC, moveC, nullptr, nullptr, collideC, gameObjectC);
+	
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
 	SetCollideBehaviour("CharacterCollideBehaviour");
 
-	gameObjectC->AddGameObject(this);
+	gameObjectContainer->AddGameObject(this);
 	
 	SetSize(32, 36);
 	SetFrames(3);

@@ -29,7 +29,7 @@ void AnimateBehaviour::Animate(float dt, int ticks)
 	//Direction::WEST == 3;//LEFT5
 
 	//get source rect
-	SDL_Rect srcR = c->GetSourceRect();
+	SDL_Rect srcR = *c->GetSourceRect();
 	if (c->GetMoveDir() != Direction::NONE) {
 		int width = c->GetWidth();
 		int height = c->GetHeight();

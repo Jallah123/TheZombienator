@@ -172,7 +172,7 @@ void GameScreen::Transition(SDL_Renderer& ren) {
 	mike->Teleport(&ren);
 
 	// Draw on top off everything
-	SDL_RenderCopy(&ren, mike->GetTexture(), &mike->GetSourceRect(), mike->GetDestinationRect());
+	SDL_RenderCopy(&ren, mike->GetTexture(), mike->GetSourceRect(), mike->GetDestinationRect());
 
 	if (mike->getPosY() < -mike->GetHeight()) {
 

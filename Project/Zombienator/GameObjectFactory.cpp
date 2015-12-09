@@ -7,6 +7,7 @@
 #include "Map.h"
 #include "NormalBullet.h"
 #include "MachineGunBullet.h"
+#include "Medkit.h"
 
 #include "DrawContainer.h"
 #include "AnimateContainer.h"
@@ -52,6 +53,12 @@ void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * 
 	collideContainer = collideC;
 	gameObjectContainer = gameObjectC;
 	renderer = ren;
+	GameObjectFactory::Instance()->Register("mike", [&](void) -> GameObject* {
+		return new Mike(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	GameObjectFactory::Instance()->Register("zombie", [&](void) -> GameObject* {
+		return new Zombie(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	GameObjectFactory::Instance()->Register("Medkit", [&](void) -> GameObject* {
+		return new Medkit(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 }
 
 void GameObjectFactory::Register(std::string name, std::function<GameObject*(void)> fn)
@@ -65,7 +72,7 @@ Mike* GameObjectFactory::CreateMike(std::string img_url)
 	GameObject* instance = GameObjectFactory::Find("mike");
 	if (instance != nullptr) {
 		Mike* cInstance = dynamic_cast<Mike*>(instance);
-		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer, img_url);
+		cInstance->Init(img_url);
 		return cInstance;
 	}
 	return nullptr;
@@ -75,7 +82,7 @@ Zombie* GameObjectFactory::CreateZombie()
 	GameObject* instance = GameObjectFactory::Find("zombie");
 	if (instance != nullptr) {
 		Zombie* cInstance = dynamic_cast<Zombie*>(instance);
-		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer);
+		cInstance->Init();
 		return cInstance;
 	}
 	return nullptr;
@@ -104,6 +111,19 @@ MachineGunBullet * GameObjectFactory::CreateMachineGunBullet(PlayableCharacter *
 		MachineGunBullet* cInstance = dynamic_cast<MachineGunBullet*>(instance);
 		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+Medkit * GameObjectFactory::CreateMedkit(Character* obj)
+{
+	GameObject* instance = GameObjectFactory::Find("Medkit");
+
+	if (instance != nullptr) {
+		Medkit* cInstance = dynamic_cast<Medkit*>(instance);
+		cInstance->SetOrigin(obj);//Position the object
 		return cInstance;
 	}
 
