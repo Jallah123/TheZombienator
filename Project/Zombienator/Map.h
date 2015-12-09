@@ -52,6 +52,7 @@ public:
 	void AddTileset(TileSet* ts);
 
 	void Draw(SDL_Renderer& ren, int XOffset, int YOffset);
+	void Draw(SDL_Renderer& ren, int x, int y, int size);
 	void DrawFrontLayer(SDL_Renderer& ren, int XOffset, int YOffset);
 
 	ObjectLayer* GetObjectLayer(string key);

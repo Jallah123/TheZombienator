@@ -30,9 +30,13 @@ public:
 
 	int ImageWidth() { return static_cast<int>(imageWidth); }
 	int ImageHeight() { return static_cast<int>(imageHeight); }
+	void setImageWidth(int _imageWidth) { imageWidth = _imageWidth; };
+	void setImageHeight(int _imageHeight) { imageHeight = _imageHeight; };
 
 	int TileWidth() { return static_cast<int>(tileWidth); }
 	int TileHeight() { return static_cast<int>(tileHeight); }
+	void setTileWidth(int _tileWidth) { tileWidth = _tileWidth; };
+	void setTileHeight(int _tileHeight) { tileHeight = _tileHeight; };
 
 	int GID() { return static_cast<int>(firstgid); }
 	SDL_Texture* Texture() { return this->texture; }

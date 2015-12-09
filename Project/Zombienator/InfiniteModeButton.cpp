@@ -1,5 +1,7 @@
 #pragma once
 #include "InfiniteModeButton.h"
+#include "ScreenFactory.h"
+#include "ScreenController.h"
 
 InfiniteModeButton::InfiniteModeButton(SDL_Renderer& ren, char* text, char* img_url) 
 	: Button(ren, text, img_url) {
@@ -18,6 +20,7 @@ InfiniteModeButton::~InfiniteModeButton()
 void InfiniteModeButton::ClickAction()
 {
 	//std::cout << "InfiniteModeButton Clicked!" << std::endl;
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::MAPSELECTIONSCREEN));
 
 }
 

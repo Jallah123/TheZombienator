@@ -21,6 +21,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url, string mapUrl) : 
 	}
 	else {
 		isInfinityMode = true;
+		map = new Map{ mapUrl };
 	}
 
 	tree = new Quadtree(map->GetBounds());
