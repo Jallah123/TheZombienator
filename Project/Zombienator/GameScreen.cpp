@@ -59,7 +59,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 
 GameScreen::~GameScreen()
 {
-	StatsController::Reset();
 	delete tree;
 	delete gameObjectContainer;
 }
