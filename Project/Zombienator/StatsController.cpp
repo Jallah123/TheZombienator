@@ -1,17 +1,11 @@
 #include "StatsController.h"
 
-int StatsController::kills = 0;
-int StatsController::totalKills = 0;
-int StatsController::totalBullets = 0;
-int StatsController::totalWavesDefeated = 0;
-long StatsController::startTime = clock();
-
 StatsController::StatsController() {}
 StatsController::~StatsController() {}
 
 std::string StatsController::GetTotalTime()
 {
-	int sec = int((float(clock() - startTime) / CLOCKS_PER_SEC) + 0.5f);
+	int sec = int((float(clock() - this->startTime) / CLOCKS_PER_SEC) + 0.5f);
 
 	int hours = sec / 60 / 60;
 	int minutes = (sec / 60) % 60;
@@ -30,9 +24,9 @@ std::string StatsController::GetTotalTime()
 
 void StatsController::Reset()
 {
-	kills = 0;
-	totalKills = 0;
-	totalBullets = 0;
-	totalWavesDefeated = 0;
-	startTime = clock();
+	this->kills = 0;
+	this->totalKills = 0;
+	this->totalBullets = 0;
+	this->totalWavesDefeated = 0;
+	this->startTime = clock();
 }
