@@ -11,6 +11,8 @@
 #include "TextureFactory.h"
 #include "MapFactory.h"
 #include "ScreenFactory.h"
+#include "Pistol.h"
+#include "MachineGun.h"
 
 GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(ren)
 {
@@ -119,16 +121,23 @@ void GameScreen::HandleInput(float dt)
 		}
 	}
 	if (timeCheatActivated <= 0) {
-		if (InputContainer::GetInstance().GetKeyState(SDLK_F3))
+		if (inputContainer->GetKeyState(SDLK_F3))
 		{
 			cout << "Toggle godmode\n";
 			settings->toggleGodMode();
 			timeCheatActivated = cheatDelay;
 		}
-		else if (InputContainer::GetInstance().GetKeyState(SDLK_F4))
+		else if (inputContainer->GetKeyState(SDLK_F4))
 		{
 			cout << "Toggle infiniteammo\n";
 			settings->toggleInfiniteAmmo();
+			timeCheatActivated = cheatDelay;
+		}
+		else if (inputContainer->GetKeyState(SDLK_F5))
+		{
+			cout << "Gave all weapons\n";
+			mike->AddWeapon(new Pistol);
+			mike->AddWeapon(new MachineGun);
 			timeCheatActivated = cheatDelay;
 		}
 	}

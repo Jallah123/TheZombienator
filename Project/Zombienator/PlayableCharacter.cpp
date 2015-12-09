@@ -11,8 +11,20 @@ PlayableCharacter::~PlayableCharacter()
 	delete weapon;
 }
 
+bool PlayableCharacter::hasWeapon(Weapon* w)
+{
+	for each (auto weapon in weapons)
+	{
+		if (w->GetName() == weapon->GetName())
+			return true;
+	}
+	return false;
+}
+
 void PlayableCharacter::AddWeapon(Weapon * w)
 {
+	if (hasWeapon(w))
+		return;
 	weapons.push_back(w);
 	if (weapon == nullptr) {
 		SetWeapon(w);

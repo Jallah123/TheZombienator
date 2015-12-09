@@ -5,6 +5,8 @@
 class PlayableCharacter
 	: public Character
 {
+private:
+	bool hasWeapon(Weapon* w);
 protected:
 	std::vector<Weapon*> weapons = {};
 	Weapon* weapon = nullptr;
