@@ -44,6 +44,12 @@ void NormalBullet::CalculateEndPoint()
 		case NORTHWEST:
 			end->x = begin->x - minimaal;
 			end->y = begin->y - minimaal;
+			if (HasCollision()) {
+				SDL_Rect* tr = target->GetDestinationRect();
+				auto minimaal2 = min(end->x - tr->x, end->y - tr->y); // possible fix?
+				end->x -= minimaal2;
+				end->y -= minimaal2;
+			}
 			break;
 		case SOUTHWEST: 
 			end->x = begin->x - minimaal;
