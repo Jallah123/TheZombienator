@@ -31,14 +31,14 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	// StoryModeButton
 	storyModeBtn = new StoryModeButton(*ren, "", "assets/images/button_spritesheet.png");
 	// InfiniteModeButton -- Uncomment for presentation
-	// infiniteModeBtn = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
+	infiniteModeBtn = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
 	// CreditScreenButton
 	creditsButton = new CreditButton(*ren, "", "assets/images/button_spritesheet.png");
 	
 	AddUIComponent(helpBtn);
 	AddUIComponent(settingsBtn);
 	AddUIComponent(storyModeBtn);
-	//AddUIComponent(infiniteModeBtn);
+	AddUIComponent(infiniteModeBtn);
 	AddUIComponent(creditsButton);
 	SoundController->ChangeMusic("assets/sounds/Undead-Rising.flac");
 }

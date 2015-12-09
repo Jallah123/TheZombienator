@@ -5,6 +5,6 @@ enum GameSpeed : int
 {
 	SLOW = 5,
 	NORMAL = 10,
-	FAST = 20,
+	FAST = 50,
 };
 #endif

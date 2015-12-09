@@ -12,11 +12,17 @@
 #include "MapFactory.h"
 #include "ScreenFactory.h"
 
-GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(ren)
+GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url, string mapUrl) : AbstractScreen(ren)
 {
 
 	// Get map
-	map = MapFactory::GetInstance()->NextMap();
+	if (mapUrl == "") {
+		map = MapFactory::GetInstance()->NextMap();
+	}
+	else {
+		isInfinityMode = true;
+	}
+
 	tree = new Quadtree(map->GetBounds());
 
 	gameObjectContainer = new GameObjectContainer{ map, tree };
@@ -90,7 +96,9 @@ void GameScreen::Update(float dt)
 				z->Update(dt);
 			}
 		}
-		spawnController.Update(dt);
+		if (!inTransistion) {
+			spawnController.Update(dt);
+		}
 		actionContainer.Update(dt);
 		collideContainer.Collide(dt);
 		moveContainer.Move(dt);
@@ -136,20 +144,32 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	hudVisitor.DrawBase();
 	mike->GetWeapon()->Accept(&hudVisitor);
 
-	// If all waves defeated
-	if (spawnController.Completed())
-		this->Transition(ren);
+	// if story mode || not infinity mode
+	if (!isInfinityMode) {
+		// if maxwave completed
+		if (spawnController.CurrentWave() == 5) {
+			inTransistion = true;
+			if (this->Transition(ren))
+			{
+				return;
+			}
+			
+		}
+	}
 
 	int zombiesOnScreen = spawnController.GetAmountSpawned();
 	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
 	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
 	if (zombiesLeft == 0) {
 		s = "Kill all zombies";
-		if (spawnController.AllWavesCompleted()) {
+		if (spawnController.CurrentWave() == 4 && spawnController.WaveCompleted()) {
 			s = "Next map in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
 		}
-		else if (spawnController.WaveCompleted()) {
+		else if(spawnController.WaveCompleted()) {
 			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
+		}
+		if (inTransistion) {
+			s = "Transitioning to next level";
 		}
 		
 	}
@@ -167,7 +187,8 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 }
 
-void GameScreen::Transition(SDL_Renderer& ren) {
+// returns if done transitioning
+bool GameScreen::Transition(SDL_Renderer& ren) {
 
 	mike->Teleport(&ren);
 
@@ -176,7 +197,9 @@ void GameScreen::Transition(SDL_Renderer& ren) {
 
 	if (mike->getPosY() < -mike->GetHeight()) {
 
-		ScreenController::GetInstance().PopLatestScreen();
+		string imgUrl = mike->getImgUrl();
+		inTransistion = false;
+		ScreenController::GetInstance().Back();
 
 		// Check if final map
 		if (MapFactory::GetInstance()->IsQueueEmpty()) {
@@ -184,9 +207,9 @@ void GameScreen::Transition(SDL_Renderer& ren) {
 		}
 		else {
 			// Set next screen
-			ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN));
+			ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(imgUrl));
 		}
-
+		return true;
 	}
-
+	return false;
 }

@@ -9,6 +9,7 @@ private:
 	int currentImageIndex = 0;
 	std::vector<Image*> images;
 	std::pair<SDL_Texture*, SDL_Rect> title;
+	string mapUrl = "";
 public:
 	SelectionScreen(SDL_Renderer* ren);
 	~SelectionScreen();

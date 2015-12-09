@@ -18,5 +18,6 @@ InfiniteModeButton::~InfiniteModeButton()
 void InfiniteModeButton::ClickAction()
 {
 	//std::cout << "InfiniteModeButton Clicked!" << std::endl;
+
 }
 

@@ -25,7 +25,7 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	SetCollideBehaviour("CharacterCollideBehaviour");
 
 	gameObjectC->AddGameObject(this);
-
+	imgUrl = img_url;
 	SetImage(img_url, *ren);
 	SetSize(36, 38);
 	SetFrames(3);

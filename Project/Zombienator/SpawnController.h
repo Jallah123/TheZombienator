@@ -18,7 +18,6 @@ private:
 	
 	Map* map = nullptr;
 
-	int maxWaves = 5;
 	int currentWave = 0;
 
 	int zombies = 0;
@@ -59,10 +58,6 @@ public:
 
 	void AddTarget(Character* c) { this->target = c; }
 
-	void Waves(int w) { this->maxWaves = w; }
-
-	int Waves() { return this->maxWaves; }
-
 	int GetAmountOfZombies() { return zombies; };
 	
 	int CurrentWave() { return this->currentWave; }
@@ -76,7 +71,5 @@ public:
 	bool WaveCompleted() { return this->waveFinished; }
 
 	bool AllWavesCompleted() { return this->allWavesCompleted; }
-
-	bool Completed() { return completed; }
 };
 
