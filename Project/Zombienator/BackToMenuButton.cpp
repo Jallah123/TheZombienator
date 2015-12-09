@@ -3,7 +3,6 @@
 #include "ScreenController.h"
 #include "HomeScreen.h"
 #include "ScreenFactory.h"
-#include "StatsController.h"
 #include "MapFactory.h"
 
 BackToMenuButton::BackToMenuButton(SDL_Renderer& ren, char* text, char* img_url) : Button(ren, text, img_url) 
@@ -14,7 +13,6 @@ BackToMenuButton::BackToMenuButton(SDL_Renderer& ren, char* text, char* img_url)
 
 void BackToMenuButton::ClickAction() 
 {
-	StatsController::GetInstance()->Reset();
 	MapFactory::GetInstance()->EmptyQueue();
 	SoundController::GetInstance().StopAllSounds();
 	ScreenController::GetInstance().EmptyStack();
