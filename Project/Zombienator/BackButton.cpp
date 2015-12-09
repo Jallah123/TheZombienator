@@ -8,8 +8,15 @@ BackButton::BackButton(SDL_Renderer& ren, char* text, char* img_url)
 	destRect = { 10, 12, 82, 82 };
 }
 
+void BackButton::setUpdateParentFunction(std::function<void()> func) {
+	this->updateParent = func;
+}
+
 
 void BackButton::ClickAction() {
+	if (updateParent != nullptr) {
+		updateParent();
+	}
 	ScreenController::GetInstance().Back();
 }
 

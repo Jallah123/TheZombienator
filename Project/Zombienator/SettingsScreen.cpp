@@ -18,10 +18,15 @@ SettingsScreen::SettingsScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 void SettingsScreen::initCompontents(SDL_Renderer &ren)
 {
+	//load settings from file
+	Settings->Load();
+
+
 	char* spriteSheet = "assets/images/button_spritesheet_settings.png";
 
 	//back button
 	BackButton* b = new BackButton(ren, "", "assets/images/button_spritesheet.png");
+	b->setUpdateParentFunction(std::bind(&SettingsScreen::saveSettings, this));
 	AddUIComponent(b);
 
 	//labels:

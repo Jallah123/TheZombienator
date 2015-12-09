@@ -453,6 +453,9 @@
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\Views\UIComponents\Images</Filter>
     </ClCompile>
+    <ClCompile Include="ioController.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -730,6 +733,9 @@
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files\Views\UIComponents\Images</Filter>
+    </ClInclude>
+    <ClInclude Include="ioController.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

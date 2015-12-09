@@ -1,0 +1,13 @@
+{
+    "value0": {
+        "friendlyFire": false,
+        "sound": true,
+        "music": true,
+        "showFps": true,
+        "gameSpeed": 5,
+        "gameDifficulty": 1,
+        "defaultVolume": 29,
+        "musicVolume": 29,
+        "soundVolume": 29
+    }
+}
