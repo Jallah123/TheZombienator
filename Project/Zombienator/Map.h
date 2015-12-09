@@ -50,6 +50,7 @@ public:
 	void AddFrontLayer(Layer* l) { frontLayers.insert({ l->Name(), l }); }
 
 	void AddTileset(TileSet* ts);
+	void SetTileSize(int size);
 
 	void Draw(SDL_Renderer& ren, int XOffset, int YOffset);
 	void Draw(SDL_Renderer& ren, int x, int y, int size);

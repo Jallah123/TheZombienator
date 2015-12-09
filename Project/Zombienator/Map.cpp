@@ -60,17 +60,17 @@ void Map::Draw(SDL_Renderer & ren, int XOffset, int YOffset)
 	}
 }
 
-void Map::Draw(SDL_Renderer& ren, int x, int y, int size)
+void Map::SetTileSize(int size)
 {
+	backLayers.insert(frontLayers.begin(), frontLayers.end());
 	for (const auto& l : backLayers)
 	{
 		auto d = dynamic_cast<TileLayer*>(l.second);
 		if (d != nullptr)
 		{
-			d->getTileSet()->setTileHeight(16);
-			d->getTileSet()->setTileWidth(16);
+			d->getTileSet()->setTileHeight(size);
+			d->getTileSet()->setTileWidth(size);
 		}
-		l.second->Draw(ren, 200, 200);
 	}
 }
 

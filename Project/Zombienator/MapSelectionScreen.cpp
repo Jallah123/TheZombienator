@@ -8,7 +8,9 @@ MapSelectionScreen::MapSelectionScreen(SDL_Renderer* ren)
 	vector<string> test = DirectoryUtils::getFilesFromDirectory("maps", "json", true);
 	for (auto s : test)
 	{
-		maps.push_back(new Map{ s });
+		Map* m = new Map{ s };
+		m->SetTileSize(16);
+		maps.push_back(m);
 	}
 }
 
@@ -19,10 +21,9 @@ void MapSelectionScreen::Update(float dt)
 
 void MapSelectionScreen::Draw(SDL_Renderer& ren, float dt)
 {
-	for (auto s : maps)
-	{
-		s->Draw(ren, 0, 0, 0);
-	}
+	Map* currentMap = maps[currentMapIndex];
+	currentMap->Draw(ren, 200, 200);
+	// 5currentMap->DrawFrontLayer(ren, 0, 0);
 }
 
 MapSelectionScreen::~MapSelectionScreen()

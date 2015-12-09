@@ -7,6 +7,7 @@ class MapSelectionScreen :
 {
 private:
 	vector<Map*> maps;
+	int currentMapIndex = 0;
 public:
 	MapSelectionScreen(SDL_Renderer* ren);
 	void MapSelectionScreen::Update(float dt) override;
