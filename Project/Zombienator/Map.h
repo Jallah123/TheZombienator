@@ -22,7 +22,7 @@ class Map
 {
 private:
 	string mapPath = "";
-	string soundPath = "";
+	string soundPath = "bgSound1.wav"; // Default music
 
 	int width = 0;
 	int height = 0;
@@ -39,10 +39,13 @@ private:
 	SDL_Renderer* renderer;
 	SoundController* SoundController = &SoundController::GetInstance();
 public:
-	Map(string mapPath, string soundPath);
+	Map(string mapPath);
 	~Map();
 
 	string GetMapPath() const { return this->mapPath; }
+	string GetSoundPath() const { return this->mapPath; }
+	void SetSoundPath(string soundPath) { this->soundPath = soundPath; }
+
 	void TileSize(int w, int h) { tileWidth = w; tileHeight = h; }
 	void Size(int w, int h);
 
