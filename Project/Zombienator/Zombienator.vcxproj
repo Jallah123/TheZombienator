@@ -234,6 +234,7 @@
     <ClCompile Include="Mike.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SettingsScreen.cpp" />
@@ -336,6 +337,7 @@
     <ClInclude Include="Mike.h" />
     <ClInclude Include="MoveBehaviour.h" />
     <ClInclude Include="MoveContainer.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="SettingsScreen.h" />

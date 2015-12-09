@@ -4,10 +4,10 @@
 #include <vector>
 #include <SDL_rect.h>
 #include <SDL_render.h>
-
 #include "Layer.h"
 #include "TileSet.h"
 #include "ObjectLayer.h"
+#include "Node.h"
 
 using std::string;
 using std::vector;
@@ -59,9 +59,18 @@ public:
 	vector<TileSet*> GetTileSets() { return this->tilesets; }
 	SDL_Rect GetBounds() { return bounds; }
 
-	std::map<SDL_Rect*, vector<SDL_Rect*>> GetNodes() { return nodes; };
+	std::vector<Node> GetNodes() 
+	{
+		vector<Node> returnNodes;
+		for (Node* node : nodes)
+		{
+			returnNodes.push_back(*node);
+		}
+		return returnNodes; 
+	};
 private:
 	void GenerateGraph();
 	bool IntersectsWithCollisionLayer(SDL_Rect wp1, SDL_Rect wp2);
-	std::map<SDL_Rect*, vector<SDL_Rect*>> nodes;
+	std::vector<Node*> nodes;
+	bool ExistsInMap(Node* n, SDL_Rect* rect);
 };

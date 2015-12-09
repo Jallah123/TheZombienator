@@ -3,6 +3,7 @@
 #include "MapParser.h"
 #include "TileLayer.h"
 #include "ObjectLayer.h"
+#include <limits>
 
 using std::string;
 
@@ -78,7 +79,7 @@ ObjectLayer* Map::GetObjectLayer(string key)
 
 void Map::GenerateGraph()
 {
-	if (backLayers["Waypoints"] == nullptr) 
+	if (backLayers["Waypoints"] == nullptr)
 	{
 		return;
 	}
@@ -90,16 +91,31 @@ void Map::GenerateGraph()
 	vector<SDL_Rect*> waypoints = waypointsLayer->GetRects();
 	for (int i = 0; i < waypoints.size(); i++)
 	{
-		SDL_Rect waypoint1 = *waypoints.at(i);
+		SDL_Rect* waypoint1 = waypoints.at(i);
+		Node* n = new Node{ waypoint1 };
 		for (int ii = 0; ii < waypoints.size(); ii++)
 		{
 			SDL_Rect waypoint2 = *waypoints.at(ii);
-			if (find(nodes[waypoints.at(i)].begin(), nodes[waypoints.at(i)].end(), waypoints.at(ii)) == nodes[waypoints.at(i)].end() && !IntersectsWithCollisionLayer(waypoint1, waypoint2))
+			if (!IntersectsWithCollisionLayer(*waypoint1, waypoint2) && !ExistsInMap(n, waypoints.at(ii)))
 			{
-				nodes[waypoints.at(i)].push_back(waypoints.at(ii));
+				n->reachableNodes.emplace(std::make_pair(new Node{ waypoints.at(ii) }, std::numeric_limits<int>::max()));
 			}
 		}
+		nodes.push_back(n);
 	}
+}
+
+bool Map::ExistsInMap(Node* n, SDL_Rect* rect)
+{
+	bool exists = false;
+	for (auto& a : n->reachableNodes) 
+	{
+		if (a.first->position == rect)
+		{
+			exists = true;
+		}
+	}
+	return exists;
 }
 
 bool Map::IntersectsWithCollisionLayer(SDL_Rect wp1, SDL_Rect wp2)

@@ -1,5 +1,9 @@
 #pragma once
 #include "ZombieState.h"
+#include <vector>
+#include "Node.h"
+#include "Character.h"
+
 class ZombieWalkingState :
 	public ZombieState
 {
@@ -8,8 +12,9 @@ public:
 	~ZombieWalkingState();
 	void CheckState();
 	void Update(float dt);
-	void CalculatePath();
 private:
-	vector<SDL_Rect*> path;
+	Node* GetClosestNodeNearTarget(Character* target, vector<Node>& nodes);
+	Node* GetCheapestNode(vector<Node*>& nodes);
+	void CalculatePath();
 };
 

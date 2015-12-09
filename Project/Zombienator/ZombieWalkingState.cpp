@@ -1,6 +1,9 @@
 #include "ZombieWalkingState.h"
 #include "ZombieStateFactory.h"
 #include "GameObjectContainer.h"
+#include "GameMath.h"
+#include <limits>
+#include <set>
 
 ZombieWalkingState::ZombieWalkingState()
 {
@@ -28,10 +31,10 @@ void ZombieWalkingState::CheckState()
 
 void ZombieWalkingState::Update(float dt)
 {
+	CalculatePath();
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 	GameObjectContainer* goc = z->GetGameObjectContainer();
-
 	float destX = target->getPosX();
 	float destY = target->getPosY();
 
@@ -96,36 +99,95 @@ void ZombieWalkingState::Update(float dt)
 	CheckState();
 }
 
-void ZombieWalkingState::CalculatePath() {
-	/*
-	vector<vector<unique_ptr<Room>>>& rooms = CurrentLayer->GetRooms();
-	for each (auto& roomrow in rooms)
+void ZombieWalkingState::CalculatePath() 
+{
+	Zombie* z = GetOwner();
+	Character* target = z->GetTarget();
+
+	vector<Node> nodes = GetOwner()->GetGameObjectContainer()->GetMap()->GetNodes();
+	Node* closestNodeNearSelf = GetClosestNodeNearTarget(z, nodes);
+	Node* closestNodeNearTarget = GetClosestNodeNearTarget(target, nodes);
+
+	vector<Node*> nodeQueue;
+	set<Node*> openSet;
+	vector<Node*> closedSet;
+
+	closestNodeNearSelf->weight = 0;
+	nodeQueue.push_back(closestNodeNearSelf);
+	openSet.insert(closestNodeNearSelf);
+
+	while (!nodeQueue.empty())
 	{
-		for each (auto& room in roomrow)
+		Node* cNode = GetCheapestNode(nodeQueue);
+		nodeQueue.erase(find(nodeQueue.begin(), nodeQueue.end(), cNode));
+		openSet.erase(cNode);
+
+		if (cNode == closestNodeNearTarget)
 		{
-			room.get()->SetDistance(numeric_limits<int>::max());
-			room.get()->SetPreviousRoom(nullptr);
+			vector<Node*> correctPath;
+			while (cNode != closestNodeNearSelf)
+			{
+				correctPath.push_back(cNode);
+				cNode = cNode->previousNode;
+			}
+			std::reverse(correctPath.begin(), correctPath.end());
+			z->SetPath(correctPath);
 		}
-	}
-	GetCurrentRoom()->SetDistance(0);
-	deque<Room*> queue;
-	queue.push_back(GetCurrentRoom());
+		closedSet.push_back(cNode);
 
-	while (!queue.empty()) {
-		Room* room = queue.front();
-		queue.pop_front();
-		for each (auto& AdjecentRoom in room->GetAdjecentRooms())
+		for (auto& reachableNode : cNode->reachableNodes)
 		{
+			if (find(closedSet.begin(), closedSet.end(), reachableNode.first) != closedSet.end())
+			{
+				continue;
+			}
+			int weight = cNode->weight + GameMath::Distance(*reachableNode.first->position, *closestNodeNearTarget->position) + GameMath::Distance(*cNode->position, *reachableNode.first->position);
 
-			int weight = AdjecentRoom.second->GetWeigth();
-			int distance = room->GetDistance() + weight;
+			reachableNode.first->weight = GameMath::Distance(*reachableNode.first->position, *cNode->position);
 
-			if (distance < AdjecentRoom.second->GetDistance()) {
-				AdjecentRoom.second->SetDistance(distance);
-				AdjecentRoom.second->SetPreviousRoom(room);
-				queue.push_back(AdjecentRoom.second);
+			if (weight < reachableNode.first->weight) 
+			{
+				reachableNode.first->weight = weight;
+				reachableNode.first->previousNode = cNode;
+			}
+
+			if (find(openSet.begin(), openSet.end(), reachableNode.first) == openSet.end())
+			{
+				nodeQueue.push_back(reachableNode.first);
+				openSet.insert(reachableNode.first);
 			}
 		}
 	}
-	*/
+}
+
+Node* ZombieWalkingState::GetCheapestNode(std::vector<Node*>& nodes)
+{
+	Node* cheapest = nodes.at(0);
+	for each (auto& node in nodes)
+	{
+		if (node->weight < cheapest->weight)
+		{
+			cheapest = node;
+		}
+	}
+	return cheapest;
+}
+
+Node* ZombieWalkingState::GetClosestNodeNearTarget(Character* target, vector<Node>& nodes)
+{
+	Node* closestNode = &nodes.at(0);
+	int closestRectDistance = INT_MAX;
+	SDL_Rect* destRect = target->GetDestinationRect();
+
+	for (auto& node : nodes)
+	{
+		SDL_Rect* currentRect = node.position;
+		double distance = GameMath::Distance(*currentRect, *destRect);
+		if (distance < closestRectDistance)
+		{
+			closestNode = &node;
+			closestRectDistance = distance;
+		}
+	}
+	return closestNode;
 }

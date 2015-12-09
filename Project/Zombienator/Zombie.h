@@ -36,6 +36,10 @@ public:
 	float GetAttackDamage() { return this->attackDamage; }
 	float GetAttackSpeed() { return this->attackSpeed; }
 	float GetSoundSpeed() { return this->soundSpeed; }
+
+	vector<Node*> GetPath() { return path; };
+	void SetPath(vector<Node*> _path) { path = _path; };
+
 private:
 	Character* target = nullptr;//Mike||Arnold
 	ZombieState* currentState = nullptr;
@@ -48,5 +52,7 @@ private:
 
 	const double sweetspotX = 35;
 	const double sweetspotY = 25;
+
+	vector<Node*> path;
 };
 
