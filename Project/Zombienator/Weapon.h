@@ -20,7 +20,7 @@ public:
 	Weapon(std::string imagePath);
 	virtual ~Weapon();
 
-	virtual void Fire() = 0;
+	virtual void Fire();
 	void Accept(HudVisitor* visitor) { visitor->Visit(this); };
 	int GetDelay() { return this->delay; }
 	int GetRounds() { return this->rounds; }

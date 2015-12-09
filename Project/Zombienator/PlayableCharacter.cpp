@@ -1,4 +1,5 @@
 #include "PlayableCharacter.h"
+#include "Settings.h"
 #include <algorithm>
 
 PlayableCharacter::PlayableCharacter() : Character()
@@ -15,6 +16,14 @@ void PlayableCharacter::AddWeapon(Weapon * w)
 	weapons.push_back(w);
 	if (weapon == nullptr) {
 		SetWeapon(w);
+	}
+}
+
+void PlayableCharacter::TakeHit(int damage)
+{
+	if(Settings::GetInstance().getGodMode())
+	{
+		return;
 	}
 }
 

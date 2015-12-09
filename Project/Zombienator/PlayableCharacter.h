@@ -13,6 +13,7 @@ public:
 	PlayableCharacter();
 	virtual ~PlayableCharacter();
 
+	void TakeHit(int damage) override;
 	void AddWeapon(Weapon* w);
 	Weapon* GetWeapon() { return this->weapon; }
 	void SetWeapon(Weapon* w);
