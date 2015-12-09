@@ -12,7 +12,7 @@ void ZombieAttackState::CheckState()
 
 	if (target->IsDeath())
 	{
-		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::DEAD, z));
 		return;
 	}
 

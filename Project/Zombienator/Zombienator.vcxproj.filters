@@ -453,6 +453,9 @@
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\Views\UIComponents\Images</Filter>
     </ClCompile>
+    <ClCompile Include="ZombieDeadState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -730,6 +733,9 @@
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files\Views\UIComponents\Images</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieDeadState.h">
+      <Filter>Header Files\Models\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
