@@ -56,8 +56,6 @@ void Zombie::SetCurrentState(ZombieState* newState)
 	{
 		if (dynamic_cast<ZombieAttackState*>(newState))
 			ChangeTexture(true);
-		else if (dynamic_cast<ZombieDeadState*>(newState))
-			ChangeTexture(false);
 		else
 			ChangeTexture(false);
 	}
