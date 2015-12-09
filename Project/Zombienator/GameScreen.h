@@ -43,6 +43,8 @@ private:
 	int YOffset = 0;
 	int stateChangeDelay = 50;
 	int timeLastStateChange = 0;
+	int cheatDelay = 50;
+	int timeCheatActivated = 0;
 	GameState currentState = GameState::INIT;
 	Settings* settings = &Settings::GetInstance();
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();

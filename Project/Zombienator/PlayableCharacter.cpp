@@ -21,9 +21,9 @@ void PlayableCharacter::AddWeapon(Weapon * w)
 
 void PlayableCharacter::TakeHit(int damage)
 {
-	if(Settings::GetInstance().getGodMode())
+	if(!Settings::GetInstance().getGodMode())
 	{
-		return;
+		Character::TakeHit(damage);
 	}
 }
 

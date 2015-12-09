@@ -7,6 +7,6 @@ public:
 	MachineGun();
 	~MachineGun();
 
-	virtual void Fire() override;
+	void Fire() override;
 };
 

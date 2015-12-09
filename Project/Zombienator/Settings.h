@@ -13,8 +13,8 @@ private:
 	bool sound = true;
 	bool music = true;
 	bool showFps = true;
-	bool godmode = true;
-	bool infiniteAmmo = true;
+	bool godmode = false;
+	bool infiniteAmmo = false;
 
 	GameSpeed gameSpeed = GameSpeed::NORMAL;
 	GameDifficulty gameDifficulty = GameDifficulty::MEDIUM;

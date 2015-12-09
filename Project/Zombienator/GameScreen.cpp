@@ -104,7 +104,7 @@ void GameScreen::Update(float dt)
 void GameScreen::HandleInput(float dt) 
 {
 
- if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
+	if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
 	{
 		if (timeLastStateChange <= 0) {
 			if (currentState == GameState::PAUSE)
@@ -118,6 +118,21 @@ void GameScreen::HandleInput(float dt)
 			timeLastStateChange = stateChangeDelay;
 		}
 	}
+	if (timeCheatActivated <= 0) {
+		if (InputContainer::GetInstance().GetKeyState(SDLK_F3))
+		{
+			cout << "Toggle godmode\n";
+			settings->toggleGodMode();
+			timeCheatActivated = cheatDelay;
+		}
+		else if (InputContainer::GetInstance().GetKeyState(SDLK_F4))
+		{
+			cout << "Toggle infiniteammo\n";
+			settings->toggleInfiniteAmmo();
+			timeCheatActivated = cheatDelay;
+		}
+	}
+	timeCheatActivated -= dt;
 }
 
 void GameScreen::Shake(float time, int intensity) {

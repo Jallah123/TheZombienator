@@ -24,6 +24,7 @@ Pistol::~Pistol()
 
 void Pistol::Fire()
 {
+	Weapon::Fire();
 	NormalBullet* b = GameObjectFactory::Instance()->CreateNormalBullet(this->character);
 	SoundController::GetInstance().PlaySound("assets/sounds/cg1.wav", 0);
 	this->rounds = INT_MAX;

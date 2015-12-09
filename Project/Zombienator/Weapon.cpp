@@ -13,8 +13,13 @@ Weapon::Weapon(std::string imagePath)
 
 void Weapon::Fire()
 {
-	if(!Settings::GetInstance().getInfiniteAmmo())
-		rounds--;
+	if (!Settings::GetInstance().getInfiniteAmmo())
+	{
+		if (rounds != 0)
+		{
+			rounds--;
+		}
+	}
 }
 
 
