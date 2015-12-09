@@ -10,6 +10,7 @@ Map::Map(string p) : path(p)
 {
 	this->parser = new MapParser(this);
 	bounds = { 0, 0, tileWidth * width, tileHeight * height };
+	GenerateGraph();
 }
 
 Map::~Map()
@@ -73,4 +74,45 @@ void Map::DrawFrontLayer(SDL_Renderer& ren, int XOffset, int YOffset)
 ObjectLayer* Map::GetObjectLayer(string key)
 {
 	return dynamic_cast<ObjectLayer*>(this->backLayers.at(key));
+}
+
+void Map::GenerateGraph()
+{
+	if (backLayers["Waypoints"] == nullptr) 
+	{
+		return;
+	}
+	ObjectLayer* waypointsLayer = GetObjectLayer("Waypoints");
+	if (waypointsLayer == nullptr)
+	{
+		return;
+	}
+	vector<SDL_Rect*> waypoints = waypointsLayer->GetRects();
+	for (int i = 0; i < waypoints.size(); i++)
+	{
+		SDL_Rect waypoint1 = *waypoints.at(i);
+		for (int ii = 0; ii < waypoints.size(); ii++)
+		{
+			SDL_Rect waypoint2 = *waypoints.at(ii);
+			if (find(nodes[waypoints.at(i)].begin(), nodes[waypoints.at(i)].end(), waypoints.at(ii)) == nodes[waypoints.at(i)].end() && !IntersectsWithCollisionLayer(waypoint1, waypoint2))
+			{
+				nodes[waypoints.at(i)].push_back(waypoints.at(ii));
+			}
+		}
+	}
+}
+
+bool Map::IntersectsWithCollisionLayer(SDL_Rect wp1, SDL_Rect wp2)
+{
+	vector<SDL_Rect*> collision = GetObjectLayer("Collision")->GetRects();
+	bool intersect = false;
+	for (SDL_Rect* collisionObject : collision)
+	{
+		if (SDL_IntersectRectAndLine(collisionObject, &wp1.x, &wp1.y, &wp2.x, &wp2.y))
+		{
+			intersect = true;
+			break;
+		}
+	}
+	return intersect;
 }

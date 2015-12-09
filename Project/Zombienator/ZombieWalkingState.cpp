@@ -92,7 +92,40 @@ void ZombieWalkingState::Update(float dt)
 				finalY = z->getPosY();
 		}
 	}
-
 	z->SetPosition(finalX, finalY);
 	CheckState();
+}
+
+void ZombieWalkingState::CalculatePath() {
+	/*
+	vector<vector<unique_ptr<Room>>>& rooms = CurrentLayer->GetRooms();
+	for each (auto& roomrow in rooms)
+	{
+		for each (auto& room in roomrow)
+		{
+			room.get()->SetDistance(numeric_limits<int>::max());
+			room.get()->SetPreviousRoom(nullptr);
+		}
+	}
+	GetCurrentRoom()->SetDistance(0);
+	deque<Room*> queue;
+	queue.push_back(GetCurrentRoom());
+
+	while (!queue.empty()) {
+		Room* room = queue.front();
+		queue.pop_front();
+		for each (auto& AdjecentRoom in room->GetAdjecentRooms())
+		{
+
+			int weight = AdjecentRoom.second->GetWeigth();
+			int distance = room->GetDistance() + weight;
+
+			if (distance < AdjecentRoom.second->GetDistance()) {
+				AdjecentRoom.second->SetDistance(distance);
+				AdjecentRoom.second->SetPreviousRoom(room);
+				queue.push_back(AdjecentRoom.second);
+			}
+		}
+	}
+	*/
 }

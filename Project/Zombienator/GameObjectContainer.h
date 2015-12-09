@@ -20,6 +20,7 @@ public:
 	void Remove(GameObject* c);
 	void RemoveAll();
 	void SetMap(Map* m);
+	Map* GetMap() { return map; };
 	SDL_Rect GetBounds();
 private:
 	Map* map = nullptr;

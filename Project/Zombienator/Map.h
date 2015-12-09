@@ -58,4 +58,10 @@ public:
 	vector<SDL_Rect*> GetRects() { return this->rects; }
 	vector<TileSet*> GetTileSets() { return this->tilesets; }
 	SDL_Rect GetBounds() { return bounds; }
+
+	std::map<SDL_Rect*, vector<SDL_Rect*>> GetNodes() { return nodes; };
+private:
+	void GenerateGraph();
+	bool IntersectsWithCollisionLayer(SDL_Rect wp1, SDL_Rect wp2);
+	std::map<SDL_Rect*, vector<SDL_Rect*>> nodes;
 };

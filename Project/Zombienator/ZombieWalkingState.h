@@ -8,5 +8,8 @@ public:
 	~ZombieWalkingState();
 	void CheckState();
 	void Update(float dt);
+	void CalculatePath();
+private:
+	vector<SDL_Rect*> path;
 };
 
