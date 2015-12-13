@@ -10,5 +10,7 @@ public:
 	void CheckState();
 	void Update(float dt);
 	int counter = 80;
+
+	float elapsedTime = 0.0f, totalTime = 120.0f;
 };
 

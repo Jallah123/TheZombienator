@@ -12,18 +12,19 @@ ZombieDeadState::~ZombieDeadState()
 
 void ZombieDeadState::CheckState()
 {
-	counter--;
-
-	Zombie* z = GetOwner();
-	Character* target = z->GetTarget();
-
-	if (counter < 1) {
-		z->Remove();
-	}
 
 }
 
 void ZombieDeadState::Update(float dt)
 {
-	CheckState();
+	elapsedTime += dt;
+	
+	if (elapsedTime > totalTime) {
+
+		Zombie* z = GetOwner();
+		Character* target = z->GetTarget();
+
+		z->Remove();
+	}
+
 }
