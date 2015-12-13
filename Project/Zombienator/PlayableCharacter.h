@@ -5,6 +5,8 @@
 class PlayableCharacter
 	: public Character
 {
+private:
+	bool hasWeapon(Weapon* w);
 protected:
 	std::vector<Weapon*> weapons = {};
 	Weapon* weapon = nullptr;
@@ -13,6 +15,7 @@ public:
 	PlayableCharacter();
 	virtual ~PlayableCharacter();
 
+	void TakeHit(int damage) override;
 	void AddWeapon(Weapon* w);
 	Weapon* GetWeapon() { return this->weapon; }
 	void SetWeapon(Weapon* w);

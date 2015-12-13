@@ -1,5 +1,6 @@
 #include "PauseScreen.h"
 #include "ScreenFactory.h"
+#include "StatsController.h"
 
 PauseScreen::PauseScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
