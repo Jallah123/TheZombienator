@@ -2,17 +2,18 @@
 #include "GameObjectContainer.h"
 #include "Character.h"
 
-Pickup::Pickup()
+Pickup::Pickup() : GameObject()
 {
+	SetCollideable(false);
 }
 
 Pickup::Pickup(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, CollideContainer * collideC, ActionContainer * actionC, GameObjectContainer * gameObjectC)
 	: GameObject(drawC, animC, moveC, collideC, actionC, gameObjectC)
 {
-	//SetCollideBehaviour("");
-	SetDrawBehaviour("AnimateBehaviour");
-	SetFrames(1);
-	gameObjectContainer->AddGameObject(this);
+	SetCollideable(false);
+	SetDrawBehaviour("SimpleDrawBehaviour");
+   	SetCollideBehaviour("PickupCollideBehaviour");
+	//SetFrames(1);
 }
 
 
@@ -23,5 +24,5 @@ Pickup::~Pickup()
 void Pickup::SetOrigin(Character * o)
 {
 	origin = o;
-	SetPosition(o->getPosX(), o->getPosY());
+  	SetPosition(o->getPosX(), o->getPosY());
 }

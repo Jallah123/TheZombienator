@@ -19,6 +19,7 @@ void PcMoveBehaviour::Move(float dt)
 	InputContainer* iC = c->GetInputContainer();
 	GameObjectContainer* goc = c->GetGameObjectContainer();
 	SDL_Rect* goRect = c->GetCollideRect();
+
 	if (iC == nullptr) return;
 
 	// -- Get destination rect
@@ -60,7 +61,7 @@ void PcMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
+	std::vector<GameObject*> gameObjects = goc->GetCollideableObjects();
 	for (auto& g : gameObjects)
 	{
 		if (g != this->gameObject) {

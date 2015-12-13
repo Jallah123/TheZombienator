@@ -65,9 +65,6 @@ void GameObject::SetPosition(float x, float y)
 	collRect.y = destRect.y + collRect.h;
 }
 
-void GameObject::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, InputContainer * inputC, ActionContainer * actionC, CollideContainer * collideC, GameObjectContainer * gameObjectC)
-{
-}
 void GameObject::SetDrawBehaviour(std::string name)
 {
 	this->drawBehaviour = BehaviourFactory::Instance()->CreateDrawBehaviour(name, this);

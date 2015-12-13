@@ -5,12 +5,13 @@
 #include "Bullet.h"
 #include "CharacterCollideBehaviour.h"
 #include "MovingBulletCollideBehaviour.h"
-
+#include "PickupCollideBehaviour.h"
 CollideContainer::CollideContainer()
 {
 	BehaviourFactory::Instance()->Register("NormalBulletCollideBehaviour", [](void) -> Behaviour* { return new NormalBulletCollideBehaviour(); });
 	BehaviourFactory::Instance()->Register("CharacterCollideBehaviour", [](void) -> Behaviour* { return new CharacterCollideBehaviour(); });
 	BehaviourFactory::Instance()->Register("MovingBulletCollideBehaviour", [](void) -> Behaviour* { return new MovingBulletCollideBehaviour(); });
+	BehaviourFactory::Instance()->Register("PickupCollideBehaviour", [](void) -> Behaviour* { return new PickupCollideBehaviour(); });
 }
 
 CollideContainer::~CollideContainer()

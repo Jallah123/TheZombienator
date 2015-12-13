@@ -34,6 +34,7 @@ protected:
 	Direction moveDir = Direction::NONE;
 	Direction lookDir = Direction::SOUTH;
 
+	bool collideable = true;
 	bool canMove = true;
 
 	SDL_Rect sourceRect = { 0,0,0,0 },
@@ -104,10 +105,11 @@ public:
 	bool CanMove() { return this->canMove; }
 	void CanMove(bool c) { this->canMove = c; }
 
+	//=== Object is collideable
+	bool IsCollidable() { return collideable; }
+	void SetCollideable(bool c) { collideable = c; }
 
 	//=== Containers
-	void SetContainers(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, InputContainer* inputC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC);
-	
 	InputContainer* GetInputContainer() { return inputContainer; }
 	GameObjectContainer* GetGameObjectContainer() { return this->gameObjectContainer; }
 

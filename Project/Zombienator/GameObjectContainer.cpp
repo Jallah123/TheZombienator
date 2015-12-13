@@ -23,6 +23,17 @@ GameObjectContainer::~GameObjectContainer()
 	objects.clear();
 }
 
+vector<GameObject*> GameObjectContainer::GetCollideableObjects()
+{
+	vector<GameObject*> o = {};
+	for (auto& ob : objects) {
+		if (ob->IsCollidable()) {
+			o.push_back(ob);
+		}
+	}
+	return o;
+}
+
 vector<GameObject*> GameObjectContainer::GetGameObjects(float x, float y)
 {
 	return tree->GetObjectsAt(x, y);

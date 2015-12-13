@@ -42,6 +42,7 @@ GameObject * GameObjectFactory::Find(std::string name)
 
 GameObjectFactory::~GameObjectFactory()
 {
+
 }
 
 void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
@@ -73,6 +74,7 @@ Mike* GameObjectFactory::CreateMike(std::string img_url)
 	if (instance != nullptr) {
 		Mike* cInstance = dynamic_cast<Mike*>(instance);
 		cInstance->Init(img_url);
+		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
 	return nullptr;
@@ -83,6 +85,7 @@ Zombie* GameObjectFactory::CreateZombie()
 	if (instance != nullptr) {
 		Zombie* cInstance = dynamic_cast<Zombie*>(instance);
 		cInstance->Init();
+		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
 	return nullptr;
@@ -97,6 +100,7 @@ NormalBullet * GameObjectFactory::CreateNormalBullet(PlayableCharacter * obj)
 		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
 		cInstance->CalculateEndPoint();
+		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
 
@@ -111,6 +115,7 @@ MachineGunBullet * GameObjectFactory::CreateMachineGunBullet(PlayableCharacter *
 		MachineGunBullet* cInstance = dynamic_cast<MachineGunBullet*>(instance);
 		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
 
@@ -124,6 +129,7 @@ Medkit * GameObjectFactory::CreateMedkit(Character* obj)
 	if (instance != nullptr) {
 		Medkit* cInstance = dynamic_cast<Medkit*>(instance);
 		cInstance->SetOrigin(obj);//Position the object
+		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
 

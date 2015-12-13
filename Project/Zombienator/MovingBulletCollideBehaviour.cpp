@@ -2,7 +2,7 @@
 #include "GameObjectContainer.h"
 #include "Zombie.h"
 #include "Bullet.h"
-MovingBulletCollideBehaviour::MovingBulletCollideBehaviour()
+MovingBulletCollideBehaviour::MovingBulletCollideBehaviour() : CollideBehaviour()
 {
 }
 

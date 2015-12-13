@@ -5,6 +5,7 @@
 #include "NormalBulletDrawBehaviour.h"
 #include "MovingBulletDrawBehaviour.h"
 #include "CharacterDrawBehaviour.h"
+#include "SimpleDrawBehaviour.h"
 #include "Bullet.h"
 #include <algorithm>
 #include "GameObject.h"
@@ -14,6 +15,7 @@ DrawContainer::DrawContainer()
 	BehaviourFactory::Instance()->Register("CharacterDrawBehaviour", [](void) -> Behaviour* { return new CharacterDrawBehaviour(); });
 	BehaviourFactory::Instance()->Register("NormalBulletDrawBehaviour", [](void) -> Behaviour* { return new NormalBulletDrawBehaviour(); });
 	BehaviourFactory::Instance()->Register("MovingBulletDrawBehaviour", [](void) -> Behaviour* { return new MovingBulletDrawBehaviour(); });
+	BehaviourFactory::Instance()->Register("SimpleDrawBehaviour", [](void) -> Behaviour* { return new SimpleDrawBehaviour(); });
 }
 
 

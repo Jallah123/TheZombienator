@@ -32,5 +32,6 @@ public:
 	
 	void SetHealth(int h) { this->health = h; if (health > maxHealth) health = maxHealth; }
 	void SetMaxHealth(int h) { this->maxHealth = h; }
-	bool IsDeath() { if (!this->health) return true; return false; }
+	bool IsDeath() { return health <= 0 ? true : false; }
+	virtual void OnDeath();
 };

@@ -1,5 +1,5 @@
 #include "Medkit.h"
-
+#include "PlayableCharacter.h"
 
 
 Medkit::Medkit()
@@ -18,4 +18,9 @@ Medkit::Medkit(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * 
 
 Medkit::~Medkit()
 {
+}
+
+void Medkit::DoAction(PlayableCharacter * pc)
+{
+	pc->SetHealth(pc->GetMaxHealth());
 }

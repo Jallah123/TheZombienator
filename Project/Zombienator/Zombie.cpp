@@ -36,8 +36,6 @@ void Zombie::Init()
 	SetAnimateBehaviour("AnimateBehaviour");
 	SetCollideBehaviour("CharacterCollideBehaviour");
 
-	gameObjectContainer->AddGameObject(this);
-	
 	SetSize(32, 36);
 	SetFrames(3);
 	SetSpeed(0.4f);
