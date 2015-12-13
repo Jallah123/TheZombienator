@@ -22,7 +22,7 @@ void CharacterDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int
 	SDL_RenderCopy(&ren, c->GetTexture(), &c->GetSourceRect(), &Destination);
 	
 	double healthPercentage = (double)c->GetHealth() / (double)c->GetMaxHealth();
-	if (healthPercentage != 1) {
+	if (healthPercentage != 1 && ! c->IsDeath()) {
 		// Black bar around actual health bar
 		int healthSize = (36 * healthPercentage);
 		SDL_Rect healthBarSurround{ Destination.x - 1, Destination.y - 11, 38, 7 };
