@@ -4,6 +4,7 @@ void MapFactory::StoryMode() {
 
 	mapQueue.push(new LandscapeMap());
 	mapQueue.push(new SnowMap());
+	mapQueue.push(new WunderlandMap());
 
 }
 

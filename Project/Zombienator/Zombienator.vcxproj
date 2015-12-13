@@ -273,6 +273,7 @@
     <ClCompile Include="VolumeButton.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WinScreen.cpp" />
+    <ClCompile Include="WunderlandMap.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieAttackState.cpp" />
     <ClCompile Include="ZombieStandStillState.cpp" />
@@ -376,6 +377,7 @@
     <ClInclude Include="VolumeButton.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WinScreen.h" />
+    <ClInclude Include="WunderlandMap.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieAttackState.h" />
     <ClInclude Include="ZombieStandStillState.h" />
