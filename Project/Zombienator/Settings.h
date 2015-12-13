@@ -13,6 +13,8 @@ private:
 	bool sound = true;
 	bool music = true;
 	bool showFps = true;
+	bool godmode = false;
+	bool infiniteAmmo = false;
 
 	GameSpeed gameSpeed = GameSpeed::NORMAL;
 	GameDifficulty gameDifficulty = GameDifficulty::MEDIUM;
@@ -34,6 +36,12 @@ public:
 
 	bool getShowFps() { return showFps; };
 	void setShowFps(bool value) { showFps = value; };
+
+	bool getGodMode() { return godmode; };
+	void toggleGodMode() { godmode = !godmode; };
+
+	bool getInfiniteAmmo() { return infiniteAmmo; };
+	void toggleInfiniteAmmo() { infiniteAmmo = !infiniteAmmo; };
 
 	GameSpeed getGameSpeed() { return gameSpeed; };
 	void setGameSpeed(GameSpeed value) { gameSpeed = value; };
