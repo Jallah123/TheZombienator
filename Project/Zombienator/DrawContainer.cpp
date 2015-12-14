@@ -29,14 +29,16 @@ void DrawContainer::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 	if (arr.empty()) return;//Do nothing on empty
 
 	Sort_zIndex();
-	for (Behaviour* i : this->arr) {
-		DrawBehaviour* db = dynamic_cast<DrawBehaviour*>(i);
-		
-		//Draw each Behaviour
+	for (auto itr = arr.begin(); itr != arr.end();)
+	{
+		DrawBehaviour* db = dynamic_cast<DrawBehaviour*>(*itr);
 		db->Draw(dt, ren, XOffset, YOffset);
-		if (i->CanBeRemove()) arrRemove.push_back(i);
+
+		if (db->CanBeRemove())
+			itr = Remove(db);
+		else
+			++itr;
 	}
-	RemoveAll();
 }
 
 void DrawContainer::Sort_zIndex()

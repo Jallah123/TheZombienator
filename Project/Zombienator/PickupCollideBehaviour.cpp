@@ -24,7 +24,10 @@ void PickupCollideBehaviour::Collide(float dt)
 	for (auto& g : gameObjects)
 	{
 		if (PlayableCharacter* pc = dynamic_cast<PlayableCharacter*>(g)) {
-			kit->DoAction(pc);
+			if (SDL_HasIntersection(kit->GetDestinationRect(), pc->GetDestinationRect())) {
+				kit->DoAction(pc);
+				kit->Remove();
+			}
 		}
 	}
 }

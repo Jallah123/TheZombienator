@@ -15,7 +15,7 @@ void NormalBulletCollideBehaviour::Collide(float dt)
 {
 	NormalBullet* bullet = dynamic_cast<NormalBullet*>(this->gameObject);
 	if (bullet->HasCollision()) return;
-	std::vector<GameObject*> gos = gameObjectContainer->GetGameObjects();
+	std::vector<GameObject*> gos = gameObjectContainer->GetCollideableObjects();
 	std::vector<GameObject*> collision = {};
 	for (auto& g : gos)
 	{

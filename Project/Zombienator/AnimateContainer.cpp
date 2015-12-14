@@ -17,13 +17,15 @@ void AnimateContainer::Animate(float dt)
 	if (arr.empty()) return;//Do nothing on empty
 
 	Uint32 ticks = SDL_GetTicks();
-	for (Behaviour* i : this->arr) {
-		AnimateBehaviour* ab = dynamic_cast<AnimateBehaviour*>(i);
-
-		//Draw each Behaviour
+	for (auto itr = arr.begin(); itr != arr.end();)
+	{
+		AnimateBehaviour* ab = dynamic_cast<AnimateBehaviour*>(*itr);
 		ab->Animate(dt, ticks);
-		if (ab->CanBeRemove()) arrRemove.push_back(ab);
+		
+		if (ab->CanBeRemove())
+			itr = Remove(ab);
+		else
+			++itr;
 	}
-	RemoveAll();
 }
 

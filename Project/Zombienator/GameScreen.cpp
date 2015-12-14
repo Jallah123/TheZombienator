@@ -35,7 +35,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 		&collideContainer,
 		gameObjectContainer,
 		ren
-	);
+		);
 
 	BehaviourFactory::Instance()->SetContainers(
 		&drawContainer,
@@ -45,8 +45,8 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 		&collideContainer,
 		gameObjectContainer,
 		ren
-	);
-	
+		);
+
 	mike = goFactory->CreateMike(char_img_url);
 	mike->SetPosition(800, 300);
 
@@ -101,10 +101,10 @@ void GameScreen::Update(float dt)
 	timeLastStateChange -= dt;
 }
 
-void GameScreen::HandleInput(float dt) 
+void GameScreen::HandleInput(float dt)
 {
 
- if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
+	if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
 	{
 		if (timeLastStateChange <= 0) {
 			if (currentState == GameState::PAUSE)
@@ -151,7 +151,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		else if (spawnController.WaveCompleted()) {
 			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
 		}
-		
+
 	}
 	auto* text = TextureFactory::GenerateTextureFromTextHud(s);
 	SDL_Rect r{ 0,0,200,40 };

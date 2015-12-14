@@ -15,7 +15,7 @@ void MovingBulletCollideBehaviour::Collide(float dt)
 {
 	Bullet* bullet = dynamic_cast<Bullet*>(this->gameObject);
 
-	std::vector<GameObject*> gos = gameObjectContainer->GetGameObjects();
+	std::vector<GameObject*> gos = gameObjectContainer->GetCollideableObjects();
 	for (auto& g : gos)
 	{
 		if (g != bullet->GetOrigin() && g != bullet) {

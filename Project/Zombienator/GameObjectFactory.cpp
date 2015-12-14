@@ -128,6 +128,7 @@ Medkit * GameObjectFactory::CreateMedkit(Character* obj)
 
 	if (instance != nullptr) {
 		Medkit* cInstance = dynamic_cast<Medkit*>(instance);
+		
 		cInstance->SetOrigin(obj);//Position the object
 		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;

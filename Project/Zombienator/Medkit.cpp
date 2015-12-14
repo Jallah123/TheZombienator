@@ -12,7 +12,7 @@ Medkit::Medkit(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * 
 	: Pickup(drawC, animC, moveC, collideC, actionC, gameObjectC)
 {
 	SetSize(30, 32);
-	SetImage("assets/images/box.png");
+	SetImage("assets/images/box_health_item.png");
 }
 
 

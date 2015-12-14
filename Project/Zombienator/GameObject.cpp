@@ -89,7 +89,7 @@ void GameObject::SetMoveBehaviour(std::string name)
 void GameObject::SetActionBehaviour(std::string name)
 {
 	ActionBehaviour* a = BehaviourFactory::Instance()->CreateActionBehaviour(name, this);
-	if (moveBehaviour == nullptr) return;
+	if (a == nullptr) return;
 	this->actionBehaviours.push_back(a);
 	this->actionContainer->Add(a);
 }
