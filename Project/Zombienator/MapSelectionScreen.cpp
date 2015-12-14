@@ -8,10 +8,10 @@
 #include "SelectionScreen.h"
 #include <iostream>
 
-struct PreviousButton : Button {
+struct PreviousMapButton : Button {
 	MapSelectionScreen* screen;
 
-	PreviousButton(SDL_Renderer& ren, char* text, char* img_url, MapSelectionScreen* ss)
+	PreviousMapButton(SDL_Renderer& ren, char* text, char* img_url, MapSelectionScreen* ss)
 		: Button(ren, text, img_url) {
 		screen = ss;
 	}
@@ -25,10 +25,10 @@ struct PreviousButton : Button {
 	}
 };
 
-struct NextButton : Button {
+struct NextMapButton : Button {
 	MapSelectionScreen* screen;
 
-	NextButton(SDL_Renderer& ren, char* text, char* img_url, MapSelectionScreen* ss)
+	NextMapButton(SDL_Renderer& ren, char* text, char* img_url, MapSelectionScreen* ss)
 		: Button(ren, text, img_url) {
 		screen = ss;
 	}
@@ -79,13 +79,13 @@ MapSelectionScreen::MapSelectionScreen(SDL_Renderer* ren): MenuScreen(ren)
 	Label* l = new Label{ *ren, "Select your map", 640, 50, 32, { 248, 248, 255 } };
 	AddUIComponent(l);
 	
-	PreviousButton* pbtn = new PreviousButton{ *ren, "Previous", ssUrl, this };
+	PreviousMapButton * pbtn = new PreviousMapButton{ *ren, "Previous", ssUrl, this };
 	pbtn->SetSourceLocation(0, 0);
 	pbtn->SetSize(83, 76);
 	pbtn->SetDestLocation(100, 282);
 	AddUIComponent(pbtn);
 
-	NextButton* nbtn = new NextButton(*ren, "Next", ssUrl, this);
+	NextMapButton * nbtn = new NextMapButton(*ren, "Next", ssUrl, this);
 	nbtn->SetSourceLocation(86, 0);
 	nbtn->SetSize(83, 76);
 	nbtn->SetDestLocation(1080, 282);
