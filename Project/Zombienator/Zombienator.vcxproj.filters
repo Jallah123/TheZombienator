@@ -470,6 +470,12 @@
     </ClCompile>
     <ClCompile Include="PickupCollideBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
+	</ClCompile>
+    <ClCompile Include="ZombieDeadState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="WunderlandMap.cpp">
+      <Filter>Source Files\Models\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -749,6 +755,7 @@
     <ClInclude Include="Image.h">
       <Filter>Header Files\Views\UIComponents\Images</Filter>
     </ClInclude>
+
     <ClInclude Include="Pickup.h">
       <Filter>Header Files\Models\Pickups</Filter>
     </ClInclude>
@@ -760,6 +767,12 @@
     </ClInclude>
     <ClInclude Include="PickupCollideBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
+	</ClInclude>
+    <ClInclude Include="ZombieDeadState.h">
+      <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="WunderlandMap.h">
+      <Filter>Header Files\Models\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

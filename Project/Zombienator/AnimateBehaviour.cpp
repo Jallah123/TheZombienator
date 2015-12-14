@@ -2,8 +2,6 @@
 #include "AnimateBehaviour.h"
 #include "Character.h"
 
-
-
 AnimateBehaviour::AnimateBehaviour() : Behaviour()
 {
 }
@@ -21,25 +19,30 @@ void AnimateBehaviour::Animate(float dt, int ticks)
 	int frames = c->GetFrames();
 
 	if (frames == 0) return;
-	
-	Uint32 sprite = (ticks / 100) % frames;
-	//Direction::SOUTH  == 0;//UP
-	//Direction::EAST == 1;//RIGHT
-	//Direction::NORTH == 2;//DOWN
-	//Direction::WEST == 3;//LEFT5
 
-	//get source rect
-	SDL_Rect srcR = *c->GetSourceRect();
-	if (c->GetMoveDir() != Direction::NONE) {
-		int width = c->GetWidth();
-		int height = c->GetHeight();
+	timeSinceLastFrameSwap += dt;
+	if (timeSinceLastFrameSwap > animationSpeed) {
 
-		//Animate
-		int col = (sprite * width);
-		int row = (height * c->GetLookDir());
-		srcR.x = col;
-		srcR.y = row;
+		currentFrame++;
+		timeSinceLastFrameSwap = 0.0f;
+
+		//Get source rect
+		SDL_Rect srcR = c->GetSourceRect();
+		if (c->GetMoveDir() != Direction::NONE) {
+			int width = c->GetWidth();
+			int height = c->GetHeight();
+
+			//Animate
+			int col = (currentFrame * width);
+			int row = (height * c->GetLookDir());
+			srcR.x = col;
+			srcR.y = row;
+		}
+		if (currentFrame == frames - 1) {
+			currentFrame = 0;
+		}
+
+		//Set source rect
+		c->SetSourceRect(srcR);
 	}
-	//Set source rect
-	c->SetSourceRect(srcR);
 }

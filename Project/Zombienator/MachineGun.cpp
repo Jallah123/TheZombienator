@@ -20,10 +20,10 @@ MachineGun::~MachineGun()
 
 void MachineGun::Fire()
 {
+	Weapon::Fire();
 	if (rounds != 0) {
 		MachineGunBullet* b = GameObjectFactory::Instance()->CreateMachineGunBullet(this->character);
 		SoundController::GetInstance().PlaySound("assets/sounds/pistol.wav", 0);
-		rounds--;
 	}
 	else {
 		SoundController::GetInstance().PlaySound("assets/sounds/gun-empty.wav", 0);

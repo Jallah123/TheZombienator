@@ -16,12 +16,17 @@ void ZombieWalkingState::CheckState()
 {
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
-	if (target == nullptr && !target->IsDeath()) {
-		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
+
+	if (z->IsDeath()) {
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::DEAD, z));
 		return;
 	}
 	else if (z->IsInAttackRadius(target)) {
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::ATTACKING, z));
+		return;
+	}
+	else if (target == nullptr && !target->IsDeath()) {
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
 		return;
 	}
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "AbstractScreen.h"
 #include "LandscapeMap.h"
+#include "WunderlandMap.h"
 #include "SnowMap.h"
 #include <iostream>
 #include <queue>
