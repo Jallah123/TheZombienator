@@ -37,7 +37,7 @@ void Character::TakeHit(int damage)
 	if (health <= 0)
 	{
 		health = 0;
-		Remove();
+		//Remove();
 	}
 }
 
@@ -51,8 +51,6 @@ void Character::SetContainers(DrawContainer * drawC, AnimateContainer * animC, M
 	actionContainer = actionC;
 	collideContainer = collideC;
 	gameObjectContainer = gameObjectC;
-
-
 }
 
 void Character::SetDrawBehaviour(std::string name)

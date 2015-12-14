@@ -11,6 +11,8 @@
 #include "TextureFactory.h"
 #include "MapFactory.h"
 #include "ScreenFactory.h"
+#include "Pistol.h"
+#include "MachineGun.h"
 
 GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(ren)
 {
@@ -53,13 +55,12 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 	spawnController.AddTarget(mike);
 
 	//Load && play sound
-	SoundController->ChangeMusic("assets/sounds/bgSound1.wav");
+	map->PlaySounds();
 	currentState = GameState::RUNNING;
 }
 
 GameScreen::~GameScreen()
 {
-	StatsController::Reset();
 	delete tree;
 	delete gameObjectContainer;
 }
@@ -104,7 +105,7 @@ void GameScreen::Update(float dt)
 void GameScreen::HandleInput(float dt) 
 {
 
- if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
+	if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
 	{
 		if (timeLastStateChange <= 0) {
 			if (currentState == GameState::PAUSE)
@@ -118,6 +119,28 @@ void GameScreen::HandleInput(float dt)
 			timeLastStateChange = stateChangeDelay;
 		}
 	}
+	if (timeCheatActivated <= 0) {
+		if (inputContainer->GetKeyState(SDLK_F3))
+		{
+			cout << "Toggle godmode\n";
+			settings->toggleGodMode();
+			timeCheatActivated = cheatDelay;
+		}
+		else if (inputContainer->GetKeyState(SDLK_F4))
+		{
+			cout << "Toggle infiniteammo\n";
+			settings->toggleInfiniteAmmo();
+			timeCheatActivated = cheatDelay;
+		}
+		else if (inputContainer->GetKeyState(SDLK_F5))
+		{
+			cout << "Gave all weapons\n";
+			mike->AddWeapon(new Pistol);
+			mike->AddWeapon(new MachineGun);
+			timeCheatActivated = cheatDelay;
+		}
+	}
+	timeCheatActivated -= dt;
 }
 
 void GameScreen::Shake(float time, int intensity) {

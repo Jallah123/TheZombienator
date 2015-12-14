@@ -10,13 +10,12 @@ void ZombieAttackState::CheckState()
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 
-	if (target->IsDeath())
+	if (z->IsDeath())
 	{
-		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::DEAD, z));
 		return;
 	}
-
-	if (!z->IsInAttackRadius(target)) {
+	else if (!z->IsInAttackRadius(target)) {
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::WALKING, z));
 		return;
 	}

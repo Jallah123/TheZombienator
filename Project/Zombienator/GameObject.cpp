@@ -16,7 +16,7 @@ void GameObject::SetImage(std::string path, SDL_Renderer & ren)
 
 void GameObject::SetSize(int w, int h)
 {
-	this->width = w; 
+   	this->width = w; 
 	this->height = h; 
 	sourceRect.w = w; 
 	sourceRect.h = h; 

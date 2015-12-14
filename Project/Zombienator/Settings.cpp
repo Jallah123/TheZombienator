@@ -12,17 +12,24 @@ void Settings::Save() {
 }
 
 void Settings::Load() {
-	Settings* s = ioC->LoadFile("settings", this);
-	if (s != nullptr) {
-		friendlyFire = s->friendlyFire;
-		sound = s->sound;
-		music = s->music;
-		showFps = s->showFps;
-		gameSpeed = GameSpeed(s->gameSpeed);
-		gameDifficulty = GameDifficulty(s->gameDifficulty);
-		defaultVolume = s->defaultVolume;
-		soundVolume = s->soundVolume;
-		musicVolume = s->musicVolume;
+	try{
+		Settings* s = ioC->LoadFile("settings", this);
+		if (s != nullptr) {
+			friendlyFire = s->friendlyFire;
+			sound = s->sound;
+			music = s->music;
+			showFps = s->showFps;
+			gameSpeed = GameSpeed(s->gameSpeed);
+			gameDifficulty = GameDifficulty(s->gameDifficulty);
+			defaultVolume = s->defaultVolume;
+			soundVolume = s->soundVolume;
+			musicVolume = s->musicVolume;
+			godmode = s->godmode;
+			infiniteAmmo = s->infiniteAmmo;
+		}
+	}
+	catch (exception e) {
+		cout << "Error loading settings, check if settings exists in settings file";
 	}
 	
 }

@@ -456,6 +456,12 @@
     <ClCompile Include="ioController.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="ZombieDeadState.cpp">
+      <Filter>Source Files\Models\States</Filter>
+    </ClCompile>
+    <ClCompile Include="WunderlandMap.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -736,6 +742,12 @@
     </ClInclude>
     <ClInclude Include="ioController.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieDeadState.h">
+      <Filter>Header Files\Models\States</Filter>
+    </ClInclude>
+    <ClInclude Include="WunderlandMap.h">
+      <Filter>Header Files\Models\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

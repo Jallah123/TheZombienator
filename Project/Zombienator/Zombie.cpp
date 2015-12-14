@@ -2,6 +2,7 @@
 #include "GameObjectContainer.h"
 #include "ZombieStateFactory.h"
 #include "ZombieAttackState.h"
+#include "ZombieDeadState.h"
 #include "NumberUtility.h"
 #include <string>
 #include "TextureFactory.h"
@@ -27,6 +28,8 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	SetImage(basePath + spriteSheet, *ren);
 	SetNormalTexture(basePath + spriteSheet);
 	SetAttackTexture(baseAttackPath + spriteSheet);
+	SetDeadTexture(basePath + "explosion.png");
+
 	this->SetContainers(drawC, animC, moveC, nullptr, nullptr, collideC, gameObjectC);
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
@@ -82,10 +85,29 @@ void Zombie::SetAttackTexture(string path)
 	AttackTexture = TextureFactory::GenerateTextureFromImgUrl(path);
 }
 
+void Zombie::SetDeadTexture(string path)
+{
+	DeadTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+}
+
 void Zombie::ChangeTexture(bool isAttack)
 {
-	if (isAttack)
-		SetTexture(this->AttackTexture);
-	else
-		SetTexture(this->normalTexture);
+	if (this->IsDeath()) {
+
+		this->SetFrames(16);
+		this->SetSize(64, 64);
+		this->SetSpeed(0.2f);
+		this->SetMoveDir(Direction::SOUTH);
+		this->SetLookDir(Direction::SOUTH);
+		this->CanMove(false);
+		this->SetPosition(getPosX() - 16, getPosY() - 14);
+
+		SetTexture(this->DeadTexture);
+	}
+	else {
+		if (isAttack)
+			SetTexture(this->AttackTexture);
+		else
+			SetTexture(this->normalTexture);
+	}
 }
