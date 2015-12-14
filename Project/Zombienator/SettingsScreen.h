@@ -104,6 +104,7 @@ public:
 			SoundController->SetVolume(SoundController->GetVolume() + value);
 			currentVolumeLabel->updateText(SoundController->GetVolume());
 		}
+		
 	};
 
 	void decreaseVolume(int value) {
@@ -112,6 +113,10 @@ public:
 			currentVolumeLabel->updateText(SoundController->GetVolume());
 		}
 	};
+
+	void saveSettings() {
+		Settings->Save();
+	}
 
 };
 
