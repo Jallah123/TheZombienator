@@ -23,6 +23,10 @@ AbstractScreen::~AbstractScreen()
 
 void AbstractScreen::Draw(SDL_Renderer& ren, float dt)
 {
+	if (backgroundTexture != nullptr)
+	{
+		SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
+	}
 	for each (const auto& component in UIComponents)
 	{
 		component->Draw(ren);

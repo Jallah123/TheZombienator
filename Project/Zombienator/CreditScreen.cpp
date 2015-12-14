@@ -75,10 +75,7 @@ void CreditScreen::Update(float dt)
 
 void CreditScreen::Draw(SDL_Renderer & ren, float dt)
 {
-	SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
-	for (const auto& i : UIComponents)
-		i->Draw(ren);
-
+	AbstractScreen::Draw(ren, dt);
 	drawText(ren);
 }
 

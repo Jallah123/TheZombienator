@@ -109,11 +109,7 @@ void SelectionScreen::Update(float dt)
 
 void SelectionScreen::Draw(SDL_Renderer & ren, float dt)
 {
-	SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
-	for (const auto& c : UIComponents)
-	{
-		c->Draw(ren);
-	}
+	AbstractScreen::Draw(ren, dt);
 	images.at(currentImageIndex)->Draw(ren);
 	SDL_RenderCopy(&ren, title.first, 0, &title.second);
 }
