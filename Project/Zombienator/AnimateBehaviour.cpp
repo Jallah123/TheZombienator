@@ -27,7 +27,7 @@ void AnimateBehaviour::Animate(float dt, int ticks)
 		timeSinceLastFrameSwap = 0.0f;
 
 		//Get source rect
-		SDL_Rect srcR = c->GetSourceRect();
+		SDL_Rect* srcR = c->GetSourceRect();
 		if (c->GetMoveDir() != Direction::NONE) {
 			int width = c->GetWidth();
 			int height = c->GetHeight();
@@ -35,14 +35,14 @@ void AnimateBehaviour::Animate(float dt, int ticks)
 			//Animate
 			int col = (currentFrame * width);
 			int row = (height * c->GetLookDir());
-			srcR.x = col;
-			srcR.y = row;
+			srcR->x = col;
+			srcR->y = row;
 		}
 		if (currentFrame == frames - 1) {
 			currentFrame = 0;
 		}
 
 		//Set source rect
-		c->SetSourceRect(srcR);
+		c->SetSourceRect(SDL_Rect{srcR->x, srcR->y, srcR->w, srcR->h});
 	}
 }
