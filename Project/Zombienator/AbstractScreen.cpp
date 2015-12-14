@@ -21,6 +21,14 @@ AbstractScreen::~AbstractScreen()
 	UIComponents.clear();
 }
 
+void AbstractScreen::Draw(SDL_Renderer& ren, float dt)
+{
+	for each (const auto& component in UIComponents)
+	{
+		component->Draw(ren);
+	}
+}
+
 void AbstractScreen::AddUIComponent(AbstractUIComponent* UIComponent)
 {
 	UIComponents.push_back(UIComponent);
