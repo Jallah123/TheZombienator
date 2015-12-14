@@ -96,6 +96,7 @@ MapSelectionScreen::MapSelectionScreen(SDL_Renderer* ren): MenuScreen(ren)
 
 	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(b);
+	SDL_DestroyTexture(backgroundTexture);
 }
 
 void MapSelectionScreen::Update(float dt)
