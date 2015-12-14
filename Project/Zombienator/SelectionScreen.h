@@ -1,6 +1,7 @@
 #pragma once
 #include "MenuScreen.h"
 #include "Image.h"
+#include <string>
 
 class SelectionScreen :
 	public MenuScreen
@@ -19,6 +20,9 @@ public:
 	int GetCurrentImageIndex() { return currentImageIndex; };
 	
 	void SetCurrentImageIndex(int index) { currentImageIndex = index; };
+
+	string getMapUrl() { return mapUrl; };
+	void setMapUrl(string _mapUrl) { mapUrl = _mapUrl; };
 
 	virtual void Update(float dt) override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;

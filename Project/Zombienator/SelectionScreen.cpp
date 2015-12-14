@@ -55,8 +55,9 @@ struct SelectButton : Button {
 
 	void ClickAction() {
 		string img = _ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl();
+		string mapPath = _ss->getMapUrl();
 		ScreenController::GetInstance().Back();
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(img));
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(img, mapPath));
 	}
 };
 

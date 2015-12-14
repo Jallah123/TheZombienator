@@ -5,6 +5,7 @@
 #include "Button.h"
 #include "BackButton.h"
 #include "ScreenFactory.h"
+#include "SelectionScreen.h"
 #include <iostream>
 
 struct PreviousButton : Button {
@@ -42,10 +43,10 @@ struct NextButton : Button {
 };
 
 
-struct SelectButton : Button {
+struct MapSelectButton : Button {
 	MapSelectionScreen* screen;
 
-	SelectButton(SDL_Renderer& ren, char* text, char* img_url, MapSelectionScreen* ss)
+	MapSelectButton(SDL_Renderer& ren, char* text, char* img_url, MapSelectionScreen* ss)
 		: Button(ren, text, img_url) {
 		screen = ss;
 		SetSourceLocation(0, 238);
@@ -57,7 +58,9 @@ struct SelectButton : Button {
 	void ClickAction() {
 		string map = screen->getCurrentMap()->GetPath();
 		ScreenController::GetInstance().Back();
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen("assets/images/spritesheets/Boy1.png", map));
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SELECTIONSCREEN));
+		SelectionScreen* currentScreen = static_cast<SelectionScreen*>(ScreenController::GetInstance().GetCurrentScreen());
+		currentScreen->setMapUrl(map);
 	}
 };
 
@@ -88,7 +91,7 @@ MapSelectionScreen::MapSelectionScreen(SDL_Renderer* ren): MenuScreen(ren)
 	nbtn->SetDestLocation(1080, 282);
 	AddUIComponent(nbtn);
 
-	SelectButton* sbtn = new SelectButton(*ren, "Select", ssUrl, this);
+	MapSelectButton* sbtn = new MapSelectButton(*ren, "Select", ssUrl, this);
 	AddUIComponent(sbtn);
 
 	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
