@@ -19,7 +19,7 @@ StoryModeButton::StoryModeButton(SDL_Renderer& ren, char* text, char* img_url)
 void StoryModeButton::ClickAction()
 {
 	MapFactory::GetInstance()->StoryMode();
-	StatsController::GetInstance()->StartTime();
+	StatsController::GetInstance()->Reset();
 	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SELECTIONSCREEN));
 }
 

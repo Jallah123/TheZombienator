@@ -45,6 +45,8 @@ private:
 	int timeLastStateChange = 0;
 	bool isInfinityMode = false;
 	bool inTransistion = false;
+	int cheatDelay = 50;
+	int timeCheatActivated = 0;
 	GameState currentState = GameState::INIT;
 	Settings* settings = &Settings::GetInstance();
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();

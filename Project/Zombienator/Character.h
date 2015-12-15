@@ -49,7 +49,7 @@ public:
 	Character();
 	virtual ~Character();
 
-	void TakeHit(int damage);
+	virtual void TakeHit(int damage);
 	int GetHealth() const { return health; }
 	int GetMaxHealth() const { return maxHealth; }
 	float GetSpeed() const { return speed; }

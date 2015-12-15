@@ -56,7 +56,7 @@ struct MapSelectButton : Button {
 	}
 
 	void ClickAction() {
-		string map = screen->getCurrentMap()->GetPath();
+		string map = screen->getCurrentMap()->GetMapPath();
 		ScreenController::GetInstance().Back();
 		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SELECTIONSCREEN));
 		SelectionScreen* currentScreen = static_cast<SelectionScreen*>(ScreenController::GetInstance().GetCurrentScreen());

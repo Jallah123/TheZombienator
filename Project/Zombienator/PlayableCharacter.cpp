@@ -1,4 +1,5 @@
 #include "PlayableCharacter.h"
+#include "Settings.h"
 #include <algorithm>
 
 PlayableCharacter::PlayableCharacter() : Character()
@@ -10,11 +11,31 @@ PlayableCharacter::~PlayableCharacter()
 	delete weapon;
 }
 
+bool PlayableCharacter::hasWeapon(Weapon* w)
+{
+	for each (auto weapon in weapons)
+	{
+		if (w->GetName() == weapon->GetName())
+			return true;
+	}
+	return false;
+}
+
 void PlayableCharacter::AddWeapon(Weapon * w)
 {
+	if (hasWeapon(w))
+		return;
 	weapons.push_back(w);
 	if (weapon == nullptr) {
 		SetWeapon(w);
+	}
+}
+
+void PlayableCharacter::TakeHit(int damage)
+{
+	if(!Settings::GetInstance().getGodMode())
+	{
+		Character::TakeHit(damage);
 	}
 }
 

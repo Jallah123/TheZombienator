@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\include;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\include;$(ProjectDir)\thirdparty\SDL\SDL2\include;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\include;$(ProjectDir)\thirdparty\*;$(IncludePath);C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json</IncludePath>
+    <IncludePath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\include;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\include;$(ProjectDir)\thirdparty\SDL\SDL2\include;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\include;$(ProjectDir)\thirdparty\cereal\include;$(ProjectDir)\thirdparty\*;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2\lib\win32;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\lib\x86;$(ProjectDir)\thirdparty\*;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -219,6 +219,7 @@
     <ClCompile Include="InfiniteModeButton.cpp" />
     <ClCompile Include="ControllerInputHandler.cpp" />
     <ClCompile Include="InputContainer.cpp" />
+    <ClCompile Include="ioController.cpp" />
     <ClCompile Include="KeyboardInputHandler.cpp" />
     <ClCompile Include="LabelEndScreen.cpp" />
     <ClCompile Include="LandscapeMap.cpp" />
@@ -275,8 +276,10 @@
     <ClCompile Include="VolumeButton.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WinScreen.cpp" />
+    <ClCompile Include="WunderlandMap.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieAttackState.cpp" />
+    <ClCompile Include="ZombieDeadState.cpp" />
     <ClCompile Include="ZombieStandStillState.cpp" />
     <ClCompile Include="ZombieState.cpp" />
     <ClCompile Include="ZombieStateEnum.cpp" />
@@ -315,6 +318,7 @@
     <ClInclude Include="HelpScreen.h" />
     <ClInclude Include="HudVisitor.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="ioController.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="HudDrawBehaviour.h" />
     <ClInclude Include="LabelEndScreen.h" />
@@ -381,8 +385,10 @@
     <ClInclude Include="VolumeButton.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WinScreen.h" />
+    <ClInclude Include="WunderlandMap.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieAttackState.h" />
+    <ClInclude Include="ZombieDeadState.h" />
     <ClInclude Include="ZombieStandStillState.h" />
     <ClInclude Include="ZombieState.h" />
     <ClInclude Include="ZombieStateFactory.h" />
