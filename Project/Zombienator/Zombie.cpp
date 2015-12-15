@@ -9,8 +9,8 @@
 #include "GameObjectFactory.h"
 
 
-Zombie::Zombie() 
-	: Character() 
+Zombie::Zombie()
+	: Character()
 {
 	SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, this));
 }
@@ -53,9 +53,9 @@ void Zombie::Init()
 }
 
 void Zombie::SetCurrentState(ZombieState* newState)
-{	
-	
-	if(this->currentState != newState)
+{
+
+	if (this->currentState != newState)
 	{
 		if (dynamic_cast<ZombieAttackState*>(newState))
 			ChangeTexture(true);
@@ -67,7 +67,7 @@ void Zombie::SetCurrentState(ZombieState* newState)
 
 bool Zombie::IsInAttackRadius(Character * target)
 {
-	
+
 	double dist = GameMath::Distance(*this->GetCollideRect(), *target->GetCollideRect());
 	if (lookDir == Direction::NORTH || lookDir == Direction::SOUTH) {
 		return dist < sweetspotY;
@@ -117,9 +117,5 @@ void Zombie::ChangeTexture(bool isAttack)
 
 void Zombie::OnDeath()
 {
-	int dice_roll = NumberUtility::RandomNumber(1, 100);
-	const int spawnPickupChance = 10;
-	//if (dice_roll <= spawnPickupChance) {
-		GameObjectFactory::Instance()->CreateAmmoBox(this);
-	//}
+	GameObjectFactory::Instance()->CreateRandomPickup(this);
 }

@@ -16,7 +16,7 @@
 #include "MoveContainer.h"
 #include "CollideContainer.h"
 #include "GameObjectContainer.h"
-
+#include "NumberUtility.h"
 //
 // DO NOT FORGET TO INITIALIZE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //
@@ -157,7 +157,17 @@ AmmoBox * GameObjectFactory::CreateAmmoBox(Character * obj)
 
 Pickup * GameObjectFactory::CreateRandomPickup(Character * obj)
 {
-	return CreateMedkit(obj);
+	Pickup* p = nullptr;
+	int dice_roll = NumberUtility::RandomNumber(1, 100);
+	const int ammoChance = 10;
+	const int medKitChance = 2;
+	if (dice_roll <= medKitChance) {
+		p = CreateMedkit(obj);
+	}
+	else if (dice_roll <= ammoChance) {
+		p = CreateAmmoBox(obj);
+	}
+	return p;
 }
 
 
