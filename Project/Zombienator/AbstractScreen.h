@@ -1,11 +1,9 @@
 #pragma once
-#include "AbstractUIComponent.h"
 #include "SoundController.h"
 #include <vector>
-#include <SDL_render.h>
 #include <SDL_image.h>
 
-
+class AbstractUIComponent;
 class AbstractScreen
 {
 protected:

@@ -1,5 +1,6 @@
 #include "AbstractScreen.h"
 #include "TextureFactory.h"
+#include "AbstractUIComponent.h"
 
 AbstractScreen::AbstractScreen()
 {

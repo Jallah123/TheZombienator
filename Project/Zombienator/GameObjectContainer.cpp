@@ -5,6 +5,7 @@
 #include "Map.h"
 #include "Quadtree.h"
 #include "CollideObject.h"
+#include "StatsController.h"
 
 GameObjectContainer::GameObjectContainer()
 {

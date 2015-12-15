@@ -1,10 +1,9 @@
 #pragma once
 #include <stack> 
-#include "AbstractScreen.h"
-#include <memory>
 
 using namespace std;
 
+class AbstractScreen;
 class ScreenController
 {
 public:

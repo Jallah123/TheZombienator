@@ -70,7 +70,7 @@ MapSelectionScreen::MapSelectionScreen(SDL_Renderer* ren): MenuScreen(ren)
 	for (auto s : test)
 	{
 		Map* m = new Map{ s };
-		m->SetTileSize(22);
+		// m->SetTileSize(22);
 		maps.push_back(m);
 	}
 
@@ -96,7 +96,6 @@ MapSelectionScreen::MapSelectionScreen(SDL_Renderer* ren): MenuScreen(ren)
 
 	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(b);
-	SDL_DestroyTexture(backgroundTexture);
 }
 
 void MapSelectionScreen::Update(float dt)
@@ -106,12 +105,19 @@ void MapSelectionScreen::Update(float dt)
 
 void MapSelectionScreen::Draw(SDL_Renderer& ren, float dt)
 {
+	if (backgroundTexture != nullptr)
+	{
+		SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
+	}
 	Map* currentMap = maps[currentMapIndex];
-	int x = 188, y = 100;
+	// int x = 188, y = 100;
+	int x = 0, y = 0;
 	currentMap->Draw(ren, x, y);
 	currentMap->DrawFrontLayer(ren, x, y);
-	AbstractScreen::Draw(ren, dt);
-
+	for each (const auto& component in UIComponents)
+	{
+		component->Draw(ren);
+	}
 }
 
 MapSelectionScreen::~MapSelectionScreen()

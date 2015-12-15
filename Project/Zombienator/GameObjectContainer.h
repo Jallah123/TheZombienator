@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <algorithm>
-#include "StatsController.h"
 #include <SDL_rect.h>
 class GameObject;
 class Map;
