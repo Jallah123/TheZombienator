@@ -470,6 +470,9 @@
     </ClCompile>
     <ClCompile Include="PickupCollideBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour</Filter>
+	</ClCompile>
+    <ClCompile Include="ioController.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="ZombieDeadState.cpp">
       <Filter>Source Files\Models\States</Filter>
@@ -757,7 +760,7 @@
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files\Views\UIComponents\Images</Filter>
-    </ClInclude>
+    </ClInclude>`
     <ClInclude Include="Pickup.h">
       <Filter>Header Files\Models\Pickups</Filter>
     </ClInclude>
@@ -769,6 +772,9 @@
     </ClInclude>
     <ClInclude Include="PickupCollideBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
+	</ClInclude>
+    <ClInclude Include="ioController.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="ZombieDeadState.h">
       <Filter>Header Files\Models\States</Filter>

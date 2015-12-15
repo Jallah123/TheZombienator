@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\include;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\include;$(ProjectDir)\thirdparty\SDL\SDL2\include;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\include;$(ProjectDir)\thirdparty\*;$(IncludePath);C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json</IncludePath>
+    <IncludePath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\include;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\include;$(ProjectDir)\thirdparty\SDL\SDL2\include;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\include;$(ProjectDir)\thirdparty\cereal\include;$(ProjectDir)\thirdparty\*;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2\lib\win32;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\lib\x86;$(ProjectDir)\thirdparty\*;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -219,6 +219,7 @@
     <ClCompile Include="InfiniteModeButton.cpp" />
     <ClCompile Include="ControllerInputHandler.cpp" />
     <ClCompile Include="InputContainer.cpp" />
+    <ClCompile Include="ioController.cpp" />
     <ClCompile Include="KeyboardInputHandler.cpp" />
     <ClCompile Include="LabelEndScreen.cpp" />
     <ClCompile Include="LandscapeMap.cpp" />
@@ -319,6 +320,7 @@
     <ClInclude Include="HelpScreen.h" />
     <ClInclude Include="HudVisitor.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="ioController.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="HudDrawBehaviour.h" />
     <ClInclude Include="LabelEndScreen.h" />

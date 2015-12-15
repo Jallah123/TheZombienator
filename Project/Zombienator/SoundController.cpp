@@ -9,7 +9,7 @@ SoundController::SoundController()
 		cout << "Mix_OpenAudio error: " << Mix_GetError() << endl;
 		return;
 	}
-	Mix_VolumeMusic(this->musicVolume);
+	Mix_VolumeMusic(settings->getMusicVolume());
 	Mix_AllocateChannels(64);
 }
 
@@ -25,7 +25,7 @@ Mix_Chunk* SoundController::Load(string path)
 		std::cout << stderr << "Unable to load WAV file: %s\n" << Mix_GetError();
 	}
 	
-	Mix_VolumeChunk(chunk, this->soundVolume);
+	Mix_VolumeChunk(chunk, settings->getSoundVolume());
 	sounds.insert({ path, chunk });
 	return chunk;
 }
@@ -96,38 +96,38 @@ void SoundController::StopSounds()
 
 void SoundController::MuteUnmuteMusic()
 {
-	int volume = (settings->getMusic() ? defaultVolume : 0);
+	int volume = (settings->getMusic() ? settings->getDefaultVolume() : 0);
 	Mix_VolumeMusic(volume);
-	this->musicVolume = volume;
+	settings->setMusicVolume(volume);
 }
 
 void SoundController::MuteUnmuteSound()
 {
-	int volume = (settings->getSound() ? defaultVolume : 0);
+	int volume = (settings->getSound() ? settings->getDefaultVolume() : 0);
 	for each (auto& sound in sounds)
 	{
 		Mix_VolumeChunk(sound.second, volume);
 	}
-	this->soundVolume = volume;
+	settings->setSoundVolume(volume);
 
 }
 
 void SoundController::SetVolume(int volume)
 {
-	if(this->soundVolume != 0){
+	if(settings->getSoundVolume() != 0){
 		for each (auto& sound in sounds)
 		{
 			Mix_VolumeChunk(sound.second, volume);
 		}
-		this->soundVolume = volume;
+		settings->setSoundVolume(volume);
 	}
 
-	if (this->musicVolume != 0) {
+	if (settings->getMusicVolume() != 0) {
 		Mix_VolumeMusic(volume);
-		this->musicVolume = volume;
+		settings->setMusicVolume(volume);
 	}
 	
-	this->defaultVolume = volume;
+	settings->setDefaultVolume(volume);
 }
 
 SoundController::~SoundController()
