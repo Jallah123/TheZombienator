@@ -14,7 +14,13 @@ Zombie::Zombie() : Character()
 	SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, this));
 }
 
-Zombie::~Zombie() {}
+Zombie::~Zombie() {
+	delete target;
+	delete currentState;
+	delete normalTexture;
+	delete attackTexture;
+	delete deadTexture;
+}
 
 void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
 {

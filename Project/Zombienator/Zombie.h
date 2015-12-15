@@ -23,7 +23,7 @@ public:
 	void Update(float dt) { currentState->Update(dt); }
 	
 	ZombieState* GetCurrentState() { return this->currentState; }
-	void SetCurrentState(ZombieState* newState) { this->currentState = newState; };
+	void SetCurrentState(ZombieState* newState) { delete this->currentState; this->currentState = newState; };
 	bool IsInAttackRadius(Character* target);
 
 	void SetNormalTexture(string path);
