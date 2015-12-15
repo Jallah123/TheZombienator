@@ -15,6 +15,7 @@
 #include "CollideContainer.h"
 #include "GameState.h"
 #include "HudVisitor.h"
+#include "BubbleVisitor.h"
 #include "Mike.h"
 #include "PauseScreen.h"
 
@@ -59,6 +60,7 @@ private:
 	GameObjectContainer* gameObjectContainer;
 	SpawnController spawnController;
 	HudVisitor hudVisitor;
+	BubbleVisitor bubbleVisitor = nullptr;
 	
 	
 	Mike* mike = nullptr;

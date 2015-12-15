@@ -185,6 +185,7 @@
     <ClCompile Include="BackToMenuButton.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="BehaviourFactory.cpp" />
+    <ClCompile Include="BubbleVisitor.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletMoveBehaviour.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -271,6 +272,7 @@
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
     <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="TileSet.cpp" />
+    <ClCompile Include="TutorialMap.cpp" />
     <ClCompile Include="VolumeButton.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WinScreen.cpp" />
@@ -296,6 +298,7 @@
     <ClInclude Include="BackToMenuButton.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="BehaviourFactory.h" />
+    <ClInclude Include="BubbleVisitor.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletMoveBehaviour.h" />
     <ClInclude Include="Button.h" />
@@ -377,6 +380,7 @@
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h" />
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="TileSet.h" />
+    <ClInclude Include="TutorialMap.h" />
     <ClInclude Include="VolumeButton.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WinScreen.h" />

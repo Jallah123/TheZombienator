@@ -69,4 +69,6 @@ public:
 	vector<SDL_Rect*> GetRects() { return this->rects; }
 	vector<TileSet*> GetTileSets() { return this->tilesets; }
 	SDL_Rect GetBounds() { return bounds; }
+
+	virtual void DoNothing() {}
 };

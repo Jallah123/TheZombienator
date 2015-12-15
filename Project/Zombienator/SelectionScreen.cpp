@@ -5,6 +5,7 @@
 #include "TextureFactory.h"
 #include "ScreenFactory.h"
 #include "ScreenController.h"
+#include "MapFactory.h"
 #include "BackButton.h"
 
 struct PreviousButton : Button {
@@ -70,7 +71,10 @@ struct TutorialButton : Button {
 	}
 
 	void ClickAction() { // Start Tutorial mode here
+
+		MapFactory::GetInstance()->TutorialMode();
 		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, _ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl()));
+
 	}
 };
 

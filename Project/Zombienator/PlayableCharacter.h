@@ -1,6 +1,7 @@
 #pragma once
 #include "Character.h"
 #include "Weapon.h"
+#include "BubbleVisitor.h"
 
 class PlayableCharacter
 	: public Character
@@ -23,5 +24,7 @@ public:
 	void PreviousWeapon();
 	void Teleport(SDL_Renderer* ren);
 	void SetFlare(bool newFlare);
+
+	void Accept(BubbleVisitor* visitor) { visitor->Visit(this); };
 };
 

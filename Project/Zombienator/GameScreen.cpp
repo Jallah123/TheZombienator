@@ -11,6 +11,7 @@
 #include "TextureFactory.h"
 #include "MapFactory.h"
 #include "ScreenFactory.h"
+#include "TutorialMap.h"
 #include "Pistol.h"
 #include "MachineGun.h"
 
@@ -28,6 +29,10 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 	BehaviourFactory::Instance()->SetMap(map);
 
 	hudVisitor = HudVisitor{ ren };
+
+	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
+		bubbleVisitor = BubbleVisitor{ ren };
+	}
 
 	goFactory->SetContainers(
 		&drawContainer,
@@ -158,6 +163,13 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	hudVisitor.DrawBase();
 	mike->GetWeapon()->Accept(&hudVisitor);
+
+	// BUBBLE ZOOI
+	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
+			
+		mike->Accept(&bubbleVisitor);
+
+	}
 
 	// If all waves defeated
 	if (spawnController.Completed())
