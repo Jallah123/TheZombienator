@@ -7,7 +7,7 @@
 SettingsScreen::SettingsScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
 	//default background
-	ChangeBackground(ren, "assets/images/default_bg.png");
+	ChangeBackground(ren, "assets/images/bg/default_bg.png");
 
 	//stop sound:
 

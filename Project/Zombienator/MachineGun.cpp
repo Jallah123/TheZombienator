@@ -3,7 +3,7 @@
 #include "MachineGunBullet.h"
 #include "SoundController.h"
 
-MachineGun::MachineGun() : Weapon("assets/images/MachineGun.png")
+MachineGun::MachineGun() : Weapon("assets/images/weapons/MachineGun.png")
 {
 	this->name = "MachineGun";
 	this->delay = 20;

@@ -23,12 +23,13 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 
 	string basePath = "assets/images/spritesheets/";
 	string baseAttackPath = "assets/images/spritesheets/attack/";
+	string baseEffectPath = "assets/images/effects/";
 	string spriteSheet = std::to_string(dice_roll) + "zombie.png";
 
 	SetImage(basePath + spriteSheet, *ren);
 	SetNormalTexture(basePath + spriteSheet);
 	SetAttackTexture(baseAttackPath + spriteSheet);
-	SetDeadTexture(basePath + "explosion.png");
+	SetDeadTexture(baseEffectPath + "explosion.png");
 
 	this->SetContainers(drawC, animC, moveC, nullptr, nullptr, collideC, gameObjectC);
 	SetDrawBehaviour("CharacterDrawBehaviour");

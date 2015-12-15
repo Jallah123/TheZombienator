@@ -7,7 +7,7 @@
 #include "GameObjectFactory.h"
 #include "SoundController.h"
 
-Pistol::Pistol() : Weapon("assets/images/Pistol.png")
+Pistol::Pistol() : Weapon("assets/images/weapons/Pistol.png")
 {
 	this->name = "Pistol";
 	this->rounds = INT_MAX;

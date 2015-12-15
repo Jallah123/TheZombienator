@@ -17,7 +17,7 @@ StatsScreen::~StatsScreen()
 void StatsScreen::AddStats(SDL_Renderer* ren)
 {
 	// Buttons
-	BackToMenuButton* btnBack = new BackToMenuButton(*ren, "", "assets/images/button_backtomenu.png");
+	BackToMenuButton* btnBack = new BackToMenuButton(*ren, "", "assets/images/btn/btn_backtomenu.png");
 	AddUIComponent(btnBack);
 
 	// Labels
