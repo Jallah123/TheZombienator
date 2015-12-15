@@ -32,6 +32,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
 		bubbleVisitor = BubbleVisitor{ ren };
+		tutorialController = TutorialController(&bubbleVisitor);
 	}
 
 	goFactory->SetContainers(
@@ -166,9 +167,10 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	// BUBBLE ZOOI
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
-			
-		mike->Accept(&bubbleVisitor);
+		int a = spawnController.Reset(); // a opslaan, a = 3, a terugzetten, spawn 3 zombies.
 
+		tutorialController.DoTask();
+		mike->Accept(&bubbleVisitor);
 	}
 
 	// If all waves defeated

@@ -78,5 +78,7 @@ public:
 	bool AllWavesCompleted() { return this->allWavesCompleted; }
 
 	bool Completed() { return completed; }
+
+	int Reset() { int temp = amountToSpawn; amountToSpawn = 0; return temp; }
 };
 

@@ -1,23 +1,35 @@
 #include "BubbleVisitor.h"
 #include "Image.h"
 
-BubbleVisitor::BubbleVisitor(SDL_Renderer* _renderer)
-{
-	renderer = _renderer;
+BubbleVisitor::BubbleVisitor() {}
 
-	bubbleImage = TextureFactory::GenerateTextureFromImgUrl("assets/images/tutorial/bubble.png");
+BubbleVisitor::BubbleVisitor(SDL_Renderer* ren)
+{
+	this->ren = ren;
+	this->bubbleImage = TextureFactory::GenerateTextureFromImgUrl("assets/images/tutorial/bubble.png");
+	ChangeText(" ");
 }
 
-void BubbleVisitor::Visit(Character* character)
+void BubbleVisitor::Visit(Character* c)
 {
-
-	SDL_Rect srcRectangle{ 0, 0, 207, 90 };
-	SDL_Rect destRectangle{ character->getPosX()- 28, character->getPosY() - 78, 207, 90 };
+	posX = c->getPosX() - 28;
+	posY = c->getPosY() - 78;
 	
-	SDL_RenderCopy(renderer, bubbleImage, &srcRectangle, &destRectangle);
+	SDL_Rect srcRectangle { 0, 0, bubbleHeight, bubbleWidth };
+	SDL_Rect destRectangle { posX, posY, bubbleHeight, bubbleWidth };
 
+	SDL_RenderCopy(ren, bubbleImage, &srcRectangle, &destRectangle);
+	SDL_RenderCopy(ren, text.first, nullptr, &text.second);
 }
 
-BubbleVisitor::~BubbleVisitor()
+BubbleVisitor::~BubbleVisitor() {}
+
+// -- TODO
+	// -- Txt Lines?
+	// -- Animate Txt
+void BubbleVisitor::ChangeText(string s)
 {
+	if (text.first != nullptr) // -- Memory Leaks
+		SDL_DestroyTexture(text.first);
+	text = TextureFactory::GenerateText(string(s), 14, posX + 14, posY + 8, FontEnum::OCR, { 0, 0, 0 });
 }

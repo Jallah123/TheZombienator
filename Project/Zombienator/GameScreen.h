@@ -18,6 +18,7 @@
 #include "BubbleVisitor.h"
 #include "Mike.h"
 #include "PauseScreen.h"
+#include "TutorialController.h"
 
 class Quadtree;
 class GameScreen : public AbstractScreen
@@ -60,8 +61,9 @@ private:
 	GameObjectContainer* gameObjectContainer;
 	SpawnController spawnController;
 	HudVisitor hudVisitor;
-	BubbleVisitor bubbleVisitor = nullptr;
-	
+
+	BubbleVisitor bubbleVisitor;
+	TutorialController tutorialController;
 	
 	Mike* mike = nullptr;
 	Map* map = nullptr;
