@@ -17,6 +17,11 @@ void ZombieWalkingState::CheckState()
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 
+	if (!stateChanged) {
+		stateChanged = true;
+		z->SetTexture(z->GetNormalTexture());
+	}
+
 	if (z->IsDeath()) {
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::DEAD, z));
 		return;

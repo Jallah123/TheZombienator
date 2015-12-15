@@ -14,7 +14,13 @@ Zombie::Zombie() : Character()
 	SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, this));
 }
 
-Zombie::~Zombie() {}
+Zombie::~Zombie() {
+	delete target;
+	delete currentState;
+	delete normalTexture;
+	delete attackTexture;
+	delete deadTexture;
+}
 
 void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
 {
@@ -49,19 +55,6 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	SetSoundSpeed(2);
 }
 
-void Zombie::SetCurrentState(ZombieState* newState)
-{	
-	
-	if(this->currentState != newState)
-	{
-		if (dynamic_cast<ZombieAttackState*>(newState))
-			ChangeTexture(true);
-		else
-			ChangeTexture(false);
-	}
-	this->currentState = newState;
-}
-
 bool Zombie::IsInAttackRadius(Character * target)
 {
 	
@@ -82,32 +75,10 @@ void Zombie::SetNormalTexture(string path)
 
 void Zombie::SetAttackTexture(string path)
 {
-	AttackTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+	attackTexture = TextureFactory::GenerateTextureFromImgUrl(path);
 }
 
 void Zombie::SetDeadTexture(string path)
 {
-	DeadTexture = TextureFactory::GenerateTextureFromImgUrl(path);
-}
-
-void Zombie::ChangeTexture(bool isAttack)
-{
-	if (this->IsDeath()) {
-
-		this->SetFrames(16);
-		this->SetSize(64, 64);
-		this->SetSpeed(0.2f);
-		this->SetMoveDir(Direction::SOUTH);
-		this->SetLookDir(Direction::SOUTH);
-		this->CanMove(false);
-		this->SetPosition(getPosX() - 16, getPosY() - 14);
-
-		SetTexture(this->DeadTexture);
-	}
-	else {
-		if (isAttack)
-			SetTexture(this->AttackTexture);
-		else
-			SetTexture(this->normalTexture);
-	}
+	deadTexture = TextureFactory::GenerateTextureFromImgUrl(path);
 }

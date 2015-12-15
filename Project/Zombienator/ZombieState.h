@@ -11,6 +11,7 @@ public:
 	Zombie* GetOwner() { return owner; };
 	virtual void CheckState() = 0;
 	virtual void Update(float dt) = 0;
+	bool stateChanged = false;
 private:
 	Zombie* owner = nullptr;
 };
