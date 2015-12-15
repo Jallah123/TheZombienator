@@ -81,7 +81,7 @@ struct TutorialButton : Button {
 SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
 	std::cout << "Made SelectionScreen" << std::endl;
-	backgroundTexture = TextureFactory::GenerateTextureFromImgUrl("assets/images/default_bg.png");
+	backgroundTexture = TextureFactory::GenerateTextureFromImgUrl("assets/images/bg/default_bg.png");
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy1.png"));
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy2.png"));
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy3.png"));
@@ -116,7 +116,7 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 	for (auto& image : images)
 	{
-		image->SetSourceLocation(0, 0);
+		image->SetSourceLocation(36, 0);
 		image->SetSize(36, 38);
 		image->SetDestLocation(600, 282);
 	}
