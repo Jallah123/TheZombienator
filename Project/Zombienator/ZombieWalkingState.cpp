@@ -40,29 +40,42 @@ void ZombieWalkingState::Update(float dt)
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 	GameObjectContainer* goc = z->GetGameObjectContainer();
-	
+	float destX;
+	float destY;
+	SDL_Rect targetRect = *target->GetDestinationRect();
+
 	// Calculate path
 	vector<Node*>& nodes = z->GetGameObjectContainer()->GetMap()->GetGraph()->GetNodes();
 	Graph* graph = z->GetGameObjectContainer()->GetMap()->GetGraph();
 	Node* selfNode = GetClosestNodeNearTarget(z, nodes);
 	Node* targetNode = GetClosestNodeNearTarget(target, nodes);
 	Astar astar;
-	if (z->GetPath().size() == 0) 
+
+	if (GameMath::Distance(*z->GetDestinationRect(), *target->GetDestinationRect()) < GameMath::Distance(*z->GetDestinationRect(), selfNode->getDestRect()))
 	{
-		astar.Compute(graph, selfNode->ID(), targetNode->ID());
-		vector<int> path = astar.GetPath(selfNode->ID(), targetNode->ID());
-		z->SetPath(path);
+		targetRect.x = target->GetDestinationRect()->x;
+		targetRect.y = target->GetDestinationRect()->y;
+	}
+	else 
+	{
+		if (z->GetPath().empty())
+		{
+			astar.Compute(graph, selfNode->ID(), targetNode->ID());
+			queue<int> path = astar.GetPath(selfNode->ID(), targetNode->ID());
+			z->SetPath(path);
+		}
+
+		if (SDL_HasIntersection(&graph->GetNode(z->GetPath().front())->getDestRect(), z->GetDestinationRect()))
+		{
+			z->GetPath().pop();
+		}
+
+		targetRect.x = graph->GetNode(z->GetPath().front())->getDestRect().x;
+		targetRect.y = graph->GetNode(z->GetPath().front())->getDestRect().y;
 	}
 
-	SDL_Rect targetRect = graph->GetNode(z->GetPath().at(z->currentPathIndex))->getDestRect();
-
-	if (SDL_HasIntersection(&targetRect, z->GetDestinationRect()))
-	{
-		z->currentPathIndex++;
-	}
-
-	float destX = targetRect.x;
-	float destY = targetRect.y;
+	destX = targetRect.x;
+	destY = targetRect.y;
 
 	// -- Get destination rect
 	SDL_Rect* goRect = z->GetCollideRect();
@@ -72,9 +85,9 @@ void ZombieWalkingState::Update(float dt)
 	// -- Move directions
 	bool left = destX + target->GetWidth() <= newX;
 	bool right = destX >= newX + z->GetWidth();
-	bool up = destY + (target->GetHeight()/2) <= newY;
+	bool up = destY + (target->GetHeight() / 2) <= newY;
 	bool down = destY >= newY + (z->GetHeight() / 2);
-	
+
 	float speed = z->GetSpeed() * dt;
 
 	z->SetMoveDir(Direction::NONE);
@@ -100,7 +113,7 @@ void ZombieWalkingState::Update(float dt)
 		z->SetLookDir(Direction::SOUTH);
 		newY += speed;
 	}
-	
+
 
 	float finalX = newX;
 	float finalY = newY;

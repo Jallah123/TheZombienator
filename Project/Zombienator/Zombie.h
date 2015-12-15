@@ -1,6 +1,7 @@
 #pragma once
 #include "Character.h"
 #include "ZombieState.h"
+#include <queue>
 
 class DrawContainer;
 class AnimateContainer;
@@ -37,8 +38,8 @@ public:
 	float GetAttackSpeed() { return this->attackSpeed; }
 	float GetSoundSpeed() { return this->soundSpeed; }
 
-	vector<int> GetPath() { return path; };
-	void SetPath(vector<int> _path) { path = _path; };
+	queue<int> GetPath() { return path; };
+	void SetPath(queue<int> _path) { path = _path; };
 	int currentPathIndex = 0;
 private:
 	Character* target = nullptr;//Mike||Arnold
@@ -53,6 +54,6 @@ private:
 	const double sweetspotX = 35;
 	const double sweetspotY = 25;
 
-	vector<int> path;
+	queue<int> path;
 };
 
