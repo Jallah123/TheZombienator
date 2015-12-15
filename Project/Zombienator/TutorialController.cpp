@@ -53,10 +53,7 @@ void TutorialController::DoTask()
 void TutorialController::Welcome()
 {	
 	bubbleVisitor->ChangeText("Welcome");
-
-	//cout << begin << "\n";
-	cout << GetPassedTime(begin) << "\n";
-
+	// LOCK Mike
 	if (5 <= GetPassedTime(begin)) taskDone = true;
 }
 

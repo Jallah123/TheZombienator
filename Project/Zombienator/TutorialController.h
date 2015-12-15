@@ -1,8 +1,9 @@
 #pragma once
-#include "TutorialEnum.cpp"
+#include <ctime>
 #include <queue>
 #include "BubbleVisitor.h"
-#include <ctime>
+#include "TutorialEnum.cpp"
+
 
 using namespace std;
 
@@ -26,4 +27,3 @@ class TutorialController
 
 		float GetPassedTime(clock_t t) { return float(clock() - t) / CLOCKS_PER_SEC; }
 };
-
