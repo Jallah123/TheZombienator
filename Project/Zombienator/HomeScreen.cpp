@@ -14,8 +14,8 @@ struct HelpButton : Button {
 	HelpButton(SDL_Renderer& ren, char* text, char* img_url)
 		: Button(ren, text, img_url)
 	{
-		srcRect = { 286, 240, 82, 75 };
-		destRect = { 1190, 184, 82, 75 };
+		srcRect = { 286, 240, 82, 81 };
+		destRect = { 1190, 174, 82, 81 };
 	}
 
 	void ClickAction() {

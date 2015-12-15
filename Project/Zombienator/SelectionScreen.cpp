@@ -48,12 +48,28 @@ struct SelectButton : Button {
 		: Button(ren, text, img_url) {
 		_ss = ss;
 		SetSourceLocation(0, 238);
-		SetSize(239, 97);
+		SetSize(239, 102);
 		SetDestLocation(500, 500);
 		buttonText = TextureFactory::GenerateText(string(text), 24, destRect.x + (destRect.w / 2), destRect.y + (destRect.h / 2), FontEnum::CARTOON, { 248 ,248 ,255 });
 	}
 
 	void ClickAction() {
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, _ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl()));
+	}
+};
+
+struct TutorialButton : Button {
+	SelectionScreen* _ss;
+
+	TutorialButton(SDL_Renderer& ren, char* text, char* img_url, SelectionScreen* ss)
+		: Button(ren, text, img_url) {
+		_ss = ss;
+		SetSourceLocation(286, 320);
+		SetSize(82, 81);
+		SetDestLocation(1190, 10);
+	}
+
+	void ClickAction() { // Start Tutorial mode here
 		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, _ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl()));
 	}
 };
@@ -87,6 +103,9 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 	SelectButton* sbtn = new SelectButton(*ren, "Select", ssUrl, this);
 	AddUIComponent(sbtn);
+
+	TutorialButton* tbtn = new TutorialButton(*ren, "", ssUrl, this);
+	AddUIComponent(tbtn);
 
 	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(b);
