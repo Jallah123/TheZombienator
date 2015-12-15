@@ -28,6 +28,8 @@ private:
 	int defaultVolume = 25;
 	int musicVolume = 25;
 	int soundVolume = 25;
+	bool godmode = false;
+	bool infiniteAmmo = false;
 
 	GameSpeed gameSpeed = GameSpeed::NORMAL;
 	GameDifficulty gameDifficulty = GameDifficulty::MEDIUM;
@@ -37,7 +39,7 @@ private:
 	template <class Archive>
 	void serialize(Archive & ar)
 	{
-		ar(CEREAL_NVP(friendlyFire), CEREAL_NVP(sound), CEREAL_NVP(music), CEREAL_NVP(showFps), CEREAL_NVP(gameSpeed), CEREAL_NVP(gameDifficulty), CEREAL_NVP(defaultVolume), CEREAL_NVP(musicVolume), CEREAL_NVP(soundVolume));
+		ar(CEREAL_NVP(friendlyFire), CEREAL_NVP(sound), CEREAL_NVP(music), CEREAL_NVP(showFps), CEREAL_NVP(gameSpeed), CEREAL_NVP(gameDifficulty), CEREAL_NVP(defaultVolume), CEREAL_NVP(musicVolume), CEREAL_NVP(soundVolume), CEREAL_NVP(godmode), CEREAL_NVP(infiniteAmmo));
 	}
 
 	ioController* ioC = &ioController::GetInstance();
@@ -72,6 +74,12 @@ public:
 
 	bool getShowFps() { return showFps; };
 	void setShowFps(bool value) { showFps = value; };
+
+	bool getGodMode() { return godmode; };
+	void toggleGodMode() { godmode = !godmode; };
+
+	bool getInfiniteAmmo() { return infiniteAmmo; };
+	void toggleInfiniteAmmo() { infiniteAmmo = !infiniteAmmo; };
 
 	GameSpeed getGameSpeed() { return gameSpeed; };
 	void setGameSpeed(GameSpeed value) { gameSpeed = value; };

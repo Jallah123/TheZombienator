@@ -28,6 +28,7 @@ public:
 
 	void SetNormalTexture(string path);
 	void SetAttackTexture(string path);
+	void SetDeadTexture(string path);
 	void ChangeTexture(bool isAttack);
 
 	void SetAttackDamage(float ad) { this->attackDamage = ad; }
@@ -41,6 +42,7 @@ private:
 	ZombieState* currentState = nullptr;
 	SDL_Texture* normalTexture = nullptr;
 	SDL_Texture* AttackTexture = nullptr;
+	SDL_Texture* DeadTexture = nullptr;
 	
 	float attackDamage = 0;
 	float attackSpeed = 0;
