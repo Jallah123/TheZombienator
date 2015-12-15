@@ -13,8 +13,3 @@ LoadingScreen::~LoadingScreen()
 void LoadingScreen::Update(float dt)
 {
 }
-
-void LoadingScreen::Draw(SDL_Renderer & ren, float dt)
-{
-	AbstractScreen::Draw(ren, dt);
-}

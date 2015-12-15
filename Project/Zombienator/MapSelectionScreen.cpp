@@ -70,7 +70,6 @@ MapSelectionScreen::MapSelectionScreen(SDL_Renderer* ren): MenuScreen(ren)
 	for (auto s : test)
 	{
 		Map* m = new Map{ s };
-		// m->SetTileSize(22);
 		maps.push_back(m);
 	}
 

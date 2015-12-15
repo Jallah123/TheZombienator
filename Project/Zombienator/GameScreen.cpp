@@ -79,36 +79,35 @@ void GameScreen::ReceiveFocus()
 
 void GameScreen::Update(float dt)
 {
-	dt *= (float)settings->getGameSpeed() / 10;
+	if (currentState == GameState::RUNNING) 
+	{
+		dt *= (float)settings->getGameSpeed() / 10;
 
-	XOffset = 0;
-	YOffset = 0;
-	if (shake > 0) {
-		shake -= dt;
-		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
-		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
-	}
-	HandleInput(dt);
+		XOffset = 0;
+		YOffset = 0;
+		if (shake > 0) {
+			shake -= dt;
+			XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
+			YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
+		}
+		HandleInput(dt);
 
-	if (currentState == GameState::RUNNING) {
-		for (auto& g : gameObjectContainer->GetGameObjects()) {
-			tree->AddObject(g);
-			if (Zombie* z = dynamic_cast<Zombie*>(g))
-			{
-				z->Update(dt);
+			for (auto& g : gameObjectContainer->GetGameObjects()) {
+				tree->AddObject(g);
+				if (Zombie* z = dynamic_cast<Zombie*>(g))
+				{
+					z->Update(dt);
+				}
 			}
-		}
-		if (!inTransistion) {
 			spawnController.Update(dt);
-		}
-		actionContainer.Update(dt);
-		collideContainer.Collide(dt);
-		moveContainer.Move(dt);
-		animateContainer.Animate(dt);
-		tree->Clear();
-	}
+			actionContainer.Update(dt);
+			collideContainer.Collide(dt);
+			moveContainer.Move(dt);
+			animateContainer.Animate(dt);
+			tree->Clear();
 
-	timeLastStateChange -= dt;
+		timeLastStateChange -= dt;
+	}
 }
 
 void GameScreen::HandleInput(float dt) 
@@ -181,7 +180,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	if (!isInfinityMode) {
 		// if maxwave completed
 		if (spawnController.CurrentWave() == 5) {
-			inTransistion = true;
+			currentState = GameState::TRANSITIONING;
 			if (this->Transition(ren))
 			{
 				return;
@@ -195,17 +194,17 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
 	if (zombiesLeft == 0) {
 		s = "Kill all zombies";
-		if (spawnController.CurrentWave() == 4 && spawnController.WaveCompleted()) {
+		if (spawnController.CurrentWave() == 4 && spawnController.WaveCompleted() && !isInfinityMode) {
 			s = "Next map in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
 		}
-		else if(spawnController.WaveCompleted()) {
+		else if(spawnController.WaveCompleted() && currentState == GameState::RUNNING) {
 			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
-		}
-		if (inTransistion) {
-			s = "Transitioning to next level";
-		}
-		
+		}		
 	}
+	if (currentState == GameState::TRANSITIONING) {
+		s = "Transitioning to next level";
+	}
+
 	auto* text = TextureFactory::GenerateTextureFromTextHud(s);
 	SDL_Rect r{ 0,0,200,40 };
 	SDL_RenderCopy(&ren, text, 0, &r);
@@ -217,9 +216,6 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		SDL_RenderCopy(&ren, fpsTexture.first, NULL, &fpsTexture.second);
 		SDL_DestroyTexture(fpsTexture.first);
 	}
-
-
-
 }
 
 // returns if done transitioning
@@ -232,8 +228,7 @@ bool GameScreen::Transition(SDL_Renderer& ren) {
 
 	if (mike->getPosY() < -mike->GetHeight()) {
 
-		string imgUrl = mike->getImgUrl();
-		inTransistion = false;
+		string texturePath = mike->getImgUrl();
 		ScreenController::GetInstance().Back();
 
 		// Check if final map
@@ -242,7 +237,7 @@ bool GameScreen::Transition(SDL_Renderer& ren) {
 		}
 		else {
 			// Set next screen
-			ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(imgUrl));
+			ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(texturePath));
 		}
 		return true;
 	}

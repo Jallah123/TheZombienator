@@ -4,7 +4,7 @@
         "sound": false,
         "music": false,
         "showFps": false,
-        "gameSpeed": 50,
+        "gameSpeed": 20,
         "gameDifficulty": 1,
         "defaultVolume": 29,
         "musicVolume": 0,
