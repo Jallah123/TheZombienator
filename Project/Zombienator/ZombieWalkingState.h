@@ -13,8 +13,6 @@ public:
 	void CheckState();
 	void Update(float dt);
 private:
-	Node* GetClosestNodeNearTarget(Character* target, vector<Node>& nodes);
-	Node* GetCheapestNode(vector<Node*>& nodes);
-	void CalculatePath();
+	Node* GetClosestNodeNearTarget(Character* target, vector<Node*>& nodes);
 };
 

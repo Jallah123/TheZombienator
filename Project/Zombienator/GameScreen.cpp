@@ -167,12 +167,12 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	//DEBUG: draw waypoints
 	SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
-	for (Node node : map->GetNodes())
+	for (Node* node : map->GetGraph()->GetNodes())
 	{
-		SDL_Rect* wp1 = node.position;
-		for (auto& wp2 : node.reachableNodes)
+		SDL_Rect& wp1 = node->getDestRect();
+		for (Node* wp2 : node->Adjacent())
 		{
-			SDL_RenderDrawLine(&ren, wp1->x, wp1->y, wp2.first->position->x, wp2.first->position->y);
+			SDL_RenderDrawLine(&ren, wp1.x, wp1.y, wp2->getDestRect().x, wp2->getDestRect().y);
 		}
 	}
 

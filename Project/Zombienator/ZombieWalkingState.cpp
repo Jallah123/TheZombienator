@@ -4,6 +4,12 @@
 #include "GameMath.h"
 #include <limits>
 #include <set>
+#include "Astar.h"
+#include <SDL_rect.h>
+#include <algorithm>
+#include "Graph.h"
+#include "Node.h"
+#include <vector>
 
 ZombieWalkingState::ZombieWalkingState()
 {
@@ -31,12 +37,32 @@ void ZombieWalkingState::CheckState()
 
 void ZombieWalkingState::Update(float dt)
 {
-	CalculatePath();
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 	GameObjectContainer* goc = z->GetGameObjectContainer();
-	float destX = target->getPosX();
-	float destY = target->getPosY();
+	
+	// Calculate path
+	vector<Node*>& nodes = z->GetGameObjectContainer()->GetMap()->GetGraph()->GetNodes();
+	Graph* graph = z->GetGameObjectContainer()->GetMap()->GetGraph();
+	Node* selfNode = GetClosestNodeNearTarget(z, nodes);
+	Node* targetNode = GetClosestNodeNearTarget(target, nodes);
+	Astar astar;
+	if (z->GetPath().size() == 0) 
+	{
+		astar.Compute(graph, selfNode->ID(), targetNode->ID());
+		vector<int> path = astar.GetPath(selfNode->ID(), targetNode->ID());
+		z->SetPath(path);
+	}
+
+	SDL_Rect targetRect = graph->GetNode(z->GetPath().at(z->currentPathIndex))->getDestRect();
+
+	if (SDL_HasIntersection(&targetRect, z->GetDestinationRect()))
+	{
+		z->currentPathIndex++;
+	}
+
+	float destX = targetRect.x;
+	float destY = targetRect.y;
 
 	// -- Get destination rect
 	SDL_Rect* goRect = z->GetCollideRect();
@@ -99,93 +125,19 @@ void ZombieWalkingState::Update(float dt)
 	CheckState();
 }
 
-void ZombieWalkingState::CalculatePath() 
+Node* ZombieWalkingState::GetClosestNodeNearTarget(Character* target, vector<Node*>& nodes)
 {
-	Zombie* z = GetOwner();
-	Character* target = z->GetTarget();
-
-	vector<Node> nodes = GetOwner()->GetGameObjectContainer()->GetMap()->GetNodes();
-	Node* closestNodeNearSelf = GetClosestNodeNearTarget(z, nodes);
-	Node* closestNodeNearTarget = GetClosestNodeNearTarget(target, nodes);
-
-	vector<Node*> nodeQueue;
-	set<Node*> openSet;
-	vector<Node*> closedSet;
-
-	closestNodeNearSelf->weight = 0;
-	nodeQueue.push_back(closestNodeNearSelf);
-	openSet.insert(closestNodeNearSelf);
-
-	while (!nodeQueue.empty())
-	{
-		Node* cNode = GetCheapestNode(nodeQueue);
-		nodeQueue.erase(find(nodeQueue.begin(), nodeQueue.end(), cNode));
-		openSet.erase(cNode);
-
-		if (cNode == closestNodeNearTarget)
-		{
-			vector<Node*> correctPath;
-			while (cNode != closestNodeNearSelf)
-			{
-				correctPath.push_back(cNode);
-				cNode = cNode->previousNode;
-			}
-			std::reverse(correctPath.begin(), correctPath.end());
-			z->SetPath(correctPath);
-		}
-		closedSet.push_back(cNode);
-
-		for (auto& reachableNode : cNode->reachableNodes)
-		{
-			if (find(closedSet.begin(), closedSet.end(), reachableNode.first) != closedSet.end())
-			{
-				continue;
-			}
-			int weight = cNode->weight + GameMath::Distance(*reachableNode.first->position, *closestNodeNearTarget->position) + GameMath::Distance(*cNode->position, *reachableNode.first->position);
-
-			reachableNode.first->weight = GameMath::Distance(*reachableNode.first->position, *cNode->position);
-
-			if (weight < reachableNode.first->weight) 
-			{
-				reachableNode.first->weight = weight;
-				reachableNode.first->previousNode = cNode;
-			}
-
-			if (find(openSet.begin(), openSet.end(), reachableNode.first) == openSet.end())
-			{
-				nodeQueue.push_back(reachableNode.first);
-				openSet.insert(reachableNode.first);
-			}
-		}
-	}
-}
-
-Node* ZombieWalkingState::GetCheapestNode(std::vector<Node*>& nodes)
-{
-	Node* cheapest = nodes.at(0);
-	for each (auto& node in nodes)
-	{
-		if (node->weight < cheapest->weight)
-		{
-			cheapest = node;
-		}
-	}
-	return cheapest;
-}
-
-Node* ZombieWalkingState::GetClosestNodeNearTarget(Character* target, vector<Node>& nodes)
-{
-	Node* closestNode = &nodes.at(0);
+	Node* closestNode = nodes.at(0);
 	int closestRectDistance = INT_MAX;
 	SDL_Rect* destRect = target->GetDestinationRect();
 
 	for (auto& node : nodes)
 	{
-		SDL_Rect* currentRect = node.position;
-		double distance = GameMath::Distance(*currentRect, *destRect);
+		SDL_Rect& currentRect = node->getDestRect();
+		double distance = GameMath::Distance(currentRect, *destRect);
 		if (distance < closestRectDistance)
 		{
-			closestNode = &node;
+			closestNode = node;
 			closestRectDistance = distance;
 		}
 	}

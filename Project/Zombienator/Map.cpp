@@ -91,31 +91,34 @@ void Map::GenerateGraph()
 	vector<SDL_Rect*> waypoints = waypointsLayer->GetRects();
 	for (int i = 0; i < waypoints.size(); i++)
 	{
-		SDL_Rect* waypoint1 = waypoints.at(i);
-		Node* n = new Node{ waypoint1 };
-		for (int ii = 0; ii < waypoints.size(); ii++)
+		graph.AddNode(new Node(i, waypoints.at(i)->x, waypoints.at(i)->y));
+	}
+
+	for (auto& node1: graph.GetNodes())
+	{
+		for (auto& node2 : graph.GetNodes())
 		{
-			SDL_Rect waypoint2 = *waypoints.at(ii);
-			if (!IntersectsWithCollisionLayer(*waypoint1, waypoint2) && !ExistsInMap(n, waypoints.at(ii)))
+			if (!IntersectsWithCollisionLayer(node1->getDestRect(), node2->getDestRect()) && !ExistsInMap(node1, node2))
 			{
-				n->reachableNodes.emplace(std::make_pair(new Node{ waypoints.at(ii) }, std::numeric_limits<int>::max()));
+				node1->AddEdge(node2);
+				node2->AddEdge(node1);
+				graph.AddEdge(node1, node2);
+				graph.AddEdge(node2, node1);
 			}
 		}
-		nodes.push_back(n);
 	}
 }
 
-bool Map::ExistsInMap(Node* n, SDL_Rect* rect)
+bool Map::ExistsInMap(Node* n1, Node* n2)
 {
-	bool exists = false;
-	for (auto& a : n->reachableNodes) 
+	for (auto& a : n1->Adjacent()) 
 	{
-		if (a.first->position == rect)
+		if (n1 == n2)
 		{
-			exists = true;
+			return true;
 		}
 	}
-	return exists;
+	return false;
 }
 
 bool Map::IntersectsWithCollisionLayer(SDL_Rect wp1, SDL_Rect wp2)
