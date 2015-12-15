@@ -1,6 +1,5 @@
 #pragma once
 #include "Character.h"
-#include "GameObjectFactory.h"
 
 Character::Character() : GameObject()
 {
@@ -21,17 +20,17 @@ Character::~Character()
 void Character::TakeHit(int damage)
 {
 	health -= damage;
-	if (IsDeath())
+	if (IsDeath() && !isDead)
 	{
 		health = 0;
 		OnDeath();
-		Remove();
+		SetCollideable(false);
+		isDead = true;
 	}
 }
 
 void Character::OnDeath()
 {
-	GameObjectFactory::Instance()->CreateMedkit(this);
 }
 
 

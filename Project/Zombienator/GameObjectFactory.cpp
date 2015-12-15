@@ -8,6 +8,7 @@
 #include "NormalBullet.h"
 #include "MachineGunBullet.h"
 #include "Medkit.h"
+#include "AmmoBox.h"
 
 #include "DrawContainer.h"
 #include "AnimateContainer.h"
@@ -60,6 +61,8 @@ void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * 
 		return new Zombie(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 	GameObjectFactory::Instance()->Register("Medkit", [&](void) -> GameObject* {
 		return new Medkit(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	GameObjectFactory::Instance()->Register("AmmoBox", [&](void) -> GameObject* {
+		return new AmmoBox(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 }
 
 void GameObjectFactory::Register(std::string name, std::function<GameObject*(void)> fn)
@@ -136,3 +139,25 @@ Medkit * GameObjectFactory::CreateMedkit(Character* obj)
 
 	return nullptr;
 }
+
+AmmoBox * GameObjectFactory::CreateAmmoBox(Character * obj)
+{
+	GameObject* instance = GameObjectFactory::Find("AmmoBox");
+
+	if (instance != nullptr) {
+		AmmoBox* cInstance = dynamic_cast<AmmoBox*>(instance);
+
+		cInstance->SetOrigin(obj);//Position the object
+		gameObjectContainer->AddGameObject(cInstance);
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+Pickup * GameObjectFactory::CreateRandomPickup(Character * obj)
+{
+	return CreateMedkit(obj);
+}
+
+

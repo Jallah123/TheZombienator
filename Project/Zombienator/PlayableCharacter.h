@@ -21,6 +21,7 @@ public:
 	void TakeHit(int damage) override;
 	void AddWeapon(Weapon* w);
 	Weapon* GetWeapon() { return this->weapon; }
+	std::vector<Weapon*> GetWeapons() { return this->weapons; }
 	void SetWeapon(Weapon* w);
 	void NextWeapon();
 	void PreviousWeapon();

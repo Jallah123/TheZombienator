@@ -6,6 +6,7 @@
 #include "NumberUtility.h"
 #include "TextureFactory.h"
 #include "GameMath.h"
+#include "GameObjectFactory.h"
 
 
 Zombie::Zombie() 
@@ -112,4 +113,13 @@ void Zombie::ChangeTexture(bool isAttack)
 		else
 			SetTexture(this->normalTexture);
 	}
+}
+
+void Zombie::OnDeath()
+{
+	int dice_roll = NumberUtility::RandomNumber(1, 100);
+	const int spawnPickupChance = 10;
+	//if (dice_roll <= spawnPickupChance) {
+		GameObjectFactory::Instance()->CreateAmmoBox(this);
+	//}
 }

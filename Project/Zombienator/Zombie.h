@@ -44,6 +44,8 @@ public:
 	float GetAttackDamage() { return this->attackDamage; }
 	float GetAttackSpeed() { return this->attackSpeed; }
 	float GetSoundSpeed() { return this->soundSpeed; }
+
+	virtual void OnDeath() override;
 private:
 	Character* target = nullptr;//Mike||Arnold
 	ZombieState* currentState = nullptr;

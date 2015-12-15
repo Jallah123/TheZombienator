@@ -17,12 +17,14 @@ class GameObject;
 class Character;
 class Mike;
 class Zombie;
+//Bullets
 class NormalBullet;
 class PlayableCharacter;
 class MachineGunBullet;
+//Pickups
+class Pickup;
 class Medkit;
-
-
+class AmmoBox;
 
 struct SDL_Renderer;
 
@@ -57,4 +59,6 @@ public:
 	static NormalBullet* CreateNormalBullet(PlayableCharacter* obj);
 	static MachineGunBullet* CreateMachineGunBullet(PlayableCharacter* obj);
 	static Medkit* CreateMedkit(Character* obj);
+	static AmmoBox* CreateAmmoBox(Character* obj);
+	static Pickup* CreateRandomPickup(Character* obj);
 };

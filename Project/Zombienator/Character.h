@@ -16,7 +16,7 @@ protected:
 	int health = 100;
 	int maxHealth = 100;
 	float speed = 0;
-	
+	bool isDead = false;
 public:
 	Character();
 	Character(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, CollideContainer* collideC, ActionContainer* actionC, GameObjectContainer* gameObjectC);

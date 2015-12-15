@@ -10,6 +10,7 @@ class Weapon
 protected:
 	string name = "";
 	int rounds = 0;
+	int maxRounds = 100;
 	int damage = 0;
 	int delay = 0;//Milliseconds
 	string bulletType = "";
@@ -22,10 +23,16 @@ public:
 
 	virtual void Fire();
 	void Accept(HudVisitor* visitor) { visitor->Visit(this); };
-	int GetDelay() { return this->delay; }
-	int GetRounds() { return this->rounds; }
-	int GetDamage() { return this->damage; }
+	
 	string GetName() { return name; };
+	int GetDelay() { return this->delay; }
+	int const GetRounds() { return this->rounds; }
+	int const GetMaxRounds() { return this->maxRounds; }
+	int const GetDamage() { return this->damage; }
+	
+	void SetMaxAmmo() { rounds = maxRounds; }
+	bool HasMaxAmmo() { return rounds == maxRounds; }
+	
 	SDL_Texture* GetHudTexture() { return hudTexture;  }
 
 	void GiveTo(PlayableCharacter* c) { this->character = c; }

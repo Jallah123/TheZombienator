@@ -20,6 +20,9 @@ void Weapon::Fire()
 			rounds--;
 		}
 	}
+	else {
+		rounds = maxRounds;
+	}
 }
 
 

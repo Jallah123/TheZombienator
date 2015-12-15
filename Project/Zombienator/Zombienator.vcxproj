@@ -179,6 +179,7 @@
     <ClCompile Include="AbstractUIComponent.cpp" />
     <ClCompile Include="ActionBehaviour.cpp" />
     <ClCompile Include="ActionContainer.cpp" />
+    <ClCompile Include="AmmoBox.cpp" />
     <ClCompile Include="AnimateBehaviour.cpp" />
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
@@ -293,6 +294,7 @@
     <ClInclude Include="AbstractUIComponent.h" />
     <ClInclude Include="ActionBehaviour.h" />
     <ClInclude Include="ActionContainer.h" />
+    <ClInclude Include="AmmoBox.h" />
     <ClInclude Include="AnimateBehaviour.h" />
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
