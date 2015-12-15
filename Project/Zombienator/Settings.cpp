@@ -23,6 +23,7 @@ void Settings::Load() {
 		defaultVolume = s->defaultVolume;
 		soundVolume = s->soundVolume;
 		musicVolume = s->musicVolume;
+		cout << "Settings loaded" << "\n";
 	}
 	
 }

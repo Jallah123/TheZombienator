@@ -31,18 +31,11 @@ void HighScores::Insert(int newScore) {
 }
 
 void HighScores::DeleteLowest() {
-	highScores.remove(GetLowest());
+	highScores.pop_back();
 }
 
 int HighScores::GetLowest() {
-	int lowest = highScores.front();
-	for (auto& i : highScores) {
-		if (i <= lowest) {
-			lowest = i;
-		}
-	}
-
-	return lowest;
+	return highScores.back();
 }
 
 

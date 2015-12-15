@@ -4,10 +4,10 @@
         "sound": true,
         "music": true,
         "showFps": true,
-        "gameSpeed": 5,
+        "gameSpeed": 10,
         "gameDifficulty": 1,
-        "defaultVolume": 29,
-        "musicVolume": 29,
-        "soundVolume": 29
+        "defaultVolume": 30,
+        "musicVolume": 30,
+        "soundVolume": 30
     }
 }

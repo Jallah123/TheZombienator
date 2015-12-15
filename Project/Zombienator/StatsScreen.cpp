@@ -35,7 +35,7 @@ void StatsScreen::AddHighScores(SDL_Renderer* ren)
 		AddUIComponent(new LabelEndScreen(*ren, to_string(i), 125, startX));
 		if (i == StatsController::GetInstance()->GetTotalWavesDefeated() && protectOnce) {
 			protectOnce = false;
-			AddUIComponent(new LabelEndScreen(*ren, "***", 155, startX));
+			AddUIComponent(new LabelEndScreen(*ren, "-> YOU!", 155, startX));
 		}
 		
 		startX += 30;
