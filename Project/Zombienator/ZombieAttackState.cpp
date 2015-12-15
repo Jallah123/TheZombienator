@@ -10,6 +10,11 @@ void ZombieAttackState::CheckState()
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 
+	if (!stateChanged) {
+		stateChanged = true;
+		z->SetTexture(z->GetAttackTexture());
+	}
+	
 	if (z->IsDeath())
 	{
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::DEAD, z));

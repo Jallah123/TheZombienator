@@ -23,13 +23,15 @@ public:
 	void Update(float dt) { currentState->Update(dt); }
 	
 	ZombieState* GetCurrentState() { return this->currentState; }
-	void SetCurrentState(ZombieState* newState);
+	void SetCurrentState(ZombieState* newState) { this->currentState = newState; };
 	bool IsInAttackRadius(Character* target);
 
 	void SetNormalTexture(string path);
 	void SetAttackTexture(string path);
 	void SetDeadTexture(string path);
-	void ChangeTexture(bool isAttack);
+	SDL_Texture* GetNormalTexture() { return this->normalTexture; }
+	SDL_Texture* GetAttackTexture() { return this->attackTexture; }
+	SDL_Texture* GetDeadTexture() { return this->deadTexture; }
 
 	void SetAttackDamage(float ad) { this->attackDamage = ad; }
 	void SetAttackSpeed(float as) { this->attackSpeed = as; }
@@ -37,13 +39,15 @@ public:
 	float GetAttackDamage() { return this->attackDamage; }
 	float GetAttackSpeed() { return this->attackSpeed; }
 	float GetSoundSpeed() { return this->soundSpeed; }
+	
 private:
 	Character* target = nullptr;//Mike||Arnold
+	
 	ZombieState* currentState = nullptr;
 	SDL_Texture* normalTexture = nullptr;
-	SDL_Texture* AttackTexture = nullptr;
-	SDL_Texture* DeadTexture = nullptr;
-	
+	SDL_Texture* attackTexture = nullptr;
+	SDL_Texture* deadTexture = nullptr;
+
 	float attackDamage = 0;
 	float attackSpeed = 0;
 	float soundSpeed = 0;
