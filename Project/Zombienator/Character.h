@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "HudVisitor.h"
 #include <vector>
 //Containers
 class AnimateContainer;
@@ -67,6 +68,8 @@ public:
 	void SetMoveBehaviour(std::string name);
 	void SetActionBehaviour(std::string name);
 	void SetCollideBehaviour(std::string name);
+
+	void Accept(HudVisitor& visitor) { visitor.Visit(this); };
 
 	InputContainer* GetInputContainer() { return inputContainer; }
 	GameObjectContainer* GetGameObjectContainer() { return this->gameObjectContainer; }

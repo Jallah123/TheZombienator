@@ -140,6 +140,15 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	//tree->Display(&ren);
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
+
+	for each (auto gameobject in gameObjectContainer->GetGameObjects())
+	{
+		if (Character* c = dynamic_cast<Character*>(gameobject))
+		{
+			c->Accept(hudVisitor);
+		}
+	}
+
 	map->DrawFrontLayer(ren, XOffset, YOffset);
 
 	hudVisitor.DrawBase();
@@ -185,6 +194,8 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		SDL_RenderCopy(&ren, fpsTexture.first, NULL, &fpsTexture.second);
 		SDL_DestroyTexture(fpsTexture.first);
 	}
+
+
 
 }
 
