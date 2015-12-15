@@ -157,6 +157,14 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	SDL_RenderCopy(&ren, text, 0, &r);
 	SDL_DestroyTexture(text);
 
+	//DEBUG: draw collision
+	vector<SDL_Rect*> collision = map->GetObjectLayer("Collision")->GetRects();
+	SDL_SetRenderDrawColor(&ren, 255, 255, 255, 255);
+	for (auto& rect : collision)
+	{
+		SDL_RenderDrawRect(&ren, rect);
+	}
+
 	// FPS
 	if (settings->getShowFps()) {
 		std::pair<SDL_Texture*, SDL_Rect> fpsTexture = TextureFactory::GenerateText("FPS: " + to_string(this->fps), 30, 1225, 15, FontEnum::ROBOTO);
