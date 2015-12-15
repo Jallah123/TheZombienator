@@ -30,7 +30,7 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	SetSize(36, 38);
 	SetFrames(3);
 	SetMaxHealth(50);
-	SetHealth(5);
+	SetHealth(50);
 }
 
 Mike::~Mike()

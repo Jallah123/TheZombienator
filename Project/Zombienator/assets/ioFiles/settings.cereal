@@ -6,9 +6,9 @@
         "showFps": true,
         "gameSpeed": 10,
         "gameDifficulty": 1,
-        "defaultVolume": 31,
-        "musicVolume": 31,
-        "soundVolume": 31,
+        "defaultVolume": 32,
+        "musicVolume": 32,
+        "soundVolume": 32,
         "godmode": false,
         "infiniteAmmo": false
     }
