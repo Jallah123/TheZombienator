@@ -11,7 +11,6 @@ protected:
 	std::vector<Weapon*> weapons = {};
 	Weapon* weapon = nullptr;
 	bool isFlare = false;
-	string imgUrl = "";
 public:
 	PlayableCharacter();
 	virtual ~PlayableCharacter();
@@ -24,6 +23,5 @@ public:
 	void PreviousWeapon();
 	void Teleport(SDL_Renderer* ren);
 	void SetFlare(bool newFlare);
-	string getImgUrl() { return imgUrl; };
 };
 

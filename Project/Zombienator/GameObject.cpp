@@ -16,7 +16,6 @@ void GameObject::SetImage(std::string path, SDL_Renderer & ren)
 		SDL_DestroyTexture(texture);
 	}
 	texture = TextureFactory::GenerateTextureFromImgUrl(path);
-	texturePath = path;
 }
 
 void GameObject::SetSize(int w, int h)
