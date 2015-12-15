@@ -40,7 +40,7 @@ private:
 	SoundController* SoundController = &SoundController::GetInstance();
 public:
 	Map(string mapPath);
-	~Map();
+	virtual ~Map();
 
 	string GetMapPath() const { return this->mapPath; }
 	string GetSoundPath() const { return this->mapPath; }
@@ -69,6 +69,4 @@ public:
 	vector<SDL_Rect*> GetRects() { return this->rects; }
 	vector<TileSet*> GetTileSets() { return this->tilesets; }
 	SDL_Rect GetBounds() { return bounds; }
-
-	virtual void DoNothing() {}
 };
