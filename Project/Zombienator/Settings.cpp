@@ -26,8 +26,11 @@ void Settings::Load() {
 			musicVolume = s->musicVolume;
 			godmode = s->godmode;
 			infiniteAmmo = s->infiniteAmmo;
+			cout << "Settings loaded" << "\n";
+		} else {
+			cout << "No settings file found, using default settings." << "\n";
 		}
-	}
+	} 
 	catch (exception e) {
 		cout << "Error loading settings, check if settings exists in settings file";
 	}
