@@ -68,6 +68,9 @@ int Program::Tick() {
 	gameState = GameState::RUNNING;
 	ScreenController* sc = &ScreenController::GetInstance();
 
+	//load settings
+	settings->Load();
+
 	// LoadingScreen
 	ShowLoadingScreen();
 

@@ -9,6 +9,8 @@
 #include "ControllerInputHandler.h"
 #include "GameState.h"
 #include "LoadingScreen.h"
+#include "Settings.h"
+
 
 class Program
 {
@@ -19,6 +21,7 @@ private:
 	SDL_GameController* controller = nullptr;
 	KeyboardInputHandler* keyboardInputHandler = nullptr;
 	ControllerInputHandler* controllerInputHandler = nullptr;
+	Settings* settings = &Settings::GetInstance();
 	GameState gameState = GameState::INIT;
 
 	int width = 1280;
