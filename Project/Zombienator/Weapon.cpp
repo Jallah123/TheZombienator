@@ -8,7 +8,7 @@ Weapon::Weapon()
 
 Weapon::Weapon(std::string imagePath)
 {
-	hudTexture = TextureFactory::GenerateTextureFromImgUrl(imagePath);
+	hudTexture = TextureFactory::CreateTexture(imagePath);
 }
 
 void Weapon::Fire()

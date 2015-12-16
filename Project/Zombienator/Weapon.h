@@ -21,7 +21,6 @@ public:
 	virtual ~Weapon();
 
 	virtual void Fire();
-	void Accept(HudVisitor* visitor) { visitor->Visit(this); };
 	int GetDelay() { return this->delay; }
 	int GetRounds() { return this->rounds; }
 	int GetDamage() { return this->damage; }

@@ -36,5 +36,5 @@ TileSet::~TileSet()
 void TileSet::Load(SDL_Renderer& ren)
 {
 	string path = assetsPath + image;
-	texture = TextureFactory::GenerateTextureFromImgUrl(path);
+	texture = TextureFactory::CreateTexture(path);
 }
