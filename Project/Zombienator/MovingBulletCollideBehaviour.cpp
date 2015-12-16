@@ -20,7 +20,7 @@ void MovingBulletCollideBehaviour::Collide(float dt)
 	{
 		if (g != bullet->GetOrigin() && g != bullet) {
 			if (SDL_HasIntersection(bullet->GetDestinationRect(), g->GetDestinationRect())) {
-				Character* target = dynamic_cast<Character*>(g);
+				Zombie* target = dynamic_cast<Zombie*>(g);
 				if (target != nullptr)
 				{
 					target->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
