@@ -14,5 +14,6 @@ public:
 	void Update(float dt);
 private:
 	Node* GetClosestNodeNearTarget(Character* target, vector<Node*>& nodes);
+	SDL_Rect ZombieWalkingState::GetDestination();
 };
 

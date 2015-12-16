@@ -183,6 +183,17 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	{
 		SDL_RenderDrawRect(&ren, rect);
 	}
+
+	//DEBUG: draw zombie path
+	for (Zombie* z: spawnController.zombiesVector)
+	{
+		queue<Node*> path = z->GetPathCopy();
+		while (!path.empty())
+		{
+			SDL_RenderDrawRect(&ren, &path.front()->getDestRect());
+			path.pop();
+		}
+	}
 }
 
 void GameScreen::Transition(SDL_Renderer& ren) {

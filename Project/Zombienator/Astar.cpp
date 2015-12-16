@@ -49,13 +49,13 @@ int Astar::Compute(Graph* graph, int start, int end)
 	return distance[end];
 }
 
-std::queue<int> Astar::GetPath(int start, int end)
+std::deque<Node*> Astar::GetPath(Graph* graph, int start, int end)
 {
-	std::queue<int> tmp;
+	std::deque<Node*> tmp;
 	for (int v = end; v != start; v = parents[v])
 		if (v != INT_MAX)
-			tmp.push(v);
-	tmp.push(start);
+			tmp.push_front(graph->GetNode(v));
+	tmp.push_front(graph->GetNode(start));
 	PATH = tmp;
 
 	return PATH;

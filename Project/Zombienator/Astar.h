@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <queue>
+#include "Node.h"
 class Graph;
 
 class Astar
@@ -9,7 +10,7 @@ class Astar
 	private:
 		std::map<int, int> parents;
 		std::vector<int> distance;
-		std::queue<int> PATH;
+		std::deque<Node*> PATH;
 
 		int pathIndex = 0;
 	public:
@@ -17,10 +18,10 @@ class Astar
 		~Astar();
 
 		int Compute(Graph* graph, int start, int end);
-		std::queue<int> GetPath(int start, int end);
+		std::deque<Node*> GetPath(Graph* graph, int start, int end);
 		void Print(Graph& graph, int start, int end);
 
-		std::queue<int> Path() { return this->PATH; }
+		std::deque<Node*> Path() { return this->PATH; }
 		int PathIndex() { return this->pathIndex; }
 		void ResetPathIndex() { this->pathIndex = 0; }
 		void UpPathIndex() { this->pathIndex++; }

@@ -1,7 +1,7 @@
 #pragma once
 #include "Character.h"
 #include "ZombieState.h"
-#include <queue>
+#include <deque>
 
 class DrawContainer;
 class AnimateContainer;
@@ -38,9 +38,9 @@ public:
 	float GetAttackSpeed() { return this->attackSpeed; }
 	float GetSoundSpeed() { return this->soundSpeed; }
 
-	queue<int> GetPath() { return path; };
-	void SetPath(queue<int> _path) { path = _path; };
-	int currentPathIndex = 0;
+	deque<Node*>& GetPath() { return path; };
+	deque<Node*> GetPathCopy() { return path; };
+	void SetPath(deque<Node*> _path) { path = _path; };
 private:
 	Character* target = nullptr;//Mike||Arnold
 	ZombieState* currentState = nullptr;
@@ -54,6 +54,6 @@ private:
 	const double sweetspotX = 35;
 	const double sweetspotY = 25;
 
-	queue<int> path;
+	deque<Node*> path;
 };
 
