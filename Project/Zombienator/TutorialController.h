@@ -3,7 +3,8 @@
 #include <queue>
 #include "BubbleVisitor.h"
 #include "TutorialEnum.cpp"
-
+#include "MapFactory.h"
+#include "ScreenFactory.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ class TutorialController
 
 		void Welcome();
 		void Walk();
+		void Done();
 
 		float GetPassedTime(clock_t t) { return float(clock() - t) / CLOCKS_PER_SEC; }
 };

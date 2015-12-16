@@ -75,7 +75,7 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 	return texture;
 }
 
-std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, int fontSize, int xPos, int yPos, FontEnum fontEnum, SDL_Color color)
+std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text, int fontSize, int xPos, int yPos, FontEnum fontEnum, SDL_Color color, int multipleLinesSize)
 {	
 	std::pair<SDL_Texture*, SDL_Rect> returnObject = {};
 	static FontEnum currentFont;
@@ -95,7 +95,14 @@ std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text,
 		return returnObject;
 	}
 
-	SDL_Surface * surface = TTF_RenderText_Blended(font, text.c_str(), color);
+	SDL_Surface * surface = nullptr;
+	if(multipleLinesSize > 0){
+		surface = TTF_RenderText_Blended_Wrapped(font, text.c_str(), color, multipleLinesSize);
+	}
+	else {
+		surface = TTF_RenderText_Blended(font, text.c_str(), color);
+	}
+
 	if (surface)
 	{
 		SDL_Rect messageRectange = { xPos - (surface->w / 2), yPos - (surface->h / 2), surface->w, surface->h };

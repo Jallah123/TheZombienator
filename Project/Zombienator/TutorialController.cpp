@@ -34,8 +34,14 @@ void TutorialController::DoTask()
 {
 	if(taskDone)
 	{
-		currentTask = taskQueue.front();
-		taskQueue.pop();
+		if(taskQueue.size() > 0){
+			currentTask = taskQueue.front();
+			taskQueue.pop();
+		}
+		else
+			currentTask = DONE;
+
+		begin = clock();
 		taskDone = false;
 	}
 	else
@@ -44,20 +50,33 @@ void TutorialController::DoTask()
 		{
 			case WELCOME:	Welcome();	break;
 			case WALK:		Walk();		break;
-			case DONE: break;
-			default: break;
+			default:		Done();		break;
 		}
 	}
 }
 
 void TutorialController::Welcome()
 {	
-	bubbleVisitor->ChangeText("Welcome");
-	// LOCK Mike
+	bubbleVisitor->ChangeText("Welcom");
 	if (5 <= GetPassedTime(begin)) taskDone = true;
 }
 
 void TutorialController::Walk()
 {
-	bubbleVisitor->ChangeText("AllahAkbar");
+	bubbleVisitor->ChangeText("Walk");
+	if (5 <= GetPassedTime(begin)) taskDone = true;
+}
+
+void TutorialController::Done()
+{
+	bubbleVisitor->ChangeText("You're finished and will return to the menu in a few seconds");
+
+
+	if (4 <= GetPassedTime(begin)) {
+		// return to menu
+
+		MapFactory::GetInstance()->EmptyQueue();
+		ScreenController::GetInstance().EmptyStack();
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::HOMESCREEN));
+	}
 }
