@@ -15,6 +15,7 @@ void BubbleVisitor::Visit(Character* c)
 
 	SDL_RenderCopy(ren, bubbleImage, &srcRectangle, &destRectangle);
 	SDL_RenderCopy(ren, text.first, nullptr, &text.second);
+
 }
 
 // -- TODO
@@ -23,5 +24,6 @@ void BubbleVisitor::ChangeText(string s)
 {
 	if (text.first != nullptr) // -- Avoid Memory Leaks
 		SDL_DestroyTexture(text.first);
-	text = TextureFactory::GenerateText(string(s), 14, posX + 14, posY + 8, FontEnum::OCR, { 0, 0, 0 }, 180);
+	text = TextureFactory::GenerateText(string(s), 14, posX + 16, posY + 10, FontEnum::OCR, { 0, 0, 0 }, 180);
+
 }

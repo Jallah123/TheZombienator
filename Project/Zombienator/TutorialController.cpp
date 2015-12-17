@@ -44,7 +44,7 @@ void TutorialController::DoTask()
 	{
 		switch(currentTask)
 		{
-			case WELCOME:	Welcome();	break;
+			case WELCOME:		Welcome();	break;
 			case WALK:		Walk();		break;
 			case DONE:		Done();		break;
 			default: break;

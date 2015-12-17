@@ -6,7 +6,8 @@
 #include "MapFactory.h"
 #include "ScreenFactory.h"
 #include "TutorialEnum.cpp"
-
+#include "MapFactory.h"
+#include "ScreenFactory.h"
 
 using namespace std;
 
