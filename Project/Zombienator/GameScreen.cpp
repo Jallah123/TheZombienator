@@ -57,7 +57,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
 		bubbleVisitor = BubbleVisitor{ ren };
-		tutorialController = TutorialController(&bubbleVisitor, mike);
+		tutorialController = TutorialController(&bubbleVisitor, &spawnController, mike);
 	}
 
 	//Load && play sound
@@ -167,8 +167,6 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	// BUBBLE ZOOI
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
-		int a = spawnController.Reset(); // a opslaan, a = 3, a terugzetten, spawn 3 zombies.
-
 		tutorialController.DoTask();
 		mike->Accept(&bubbleVisitor);
 	}

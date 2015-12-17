@@ -17,8 +17,17 @@
 */
 
 TutorialController::TutorialController() {}
-TutorialController::TutorialController(BubbleVisitor* bv, Mike* m) : bubbleVisitor(bv), mike(m) { FillTaskQueue(); ResetPosition(); }
+TutorialController::TutorialController(BubbleVisitor* bv, SpawnController* s, Mike* m) : bubbleVisitor(bv), spawnController(s), mike(m) { Init(); }
 TutorialController::~TutorialController() {	/* if (bubbleVisitor) delete bubbleVisitor; */ }
+
+void TutorialController::Init()
+{
+	FillTaskQueue(); 
+	ResetPosition();
+	amountOfZombies = spawnController->Reset(); // Spawn zombies: spawnController->RevertReset(amountOfZombies)
+												// Add second weapon mike->AddWeapon(new MachineGun()); // Include MachineGun
+												// mike->GetWeapon() too check where de bullets came from
+}
 
 void TutorialController::FillTaskQueue()
 {
@@ -44,7 +53,7 @@ void TutorialController::DoTask()
 	{
 		switch(currentTask)
 		{
-			case WELCOME:		Welcome();	break;
+			case WELCOME:	Welcome();	break;
 			case WALK:		Walk();		break;
 			case DONE:		Done();		break;
 			default: break;

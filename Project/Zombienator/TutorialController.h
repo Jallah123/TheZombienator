@@ -8,6 +8,7 @@
 #include "TutorialEnum.cpp"
 #include "MapFactory.h"
 #include "ScreenFactory.h"
+#include "SpawnController.h"
 
 using namespace std;
 
@@ -16,6 +17,9 @@ class TutorialController
 	private:
 		Mike* mike;
 		BubbleVisitor* bubbleVisitor;
+		SpawnController* spawnController;
+		int amountOfZombies;
+
 		queue<TutorialEnum> taskQueue;
 		TutorialEnum currentTask;
 		Direction walkDir = Direction::WEST;
@@ -28,8 +32,9 @@ class TutorialController
 		clock_t begin = clock();
 	public:
 		TutorialController();
-		TutorialController(BubbleVisitor* bv, Mike* mike);
+		TutorialController(BubbleVisitor* bv, SpawnController* s, Mike* m);
 		~TutorialController();
+		void Init();
 		void FillTaskQueue();
 		void DoTask();
 
@@ -38,7 +43,7 @@ class TutorialController
 		void Done();
 
 		//void SetPosition() { currentPos = { int(mike->getPosX()), int(mike->getPosY()) }; }
-		void ResetPosition() { mike->SetPosition(currentPos.x, currentPos.y); mike->SetLookDir(Direction::SOUTH); mike->SetMoveDir(Direction::SOUTH); }
+		void ResetPosition() { mike->SetPosition(currentPos.x, currentPos.y); }
 
 		void CheckClock() { if (waitTime <= GetPassedTime(begin)) { taskDone = true; ResetPosition(); }	}
 		void ResetClock() {	begin = clock(); }
