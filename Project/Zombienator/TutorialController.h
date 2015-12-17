@@ -35,6 +35,7 @@ class TutorialController
 
 		void Welcome();
 		void Walk();
+		void Collision();
 		void Done();
 
 		void ResetPosition();

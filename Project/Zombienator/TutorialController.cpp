@@ -62,9 +62,10 @@ void TutorialController::DoTask()
 	{
 		switch(currentTask)
 		{
-			case WELCOME:	Welcome();	break;
-			case WALK:		Walk();		break;
-			case DONE:		Done();		break;
+			case WELCOME:		Welcome();		break;
+			case WALK:			Walk();			break;
+			case COLLISION:		Collision();		break;
+			case DONE:			Done();			break;
 			default: break;
 		}
 	}
@@ -109,6 +110,13 @@ void TutorialController::Walk()
 			CheckClock();
 			break;
 	}
+}
+
+void TutorialController::Collision()
+{
+
+	bubbleVisitor->ChangeText("Walk now against the tree");
+	CheckClock();
 }
 
 void TutorialController::Done()
