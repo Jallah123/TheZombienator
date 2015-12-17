@@ -8,5 +8,6 @@ public:
 	~BazookaBullet();
 
 	virtual void SetBehaviours() override;
+	virtual void ShakeScreen() override;
 };
 

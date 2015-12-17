@@ -24,6 +24,7 @@ void MovingBulletCollideBehaviour::Collide(float dt)
 				if (target != nullptr)
 				{
 					target->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
+					bullet->ShakeScreen();
 				}
 				bullet->Remove();
 			}

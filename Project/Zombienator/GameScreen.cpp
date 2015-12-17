@@ -51,6 +51,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 
 	mike = goFactory->CreateMike(char_img_url);
 	mike->SetPosition(800, 300);
+	mike->SetGameScreen(this);
 
 	spawnController.AddTarget(mike);
 

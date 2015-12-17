@@ -32,6 +32,7 @@ void NonMovingBulletCollideBehaviour::Collide(float dt)
 						{
 							target->TakeHit(bullet->GetDamage());
 							bullet->Hit();
+							bullet->ShakeScreen();
 							bullet->Remove();
 						}
 						//check for other player:
@@ -41,6 +42,7 @@ void NonMovingBulletCollideBehaviour::Collide(float dt)
 							if (bullet->GetOrigin() != pCharachter) {
 								pCharachter->TakeHit(bullet->GetDamage());
 								bullet->Hit();
+								bullet->ShakeScreen();
 								bullet->Remove();
 							}
 						}

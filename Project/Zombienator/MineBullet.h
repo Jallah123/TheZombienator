@@ -8,5 +8,6 @@ public:
 	~MineBullet();
 	virtual void SetBehaviours() override;
 	virtual void Hit() override;
+	virtual void ShakeScreen() override;
 };
 

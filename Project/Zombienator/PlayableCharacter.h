@@ -2,7 +2,7 @@
 #include "Character.h"
 #include "Weapon.h"
 #include <vector>
-
+class GameScreen;
 class PlayableCharacter
 	: public Character
 {
@@ -12,7 +12,7 @@ protected:
 	std::vector<Weapon*> weapons = {};
 	Weapon* weapon = nullptr;
 	bool isFlare = false;
-
+	GameScreen* gameScreen = nullptr;
 public:
 	PlayableCharacter();
 	PlayableCharacter(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, CollideContainer* collideC, ActionContainer* actionC, GameObjectContainer* gameObjectC);
@@ -27,5 +27,7 @@ public:
 	void PreviousWeapon();
 	void Teleport(SDL_Renderer* ren);
 	void SetFlare(bool newFlare);
+	void SetGameScreen(GameScreen* _gameScreen) { gameScreen = _gameScreen; };
+	GameScreen* GetGameScreen() { return gameScreen; };
 };
 
