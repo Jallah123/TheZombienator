@@ -35,7 +35,7 @@ SDL_Texture * TextureFactory::CreateTexture(string url)
 		return nullptr;
 	}
 	SDL_Texture* texture = GenerateTextureFromSurface(surface);
-	SDL_FreeSurface(surface);
+	
 	return texture;
 }
 
