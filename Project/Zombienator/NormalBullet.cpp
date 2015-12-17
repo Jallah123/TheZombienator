@@ -43,7 +43,6 @@ void NormalBullet::CalculateEndPoint()
 
 	switch (d)
 	{	
-		// TODO: collision on NORTHWEST -> SOUTHEAST
 		case NORTHWEST:
 			end->x = start.x - diagonal;
 			end->y = start.y - diagonal;
