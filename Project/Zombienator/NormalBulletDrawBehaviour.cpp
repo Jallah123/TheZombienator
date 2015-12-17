@@ -24,13 +24,13 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset, i
 		return;
 	}
 	
+	SDL_Point* begin = b->GetBeginPoint();
 	b->CalculateEndPoint();
 	SDL_Point* end = b->GetEndPoint();
-	SDL_Point* begin = b->GetBeginPoint();
 		
 	
 	if (b->IsLocked()) {
-		SDL_SetRenderDrawColor(&ren, 221, 221, 221, 176); // snow map
+		SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
 		SDL_RenderDrawLine(&ren, begin->x - XOffset, begin->y - YOffset, end->x - XOffset, end->y - YOffset);
 		b->DecreaseLifeTime(dt);
 	}

@@ -22,7 +22,7 @@ protected:
 	Direction direction = Direction::NONE;
 	bool _hasCollision = false;
 	bool _locked = false;
-	float lifeTime = 5;
+	float lifeTime = 15;
 	GameObject* target = nullptr;
 
 	//Direction direction;

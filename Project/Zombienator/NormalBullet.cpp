@@ -33,7 +33,9 @@ void NormalBullet::CalculateEndPoint()
 		return;
 	}
 
-	auto diagonal = min(begin->x, begin->y) + 1;
+	SDL_Point start = *GetBeginPoint();
+
+	auto diagonal = min(start.x, start.y);
 
 	Direction d = this->moveDir;
 	if (d == NONE)
@@ -43,8 +45,8 @@ void NormalBullet::CalculateEndPoint()
 	{	
 		// TODO: collision on NORTHWEST -> SOUTHEAST
 		case NORTHWEST:
-			end->x = begin->x - diagonal;
-			end->y = begin->y - diagonal;
+			end->x = start.x - diagonal;
+			end->y = start.y - diagonal;
 			if (HasCollision()) {
 				SDL_Rect* tr = target->GetDestinationRect();
 				end->x = tr->x + (tr->w / 2);
@@ -52,8 +54,8 @@ void NormalBullet::CalculateEndPoint()
 			}
 			break;
 		case SOUTHWEST: 
-			end->x = begin->x - diagonal;
-			end->y = begin->y + diagonal;
+			end->x = start.x - diagonal;
+			end->y = start.y + diagonal;
 			if (HasCollision()) {
 				SDL_Rect* tr = target->GetDestinationRect();
 				end->x = tr->x + (tr->w / 2);
@@ -61,8 +63,8 @@ void NormalBullet::CalculateEndPoint()
 			}
 			break;
 		case NORTHEAST:	
-			end->x = begin->x + diagonal;
-			end->y = begin->y - diagonal;
+			end->x = start.x + diagonal;
+			end->y = start.y - diagonal;
 			if (HasCollision()) {
 				SDL_Rect* tr = target->GetDestinationRect();
 				end->x = tr->x + (tr->w / 2);
@@ -70,8 +72,8 @@ void NormalBullet::CalculateEndPoint()
 			}
 			break;
 		case SOUTHEAST: 
-			end->x = begin->x + diagonal;
-			end->y = begin->y + diagonal;
+			end->x = start.x + diagonal;
+			end->y = start.y + diagonal;
 			if (HasCollision()) {
 				SDL_Rect* tr = target->GetDestinationRect();
 				end->x = tr->x + (tr->w / 2);
