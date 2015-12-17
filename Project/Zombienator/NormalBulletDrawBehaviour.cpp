@@ -30,7 +30,7 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset, i
 		
 	
 	if (b->IsLocked()) {
-		SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
+		SDL_SetRenderDrawColor(&ren, 221, 221, 221, 176); // snow map
 		SDL_RenderDrawLine(&ren, begin->x - XOffset, begin->y - YOffset, end->x - XOffset, end->y - YOffset);
 		b->DecreaseLifeTime(dt);
 	}

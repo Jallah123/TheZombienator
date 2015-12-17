@@ -33,35 +33,50 @@ void NormalBullet::CalculateEndPoint()
 		return;
 	}
 
-	auto minimaal = min(begin->x, begin->y); 
+	auto diagonal = min(begin->x, begin->y) + 1;
 
 	Direction d = this->moveDir;
 	if (d == NONE)
 		d = this->GetLookDir();
+
 	switch (d)
 	{	
 		// TODO: collision on NORTHWEST -> SOUTHEAST
 		case NORTHWEST:
-			end->x = begin->x - minimaal;
-			end->y = begin->y - minimaal;
+			end->x = begin->x - diagonal;
+			end->y = begin->y - diagonal;
 			if (HasCollision()) {
 				SDL_Rect* tr = target->GetDestinationRect();
-				auto minimaal2 = min(end->x - tr->x, end->y - tr->y); // possible fix?
-				end->x -= minimaal2;
-				end->y -= minimaal2;
+				end->x = tr->x + (tr->w / 2);
+				end->y = tr->y + (tr->h / 2);
 			}
 			break;
 		case SOUTHWEST: 
-			end->x = begin->x - minimaal;
-			end->y = begin->y + minimaal;
+			end->x = begin->x - diagonal;
+			end->y = begin->y + diagonal;
+			if (HasCollision()) {
+				SDL_Rect* tr = target->GetDestinationRect();
+				end->x = tr->x + (tr->w / 2);
+				end->y = tr->y + (tr->h / 2);
+			}
 			break;
 		case NORTHEAST:	
-			end->x = begin->x + minimaal;
-			end->y = begin->y - minimaal;
+			end->x = begin->x + diagonal;
+			end->y = begin->y - diagonal;
+			if (HasCollision()) {
+				SDL_Rect* tr = target->GetDestinationRect();
+				end->x = tr->x + (tr->w / 2);
+				end->y = tr->y + (tr->h / 2);
+			}
 			break;
 		case SOUTHEAST: 
-			end->x = begin->x + minimaal;
-			end->y = begin->y + minimaal;
+			end->x = begin->x + diagonal;
+			end->y = begin->y + diagonal;
+			if (HasCollision()) {
+				SDL_Rect* tr = target->GetDestinationRect();
+				end->x = tr->x + (tr->w / 2);
+				end->y = tr->y + (tr->h / 2);
+			}
 			break;
 		case SOUTH:
 			end->x = origin->getPosX() + xFrontOffset;
