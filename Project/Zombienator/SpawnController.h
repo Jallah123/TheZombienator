@@ -79,7 +79,7 @@ public:
 
 	bool Completed() { return completed; }
 
-	int Reset() { int temp = amountToSpawn; amountToSpawn = 0; return temp; }
+	int Reset() { int temp = amountToSpawn; amountToSpawn = 0; maxWaves = 0; waveFinished = false; return temp; }
 	void RevertReset(int i) { amountToSpawn = i; }
 };
 

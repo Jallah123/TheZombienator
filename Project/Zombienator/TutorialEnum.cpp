@@ -3,10 +3,11 @@
 enum TutorialEnum
 {
 	WELCOME,
+	KILL,
 	WALK,
 	COLLISION,
 	SHOOT,
-	KILL,
+	SWAP,
 	DONE		// Last
 };
 #endif

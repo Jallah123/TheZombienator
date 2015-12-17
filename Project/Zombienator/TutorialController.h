@@ -11,6 +11,7 @@
 #include "SpawnController.h"
 #include "GameObject.h"
 #include "GameObjectContainer.h"
+#include "MachineGun.h"
 
 using namespace std;
 
@@ -29,8 +30,14 @@ class TutorialController
 
 		int waitTime = 5;
 		int walkDist = 150;
+		
 		bool taskDone = true;
 		bool collisionDone = false;
+		bool swapDone = false;
+		
+		bool weaponAdded = false;
+		bool waveStarted = false;
+		int shotsAmount = 5;
 
 		clock_t begin = clock();
 	public:
@@ -45,6 +52,7 @@ class TutorialController
 		void Walk();
 		void Collision();
 		void Shoot();
+		void Swap();
 		void Kill();
 		void Done();
 

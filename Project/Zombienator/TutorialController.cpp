@@ -65,8 +65,9 @@ void TutorialController::DoTask()
 			case WELCOME:		Welcome();		break;
 			case WALK:			Walk();			break;
 			case COLLISION:		Collision();	break;
-			case SHOOT:			Shoot();	break;
-			case KILL:			Kill();	break;
+			case SHOOT:			Shoot();		break;
+			case SWAP:			Swap();		break;
+			case KILL:			Kill();			break;
 			case DONE:			Done();			break;
 			default: break;
 		}
@@ -142,9 +143,48 @@ void TutorialController::Collision()
 
 void TutorialController::Shoot() {
 
+	if (shotsAmount <= 5) shotsAmount += StatsController::GetInstance()->GetTotalBullets();
+
+	if (shotsAmount > StatsController::GetInstance()->GetTotalBullets()) {
+		bubbleVisitor->ChangeText("Shoot 5 times with the spacebar");
+		ResetClock();
+	}
+	else {
+		bubbleVisitor->ChangeText("Shoot challenge completed!");
+		CheckClock();
+	}
+
+}
+
+void TutorialController::Swap() {
+
+	if (!weaponAdded) mike->AddWeapon(new MachineGun()); weaponAdded = true;
+
+	if (!dynamic_cast<MachineGun*>(mike->GetWeapon()) && !swapDone) {
+		bubbleVisitor->ChangeText("Press Q or E to swap weapon");
+		ResetClock();
+	}
+	else {
+		bubbleVisitor->ChangeText("Swap weapon challenge completed!");
+		swapDone = true;
+		CheckClock();
+	}
+
 }
 
 void TutorialController::Kill() {
+
+	if (!waveStarted) spawnController->RevertReset(amountOfZombies); waveStarted = true;
+
+	if (StatsController::GetInstance()->GetKills() < amountOfZombies) {
+		bubbleVisitor->ChangeText("Kill all zombies");
+		ResetClock();
+	}
+	else {
+		bubbleVisitor->ChangeText("Kill zombie challenge completed!");
+		amountOfZombies = spawnController->Reset();
+		CheckClock();
+	}
 
 }
 
