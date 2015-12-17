@@ -18,10 +18,15 @@ SettingsScreen::SettingsScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 void SettingsScreen::initCompontents(SDL_Renderer &ren)
 {
+	//load settings from file
+	Settings->Load();
+
+
 	char* spriteSheet = "assets/images/button_spritesheet_settings.png";
 
 	//back button
 	BackButton* b = new BackButton(ren, "", "assets/images/button_spritesheet.png");
+	b->setUpdateParentFunction(std::bind(&SettingsScreen::saveSettings, this));
 	AddUIComponent(b);
 
 	//labels:
@@ -64,9 +69,9 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	//friendlyFireOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
 	//AddUIComponent(friendlyFireOnBtn);
 
-	friendlyFireOffBtn = new SwitchButton(ren, "Off", spriteSheet, 830, 300, false, !Settings->getFiendlyFire(), *this);
-	friendlyFireOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
-	AddUIComponent(friendlyFireOffBtn);
+	//friendlyFireOffBtn = new SwitchButton(ren, "Off", spriteSheet, 830, 300, false, !Settings->getFiendlyFire(), *this);
+	//friendlyFireOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
+	//AddUIComponent(friendlyFireOffBtn);
 	//fpsbtns
 	fpsOnBtn = new SwitchButton(ren, "On", spriteSheet, 725, 230, true, Settings->getShowFps(), *this);
 	fpsOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setFPS, this, std::placeholders::_1));
