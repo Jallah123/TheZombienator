@@ -184,6 +184,8 @@
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="BackToMenuButton.cpp" />
+    <ClCompile Include="Bazooka.cpp" />
+    <ClCompile Include="BazookaBullet.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="BehaviourFactory.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -235,8 +237,13 @@
     <ClCompile Include="Medkit.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Mike.cpp" />
+    <ClCompile Include="Mine.cpp" />
+    <ClCompile Include="MineBullet.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
+    <ClCompile Include="NonMovingBullet.cpp" />
+    <ClCompile Include="NonMovingBulletCollideBehaviour.cpp" />
+    <ClCompile Include="NonMovingBulletDrawBehaviour.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PickupCollideBehaviour.cpp" />
@@ -300,6 +307,8 @@
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="BackToMenuButton.h" />
+    <ClInclude Include="Bazooka.h" />
+    <ClInclude Include="BazookaBullet.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="BehaviourFactory.h" />
     <ClInclude Include="Bullet.h" />
@@ -345,8 +354,13 @@
     <ClInclude Include="Medkit.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="Mike.h" />
+    <ClInclude Include="Mine.h" />
+    <ClInclude Include="MineBullet.h" />
     <ClInclude Include="MoveBehaviour.h" />
     <ClInclude Include="MoveContainer.h" />
+    <ClInclude Include="NonMovingBullet.h" />
+    <ClInclude Include="NonMovingBulletCollideBehaviour.h" />
+    <ClInclude Include="NonMovingBulletDrawBehaviour.h" />
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PickupCollideBehaviour.h" />

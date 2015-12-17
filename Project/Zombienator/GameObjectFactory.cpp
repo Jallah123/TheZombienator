@@ -7,6 +7,8 @@
 #include "Map.h"
 #include "NormalBullet.h"
 #include "MachineGunBullet.h"
+#include "BazookaBullet.h"
+#include "MineBullet.h"
 #include "Medkit.h"
 #include "AmmoBox.h"
 
@@ -124,6 +126,39 @@ MachineGunBullet * GameObjectFactory::CreateMachineGunBullet(PlayableCharacter *
 
 	return nullptr;
 }
+
+
+BazookaBullet * GameObjectFactory::CreateBazookaBullet(PlayableCharacter * obj)
+{
+	GameObject* instance = GameObjectFactory::Find("BazookaBullet");
+
+	if (instance != nullptr) {
+		BazookaBullet* cInstance = dynamic_cast<BazookaBullet*>(instance);
+		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
+		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		gameObjectContainer->AddGameObject(cInstance);
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+
+MineBullet * GameObjectFactory::CreateMineBullet(PlayableCharacter * obj)
+{
+	GameObject* instance = GameObjectFactory::Find("MineBullet");
+
+	if (instance != nullptr) {
+		MineBullet* cInstance = dynamic_cast<MineBullet*>(instance);
+		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
+		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		gameObjectContainer->AddGameObject(cInstance);
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
 
 Medkit * GameObjectFactory::CreateMedkit(Character* obj)
 {

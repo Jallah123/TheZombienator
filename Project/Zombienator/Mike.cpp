@@ -1,7 +1,9 @@
 #include "Mike.h"
 #include "KeyboardInputHandler.h"
 #include "Pistol.h"
+#include "Bazooka.h"
 #include "MachineGun.h"
+#include "Mine.h"
 #include "GameObjectContainer.h"
 #include "DrawContainer.h"
 
@@ -22,6 +24,8 @@ void Mike::Init(string img_url)
 	
 	this->AddWeapon(new MachineGun());
 	this->AddWeapon(new Pistol());
+	this->AddWeapon(new Bazooka());
+	this->AddWeapon(new Mine());
 
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");

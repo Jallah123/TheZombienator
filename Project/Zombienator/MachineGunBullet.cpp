@@ -6,7 +6,7 @@ MachineGunBullet::MachineGunBullet()
 {
 	
 	this->texture = TextureFactory::GenerateTextureFromImgUrl("assets/images/bullet.png");
-	this->SetSize(20, 14);
+	this->SetSize(10, 7);
 }
 
 

@@ -21,7 +21,10 @@ protected:
 	bool _hasCollision = false;
 	bool _locked = false;
 	float lifeTime = 25;
+
 	GameObject* target = nullptr;
+
+	
 
 	//Direction direction;
 	PlayableCharacter* origin = nullptr;

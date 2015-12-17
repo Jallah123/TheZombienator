@@ -47,7 +47,7 @@ void HudVisitor::Visit(Weapon* weapon)
 		}
 	}
 
-	SDL_Rect weaponTextTexture{ 55, 75, 60, 28 };
+	SDL_Rect weaponTextTexture{ 85, 75, 60, 28 };
 	// Draw pistol text
 	if (weaponNameTexture != nullptr)
 	{
@@ -59,7 +59,7 @@ void HudVisitor::Visit(Weapon* weapon)
 	std::string s_rounds = rounds == INT_MAX ? "INFINITE" : to_string(rounds);
 	SDL_Texture* roundsTextTexture = TextureFactory::GenerateTextureFromTextHud("rounds : " + s_rounds);
 	weaponTextTexture.w += 30;
-	weaponTextTexture.x += 150;
+	weaponTextTexture.x += 115;
 	weaponTextTexture.y += 15;
 	SDL_RenderCopy(renderer, roundsTextTexture, 0, &weaponTextTexture);
 	SDL_DestroyTexture(roundsTextTexture);
