@@ -31,13 +31,6 @@ TutorialController::~TutorialController()
 	/* if (bubbleVisitor) delete bubbleVisitor; */
 }
 
-void TutorialController::ResetPosition()
-{
-	mike->SetPosition(currentPos.x, currentPos.y);
-	mike->SetLookDir(Direction::SOUTH);
-	mike->SetMoveDir(Direction::SOUTH);
-}
-
 void TutorialController::FillTaskQueue()
 {
 	for (int i = 0; i != DONE; i++)
@@ -64,7 +57,7 @@ void TutorialController::DoTask()
 		{
 			case WELCOME:		Welcome();		break;
 			case WALK:			Walk();			break;
-			case COLLISION:		Collision();		break;
+			case COLLISION:		Collision();	break;
 			case DONE:			Done();			break;
 			default: break;
 		}
@@ -83,24 +76,28 @@ void TutorialController::Walk()
 		case Direction::NORTH:
 			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the north direction.");
 			if ((currentPos.y - walkDist) > mike->getPosY()) {
+				SetPosition();
 				walkDir = Direction::EAST;
 			}
 			break;
 		case Direction::EAST:
 			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the east direction.");
 			if ((currentPos.x + walkDist) < mike->getPosX()) {
+				SetPosition();
 				walkDir = Direction::SOUTH;
 			}
 			break;
 		case Direction::SOUTH:
 			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the south direction.");
 			if ((currentPos.y + walkDist) < mike->getPosY()) {
+				SetPosition();
 				walkDir = Direction::WEST;
 			}
 			break;
 		case Direction::WEST:
 			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the west direction.");
 			if ((currentPos.x - walkDist) > mike->getPosX()) {
+				SetPosition();
 				walkDir = Direction::NONE;
 				ResetClock();
 			}
@@ -114,10 +111,29 @@ void TutorialController::Walk()
 
 void TutorialController::Collision()
 {
+	if(!collisionDone){
+		bubbleVisitor->ChangeText("Walk now against the tree");
 
-	bubbleVisitor->ChangeText("Walk now against the tree");
-	CheckClock();
+		SDL_Rect mikeCollision = SDL_Rect{ mike->GetCollideRect()->x - 2, mike->GetCollideRect()->y - 2, mike->GetCollideRect()->w + 4, mike->GetCollideRect()->h + 4 };
+		for (auto &go : mike->GetGameObjectContainer()->GetGameObjects()) {
+			if (dynamic_cast<Mike*>(go)) continue;
+			if (SDL_HasIntersection(&mikeCollision, go->GetDestinationRect()) == SDL_TRUE) {
+				collisionDone = true;
+				ResetClock();
+				break;
+			}
+		}
+	}
+	else {
+		bubbleVisitor->ChangeText("Collision challenge completed!");
+		CheckClock();
+	}
+
 }
+
+/*void TutorialController::Shoot() {
+
+}*/
 
 void TutorialController::Done()
 {

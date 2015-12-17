@@ -8,6 +8,8 @@
 #include "TutorialEnum.cpp"
 #include "MapFactory.h"
 #include "ScreenFactory.h"
+#include "GameObject.h"
+#include "GameObjectContainer.h"
 
 using namespace std;
 
@@ -24,6 +26,7 @@ class TutorialController
 		int waitTime = 5;
 		int walkDist = 150;
 		bool taskDone = true;
+		bool collisionDone = false;
 
 		clock_t begin = clock();
 	public:
@@ -38,9 +41,10 @@ class TutorialController
 		void Collision();
 		void Done();
 
-		void ResetPosition();
+		void SetPosition() { currentPos = { int(mike->getPosX()), int(mike->getPosY()) }; }
+		void ResetPosition() { mike->SetPosition(currentPos.x, currentPos.y); }
 
-		void CheckClock() { if (waitTime <= GetPassedTime(begin)) { taskDone = true; ResetPosition(); }	}
+		void CheckClock() { if (waitTime <= GetPassedTime(begin)) { taskDone = true; }	}
 		void ResetClock() {	begin = clock(); }
 		float GetPassedTime(clock_t t) { return float(clock() - t) / CLOCKS_PER_SEC; }
 };
