@@ -22,7 +22,7 @@ protected:
 	Direction direction = Direction::NONE;
 	bool _hasCollision = false;
 	bool _locked = false;
-	float lifeTime = 25;
+	float lifeTime = 15;
 	GameObject* target = nullptr;
 
 	//Direction direction;
@@ -49,7 +49,7 @@ public:
 	void SetOrigin(PlayableCharacter* o) { 
 		origin = o; 
 		SetLookDir(o->GetLookDir()); 
-		SetMoveDir(o->GetLookDir());
+		SetMoveDir(o->GetMoveDir());
 		posX = o->getPosX();
 		posY = o->getPosY();
 	}

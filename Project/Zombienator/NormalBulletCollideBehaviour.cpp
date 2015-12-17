@@ -59,7 +59,6 @@ void NormalBulletCollideBehaviour::HandleClosest(GameObject * closest, Bullet* b
 			zombie->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
 		}
 		bullet->SetCollision(true);
-		
 	}
 }
 

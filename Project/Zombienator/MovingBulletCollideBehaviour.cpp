@@ -1,13 +1,14 @@
 #include "MovingBulletCollideBehaviour.h"
 #include "GameObjectContainer.h"
+#include "Mike.h"
 #include "Zombie.h"
 #include "Bullet.h"
-MovingBulletCollideBehaviour::MovingBulletCollideBehaviour()
+
+MovingBulletCollideBehaviour::MovingBulletCollideBehaviour() 
 {
 }
 
-
-MovingBulletCollideBehaviour::~MovingBulletCollideBehaviour()
+MovingBulletCollideBehaviour::~MovingBulletCollideBehaviour() 
 {
 }
 
@@ -18,6 +19,7 @@ void MovingBulletCollideBehaviour::Collide(float dt)
 	std::vector<GameObject*> gos = gameObjectContainer->GetGameObjects();
 	for (auto& g : gos)
 	{
+		if (dynamic_cast<Mike*>(g)) continue;
 		if (g != bullet->GetOrigin() && g != bullet) {
 			if (SDL_HasIntersection(bullet->GetDestinationRect(), g->GetDestinationRect())) {
 				Zombie* target = dynamic_cast<Zombie*>(g);
