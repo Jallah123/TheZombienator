@@ -6,7 +6,7 @@ enum Direction
 	EAST,		// 1 - Rechts
 	NORTH,		// 2 - Boven
 	WEST,		// 3 - Links
-	SOUTHEAST,  // 4 - Rechtsonder
+	SOUTHEAST,  	// 4 - Rechtsonder
 	NORTHEAST,	// 5 - Rechtsboven
 	SOUTHWEST,	// 6 - Linksonder
 	NORTHWEST,	// 7 - Linksboven
