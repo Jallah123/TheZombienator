@@ -5,14 +5,13 @@
 #include "Weapon.h"
 #include "TextureFactory.h"
 #include "SpawnController.h"
-
 using std::string;
 
 HudVisitor::HudVisitor(SDL_Renderer* _renderer, SDL_Rect _bounds) : renderer{ _renderer }
 {
 	bounds = _bounds;
 	bloodHud = TextureFactory::CreateTexture("assets/images/hud/hud_blood.png");
-	weaponSpritesheet = TextureFactory::CreateTexture("assets/images/hud/hud_guns.png");
+	weaponImagePair.first = TextureFactory::CreateTexture("assets/images/hud/hud_guns.png");
 	infiniteSign = TextureFactory::CreateTexture("assets/images/hud/infinite_sign.png");
 }
 
@@ -84,6 +83,15 @@ void HudVisitor::Visit(PlayableCharacter& character)
 		weaponTextPair = TextureFactory::CreateText(weaponDetails, SDL_Point{ bloodRect.x + horizontalPadding , bloodRect.y });
 		weaponTextPair.second.y -= weaponTextPair.second.h;
 
+		//Set Weapon image rectangle 
+		weaponImageSrcRect = weapon->GetHudSourceRect();
+		weaponImagePair.second = SDL_Rect{
+			bloodRect.x+bloodRect.w - horizontalPadding - 110, 
+			bloodRect.y-horizontalPadding - 40,
+			110,
+			40
+		};
+
 		prevValues.insert_or_assign("wName", weapon->GetName());
 	}
 
@@ -93,28 +101,32 @@ void HudVisitor::Visit(PlayableCharacter& character)
 	if (ammoTextPair.first != nullptr)
 		SDL_RenderCopy(renderer, ammoTextPair.first, 0, &ammoTextPair.second);
 
+	if (weaponImagePair.first != nullptr)
+		SDL_RenderCopy(renderer, weaponImagePair.first, &weaponImageSrcRect, &weaponImagePair.second);
+
 }
 void HudVisitor::Visit(SpawnController & spawnController)
 {
-	int zombiesOnScreen = spawnController.GetAmountSpawned();
-	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
-	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
-	if (zombiesLeft == 0) {
-		s = "Kill all zombies";
-		if (spawnController.AllWavesCompleted()) {
-			s = "Next map in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
+	//int zombiesOnScreen = spawnController.GetAmountSpawned();
+	//int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
+	//string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
+	
+	if (spawnController.WaveCompleted()) {
+		int seconds = spawnController.GetTimeTillNextWave() / 100;
+		string m_sCountDown = to_string(seconds);
+		if (m_sCountDown != PrevMapValue("countDown"))
+		{
+			int max = 5;
+			int fontSize = 30 * (max - seconds);
+			if (seconds == 0) m_sCountDown = "GO";
+			countDownTextPair = TextureFactory::CreateText(m_sCountDown, SDL_Point{ bounds.w / 2, 40 }, SDL_Color{ 255,255,255 }, FontEnum::OCR, fontSize);
+			countDownTextPair.second.x -= countDownTextPair.second.w / 2;
+			prevValues.insert_or_assign("countDown", m_sCountDown);
 		}
-		else if (spawnController.WaveCompleted()) {
-			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
-		}
-
+		//Draw the Count down
+		if (countDownTextPair.first != nullptr)
+			SDL_RenderCopy(renderer, countDownTextPair.first, 0, &countDownTextPair.second);
 	}
-
-
-	auto pair = TextureFactory::CreateText(s);
-
-	SDL_RenderCopy(renderer, pair.first, 0, &pair.second);
-
 
 	// === Render current wave text
 	string curWave = std::to_string(spawnController.CurrentWave());
@@ -127,6 +139,8 @@ void HudVisitor::Visit(SpawnController & spawnController)
 	
 	if (waveTextPair.first != nullptr)
 		SDL_RenderCopy(renderer, waveTextPair.first, 0, &waveTextPair.second);
+
+
 }
 std::string const HudVisitor::PrevMapValue(std::string index)
 {
@@ -134,42 +148,3 @@ std::string const HudVisitor::PrevMapValue(std::string index)
 		return prevValues.at(index);
 	return "";
 }
-/*
-void HudVisitor::Visit(Weapon* weapon)
-{
-	SDL_Rect r{ 0, bloodRect.y - 200, 81, 50 };
-	//SDL_RenderCopy(renderer, weapon->GetHudTexture(), 0, &r);
-	//SDL_RenderCopy(renderer, weaponSpritesheet, 0, &r);
-	std::string weaponDetails = weapon->GetName() + "/"
-		if (weapon->GetName() != "")
-		{
-			// Create new texture if weapon changed
-			if (weapon->GetName() != weaponName)
-			{
-				if (weaponNameTexture != nullptr)
-				{
-					SDL_DestroyTexture(weaponNameTexture);
-				}
-				weaponNameTexture = TextureFactory::GenerateTextureFromTextHud(weapon->GetName());
-				weaponName = weapon->GetName();
-			}
-		}
-
-	SDL_Rect weaponTextTexture{ 55, bounds.h - 40, 60, 28 };
-	// Draw pistol text
-	if (weaponNameTexture != nullptr)
-	{
-		SDL_RenderCopy(renderer, weaponNameTexture, 0, &weaponTextTexture);
-	}
-
-	// Draw rounds
-	int rounds = weapon->GetRounds();
-	std::string s_rounds = rounds == INT_MAX ? "INFINITE" : to_string(rounds);
-	SDL_Texture* roundsTextTexture = TextureFactory::GenerateTextureFromTextHud("rounds : " + s_rounds);
-	weaponTextTexture.w += 30;
-	weaponTextTexture.x += 150;
-	weaponTextTexture.y += 15;
-	SDL_RenderCopy(renderer, roundsTextTexture, 0, &weaponTextTexture);
-	SDL_DestroyTexture(roundsTextTexture);
-}
-*/

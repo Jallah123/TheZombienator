@@ -15,10 +15,12 @@ private:
 	int verticalPadding = 9;
 	SDL_Renderer* renderer = nullptr;
 
-	SDL_Texture* weaponSpritesheet = nullptr;
+	std::pair<SDL_Texture*, SDL_Rect> weaponImagePair = {};
+	SDL_Rect weaponImageSrcRect = { 0,0,0,0 };
 	std::pair<SDL_Texture*, SDL_Rect> weaponTextPair = {};
 	std::pair<SDL_Texture*, SDL_Rect> ammoTextPair = {};
 	std::pair<SDL_Texture*, SDL_Rect> waveTextPair = {};
+	std::pair<SDL_Texture*, SDL_Rect> countDownTextPair = {};
 	
 
 	SDL_Texture* bloodHud = nullptr;
