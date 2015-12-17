@@ -17,7 +17,7 @@
 */
 
 TutorialController::TutorialController() {}
-TutorialController::TutorialController(BubbleVisitor* bv, Mike* m) : bubbleVisitor(bv), mike(m) { FillTaskQueue(); }
+TutorialController::TutorialController(BubbleVisitor* bv, Mike* m) : bubbleVisitor(bv), mike(m) { FillTaskQueue(); ResetPosition(); }
 TutorialController::~TutorialController() {	/* if (bubbleVisitor) delete bubbleVisitor; */ }
 
 void TutorialController::FillTaskQueue()
@@ -55,46 +55,44 @@ void TutorialController::DoTask()
 void TutorialController::Welcome()
 {	
 	bubbleVisitor->ChangeText("Welcome");
-	if (waitTime <= GetPassedTime(begin)) taskDone = true;
+	CheckClock();
 }
 
 void TutorialController::Walk()
 {	
-	if (!currentPos.x && !currentPos.y)
-		SetBeginPosition();
-
 	switch (walkDir) {
 		case Direction::WEST:
 			bubbleVisitor->ChangeText("Walk: Left");
 			if ((currentPos.x - walkDist) > mike->getPosX()) {
-				SetBeginPosition();
+				ResetPosition();
 				walkDir = Direction::NORTH;
 			}
 			break;
 		case Direction::NORTH:
 			bubbleVisitor->ChangeText("Walk: Left -> Up");
 			if ((currentPos.y - walkDist) > mike->getPosY()) {
-				SetBeginPosition();
+				ResetPosition();
 				walkDir = Direction::EAST;
 			}
 			break;
 		case Direction::EAST:
 			bubbleVisitor->ChangeText("Walk: Left -> Up -> Right");
 			if ((currentPos.x + walkDist) < mike->getPosX()) {
-				SetBeginPosition();
+				ResetPosition();
 				walkDir = Direction::SOUTH;
 			}
 			break;
 		case Direction::SOUTH:
 			bubbleVisitor->ChangeText("Walk: Left -> Up -> Right -> Down");
 			if ((currentPos.y + walkDist) < mike->getPosY()) {
-				ResetClock();
+				ResetPosition();
 				walkDir = Direction::NONE;
+				ResetClock();
 			}
 			break;
 		case Direction::NONE:
 			bubbleVisitor->ChangeText("Walk Challenge Completed!");
-			if (waitTime <= GetPassedTime(begin)) taskDone = true;
+			CheckClock();
 			break;
 	}
 }
@@ -105,11 +103,6 @@ void TutorialController::Done()
 	if (waitTime <= GetPassedTime(begin)) { // return to menu
 		MapFactory::GetInstance()->EmptyQueue();
 		ScreenController::GetInstance().EmptyStack();
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::HOMESCREEN));
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::WINSCREEN));
 	}
-}
-
-void TutorialController::SetBeginPosition()
-{
-	currentPos = { int(mike->getPosX()), int(mike->getPosY()) };
 }

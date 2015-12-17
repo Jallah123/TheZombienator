@@ -19,7 +19,7 @@ class TutorialController
 		queue<TutorialEnum> taskQueue;
 		TutorialEnum currentTask;
 		Direction walkDir = Direction::WEST;
-		SDL_Point currentPos = { 0, 0 };
+		SDL_Point currentPos = { 892, 320 };
 
 		int waitTime = 5;
 		int walkDist = 200;
@@ -37,7 +37,10 @@ class TutorialController
 		void Walk();
 		void Done();
 
-		void SetBeginPosition();
+		//void SetPosition() { currentPos = { int(mike->getPosX()), int(mike->getPosY()) }; }
+		void ResetPosition() { mike->SetPosition(currentPos.x, currentPos.y); mike->SetLookDir(Direction::SOUTH); mike->SetMoveDir(Direction::SOUTH); }
+
+		void CheckClock() { if (waitTime <= GetPassedTime(begin)) { taskDone = true; ResetPosition(); }	}
 		void ResetClock() {	begin = clock(); }
 		float GetPassedTime(clock_t t) { return float(clock() - t) / CLOCKS_PER_SEC; }
 };
