@@ -4,6 +4,7 @@ enum TutorialEnum
 {
 	WELCOME,
 	WALK,
+	COLLISION,
 	DONE		// Last
 };
 #endif
