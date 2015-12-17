@@ -26,6 +26,7 @@ void Settings::Load() {
 			musicVolume = s->musicVolume;
 			godmode = s->godmode;
 			infiniteAmmo = s->infiniteAmmo;
+			cout << "Settings loaded" << "\n";
 		}
 	}
 	catch (exception e) {

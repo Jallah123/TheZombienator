@@ -14,8 +14,43 @@ StatsScreen::~StatsScreen()
 {
 }
 
+
+void StatsScreen::AddHighScores(SDL_Renderer* ren)
+{
+	AddUIComponent(new LabelEndScreen(*ren, "Highscores:", 100, 150));
+
+
+	highScores = ioC->LoadFile("highscores", highScores);
+	if (highScores == nullptr) {
+		highScores = new HighScores();
+	}
+
+	highScores->Insert(StatsController::GetInstance()->GetTotalWavesDefeated());
+
+	bool protectOnce = true;
+	int count = 1;
+	int startX = 200;
+	for (auto& i : highScores->GetHighScores()) {
+		AddUIComponent(new LabelEndScreen(*ren, to_string(count) + ": ", 100, startX));
+		AddUIComponent(new LabelEndScreen(*ren, to_string(i), 125, startX));
+		if (i == StatsController::GetInstance()->GetTotalWavesDefeated() && protectOnce) {
+			protectOnce = false;
+			AddUIComponent(new LabelEndScreen(*ren, "-> YOU!", 155, startX));
+		}
+		
+		startX += 30;
+		count++;
+	}
+
+	highScores->Save();
+}
+
 void StatsScreen::AddStats(SDL_Renderer* ren)
 {
+	//addHighscores
+	AddHighScores(ren);
+
+
 	// Buttons
 	BackToMenuButton* btnBack = new BackToMenuButton(*ren, "", "assets/images/btn/btn_backtomenu.png");
 	AddUIComponent(btnBack);

@@ -459,6 +459,9 @@
     <ClCompile Include="ioController.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="HighScores.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
     <ClCompile Include="ZombieDeadState.cpp">
       <Filter>Source Files\Models\States</Filter>
     </ClCompile>
@@ -758,6 +761,9 @@
     <ClInclude Include="ioController.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="HighScores.h">
+      <Filter>Header Files\Models</Filter>
+  </ClInclude>
     <ClInclude Include="ZombieDeadState.h">
       <Filter>Header Files\Models\States</Filter>
     </ClInclude>
