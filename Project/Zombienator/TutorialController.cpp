@@ -16,9 +16,27 @@
 
 */
 
-TutorialController::TutorialController() {}
-TutorialController::TutorialController(BubbleVisitor* bv, Mike* m) : bubbleVisitor(bv), mike(m) { FillTaskQueue(); ResetPosition(); }
-TutorialController::~TutorialController() {	/* if (bubbleVisitor) delete bubbleVisitor; */ }
+TutorialController::TutorialController()
+{
+}
+
+TutorialController::TutorialController(BubbleVisitor* bv, Mike* m) : bubbleVisitor(bv), mike(m)
+{
+	FillTaskQueue();
+	ResetPosition();
+}
+
+TutorialController::~TutorialController() 
+{
+	/* if (bubbleVisitor) delete bubbleVisitor; */
+}
+
+void TutorialController::ResetPosition()
+{
+	mike->SetPosition(currentPos.x, currentPos.y);
+	mike->SetLookDir(Direction::SOUTH);
+	mike->SetMoveDir(Direction::SOUTH);
+}
 
 void TutorialController::FillTaskQueue()
 {
@@ -44,7 +62,7 @@ void TutorialController::DoTask()
 	{
 		switch(currentTask)
 		{
-			case WELCOME:		Welcome();	break;
+			case WELCOME:	Welcome();	break;
 			case WALK:		Walk();		break;
 			case DONE:		Done();		break;
 			default: break;
@@ -54,44 +72,40 @@ void TutorialController::DoTask()
 
 void TutorialController::Welcome()
 {	
-	bubbleVisitor->ChangeText("Welcome");
+	bubbleVisitor->ChangeText("Welcome to The Zombienator!");
 	CheckClock();
 }
 
 void TutorialController::Walk()
 {	
 	switch (walkDir) {
-		case Direction::WEST:
-			bubbleVisitor->ChangeText("Walk: Left");
-			if ((currentPos.x - walkDist) > mike->getPosX()) {
-				ResetPosition();
-				walkDir = Direction::NORTH;
-			}
-			break;
 		case Direction::NORTH:
-			bubbleVisitor->ChangeText("Walk: Left -> Up");
+			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the north direction.");
 			if ((currentPos.y - walkDist) > mike->getPosY()) {
-				ResetPosition();
 				walkDir = Direction::EAST;
 			}
 			break;
 		case Direction::EAST:
-			bubbleVisitor->ChangeText("Walk: Left -> Up -> Right");
+			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the east direction.");
 			if ((currentPos.x + walkDist) < mike->getPosX()) {
-				ResetPosition();
 				walkDir = Direction::SOUTH;
 			}
 			break;
 		case Direction::SOUTH:
-			bubbleVisitor->ChangeText("Walk: Left -> Up -> Right -> Down");
+			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the south direction.");
 			if ((currentPos.y + walkDist) < mike->getPosY()) {
-				ResetPosition();
+				walkDir = Direction::WEST;
+			}
+			break;
+		case Direction::WEST:
+			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the west direction.");
+			if ((currentPos.x - walkDist) > mike->getPosX()) {
 				walkDir = Direction::NONE;
 				ResetClock();
 			}
 			break;
 		case Direction::NONE:
-			bubbleVisitor->ChangeText("Walk Challenge Completed!");
+			bubbleVisitor->ChangeText("Walk challenge completed!");
 			CheckClock();
 			break;
 	}

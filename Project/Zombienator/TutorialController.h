@@ -18,11 +18,11 @@ class TutorialController
 		BubbleVisitor* bubbleVisitor;
 		queue<TutorialEnum> taskQueue;
 		TutorialEnum currentTask;
-		Direction walkDir = Direction::WEST;
+		Direction walkDir = Direction::NORTH;
 		SDL_Point currentPos = { 892, 320 };
 
 		int waitTime = 5;
-		int walkDist = 200;
+		int walkDist = 150;
 		bool taskDone = true;
 
 		clock_t begin = clock();
@@ -37,8 +37,7 @@ class TutorialController
 		void Walk();
 		void Done();
 
-		//void SetPosition() { currentPos = { int(mike->getPosX()), int(mike->getPosY()) }; }
-		void ResetPosition() { mike->SetPosition(currentPos.x, currentPos.y); mike->SetLookDir(Direction::SOUTH); mike->SetMoveDir(Direction::SOUTH); }
+		void ResetPosition();
 
 		void CheckClock() { if (waitTime <= GetPassedTime(begin)) { taskDone = true; ResetPosition(); }	}
 		void ResetClock() {	begin = clock(); }
