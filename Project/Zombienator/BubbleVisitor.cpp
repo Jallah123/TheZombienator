@@ -2,13 +2,8 @@
 #include "Image.h"
 
 BubbleVisitor::BubbleVisitor() {}
-
-BubbleVisitor::BubbleVisitor(SDL_Renderer* ren)
-{
-	this->ren = ren;
-	this->bubbleImage = TextureFactory::GenerateTextureFromImgUrl("assets/images/tutorial/bubble.png");
-	ChangeText(" ");
-}
+BubbleVisitor::BubbleVisitor(SDL_Renderer* r) : ren(r), bubbleImage(TextureFactory::GenerateTextureFromImgUrl("assets/images/tutorial/bubble.png")) { ChangeText(" "); }
+BubbleVisitor::~BubbleVisitor() {}
 
 void BubbleVisitor::Visit(Character* c)
 {
@@ -22,14 +17,11 @@ void BubbleVisitor::Visit(Character* c)
 	SDL_RenderCopy(ren, text.first, nullptr, &text.second);
 }
 
-BubbleVisitor::~BubbleVisitor() {}
-
 // -- TODO
-	// -- Txt Lines?
-	// -- Animate Txt
+	// -- Animate Txt?
 void BubbleVisitor::ChangeText(string s)
 {
-	if (text.first != nullptr) // -- Memory Leaks
+	if (text.first != nullptr) // -- Avoid Memory Leaks
 		SDL_DestroyTexture(text.first);
-	text = TextureFactory::GenerateText(string(s), 14, posX + 14, posY + 8, FontEnum::OCR, { 0, 0, 0 });
+	text = TextureFactory::GenerateText(string(s), 14, posX + 14, posY + 8, FontEnum::OCR, { 0, 0, 0 }, 180);
 }

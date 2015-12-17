@@ -30,11 +30,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 
 	hudVisitor = HudVisitor{ ren };
 
-	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
-		bubbleVisitor = BubbleVisitor{ ren };
-		tutorialController = TutorialController(&bubbleVisitor);
-	}
-
 	goFactory->SetContainers(
 		&drawContainer,
 		&animateContainer,
@@ -59,6 +54,11 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 	mike->SetPosition(800, 300);
 
 	spawnController.AddTarget(mike);
+
+	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
+		bubbleVisitor = BubbleVisitor{ ren };
+		tutorialController = TutorialController(&bubbleVisitor, mike);
+	}
 
 	//Load && play sound
 	map->PlaySounds();

@@ -17,25 +17,27 @@
 */
 
 TutorialController::TutorialController() {}
+TutorialController::TutorialController(BubbleVisitor* bv, Mike* m) : bubbleVisitor(bv), mike(m) { FillTaskQueue(); }
+TutorialController::~TutorialController() {	/* if (bubbleVisitor) delete bubbleVisitor; */ }
 
-TutorialController::TutorialController(BubbleVisitor* bv)
+void TutorialController::FillTaskQueue()
 {
-	bubbleVisitor = bv;
 	for (int i = 0; i != DONE; i++)
 		taskQueue.push(static_cast<TutorialEnum>(i));
-}
-
-TutorialController::~TutorialController()
-{
-	//if (bubbleVisitor) delete bubbleVisitor;
 }
 
 void TutorialController::DoTask()
 {
 	if(taskDone)
 	{
-		currentTask = taskQueue.front();
-		taskQueue.pop();
+		if (taskQueue.size() > 0) {
+			currentTask = taskQueue.front();
+			taskQueue.pop();
+		}
+		else
+			currentTask = DONE;
+
+		ResetClock();
 		taskDone = false;
 	}
 	else
@@ -44,7 +46,7 @@ void TutorialController::DoTask()
 		{
 			case WELCOME:	Welcome();	break;
 			case WALK:		Walk();		break;
-			case DONE: break;
+			case DONE:		Done();		break;
 			default: break;
 		}
 	}
@@ -53,11 +55,61 @@ void TutorialController::DoTask()
 void TutorialController::Welcome()
 {	
 	bubbleVisitor->ChangeText("Welcome");
-	// LOCK Mike
-	if (5 <= GetPassedTime(begin)) taskDone = true;
+	if (waitTime <= GetPassedTime(begin)) taskDone = true;
 }
 
 void TutorialController::Walk()
+{	
+	if (!currentPos.x && !currentPos.y)
+		SetBeginPosition();
+
+	switch (walkDir) {
+		case Direction::WEST:
+			bubbleVisitor->ChangeText("Walk: Left");
+			if ((currentPos.x - walkDist) > mike->getPosX()) {
+				SetBeginPosition();
+				walkDir = Direction::NORTH;
+			}
+			break;
+		case Direction::NORTH:
+			bubbleVisitor->ChangeText("Walk: Left -> Up");
+			if ((currentPos.y - walkDist) > mike->getPosY()) {
+				SetBeginPosition();
+				walkDir = Direction::EAST;
+			}
+			break;
+		case Direction::EAST:
+			bubbleVisitor->ChangeText("Walk: Left -> Up -> Right");
+			if ((currentPos.x + walkDist) < mike->getPosX()) {
+				SetBeginPosition();
+				walkDir = Direction::SOUTH;
+			}
+			break;
+		case Direction::SOUTH:
+			bubbleVisitor->ChangeText("Walk: Left -> Up -> Right -> Down");
+			if ((currentPos.y + walkDist) < mike->getPosY()) {
+				ResetClock();
+				walkDir = Direction::NONE;
+			}
+			break;
+		case Direction::NONE:
+			bubbleVisitor->ChangeText("Walk Challenge Completed!");
+			if (waitTime <= GetPassedTime(begin)) taskDone = true;
+			break;
+	}
+}
+
+void TutorialController::Done()
 {
-	bubbleVisitor->ChangeText("AllahAkbar");
+	bubbleVisitor->ChangeText("You're finished and will return to the menu in a few seconds");
+	if (waitTime <= GetPassedTime(begin)) { // return to menu
+		MapFactory::GetInstance()->EmptyQueue();
+		ScreenController::GetInstance().EmptyStack();
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::HOMESCREEN));
+	}
+}
+
+void TutorialController::SetBeginPosition()
+{
+	currentPos = { int(mike->getPosX()), int(mike->getPosY()) };
 }

@@ -7,19 +7,19 @@
 class Character;
 class BubbleVisitor
 {
-private:
-	SDL_Renderer* ren;
-	pair<SDL_Texture*, SDL_Rect> text;
+	private:
+		SDL_Renderer* ren;
+		pair<SDL_Texture*, SDL_Rect> text;
 
-	SDL_Texture* bubbleImage;
-	int posX, posY, bubbleHeight = 207, bubbleWidth = 90;
+		SDL_Texture* bubbleImage;
+		int posX, posY, bubbleHeight = 207, bubbleWidth = 90;
 
-public:
-	BubbleVisitor();
-	BubbleVisitor(SDL_Renderer* ren);
-	void Visit(Character* c);
-	~BubbleVisitor();
+	public:
+		BubbleVisitor();
+		BubbleVisitor(SDL_Renderer* ren);
+		~BubbleVisitor();
 
-	void ChangeText(string s);
+		void Visit(Character* c);
+		void ChangeText(string s);
 };
 
