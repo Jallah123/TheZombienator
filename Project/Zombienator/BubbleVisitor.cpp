@@ -18,8 +18,6 @@ void BubbleVisitor::Visit(Character* c)
 
 }
 
-// -- TODO
-	// -- Animate Txt?
 void BubbleVisitor::ChangeText(string s)
 {
 	if (text.first != nullptr) // -- Avoid Memory Leaks
