@@ -1,4 +1,5 @@
 #include "PcMoveBehaviour.h"
+#include "Bullet.h"
 #include "Character.h"
 #include "InputContainer.h"
 #include "GameObjectContainer.h"
@@ -34,7 +35,6 @@ void PcMoveBehaviour::Move(float dt)
 
 	c->SetMoveDir(Direction::NONE);
 
-	// -- Move directions
 	if (up) {
 		c->SetMoveDir(Direction::NORTH);
 		c->SetLookDir(Direction::NORTH);
@@ -56,6 +56,15 @@ void PcMoveBehaviour::Move(float dt)
 		newX += speed;
 	}
 
+	if (up && left)
+		c->SetMoveDir(Direction::NORTHWEST);
+	if (up && right)
+		c->SetMoveDir(Direction::NORTHEAST);
+	if (left && down)
+		c->SetMoveDir(Direction::SOUTHWEST);
+	if (right && down)
+		c->SetMoveDir(Direction::SOUTHEAST);
+
 	float finalX = newX;
 	float finalY = newY;
 
@@ -63,6 +72,8 @@ void PcMoveBehaviour::Move(float dt)
 	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
 	for (auto& g : gameObjects)
 	{
+		if (dynamic_cast<Bullet*>(g)) continue;
+
 		if (g != this->gameObject) {
 			goRect->x = static_cast<int>(newX + .5f);
 			goRect->y = static_cast<int>(c->getPosY() + .5f + (goRect->h));
