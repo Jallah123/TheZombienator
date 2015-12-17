@@ -1,21 +1,5 @@
 #include "TutorialController.h"
 
-/*
-
-- Welkom
-- Lopen
--- Richting
---- Collision
-- Schieten
-- Zombie
--- Drop health kit
--- Drop ammo
-- Wapens wisselen
--- Wapens oppakken (niet aanwezig)
-- Save & Load (niet aanwezig)
-
-*/
-
 TutorialController::TutorialController() 
 {
 }
@@ -25,17 +9,15 @@ TutorialController::TutorialController(BubbleVisitor* bv, SpawnController* s, Mi
 	Init(); 
 }
 
-TutorialController::~TutorialController() {
-	/* if (bubbleVisitor) delete bubbleVisitor; */
+TutorialController::~TutorialController() 
+{
 }
 
 void TutorialController::Init()
 {
 	FillTaskQueue(); 
 	ResetPosition();
-	amountOfZombies = spawnController->Reset(); // Spawn zombies: spawnController->RevertReset(amountOfZombies)
-												// Add second weapon mike->AddWeapon(new MachineGun()); // Include MachineGun
-												// mike->GetWeapon() too check where de bullets came from
+	amountOfZombies = spawnController->TutorialReset();
 }
 
 void TutorialController::FillTaskQueue()
@@ -54,7 +36,6 @@ void TutorialController::DoTask()
 		}
 		else
 			currentTask = DONE;
-
 		ResetClock();
 		taskDone = false;
 	}
@@ -123,7 +104,6 @@ void TutorialController::Collision()
 {
 	if(!collisionDone){
 		bubbleVisitor->ChangeText("Walk now against the tree");
-
 		SDL_Rect mikeCollision = SDL_Rect{ mike->GetCollideRect()->x - 2, mike->GetCollideRect()->y - 2, mike->GetCollideRect()->w + 4, mike->GetCollideRect()->h + 4 };
 		for (auto &go : mike->GetGameObjectContainer()->GetGameObjects()) {
 			if (dynamic_cast<Mike*>(go)) continue;
@@ -138,13 +118,11 @@ void TutorialController::Collision()
 		bubbleVisitor->ChangeText("Collision challenge completed!");
 		CheckClock();
 	}
-
 }
 
 void TutorialController::Shoot() {
 
-	if (shotsAmount <= 5) shotsAmount += StatsController::GetInstance()->GetTotalBullets();
-
+	if (shotsAmount < 6) shotsAmount += StatsController::GetInstance()->GetTotalBullets();
 	if (shotsAmount > StatsController::GetInstance()->GetTotalBullets()) {
 		bubbleVisitor->ChangeText("Shoot 5 times with the spacebar");
 		ResetClock();
@@ -153,13 +131,11 @@ void TutorialController::Shoot() {
 		bubbleVisitor->ChangeText("Shoot challenge completed!");
 		CheckClock();
 	}
-
 }
 
 void TutorialController::Swap() {
 
 	if (!weaponAdded) mike->AddWeapon(new MachineGun()); weaponAdded = true;
-
 	if (!dynamic_cast<MachineGun*>(mike->GetWeapon()) && !swapDone) {
 		bubbleVisitor->ChangeText("Press Q or E to swap weapon");
 		ResetClock();
@@ -169,23 +145,24 @@ void TutorialController::Swap() {
 		swapDone = true;
 		CheckClock();
 	}
-
 }
 
 void TutorialController::Kill() {
 
-	if (!waveStarted) spawnController->RevertReset(amountOfZombies); waveStarted = true;
-
-	if (StatsController::GetInstance()->GetKills() < amountOfZombies) {
+	if (!waveStarted) spawnController->TutorialRevertReset(amountOfZombies); waveStarted = true;
+	if (amountOfZombies > StatsController::GetInstance()->GetKills()) {
 		bubbleVisitor->ChangeText("Kill all zombies");
 		ResetClock();
 	}
 	else {
 		bubbleVisitor->ChangeText("Kill zombie challenge completed!");
-		amountOfZombies = spawnController->Reset();
+		if (amountOfZombies == spawnController->GetAmountSpawned()) {
+			StatsController::GetInstance()->AddWaveDefeated();
+			spawnController->NextWave();
+			spawnController->TutorialReset();
+		}
 		CheckClock();
 	}
-
 }
 
 void TutorialController::Done()
