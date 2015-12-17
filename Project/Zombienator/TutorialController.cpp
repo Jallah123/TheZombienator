@@ -58,6 +58,8 @@ void TutorialController::DoTask()
 			case WELCOME:		Welcome();		break;
 			case WALK:			Walk();			break;
 			case COLLISION:		Collision();	break;
+			case SHOOT:			Shoot();	break;
+			case KILL:			Kill();	break;
 			case DONE:			Done();			break;
 			default: break;
 		}
@@ -131,9 +133,13 @@ void TutorialController::Collision()
 
 }
 
-/*void TutorialController::Shoot() {
+void TutorialController::Shoot() {
 
-}*/
+}
+
+void TutorialController::Kill() {
+
+}
 
 void TutorialController::Done()
 {

@@ -5,6 +5,8 @@ enum TutorialEnum
 	WELCOME,
 	WALK,
 	COLLISION,
+	SHOOT,
+	KILL,
 	DONE		// Last
 };
 #endif

@@ -39,6 +39,8 @@ class TutorialController
 		void Welcome();
 		void Walk();
 		void Collision();
+		void Shoot();
+		void Kill();
 		void Done();
 
 		void SetPosition() { currentPos = { int(mike->getPosX()), int(mike->getPosY()) }; }
