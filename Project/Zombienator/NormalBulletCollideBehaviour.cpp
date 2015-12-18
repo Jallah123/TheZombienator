@@ -55,9 +55,16 @@ void NormalBulletCollideBehaviour::HandleClosest(GameObject * closest, Bullet* b
 	if (closest != nullptr) {
 		Zombie* zombie = dynamic_cast<Zombie*>(closest);
 		bullet->SetTarget(closest);
+
 		if (zombie != nullptr) {
 			zombie->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
 		}
+		//check if object is playableCharacter
+		else if(dynamic_cast<PlayableCharacter*>(closest) != nullptr && Settings::GetInstance().getFiendlyFire()) {
+			PlayableCharacter* pCharachter = dynamic_cast<PlayableCharacter*>(closest);
+			pCharachter->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
+		}
+
 		bullet->SetCollision(true);
 	}
 }
