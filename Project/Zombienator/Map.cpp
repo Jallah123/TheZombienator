@@ -94,7 +94,7 @@ void Map::GenerateGraph()
 		graph.AddNode(new Node(i, waypoints.at(i)->x, waypoints.at(i)->y));
 	}
 
-	for (auto& node1: graph.GetNodes())
+	for (auto& node1 : graph.GetNodes())
 	{
 		for (auto& node2 : graph.GetNodes())
 		{
@@ -111,7 +111,7 @@ void Map::GenerateGraph()
 
 bool Map::ExistsInMap(Node* n1, Node* n2)
 {
-	for (auto& a : n1->Adjacent()) 
+	for (auto& a : n1->Adjacent())
 	{
 		if (n1 == n2)
 		{
@@ -125,9 +125,11 @@ bool Map::IntersectsWithCollisionLayer(SDL_Rect wp1, SDL_Rect wp2)
 {
 	vector<SDL_Rect*> collision = GetObjectLayer("Collision")->GetRects();
 	bool intersect = false;
-	for (SDL_Rect* collisionObject : collision)
+	for (SDL_Rect*
+		collisionObject : collision)
 	{
-		if (SDL_IntersectRectAndLine(collisionObject, &wp1.x, &wp1.y, &wp2.x, &wp2.y))
+		SDL_Rect collisionObjectWithBox{ collisionObject->x - 10, collisionObject->y - 10, collisionObject->w + 20, collisionObject->h + 20 };
+		if (SDL_IntersectRectAndLine(&collisionObjectWithBox, &wp1.x, &wp1.y, &wp2.x, &wp2.y))
 		{
 			intersect = true;
 			break;

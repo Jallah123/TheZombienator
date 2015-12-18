@@ -14,6 +14,10 @@ public:
 	void Update(float dt);
 private:
 	Node* GetClosestNodeNearTarget(Character* target, vector<Node*>& nodes);
-	SDL_Rect ZombieWalkingState::GetDestination();
+	bool NodeIsInGoodDirection(SDL_Rect* destRect, Node* node);
+	SDL_Rect GetDestination(float dt);
+	Node* calculatedNode = nullptr;
+	float time = 500;
+	void ResetTime() { time = 500; };
 };
 

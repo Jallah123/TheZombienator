@@ -42,7 +42,7 @@ void ZombieWalkingState::Update(float dt)
 	GameObjectContainer* goc = z->GetGameObjectContainer();
 	float destX;
 	float destY;
-	SDL_Rect targetRect = GetDestination();
+	SDL_Rect targetRect = GetDestination(dt);
 
 	destX = targetRect.x;
 	destY = targetRect.y;
@@ -118,7 +118,7 @@ Node* ZombieWalkingState::GetClosestNodeNearTarget(Character* target, vector<Nod
 	{
 		SDL_Rect& currentRect = node->getDestRect();
 		double distance = GameMath::Distance(currentRect, *destRect);
-		if (distance < closestRectDistance)
+		if (distance < closestRectDistance /*&& NodeIsInGoodDirection(destRect, node)*/)
 		{
 			closestNode = node;
 			closestRectDistance = distance;
@@ -127,33 +127,51 @@ Node* ZombieWalkingState::GetClosestNodeNearTarget(Character* target, vector<Nod
 	return closestNode;
 }
 
-SDL_Rect ZombieWalkingState::GetDestination()
+bool ZombieWalkingState::NodeIsInGoodDirection(SDL_Rect* destRect, Node* node)
+{
+	int destX = destRect->x;
+	int destY = destRect->y;
+	int nodeX = node->getDestRect().x;
+	int nodeY = node->getDestRect().y;
+	int zombieX = GetOwner()->GetDestinationRect()->x;
+	int zombieY = GetOwner()->GetDestinationRect()->y;
+
+	return (destX < zombieX && nodeX < zombieX || destX > zombieX && nodeX > zombieX) && (destY < zombieY && nodeY < zombieY || destY > zombieY && nodeY > zombieY);
+}
+
+SDL_Rect ZombieWalkingState::GetDestination(float dt)
 {
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
-	SDL_Rect targetRect{ 0,0,50,50 };
+	SDL_Rect targetRect{ 0,0,20,20 };
 
 	// Calculate path
 	vector<Node*>& nodes = z->GetGameObjectContainer()->GetMap()->GetGraph()->GetNodes();
 	Graph* graph = z->GetGameObjectContainer()->GetMap()->GetGraph();
 	Node* selfNode = GetClosestNodeNearTarget(z, nodes);
 	Node* targetNode = GetClosestNodeNearTarget(target, nodes);
-	Astar astar;
-
-	if (GameMath::Distance(*z->GetDestinationRect(), *target->GetDestinationRect()) < GameMath::Distance(*z->GetDestinationRect(), selfNode->getDestRect()))
-	{
-		z->GetPath().clear();
-		targetRect.x = target->GetDestinationRect()->x;
-		targetRect.y = target->GetDestinationRect()->y;
-	}
-	else
-	{
-		if (z->GetPath().empty())
+	time -= dt;
+	if (time < 0) {
+		ResetTime();
+		if (GameMath::Distance(*z->GetDestinationRect(), *target->GetDestinationRect()) < GameMath::Distance(*z->GetDestinationRect(), selfNode->getDestRect()))
 		{
-			astar.Compute(graph, selfNode->ID(), targetNode->ID());
-			deque<Node*> path = astar.GetPath(graph, selfNode->ID(), targetNode->ID());
-			z->SetPath(path);
+			z->GetPath().clear();
+			targetRect.x = target->GetDestinationRect()->x;
+			targetRect.y = target->GetDestinationRect()->y;
 		}
+		else
+		{
+			if (z->GetPath().empty() || calculatedNode != targetNode)
+			{
+				Astar astar;
+				astar.Compute(graph, selfNode->ID(), targetNode->ID());
+				deque<Node*> path = astar.GetPath(graph, selfNode->ID(), targetNode->ID());
+				z->SetPath(path);
+				calculatedNode = targetNode;
+			}
+		}
+	}
+	if (!z->GetPath().empty()) {
 		SDL_Rect waypoint = z->GetPath().front()->getDestRect();
 		SDL_Rect zombieRect = *z->GetDestinationRect();
 		zombieRect.x -= 10;
@@ -169,11 +187,16 @@ SDL_Rect ZombieWalkingState::GetDestination()
 			targetRect.x = z->GetPath().front()->getDestRect().x;
 			targetRect.y = z->GetPath().front()->getDestRect().y;
 		}
-		else 
+		else
 		{
 			targetRect.x = target->GetDestinationRect()->x;
 			targetRect.y = target->GetDestinationRect()->y;
 		}
+	}
+	else
+	{
+		targetRect.x = target->GetDestinationRect()->x;
+		targetRect.y = target->GetDestinationRect()->y;
 	}
 	return targetRect;
 }
