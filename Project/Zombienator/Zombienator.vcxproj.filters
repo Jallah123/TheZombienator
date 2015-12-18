@@ -465,6 +465,18 @@
     <ClCompile Include="WunderlandMap.cpp">
       <Filter>Source Files\Models\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Pc2MoveBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="MrT.cpp">
+      <Filter>Source Files\Models\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Shoot2ActionBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchWeapon2ActionBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -748,12 +760,27 @@
     </ClInclude>
     <ClInclude Include="HighScores.h">
       <Filter>Header Files\Models</Filter>
-  </ClInclude>
+    </ClInclude>
     <ClInclude Include="ZombieDeadState.h">
       <Filter>Header Files\Models\States</Filter>
     </ClInclude>
     <ClInclude Include="WunderlandMap.h">
       <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Pc2MoveBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="MrT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shoot2ActionBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchWeapon2ActionBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

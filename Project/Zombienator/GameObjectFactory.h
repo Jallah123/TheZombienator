@@ -19,6 +19,7 @@ class Zombie;
 class NormalBullet;
 class PlayableCharacter;
 class MachineGunBullet;
+class MrT;
 
 struct SDL_Renderer;
 
@@ -49,6 +50,7 @@ public:
 	static void SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren);
 
 	static Mike* CreateMike(std::string img_url);
+	static MrT* CreateMrT(std::string img_url);
 	static Zombie* CreateZombie();
 	static NormalBullet* CreateNormalBullet(PlayableCharacter* obj);
 	static MachineGunBullet* CreateMachineGunBullet(PlayableCharacter* obj);

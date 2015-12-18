@@ -52,7 +52,11 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 	mike = goFactory->CreateMike(char_img_url);
 	mike->SetPosition(800, 300);
 
+	mrt = goFactory->CreateMrT(char_img_url);
+	mrt->SetPosition(700, 300);
+
 	spawnController.AddTarget(mike);
+	spawnController.AddTarget(mrt);
 
 	//Load && play sound
 	map->PlaySounds();
@@ -188,6 +192,13 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		SDL_DestroyTexture(fpsTexture.first);
 	}
 
+	//DEBUG: draw collision
+	vector<SDL_Rect*> collision = map->GetObjectLayer("Collision")->GetRects();
+	SDL_SetRenderDrawColor(&ren, 255, 255, 255, 255);
+	for (auto& rect : collision)
+	{
+		SDL_RenderDrawRect(&ren, rect);
+	}
 }
 
 void GameScreen::Transition(SDL_Renderer& ren) {

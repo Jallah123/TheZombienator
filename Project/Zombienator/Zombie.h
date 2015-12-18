@@ -50,5 +50,5 @@ private:
 
 	const double sweetspotX = 35;
 	const double sweetspotY = 25;
-};
 
+};
