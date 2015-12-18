@@ -1,29 +1,23 @@
 #pragma once
 #include <ctime>
 #include <queue>
-#include "BubbleVisitor.h"
-#include "Mike.h"
-#include "MapFactory.h"
-#include "ScreenFactory.h"
+#include "Direction.cpp"
+#include "SDL_rect.h"
 #include "TutorialEnum.cpp"
-#include "MapFactory.h"
-#include "ScreenFactory.h"
-#include "SpawnController.h"
-#include "GameObject.h"
-#include "GameObjectContainer.h"
-#include "MachineGun.h"
 
-using namespace std;
+class Mike;
+class BubbleVisitor;
+class SpawnController;
 
 class TutorialController
 {
 	private:
-		Mike* mike;
-		BubbleVisitor* bubbleVisitor;
-		SpawnController* spawnController;
+		Mike* mike = nullptr;
+		BubbleVisitor* bubbleVisitor = nullptr;
+		SpawnController* spawnController = nullptr;
 		int amountOfZombies;
 
-		queue<TutorialEnum> taskQueue;
+		std::queue<TutorialEnum> taskQueue;
 		TutorialEnum currentTask;
 		Direction walkDir = Direction::NORTH;
 		SDL_Point currentPos = { 892, 320 };
@@ -56,8 +50,8 @@ class TutorialController
 		void Kill();
 		void Done();
 
-		void SetPosition() { currentPos = { int(mike->getPosX()), int(mike->getPosY()) }; }
-		void ResetPosition() { mike->SetPosition(currentPos.x, currentPos.y); }
+		void SetPosition();
+		void ResetPosition();
 
 		void CheckClock() { if (waitTime <= GetPassedTime(begin)) { taskDone = true; }	}
 		void ResetClock() {	begin = clock(); }

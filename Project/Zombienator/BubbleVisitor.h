@@ -1,18 +1,17 @@
 #pragma once
-#include <SDL_image.h>
+#include "Image.h"
 #include <string>
-#include "Character.h"
-#include "TextureFactory.h"
+#include <SDL_image.h>
 
 class Character;
 class BubbleVisitor
 {
 	private:
-		SDL_Renderer* ren;
-		pair<SDL_Texture*, SDL_Rect> text;
+		SDL_Renderer* ren = nullptr;
+		std::pair<SDL_Texture*, SDL_Rect> text;
+		SDL_Texture* bubbleImage = nullptr;
 
-		SDL_Texture* bubbleImage;
-		int posX, posY, bubbleHeight = 207, bubbleWidth = 90;
+		int posX = 0, posY = 0, bubbleHeight = 207, bubbleWidth = 90;
 
 	public:
 		BubbleVisitor();
@@ -20,6 +19,6 @@ class BubbleVisitor
 		~BubbleVisitor();
 
 		void Visit(Character* c);
-		void ChangeText(string s);
+		void ChangeText(std::string s);
 };
 

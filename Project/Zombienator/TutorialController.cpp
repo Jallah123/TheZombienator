@@ -1,3 +1,12 @@
+#include "BubbleVisitor.h"
+#include "GameObject.h"
+#include "GameObjectContainer.h"
+#include "MachineGun.h"
+#include "MapFactory.h"
+#include "Mike.h"
+#include "ScreenController.h"
+#include "SpawnController.h"
+#include "ScreenFactory.h"
 #include "TutorialController.h"
 
 TutorialController::TutorialController() 
@@ -173,4 +182,14 @@ void TutorialController::Done()
 		ScreenController::GetInstance().EmptyStack();
 		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::WINSCREEN));
 	}
+}
+
+void TutorialController::SetPosition()
+{
+	currentPos = { int(mike->getPosX()), int(mike->getPosY()) };
+}
+
+void TutorialController::ResetPosition()
+{
+	mike->SetPosition(currentPos.x, currentPos.y);
 }
