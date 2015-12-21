@@ -15,15 +15,15 @@
 #include "CollideContainer.h"
 #include "GameState.h"
 #include "HudVisitor.h"
-#include "Mike.h"
 #include "PauseScreen.h"
+#include "PlayableCharacter.h"
 
 class Quadtree;
 class GameScreen : public AbstractScreen
 {
 public:
 	GameScreen();
-	GameScreen(SDL_Renderer* _ren, string char_img_url);
+	GameScreen(SDL_Renderer* _ren, string play1_img_url, string play2_img_url);
 	~GameScreen();
 	void Shake(float time, int intensity = 20);
 	virtual void Update(float dt) override;
@@ -33,7 +33,7 @@ public:
 	void Transition(SDL_Renderer& ren);
 	void NextMap(SDL_Renderer & ren);
 	Quadtree* GetTree() { return this->tree; }
-	bool IsGameOver() { return mike->IsDeath(); }
+	bool IsGameOver() { return player1->IsDeath(); }
 	InputContainer* inputContainer = &InputContainer::GetInstance();
 	void EndMap();
 private:
@@ -61,7 +61,8 @@ private:
 	HudVisitor hudVisitor;
 	
 	
-	Mike* mike = nullptr;
+	PlayableCharacter* player1 = nullptr;
+	PlayableCharacter* player2 = nullptr;
 	Map* map = nullptr;
 	Quadtree* tree = nullptr;
 };

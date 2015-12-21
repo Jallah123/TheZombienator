@@ -219,9 +219,6 @@
     <ClCompile Include="GameScreen.cpp">
       <Filter>Source Files\Views\GameScreen</Filter>
     </ClCompile>
-    <ClCompile Include="Mike.cpp">
-      <Filter>Source Files\Models\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
@@ -554,9 +551,6 @@
     <ClInclude Include="Button.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="Mike.h">
-      <Filter>Header Files\Models\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="PcMoveBehaviour.h">
       <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
@@ -748,12 +742,15 @@
     </ClInclude>
     <ClInclude Include="HighScores.h">
       <Filter>Header Files\Models</Filter>
-  </ClInclude>
+    </ClInclude>
     <ClInclude Include="ZombieDeadState.h">
       <Filter>Header Files\Models\States</Filter>
     </ClInclude>
     <ClInclude Include="WunderlandMap.h">
       <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyBinding.h">
+      <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,9 @@
 #include "PcMoveBehaviour.h"
 #include "Bullet.h"
-#include "Character.h"
 #include "InputContainer.h"
 #include "GameObjectContainer.h"
+#include "KeyBinding.h"
+#include "PlayableCharacter.h"
 
 PcMoveBehaviour::PcMoveBehaviour() : MoveBehaviour() {}
 
@@ -16,7 +17,7 @@ void PcMoveBehaviour::Move(float dt)
 	if (!this->gameObject) return;
 	if (!this->gameObject->CanMove()) return;
 
-	Character* c = dynamic_cast<Character*>(this->gameObject);
+	PlayableCharacter* c = dynamic_cast<PlayableCharacter*>(this->gameObject);
 	InputContainer* iC = c->GetInputContainer();
 	GameObjectContainer* goc = c->GetGameObjectContainer();
 	SDL_Rect* goRect = c->GetCollideRect();
@@ -27,10 +28,10 @@ void PcMoveBehaviour::Move(float dt)
 	float newY = c->getPosY();
 	
 	// -- Get input from user
-	bool up = iC->GetKeyState(SDLK_w);
-	bool left = iC->GetKeyState(SDLK_a);
-	bool down = iC->GetKeyState(SDLK_s);
-	bool right = iC->GetKeyState(SDLK_d);
+	bool up = iC->GetKeyState(c->keyBinding->UP);
+	bool left = iC->GetKeyState(c->keyBinding->LEFT);
+	bool down = iC->GetKeyState(c->keyBinding->DOWN);
+	bool right = iC->GetKeyState(c->keyBinding->RIGHT);
 	float speed = c->GetSpeed() * dt;
 
 	c->SetMoveDir(Direction::NONE);

@@ -28,17 +28,20 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 }
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> ScreenFactory::ScreenMap = fillMap();
-AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string _img_url)
+AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string play1_img_url, string play2_img_url)
 {
-	static string imgUrl;
+	static string play1ImgUrl = "";
+	static string play2ImgUrl = "";
 	AbstractScreen* screen = nullptr;
-	if (_img_url != "") {
-		imgUrl = _img_url;
+	if (play1_img_url != "") {
+		play1ImgUrl = play1_img_url;
 	}
-
+	if (play2_img_url != "") {
+		play2ImgUrl = play2_img_url;
+	}
 	if (screenEnum == ScreenEnum::GAMESCREEN)
 	{
-		screen = new GameScreen(Program::getInstance()->GetRenderer(), imgUrl);
+		screen = new GameScreen(Program::getInstance()->GetRenderer(), play1ImgUrl, play2ImgUrl);
 	}
 	else {
 		auto it = ScreenMap.find(screenEnum);

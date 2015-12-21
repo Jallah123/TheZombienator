@@ -5,14 +5,20 @@
 
 SwitchWeaponActionBehaviour::SwitchWeaponActionBehaviour()
 {
-	action = SDLK_e;
-	actionBackward = SDLK_q;
+
 }
 
 
 SwitchWeaponActionBehaviour::~SwitchWeaponActionBehaviour()
 {
 
+}
+
+void SwitchWeaponActionBehaviour::Init()
+{
+	PlayableCharacter* c = static_cast<PlayableCharacter*>(this->gameObject);
+	action = c->keyBinding->PREVIOUSWEAPON;
+	actionBackward = c->keyBinding->NEXTWEAPON;
 }
 
 void SwitchWeaponActionBehaviour::Update(float dt)

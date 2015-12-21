@@ -6,17 +6,17 @@
 #include "NumberUtility.h"
 #include "BehaviourFactory.h"
 #include "Map.h"
-#include "Mike.h"
+#include "KeyBinding.h"
 #include "Zombie.h"
 #include "TextureFactory.h"
 #include "MapFactory.h"
 #include "ScreenFactory.h"
 #include "Pistol.h"
 #include "MachineGun.h"
+#include "PlayableCharacter.h"
 
-GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(ren)
+GameScreen::GameScreen(SDL_Renderer* ren, string play1_img_url, string play2_img_url) : AbstractScreen(ren)
 {
-
 	// Get map
 	map = MapFactory::GetInstance()->NextMap();
 	tree = new Quadtree(map->GetBounds());
@@ -37,7 +37,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 		&collideContainer,
 		gameObjectContainer,
 		ren
-	);
+		);
 
 	BehaviourFactory::Instance()->SetContainers(
 		&drawContainer,
@@ -47,12 +47,20 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 		&collideContainer,
 		gameObjectContainer,
 		ren
-	);
-	
-	mike = goFactory->CreateMike(char_img_url);
-	mike->SetPosition(800, 300);
+		);
 
-	spawnController.AddTarget(mike);
+
+	player1 = goFactory->CreatePlayableCharacter(play1_img_url, new KeyBinding{ SDLK_w, SDLK_a, SDLK_s, SDLK_d, SDLK_SPACE, SDLK_q ,SDLK_e });
+	player1->SetPosition(800, 300);
+
+	if (play2_img_url != "") 
+	{
+		player2 = goFactory->CreatePlayableCharacter(play2_img_url, new KeyBinding{ SDLK_i, SDLK_j, SDLK_k, SDLK_l, SDLK_m, SDLK_u ,SDLK_o });
+		player2->SetPosition(700, 300);
+		spawnController.AddTarget(player2);
+	}
+
+	spawnController.AddTarget(player1);
 
 	//Load && play sound
 	map->PlaySounds();
@@ -102,7 +110,7 @@ void GameScreen::Update(float dt)
 	timeLastStateChange -= dt;
 }
 
-void GameScreen::HandleInput(float dt) 
+void GameScreen::HandleInput(float dt)
 {
 
 	if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
@@ -135,8 +143,8 @@ void GameScreen::HandleInput(float dt)
 		else if (inputContainer->GetKeyState(SDLK_F5))
 		{
 			cout << "Gave all weapons\n";
-			mike->AddWeapon(new Pistol);
-			mike->AddWeapon(new MachineGun);
+			player1->AddWeapon(new Pistol);
+			player1->AddWeapon(new MachineGun);
 			timeCheatActivated = cheatDelay;
 		}
 	}
@@ -150,14 +158,13 @@ void GameScreen::Shake(float time, int intensity) {
 
 void GameScreen::Draw(SDL_Renderer& ren, float dt)
 {
-
 	//tree->Display(&ren);
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
 	map->DrawFrontLayer(ren, XOffset, YOffset);
 
 	hudVisitor.DrawBase();
-	mike->GetWeapon()->Accept(&hudVisitor);
+	player1->GetWeapon()->Accept(&hudVisitor);
 
 	// If all waves defeated
 	if (spawnController.Completed())
@@ -174,7 +181,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		else if (spawnController.WaveCompleted()) {
 			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
 		}
-		
+
 	}
 	auto* text = TextureFactory::GenerateTextureFromTextHud(s);
 	SDL_Rect r{ 0,0,200,40 };
@@ -192,12 +199,12 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 void GameScreen::Transition(SDL_Renderer& ren) {
 
-	mike->Teleport(&ren);
+	player1->Teleport(&ren);
 
 	// Draw on top off everything
-	SDL_RenderCopy(&ren, mike->GetTexture(), &mike->GetSourceRect(), mike->GetDestinationRect());
+	SDL_RenderCopy(&ren, player1->GetTexture(), &player1->GetSourceRect(), player1->GetDestinationRect());
 
-	if (mike->getPosY() < -mike->GetHeight()) {
+	if (player1->getPosY() < -player1->GetHeight()) {
 
 		ScreenController::GetInstance().PopLatestScreen();
 

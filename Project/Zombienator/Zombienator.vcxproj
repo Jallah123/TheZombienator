@@ -233,7 +233,6 @@
     <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="MapParser.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
-    <ClCompile Include="Mike.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
@@ -317,6 +316,7 @@
     <ClInclude Include="HudVisitor.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ioController.h" />
+    <ClInclude Include="KeyBinding.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="HudDrawBehaviour.h" />
     <ClInclude Include="LabelEndScreen.h" />
@@ -339,7 +339,6 @@
     <ClInclude Include="InputContainer.h" />
     <ClInclude Include="KeyboardInputHandler.h" />
     <ClInclude Include="MenuScreen.h" />
-    <ClInclude Include="Mike.h" />
     <ClInclude Include="MoveBehaviour.h" />
     <ClInclude Include="MoveContainer.h" />
     <ClInclude Include="PauseScreen.h" />

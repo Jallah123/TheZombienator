@@ -2,7 +2,6 @@
 #include "GameObjectFactory.h"
 #include "GameObject.h"
 #include "Character.h"
-#include "Mike.h"
 #include "Zombie.h"
 #include "Map.h"
 #include "NormalBullet.h"
@@ -60,12 +59,12 @@ void GameObjectFactory::Register(std::string name, std::function<GameObject*(voi
 	GameObjectFactory::registry.insert({ name, fn });
 }
 
-Mike* GameObjectFactory::CreateMike(std::string img_url)
+PlayableCharacter* GameObjectFactory::CreatePlayableCharacter(std::string img_url, KeyBinding* keyBinding)
 {
-	GameObject* instance = GameObjectFactory::Find("mike");
+	GameObject* instance = GameObjectFactory::Find("playablecharacter");
 	if (instance != nullptr) {
-		Mike* cInstance = dynamic_cast<Mike*>(instance);
-		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer, img_url);
+		PlayableCharacter* cInstance = dynamic_cast<PlayableCharacter*>(instance);
+		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer, img_url, keyBinding);
 		return cInstance;
 	}
 	return nullptr;

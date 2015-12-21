@@ -1,20 +1,20 @@
 #include "GameObjectContainer.h"
 #include "GameObjectFactory.h"
-#include "Mike.h"
 #include "Zombie.h"
 #include "Map.h"
 #include "Quadtree.h"
 #include "CollideObject.h"
+#include "PlayableCharacter.h"
 
 GameObjectContainer::GameObjectContainer()
 {
-	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
+	GameObjectFactory::Instance()->Register("playablecharacter", [](void) -> GameObject* {return new PlayableCharacter(); });
 	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 }
 
 GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t): map(m), tree(t)
 {
-	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
+	GameObjectFactory::Instance()->Register("playablecharacter", [](void) -> GameObject* {return new PlayableCharacter(); });
 	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 }
 
