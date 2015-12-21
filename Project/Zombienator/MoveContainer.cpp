@@ -3,14 +3,12 @@
 #include "MoveBehaviour.h"
 #include "BehaviourFactory.h"
 #include "PcMoveBehaviour.h"
-#include "Pc2MoveBehaviour.h"
 #include "CollideBehaviour.h"
 #include "BulletMoveBehaviour.h"
 
 MoveContainer::MoveContainer()
 {
 	BehaviourFactory::Instance()->Register("PcMoveBehaviour", [](void) -> Behaviour* { return new PcMoveBehaviour(); });
-	BehaviourFactory::Instance()->Register("Pc2MoveBehaviour", [](void) -> Behaviour* { return new Pc2MoveBehaviour(); });
 	BehaviourFactory::Instance()->Register("BulletMoveBehaviour", [](void) -> Behaviour* { return new BulletMoveBehaviour(); });
 }
 

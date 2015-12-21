@@ -16,7 +16,6 @@
 #include "GameState.h"
 #include "HudVisitor.h"
 #include "Mike.h"
-#include "MrT.h"
 #include "PauseScreen.h"
 
 class Quadtree;
@@ -63,7 +62,6 @@ private:
 	
 	
 	Mike* mike = nullptr;
-	MrT* mrt = nullptr;
 	Map* map = nullptr;
 	Quadtree* tree = nullptr;
 };

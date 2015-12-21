@@ -15,7 +15,7 @@ class SpawnController
 {
 private:
 	vector<xy> locations;
-
+	
 	Map* map = nullptr;
 
 	int maxWaves = 5;
@@ -33,7 +33,7 @@ private:
 	bool waveFinished = false;
 	bool completed = false;
 	bool allWavesCompleted = false;
-
+	
 	GameScreen* gameScreen = nullptr;
 	Character* target = nullptr;
 
@@ -46,7 +46,7 @@ public:
 	~SpawnController();
 
 	void SetMap(Map* m);
-
+	
 	void Update(float dt);
 
 	void Spawn();
@@ -54,7 +54,7 @@ public:
 	void NextWave();
 
 	void Countdown();
-
+	
 	void AddLocation(int x, int y);
 
 	void AddTarget(Character* c) { this->target = c; }
@@ -64,7 +64,7 @@ public:
 	int Waves() { return this->maxWaves; }
 
 	int GetAmountOfZombies() { return zombies; };
-
+	
 	int CurrentWave() { return this->currentWave; }
 
 	int GetAmountToSpawn() { return round(pow((currentWave + 1), (3.0 / 2.0)));	};

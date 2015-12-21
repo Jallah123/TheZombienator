@@ -3,7 +3,6 @@
 #include "GameObject.h"
 #include "Character.h"
 #include "Mike.h"
-#include "MrT.h"
 #include "Zombie.h"
 #include "Map.h"
 #include "NormalBullet.h"
@@ -66,16 +65,6 @@ Mike* GameObjectFactory::CreateMike(std::string img_url)
 	GameObject* instance = GameObjectFactory::Find("mike");
 	if (instance != nullptr) {
 		Mike* cInstance = dynamic_cast<Mike*>(instance);
-		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer, img_url);
-		return cInstance;
-	}
-	return nullptr;
-}
-MrT* GameObjectFactory::CreateMrT(std::string img_url)
-{
-	GameObject* instance = GameObjectFactory::Find("mrt");
-	if (instance != nullptr) {
-		MrT* cInstance = dynamic_cast<MrT*>(instance);
 		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer, img_url);
 		return cInstance;
 	}

@@ -1,7 +1,6 @@
 #include "GameObjectContainer.h"
 #include "GameObjectFactory.h"
 #include "Mike.h"
-#include "MrT.h"
 #include "Zombie.h"
 #include "Map.h"
 #include "Quadtree.h"
@@ -10,14 +9,12 @@
 GameObjectContainer::GameObjectContainer()
 {
 	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
-	GameObjectFactory::Instance()->Register("mrt", [](void) -> GameObject* {return new MrT(); });
 	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 }
 
 GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t): map(m), tree(t)
 {
 	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
-	GameObjectFactory::Instance()->Register("mrt", [](void) -> GameObject* {return new MrT(); });
 	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 }
 
