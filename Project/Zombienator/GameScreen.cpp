@@ -1,4 +1,5 @@
 #pragma once
+#include "SDL.h"
 #include "GameScreen.h"
 #include <SDL_mixer.h>
 #include <iostream>
@@ -49,13 +50,12 @@ GameScreen::GameScreen(SDL_Renderer* ren, string play1_img_url, string play2_img
 		ren
 		);
 
-
 	player1 = goFactory->CreatePlayableCharacter(play1_img_url, new KeyBinding{ SDLK_w, SDLK_a, SDLK_s, SDLK_d, SDLK_SPACE, SDLK_q ,SDLK_e });
 	player1->SetPosition(800, 300);
-
+	
 	if (play2_img_url != "") 
 	{
-		player2 = goFactory->CreatePlayableCharacter(play2_img_url, new KeyBinding{ SDLK_i, SDLK_j, SDLK_k, SDLK_l, SDLK_m, SDLK_u ,SDLK_o });
+		player2 = goFactory->CreatePlayableCharacter(play1_img_url, new KeyBinding{ SDLK_UP, SDLK_LEFT, SDLK_DOWN, SDLK_RIGHT, SDLK_RCTRL, SDLK_DELETE ,SDLK_PAGEDOWN });
 		player2->SetPosition(700, 300);
 		spawnController.AddTarget(player2);
 	}
