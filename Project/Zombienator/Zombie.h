@@ -21,7 +21,7 @@ private:
 public:
 	Zombie();
 	Zombie(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, CollideContainer* collideC, ActionContainer* actionC, GameObjectContainer* gameObjectC);
-	~Zombie();
+	virtual ~Zombie();
 	void Init();
 
 	void SetTarget(Character* c) { this->target = c; }

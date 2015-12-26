@@ -22,9 +22,7 @@ public:
 	virtual ~Weapon();
 
 	virtual void Fire();
-
-	void Accept(HudVisitor* visitor) { visitor->Visit(this); };
-	
+		
 	string GetName() { return name; };
 	int GetDelay() { return this->delay; }
 	int const GetRounds() { return this->rounds; }
@@ -34,12 +32,6 @@ public:
 	void SetMaxAmmo() { rounds = maxRounds; }
 	bool HasMaxAmmo() { return rounds == maxRounds; }
 	
-	SDL_Texture* GetHudTexture() { return hudTexture;  }
-
-	int GetDelay() { return this->delay; }
-	int GetRounds() { return this->rounds; }
-	int GetDamage() { return this->damage; }
-	string GetName() { return name; };
 	SDL_Rect GetHudSourceRect() { return hudSourceRect; }
 
 

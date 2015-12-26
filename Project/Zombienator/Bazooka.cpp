@@ -3,14 +3,9 @@
 #include "BazookaBullet.h"
 #include "SoundController.h"
 
-Bazooka::Bazooka() : Weapon("assets/images/Bazooka.png")
+Bazooka::Bazooka()
+	: Weapon("Bazooka", 20, 100, 200, 100, "BazookaBullet", SDL_Rect{ 1064, 1022, 708, 218 })
 {
-	this->name = "Bazooka";
-	this->delay = 200;
-	this->damage = 100;  // 1/5 of a zombie's health
-	this->rounds = 20;
-	this->maxRounds = 100;
-	this->bulletType = "BazookaBullet";
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new BazookaBullet(); });
 }
 

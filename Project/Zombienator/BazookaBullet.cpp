@@ -4,7 +4,7 @@
 
 BazookaBullet::BazookaBullet()
 {
-	this->texture = TextureFactory::GenerateTextureFromImgUrl("assets/images/bullet.png");
+	this->texture = TextureFactory::CreateTexture("assets/images/bullet.png");
 	this->SetSize(20, 14);
 }
 
@@ -12,8 +12,6 @@ void BazookaBullet::ShakeScreen()
 {
 	GameScreen* gameScreen = this->GetOrigin()->GetGameScreen();
 	gameScreen->Shake(20,5);
-	gameScreen = nullptr;
-	delete gameScreen;
 }
 
 

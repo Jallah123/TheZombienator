@@ -3,16 +3,9 @@
 #include "MineBullet.h"
 #include "SoundController.h"
 
-Mine::Mine() : Weapon("assets/images/Mine.png")
+Mine::Mine() 
+	: Weapon("Mine", 10, 20, 100, 80, "MineBullet", SDL_Rect{ 862, 214, 126, 68 })
 {
-	this->name = "Mine";
-	this->delay = 100;
-	//set damage in minebullet.cpp. If you set a mine, switch weapon, the on collide function gets the damage of current weapon.
-	//this->damage = 5000;  // 1/5 of a zombie's health
-	this->rounds = 10;
-	this->maxRounds = 20;
-	this->bulletType = "MineBullet";
-
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new MineBullet(); });
 }
 
@@ -28,5 +21,4 @@ void Mine::Fire()
 		MineBullet* b = GameObjectFactory::Instance()->CreateMineBullet(this->character);
 		SoundController::GetInstance().PlaySound("assets/sounds/plantMine.wav", 0);
 	}
-	
 }

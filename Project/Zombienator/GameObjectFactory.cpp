@@ -152,6 +152,7 @@ MineBullet * GameObjectFactory::CreateMineBullet(PlayableCharacter * obj)
 		MineBullet* cInstance = dynamic_cast<MineBullet*>(instance);
 		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		cInstance->SetDamage(obj->GetWeapon()->GetDamage());
 		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
