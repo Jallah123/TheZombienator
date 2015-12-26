@@ -4,7 +4,9 @@
 #include "BehaviourFactory.h"
 #include "NormalBulletDrawBehaviour.h"
 #include "MovingBulletDrawBehaviour.h"
+#include "NonMovingBulletDrawBehaviour.h"
 #include "CharacterDrawBehaviour.h"
+#include "SimpleDrawBehaviour.h"
 #include "Bullet.h"
 #include <algorithm>
 #include "GameObject.h"
@@ -14,6 +16,8 @@ DrawContainer::DrawContainer()
 	BehaviourFactory::Instance()->Register("CharacterDrawBehaviour", [](void) -> Behaviour* { return new CharacterDrawBehaviour(); });
 	BehaviourFactory::Instance()->Register("NormalBulletDrawBehaviour", [](void) -> Behaviour* { return new NormalBulletDrawBehaviour(); });
 	BehaviourFactory::Instance()->Register("MovingBulletDrawBehaviour", [](void) -> Behaviour* { return new MovingBulletDrawBehaviour(); });
+	BehaviourFactory::Instance()->Register("NonMovingBulletDrawBehaviour", [](void) -> Behaviour* { return new NonMovingBulletDrawBehaviour(); });
+	BehaviourFactory::Instance()->Register("SimpleDrawBehaviour", [](void) -> Behaviour* { return new SimpleDrawBehaviour(); });
 }
 
 
@@ -27,14 +31,16 @@ void DrawContainer::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 	if (arr.empty()) return;//Do nothing on empty
 
 	Sort_zIndex();
-	for (Behaviour* i : this->arr) {
-		DrawBehaviour* db = dynamic_cast<DrawBehaviour*>(i);
-		
-		//Draw each Behaviour
+	for (auto itr = arr.begin(); itr != arr.end();)
+	{
+		DrawBehaviour* db = dynamic_cast<DrawBehaviour*>(*itr);
 		db->Draw(dt, ren, XOffset, YOffset);
-		if (i->CanBeRemove()) arrRemove.push_back(i);
+
+		if (db->CanBeRemove())
+			itr = Remove(db);
+		else
+			++itr;
 	}
-	RemoveAll();
 }
 
 void DrawContainer::Sort_zIndex()

@@ -6,7 +6,6 @@
 MachineGun::MachineGun() 
 	: Weapon("MachineGun", 20, 20, 20, 20, "MachineGunBullet", SDL_Rect{ 580, 431, 282, 186 })
 {
-	//this->bulletType = "MachineGunBullet";
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new MachineGunBullet(); });
 }
 

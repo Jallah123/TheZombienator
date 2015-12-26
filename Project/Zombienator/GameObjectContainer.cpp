@@ -8,14 +8,10 @@
 
 GameObjectContainer::GameObjectContainer()
 {
-	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
-	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 }
 
-GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t): map(m), tree(t)
+GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t) : map(m), tree(t)
 {
-	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
-	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
 }
 
 
@@ -25,6 +21,17 @@ GameObjectContainer::~GameObjectContainer()
 		delete *it;
 
 	objects.clear();
+}
+
+vector<GameObject*> GameObjectContainer::GetCollideableObjects()
+{
+	vector<GameObject*> o = {};
+	for (auto& ob : objects) {
+		if (ob->IsCollidable()) {
+			o.push_back(ob);
+		}
+	}
+	return o;
 }
 
 vector<GameObject*> GameObjectContainer::GetGameObjects(float x, float y)

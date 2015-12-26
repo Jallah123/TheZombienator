@@ -44,7 +44,7 @@ void HudVisitor::DrawBase()
 		}
 		SDL_RenderCopy(renderer, bloodHud, 0, &bloodRect);
 	}
-
+	
 }
 
 void HudVisitor::Visit(PlayableCharacter& character)
@@ -107,10 +107,6 @@ void HudVisitor::Visit(PlayableCharacter& character)
 }
 void HudVisitor::Visit(SpawnController & spawnController)
 {
-	//int zombiesOnScreen = spawnController.GetAmountSpawned();
-	//int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
-	//string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
-	
 	if (spawnController.WaveCompleted()) {
 		int seconds = spawnController.GetTimeTillNextWave() / 100;
 		string m_sCountDown = to_string(seconds);

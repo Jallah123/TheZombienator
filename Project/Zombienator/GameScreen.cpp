@@ -16,7 +16,6 @@
 
 GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(ren)
 {
-
 	// Get map
 	map = MapFactory::GetInstance()->NextMap();
 	tree = new Quadtree(map->GetBounds());
@@ -27,7 +26,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 	spawnController.SetMap(map);
 	BehaviourFactory::Instance()->SetMap(map);
 
-	//hudVisitor = HudVisitor{ ren, map->GetBounds() };
 	hudVisitor = HudVisitor{ ren, map->GetBounds() };
 	goFactory->SetContainers(
 		&drawContainer,
@@ -37,7 +35,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 		&collideContainer,
 		gameObjectContainer,
 		ren
-	);
+		);
 
 	BehaviourFactory::Instance()->SetContainers(
 		&drawContainer,
@@ -47,10 +45,11 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 		&collideContainer,
 		gameObjectContainer,
 		ren
-	);
-	
+		);
+
 	mike = goFactory->CreateMike(char_img_url);
 	mike->SetPosition(800, 300);
+	mike->SetGameScreen(this);
 
 	spawnController.AddTarget(mike);
 
@@ -102,7 +101,7 @@ void GameScreen::Update(float dt)
 	timeLastStateChange -= dt;
 }
 
-void GameScreen::HandleInput(float dt) 
+void GameScreen::HandleInput(float dt)
 {
 
 	if (InputContainer::GetInstance().GetKeyState(SDLK_ESCAPE))
@@ -165,7 +164,6 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	if (spawnController.Completed())
 		this->Transition(ren);
 
-	
 
 	// FPS
 	if (settings->getShowFps()) {
@@ -181,7 +179,7 @@ void GameScreen::Transition(SDL_Renderer& ren) {
 	mike->Teleport(&ren);
 
 	// Draw on top off everything
-	SDL_RenderCopy(&ren, mike->GetTexture(), &mike->GetSourceRect(), mike->GetDestinationRect());
+	SDL_RenderCopy(&ren, mike->GetTexture(), mike->GetSourceRect(), mike->GetDestinationRect());
 
 	if (mike->getPosY() < -mike->GetHeight()) {
 

@@ -14,11 +14,19 @@ class GameObjectContainer;
 
 //classes
 class GameObject;
+class Character;
 class Mike;
 class Zombie;
+//Bullets
 class NormalBullet;
 class PlayableCharacter;
 class MachineGunBullet;
+class BazookaBullet;
+class MineBullet;
+//Pickups
+class Pickup;
+class Medkit;
+class AmmoBox;
 
 struct SDL_Renderer;
 
@@ -52,4 +60,9 @@ public:
 	static Zombie* CreateZombie();
 	static NormalBullet* CreateNormalBullet(PlayableCharacter* obj);
 	static MachineGunBullet* CreateMachineGunBullet(PlayableCharacter* obj);
+	static BazookaBullet* CreateBazookaBullet(PlayableCharacter* obj);
+	static MineBullet* CreateMineBullet(PlayableCharacter* obj);
+	static Medkit* CreateMedkit(Character* obj);
+	static AmmoBox* CreateAmmoBox(Character* obj);
+	static Pickup* CreateRandomPickup(Character* obj);
 };

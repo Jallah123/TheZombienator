@@ -1,22 +1,32 @@
 #include "Mike.h"
 #include "KeyboardInputHandler.h"
 #include "Pistol.h"
+#include "Bazooka.h"
 #include "MachineGun.h"
+#include "Mine.h"
 #include "GameObjectContainer.h"
 #include "DrawContainer.h"
 
-Mike::Mike() : PlayableCharacter()
+Mike::Mike()
+	: PlayableCharacter()
 {
 }
 
-void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren, string img_url)
+Mike::Mike(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, CollideContainer * collideC, ActionContainer * actionC, GameObjectContainer * gameObjectC)
+	: PlayableCharacter(drawC, animC, moveC, collideC, actionC, gameObjectC)
+{
+}
+
+void Mike::Init(string img_url)
 {
 	KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
-	this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC, collideC, gameObjectC);
-
+	inputContainer = kh.inputContainer;
+	
 	this->AddWeapon(new MachineGun());
 	this->AddWeapon(new Pistol());
-	
+	this->AddWeapon(new Bazooka());
+	this->AddWeapon(new Mine());
+
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
 	SetMoveBehaviour("PcMoveBehaviour");
@@ -24,9 +34,9 @@ void Mike::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer *
 	SetActionBehaviour("SwitchWeaponActionBehaviour");
 	SetCollideBehaviour("CharacterCollideBehaviour");
 
-	gameObjectC->AddGameObject(this);
+	gameObjectContainer->AddGameObject(this);
 
-	SetImage(img_url, *ren);
+	SetImage(img_url);
 	SetSize(36, 38);
 	SetFrames(3);
 	SetMaxHealth(50);

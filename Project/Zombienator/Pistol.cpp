@@ -9,7 +9,6 @@
 Pistol::Pistol() : 
 	Weapon("Pistol", INT_MAX, INT_MAX, 80, 20, "bullet", SDL_Rect{222, 214, 262, 165})
 {
-	//this->bulletType = "bullet";
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new NormalBullet(); });
 }
 
@@ -23,7 +22,7 @@ void Pistol::Fire()
 	Weapon::Fire();
 	NormalBullet* b = GameObjectFactory::Instance()->CreateNormalBullet(this->character);
 	SoundController::GetInstance().PlaySound("assets/sounds/cg1.wav", 0);
-	this->rounds = INT_MAX;
+	this->rounds = maxRounds;
 }
 
 

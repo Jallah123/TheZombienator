@@ -6,6 +6,11 @@ PlayableCharacter::PlayableCharacter() : Character()
 {
 }
 
+PlayableCharacter::PlayableCharacter(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, CollideContainer * collideC, ActionContainer * actionC, GameObjectContainer * gameObjectC)
+	: Character(drawC, animC, moveC, collideC, actionC, gameObjectC)
+{
+}
+
 PlayableCharacter::~PlayableCharacter()
 {
 	for (auto& w : weapons)
@@ -69,7 +74,7 @@ void PlayableCharacter::Teleport(SDL_Renderer* ren) {
 		SetFlare(true);
 		this->Remove();
 		// Set flare
-		SetImage("assets/images/flare.png", *ren);
+		SetImage("assets/images/flare.png");
 	}
 
 	SetSize(256, 256);

@@ -7,6 +7,10 @@
 #include "Map.h"
 #include "NormalBullet.h"
 #include "MachineGunBullet.h"
+#include "BazookaBullet.h"
+#include "MineBullet.h"
+#include "Medkit.h"
+#include "AmmoBox.h"
 
 #include "DrawContainer.h"
 #include "AnimateContainer.h"
@@ -14,7 +18,7 @@
 #include "MoveContainer.h"
 #include "CollideContainer.h"
 #include "GameObjectContainer.h"
-
+#include "NumberUtility.h"
 //
 // DO NOT FORGET TO INITIALIZE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //
@@ -41,6 +45,7 @@ GameObject * GameObjectFactory::Find(std::string name)
 
 GameObjectFactory::~GameObjectFactory()
 {
+
 }
 
 void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
@@ -52,6 +57,14 @@ void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * 
 	collideContainer = collideC;
 	gameObjectContainer = gameObjectC;
 	renderer = ren;
+	GameObjectFactory::Instance()->Register("mike", [&](void) -> GameObject* {
+		return new Mike(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	GameObjectFactory::Instance()->Register("zombie", [&](void) -> GameObject* {
+		return new Zombie(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	GameObjectFactory::Instance()->Register("Medkit", [&](void) -> GameObject* {
+		return new Medkit(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	GameObjectFactory::Instance()->Register("AmmoBox", [&](void) -> GameObject* {
+		return new AmmoBox(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 }
 
 void GameObjectFactory::Register(std::string name, std::function<GameObject*(void)> fn)
@@ -65,7 +78,8 @@ Mike* GameObjectFactory::CreateMike(std::string img_url)
 	GameObject* instance = GameObjectFactory::Find("mike");
 	if (instance != nullptr) {
 		Mike* cInstance = dynamic_cast<Mike*>(instance);
-		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer, img_url);
+		cInstance->Init(img_url);
+		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
 	return nullptr;
@@ -75,7 +89,8 @@ Zombie* GameObjectFactory::CreateZombie()
 	GameObject* instance = GameObjectFactory::Find("zombie");
 	if (instance != nullptr) {
 		Zombie* cInstance = dynamic_cast<Zombie*>(instance);
-		cInstance->Init(drawContainer, animateContainer, moveContainer, actionContainer, collideContainer, gameObjectContainer, renderer);
+		cInstance->Init();
+		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
 	return nullptr;
@@ -90,6 +105,7 @@ NormalBullet * GameObjectFactory::CreateNormalBullet(PlayableCharacter * obj)
 		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
 		cInstance->CalculateEndPoint();
+		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
 
@@ -104,8 +120,89 @@ MachineGunBullet * GameObjectFactory::CreateMachineGunBullet(PlayableCharacter *
 		MachineGunBullet* cInstance = dynamic_cast<MachineGunBullet*>(instance);
 		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
 
 	return nullptr;
 }
+
+
+BazookaBullet * GameObjectFactory::CreateBazookaBullet(PlayableCharacter * obj)
+{
+	GameObject* instance = GameObjectFactory::Find("BazookaBullet");
+
+	if (instance != nullptr) {
+		BazookaBullet* cInstance = dynamic_cast<BazookaBullet*>(instance);
+		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
+		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		gameObjectContainer->AddGameObject(cInstance);
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+
+MineBullet * GameObjectFactory::CreateMineBullet(PlayableCharacter * obj)
+{
+	GameObject* instance = GameObjectFactory::Find("MineBullet");
+
+	if (instance != nullptr) {
+		MineBullet* cInstance = dynamic_cast<MineBullet*>(instance);
+		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
+		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		gameObjectContainer->AddGameObject(cInstance);
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+
+Medkit * GameObjectFactory::CreateMedkit(Character* obj)
+{
+	GameObject* instance = GameObjectFactory::Find("Medkit");
+
+	if (instance != nullptr) {
+		Medkit* cInstance = dynamic_cast<Medkit*>(instance);
+		
+		cInstance->SetOrigin(obj);//Position the object
+		gameObjectContainer->AddGameObject(cInstance);
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+AmmoBox * GameObjectFactory::CreateAmmoBox(Character * obj)
+{
+	GameObject* instance = GameObjectFactory::Find("AmmoBox");
+
+	if (instance != nullptr) {
+		AmmoBox* cInstance = dynamic_cast<AmmoBox*>(instance);
+
+		cInstance->SetOrigin(obj);//Position the object
+		gameObjectContainer->AddGameObject(cInstance);
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
+Pickup * GameObjectFactory::CreateRandomPickup(Character * obj)
+{
+	Pickup* p = nullptr;
+	int dice_roll = NumberUtility::RandomNumber(1, 100);
+	const int ammoChance = 10;
+	const int medKitChance = 2;
+	if (dice_roll <= medKitChance) {
+		p = CreateMedkit(obj);
+	}
+	else if (dice_roll <= ammoChance) {
+		p = CreateAmmoBox(obj);
+	}
+	return p;
+}
+
+
