@@ -6,6 +6,7 @@ class PlayableCharacter
 	: public Character
 {
 private:
+	int currentWeaponIndex = 0;
 	bool hasWeapon(Weapon* w);
 protected:
 	std::vector<Weapon*> weapons = {};
@@ -18,6 +19,9 @@ public:
 	void TakeHit(int damage) override;
 	void AddWeapon(Weapon* w);
 	Weapon* GetWeapon() { return this->weapon; }
+	int const AmountOfWeapons() { return weapons.size(); }
+	int const CurrentWeaponIndex() { return currentWeaponIndex; }
+
 	void SetWeapon(Weapon* w);
 	void NextWeapon();
 	void PreviousWeapon();

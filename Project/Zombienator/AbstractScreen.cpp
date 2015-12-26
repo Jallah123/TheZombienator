@@ -44,5 +44,5 @@ void AbstractScreen::ClickComponents(SDL_Point MousePosition)
 void AbstractScreen::ChangeBackground(SDL_Renderer * ren, char * img_url)
 {
 	SDL_DestroyTexture(backgroundTexture);
-	backgroundTexture = TextureFactory::GenerateTextureFromImgUrl(img_url);
+	backgroundTexture = TextureFactory::CreateTexture(img_url);
 }

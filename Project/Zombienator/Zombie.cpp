@@ -21,8 +21,8 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 	//Zombie doesn't have input from the InputContainer	
 	int dice_roll = NumberUtility::RandomNumber(1, 6);
 
-	string basePath = "assets/images/spritesheets/";
-	string baseAttackPath = "assets/images/spritesheets/attack/";
+	const string basePath = "assets/images/spritesheets/";
+	const string baseAttackPath = "assets/images/spritesheets/attack/";
 	string spriteSheet = std::to_string(dice_roll) + "zombie.png";
 
 	SetImage(basePath + spriteSheet, *ren);
@@ -77,17 +77,17 @@ bool Zombie::IsInAttackRadius(Character * target)
 
 void Zombie::SetNormalTexture(string path)
 {
-	normalTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+	normalTexture = TextureFactory::CreateTexture(path);
 }
 
 void Zombie::SetAttackTexture(string path)
 {
-	AttackTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+	AttackTexture = TextureFactory::CreateTexture(path);
 }
 
 void Zombie::SetDeadTexture(string path)
 {
-	DeadTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+	DeadTexture = TextureFactory::CreateTexture(path);
 }
 
 void Zombie::ChangeTexture(bool isAttack)

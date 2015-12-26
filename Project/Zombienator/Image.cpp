@@ -5,7 +5,7 @@
 Image::Image(SDL_Renderer& ren, string _img_url) 
 	: AbstractUIComponent(ren) {
 	img_url = _img_url;
-	texture = TextureFactory::GenerateTextureFromImgUrl(img_url);
+	texture = TextureFactory::CreateTexture(img_url);
 }
 
 void Image::Draw(SDL_Renderer& ren) {

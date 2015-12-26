@@ -27,8 +27,8 @@ GameScreen::GameScreen(SDL_Renderer* ren, string char_img_url) : AbstractScreen(
 	spawnController.SetMap(map);
 	BehaviourFactory::Instance()->SetMap(map);
 
-	hudVisitor = HudVisitor{ ren };
-
+	//hudVisitor = HudVisitor{ ren, map->GetBounds() };
+	hudVisitor = HudVisitor{ ren, map->GetBounds() };
 	goFactory->SetContainers(
 		&drawContainer,
 		&animateContainer,
@@ -157,29 +157,15 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	map->DrawFrontLayer(ren, XOffset, YOffset);
 
 	hudVisitor.DrawBase();
-	mike->GetWeapon()->Accept(&hudVisitor);
+	hudVisitor.Visit(*mike);
+	hudVisitor.Visit(spawnController);
+
 
 	// If all waves defeated
 	if (spawnController.Completed())
 		this->Transition(ren);
 
-	int zombiesOnScreen = spawnController.GetAmountSpawned();
-	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
-	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
-	if (zombiesLeft == 0) {
-		s = "Kill all zombies";
-		if (spawnController.AllWavesCompleted()) {
-			s = "Next map in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
-		}
-		else if (spawnController.WaveCompleted()) {
-			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
-		}
-		
-	}
-	auto* text = TextureFactory::GenerateTextureFromTextHud(s);
-	SDL_Rect r{ 0,0,200,40 };
-	SDL_RenderCopy(&ren, text, 0, &r);
-	SDL_DestroyTexture(text);
+	
 
 	// FPS
 	if (settings->getShowFps()) {
