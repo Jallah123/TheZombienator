@@ -7,6 +7,7 @@ class PlayableCharacter
 	: public Character
 {
 private:
+	int currentWeaponIndex = 0;
 	bool hasWeapon(Weapon* w);
 protected:
 	std::vector<Weapon*> weapons = {};
@@ -22,6 +23,10 @@ public:
 	void AddWeapon(Weapon* w);
 	Weapon* GetWeapon() { return this->weapon; }
 	std::vector<Weapon*> GetWeapons() { return this->weapons; }
+
+	int const AmountOfWeapons() { return weapons.size(); }
+	int const CurrentWeaponIndex() { return currentWeaponIndex; }
+
 	void SetWeapon(Weapon* w);
 	void NextWeapon();
 	void PreviousWeapon();

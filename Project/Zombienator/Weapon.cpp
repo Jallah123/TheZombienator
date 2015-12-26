@@ -6,10 +6,17 @@ Weapon::Weapon()
 {
 }
 
-Weapon::Weapon(std::string imagePath)
+Weapon::Weapon(std::string name, int rounds, int maxRounds, int delay, int damage, std::string bulletType, SDL_Rect srcRect) : 
+	name{ name },
+	rounds{ rounds },
+	maxRounds{ maxRounds },
+	delay{ delay },
+	damage{ damage },
+	bulletType{ bulletType }
 {
-	hudTexture = TextureFactory::GenerateTextureFromImgUrl(imagePath);
+	hudSourceRect = srcRect;
 }
+
 
 void Weapon::Fire()
 {

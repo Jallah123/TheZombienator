@@ -13,6 +13,10 @@ PlayableCharacter::PlayableCharacter(DrawContainer * drawC, AnimateContainer * a
 
 PlayableCharacter::~PlayableCharacter()
 {
+	for (auto& w : weapons)
+		delete w;
+
+	weapons.clear();
 	delete weapon;
 }
 
@@ -53,15 +57,15 @@ void PlayableCharacter::SetWeapon(Weapon * w)
 void PlayableCharacter::NextWeapon()
 {
 	int pos = std::find(weapons.begin(), weapons.end(), weapon) - weapons.begin();
-	int index = pos == weapons.size() -1 ? 0 : pos + 1;
-	SetWeapon(weapons.at(index));
+	currentWeaponIndex = pos == weapons.size() -1 ? 0 : pos + 1;
+	SetWeapon(weapons.at(currentWeaponIndex));
 }
 
 void PlayableCharacter::PreviousWeapon()
 {
 	int pos = std::find(weapons.begin(), weapons.end(), weapon) - weapons.begin();
-	int index = pos == 0 ? weapons.size() - 1 : pos - 1;
-	SetWeapon(weapons.at(index));
+	currentWeaponIndex = pos == 0 ? weapons.size() - 1 : pos - 1;
+	SetWeapon(weapons.at(currentWeaponIndex));
 }
 
 void PlayableCharacter::Teleport(SDL_Renderer* ren) {

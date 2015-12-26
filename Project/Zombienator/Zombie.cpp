@@ -80,17 +80,17 @@ bool Zombie::IsInAttackRadius(Character * target)
 
 void Zombie::SetNormalTexture(string path)
 {
-	normalTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+	normalTexture = TextureFactory::CreateTexture(path);
 }
 
 void Zombie::SetAttackTexture(string path)
 {
-	AttackTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+	AttackTexture = TextureFactory::CreateTexture(path);
 }
 
 void Zombie::SetDeadTexture(string path)
 {
-	DeadTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+	DeadTexture = TextureFactory::CreateTexture(path);
 }
 
 void Zombie::ChangeTexture(bool isAttack)

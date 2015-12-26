@@ -43,7 +43,7 @@ GameObject::~GameObject()
 
 void GameObject::SetImage(std::string path)
 {
-	texture = TextureFactory::GenerateTextureFromImgUrl(path);
+	texture = TextureFactory::CreateTexture(path);
 }
 
 void GameObject::SetSize(int w, int h)
