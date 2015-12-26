@@ -17,6 +17,7 @@ class GameObject;
 class Character;
 class Mike;
 class Zombie;
+class BadassZombie;
 //Bullets
 class NormalBullet;
 class PlayableCharacter;
@@ -58,6 +59,7 @@ public:
 
 	static Mike* CreateMike(std::string img_url);
 	static Zombie* CreateZombie();
+	static BadassZombie* CreateBadassZombie();
 	static NormalBullet* CreateNormalBullet(PlayableCharacter* obj);
 	static MachineGunBullet* CreateMachineGunBullet(PlayableCharacter* obj);
 	static BazookaBullet* CreateBazookaBullet(PlayableCharacter* obj);

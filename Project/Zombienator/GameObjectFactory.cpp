@@ -4,6 +4,7 @@
 #include "Character.h"
 #include "Mike.h"
 #include "Zombie.h"
+#include "BadassZombie.h"
 #include "Map.h"
 #include "NormalBullet.h"
 #include "MachineGunBullet.h"
@@ -61,6 +62,8 @@ void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * 
 		return new Mike(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 	GameObjectFactory::Instance()->Register("zombie", [&](void) -> GameObject* {
 		return new Zombie(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	GameObjectFactory::Instance()->Register("BadassZombie", [&](void) -> GameObject* {
+		return new BadassZombie(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 	GameObjectFactory::Instance()->Register("Medkit", [&](void) -> GameObject* {
 		return new Medkit(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 	GameObjectFactory::Instance()->Register("AmmoBox", [&](void) -> GameObject* {
@@ -89,6 +92,18 @@ Zombie* GameObjectFactory::CreateZombie()
 	GameObject* instance = GameObjectFactory::Find("zombie");
 	if (instance != nullptr) {
 		Zombie* cInstance = dynamic_cast<Zombie*>(instance);
+		cInstance->Init();
+		gameObjectContainer->AddGameObject(cInstance);
+		return cInstance;
+	}
+	return nullptr;
+}
+
+BadassZombie * GameObjectFactory::CreateBadassZombie()
+{
+	GameObject* instance = GameObjectFactory::Find("BadassZombie");
+	if (instance != nullptr) {
+		BadassZombie* cInstance = dynamic_cast<BadassZombie*>(instance);
 		cInstance->Init();
 		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
@@ -153,6 +168,7 @@ MineBullet * GameObjectFactory::CreateMineBullet(PlayableCharacter * obj)
 		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
 		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
 		cInstance->SetDamage(obj->GetWeapon()->GetDamage());
+		cInstance->SetPosition(obj->getPosX(), obj->getPosY());
 		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}

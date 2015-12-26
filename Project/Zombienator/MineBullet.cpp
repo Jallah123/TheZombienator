@@ -27,6 +27,6 @@ void MineBullet::ShakeScreen()
 
 void MineBullet::SetBehaviours()
 {
-	SetDrawBehaviour("NonMovingBulletDrawBehaviour");
+	SetDrawBehaviour("SimpleDrawBehaviour");
 	SetCollideBehaviour("NonMovingBulletCollideBehaviour");
 }

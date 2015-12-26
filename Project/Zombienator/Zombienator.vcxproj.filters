@@ -498,9 +498,6 @@
     <ClCompile Include="HudDrawBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour\Draw</Filter>
     </ClCompile>
-    <ClCompile Include="NonMovingBulletDrawBehaviour.cpp">
-      <Filter>Source Files\Models\Behaviour\Draw</Filter>
-    </ClCompile>
     <ClCompile Include="NormalBulletDrawBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour\Draw</Filter>
     </ClCompile>
@@ -816,9 +813,6 @@
       <Filter>Header Files\Models\Behaviour\Draw</Filter>
     </ClInclude>
     <ClInclude Include="MovingBulletDrawBehaviour.h">
-      <Filter>Header Files\Models\Behaviour\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="NonMovingBulletDrawBehaviour.h">
       <Filter>Header Files\Models\Behaviour\Draw</Filter>
     </ClInclude>
     <ClInclude Include="NormalBulletDrawBehaviour.h">
