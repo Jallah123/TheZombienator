@@ -8,7 +8,8 @@ protected:
 public:
 	NonMovingBullet();
 	~NonMovingBullet();
-	int GetDamage() { return damage; };
 	virtual void Hit() {};
+	int GetDamage() { return this->damage; }
+	void SetDamage(int d) { damage = d; }
 };
 

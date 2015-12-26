@@ -525,6 +525,9 @@
     <ClCompile Include="NonMovingBullet.cpp">
       <Filter>Source Files\Models\Bullets</Filter>
     </ClCompile>
+    <ClCompile Include="BadassZombie.cpp">
+      <Filter>Source Files\Models\GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -784,7 +787,7 @@
     </ClInclude>
     <ClInclude Include="HighScores.h">
       <Filter>Header Files\Models</Filter>
-  </ClInclude>
+    </ClInclude>
     <ClInclude Include="ZombieDeadState.h">
       <Filter>Header Files\Models\States</Filter>
     </ClInclude>
@@ -856,6 +859,9 @@
     </ClInclude>
     <ClInclude Include="NonMovingBullet.h">
       <Filter>Header Files\Models\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="BadassZombie.h">
+      <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

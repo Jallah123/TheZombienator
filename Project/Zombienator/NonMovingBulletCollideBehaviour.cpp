@@ -22,11 +22,15 @@ void NonMovingBulletCollideBehaviour::Collide(float dt)
 			if (SDL_HasIntersection(bullet->GetDestinationRect(), g->GetDestinationRect())) {
 
 				//when a collide happens,get zombie's in triple size radius
-				SDL_Rect* radius = bullet->GetDestinationRect();
-				radius->h = radius->h * 3;
-				radius->w = radius->w * 3;
+				SDL_Rect* radiusR = bullet->GetDestinationRect();
+				float radiusX = radiusR->w * 3;
+				float radiusY = radiusR->h * 3;
+				radiusR->x -= radiusX;
+				radiusR->y -= radiusY;
+				radiusR->w += radiusX;
+				radiusR->h += radiusY;
 				for (auto& z : gos) {
-					if (SDL_HasIntersection(radius, z->GetDestinationRect())) {
+					if (SDL_HasIntersection(radiusR, z->GetDestinationRect())) {
 						Zombie* target = dynamic_cast<Zombie*>(z);
 						if (target != nullptr)
 						{

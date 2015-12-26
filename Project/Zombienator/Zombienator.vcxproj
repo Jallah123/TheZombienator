@@ -184,6 +184,7 @@
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="BackToMenuButton.cpp" />
+    <ClCompile Include="BadassZombie.cpp" />
     <ClCompile Include="Bazooka.cpp" />
     <ClCompile Include="BazookaBullet.cpp" />
     <ClCompile Include="Behaviour.cpp" />
@@ -308,6 +309,7 @@
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="BackToMenuButton.h" />
+    <ClInclude Include="BadassZombie.h" />
     <ClInclude Include="Bazooka.h" />
     <ClInclude Include="BazookaBullet.h" />
     <ClInclude Include="Behaviour.h" />
