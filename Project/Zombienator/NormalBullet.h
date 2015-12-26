@@ -21,6 +21,7 @@ public:
 	SDL_Point* GetEndPoint() { return end; }
 	SDL_Point* GetBeginPoint();
 	void SetBeginPoint(SDL_Point* p) { begin = p; }
+	void SetEndPoint(SDL_Point* p) { end = p; }
 
 };
 

@@ -24,9 +24,9 @@ void NormalBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset, i
 		return;
 	}
 	
+	SDL_Point* begin = b->GetBeginPoint();
 	b->CalculateEndPoint();
 	SDL_Point* end = b->GetEndPoint();
-	SDL_Point* begin = b->GetBeginPoint();
 		
 	
 	if (b->IsLocked()) {
