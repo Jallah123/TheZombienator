@@ -14,7 +14,7 @@ ShootActionBehaviour::~ShootActionBehaviour()
 void ShootActionBehaviour::Init()
 {
 	PlayableCharacter* c = static_cast<PlayableCharacter*>(this->gameObject);
-	this->action = c->keyBinding->SHOOT;
+	this->action = c->getKeyBinding()->SHOOT;
 }
 
 void ShootActionBehaviour::Update(float dt)

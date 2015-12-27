@@ -14,6 +14,7 @@ public:
 	GameObjectContainer(Map* m, Quadtree* t);
 	~GameObjectContainer();
 	vector<GameObject*> GetGameObjects() { return objects; };
+	vector<GameObject*> GetCollideableObjects();
 	vector<GameObject*> GetGameObjects(float x, float y);
 	void AddGameObject(GameObject* c);
 	void Remove(GameObject* c);
@@ -24,7 +25,5 @@ private:
 	Map* map = nullptr;
 	Quadtree* tree = nullptr;
 	vector<GameObject*> objects = {};
-	vector<GameObject*> arrRemove = {};
-	
+	vector<GameObject*> arrRemove = {};	
 };
-

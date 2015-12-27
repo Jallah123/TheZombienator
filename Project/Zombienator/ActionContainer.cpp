@@ -20,10 +20,14 @@ void ActionContainer::Update(float dt)
 {
 	if (arr.empty()) return;
 	
-	for (Behaviour* b : this->arr) {
-		ActionBehaviour* ab = dynamic_cast<ActionBehaviour*>(b);
+	for (auto itr = arr.begin(); itr != arr.end();)
+	{
+		ActionBehaviour* ab = dynamic_cast<ActionBehaviour*>(*itr);
 		ab->Update(dt);
-		if (ab->CanBeRemove()) arrRemove.push_back(ab);
+
+		if (ab->CanBeRemove())
+			itr = Remove(ab);
+		else
+			++itr;
 	}
-	RemoveAll();
 }

@@ -11,16 +11,24 @@ PlayableCharacter::PlayableCharacter() : Character()
 {
 }
 
+PlayableCharacter::PlayableCharacter(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, CollideContainer * collideC, ActionContainer * actionC, GameObjectContainer * gameObjectC)
+	: Character(drawC, animC, moveC, collideC, actionC, gameObjectC)
+{
+}
+
 PlayableCharacter::~PlayableCharacter()
 {
+	for (auto& w : weapons)
+		delete w;
+
+	weapons.clear();
 	delete weapon;
 	delete keyBinding;
 }
 
-void PlayableCharacter::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren, string img_url, KeyBinding* _keyBinding)
+void PlayableCharacter::Init(string img_url, KeyBinding* _keyBinding)
 {
 		KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
-		this->SetContainers(drawC, animC, moveC, kh.inputContainer, actionC, collideC, gameObjectC);
 
 		keyBinding = _keyBinding;
 
@@ -34,9 +42,7 @@ void PlayableCharacter::Init(DrawContainer * drawC, AnimateContainer * animC, Mo
 		SetActionBehaviour("SwitchWeaponActionBehaviour");
 		SetCollideBehaviour("CharacterCollideBehaviour");
 
-		gameObjectC->AddGameObject(this);
-
-		SetImage(img_url, *ren);
+		SetImage(img_url);
 		SetSize(36, 38);
 		SetFrames(3);
 		SetMaxHealth(50);
@@ -80,15 +86,15 @@ void PlayableCharacter::SetWeapon(Weapon * w)
 void PlayableCharacter::NextWeapon()
 {
 	int pos = std::find(weapons.begin(), weapons.end(), weapon) - weapons.begin();
-	int index = pos == weapons.size() -1 ? 0 : pos + 1;
-	SetWeapon(weapons.at(index));
+	currentWeaponIndex = pos == weapons.size() -1 ? 0 : pos + 1;
+	SetWeapon(weapons.at(currentWeaponIndex));
 }
 
 void PlayableCharacter::PreviousWeapon()
 {
 	int pos = std::find(weapons.begin(), weapons.end(), weapon) - weapons.begin();
-	int index = pos == 0 ? weapons.size() - 1 : pos - 1;
-	SetWeapon(weapons.at(index));
+	currentWeaponIndex = pos == 0 ? weapons.size() - 1 : pos - 1;
+	SetWeapon(weapons.at(currentWeaponIndex));
 }
 
 void PlayableCharacter::Teleport(SDL_Renderer* ren) {
@@ -97,7 +103,7 @@ void PlayableCharacter::Teleport(SDL_Renderer* ren) {
 		SetFlare(true);
 		this->Remove();
 		// Set flare
-		SetImage("assets/images/flare.png", *ren);
+		SetImage("assets/images/flare.png");
 	}
 
 	SetSize(256, 256);
@@ -115,5 +121,4 @@ void PlayableCharacter::SetFlare(bool newFlare) {
 		CanMove(true);
 		isFlare = false;
 	}
-
 }

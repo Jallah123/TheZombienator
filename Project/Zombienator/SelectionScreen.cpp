@@ -72,7 +72,7 @@ struct SelectButton : Button {
 SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
 	std::cout << "Made SelectionScreen" << std::endl;
-	backgroundTexture = TextureFactory::GenerateTextureFromImgUrl("assets/images/default_bg.png");
+	backgroundTexture = TextureFactory::CreateTexture("assets/images/default_bg.png");
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy1.png"));
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy2.png"));
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy3.png"));

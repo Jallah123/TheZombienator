@@ -17,8 +17,8 @@ SwitchWeaponActionBehaviour::~SwitchWeaponActionBehaviour()
 void SwitchWeaponActionBehaviour::Init()
 {
 	PlayableCharacter* c = static_cast<PlayableCharacter*>(this->gameObject);
-	action = c->keyBinding->PREVIOUSWEAPON;
-	actionBackward = c->keyBinding->NEXTWEAPON;
+	action = c->getKeyBinding()->PREVIOUSWEAPON;
+	actionBackward = c->getKeyBinding()->NEXTWEAPON;
 }
 
 void SwitchWeaponActionBehaviour::Update(float dt)

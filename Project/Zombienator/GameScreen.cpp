@@ -16,12 +16,12 @@
 #include "MachineGun.h"
 #include "PlayableCharacter.h"
 
-
 GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string mapUrl) : AbstractScreen(ren)
 {
 	defaultKeybindings.push_back(new KeyBinding{ SDLK_w, SDLK_a, SDLK_s, SDLK_d, SDLK_SPACE, SDLK_q ,SDLK_e });
 	defaultKeybindings.push_back(new KeyBinding{ SDLK_UP, SDLK_LEFT, SDLK_DOWN, SDLK_RIGHT, SDLK_RCTRL, SDLK_DELETE ,SDLK_PAGEDOWN });
 	characterImageUrls = characterUrls;
+
 	// Get map
 	if (mapUrl == "") 
 	{
@@ -41,8 +41,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 	spawnController.SetMap(map);
 	BehaviourFactory::Instance()->SetMap(map);
 
-	hudVisitor = HudVisitor{ ren };
-
+	hudVisitor = HudVisitor{ ren, map->GetBounds() };
 	goFactory->SetContainers(
 		&drawContainer,
 		&animateContainer,
@@ -62,6 +61,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 		gameObjectContainer,
 		ren
 		);
+
 	for (int i = 0; i < characterImageUrls.size();i++)
 	{
 		players.push_back(goFactory->CreatePlayableCharacter(characterImageUrls.at(i), defaultKeybindings.at(i)));
@@ -180,21 +180,9 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	map->Draw(ren, XOffset, YOffset);
 	drawContainer.Draw(dt, ren, XOffset, YOffset);
 
-	for each (auto gameobject in gameObjectContainer->GetGameObjects())
-	{
-		if (Character* c = dynamic_cast<Character*>(gameobject))
-		{
-			c->Accept(hudVisitor);
-		}
-	}
-
 	map->DrawFrontLayer(ren, XOffset, YOffset);
 
 	hudVisitor.DrawBase();
-	for (auto& player : players)
-	{
-		player->GetWeapon()->Accept(&hudVisitor);
-	}
 
 	// if story mode || not infinity mode
 	if (!isInfinityMode) {
@@ -205,30 +193,14 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 			{
 				return;
 			}
+			for (auto& player: players)
+			{
+				hudVisitor.Visit(*player);
+			}
 
+			hudVisitor.Visit(spawnController);
 		}
 	}
-
-	int zombiesOnScreen = spawnController.GetAmountSpawned();
-	int zombiesLeft = spawnController.GetAmountToSpawn() - zombiesOnScreen;
-	string s = "Zombies left to spawn : " + std::to_string(zombiesLeft);
-	if (zombiesLeft == 0) {
-		s = "Kill all zombies";
-		if (spawnController.CurrentWave() == 4 && spawnController.WaveCompleted() && !isInfinityMode) {
-			s = "Next map in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
-		}
-		else if (spawnController.WaveCompleted() && currentState == GameState::RUNNING) {
-			s = "Next wave in: " + std::to_string(spawnController.GetTimeTillNextWave() / 100);
-		}
-	}
-	if (currentState == GameState::TRANSITIONING) {
-		s = "Transitioning to next level";
-	}
-
-	auto* text = TextureFactory::GenerateTextureFromTextHud(s);
-	SDL_Rect r{ 0,0,200,40 };
-	SDL_RenderCopy(&ren, text, 0, &r);
-	SDL_DestroyTexture(text);
 
 	// FPS
 	if (settings->getShowFps()) {
@@ -245,7 +217,7 @@ bool GameScreen::Transition(SDL_Renderer& ren)
 	{
 		player->Teleport(&ren);
 		// Draw on top off everything
-		SDL_RenderCopy(&ren, player->GetTexture(), &player->GetSourceRect(), player->GetDestinationRect());
+		SDL_RenderCopy(&ren, player->GetTexture(), player->GetSourceRect(), player->GetDestinationRect());
 
 		if (player->getPosY() < -player->GetHeight())
 		{
@@ -266,4 +238,16 @@ bool GameScreen::Transition(SDL_Renderer& ren)
 		}
 		return false;
 	}
+}
+
+bool GameScreen::IsGameOver()
+{
+	for (auto& player : players)
+	{
+		if (!player->IsDeath())
+		{
+			return false;
+		}
+	}
+	return true;
 }

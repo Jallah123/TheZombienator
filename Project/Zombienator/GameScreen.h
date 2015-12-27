@@ -33,17 +33,7 @@ public:
 	bool Transition(SDL_Renderer& ren);
 	void NextMap(SDL_Renderer & ren);
 	Quadtree* GetTree() { return this->tree; }
-	bool IsGameOver() 
-	{ 
-		for (auto& player: players)
-		{
-			if (!player->IsDeath())
-			{
-				return false;
-			}
-		}
-		return true; 
-	}
+	bool IsGameOver();
 	InputContainer* inputContainer = &InputContainer::GetInstance();
 	void EndMap();
 private:

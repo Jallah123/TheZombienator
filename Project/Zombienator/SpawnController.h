@@ -18,6 +18,7 @@ private:
 	
 	Map* map = nullptr;
 
+	int maxWaves = 5;
 	int currentWave = 0;
 
 	int zombies = 0;
@@ -57,6 +58,10 @@ public:
 	void AddLocation(int x, int y);
 
 	void AddTarget(Character* c) { this->target = c; }
+
+	void Waves(int w) { this->maxWaves = w; }
+
+	int Waves() { return this->maxWaves; }
 
 	int GetAmountOfZombies() { return zombies; };
 	

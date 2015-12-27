@@ -19,7 +19,6 @@ void Bullet::Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc, Ga
 	this->moveContainer = mc;
 	this->collideContainer = cc;
 	this->gameObjectContainer = goc;
-	this->gameObjectContainer->AddGameObject(this);
 	SetBehaviours();
 }
 

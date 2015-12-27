@@ -3,7 +3,7 @@
 #include "Zombie.h"
 #include "Bullet.h"
 
-MovingBulletCollideBehaviour::MovingBulletCollideBehaviour() 
+MovingBulletCollideBehaviour::MovingBulletCollideBehaviour() : CollideBehaviour()
 {
 }
 
@@ -15,7 +15,7 @@ void MovingBulletCollideBehaviour::Collide(float dt)
 {
 	Bullet* bullet = dynamic_cast<Bullet*>(this->gameObject);
 
-	std::vector<GameObject*> gos = gameObjectContainer->GetGameObjects();
+	std::vector<GameObject*> gos = gameObjectContainer->GetCollideableObjects();
 	for (auto& g : gos)
 	{
 		if (dynamic_cast<PlayableCharacter*>(g)) continue;
@@ -26,6 +26,7 @@ void MovingBulletCollideBehaviour::Collide(float dt)
 				if (target != nullptr)
 				{
 					target->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
+					bullet->ShakeScreen();
 				}
 				//check if object is playableCharacter
 				else if (dynamic_cast<PlayableCharacter*>(g) != nullptr && Settings::GetInstance().getFiendlyFire()) {
