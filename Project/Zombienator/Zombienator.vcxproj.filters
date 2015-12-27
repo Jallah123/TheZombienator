@@ -450,6 +450,12 @@
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\Views\UIComponents\Images</Filter>
     </ClCompile>
+    <ClCompile Include="MapSelectionScreen.cpp">
+      <Filter>Source Files\Views\MenuScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectoryUtils.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
     <ClCompile Include="ioController.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
@@ -461,6 +467,9 @@
     </ClCompile>
     <ClCompile Include="WunderlandMap.cpp">
       <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiplayerButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -737,6 +746,15 @@
     <ClInclude Include="Image.h">
       <Filter>Header Files\Views\UIComponents\Images</Filter>
     </ClInclude>
+    <ClInclude Include="dirent.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MapSelectionScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectoryUtils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="ioController.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
@@ -751,6 +769,9 @@
     </ClInclude>
     <ClInclude Include="KeyBinding.h">
       <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiplayerButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

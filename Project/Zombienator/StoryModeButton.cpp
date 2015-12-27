@@ -20,7 +20,7 @@ void StoryModeButton::ClickAction()
 {
 	MapFactory::GetInstance()->StoryMode();
 	StatsController::GetInstance()->Reset();
-	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SELECTIONSCREEN, "assets/maps/landscape-1280x640.json"));
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SELECTIONSCREEN));
 }
 
 StoryModeButton::~StoryModeButton()

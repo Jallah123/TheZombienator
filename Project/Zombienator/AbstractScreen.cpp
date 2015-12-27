@@ -1,5 +1,6 @@
 #include "AbstractScreen.h"
 #include "TextureFactory.h"
+#include "AbstractUIComponent.h"
 
 AbstractScreen::AbstractScreen()
 {
@@ -19,6 +20,18 @@ AbstractScreen::~AbstractScreen()
 		delete component;
 	}
 	UIComponents.clear();
+}
+
+void AbstractScreen::Draw(SDL_Renderer& ren, float dt)
+{
+	if (backgroundTexture != nullptr)
+	{
+		SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
+	}
+	for each (const auto& component in UIComponents)
+	{
+		component->Draw(ren);
+	}
 }
 
 void AbstractScreen::AddUIComponent(AbstractUIComponent* UIComponent)

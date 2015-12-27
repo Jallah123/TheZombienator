@@ -7,7 +7,7 @@
 #include "SettingsButton.h"
 #include "ScreenController.h"
 #include "ScreenFactory.h"
-
+#include "MultiplayerButton.h"
 
 struct HelpButton : Button {
 
@@ -31,14 +31,17 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	// StoryModeButton
 	storyModeBtn = new StoryModeButton(*ren, "", "assets/images/button_spritesheet.png");
 	// InfiniteModeButton -- Uncomment for presentation
-	// infiniteModeBtn = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
+	infiniteModeBtn = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
+	// Multiplayer
+	multiplayerBtn = new MultiplayerButton(*ren, "Multiplayer", "assets/images/button_spritesheet.png");
 	// CreditScreenButton
 	creditsButton = new CreditButton(*ren, "", "assets/images/button_spritesheet.png");
 	
 	AddUIComponent(helpBtn);
 	AddUIComponent(settingsBtn);
 	AddUIComponent(storyModeBtn);
-	//AddUIComponent(infiniteModeBtn);
+	AddUIComponent(infiniteModeBtn);
+	AddUIComponent(multiplayerBtn);
 	AddUIComponent(creditsButton);
 	SoundController->ChangeMusic("assets/sounds/Undead-Rising.flac");
 }
@@ -58,7 +61,5 @@ void HomeScreen::Update(float dt)
 
 void HomeScreen::Draw(SDL_Renderer & ren, float dt)
 {
-	SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
-	for (const auto& i : UIComponents)
-		i->Draw(ren);
+	AbstractScreen::Draw(ren, dt);
 }

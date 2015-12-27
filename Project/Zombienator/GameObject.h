@@ -11,6 +11,7 @@ protected:
 	Direction lookDir = Direction::SOUTH;
 	bool canMove = true;
 	SDL_Texture* texture = nullptr;
+	string texturePath = "";
 	int width = 0, height = 0;
 	SDL_Rect sourceRect = { 0,0,0,0 }, destRect = { 0,0,0,0 }, collRect = { 0,0,0,0 };
 
@@ -40,6 +41,7 @@ public:
 	int const GetHeight() { return this->height; }
 	int const GetWidth() { return this->width; }
 	SDL_Texture* const GetTexture() { return this->texture; }
+	string const GetTexturePath() { return texturePath; };
 	Direction const GetMoveDir() { return this->moveDir; }
 	Direction const GetLookDir() { return this->lookDir; }
 	bool CanMove() { return this->canMove; }

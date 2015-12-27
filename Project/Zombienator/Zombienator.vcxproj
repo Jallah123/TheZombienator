@@ -197,6 +197,7 @@
     <ClCompile Include="CreditScreen.cpp" />
     <ClCompile Include="CustomFuncButton.cpp" />
     <ClCompile Include="Direction.cpp" />
+    <ClCompile Include="DirectoryUtils.cpp" />
     <ClCompile Include="FontEnum.cpp" />
     <ClCompile Include="GameDifficulty.cpp" />
     <ClCompile Include="GameMath.cpp" />
@@ -235,7 +236,9 @@
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
+    <ClCompile Include="MultiplayerButton.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
+    <ClCompile Include="MapSelectionScreen.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SettingsScreen.cpp" />
     <ClCompile Include="MovingBulletCollideBehaviour.cpp" />
@@ -305,6 +308,8 @@
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="CollideObject.h" />
     <ClInclude Include="CustomFuncButton.h" />
+    <ClInclude Include="DirectoryUtils.h" />
+    <ClInclude Include="dirent.h" />
     <ClInclude Include="GameMath.h" />
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="CreditButton.h" />
@@ -341,7 +346,9 @@
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MoveBehaviour.h" />
     <ClInclude Include="MoveContainer.h" />
+    <ClInclude Include="MultiplayerButton.h" />
     <ClInclude Include="PauseScreen.h" />
+    <ClInclude Include="MapSelectionScreen.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="SettingsScreen.h" />
     <ClInclude Include="MovingBulletCollideBehaviour.h" />

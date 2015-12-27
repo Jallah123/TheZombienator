@@ -1,10 +1,9 @@
 #pragma once
 #include <stack> 
-#include "AbstractScreen.h"
-#include <memory>
 
 using namespace std;
 
+class AbstractScreen;
 class ScreenController
 {
 public:
@@ -17,7 +16,7 @@ public:
 	void EmptyStack();
 	std::stack<AbstractScreen*> GetScreenStack() { return screenStack; };
 	AbstractScreen* GetCurrentScreen() { return screenStack.top(); };
-	void PopLatestScreen() { screenStack.pop(); };
+	void PopLatestScreen() { AbstractScreen* screen = screenStack.top();  screenStack.pop(); delete screen; };
 	AbstractScreen* GetLoadingScreen() { return loadingScreen; };
 	void AddLoadingScreen(AbstractScreen* s) { loadingScreen = s; };
 	int Size();

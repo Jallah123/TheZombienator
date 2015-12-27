@@ -23,26 +23,40 @@ class GameScreen : public AbstractScreen
 {
 public:
 	GameScreen();
-	GameScreen(SDL_Renderer* _ren, string play1_img_url, string play2_img_url);
+	GameScreen(SDL_Renderer* _ren, vector<string> characterImageUrls, string mapUrl = "");
 	~GameScreen();
 	void Shake(float time, int intensity = 20);
 	virtual void Update(float dt) override;
 	virtual void ReceiveFocus() override;
 	virtual void Draw(SDL_Renderer& ren, float dt) override;
 	void NextMap(SDL_Renderer* ren);
-	void Transition(SDL_Renderer& ren);
+	bool Transition(SDL_Renderer& ren);
 	void NextMap(SDL_Renderer & ren);
 	Quadtree* GetTree() { return this->tree; }
-	bool IsGameOver() { return player1->IsDeath(); }
+	bool IsGameOver() 
+	{ 
+		for (auto& player: players)
+		{
+			if (!player->IsDeath())
+			{
+				return false;
+			}
+		}
+		return true; 
+	}
 	InputContainer* inputContainer = &InputContainer::GetInstance();
 	void EndMap();
 private:
+	vector<KeyBinding*> defaultKeybindings;
+	vector<string> characterImageUrls;
 	float shake = 0;
 	int shakeIntensity = 20;
 	int XOffset = 0;
 	int YOffset = 0;
 	int stateChangeDelay = 50;
 	int timeLastStateChange = 0;
+	bool isInfinityMode = false;
+	bool inTransistion = false;
 	int cheatDelay = 50;
 	int timeCheatActivated = 0;
 	GameState currentState = GameState::INIT;
@@ -60,9 +74,7 @@ private:
 	SpawnController spawnController;
 	HudVisitor hudVisitor;
 	
-	
-	PlayableCharacter* player1 = nullptr;
-	PlayableCharacter* player2 = nullptr;
+	vector<PlayableCharacter*> players;
 	Map* map = nullptr;
 	Quadtree* tree = nullptr;
 };

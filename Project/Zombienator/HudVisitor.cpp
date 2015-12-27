@@ -25,7 +25,27 @@ void HudVisitor::DrawBase()
 
 void HudVisitor::Visit(Character* character)
 {
+	double healthPercentage = (double)character->GetHealth() / (double)character->GetMaxHealth();
+	if (healthPercentage != 1) {
+		// Black bar around actual health bar
+		int healthSize = (36 * healthPercentage);
+		SDL_Rect Destination = *character->GetDestinationRect();
+		SDL_Rect healthBarSurround{ Destination.x - 1, Destination.y - 11, 38, 7 };
+		// Black
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		SDL_RenderFillRect(renderer, &healthBarSurround);
 
+		SDL_Rect damageBar{ Destination.x, Destination.y - 10, 36, 5 };
+		// Red
+		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+		SDL_RenderFillRect(renderer, &damageBar);
+
+		// Actual health bar
+		SDL_Rect healthBar{ Destination.x, Destination.y - 10, healthSize, 5 };
+		// Green
+		SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+		SDL_RenderFillRect(renderer, &healthBar);
+	}
 }
 
 void HudVisitor::Visit(Weapon* weapon)

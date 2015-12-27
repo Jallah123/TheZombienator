@@ -10,6 +10,7 @@
 #include "MoveBehaviour.h"
 #include "DrawBehaviour.h"
 #include "CollideBehaviour.h"
+#include "StatsController.h"
 
 
 void Bullet::Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc, GameObjectContainer* goc)

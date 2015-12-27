@@ -10,6 +10,7 @@
 #include "CreditScreen.h"
 #include "PauseScreen.h"
 #include "SettingsScreen.h"
+#include "MapSelectionScreen.h"
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 {
@@ -23,32 +24,26 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 	map[ScreenEnum::CREDITSCREEN] = [](void) -> AbstractScreen * { return new CreditScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::PAUSESCREEN] = [](void) -> AbstractScreen * { return new PauseScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::SETTINGSSCREEN] = [](void) -> AbstractScreen * { return new SettingsScreen{ Program::getInstance()->GetRenderer() }; };
+	map[ScreenEnum::MAPSELECTIONSCREEN] = [](void) -> AbstractScreen * { return new MapSelectionScreen{ Program::getInstance()->GetRenderer() }; };
 
 	return map;
 }
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> ScreenFactory::ScreenMap = fillMap();
-AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string play1_img_url, string play2_img_url)
+
+AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum)
 {
-	static string play1ImgUrl = "";
-	static string play2ImgUrl = "";
 	AbstractScreen* screen = nullptr;
-	if (play1_img_url != "") {
-		play1ImgUrl = play1_img_url;
-	}
-	if (play2_img_url != "") {
-		play2ImgUrl = play2_img_url;
-	}
-	if (screenEnum == ScreenEnum::GAMESCREEN)
+
+	auto it = ScreenMap.find(screenEnum);
+	if (it != ScreenMap.end())
 	{
-		screen = new GameScreen(Program::getInstance()->GetRenderer(), play1ImgUrl, play2ImgUrl);
-	}
-	else {
-		auto it = ScreenMap.find(screenEnum);
-		if (it != ScreenMap.end())
-		{
-			screen = it->second();
-		}
+		screen = it->second();
 	}
 	return screen;
+}
+
+AbstractScreen* ScreenFactory::CreateGameScreen(vector<string> characterUrls, string mapUrl)
+{
+	return new GameScreen(Program::getInstance()->GetRenderer(), characterUrls, mapUrl);
 }
