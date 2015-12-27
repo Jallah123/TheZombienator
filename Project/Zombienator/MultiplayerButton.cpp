@@ -23,8 +23,7 @@ MultiplayerButton::MultiplayerButton(SDL_Renderer& ren, char* text, char* img_ur
 
 void MultiplayerButton::ClickAction()
 {
-	MapSelectionScreen* mapSelectionScreen = dynamic_cast<MapSelectionScreen*>(ScreenFactory::Create(ScreenEnum::MAPSELECTIONSCREEN));
+	MapSelectionScreen* mapSelectionScreen = static_cast<MapSelectionScreen*>(ScreenFactory::Create(ScreenEnum::MAPSELECTIONSCREEN));
 	mapSelectionScreen->setAmountOfPlayers(2);
 	ScreenController::GetInstance().ChangeScreen(mapSelectionScreen);
 }
-

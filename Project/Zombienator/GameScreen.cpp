@@ -184,21 +184,24 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	hudVisitor.DrawBase();
 
+	for (auto& player : players)
+	{
+		hudVisitor.Visit(*player);
+	}
+
+	hudVisitor.Visit(spawnController);
+
 	// if story mode || not infinity mode
-	if (!isInfinityMode) {
+	if (!isInfinityMode) 
+	{
 		// if maxwave completed
-		if (spawnController.CurrentWave() == 5) {
+		if (spawnController.CurrentWave() == 5) 
+		{
 			currentState = GameState::TRANSITIONING;
 			if (this->Transition(ren))
 			{
 				return;
 			}
-			for (auto& player: players)
-			{
-				hudVisitor.Visit(*player);
-			}
-
-			hudVisitor.Visit(spawnController);
 		}
 	}
 

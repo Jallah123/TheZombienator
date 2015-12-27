@@ -30,7 +30,7 @@ private:
 	std::map<std::string, std::string> prevValues = {};
 
 	SDL_Rect bounds = {0,0,0,0};
-	int players = 1;
+	int players = 2;
 	size_t ammoFixedSize = 3;
 public:
 	HudVisitor() {};

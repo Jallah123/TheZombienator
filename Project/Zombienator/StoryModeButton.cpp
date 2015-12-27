@@ -5,6 +5,7 @@
 #include "GameScreen.h"
 #include "ScreenFactory.h"
 #include "MapFactory.h"
+#include "SelectionScreen.h"
 
 StoryModeButton::StoryModeButton() : Button()
 {
@@ -20,7 +21,9 @@ void StoryModeButton::ClickAction()
 {
 	MapFactory::GetInstance()->StoryMode();
 	StatsController::GetInstance()->Reset();
-	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SELECTIONSCREEN));
+	SelectionScreen* selectionScreen = static_cast<SelectionScreen*>(ScreenFactory::Create(ScreenEnum::SELECTIONSCREEN));
+	selectionScreen->setAmountOfPlayers(1);
+	ScreenController::GetInstance().ChangeScreen(selectionScreen);
 }
 
 StoryModeButton::~StoryModeButton()

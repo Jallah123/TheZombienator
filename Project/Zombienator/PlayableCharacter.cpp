@@ -29,7 +29,7 @@ PlayableCharacter::~PlayableCharacter()
 void PlayableCharacter::Init(string img_url, KeyBinding* _keyBinding)
 {
 		KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
-
+		inputContainer = kh.GetInstance().inputContainer;
 		keyBinding = _keyBinding;
 
 		this->AddWeapon(new MachineGun());
