@@ -365,8 +365,6 @@
     <ClInclude Include="KeyboardInputHandler.h" />
     <ClInclude Include="Medkit.h" />
     <ClInclude Include="MenuScreen.h" />
-    <ClInclude Include="MoveBehaviour.h" />
-    <ClInclude Include="MoveContainer.h" />
     <ClInclude Include="MultiplayerButton.h" />
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="MapSelectionScreen.h" />

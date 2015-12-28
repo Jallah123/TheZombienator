@@ -4,6 +4,8 @@
 #include "KeyboardInputHandler.h"
 #include "Pistol.h"
 #include "MachineGun.h"
+#include "Bazooka.h"
+#include "Mine.h"
 #include "GameObjectContainer.h"
 #include "DrawContainer.h"
 
@@ -34,6 +36,8 @@ void PlayableCharacter::Init(string img_url, KeyBinding* _keyBinding)
 
 		this->AddWeapon(new MachineGun());
 		this->AddWeapon(new Pistol());
+		this->AddWeapon(new Bazooka());
+		this->AddWeapon(new Mine());
 
 		SetDrawBehaviour("CharacterDrawBehaviour");
 		SetAnimateBehaviour("AnimateBehaviour");

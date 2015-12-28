@@ -71,6 +71,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 	int y = 200;
 	for (auto& player : players)
 	{
+		player->SetGameScreen(this);
 		player->SetPosition(x, y);
 		spawnController.AddTarget(player);
 		x += 100;
