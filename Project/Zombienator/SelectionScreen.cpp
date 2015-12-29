@@ -113,6 +113,7 @@ void SelectionScreen::Draw(SDL_Renderer & ren, float dt)
 	}
 	images.at(currentImageIndex)->Draw(ren);
 	SDL_RenderCopy(&ren, title.first, 0, &title.second);
+	HandleKeyboardEvents(ren, dt);
 }
 
 SelectionScreen::~SelectionScreen()
