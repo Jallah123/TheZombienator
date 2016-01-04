@@ -24,7 +24,6 @@ PlayableCharacter::~PlayableCharacter()
 		delete w;
 
 	weapons.clear();
-	delete weapon;
 	delete keyBinding;
 }
 
