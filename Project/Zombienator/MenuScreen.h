@@ -2,14 +2,15 @@
 #include <vector>
 #include "AbstractScreen.h"
 #include "KeyboardInputHandler.h"
+#include "Button.h"
 
 class MenuScreen 
 	: public AbstractScreen
 {
 public:
 	MenuScreen();
-	MenuScreen(SDL_Renderer* ren);//Constructor
-	virtual ~MenuScreen();//Destructor
+	MenuScreen(SDL_Renderer* ren);	//Constructor
+	virtual ~MenuScreen() {};		//Destructor
 	void HandleKeyboardEvents(SDL_Renderer& ren, float dt);
 	virtual void Update(float dt) = 0;
 	virtual void Draw(SDL_Renderer& ren, float dt) = 0;
@@ -20,4 +21,5 @@ public:
 	bool previous = false;
 	bool next = false;
 	bool enter = false;
+	vector<Button*> buttons;
 };
