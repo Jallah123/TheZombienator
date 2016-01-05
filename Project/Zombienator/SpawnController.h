@@ -76,7 +76,5 @@ public:
 	bool WaveCompleted() { return this->waveFinished; }
 
 	bool AllWavesCompleted() { return this->allWavesCompleted; }
-
-	bool Completed() { return completed; }
 };
 

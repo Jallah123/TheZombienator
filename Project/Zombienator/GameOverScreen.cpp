@@ -1,4 +1,5 @@
 #include "GameOverScreen.h"
+#include "AbstractUIComponent.h"
 
 GameOverScreen::GameOverScreen(SDL_Renderer* ren) : StatsScreen(ren)
 {

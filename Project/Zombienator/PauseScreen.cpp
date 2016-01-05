@@ -61,10 +61,10 @@ void PauseScreen::Update(float dt)
 
 void PauseScreen::Draw(SDL_Renderer & ren, float dt)
 {
+	AbstractScreen::Draw(ren, dt);
 	SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
 	for (const auto& i : UIComponents)
 		i->Draw(ren);
 	HandleKeyboardEvents(ren, dt);
-
 }
 

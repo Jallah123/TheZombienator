@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "Behaviour.h"
 
+class Behaviour;
 class AbstractContainer
 {
 protected:

@@ -1,17 +1,20 @@
 #include "GameObjectContainer.h"
 #include "GameObjectFactory.h"
-#include "Mike.h"
 #include "Zombie.h"
 #include "Map.h"
 #include "Quadtree.h"
 #include "CollideObject.h"
+#include "PlayableCharacter.h"
+#include "StatsController.h"
 
 GameObjectContainer::GameObjectContainer()
 {
+
 }
 
 GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t) : map(m), tree(t)
 {
+
 }
 
 

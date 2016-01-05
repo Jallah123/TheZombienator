@@ -4,6 +4,7 @@ class SettingsButton;
 class StoryModeButton;
 class InfiniteModeButton;
 class CreditButton;
+class MultiplayerButton;
 struct HelpButton;
 
 class HomeScreen :
@@ -14,6 +15,7 @@ private:
 	SettingsButton* settingsBtn = nullptr;
 	StoryModeButton* storyModeBtn = nullptr;
 	InfiniteModeButton* infiniteModeBtn = nullptr;
+	MultiplayerButton* multiplayerBtn = nullptr;
 	CreditButton* creditsButton = nullptr;
 public:
 	HomeScreen(SDL_Renderer* ren);

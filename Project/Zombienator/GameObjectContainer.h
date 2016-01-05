@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <algorithm>
-#include "StatsController.h"
 #include <SDL_rect.h>
 class GameObject;
 class Map;
@@ -26,7 +25,5 @@ private:
 	Map* map = nullptr;
 	Quadtree* tree = nullptr;
 	vector<GameObject*> objects = {};
-	vector<GameObject*> arrRemove = {};
-	
+	vector<GameObject*> arrRemove = {};	
 };
-

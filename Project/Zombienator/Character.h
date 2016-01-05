@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
-
+#include "HudVisitor.h"
+#include <vector>
+//Containers
+class AnimateContainer;
 class DrawContainer;
 class AnimateContainer;
 class MoveContainer;

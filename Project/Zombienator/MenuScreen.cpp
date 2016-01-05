@@ -25,6 +25,7 @@ void MenuScreen::HandleKeyboardEvents(SDL_Renderer& ren, float dt)
 		if (enter)
 		{
 			buttons.at(selectedComponent)->ClickAction();
+			return;
 		}
 		else if (next)
 		{
@@ -44,7 +45,7 @@ void MenuScreen::HandleKeyboardEvents(SDL_Renderer& ren, float dt)
 		}
 		auto component = buttons.at(selectedComponent);
 
-		selectedRect = { component->GetDestRect().x , component->GetDestRect().y + component->GetDestRect().h, component->GetDestRect().w, 5 };
+		selectedRect = { component->GetDestRect().x , component->GetDestRect().y + component->GetDestRect().h, component->GetDestRect().w, 4 };
 		enter = false;
 		next = false;
 		previous = false;

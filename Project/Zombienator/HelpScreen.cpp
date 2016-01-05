@@ -18,6 +18,7 @@ void HelpScreen::Update(float dt)
 
 void HelpScreen::Draw(SDL_Renderer & ren, float dt)
 {
+	AbstractScreen::Draw(ren, dt);
 	SDL_RenderCopy(&ren, this->backgroundTexture, 0, 0);
 	for (const auto& i : UIComponents)
 		i->Draw(ren);

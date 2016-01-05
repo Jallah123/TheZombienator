@@ -237,9 +237,6 @@
     <ClCompile Include="GameScreen.cpp">
       <Filter>Source Files\Views\GameScreen</Filter>
     </ClCompile>
-    <ClCompile Include="Mike.cpp">
-      <Filter>Source Files\Models\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
     </ClCompile>
@@ -441,6 +438,12 @@
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\Views\UIComponents\Images</Filter>
     </ClCompile>
+    <ClCompile Include="MapSelectionScreen.cpp">
+      <Filter>Source Files\Views\MenuScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectoryUtils.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
     <ClCompile Include="Pickup.cpp">
       <Filter>Source Files\Models\Pickups</Filter>
     </ClCompile>
@@ -458,6 +461,9 @@
     </ClCompile>
     <ClCompile Include="WunderlandMap.cpp">
       <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiplayerButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="AmmoBox.cpp">
       <Filter>Source Files\Models\Pickups</Filter>
@@ -527,6 +533,15 @@
     </ClCompile>
     <ClCompile Include="BadassZombie.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -611,8 +626,8 @@
     <ClInclude Include="Button.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="Mike.h">
-      <Filter>Header Files\Models\GameObject</Filter>
+    <ClInclude Include="PcMoveBehaviour.h">
+      <Filter>Header Files\Models\Behaviour</Filter>
     </ClInclude>
     <ClInclude Include="ActionContainer.h">
       <Filter>Header Files\Containers</Filter>
@@ -776,6 +791,15 @@
     <ClInclude Include="Image.h">
       <Filter>Header Files\Views\UIComponents\Images</Filter>
     </ClInclude>
+    <ClInclude Include="dirent.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MapSelectionScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectoryUtils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="Pickup.h">
       <Filter>Header Files\Models\Pickups</Filter>
     </ClInclude>
@@ -793,6 +817,26 @@
     </ClInclude>
     <ClInclude Include="WunderlandMap.h">
       <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyBinding.h">
+      <Filter>Header Files\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiplayerButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LoadingScreen.h">
+      <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
     <ClInclude Include="AmmoBox.h">
       <Filter>Header Files\Models\Pickups</Filter>

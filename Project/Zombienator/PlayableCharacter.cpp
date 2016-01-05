@@ -1,6 +1,13 @@
 #include "PlayableCharacter.h"
 #include "Settings.h"
 #include <algorithm>
+#include "KeyboardInputHandler.h"
+#include "Pistol.h"
+#include "MachineGun.h"
+#include "Bazooka.h"
+#include "Mine.h"
+#include "GameObjectContainer.h"
+#include "DrawContainer.h"
 
 PlayableCharacter::PlayableCharacter() : Character()
 {
@@ -17,7 +24,32 @@ PlayableCharacter::~PlayableCharacter()
 		delete w;
 
 	weapons.clear();
-	delete weapon;
+	delete keyBinding;
+}
+
+void PlayableCharacter::Init(string img_url, KeyBinding* _keyBinding)
+{
+		KeyboardInputHandler& kh = KeyboardInputHandler::GetInstance();
+		inputContainer = kh.GetInstance().inputContainer;
+		keyBinding = _keyBinding;
+
+		this->AddWeapon(new MachineGun());
+		this->AddWeapon(new Pistol());
+		this->AddWeapon(new Bazooka());
+		this->AddWeapon(new Mine());
+
+		SetDrawBehaviour("CharacterDrawBehaviour");
+		SetAnimateBehaviour("AnimateBehaviour");
+		SetMoveBehaviour("PcMoveBehaviour");
+		SetActionBehaviour("ShootActionBehaviour");
+		SetActionBehaviour("SwitchWeaponActionBehaviour");
+		SetCollideBehaviour("CharacterCollideBehaviour");
+
+		SetImage(img_url);
+		SetSize(36, 38);
+		SetFrames(3);
+		SetMaxHealth(50);
+		SetHealth(50);
 }
 
 bool PlayableCharacter::hasWeapon(Weapon* w)
@@ -92,5 +124,4 @@ void PlayableCharacter::SetFlare(bool newFlare) {
 		CanMove(true);
 		isFlare = false;
 	}
-
 }
