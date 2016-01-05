@@ -5,6 +5,7 @@
 #include "Weapon.h"
 #include "TextureFactory.h"
 #include "SpawnController.h"
+#include <vector>
 
 using std::string;
 
@@ -32,7 +33,7 @@ HudVisitor::~HudVisitor()
 }
 
 
-void HudVisitor::DrawBase()
+void HudVisitor::DrawBase(int players)
 {
 	for (size_t i = 0; i < players; i++)
 	{
@@ -46,63 +47,71 @@ void HudVisitor::DrawBase()
 	}
 }
 
-void HudVisitor::Visit(PlayableCharacter& character)
+void HudVisitor::Visit(std::vector<PlayableCharacter*> characters)
 {
-	Weapon* weapon = character.GetWeapon();
-	const string wName = weapon->GetName();
-
-	//==== Make Ammo Texture
-	int wRounds = weapon->GetRounds();
-	if (to_string(wRounds) != PrevMapValue("wRounds") || wName != PrevMapValue("wName")) {
-		if (wRounds != INT_MAX) {
-			const string m_sRounds = std::to_string(wRounds);
-			string m_sAmmo = "";
-			for (size_t i = 0; i < (ammoFixedSize - m_sRounds.size()); i++)
-			{
-				m_sAmmo += "0";
-			}
-			m_sAmmo += m_sRounds;
-			ammoTextPair = TextureFactory::CreateText(m_sAmmo, SDL_Point{ bloodRect.x + bloodRect.w - 35, bloodRect.y + horizontalPadding });
-			prevValues.insert_or_assign("wRounds", m_sRounds);
-		}
-		else {
-			//Render infinite sign
-			ammoTextPair.first = infiniteSign;
-			ammoTextPair.second = SDL_Rect{ bloodRect.x + bloodRect.w - 32, bloodRect.y + verticalPadding, 24, 13 };
-		}
-	}
-
-	// === Make Weapon Text Texture
-	const int weaponsSize = character.AmountOfWeapons();
-	const int currentWeapIndex = character.CurrentWeaponIndex() + 1;
-	
-	if (wName != PrevMapValue("wName"))
+	for (int i = 0; i < characters.size();i++)
 	{
-		const string weaponDetails = weapon->GetName() + " " + std::to_string(currentWeapIndex) + "/" + std::to_string(weaponsSize);
-		weaponTextPair = TextureFactory::CreateText(weaponDetails, SDL_Point{ bloodRect.x + horizontalPadding , bloodRect.y });
-		weaponTextPair.second.y -= weaponTextPair.second.h;
+		bloodRect.x = (i* bounds.w);
+		bloodRect.y = bounds.h - bloodRect.h - 60;
+		if (i > 0)
+		{
+			bloodRect.x -= bloodRect.w;
+		}
+		Weapon* weapon = characters.at(i)->GetWeapon();
+		const string wName = weapon->GetName();
 
-		//Set Weapon image rectangle 
-		weaponImageSrcRect = weapon->GetHudSourceRect();
-		weaponImagePair.second = SDL_Rect{
-			bloodRect.x+bloodRect.w - horizontalPadding - 110, 
-			bloodRect.y-horizontalPadding - 40,
-			110,
-			40
-		};
+		//==== Make Ammo Texture
+		int wRounds = weapon->GetRounds();
+		if (to_string(wRounds) != PrevMapValue("wRounds") || wName != PrevMapValue("wName")) {
+			if (wRounds != INT_MAX) {
+				const string m_sRounds = std::to_string(wRounds);
+				string m_sAmmo = "";
+				for (size_t i = 0; i < (ammoFixedSize - m_sRounds.size()); i++)
+				{
+					m_sAmmo += "0";
+				}
+				m_sAmmo += m_sRounds;
+				ammoTextPair = TextureFactory::CreateText(m_sAmmo, SDL_Point{ bloodRect.x + bloodRect.w - 45, bloodRect.y + horizontalPadding });
+				prevValues.insert_or_assign("wRounds", m_sRounds);
+			}
+			else {
+				//Render infinite sign
+				ammoTextPair.first = infiniteSign;
+				ammoTextPair.second = SDL_Rect{ bloodRect.x + bloodRect.w - 32, bloodRect.y + verticalPadding, 24, 13 };
+			}
+		}
 
-		prevValues.insert_or_assign("wName", weapon->GetName());
+		// === Make Weapon Text Texture
+		const int weaponsSize = characters.at(i)->AmountOfWeapons();
+		const int currentWeapIndex = characters.at(i)->CurrentWeaponIndex() + 1;
+
+		if (wName != PrevMapValue("wName"))
+		{
+			const string weaponDetails = weapon->GetName() + " " + std::to_string(currentWeapIndex) + "/" + std::to_string(weaponsSize);
+			weaponTextPair = TextureFactory::CreateText(weaponDetails, SDL_Point{ bloodRect.x + horizontalPadding , bloodRect.y });
+			weaponTextPair.second.y -= weaponTextPair.second.h;
+
+			//Set Weapon image rectangle 
+			weaponImageSrcRect = weapon->GetHudSourceRect();
+			weaponImagePair.second = SDL_Rect{
+				bloodRect.x + bloodRect.w - horizontalPadding - 110,
+				bloodRect.y - horizontalPadding - 40,
+				110,
+				40
+			};
+
+			prevValues.insert_or_assign("wName", weapon->GetName());
+		}
+
+		if (weaponTextPair.first != nullptr)
+			SDL_RenderCopy(renderer, weaponTextPair.first, 0, &weaponTextPair.second);
+
+		if (ammoTextPair.first != nullptr)
+			SDL_RenderCopy(renderer, ammoTextPair.first, 0, &ammoTextPair.second);
+
+		if (weaponImagePair.first != nullptr)
+			SDL_RenderCopy(renderer, weaponImagePair.first, &weaponImageSrcRect, &weaponImagePair.second);
 	}
-
-	if (weaponTextPair.first != nullptr)
-		SDL_RenderCopy(renderer, weaponTextPair.first, 0, &weaponTextPair.second);
-
-	if (ammoTextPair.first != nullptr)
-		SDL_RenderCopy(renderer, ammoTextPair.first, 0, &ammoTextPair.second);
-
-	if (weaponImagePair.first != nullptr)
-		SDL_RenderCopy(renderer, weaponImagePair.first, &weaponImageSrcRect, &weaponImagePair.second);
-
 }
 void HudVisitor::Visit(SpawnController & spawnController)
 {
@@ -131,7 +140,7 @@ void HudVisitor::Visit(SpawnController & spawnController)
 		string waveText = "Wave " + curWave + "/" + std::to_string(spawnController.Waves());
 		waveTextPair = TextureFactory::CreateText(waveText, SDL_Point{ bloodRect.x + horizontalPadding, bloodRect.y + verticalPadding });
 	}
-	
+
 	if (waveTextPair.first != nullptr)
 		SDL_RenderCopy(renderer, waveTextPair.first, 0, &waveTextPair.second);
 

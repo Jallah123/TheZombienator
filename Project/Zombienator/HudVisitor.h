@@ -2,6 +2,7 @@
 #include <SDL_image.h>
 #include <string>
 #include <map>
+#include <vector>
 
 class PlayableCharacter;
 class Weapon;
@@ -30,15 +31,14 @@ private:
 	std::map<std::string, std::string> prevValues = {};
 
 	SDL_Rect bounds = {0,0,0,0};
-	int players = 2;
 	size_t ammoFixedSize = 3;
 public:
 	HudVisitor() {};
 	HudVisitor(SDL_Renderer* _renderer, SDL_Rect bounds);
 	~HudVisitor();
 
-	void DrawBase();
-	void Visit(PlayableCharacter& character);
+	void DrawBase(int players);
+	void Visit(std::vector<PlayableCharacter*> characters);
 	void Visit(SpawnController& spawnController);
 	
 	std::string const PrevMapValue(std::string index);

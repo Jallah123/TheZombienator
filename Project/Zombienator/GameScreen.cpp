@@ -183,14 +183,11 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	map->DrawFrontLayer(ren, XOffset, YOffset);
 
-	hudVisitor.DrawBase();
-
-	for (auto& player : players)
-	{
-		hudVisitor.Visit(*player);
-	}
+	hudVisitor.DrawBase(players.size());
 
 	hudVisitor.Visit(spawnController);
+
+	hudVisitor.Visit(players);
 
 	// if story mode || not infinity mode
 	if (!isInfinityMode) 
