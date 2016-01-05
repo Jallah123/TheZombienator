@@ -9,10 +9,7 @@ SettingsScreen::SettingsScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	//default background
 	ChangeBackground(ren, "assets/images/default_bg.png");
 
-	//stop sound:
-
 	initCompontents(*ren);
-
 }
 
 
@@ -20,7 +17,6 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 {
 	//load settings from file
 	Settings->Load();
-
 
 	char* spriteSheet = "assets/images/button_spritesheet_settings.png";
 
@@ -51,19 +47,15 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	//musicbtns
 	musicOnBtn = new SwitchButton(ren, "On", spriteSheet, 725, 445, true, Settings->getMusic(), *this); //renderer, text,spritesheet,posx,posy, swithvalue, switchEnabledstatus, AbstractScreen
 	musicOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setMusic, this, std::placeholders::_1));
-	AddUIComponent(musicOnBtn);
 
 	musicOffBtn = new SwitchButton(ren, "Off", spriteSheet, 830, 445, false, !Settings->getMusic(), *this);
 	musicOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setMusic, this, std::placeholders::_1));
-	AddUIComponent(musicOffBtn);
 	//soundbtns
 	soundOnBtn = new SwitchButton(ren, "On", spriteSheet, 725, 370, true, Settings->getSound(), *this);
 	soundOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setSound, this, std::placeholders::_1));
-	AddUIComponent(soundOnBtn);
 
 	soundOffBtn = new SwitchButton(ren, "Off", spriteSheet, 830, 370, false, !Settings->getSound(), *this);
 	soundOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setSound, this, std::placeholders::_1));
-	AddUIComponent(soundOffBtn);
 	//friendlyfirebtns
 	//friendlyFireOnBtn = new SwitchButton(ren, "On", spriteSheet, 725, 300, true, Settings->getFiendlyFire(), *this);
 	//friendlyFireOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
@@ -75,36 +67,29 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	//fpsbtns
 	fpsOnBtn = new SwitchButton(ren, "On", spriteSheet, 725, 230, true, Settings->getShowFps(), *this);
 	fpsOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setFPS, this, std::placeholders::_1));
-	AddUIComponent(fpsOnBtn);
 
 	fpsOffBtn = new SwitchButton(ren, "Off", spriteSheet, 830, 230, false, !Settings->getShowFps(), *this);
 	fpsOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setFPS, this, std::placeholders::_1));
-	AddUIComponent(fpsOffBtn);
 
 	//Volume btns
 	volumeDecBtn = new VolumeButton(ren, "-", spriteSheet, 725, 515, 1, *this);
 	volumeDecBtn->setUpdateFunction(std::bind(&SettingsScreen::decreaseVolume, this, std::placeholders::_1));
-	AddUIComponent(volumeDecBtn);
 
 	volumeIncBtn = new VolumeButton(ren, "+", spriteSheet, 858, 515, 1, *this);
 	volumeIncBtn->setUpdateFunction(std::bind(&SettingsScreen::increaseVolume, this, std::placeholders::_1));
-	AddUIComponent(volumeIncBtn);
 
-	
-	
-	
 	//gamespeedbtns
 	SwitchButtonGameSpeed* gameSpeedSlowBtn = new SwitchButtonGameSpeed(ren, "Slow", spriteSheet, 725, 160, GameSpeed::SLOW, *this);
 	gameSpeedSlowBtn->setUpdateFunction(std::bind(&SettingsScreen::setGameSpeed, this, std::placeholders::_1));
-	gameSpeedBtns.push_front(gameSpeedSlowBtn);
+	gameSpeedBtns.push_back(gameSpeedSlowBtn);
 
 	SwitchButtonGameSpeed* gameSpeedNormalBtn = new SwitchButtonGameSpeed(ren, "Normal", spriteSheet, 830, 160, GameSpeed::NORMAL, *this);
 	gameSpeedNormalBtn->setUpdateFunction(std::bind(&SettingsScreen::setGameSpeed, this, std::placeholders::_1));
-	gameSpeedBtns.push_front(gameSpeedNormalBtn);
+	gameSpeedBtns.push_back(gameSpeedNormalBtn);
 
 	SwitchButtonGameSpeed* gameSpeedFastBtn = new SwitchButtonGameSpeed(ren, "Fast", spriteSheet, 935, 160, GameSpeed::FAST, *this);
 	gameSpeedFastBtn->setUpdateFunction(std::bind(&SettingsScreen::setGameSpeed, this, std::placeholders::_1));
-	gameSpeedBtns.push_front(gameSpeedFastBtn);
+	gameSpeedBtns.push_back(gameSpeedFastBtn);
 
 	//gamedifficulty buttons
 	/*
@@ -123,13 +108,18 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 		AddUIComponent(g);
 	*/
 
-
-
 	//add gameSpeed buttons && gameDifficulty buttons
 	for (const auto& i : gameSpeedBtns)
 		AddUIComponent(i);
-	
 
+	AddUIComponent(fpsOnBtn);
+	AddUIComponent(fpsOffBtn);
+	AddUIComponent(soundOnBtn);
+	AddUIComponent(soundOffBtn);
+	AddUIComponent(musicOnBtn);
+	AddUIComponent(musicOffBtn);
+	AddUIComponent(volumeDecBtn);
+	AddUIComponent(volumeIncBtn);
 }
 
 SettingsScreen::~SettingsScreen()
@@ -145,7 +135,7 @@ void SettingsScreen::Draw(SDL_Renderer & ren, float dt)
 	SDL_RenderCopy(&ren, this->backgroundTexture, 0, 0);
 	for (const auto& i : UIComponents)
 		i->Draw(ren);
-
+	HandleKeyboardEvents(ren, dt);
 }
 
 

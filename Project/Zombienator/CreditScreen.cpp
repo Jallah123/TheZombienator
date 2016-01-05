@@ -80,6 +80,7 @@ void CreditScreen::Draw(SDL_Renderer & ren, float dt)
 		i->Draw(ren);
 
 	drawText(ren);
+	HandleKeyboardEvents(ren, dt);
 }
 
 void CreditScreen::drawText(SDL_Renderer& ren)
