@@ -27,7 +27,7 @@ void MenuScreen::HandleKeyboardEvents(SDL_Renderer& ren, float dt)
 	lastHandled -= dt;
 	if (!previous) previous = inputContainer->GetKeyState(SDLK_w) || inputContainer->GetKeyState(SDLK_a);
 	if (!next) next = inputContainer->GetKeyState(SDLK_s) || inputContainer->GetKeyState(SDLK_d);
-	if (!enter) enter = inputContainer->GetKeyState(SDLK_SPACE) || inputContainer->GetKeyState(SDLK_KP_ENTER);
+	if (!enter) enter = inputContainer->GetKeyState(SDLK_SPACE) || inputContainer->GetKeyState(SDLK_RETURN);
 	if (lastHandled <= 0)
 	{
 		lastHandled = 50;
