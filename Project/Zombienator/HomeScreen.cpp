@@ -29,9 +29,9 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	// SettingsButton
 	settingsBtn = new SettingsButton(*ren, "", "assets/images/button_spritesheet.png");
 	// StoryModeButton
-	storyModeBtn = new StoryModeButton(*ren, "", "assets/images/button_spritesheet.png");
+	storyModeBtn = new StoryModeButton(*ren, "Story Mode", "assets/images/button_spritesheet.png");
 	// InfiniteModeButton -- Uncomment for presentation
-	infiniteModeBtn = new InfiniteModeButton(*ren, "", "assets/images/button_spritesheet.png");
+	infiniteModeBtn = new InfiniteModeButton(*ren, "Infinite Mode", "assets/images/button_spritesheet.png");
 	// Multiplayer
 	multiplayerBtn = new MultiplayerButton(*ren, "Multiplayer", "assets/images/button_spritesheet.png");
 	// CreditScreenButton

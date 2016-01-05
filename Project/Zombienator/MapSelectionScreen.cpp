@@ -119,6 +119,7 @@ void MapSelectionScreen::Draw(SDL_Renderer& ren, float dt)
 	{
 		component->Draw(ren);
 	}
+	HandleKeyboardEvents(ren, dt);
 }
 
 MapSelectionScreen::~MapSelectionScreen()
