@@ -16,8 +16,8 @@ private:
 	Node* GetClosestNodeNearTarget(Character* target, vector<Node*>& nodes);
 	bool NodeIsInGoodDirection(SDL_Rect* destRect, Node* node);
 	SDL_Rect GetDestination(float dt);
-	Node* calculatedNode = nullptr;
 	float time = 500;
 	void ResetTime() { time = 500; };
+	Node* previousTargetNode = nullptr;
 };
 

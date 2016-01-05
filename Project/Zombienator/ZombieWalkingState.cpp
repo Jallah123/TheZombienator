@@ -151,7 +151,7 @@ SDL_Rect ZombieWalkingState::GetDestination(float dt)
 	Node* selfNode = GetClosestNodeNearTarget(z, nodes);
 	Node* targetNode = GetClosestNodeNearTarget(target, nodes);
 	time -= dt;
-	if (time < 0) {
+	if (time < 0 && previousTargetNode != targetNode) {
 		ResetTime();
 		if (GameMath::Distance(*z->GetDestinationRect(), *target->GetDestinationRect()) < GameMath::Distance(*z->GetDestinationRect(), selfNode->getDestRect()))
 		{
@@ -161,13 +161,13 @@ SDL_Rect ZombieWalkingState::GetDestination(float dt)
 		}
 		else
 		{
-			if (z->GetPath().empty() || calculatedNode != targetNode)
+			if (z->GetPath().empty())
 			{
 				Astar astar;
 				astar.Compute(graph, selfNode->ID(), targetNode->ID());
 				deque<Node*> path = astar.GetPath(graph, selfNode->ID(), targetNode->ID());
 				z->SetPath(path);
-				calculatedNode = targetNode;
+				previousTargetNode = targetNode;
 			}
 		}
 	}
