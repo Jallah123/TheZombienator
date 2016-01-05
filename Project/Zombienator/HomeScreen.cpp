@@ -36,13 +36,13 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	multiplayerBtn = new MultiplayerButton(*ren, "Multiplayer", "assets/images/button_spritesheet.png");
 	// CreditScreenButton
 	creditsButton = new CreditButton(*ren, "", "assets/images/button_spritesheet.png");
-	
-	AddUIComponent(helpBtn);
-	AddUIComponent(settingsBtn);
+
 	AddUIComponent(storyModeBtn);
 	AddUIComponent(infiniteModeBtn);
 	AddUIComponent(multiplayerBtn);
+	AddUIComponent(settingsBtn);
 	AddUIComponent(creditsButton);
+	AddUIComponent(helpBtn);
 	SoundController->ChangeMusic("assets/sounds/Undead-Rising.flac");
 }
 
@@ -57,9 +57,14 @@ HomeScreen::~HomeScreen()
 
 void HomeScreen::Update(float dt)
 {
+	
 }
 
 void HomeScreen::Draw(SDL_Renderer & ren, float dt)
 {
 	AbstractScreen::Draw(ren, dt);
+	SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
+	for (const auto& i : UIComponents)
+		i->Draw(ren);
+	HandleKeyboardEvents(ren, dt);
 }

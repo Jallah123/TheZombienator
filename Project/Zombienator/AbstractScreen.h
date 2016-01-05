@@ -13,7 +13,6 @@ protected:
 	SoundController* SoundController = &SoundController::GetInstance();
 	int fps = 0;
 	void ChangeBackground(SDL_Renderer* ren, char* img_url);
-
 public:
 	AbstractScreen();
 	AbstractScreen(SDL_Renderer* ren);
