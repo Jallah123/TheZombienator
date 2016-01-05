@@ -14,16 +14,7 @@ MenuScreen::MenuScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 
 void MenuScreen::HandleKeyboardEvents(SDL_Renderer& ren, float dt)
 {
-	if (buttons.empty())
-	{
-		for (auto component : UIComponents)
-		{
-			if (Button* b = dynamic_cast<Button*>(component))
-			{
-				buttons.push_back(b);
-			}
-		}
-	}
+	InitializeButtons();
 	lastHandled -= dt;
 	if (!previous) previous = inputContainer->GetKeyState(SDLK_w) || inputContainer->GetKeyState(SDLK_a);
 	if (!next) next = inputContainer->GetKeyState(SDLK_s) || inputContainer->GetKeyState(SDLK_d);
@@ -61,4 +52,18 @@ void MenuScreen::HandleKeyboardEvents(SDL_Renderer& ren, float dt)
 
 	SDL_SetRenderDrawColor(&ren, 0, 255, 0, 255);
 	SDL_RenderFillRect(&ren, &selectedRect);
+}
+
+void MenuScreen::InitializeButtons()
+{
+	if (buttons.empty())
+	{
+		for (auto component : UIComponents)
+		{
+			if (Button* b = dynamic_cast<Button*>(component))
+			{
+				buttons.push_back(b);
+			}
+		}
+	}
 }

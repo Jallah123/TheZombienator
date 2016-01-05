@@ -12,6 +12,7 @@ public:
 	MenuScreen(SDL_Renderer* ren);	//Constructor
 	virtual ~MenuScreen() {};		//Destructor
 	void HandleKeyboardEvents(SDL_Renderer& ren, float dt);
+	void InitializeButtons();
 	virtual void Update(float dt) = 0;
 	virtual void Draw(SDL_Renderer& ren, float dt) = 0;
 	InputContainer* inputContainer = nullptr;
