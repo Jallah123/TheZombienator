@@ -15,7 +15,7 @@ public:
 	SDL_Rect const GetDestRect() { return destRect; }
 	SDL_Rect const GetSrcRect() { return srcRect; }
 
-	void OnClick(SDL_Point mousePosition);
+	bool OnClick(SDL_Point mousePosition);
 	virtual void Draw(SDL_Renderer& ren) = 0;
 	
 protected:

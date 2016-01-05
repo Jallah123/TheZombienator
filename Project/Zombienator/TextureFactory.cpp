@@ -54,7 +54,6 @@ std::pair<SDL_Texture*, SDL_Rect> TextureFactory::CreateText(string text, SDL_Co
 		return pair;
 	}
 	SDL_Texture* texture = GenerateTextureFromSurface(surface);
-	SDL_FreeSurface(surface);
 	TTF_CloseFont(font);
 	return pair = { texture, SDL_Rect{ 0, 0, surface->w, surface->h } };
 }
@@ -76,7 +75,8 @@ SDL_Texture* TextureFactory::GenerateTextureFromSurface(SDL_Surface* surface)
 	SDL_Renderer* ren = p->GetRenderer();
 
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(ren, surface);
-	if (texture == NULL) {
+	if (texture == NULL) 
+	{
 		cerr << "Error creating texture from surface \n";
 	}
 	SDL_FreeSurface(surface);
@@ -113,5 +113,3 @@ std::pair<SDL_Texture*, SDL_Rect> TextureFactory::GenerateText(std::string text,
 		return returnObject;
 	}
 }
-
-

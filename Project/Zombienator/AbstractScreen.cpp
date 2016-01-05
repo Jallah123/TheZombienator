@@ -41,16 +41,12 @@ void AbstractScreen::AddUIComponent(AbstractUIComponent* UIComponent)
 
 void AbstractScreen::ClickComponents(SDL_Point MousePosition)
 {
-	std::vector<AbstractUIComponent*>::iterator i = UIComponents.begin();
-	while (i != UIComponents.end())
+	for (auto& component: UIComponents)
 	{
-		(*i)->OnClick(MousePosition);
-
-		if (UIComponents.size() <= 0) {
-			break;
+		if (component->OnClick(MousePosition))
+		{
+			return;
 		}
-
-		i++;
 	}
 }
 

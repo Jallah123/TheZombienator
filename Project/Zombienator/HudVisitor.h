@@ -28,7 +28,9 @@ private:
 	SDL_Texture* infiniteSign = nullptr;
 	SDL_Rect bloodRect = { 0,0,289,13 };
 
-	std::map<std::string, std::string> prevValues = {};
+	std::map<PlayableCharacter*, std::map<std::string, std::string>> prevValues = {};
+
+	std::string countdown;
 
 	SDL_Rect bounds = {0,0,0,0};
 	size_t ammoFixedSize = 3;
@@ -41,6 +43,6 @@ public:
 	void Visit(std::vector<PlayableCharacter*> characters);
 	void Visit(SpawnController& spawnController);
 	
-	std::string const PrevMapValue(std::string index);
+	std::string const PrevMapValue(PlayableCharacter* character, std::string index);
 };
 
