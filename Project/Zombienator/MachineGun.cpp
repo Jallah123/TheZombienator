@@ -3,13 +3,8 @@
 #include "MachineGunBullet.h"
 #include "SoundController.h"
 
-MachineGun::MachineGun() : Weapon("assets/images/weapons/MachineGun.png")
+MachineGun::MachineGun() : Weapon("MachineGun", 20, 20, 20, 20, "MachineGunBullet", SDL_Rect{ 580, 431, 282, 186 })
 {
-	this->name = "MachineGun";
-	this->delay = 20;
-	this->damage = 20;  // 1/5 of a zombie's health
-	this->rounds = 20;
-	this->bulletType = "MachineGunBullet";
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new MachineGunBullet(); });
 }
 

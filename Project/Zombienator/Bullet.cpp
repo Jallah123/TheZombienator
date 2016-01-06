@@ -10,6 +10,7 @@
 #include "MoveBehaviour.h"
 #include "DrawBehaviour.h"
 #include "CollideBehaviour.h"
+#include "StatsController.h"
 
 
 void Bullet::Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc, GameObjectContainer* goc)
@@ -18,7 +19,6 @@ void Bullet::Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc, Ga
 	this->moveContainer = mc;
 	this->collideContainer = cc;
 	this->gameObjectContainer = goc;
-	this->gameObjectContainer->AddGameObject(this);
 	SetBehaviours();
 }
 

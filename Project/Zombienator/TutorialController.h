@@ -4,15 +4,16 @@
 #include "Direction.cpp"
 #include "SDL_rect.h"
 #include "TutorialEnum.cpp"
+#include "PlayableCharacter.h"
 
-class Mike;
+class PlayableCharacter;
 class BubbleVisitor;
 class SpawnController;
 
 class TutorialController
 {
 	private:
-		Mike* mike = nullptr;
+		PlayableCharacter* player = nullptr;
 		BubbleVisitor* bubbleVisitor = nullptr;
 		SpawnController* spawnController = nullptr;
 		int amountOfZombies;
@@ -36,7 +37,7 @@ class TutorialController
 		clock_t begin = clock();
 	public:
 		TutorialController();
-		TutorialController(BubbleVisitor* bv, SpawnController* s, Mike* m);
+		TutorialController(BubbleVisitor* bv, SpawnController* s, PlayableCharacter* m);
 		~TutorialController();
 		void Init();
 		void FillTaskQueue();

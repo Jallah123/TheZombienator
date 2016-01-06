@@ -1,5 +1,6 @@
 #pragma once
 #include "WinScreen.h"
+#include "AbstractUIComponent.h"
 
 WinScreen::WinScreen(SDL_Renderer* ren) : StatsScreen(ren)
 {

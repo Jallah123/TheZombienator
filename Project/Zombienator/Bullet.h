@@ -1,7 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include "DrawContainer.h"
-#include "MoveContainer.h"
 #include "PlayableCharacter.h"
 
 //Containers
@@ -25,6 +23,8 @@ protected:
 	float lifeTime = 15;
 	GameObject* target = nullptr;
 
+	
+
 	//Direction direction;
 	PlayableCharacter* origin = nullptr;
 
@@ -42,6 +42,7 @@ public:
 	virtual ~Bullet();
 	void Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc, GameObjectContainer* goc);
 	virtual void SetBehaviours() = 0;
+	virtual void ShakeScreen() {};
 	void SetDrawBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
 	void SetCollideBehaviour(std::string name);

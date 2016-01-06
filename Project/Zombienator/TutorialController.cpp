@@ -3,7 +3,6 @@
 #include "GameObjectContainer.h"
 #include "MachineGun.h"
 #include "MapFactory.h"
-#include "Mike.h"
 #include "ScreenController.h"
 #include "SpawnController.h"
 #include "ScreenFactory.h"
@@ -13,7 +12,7 @@ TutorialController::TutorialController()
 {
 }
 
-TutorialController::TutorialController(BubbleVisitor* bv, SpawnController* s, Mike* m) : bubbleVisitor(bv), spawnController(s), mike(m) 
+TutorialController::TutorialController(BubbleVisitor* bv, SpawnController* s, PlayableCharacter* m) : bubbleVisitor(bv), spawnController(s), player(m)
 { 
 	Init(); 
 }
@@ -75,28 +74,28 @@ void TutorialController::Walk()
 	switch (walkDir) {
 		case Direction::NORTH:
 			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the north direction.");
-			if ((currentPos.y - walkDist) > mike->getPosY()) {
+			if ((currentPos.y - walkDist) > player->getPosY()) {
 				SetPosition();
 				walkDir = Direction::EAST;
 			}
 			break;
 		case Direction::EAST:
 			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the east direction.");
-			if ((currentPos.x + walkDist) < mike->getPosX()) {
+			if ((currentPos.x + walkDist) < player->getPosX()) {
 				SetPosition();
 				walkDir = Direction::SOUTH;
 			}
 			break;
 		case Direction::SOUTH:
 			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the south direction.");
-			if ((currentPos.y + walkDist) < mike->getPosY()) {
+			if ((currentPos.y + walkDist) < player->getPosY()) {
 				SetPosition();
 				walkDir = Direction::WEST;
 			}
 			break;
 		case Direction::WEST:
 			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the west direction.");
-			if ((currentPos.x - walkDist) > mike->getPosX()) {
+			if ((currentPos.x - walkDist) > player->getPosX()) {
 				SetPosition();
 				walkDir = Direction::NONE;
 				ResetClock();
@@ -113,9 +112,9 @@ void TutorialController::Collision()
 {
 	if(!collisionDone){
 		bubbleVisitor->ChangeText("Walk now against the tree");
-		SDL_Rect mikeCollision = SDL_Rect{ mike->GetCollideRect()->x - 2, mike->GetCollideRect()->y - 2, mike->GetCollideRect()->w + 4, mike->GetCollideRect()->h + 4 };
-		for (auto &go : mike->GetGameObjectContainer()->GetGameObjects()) {
-			if (dynamic_cast<Mike*>(go)) continue;
+		SDL_Rect mikeCollision = SDL_Rect{ player->GetCollideRect()->x - 2, player->GetCollideRect()->y - 2, player->GetCollideRect()->w + 4, player->GetCollideRect()->h + 4 };
+		for (auto &go : player->GetGameObjectContainer()->GetGameObjects()) {
+			if (dynamic_cast<PlayableCharacter*>(go)) continue;
 			if (SDL_HasIntersection(&mikeCollision, go->GetDestinationRect()) == SDL_TRUE) {
 				collisionDone = true;
 				ResetClock();
@@ -144,8 +143,8 @@ void TutorialController::Shoot() {
 
 void TutorialController::Swap() {
 
-	if (!weaponAdded) mike->AddWeapon(new MachineGun()); weaponAdded = true;
-	if (!dynamic_cast<MachineGun*>(mike->GetWeapon()) && !swapDone) {
+	if (!weaponAdded) player->AddWeapon(new MachineGun()); weaponAdded = true;
+	if (!dynamic_cast<MachineGun*>(player->GetWeapon()) && !swapDone) {
 		bubbleVisitor->ChangeText("Press Q or E to swap weapon");
 		ResetClock();
 	}
@@ -186,10 +185,10 @@ void TutorialController::Done()
 
 void TutorialController::SetPosition()
 {
-	currentPos = { int(mike->getPosX()), int(mike->getPosY()) };
+	currentPos = { int(player->getPosX()), int(player->getPosY()) };
 }
 
 void TutorialController::ResetPosition()
 {
-	mike->SetPosition(currentPos.x, currentPos.y);
+	player->SetPosition(currentPos.x, currentPos.y);
 }

@@ -55,7 +55,18 @@ struct SelectButton : Button {
 	}
 
 	void ClickAction() {
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, _ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl()));
+		_ss->getCharacterImages().push_back(_ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl());
+		if (_ss->getCharacterImages().size() == _ss->getAmountOfPlayers())
+		{
+			string mapPath = _ss->getMapUrl();
+			vector<string> imageUrls = _ss->getCharacterImages();
+			ScreenController::GetInstance().Back();
+			ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(imageUrls, mapPath));
+		}
+		else 
+		{
+			_ss->setSubTitle(TextureFactory::GenerateText("Player" + to_string(_ss->getCharacterImages().size() + 1), 32, 550, 150, FontEnum::OCR, { 248 ,248 ,255 }));
+		}
 	}
 };
 
@@ -73,7 +84,11 @@ struct TutorialButton : Button {
 	void ClickAction() { // Start Tutorial mode here
 
 		MapFactory::GetInstance()->TutorialMode();
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, _ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl()));
+
+		_ss->getCharacterImages().push_back(_ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl());
+		vector<string> imageUrls = _ss->getCharacterImages();
+		ScreenController::GetInstance().Back();
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(imageUrls));
 
 	}
 };
@@ -81,7 +96,7 @@ struct TutorialButton : Button {
 SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
 	std::cout << "Made SelectionScreen" << std::endl;
-	backgroundTexture = TextureFactory::GenerateTextureFromImgUrl("assets/images/bg/default_bg.png");
+	backgroundTexture = TextureFactory::CreateTexture("assets/images/bg/default_bg.png");
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy1.png"));
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy2.png"));
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy3.png"));
@@ -92,6 +107,7 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	char* ssUrl = "assets/images/button_spritesheet.png";
 
 	title = TextureFactory::GenerateText("Character selection", 32, 625, 100, FontEnum::CARTOON, { 248 ,248 ,255 });
+	subTitle = TextureFactory::GenerateText("Player" + to_string(getCharacterImages().size()+1), 32, 550, 150, FontEnum::OCR, { 248 ,248 ,255 });
 
 	PreviousButton* pbtn = new PreviousButton(*ren, "Previous", ssUrl, this);
 	pbtn->SetSourceLocation(0, 0);
@@ -129,13 +145,11 @@ void SelectionScreen::Update(float dt)
 
 void SelectionScreen::Draw(SDL_Renderer & ren, float dt)
 {
-	SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
-	for (const auto& c : UIComponents)
-	{
-		c->Draw(ren);
-	}
+	AbstractScreen::Draw(ren, dt);
 	images.at(currentImageIndex)->Draw(ren);
 	SDL_RenderCopy(&ren, title.first, 0, &title.second);
+	SDL_RenderCopy(&ren, subTitle.first, 0, &subTitle.second);
+	HandleKeyboardEvents(ren, dt);
 }
 
 SelectionScreen::~SelectionScreen()

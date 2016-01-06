@@ -3,7 +3,7 @@
 #include "TextureFactory.h"
 
 BubbleVisitor::BubbleVisitor() {}
-BubbleVisitor::BubbleVisitor(SDL_Renderer* r) : ren(r), bubbleImage(TextureFactory::GenerateTextureFromImgUrl("assets/images/tutorial/bubble.png")) { ChangeText(std::string(" ")); }
+BubbleVisitor::BubbleVisitor(SDL_Renderer* r) : ren(r), bubbleImage(TextureFactory::CreateTexture("assets/images/tutorial/bubble.png")) { ChangeText(std::string(" ")); }
 BubbleVisitor::~BubbleVisitor() {}
 
 void BubbleVisitor::Visit(Character* c)

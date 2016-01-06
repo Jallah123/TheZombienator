@@ -1,8 +1,9 @@
 #include "PcMoveBehaviour.h"
 #include "Bullet.h"
-#include "Character.h"
 #include "InputContainer.h"
 #include "GameObjectContainer.h"
+#include "KeyBinding.h"
+#include "PlayableCharacter.h"
 
 PcMoveBehaviour::PcMoveBehaviour() : MoveBehaviour() {}
 
@@ -16,10 +17,11 @@ void PcMoveBehaviour::Move(float dt)
 	if (!this->gameObject) return;
 	if (!this->gameObject->CanMove()) return;
 
-	Character* c = dynamic_cast<Character*>(this->gameObject);
+	PlayableCharacter* c = dynamic_cast<PlayableCharacter*>(this->gameObject);
 	InputContainer* iC = c->GetInputContainer();
 	GameObjectContainer* goc = c->GetGameObjectContainer();
 	SDL_Rect* goRect = c->GetCollideRect();
+
 	if (iC == nullptr) return;
 
 	// -- Get destination rect
@@ -27,10 +29,10 @@ void PcMoveBehaviour::Move(float dt)
 	float newY = c->getPosY();
 	
 	// -- Get input from user
-	bool up = iC->GetKeyState(SDLK_w);
-	bool left = iC->GetKeyState(SDLK_a);
-	bool down = iC->GetKeyState(SDLK_s);
-	bool right = iC->GetKeyState(SDLK_d);
+	bool up = iC->GetKeyState(c->getKeyBinding()->UP);
+	bool left = iC->GetKeyState(c->getKeyBinding()->LEFT);
+	bool down = iC->GetKeyState(c->getKeyBinding()->DOWN);
+	bool right = iC->GetKeyState(c->getKeyBinding()->RIGHT);
 	float speed = c->GetSpeed() * dt;
 
 	c->SetMoveDir(Direction::NONE);
@@ -69,7 +71,7 @@ void PcMoveBehaviour::Move(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
+	std::vector<GameObject*> gameObjects = goc->GetCollideableObjects();
 	for (auto& g : gameObjects)
 	{
 		if (dynamic_cast<Bullet*>(g)) continue;
