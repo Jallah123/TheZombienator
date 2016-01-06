@@ -1,6 +1,7 @@
 #pragma once
 #include "Character.h"
 #include "Weapon.h"
+#include "BubbleVisitor.h"
 #include "KeyBinding.h"
 #include <vector>
 class GameScreen;
@@ -38,6 +39,7 @@ public:
 	void PreviousWeapon();
 	void Teleport(SDL_Renderer* ren);
 	void SetFlare(bool newFlare);
+	void Accept(BubbleVisitor* visitor) { visitor->Visit(this); };
 	string getImgUrl() { return imgUrl; };
 	void SetGameScreen(GameScreen* _gameScreen) { gameScreen = _gameScreen; };
 	GameScreen* GetGameScreen() { return gameScreen; };

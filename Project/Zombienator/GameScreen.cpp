@@ -12,6 +12,7 @@
 #include "TextureFactory.h"
 #include "MapFactory.h"
 #include "ScreenFactory.h"
+#include "TutorialMap.h"
 #include "Pistol.h"
 #include "MachineGun.h"
 #include "PlayableCharacter.h"
@@ -75,6 +76,16 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 		player->SetPosition(x, y);
 		spawnController.AddTarget(player);
 		x += 100;
+	}
+
+	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
+		bubbleVisitor = BubbleVisitor{ ren };
+		
+		for (auto& player : players)
+		{
+			tutorialController = TutorialController(&bubbleVisitor, &spawnController, player);
+		}
+		
 	}
 
 	//Load && play sound
@@ -184,6 +195,19 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	map->DrawFrontLayer(ren, XOffset, YOffset);
 
 	hudVisitor.DrawBase(players.size());
+
+	// BUBBLE ZOOI
+	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
+		tutorialController.DoTask();
+		for (auto& player : players)
+		{
+			player->Accept(&bubbleVisitor);
+		}
+	}
+
+	// If all waves defeated
+	if (spawnController.Completed())
+		this->Transition(ren);
 
 	hudVisitor.Visit(spawnController);
 

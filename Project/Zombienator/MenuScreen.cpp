@@ -9,7 +9,7 @@ MenuScreen::MenuScreen() : AbstractScreen()
 MenuScreen::MenuScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 {
 	inputContainer = KeyboardInputHandler::GetInstance().inputContainer;
-	ChangeBackground(ren, "assets/images/menu_bg.png");
+	ChangeBackground(ren, "assets/images/bg/menu_bg.png");
 }
 
 void MenuScreen::HandleKeyboardEvents(SDL_Renderer& ren, float dt)

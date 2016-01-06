@@ -3,7 +3,7 @@
 
 HelpScreen::HelpScreen(SDL_Renderer * ren) : MenuScreen(ren)
 {
-	ChangeBackground(ren, "assets/images/help_bg.png");
+	ChangeBackground(ren, "assets/images/bg/help_bg.png");
 	backButton = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(backButton);
 }

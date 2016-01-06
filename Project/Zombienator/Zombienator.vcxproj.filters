@@ -133,6 +133,12 @@
     <Filter Include="Source Files\Views\UIComponents\Images">
       <UniqueIdentifier>{4233e3d9-6d9a-479d-9582-f474fae886fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Models\Visitors">
+      <UniqueIdentifier>{16491f39-9b09-4d2c-afee-50e6be5bd63a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Visitors">
+      <UniqueIdentifier>{78431f3b-3c1c-4ba5-ae86-5fcf4cc173a9}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\Models\Pickups">
       <UniqueIdentifier>{36cbebd9-203d-4d29-83d5-d8231a23e06e}</UniqueIdentifier>
     </Filter>
@@ -378,9 +384,6 @@
     <ClCompile Include="Settings.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
-    <ClCompile Include="HudVisitor.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
     <ClCompile Include="SwitchButtonGameSpeed.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
@@ -462,6 +465,21 @@
     <ClCompile Include="WunderlandMap.cpp">
       <Filter>Source Files\Models\Map</Filter>
     </ClCompile>
+    <ClCompile Include="HudVisitor.cpp">
+      <Filter>Source Files\Models\Visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="BubbleVisitor.cpp">
+      <Filter>Source Files\Models\Visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialMap.cpp">
+      <Filter>Source Files\Models\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialEnum.cpp">
+      <Filter>Source Files\Enums</Filter>
+    </ClCompile>
     <ClCompile Include="MultiplayerButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
@@ -533,9 +551,6 @@
     </ClCompile>
     <ClCompile Include="BadassZombie.cpp">
       <Filter>Source Files\Models\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="MoveBehaviour.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MoveContainer.cpp">
       <Filter>Source Files</Filter>
@@ -749,9 +764,6 @@
     <ClInclude Include="Settings.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="HudVisitor.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
     <ClInclude Include="SwitchButtonGameSpeed.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
@@ -830,14 +842,23 @@
     <ClInclude Include="WunderlandMap.h">
       <Filter>Header Files\Models\Map</Filter>
     </ClInclude>
+    <ClInclude Include="BubbleVisitor.h">
+      <Filter>Header Files\Models\Visitors</Filter>
+    </ClInclude>
+    <ClInclude Include="HudVisitor.h">
+      <Filter>Header Files\Models\Visitors</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialMap.h">
+      <Filter>Header Files\Models\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
     <ClInclude Include="KeyBinding.h">
       <Filter>Header Files\Models\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="MultiplayerButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveBehaviour.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MoveContainer.h">
       <Filter>Header Files</Filter>

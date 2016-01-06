@@ -106,7 +106,7 @@ void PlayableCharacter::Teleport(SDL_Renderer* ren) {
 		SetFlare(true);
 		this->Remove();
 		// Set flare
-		SetImage("assets/images/flare.png");
+		SetImage("assets/images/effects/flare.png");
 	}
 
 	SetSize(256, 256);

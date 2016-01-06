@@ -34,7 +34,7 @@ void Zombie::Init()
 	SetNormalTexture(basePath + spriteSheet);
 	SetAttackTexture(baseAttackPath + spriteSheet);
 
-	SetDeadTexture(basePath + "explosion.png");
+	SetDeadTexture("assets/images/effects/explosion.png");
 
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
