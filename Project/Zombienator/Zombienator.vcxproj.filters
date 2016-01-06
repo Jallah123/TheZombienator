@@ -570,6 +570,9 @@
     <ClCompile Include="ContinueButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
+    <ClCompile Include="MiniGameButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -870,6 +873,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ContinueButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniGameButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
   </ItemGroup>

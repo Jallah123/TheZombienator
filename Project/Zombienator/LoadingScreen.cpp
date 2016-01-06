@@ -3,6 +3,8 @@
 #include "ContinueButton.h"
 #include "DirectoryUtils.h"
 #include "TextureFactory.h"
+#include "LabelEndScreen.h"
+#include "Button.h"
 
 LoadingScreen::~LoadingScreen() {}
 LoadingScreen::LoadingScreen(SDL_Renderer* ren) : AbstractScreen(ren)
@@ -13,6 +15,15 @@ LoadingScreen::LoadingScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 	ContinueButton* btnBack = new ContinueButton(*ren, "", "assets/images/btn/btn_continue.png");
 	AddUIComponent(btnBack);
 
+	// Mini Game Counter
+	counterLbl = new LabelEndScreen(*ren, "Counter: " + std::to_string(counter), 100, 200);
+	AddUIComponent(counterLbl);
+
+	// Zombie Button
+	zombieBtn = new MiniGameButton(*ren, "", "assets/images/mini-game/zombie.png", this);
+	AddUIComponent(zombieBtn);
+
+	// Search/Create Ads
 	SearchAds(ren);
 }
 
@@ -47,11 +58,18 @@ void LoadingScreen::CreateAds(SDL_Renderer* ren, std::string url)
 	adver->SetSize(imgRect.w, imgRect.h);
 	adver->SetSourceLocation(imgRect.x, imgRect.y);
 	adver->SetDestLocation((windowRect.w - imgRect.w) - border, border);
+	AddUIComponent(adver);
+}
+
+void LoadingScreen::UpCounter()
+{
+	counter++;
+	zombieBtn->ChangePos();
+	counterLbl->ChangeText("Counter: " + std::to_string(counter));
 }
 
 void LoadingScreen::Update(float dt) {}
 void LoadingScreen::Draw(SDL_Renderer & ren, float dt)
 {
 	AbstractScreen::Draw(ren, dt);
-	adver->Draw(ren);
 }
