@@ -43,7 +43,6 @@ void Program::ShowLoadingScreen()
 
 void Program::ShowGameOverScreen()
 {
-	ScreenController::GetInstance().Back();
 	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMEOVERSCREEN));
 }
 

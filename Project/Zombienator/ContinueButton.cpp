@@ -11,7 +11,7 @@ ContinueButton::ContinueButton(SDL_Renderer& ren, char* text, char* img_url) : B
 
 void ContinueButton::ClickAction()
 {
-	ScreenController::GetInstance().PopLatestScreen();
+	ScreenController::GetInstance().Back();
 }
 
 ContinueButton::ContinueButton() {}
