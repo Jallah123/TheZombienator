@@ -15,6 +15,8 @@
 #include "CollideContainer.h"
 #include "GameState.h"
 #include "HudVisitor.h"
+#include "BubbleVisitor.h"
+#include "TutorialController.h"
 #include "PauseScreen.h"
 #include "PlayableCharacter.h"
 
@@ -63,6 +65,8 @@ private:
 	GameObjectContainer* gameObjectContainer;
 	SpawnController spawnController;
 	HudVisitor hudVisitor;
+	BubbleVisitor bubbleVisitor;
+	TutorialController tutorialController;
 	
 	vector<PlayableCharacter*> players;
 	Map* map = nullptr;

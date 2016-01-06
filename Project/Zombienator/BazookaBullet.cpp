@@ -4,7 +4,7 @@
 
 BazookaBullet::BazookaBullet()
 {
-	this->texture = TextureFactory::CreateTexture("assets/images/bullet.png");
+	this->texture = TextureFactory::CreateTexture("assets/images/weapons/bullet.png");
 	this->SetSize(20, 14);
 }
 

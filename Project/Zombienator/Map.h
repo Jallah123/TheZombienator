@@ -40,7 +40,7 @@ private:
 	SoundController* SoundController = &SoundController::GetInstance();
 public:
 	Map(string mapPath);
-	~Map();
+	virtual ~Map();
 
 	string GetMapPath() const { return this->mapPath; }
 	string GetSoundPath() const { return this->mapPath; }

@@ -17,8 +17,7 @@ StatsScreen::~StatsScreen()
 
 void StatsScreen::AddHighScores(SDL_Renderer* ren)
 {
-	AddUIComponent(new LabelEndScreen(*ren, "Highscores:", 100, 150));
-
+	AddUIComponent(new LabelEndScreen(*ren, "Highscores:", 100, 200));
 
 	highScores = ioC->LoadFile("highscores", highScores);
 	if (highScores == nullptr) {
@@ -29,7 +28,7 @@ void StatsScreen::AddHighScores(SDL_Renderer* ren)
 
 	bool protectOnce = true;
 	int count = 1;
-	int startX = 200;
+	int startX = 230;
 	for (auto& i : highScores->GetHighScores()) {
 		AddUIComponent(new LabelEndScreen(*ren, to_string(count) + ": ", 100, startX));
 		AddUIComponent(new LabelEndScreen(*ren, to_string(i), 125, startX));
@@ -50,17 +49,16 @@ void StatsScreen::AddStats(SDL_Renderer* ren)
 	//addHighscores
 	AddHighScores(ren);
 
-
 	// Buttons
-	BackToMenuButton* btnBack = new BackToMenuButton(*ren, "", "assets/images/button_backtomenu.png");
+	BackToMenuButton* btnBack = new BackToMenuButton(*ren, "", "assets/images/btn/btn_backtomenu.png");
 	AddUIComponent(btnBack);
 
 	// Labels
-	LabelEndScreen* lblStats = new LabelEndScreen(*ren, "Statistics: ", 900, 200);
-	LabelEndScreen* lblTime = new LabelEndScreen(*ren, "Time: ", 900, 230);
-	LabelEndScreen* lblWaves = new LabelEndScreen(*ren, "Waves: ", 900, 260);
-	LabelEndScreen* lblKills = new LabelEndScreen(*ren, "Kills: ", 900, 290);
-	LabelEndScreen* lblBullets = new LabelEndScreen(*ren, "Bullets: ", 900, 320);
+	LabelEndScreen* lblStats = new LabelEndScreen(*ren, "Statistics: ", 1000, 200);
+	LabelEndScreen* lblTime = new LabelEndScreen(*ren, "Time: ", 1000, 230);
+	LabelEndScreen* lblWaves = new LabelEndScreen(*ren, "Waves: ", 1000, 260);
+	LabelEndScreen* lblKills = new LabelEndScreen(*ren, "Kills: ", 1000, 290);
+	LabelEndScreen* lblBullets = new LabelEndScreen(*ren, "Bullets: ", 1000, 320);
 	AddUIComponent(lblStats);
 	AddUIComponent(lblTime);
 	AddUIComponent(lblWaves);
@@ -73,10 +71,10 @@ void StatsScreen::AddStats(SDL_Renderer* ren)
 	string tBullets = to_string(StatsController::GetInstance()->GetTotalBullets());
 	string tTime = StatsController::GetInstance()->GetTotalTime();
 
-	LabelEndScreen* valTime = new LabelEndScreen(*ren, tTime, 1000, 230);
-	LabelEndScreen* valWaves = new LabelEndScreen(*ren, tWaves, 1000, 260);
-	LabelEndScreen* valKills = new LabelEndScreen(*ren, tKills, 1000, 290);
-	LabelEndScreen* valBullets = new LabelEndScreen(*ren, tBullets, 1000, 320);
+	LabelEndScreen* valTime = new LabelEndScreen(*ren, tTime, 1100, 230);
+	LabelEndScreen* valWaves = new LabelEndScreen(*ren, tWaves, 1100, 260);
+	LabelEndScreen* valKills = new LabelEndScreen(*ren, tKills, 1100, 290);
+	LabelEndScreen* valBullets = new LabelEndScreen(*ren, tBullets, 1100, 320);
 	AddUIComponent(valTime);
 	AddUIComponent(valWaves);
 	AddUIComponent(valKills);

@@ -6,8 +6,7 @@
 #include "GameObjectFactory.h"
 #include "SoundController.h"
 
-Pistol::Pistol() : 
-	Weapon("Pistol", INT_MAX, INT_MAX, 80, 20, "bullet", SDL_Rect{222, 214, 262, 165})
+Pistol::Pistol() : Weapon("Pistol", INT_MAX, INT_MAX, 80, 20, "bullet", SDL_Rect{222, 214, 262, 165})
 {
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new NormalBullet(); });
 }

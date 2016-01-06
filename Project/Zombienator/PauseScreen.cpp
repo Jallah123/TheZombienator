@@ -6,7 +6,7 @@ PauseScreen::PauseScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
 	char* spriteSheet = "assets/images/button_spritesheet.png";
 	//default background
-	ChangeBackground(ren, "assets/images/default_bg.png");
+	ChangeBackground(ren, "assets/images/bg/default_bg.png");
 
 	Label* pauseLabel = new Label(*ren, "Game paused", 655, 100, 44, { 255,255,240 });  //ren, text, xpos,ypos, fontsize, color
 	AddUIComponent(pauseLabel);
