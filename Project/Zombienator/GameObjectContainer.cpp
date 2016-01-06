@@ -1,21 +1,20 @@
 #include "GameObjectContainer.h"
 #include "GameObjectFactory.h"
-#include "Mike.h"
 #include "Zombie.h"
 #include "Map.h"
 #include "Quadtree.h"
 #include "CollideObject.h"
+#include "PlayableCharacter.h"
+#include "StatsController.h"
 
 GameObjectContainer::GameObjectContainer()
 {
-	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
-	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
+
 }
 
-GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t): map(m), tree(t)
+GameObjectContainer::GameObjectContainer(Map * m, Quadtree * t) : map(m), tree(t)
 {
-	GameObjectFactory::Instance()->Register("mike", [](void) -> GameObject* {return new Mike(); });
-	GameObjectFactory::Instance()->Register("zombie", [](void) -> GameObject* {return new Zombie(); });
+
 }
 
 
@@ -25,6 +24,17 @@ GameObjectContainer::~GameObjectContainer()
 		delete *it;
 
 	objects.clear();
+}
+
+vector<GameObject*> GameObjectContainer::GetCollideableObjects()
+{
+	vector<GameObject*> o = {};
+	for (auto& ob : objects) {
+		if (ob->IsCollidable()) {
+			o.push_back(ob);
+		}
+	}
+	return o;
 }
 
 vector<GameObject*> GameObjectContainer::GetGameObjects(float x, float y)

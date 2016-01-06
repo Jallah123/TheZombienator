@@ -9,7 +9,9 @@
 #include <algorithm>
 #include "Graph.h"
 #include "Node.h"
+#include "Map.h"
 #include <vector>
+#include <deque>
 
 ZombieWalkingState::ZombieWalkingState()
 {
@@ -25,12 +27,17 @@ void ZombieWalkingState::CheckState()
 {
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
-	if (target == nullptr && !target->IsDeath()) {
-		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
+
+	if (z->IsDeath()) {
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::DEAD, z));
 		return;
 	}
 	else if (z->IsInAttackRadius(target)) {
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::ATTACKING, z));
+		return;
+	}
+	else if (target == nullptr && !target->IsDeath()) {
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, z));
 		return;
 	}
 }
@@ -89,7 +96,7 @@ void ZombieWalkingState::Update(float dt)
 	float finalY = newY;
 
 	// -- Map Collision
-	std::vector<GameObject*> gameObjects = goc->GetGameObjects();
+	std::vector<GameObject*> gameObjects = goc->GetCollideableObjects();
 	for (auto& g : gameObjects)
 	{
 		if (g != z) {

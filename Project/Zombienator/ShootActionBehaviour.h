@@ -9,7 +9,7 @@ private:
 public:
 	ShootActionBehaviour();
 	~ShootActionBehaviour();
-
+	virtual void Init() override;
 	virtual void Update(float dt) override;
 };
 

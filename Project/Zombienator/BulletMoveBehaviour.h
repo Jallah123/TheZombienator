@@ -5,6 +5,7 @@ class BulletMoveBehaviour :
 {
 private:
 	int speed = 5;
+	float modifer = 1.6f;
 public:
 	BulletMoveBehaviour();
 	~BulletMoveBehaviour();

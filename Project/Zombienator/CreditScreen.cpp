@@ -3,7 +3,7 @@
 CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {	
 	//default background
-	ChangeBackground(ren, "assets/images/default_bg.png");
+	ChangeBackground(ren, "assets/images/bg/default_bg.png");
 
 	//back button
 	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
@@ -75,11 +75,9 @@ void CreditScreen::Update(float dt)
 
 void CreditScreen::Draw(SDL_Renderer & ren, float dt)
 {
-	SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
-	for (const auto& i : UIComponents)
-		i->Draw(ren);
-
+	AbstractScreen::Draw(ren, dt);
 	drawText(ren);
+	HandleKeyboardEvents(ren, dt);
 }
 
 void CreditScreen::drawText(SDL_Renderer& ren)

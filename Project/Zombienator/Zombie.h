@@ -2,6 +2,8 @@
 #include "Character.h"
 #include "ZombieState.h"
 #include <deque>
+#include <string>
+#include "Node.h"
 
 class DrawContainer;
 class AnimateContainer;
@@ -10,13 +12,19 @@ class ActionContainer;
 class CollideContainer;
 class GameObjectContainer;
 
+using std::string;
+
 class Zombie :
 	public Character
 {
+private:
+	const string basePath = "assets/images/spritesheets/";
+	const string baseAttackPath = "assets/images/spritesheets/attack/";
 public:
 	Zombie();
-	~Zombie();
-	void Init(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren);
+	Zombie(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, CollideContainer* collideC, ActionContainer* actionC, GameObjectContainer* gameObjectC);
+	virtual ~Zombie();
+	void Init();
 
 	void SetTarget(Character* c) { this->target = c; }
 	Character* GetTarget() { return this->target; }
@@ -29,6 +37,7 @@ public:
 
 	void SetNormalTexture(string path);
 	void SetAttackTexture(string path);
+	void SetDeadTexture(string path);
 	void ChangeTexture(bool isAttack);
 
 	void SetAttackDamage(float ad) { this->attackDamage = ad; }
@@ -41,11 +50,13 @@ public:
 	deque<Node*>& GetPath() { return path; };
 	deque<Node*> GetPathCopy() { return path; };
 	void SetPath(deque<Node*> _path) { path = _path; };
+	virtual void OnDeath() override;
 private:
 	Character* target = nullptr;//Mike||Arnold
 	ZombieState* currentState = nullptr;
 	SDL_Texture* normalTexture = nullptr;
 	SDL_Texture* AttackTexture = nullptr;
+	SDL_Texture* DeadTexture = nullptr;
 	
 	float attackDamage = 0;
 	float attackSpeed = 0;

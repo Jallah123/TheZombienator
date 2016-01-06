@@ -7,7 +7,7 @@
 
 using std::string;
 
-Map::Map(string p) : path(p)
+Map::Map(string m) : mapPath(m)
 {
 	this->parser = new MapParser(this);
 	bounds = { 0, 0, tileWidth * width, tileHeight * height };
@@ -28,8 +28,11 @@ Map::~Map()
 
 	rects.clear();
 
-
 	delete parser;
+}
+
+void Map::PlaySounds() {
+	SoundController->ChangeMusic("assets/sounds/" + soundPath);
 }
 
 void Map::Size(int w, int h)

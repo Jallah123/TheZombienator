@@ -12,7 +12,6 @@ MoveContainer::MoveContainer()
 	BehaviourFactory::Instance()->Register("BulletMoveBehaviour", [](void) -> Behaviour* { return new BulletMoveBehaviour(); });
 }
 
-
 MoveContainer::~MoveContainer()
 {
 }
@@ -21,15 +20,15 @@ void MoveContainer::Move(float dt)
 {
 	if (this->arr.empty()) return;//Do nothing on empty
 
-	for (Behaviour* i : this->arr) {
-		MoveBehaviour* mb = static_cast<MoveBehaviour*>(i);
+	for (auto itr = arr.begin(); itr != arr.end();)
+	{
+		MoveBehaviour* mb = static_cast<MoveBehaviour*>(*itr);
+		mb->Move(dt);
 
-		//Draw each Behaviour
-		if (mb) {
-			mb->Move(dt);
-			if (i->CanBeRemove()) arrRemove.push_back(i);
-		}
+		if (mb->CanBeRemove())
+			itr = Remove(mb);
+		else
+			++itr;
 	}
-	RemoveAll();
 }
 

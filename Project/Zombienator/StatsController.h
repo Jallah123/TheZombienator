@@ -6,11 +6,11 @@ class StatsController
 {
 	private:
 		StatsController();
-		static int kills;
-		static int totalKills;
-		static int totalBullets;
-		static int totalWavesDefeated;
-		static long startTime;
+		int kills = 0;
+		int totalKills = 0;
+		int totalBullets = 0;
+		int totalWavesDefeated = 0;
+		long startTime;
 	public:
 		~StatsController();
 
@@ -19,19 +19,18 @@ class StatsController
 			return &f;
 		}
 
-		static void AddKill() { kills++; totalKills++; };
-		static void AddBullet() { totalBullets++; };
-		static void AddWaveDefeated() { totalWavesDefeated++; };
+		void AddKill() { this->kills++; this->totalKills++; };
+		void AddBullet() { this->totalBullets++; };
+		void AddWaveDefeated() { this->totalWavesDefeated++; };
 
-		static int GetKills() { return kills; }
-		static int GetTotalKills() { return totalKills; };
-		static int GetTotalBullets() { return totalBullets; }
-		static int GetTotalWavesDefeated() { return totalWavesDefeated; };
-		static void StartTime() { startTime = clock(); }
-		static std::string GetTotalTime();
+		int GetKills() { return this->kills; }
+		int GetTotalKills() { return this->totalKills; };
+		int GetTotalBullets() { return this->totalBullets; }
+		int GetTotalWavesDefeated() { return this->totalWavesDefeated; };
+		std::string GetTotalTime();
 
-		static void SetKills(int _kills) { kills = _kills; };
+		void SetKills(int _kills) { this->kills = _kills; };
 	
-		static void Reset();
+		void Reset();
 };
 

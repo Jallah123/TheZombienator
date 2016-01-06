@@ -9,7 +9,7 @@
 
 MapParser::MapParser(Map* map) :map(map)
 {
-	ParseJson(map->GetPath());
+	ParseJson(map->GetMapPath());
 	std::cout << "finished Parsing" << std::endl;
 }
 
@@ -36,6 +36,7 @@ void MapParser::ParseJson(string path)
 	size_t height = root.get("height", 0).asInt();
 	map->Size(width, height);
 
+	// Parse Layers
 	Json::Value layers = root["layers"];
 
 	std::string prefix = "Min";
@@ -57,6 +58,14 @@ void MapParser::ParseJson(string path)
 			map->AddFrontLayer(l);
 		else
 			map->AddBackLayer(l);
+	}
+
+	// Parse custom properties
+	Json::Value props = root["properties"];
+
+	string soundPath = props.get("Sound", "unknownType").asString();
+	if (soundPath != "unknownType") {
+		map->SetSoundPath(soundPath);
 	}
 	
 	config_doc.close();

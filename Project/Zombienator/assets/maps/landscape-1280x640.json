@@ -645,7 +645,7 @@
  "orientation":"orthogonal",
  "properties":
     {
-
+     "Sound":"bgSound1.wav"
     },
  "renderorder":"right-down",
  "tileheight":32,

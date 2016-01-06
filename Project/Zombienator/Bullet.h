@@ -1,7 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include "DrawContainer.h"
-#include "MoveContainer.h"
 #include "PlayableCharacter.h"
 
 //Containers
@@ -22,8 +20,10 @@ protected:
 	Direction direction = Direction::NONE;
 	bool _hasCollision = false;
 	bool _locked = false;
-	float lifeTime = 25;
+	float lifeTime = 15;
 	GameObject* target = nullptr;
+
+	
 
 	//Direction direction;
 	PlayableCharacter* origin = nullptr;
@@ -42,6 +42,7 @@ public:
 	virtual ~Bullet();
 	void Init(DrawContainer* dc, MoveContainer* mc, CollideContainer* cc, GameObjectContainer* goc);
 	virtual void SetBehaviours() = 0;
+	virtual void ShakeScreen() {};
 	void SetDrawBehaviour(std::string name);
 	void SetMoveBehaviour(std::string name);
 	void SetCollideBehaviour(std::string name);
@@ -49,7 +50,7 @@ public:
 	void SetOrigin(PlayableCharacter* o) { 
 		origin = o; 
 		SetLookDir(o->GetLookDir()); 
-		SetMoveDir(o->GetLookDir());
+		SetMoveDir(o->GetMoveDir());
 		posX = o->getPosX();
 		posY = o->getPosY();
 	}

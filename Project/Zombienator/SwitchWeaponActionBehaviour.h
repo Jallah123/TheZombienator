@@ -9,7 +9,7 @@ private:
 public:
 	SwitchWeaponActionBehaviour();
 	~SwitchWeaponActionBehaviour();
-
+	virtual void Init() override;
 	virtual void Update(float dt) override;
 
 };

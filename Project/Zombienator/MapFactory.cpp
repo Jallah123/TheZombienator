@@ -2,9 +2,18 @@
 
 void MapFactory::StoryMode() {
 
+	EmptyQueue();
+
 	mapQueue.push(new LandscapeMap());
 	mapQueue.push(new SnowMap());
+	mapQueue.push(new WunderlandMap());
+}
 
+void MapFactory::TutorialMode() {
+
+	EmptyQueue();
+
+	mapQueue.push(new TutorialMap());
 }
 
 Map * MapFactory::NextMap() {

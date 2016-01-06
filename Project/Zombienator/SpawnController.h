@@ -80,5 +80,8 @@ public:
 	bool AllWavesCompleted() { return this->allWavesCompleted; }
 
 	bool Completed() { return completed; }
+
+	int TutorialReset() { int temp = amountToSpawn; amountToSpawn = 0; return temp; }
+	void TutorialRevertReset(int i) { amountToSpawn = i; }
 };
 

@@ -68,6 +68,9 @@ int Program::Tick() {
 	gameState = GameState::RUNNING;
 	ScreenController* sc = &ScreenController::GetInstance();
 
+	//load settings
+	settings->Load();
+
 	// LoadingScreen
 	ShowLoadingScreen();
 
@@ -96,18 +99,17 @@ int Program::Tick() {
 		// Check Gameover
 		if (GameScreen* g = dynamic_cast<GameScreen*>(currentScreen))
 		{
+			// Check if screen has changed
+			if (previousScreen != currentScreen) {
+				ShowLoadingScreen();
+			}
+			
 			if (g->IsGameOver())
 			{
 				ShowGameOverScreen();
 				currentScreen = sc->GetCurrentScreen();
 			}
 		}
-
-		// Check if screen has changed
-		if (previousScreen != currentScreen) {
-			ShowLoadingScreen();
-		}
-
 
 		// Update & render currentScreen
 		currentScreen->setFPS(this->CalculateFPS());

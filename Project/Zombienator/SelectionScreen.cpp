@@ -5,6 +5,7 @@
 #include "TextureFactory.h"
 #include "ScreenFactory.h"
 #include "ScreenController.h"
+#include "MapFactory.h"
 #include "BackButton.h"
 
 struct PreviousButton : Button {
@@ -48,20 +49,54 @@ struct SelectButton : Button {
 		: Button(ren, text, img_url) {
 		_ss = ss;
 		SetSourceLocation(0, 238);
-		SetSize(239, 97);
+		SetSize(239, 102);
 		SetDestLocation(500, 500);
 		buttonText = TextureFactory::GenerateText(string(text), 24, destRect.x + (destRect.w / 2), destRect.y + (destRect.h / 2), FontEnum::CARTOON, { 248 ,248 ,255 });
 	}
 
 	void ClickAction() {
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::GAMESCREEN, _ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl()));
+		_ss->getCharacterImages().push_back(_ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl());
+		if (_ss->getCharacterImages().size() == _ss->getAmountOfPlayers())
+		{
+			string mapPath = _ss->getMapUrl();
+			vector<string> imageUrls = _ss->getCharacterImages();
+			ScreenController::GetInstance().Back();
+			ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(imageUrls, mapPath));
+		}
+		else 
+		{
+			_ss->setSubTitle(TextureFactory::GenerateText("Player" + to_string(_ss->getCharacterImages().size() + 1), 32, 550, 150, FontEnum::OCR, { 248 ,248 ,255 }));
+		}
+	}
+};
+
+struct TutorialButton : Button {
+	SelectionScreen* _ss;
+
+	TutorialButton(SDL_Renderer& ren, char* text, char* img_url, SelectionScreen* ss)
+		: Button(ren, text, img_url) {
+		_ss = ss;
+		SetSourceLocation(286, 320);
+		SetSize(82, 81);
+		SetDestLocation(1190, 10);
+	}
+
+	void ClickAction() { // Start Tutorial mode here
+
+		MapFactory::GetInstance()->TutorialMode();
+
+		_ss->getCharacterImages().push_back(_ss->GetImages().at(_ss->GetCurrentImageIndex())->GetImageUrl());
+		vector<string> imageUrls = _ss->getCharacterImages();
+		ScreenController::GetInstance().Back();
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(imageUrls));
+
 	}
 };
 
 SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
 	std::cout << "Made SelectionScreen" << std::endl;
-	backgroundTexture = TextureFactory::GenerateTextureFromImgUrl("assets/images/default_bg.png");
+	backgroundTexture = TextureFactory::CreateTexture("assets/images/bg/default_bg.png");
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy1.png"));
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy2.png"));
 	images.push_back(new Image(*ren, "assets/images/spritesheets/Boy3.png"));
@@ -72,6 +107,7 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	char* ssUrl = "assets/images/button_spritesheet.png";
 
 	title = TextureFactory::GenerateText("Character selection", 32, 625, 100, FontEnum::CARTOON, { 248 ,248 ,255 });
+	subTitle = TextureFactory::GenerateText("Player" + to_string(getCharacterImages().size()+1), 32, 550, 150, FontEnum::OCR, { 248 ,248 ,255 });
 
 	PreviousButton* pbtn = new PreviousButton(*ren, "Previous", ssUrl, this);
 	pbtn->SetSourceLocation(0, 0);
@@ -88,12 +124,15 @@ SelectionScreen::SelectionScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	SelectButton* sbtn = new SelectButton(*ren, "Select", ssUrl, this);
 	AddUIComponent(sbtn);
 
+	TutorialButton* tbtn = new TutorialButton(*ren, "", ssUrl, this);
+	AddUIComponent(tbtn);
+
 	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
 	AddUIComponent(b);
 
 	for (auto& image : images)
 	{
-		image->SetSourceLocation(0, 0);
+		image->SetSourceLocation(36, 0);
 		image->SetSize(36, 38);
 		image->SetDestLocation(600, 282);
 	}
@@ -106,13 +145,11 @@ void SelectionScreen::Update(float dt)
 
 void SelectionScreen::Draw(SDL_Renderer & ren, float dt)
 {
-	SDL_RenderCopy(&ren, backgroundTexture, 0, 0);
-	for (const auto& c : UIComponents)
-	{
-		c->Draw(ren);
-	}
+	AbstractScreen::Draw(ren, dt);
 	images.at(currentImageIndex)->Draw(ren);
 	SDL_RenderCopy(&ren, title.first, 0, &title.second);
+	SDL_RenderCopy(&ren, subTitle.first, 0, &subTitle.second);
+	HandleKeyboardEvents(ren, dt);
 }
 
 SelectionScreen::~SelectionScreen()

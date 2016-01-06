@@ -10,23 +10,30 @@ class Weapon
 protected:
 	string name = "";
 	int rounds = 0;
+	int maxRounds = 0;
 	int damage = 0;
 	int delay = 0;//Milliseconds
 	string bulletType = "";
-	SDL_Texture* hudTexture = nullptr;
+	SDL_Rect hudSourceRect = { 0,0,0,0 };
 	PlayableCharacter* character = nullptr;
 public:
 	Weapon();
-	Weapon(std::string imagePath);
+	Weapon(std::string name, int rounds, int maxRounds, int delay, int damage, std::string bulletType, SDL_Rect srcRect);
 	virtual ~Weapon();
 
-	virtual void Fire() = 0;
-	void Accept(HudVisitor* visitor) { visitor->Visit(this); };
-	int GetDelay() { return this->delay; }
-	int GetRounds() { return this->rounds; }
-	int GetDamage() { return this->damage; }
+	virtual void Fire();
+		
 	string GetName() { return name; };
-	SDL_Texture* GetHudTexture() { return hudTexture;  }
+	int GetDelay() { return this->delay; }
+	int const GetRounds() { return this->rounds; }
+	int const GetMaxRounds() { return this->maxRounds; }
+	int const GetDamage() { return this->damage; }
+	
+	void SetMaxAmmo() { rounds = maxRounds; }
+	bool HasMaxAmmo() { return rounds == maxRounds; }
+	
+	SDL_Rect GetHudSourceRect() { return hudSourceRect; }
+
 
 	void GiveTo(PlayableCharacter* c) { this->character = c; }
 };

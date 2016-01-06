@@ -9,7 +9,7 @@ Button::Button() : AbstractUIComponent()
 
 Button::Button(SDL_Renderer& ren, char* text, char* img_url) : AbstractUIComponent(ren) 
 {
-	image = TextureFactory::GenerateTextureFromImgUrl(img_url);
+	image = TextureFactory::CreateTexture(img_url);
 }
 
 Button::~Button()

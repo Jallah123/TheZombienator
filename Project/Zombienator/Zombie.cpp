@@ -2,38 +2,44 @@
 #include "GameObjectContainer.h"
 #include "ZombieStateFactory.h"
 #include "ZombieAttackState.h"
+#include "ZombieDeadState.h"
 #include "NumberUtility.h"
-#include <string>
 #include "TextureFactory.h"
 #include "GameMath.h"
-using std::string;
+#include "GameObjectFactory.h"
+#include <deque>
 
-Zombie::Zombie() : Character() 
+Zombie::Zombie()
+	: Character()
+{
+	SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, this));
+}
+
+Zombie::Zombie(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, CollideContainer * collideC, ActionContainer * actionC, GameObjectContainer * gameObjectC)
+	: Character(drawC, animC, moveC, collideC, actionC, gameObjectC)
 {
 	SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::STANDSTILL, this));
 }
 
 Zombie::~Zombie() {}
 
-void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren)
+void Zombie::Init()
 {
 	//Zombie doesn't have input from the InputContainer	
 	int dice_roll = NumberUtility::RandomNumber(1, 6);
 
-	string basePath = "assets/images/spritesheets/";
-	string baseAttackPath = "assets/images/spritesheets/attack/";
 	string spriteSheet = std::to_string(dice_roll) + "zombie.png";
 
-	SetImage(basePath + spriteSheet, *ren);
+	SetImage(basePath + spriteSheet);
 	SetNormalTexture(basePath + spriteSheet);
 	SetAttackTexture(baseAttackPath + spriteSheet);
-	this->SetContainers(drawC, animC, moveC, nullptr, nullptr, collideC, gameObjectC);
+
+	SetDeadTexture("assets/images/effects/explosion.png");
+
 	SetDrawBehaviour("CharacterDrawBehaviour");
 	SetAnimateBehaviour("AnimateBehaviour");
 	SetCollideBehaviour("CharacterCollideBehaviour");
 
-	gameObjectC->AddGameObject(this);
-	
 	SetSize(32, 36);
 	SetFrames(3);
 	SetSpeed(0.4f);
@@ -47,9 +53,9 @@ void Zombie::Init(DrawContainer * drawC, AnimateContainer * animC, MoveContainer
 }
 
 void Zombie::SetCurrentState(ZombieState* newState)
-{	
-	
-	if(this->currentState != newState)
+{
+
+	if (this->currentState != newState)
 	{
 		if (dynamic_cast<ZombieAttackState*>(newState))
 			ChangeTexture(true);
@@ -61,7 +67,7 @@ void Zombie::SetCurrentState(ZombieState* newState)
 
 bool Zombie::IsInAttackRadius(Character * target)
 {
-	
+
 	double dist = GameMath::Distance(*this->GetCollideRect(), *target->GetCollideRect());
 	if (lookDir == Direction::NORTH || lookDir == Direction::SOUTH) {
 		return dist < sweetspotY;
@@ -74,18 +80,42 @@ bool Zombie::IsInAttackRadius(Character * target)
 
 void Zombie::SetNormalTexture(string path)
 {
-	normalTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+	normalTexture = TextureFactory::CreateTexture(path);
 }
 
 void Zombie::SetAttackTexture(string path)
 {
-	AttackTexture = TextureFactory::GenerateTextureFromImgUrl(path);
+	AttackTexture = TextureFactory::CreateTexture(path);
+}
+
+void Zombie::SetDeadTexture(string path)
+{
+	DeadTexture = TextureFactory::CreateTexture(path);
 }
 
 void Zombie::ChangeTexture(bool isAttack)
 {
-	if (isAttack)
-		SetTexture(this->AttackTexture);
-	else
-		SetTexture(this->normalTexture);
+	if (this->IsDeath()) {
+
+		this->SetFrames(16);
+		this->SetSize(64, 64);
+		this->SetSpeed(0.2f);
+		this->SetMoveDir(Direction::SOUTH);
+		this->SetLookDir(Direction::SOUTH);
+		this->CanMove(false);
+		this->SetPosition(getPosX() - 16, getPosY() - 14);
+
+		SetTexture(this->DeadTexture);
+	}
+	else {
+		if (isAttack)
+			SetTexture(this->AttackTexture);
+		else
+			SetTexture(this->normalTexture);
+	}
+}
+
+void Zombie::OnDeath()
+{
+	GameObjectFactory::Instance()->CreateRandomPickup(this);
 }
