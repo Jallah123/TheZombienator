@@ -197,6 +197,7 @@
     <ClCompile Include="CollideBehaviour.cpp" />
     <ClCompile Include="CollideContainer.cpp" />
     <ClCompile Include="CollideObject.cpp" />
+    <ClCompile Include="ContinueButton.cpp" />
     <ClCompile Include="CreditButton.cpp" />
     <ClCompile Include="CreditScreen.cpp" />
     <ClCompile Include="CustomFuncButton.cpp" />
@@ -327,6 +328,7 @@
     <ClInclude Include="CollideBehaviour.h" />
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="CollideObject.h" />
+    <ClInclude Include="ContinueButton.h" />
     <ClInclude Include="CustomFuncButton.h" />
     <ClInclude Include="DirectoryUtils.h" />
     <ClInclude Include="dirent.h" />

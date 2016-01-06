@@ -223,6 +223,8 @@ bool GameScreen::Transition(SDL_Renderer& ren)
 		if (player->getPosY() < -player->GetHeight())
 		{
 			string texturePath = player->getImgUrl();
+			vector<string> tempCharacterImageUrls = characterImageUrls;
+
 			ScreenController::GetInstance().Back();
 
 			// Check if final map
@@ -233,7 +235,7 @@ bool GameScreen::Transition(SDL_Renderer& ren)
 			else
 			{
 				// Set next screen
-				ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(characterImageUrls));
+				ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(tempCharacterImageUrls));
 			}
 			return true;
 		}
@@ -243,6 +245,7 @@ bool GameScreen::Transition(SDL_Renderer& ren)
 
 bool GameScreen::IsGameOver()
 {
+	if (players.size() == 0) return false;
 	for (auto& player : players)
 	{
 		if (!player->IsDeath())
@@ -251,4 +254,11 @@ bool GameScreen::IsGameOver()
 		}
 	}
 	return true;
+}
+
+bool GameScreen::Loading() 
+{
+	bool b = isLoading;
+	isLoading = true;
+	return b;
 }

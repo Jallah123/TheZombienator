@@ -34,6 +34,7 @@ public:
 	void NextMap(SDL_Renderer & ren);
 	Quadtree* GetTree() { return this->tree; }
 	bool IsGameOver();
+	bool Loading();
 	InputContainer* inputContainer = &InputContainer::GetInstance();
 	void EndMap();
 private:
@@ -47,6 +48,7 @@ private:
 	int timeLastStateChange = 0;
 	bool isInfinityMode = false;
 	bool inTransistion = false;
+	bool isLoading = false;
 	int cheatDelay = 50;
 	int timeCheatActivated = 0;
 	GameState currentState = GameState::INIT;

@@ -38,7 +38,7 @@ GameObject::~GameObject()
 
 	actionBehaviours.clear();
 
-	delete texture;
+	SDL_DestroyTexture(texture);
 }
 
 void GameObject::SetImage(std::string path)
