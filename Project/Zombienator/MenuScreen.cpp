@@ -25,6 +25,7 @@ void MenuScreen::HandleKeyboardEvents(SDL_Renderer& ren, float dt)
 		if (enter)
 		{
 			buttons.at(selectedComponent)->ClickAction();
+			enter = false;
 			return;
 		}
 		else if (next)
