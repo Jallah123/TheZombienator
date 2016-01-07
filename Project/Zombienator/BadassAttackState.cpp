@@ -24,7 +24,6 @@ void BadassAttackState::CheckState()
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::DEAD, z));
 		return;
 	}
-	z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::BAD_WALK, z));
 	
 }
 
@@ -34,8 +33,11 @@ void BadassAttackState::Update(float dt)
 	elapsedTime += dt;
 	if (elapsedTime >= this->shootDelay)
 	{
+		GetOwner()->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::BAD_WALK, GetOwner()));
+
 		GameObjectFactory::Instance()->CreateZombieBlubber(GetOwner());
-		CheckState();
 		elapsedTime = 0;
 	}
+	CheckState();
+
 }

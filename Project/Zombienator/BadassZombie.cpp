@@ -25,7 +25,6 @@ void BadassZombie::Init()
 {
 	SetImage(basePath + "7zombie.png");
 	SetNormalTexture(basePath + "7zombie.png");
-	SetAttackTexture(basePath + "7zombie.png");
 
 	SetDeadTexture(basePath + "explosion.png");
 
