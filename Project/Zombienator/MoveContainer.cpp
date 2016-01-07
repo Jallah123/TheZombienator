@@ -12,7 +12,6 @@ MoveContainer::MoveContainer()
 	BehaviourFactory::Instance()->Register("BulletMoveBehaviour", [](void) -> Behaviour* { return new BulletMoveBehaviour(); });
 }
 
-
 MoveContainer::~MoveContainer()
 {
 }

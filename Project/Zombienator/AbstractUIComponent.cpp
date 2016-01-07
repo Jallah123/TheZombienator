@@ -31,12 +31,14 @@ void AbstractUIComponent::SetSize(int ww, int hh)
 	destRect.h = hh;
 }
 
-void AbstractUIComponent::OnClick(SDL_Point p)
+bool AbstractUIComponent::OnClick(SDL_Point p)
 {
 	SDL_Rect MouseRect{ p.x, p.y, 1, 1 };
 	if (SDL_HasIntersection(&destRect, &MouseRect) == SDL_TRUE) {
 		ClickAction();
+		return true;
 	}
+	return false;
 }
 
 AbstractUIComponent::~AbstractUIComponent()

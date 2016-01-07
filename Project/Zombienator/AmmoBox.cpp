@@ -11,7 +11,7 @@ AmmoBox::AmmoBox(DrawContainer * drawC, AnimateContainer * animC, MoveContainer 
 	: Pickup(drawC, animC, moveC, collideC, actionC, gameObjectC)
 {
 	SetSize(30, 32);
-	SetImage("assets/images/box_normal_item.png");
+	SetImage("assets/images/items/box_normal_item.png");
 }
 
 

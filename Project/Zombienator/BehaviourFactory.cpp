@@ -102,6 +102,7 @@ ActionBehaviour * BehaviourFactory::CreateActionBehaviour(std::string name, Game
 	if (instance != nullptr) {
 		ActionBehaviour* cInstance = dynamic_cast<ActionBehaviour*>(instance);
 		cInstance->SetGameObject(obj);//link the behaviour to its gameObject
+		cInstance->Init();
 		return cInstance;
 	}
 

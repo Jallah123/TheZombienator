@@ -5,6 +5,7 @@ enum GameState
 	INIT,
 	RUNNING,
 	PAUSE,
+	TRANSITIONING,
 	QUIT
 };
 #endif

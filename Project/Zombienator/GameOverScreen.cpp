@@ -1,9 +1,10 @@
 #include "GameOverScreen.h"
+#include "AbstractUIComponent.h"
 
 GameOverScreen::GameOverScreen(SDL_Renderer* ren) : StatsScreen(ren)
 {
 	SoundController::GetInstance().StopAllSounds();
-	ChangeBackground(ren, "assets/images/gameover_bg.png");
+	ChangeBackground(ren, "assets/images/bg/gameover_bg.png");
 	SoundController->GetInstance().PlaySound("assets/sounds/gameover.wav", 1);
 
 	AddStats(ren);

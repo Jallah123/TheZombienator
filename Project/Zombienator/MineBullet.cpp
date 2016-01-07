@@ -4,7 +4,7 @@
 
 MineBullet::MineBullet()
 {
-	this->texture = TextureFactory::CreateTexture("assets/images/MineBullet.png");
+	this->texture = TextureFactory::CreateTexture("assets/images/weapons/MineBullet.png");
 	this->SetSize(30, 30);
 	this->SetCollideable(false);
 }

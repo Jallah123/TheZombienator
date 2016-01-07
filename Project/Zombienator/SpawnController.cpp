@@ -52,9 +52,6 @@ void SpawnController::Update(float dt)
 
 	if (IsFinished()) {
 
-		if((currentWave) == maxWaves)
-			allWavesCompleted = true;
-
 		Countdown();
 		return;
 	} 
@@ -87,10 +84,6 @@ void SpawnController::Spawn()
 
 void SpawnController::NextWave()
 {
-	if (currentWave == maxWaves) {
-		completed = true;
-		return;
-	}
 	currentWave++;
 	waveFinished = false;
 	amountSpawned = 0;//reset wave count

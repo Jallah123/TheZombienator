@@ -189,6 +189,7 @@
     <ClCompile Include="BazookaBullet.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="BehaviourFactory.cpp" />
+    <ClCompile Include="BubbleVisitor.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletMoveBehaviour.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -201,6 +202,7 @@
     <ClCompile Include="CreditScreen.cpp" />
     <ClCompile Include="CustomFuncButton.cpp" />
     <ClCompile Include="Direction.cpp" />
+    <ClCompile Include="DirectoryUtils.cpp" />
     <ClCompile Include="FontEnum.cpp" />
     <ClCompile Include="GameDifficulty.cpp" />
     <ClCompile Include="GameMath.cpp" />
@@ -238,14 +240,17 @@
     <ClCompile Include="MapParser.cpp" />
     <ClCompile Include="Medkit.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
-    <ClCompile Include="Mike.cpp" />
-    <ClCompile Include="Mine.cpp" />
-    <ClCompile Include="MineBullet.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
+    <ClCompile Include="MultiplayerButton.cpp" />
+    <ClCompile Include="PauseScreen.cpp" />
+    <ClCompile Include="MapSelectionScreen.cpp" />
+    <ClCompile Include="Mine.cpp" />
+    <ClCompile Include="MineBullet.cpp" />
     <ClCompile Include="NonMovingBullet.cpp" />
     <ClCompile Include="NonMovingBulletCollideBehaviour.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
+    <ClCompile Include="NonMovingBulletDrawBehaviour.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PickupCollideBehaviour.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -284,6 +289,9 @@
     <ClCompile Include="thirdparty\jsoncpp-0.10.5\buildlib\jsoncpp.cpp" />
     <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="TileSet.cpp" />
+    <ClCompile Include="TutorialController.cpp" />
+    <ClCompile Include="TutorialEnum.cpp" />
+    <ClCompile Include="TutorialMap.cpp" />
     <ClCompile Include="VolumeButton.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WinScreen.cpp" />
@@ -313,6 +321,7 @@
     <ClInclude Include="BazookaBullet.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="BehaviourFactory.h" />
+    <ClInclude Include="BubbleVisitor.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletMoveBehaviour.h" />
     <ClInclude Include="Button.h" />
@@ -322,6 +331,8 @@
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="CollideObject.h" />
     <ClInclude Include="CustomFuncButton.h" />
+    <ClInclude Include="DirectoryUtils.h" />
+    <ClInclude Include="dirent.h" />
     <ClInclude Include="GameMath.h" />
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="CreditButton.h" />
@@ -333,6 +344,7 @@
     <ClInclude Include="HudVisitor.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ioController.h" />
+    <ClInclude Include="KeyBinding.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="HudDrawBehaviour.h" />
     <ClInclude Include="LabelEndScreen.h" />
@@ -356,7 +368,9 @@
     <ClInclude Include="KeyboardInputHandler.h" />
     <ClInclude Include="Medkit.h" />
     <ClInclude Include="MenuScreen.h" />
-    <ClInclude Include="Mike.h" />
+    <ClInclude Include="MultiplayerButton.h" />
+    <ClInclude Include="PauseScreen.h" />
+    <ClInclude Include="MapSelectionScreen.h" />
     <ClInclude Include="Mine.h" />
     <ClInclude Include="MineBullet.h" />
     <ClInclude Include="MoveBehaviour.h" />
@@ -364,6 +378,7 @@
     <ClInclude Include="NonMovingBullet.h" />
     <ClInclude Include="NonMovingBulletCollideBehaviour.h" />
     <ClInclude Include="PauseScreen.h" />
+    <ClInclude Include="NonMovingBulletDrawBehaviour.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PickupCollideBehaviour.h" />
     <ClInclude Include="Settings.h" />
@@ -403,6 +418,8 @@
     <ClInclude Include="thirdparty\jsoncpp-0.10.5\buildlib\json\json.h" />
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="TileSet.h" />
+    <ClInclude Include="TutorialController.h" />
+    <ClInclude Include="TutorialMap.h" />
     <ClInclude Include="VolumeButton.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WinScreen.h" />

@@ -2,7 +2,6 @@
 #include "GameObjectFactory.h"
 #include "GameObject.h"
 #include "Character.h"
-#include "Mike.h"
 #include "Zombie.h"
 #include "BadassZombie.h"
 #include "Map.h"
@@ -58,8 +57,8 @@ void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * 
 	collideContainer = collideC;
 	gameObjectContainer = gameObjectC;
 	renderer = ren;
-	GameObjectFactory::Instance()->Register("mike", [&](void) -> GameObject* {
-		return new Mike(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	GameObjectFactory::Instance()->Register("PlayableCharacter", [&](void) -> GameObject* {
+		return new PlayableCharacter(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 	GameObjectFactory::Instance()->Register("zombie", [&](void) -> GameObject* {
 		return new Zombie(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 	GameObjectFactory::Instance()->Register("BadassZombie", [&](void) -> GameObject* {
@@ -76,12 +75,12 @@ void GameObjectFactory::Register(std::string name, std::function<GameObject*(voi
 	GameObjectFactory::registry.insert({ name, fn });
 }
 
-Mike* GameObjectFactory::CreateMike(std::string img_url)
+PlayableCharacter* GameObjectFactory::CreatePlayableCharacter(std::string img_url, KeyBinding* keyBinding)
 {
-	GameObject* instance = GameObjectFactory::Find("mike");
+	GameObject* instance = GameObjectFactory::Find("PlayableCharacter");
 	if (instance != nullptr) {
-		Mike* cInstance = dynamic_cast<Mike*>(instance);
-		cInstance->Init(img_url);
+		PlayableCharacter* cInstance = dynamic_cast<PlayableCharacter*>(instance);
+		cInstance->Init(img_url,  keyBinding);
 		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}

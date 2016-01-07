@@ -40,7 +40,7 @@ private:
 	SoundController* SoundController = &SoundController::GetInstance();
 public:
 	Map(string mapPath);
-	~Map();
+	virtual ~Map();
 
 	string GetMapPath() const { return this->mapPath; }
 	string GetSoundPath() const { return this->mapPath; }
@@ -61,6 +61,7 @@ public:
 	void AddTileset(TileSet* ts);
 
 	void Draw(SDL_Renderer& ren, int XOffset, int YOffset);
+	void Draw(SDL_Renderer& ren, int x, int y, int size);
 	void DrawFrontLayer(SDL_Renderer& ren, int XOffset, int YOffset);
 
 	void PlaySounds();

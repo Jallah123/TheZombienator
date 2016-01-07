@@ -10,6 +10,7 @@
 #include "CreditScreen.h"
 #include "PauseScreen.h"
 #include "SettingsScreen.h"
+#include "MapSelectionScreen.h"
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 {
@@ -23,29 +24,26 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 	map[ScreenEnum::CREDITSCREEN] = [](void) -> AbstractScreen * { return new CreditScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::PAUSESCREEN] = [](void) -> AbstractScreen * { return new PauseScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::SETTINGSSCREEN] = [](void) -> AbstractScreen * { return new SettingsScreen{ Program::getInstance()->GetRenderer() }; };
+	map[ScreenEnum::MAPSELECTIONSCREEN] = [](void) -> AbstractScreen * { return new MapSelectionScreen{ Program::getInstance()->GetRenderer() }; };
 
 	return map;
 }
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> ScreenFactory::ScreenMap = fillMap();
-AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum, string _img_url)
-{
-	static string imgUrl;
-	AbstractScreen* screen = nullptr;
-	if (_img_url != "") {
-		imgUrl = _img_url;
-	}
 
-	if (screenEnum == ScreenEnum::GAMESCREEN)
+AbstractScreen* ScreenFactory::Create(ScreenEnum screenEnum)
+{
+	AbstractScreen* screen = nullptr;
+
+	auto it = ScreenMap.find(screenEnum);
+	if (it != ScreenMap.end())
 	{
-		screen = new GameScreen(Program::getInstance()->GetRenderer(), imgUrl);
-	}
-	else {
-		auto it = ScreenMap.find(screenEnum);
-		if (it != ScreenMap.end())
-		{
-			screen = it->second();
-		}
+		screen = it->second();
 	}
 	return screen;
+}
+
+AbstractScreen* ScreenFactory::CreateGameScreen(vector<string> characterUrls, string mapUrl)
+{
+	return new GameScreen(Program::getInstance()->GetRenderer(), characterUrls, mapUrl);
 }

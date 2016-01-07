@@ -36,10 +36,8 @@ protected:
 
 	bool collideable = true;
 	bool canMove = true;
-
-	SDL_Rect sourceRect = { 0,0,0,0 },
-		destRect = { 0,0,0,0 },
-		collRect = { 0,0,0,0 };
+	string texturePath = "";
+	SDL_Rect sourceRect = { 0,0,0,0 }, destRect = { 0,0,0,0 }, collRect = { 0,0,0,0 };
 
 	int animationFrames = 0;
 	
@@ -69,6 +67,8 @@ public:
 	//=== Texture
 	SDL_Texture* const GetTexture() { return this->texture; }
 	void SetTexture(SDL_Texture* t) { this->texture = t; }
+
+	string const GetTexturePath() { return texturePath; }
 	void SetImage(string path);
 
 	int GetFrames() const { return animationFrames; }
@@ -84,7 +84,6 @@ public:
 	void SetSize(int w, int h);
 	void SetPosition(float x, float y);
 
-
 	//=== Rectangles
 	void SetSourceRect(SDL_Rect r) { sourceRect = r; }
 	void SetDestinationRect(SDL_Rect r) { destRect = r; }
@@ -92,7 +91,6 @@ public:
 	SDL_Rect* GetSourceRect() { return &this->sourceRect; }
 	SDL_Rect* GetDestinationRect() { return &this->destRect; }
 	SDL_Rect* GetCollideRect() { return &this->collRect; }
-
 
 	//=== Move Direction
 	void SetMoveDir(Direction d) { if (moveDir != d) moveDir = d; }

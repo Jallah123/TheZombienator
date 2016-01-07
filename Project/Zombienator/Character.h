@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
-
+#include "HudVisitor.h"
+#include <vector>
+//Containers
+class AnimateContainer;
 class DrawContainer;
 class AnimateContainer;
 class MoveContainer;
@@ -32,6 +35,6 @@ public:
 	
 	void SetHealth(int h) { this->health = h; if (health > maxHealth) health = maxHealth; }
 	void SetMaxHealth(int h) { this->maxHealth = h; }
-	bool IsDeath() { return health <= 0 ? true : false; }
+	bool IsDeath() { return (health <= 0); }
 	virtual void OnDeath();
 };

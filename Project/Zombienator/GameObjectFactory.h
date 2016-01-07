@@ -14,14 +14,15 @@ class GameObjectContainer;
 
 //classes
 class GameObject;
+class PlayableCharacter;
 class Character;
-class Mike;
 class Zombie;
 class BadassZombie;
 //Bullets
 class NormalBullet;
 class PlayableCharacter;
 class MachineGunBullet;
+class KeyBinding;
 class BazookaBullet;
 class MineBullet;
 //Pickups
@@ -57,7 +58,7 @@ public:
 	static void Register(std::string name, std::function<GameObject*(void)> fn);
 	static void SetContainers(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, ActionContainer* actionC, CollideContainer* collideC, GameObjectContainer* gameObjectC, SDL_Renderer* ren);
 
-	static Mike* CreateMike(std::string img_url);
+	static PlayableCharacter* CreatePlayableCharacter(std::string img_url, KeyBinding* keyBinding);
 	static Zombie* CreateZombie();
 	static BadassZombie* CreateBadassZombie();
 	static NormalBullet* CreateNormalBullet(PlayableCharacter* obj);
