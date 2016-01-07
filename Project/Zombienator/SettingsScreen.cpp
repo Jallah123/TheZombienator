@@ -1,8 +1,7 @@
 #include "SettingsScreen.h"
-#include <functional>
-#include <iostream>
-#include <string>
 #include <vector>
+#include "BackButton.h"
+#include <functional>
 
 SettingsScreen::SettingsScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {

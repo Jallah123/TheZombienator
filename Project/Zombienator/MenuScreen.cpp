@@ -1,7 +1,8 @@
 #pragma once
 #include "MenuScreen.h"
 #include "AbstractUIComponent.h"
-
+#include "KeyboardInputHandler.h"
+#include "InputContainer.h"
 MenuScreen::MenuScreen() : AbstractScreen()
 {
 }

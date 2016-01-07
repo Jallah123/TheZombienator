@@ -11,6 +11,9 @@ std::map<ZombieStateEnum, std::function<ZombieState*(void)>> fillMap()
 	map[ZombieStateEnum::STANDSTILL] = [](void) -> ZombieState * { return new ZombieStandStillState; };
 	map[ZombieStateEnum::ATTACKING] = [](void) -> ZombieState * { return new ZombieAttackState; };
 	map[ZombieStateEnum::DEAD] = [](void) -> ZombieState * { return new ZombieDeadState; };
+
+	map[ZombieStateEnum::BAD_WALK] = [](void) -> ZombieState * { return new ZombieDeadState; };
+
 	return map;
 }
 

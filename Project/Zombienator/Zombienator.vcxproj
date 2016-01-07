@@ -184,6 +184,9 @@
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="BackToMenuButton.cpp" />
+    <ClCompile Include="BadassAttackState.cpp" />
+    <ClCompile Include="BadassStillState.cpp" />
+    <ClCompile Include="BadassWalkingState.cpp" />
     <ClCompile Include="BadassZombie.cpp" />
     <ClCompile Include="Bazooka.cpp" />
     <ClCompile Include="BazookaBullet.cpp" />
@@ -243,14 +246,12 @@
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
     <ClCompile Include="MultiplayerButton.cpp" />
-    <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="MapSelectionScreen.cpp" />
     <ClCompile Include="Mine.cpp" />
     <ClCompile Include="MineBullet.cpp" />
     <ClCompile Include="NonMovingBullet.cpp" />
     <ClCompile Include="NonMovingBulletCollideBehaviour.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
-    <ClCompile Include="NonMovingBulletDrawBehaviour.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PickupCollideBehaviour.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -316,6 +317,9 @@
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="BackToMenuButton.h" />
+    <ClInclude Include="BadassAttackState.h" />
+    <ClInclude Include="BadassStillState.h" />
+    <ClInclude Include="BadassWalkingState.h" />
     <ClInclude Include="BadassZombie.h" />
     <ClInclude Include="Bazooka.h" />
     <ClInclude Include="BazookaBullet.h" />
@@ -369,7 +373,6 @@
     <ClInclude Include="Medkit.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MultiplayerButton.h" />
-    <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="MapSelectionScreen.h" />
     <ClInclude Include="Mine.h" />
     <ClInclude Include="MineBullet.h" />
@@ -377,8 +380,6 @@
     <ClInclude Include="MoveContainer.h" />
     <ClInclude Include="NonMovingBullet.h" />
     <ClInclude Include="NonMovingBulletCollideBehaviour.h" />
-    <ClInclude Include="PauseScreen.h" />
-    <ClInclude Include="NonMovingBulletDrawBehaviour.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PickupCollideBehaviour.h" />
     <ClInclude Include="Settings.h" />

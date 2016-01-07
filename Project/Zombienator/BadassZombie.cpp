@@ -1,15 +1,18 @@
 #include "BadassZombie.h"
 #include "GameObjectFactory.h"
+#include "ZombieStateFactory.h"
 
 
 
 BadassZombie::BadassZombie() : Zombie()
 {
+	SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::BAD_STILL, this));
 }
 
 BadassZombie::BadassZombie(DrawContainer * drawC, AnimateContainer * animC, MoveContainer * moveC, CollideContainer * collideC, ActionContainer * actionC, GameObjectContainer * gameObjectC)
 	: Zombie(drawC, animC, moveC, collideC, actionC, gameObjectC)
 {
+	SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::BAD_STILL, this));
 }
 
 

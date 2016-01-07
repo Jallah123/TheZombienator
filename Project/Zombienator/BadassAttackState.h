@@ -1,11 +1,11 @@
 #pragma once
 #include "ZombieState.h"
-class ZombieWalkingState :
+class BadassAttackState :
 	public ZombieState
 {
 public:
-	ZombieWalkingState();
-	~ZombieWalkingState();
+	BadassAttackState();
+	~BadassAttackState();
 
 	virtual void CheckState() override;
 	virtual void Update(float dt) override;

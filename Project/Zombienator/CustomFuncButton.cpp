@@ -1,6 +1,6 @@
 #pragma once
 #include "CustomFuncButton.h"
-
+#include "TextureFactory.h"
 
 CustomFuncButton::CustomFuncButton(SDL_Renderer& ren, char* text, char* img_url, int posX, int posY, AbstractScreen &_parentScreen)
 	: Button(ren, text, img_url) {

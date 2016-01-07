@@ -12,6 +12,7 @@ StatsScreen::StatsScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 
 StatsScreen::~StatsScreen()
 {
+	delete highScores;
 }
 
 
@@ -23,7 +24,6 @@ void StatsScreen::AddHighScores(SDL_Renderer* ren)
 	if (highScores == nullptr) {
 		highScores = new HighScores();
 	}
-
 	highScores->Insert(StatsController::GetInstance()->GetTotalWavesDefeated());
 
 	bool protectOnce = true;
