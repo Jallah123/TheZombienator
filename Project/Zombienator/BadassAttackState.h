@@ -3,6 +3,9 @@
 class BadassAttackState :
 	public ZombieState
 {
+private:
+	float elapsedTime = 0;
+	int shootDelay = 150;
 public:
 	BadassAttackState();
 	~BadassAttackState();

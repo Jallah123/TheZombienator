@@ -21,7 +21,9 @@ void MineBullet::Hit()
 
 void MineBullet::ShakeScreen()
 {
-	GameScreen* gameScreen = this->GetOrigin()->GetGameScreen();
+	PlayableCharacter* pc = dynamic_cast<PlayableCharacter*>(GetOrigin());
+
+	GameScreen* gameScreen = pc->GetGameScreen();
 	gameScreen->Shake(50, 15);
 }
 

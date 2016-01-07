@@ -299,6 +299,8 @@
     <ClCompile Include="WunderlandMap.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieAttackState.cpp" />
+    <ClCompile Include="ZombieBlubberBullet.cpp" />
+    <ClCompile Include="ZombieBlubberCollideBehaviour.cpp" />
     <ClCompile Include="ZombieDeadState.cpp" />
     <ClCompile Include="ZombieStandStillState.cpp" />
     <ClCompile Include="ZombieState.cpp" />
@@ -427,6 +429,8 @@
     <ClInclude Include="WunderlandMap.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieAttackState.h" />
+    <ClInclude Include="ZombieBlubberBullet.h" />
+    <ClInclude Include="ZombieBlubberCollideBehaviour.h" />
     <ClInclude Include="ZombieDeadState.h" />
     <ClInclude Include="ZombieStandStillState.h" />
     <ClInclude Include="ZombieState.h" />

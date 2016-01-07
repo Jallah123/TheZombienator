@@ -18,6 +18,7 @@ BadassZombie::BadassZombie(DrawContainer * drawC, AnimateContainer * animC, Move
 
 BadassZombie::~BadassZombie()
 {
+	
 }
 
 void BadassZombie::Init()

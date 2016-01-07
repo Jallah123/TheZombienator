@@ -25,6 +25,7 @@ class MachineGunBullet;
 class KeyBinding;
 class BazookaBullet;
 class MineBullet;
+class ZombieBlubberBullet;
 //Pickups
 class Pickup;
 class Medkit;
@@ -65,6 +66,8 @@ public:
 	static MachineGunBullet* CreateMachineGunBullet(PlayableCharacter* obj);
 	static BazookaBullet* CreateBazookaBullet(PlayableCharacter* obj);
 	static MineBullet* CreateMineBullet(PlayableCharacter* obj);
+	static ZombieBlubberBullet* CreateZombieBlubber(Zombie* obj);
+
 	static Medkit* CreateMedkit(Character* obj);
 	static AmmoBox* CreateAmmoBox(Character* obj);
 	static Pickup* CreateRandomPickup(Character* obj);

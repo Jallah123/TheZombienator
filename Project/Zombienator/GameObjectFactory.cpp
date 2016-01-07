@@ -9,6 +9,7 @@
 #include "MachineGunBullet.h"
 #include "BazookaBullet.h"
 #include "MineBullet.h"
+#include "ZombieBlubberBullet.h"
 #include "Medkit.h"
 #include "AmmoBox.h"
 
@@ -63,10 +64,13 @@ void GameObjectFactory::SetContainers(DrawContainer * drawC, AnimateContainer * 
 		return new Zombie(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 	GameObjectFactory::Instance()->Register("BadassZombie", [&](void) -> GameObject* {
 		return new BadassZombie(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	GameObjectFactory::Instance()->Register("ZombieBlubberBullet", [&](void) -> GameObject* {
+		return new ZombieBlubberBullet(); });
 	GameObjectFactory::Instance()->Register("Medkit", [&](void) -> GameObject* {
 		return new Medkit(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
 	GameObjectFactory::Instance()->Register("AmmoBox", [&](void) -> GameObject* {
 		return new AmmoBox(drawContainer, animateContainer, moveContainer, collideContainer, actionContainer, gameObjectContainer); });
+	
 }
 
 void GameObjectFactory::Register(std::string name, std::function<GameObject*(void)> fn)
@@ -80,7 +84,7 @@ PlayableCharacter* GameObjectFactory::CreatePlayableCharacter(std::string img_ur
 	GameObject* instance = GameObjectFactory::Find("PlayableCharacter");
 	if (instance != nullptr) {
 		PlayableCharacter* cInstance = dynamic_cast<PlayableCharacter*>(instance);
-		cInstance->Init(img_url,  keyBinding);
+		cInstance->Init(img_url, keyBinding);
 		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;
 	}
@@ -175,6 +179,21 @@ MineBullet * GameObjectFactory::CreateMineBullet(PlayableCharacter * obj)
 	return nullptr;
 }
 
+ZombieBlubberBullet * GameObjectFactory::CreateZombieBlubber(Zombie * obj)
+{
+	GameObject* instance = GameObjectFactory::Find("ZombieBlubberBullet");
+
+	if (instance != nullptr) {
+		ZombieBlubberBullet* cInstance = dynamic_cast<ZombieBlubberBullet*>(instance);
+		cInstance->Init(drawContainer, moveContainer, collideContainer, gameObjectContainer);
+		cInstance->SetOrigin(obj);//link the behaviour to its gameObject
+		gameObjectContainer->AddGameObject(cInstance);
+		return cInstance;
+	}
+
+	return nullptr;
+}
+
 
 Medkit * GameObjectFactory::CreateMedkit(Character* obj)
 {
@@ -182,7 +201,7 @@ Medkit * GameObjectFactory::CreateMedkit(Character* obj)
 
 	if (instance != nullptr) {
 		Medkit* cInstance = dynamic_cast<Medkit*>(instance);
-		
+
 		cInstance->SetOrigin(obj);//Position the object
 		gameObjectContainer->AddGameObject(cInstance);
 		return cInstance;

@@ -1,7 +1,10 @@
+#pragma once
 #include "BadassWalkingState.h"
 #include "ZombieStateFactory.h"
 #include "GameObjectContainer.h"
-
+#include "GameMath.h"
+#include "Zombie.h"
+#include <SDL_rect.h>
 
 BadassWalkingState::BadassWalkingState()
 {
@@ -10,6 +13,20 @@ BadassWalkingState::BadassWalkingState()
 
 BadassWalkingState::~BadassWalkingState()
 {
+}
+
+bool BadassWalkingState::LineInterSects(Zombie& owner, Character& target, std::vector<GameObject*> gos)
+{
+	for (auto& g : gos)
+	{
+		SDL_Point b{ owner.getPosX(), owner.getPosY() };
+		SDL_Point e{ target.getPosX(), target.getPosY() };
+		if (SDL_IntersectRectAndLine(g->GetDestinationRect(), &b.x, &b.y, &e.x, &e.y))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 void BadassWalkingState::CheckState()
@@ -21,8 +38,8 @@ void BadassWalkingState::CheckState()
 		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::DEAD, z));
 		return;
 	}
-	else if (z->IsInAttackRadius(target)) {
-		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::BAD_WALK, z));
+	else if (LineInterSects(*z, *target, z->GetGameObjectContainer()->GetCollideableObjects())==false) {
+		z->SetCurrentState(ZombieStateFactory::Create(ZombieStateEnum::BAD_ATTACK, z));
 		return;
 	}
 	else if (target == nullptr && !target->IsDeath()) {

@@ -60,10 +60,10 @@ void Zombie::SetCurrentState(ZombieState* newState)
 			ChangeTexture(true);
 		else
 			ChangeTexture(false);
+		ZombieState* tmp = currentState;
+		this->currentState = newState;
+		//delete tmp;
 	}
-	ZombieState* tmp = currentState;
-	this->currentState = newState;
-	//delete tmp;
 }
 
 bool Zombie::IsInAttackRadius(Character * target)
