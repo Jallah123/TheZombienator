@@ -74,9 +74,9 @@ public:
 
 	Graph* GetGraph() { return &graph; };
 
+	bool IntersectsWithCollisionLayer(SDL_Rect wp1, SDL_Rect wp2);
+	bool ExistsInMap(Node* n1, Node* n2);
 private:
 	Graph graph;
 	void GenerateGraph();
-	bool IntersectsWithCollisionLayer(SDL_Rect wp1, SDL_Rect wp2);
-	bool ExistsInMap(Node* n1, Node* n2);
 };
