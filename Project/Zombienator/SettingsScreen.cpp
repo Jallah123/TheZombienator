@@ -26,7 +26,7 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	AddUIComponent(b);
 
 	//labels:
-	Label* difficultyLabel = new Label(ren, "Difficulty", 500, 120, 30, { 0,0,0 });  //ren, text, xpos,ypos, fontsize, color
+	//Label* difficultyLabel = new Label(ren, "Difficulty", 500, 120, 30, { 0,0,0 });  //ren, text, xpos,ypos, fontsize, color
 	Label* gamespeedLabel = new Label(ren, "Game speed", 500, 190, 30, { 0,0,0 });
 	Label* fpsLabel = new Label(ren, "FPS", 500, 265, 30, { 0,0,0 });
 	Label* ffLabel = new Label(ren, "Friendly fire", 500, 335, 30, { 0,0,0 });
@@ -35,7 +35,7 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	Label* volumeLabel = new Label(ren, "Volume", 500, 550, 30, { 0,0,0 });
 	currentVolumeLabel = new Label(ren, SoundController->GetVolume(), 825, 545, 30, { 248 ,248 ,255 });
 
-	AddUIComponent(difficultyLabel);
+	//AddUIComponent(difficultyLabel);
 	AddUIComponent(gamespeedLabel);
 	AddUIComponent(fpsLabel);
 	AddUIComponent(ffLabel);

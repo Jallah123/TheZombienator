@@ -280,6 +280,7 @@ bool GameScreen::Transition(SDL_Renderer& ren)
 		if (player->getPosY() < -player->GetHeight())
 		{
 			string texturePath = player->getImgUrl();
+			vector<string> tempCharacterImageUrls = characterImageUrls;
 			ScreenController::GetInstance().Back();
 
 			// Check if final map
@@ -290,7 +291,7 @@ bool GameScreen::Transition(SDL_Renderer& ren)
 			else
 			{
 				// Set next screen
-				ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(characterImageUrls));
+				ScreenController::GetInstance().ChangeScreen(ScreenFactory::CreateGameScreen(tempCharacterImageUrls));
 			}
 			return true;
 		}

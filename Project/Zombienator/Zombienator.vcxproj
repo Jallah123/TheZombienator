@@ -81,8 +81,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath);C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json</IncludePath>
-    <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\include;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\include;$(ProjectDir)\thirdparty\SDL\SDL2\include;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\include;$(ProjectDir)\thirdparty\cereal\include;$(ProjectDir)\thirdparty\*;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2\lib\win32;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\lib\x86;$(ProjectDir)\thirdparty\*;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

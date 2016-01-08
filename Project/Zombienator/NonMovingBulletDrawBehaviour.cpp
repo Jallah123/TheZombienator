@@ -23,5 +23,8 @@ void NonMovingBulletDrawBehaviour::Draw(float dt, SDL_Renderer& ren, int XOffset
 
 	gameObject->SetPosition(newX, newY);
 
+	gameObject->GetDestinationRect()->x += XOffset;
+	gameObject->GetDestinationRect()->y += YOffset;
+
 	SDL_RenderCopy(&ren, gameObject->GetTexture(), gameObject->GetSourceRect(), gameObject->GetDestinationRect());
 }

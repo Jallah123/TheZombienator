@@ -48,5 +48,7 @@ void MovingBulletDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, 
 			break;
 	}
 
+	gameObject->GetDestinationRect()->x += XOffset;
+	gameObject->GetDestinationRect()->y += YOffset;
 	SDL_RenderCopyEx(&ren, gameObject->GetTexture(), gameObject->GetSourceRect(), gameObject->GetDestinationRect(), angle, NULL, flipType);
 }
