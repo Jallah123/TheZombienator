@@ -26,7 +26,7 @@ void BadassZombie::Init()
 	SetImage(basePath + "7zombie.png");
 	SetNormalTexture(basePath + "7zombie.png");
 
-	SetDeadTexture(basePath + "explosion.png");
+	SetDeadTexture("assets/images/effects/explosion.png");
 
 	this->SetSize(46, 46);
 
