@@ -1,6 +1,6 @@
 #pragma once
 #include "SwitchButtonGameSpeed.h"
-
+#include "TextureFactory.h"
 
 SwitchButtonGameSpeed::SwitchButtonGameSpeed(SDL_Renderer& ren, char* text, char* img_url, int posX, int posY, GameSpeed value, AbstractScreen &_parentScreen)
 	: Button(ren, text, img_url) {

@@ -17,6 +17,7 @@ class GameObject;
 class PlayableCharacter;
 class Character;
 class Zombie;
+class BadassZombie;
 //Bullets
 class NormalBullet;
 class PlayableCharacter;
@@ -24,6 +25,7 @@ class MachineGunBullet;
 class KeyBinding;
 class BazookaBullet;
 class MineBullet;
+class ZombieBlubberBullet;
 //Pickups
 class Pickup;
 class Medkit;
@@ -59,10 +61,13 @@ public:
 
 	static PlayableCharacter* CreatePlayableCharacter(std::string img_url, KeyBinding* keyBinding);
 	static Zombie* CreateZombie();
+	static BadassZombie* CreateBadassZombie();
 	static NormalBullet* CreateNormalBullet(PlayableCharacter* obj);
 	static MachineGunBullet* CreateMachineGunBullet(PlayableCharacter* obj);
 	static BazookaBullet* CreateBazookaBullet(PlayableCharacter* obj);
 	static MineBullet* CreateMineBullet(PlayableCharacter* obj);
+	static ZombieBlubberBullet* CreateZombieBlubber(Zombie* obj);
+
 	static Medkit* CreateMedkit(Character* obj);
 	static AmmoBox* CreateAmmoBox(Character* obj);
 	static Pickup* CreateRandomPickup(Character* obj);

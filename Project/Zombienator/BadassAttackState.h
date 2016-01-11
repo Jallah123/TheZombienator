@@ -1,11 +1,14 @@
 #pragma once
 #include "ZombieState.h"
-class ZombieWalkingState :
+class BadassAttackState :
 	public ZombieState
 {
+private:
+	float elapsedTime = 0;
+	int shootDelay = 150;
 public:
-	ZombieWalkingState();
-	~ZombieWalkingState();
+	BadassAttackState();
+	~BadassAttackState();
 
 	virtual void CheckState() override;
 	virtual void Update(float dt) override;

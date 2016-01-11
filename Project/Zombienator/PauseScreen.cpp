@@ -1,6 +1,8 @@
 #include "PauseScreen.h"
 #include "ScreenFactory.h"
-#include "StatsController.h"
+#include "Label.h"
+#include "CustomFuncButton.h"
+#include "MapFactory.h"
 
 PauseScreen::PauseScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
@@ -32,7 +34,7 @@ PauseScreen::PauseScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 PauseScreen::~PauseScreen()
 {
-	
+
 }
 
 void PauseScreen::Resume()

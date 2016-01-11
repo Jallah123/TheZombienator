@@ -47,22 +47,23 @@ void Zombie::Init()
 	SetHealth(50);
 
 	// -- Zombie Attack
-	SetAttackDamage(1);
-	SetAttackSpeed(2);
+	SetAttackDamage(10);
+	SetAttackSpeed(1);
 	SetSoundSpeed(2);
 }
 
 void Zombie::SetCurrentState(ZombieState* newState)
 {
-
 	if (this->currentState != newState)
 	{
 		if (dynamic_cast<ZombieAttackState*>(newState))
 			ChangeTexture(true);
 		else
 			ChangeTexture(false);
+		ZombieState* tmp = currentState;
+		this->currentState = newState;
+		//delete tmp;
 	}
-	this->currentState = newState;
 }
 
 bool Zombie::IsInAttackRadius(Character * target)
