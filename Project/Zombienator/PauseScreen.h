@@ -1,20 +1,9 @@
 #pragma once
 #include "MenuScreen.h"
-#include "MapFactory.h"
-#include "SettingsScreen.h"
-#include "HomeScreen.h"
-#include "Label.h"
-#include "CustomFuncButton.h"
 
-
-using namespace std;
 class PauseScreen :
 	public MenuScreen
 {
-private:
-
-
-
 public:
 	void Resume();
 	void Settings();

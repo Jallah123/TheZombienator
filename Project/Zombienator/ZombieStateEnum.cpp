@@ -1,7 +1,12 @@
 enum ZombieStateEnum
 {
 	DEAD,
+
 	ATTACKING,
 	WALKING,
-	STANDSTILL
+	STANDSTILL,
+
+	BAD_ATTACK,
+	BAD_WALK,
+	BAD_STILL
 };

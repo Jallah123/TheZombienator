@@ -26,7 +26,7 @@ protected:
 	
 
 	//Direction direction;
-	PlayableCharacter* origin = nullptr;
+	Character* origin = nullptr;
 
 	DrawContainer* drawContainer = nullptr;
 	MoveContainer* moveContainer = nullptr;
@@ -47,7 +47,7 @@ public:
 	void SetMoveBehaviour(std::string name);
 	void SetCollideBehaviour(std::string name);
 	void Remove();
-	void SetOrigin(PlayableCharacter* o) { 
+	void SetOrigin(Character* o) { 
 		origin = o; 
 		SetLookDir(o->GetLookDir()); 
 		SetMoveDir(o->GetMoveDir());
@@ -55,7 +55,7 @@ public:
 		posY = o->getPosY();
 	}
 
-	PlayableCharacter* GetOrigin() { return origin; }
+	Character* GetOrigin() { return origin; }
 	
 	void SetLocked(bool l) { this->_locked = l; }
 	bool IsLocked() { return this->_locked; }

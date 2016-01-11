@@ -1,13 +1,15 @@
 #pragma once
 #include "MenuScreen.h"
-#include "TextureFactory.h"
 #include "HighScores.h"
 #include "ioController.h"
-class StatsScreen : public AbstractScreen
+
+class HighScores;
+class StatsScreen 
+	: public AbstractScreen
 {
 private:
 	void AddHighScores(SDL_Renderer* ren);
-	HighScores* highScores = new HighScores();
+	HighScores* highScores = nullptr;
 	ioController* ioC = &ioController::GetInstance();
 public:
 	StatsScreen(SDL_Renderer* ren);

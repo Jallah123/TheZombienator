@@ -18,7 +18,7 @@ void NonMovingBulletCollideBehaviour::Collide(float dt)
 	std::vector<GameObject*> gos = gameObjectContainer->GetCollideableObjects();
 	for (auto& g : gos)
 	{
-		if (g != bullet->GetOrigin() && g != bullet) {
+		if (g != bullet->GetOrigin() && g != bullet && dynamic_cast<Character*>(g) != nullptr) {
 			if (SDL_HasIntersection(bullet->GetDestinationRect(), g->GetDestinationRect())) {
 
 				//when a collide happens,get zombie's in triple size radius

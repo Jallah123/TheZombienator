@@ -1,6 +1,6 @@
 #pragma once
 #include "SwitchButton.h"
-
+#include "TextureFactory.h"
 
 SwitchButton::SwitchButton(SDL_Renderer& ren, char* text, char* img_url, int posX, int posY, bool value, bool _enableStatus, AbstractScreen &_parentScreen)
 	: Button(ren, text, img_url) {

@@ -1,5 +1,6 @@
 #pragma once
 #include "SwitchButtonGameDifficulty.h"
+#include "TextureFactory.h"
 
 SwitchButtonGameDifficulty::SwitchButtonGameDifficulty(SDL_Renderer& ren, char* text, char* img_url, int posX, int posY, GameDifficulty value, AbstractScreen &_parentScreen)
 	: Button(ren, text, img_url) {

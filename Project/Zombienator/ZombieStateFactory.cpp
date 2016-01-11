@@ -4,6 +4,10 @@
 #include "ZombieAttackState.h"
 #include "ZombieDeadState.h"
 
+#include "BadassAttackState.h"
+#include "BadassStillState.h"
+#include "BadassWalkingState.h"
+
 std::map<ZombieStateEnum, std::function<ZombieState*(void)>> fillMap()
 {
 	std::map<ZombieStateEnum, std::function<ZombieState*(void)>> map;
@@ -11,6 +15,11 @@ std::map<ZombieStateEnum, std::function<ZombieState*(void)>> fillMap()
 	map[ZombieStateEnum::STANDSTILL] = [](void) -> ZombieState * { return new ZombieStandStillState; };
 	map[ZombieStateEnum::ATTACKING] = [](void) -> ZombieState * { return new ZombieAttackState; };
 	map[ZombieStateEnum::DEAD] = [](void) -> ZombieState * { return new ZombieDeadState; };
+
+	map[ZombieStateEnum::BAD_WALK] = [](void) -> ZombieState * { return new BadassWalkingState; };
+	map[ZombieStateEnum::BAD_STILL] = [](void) -> ZombieState * { return new BadassStillState; };
+	map[ZombieStateEnum::BAD_ATTACK] = [](void) -> ZombieState * { return new BadassAttackState; };
+
 	return map;
 }
 
