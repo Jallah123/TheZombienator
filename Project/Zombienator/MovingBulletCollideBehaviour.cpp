@@ -19,7 +19,8 @@ void MovingBulletCollideBehaviour::Collide(float dt)
 	std::vector<GameObject*> gos = gameObjectContainer->GetCollideableObjects();
 	for (auto& g : gos)
 	{
-		if (dynamic_cast<PlayableCharacter*>(g) == pc) continue;
+		//this breaks the friendlyfire? Don't know who put this here?
+		//if (dynamic_cast<PlayableCharacter*>(g) == pc) continue;
 		if (g != bullet->GetOrigin() && g != bullet) {
 			if (SDL_HasIntersection(bullet->GetDestinationRect(), g->GetDestinationRect())) {
 				Zombie* target = dynamic_cast<Zombie*>(g);
