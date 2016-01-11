@@ -5,7 +5,8 @@
 #include "LabelEndScreen.h"
 #include "MiniGameButton.h"
 
-class LoadingScreen : public AbstractScreen
+class LoadingScreen 
+	: public AbstractScreen
 {
 	public:
 		~LoadingScreen();

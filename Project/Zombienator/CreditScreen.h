@@ -1,20 +1,16 @@
 #pragma once
 #include "MenuScreen.h"
-#include "TextureFactory.h"
-#include "BackButton.h"
-#include <SDL_ttf.h>
 #include <set>
-#include <map>
 #include <list>
-#include <iostream>
 
+using std::list;
+using std::pair;
 
-using namespace std;
 class CreditScreen :
 	public MenuScreen
 {
 protected:
-	std::list<std::pair<SDL_Texture*, SDL_Rect>> textList = {};
+	list<pair<SDL_Texture*, SDL_Rect>> textList = {};
 	SDL_Color fontColor = { 0, 0, 0 };
 	int startY = 300;
 	void addTextToSet(string message);

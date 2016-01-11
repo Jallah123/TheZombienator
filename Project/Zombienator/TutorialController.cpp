@@ -73,28 +73,28 @@ void TutorialController::Walk()
 {	
 	switch (walkDir) {
 		case Direction::NORTH:
-			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the north direction.");
+			bubbleVisitor->ChangeText("Use your wasd keys to move around. Walk in the north direction.");
 			if ((currentPos.y - walkDist) > player->getPosY()) {
 				SetPosition();
 				walkDir = Direction::EAST;
 			}
 			break;
 		case Direction::EAST:
-			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the east direction.");
+			bubbleVisitor->ChangeText("Use your wasd keys to move around. Walk in the east direction.");
 			if ((currentPos.x + walkDist) < player->getPosX()) {
 				SetPosition();
 				walkDir = Direction::SOUTH;
 			}
 			break;
 		case Direction::SOUTH:
-			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the south direction.");
+			bubbleVisitor->ChangeText("Use your wasd keys to move around. Walk in the south direction.");
 			if ((currentPos.y + walkDist) < player->getPosY()) {
 				SetPosition();
 				walkDir = Direction::WEST;
 			}
 			break;
 		case Direction::WEST:
-			bubbleVisitor->ChangeText("Use your arrow keys to move around. Walk in the west direction.");
+			bubbleVisitor->ChangeText("Use your wasd keys to move around. Walk in the west direction.");
 			if ((currentPos.x - walkDist) > player->getPosX()) {
 				SetPosition();
 				walkDir = Direction::NONE;

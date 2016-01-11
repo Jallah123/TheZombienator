@@ -248,7 +248,6 @@ bool GameScreen::Transition(SDL_Renderer& ren)
 		{
 			string texturePath = player->getImgUrl();
 			vector<string> tempCharacterImageUrls = characterImageUrls;
-
 			ScreenController::GetInstance().Back();
 
 			// Check if final map

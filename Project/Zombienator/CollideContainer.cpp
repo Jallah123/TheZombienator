@@ -7,6 +7,7 @@
 #include "CharacterCollideBehaviour.h"
 #include "MovingBulletCollideBehaviour.h"
 #include "PickupCollideBehaviour.h"
+#include "ZombieBlubberCollideBehaviour.h"
 
 CollideContainer::CollideContainer()
 {
@@ -15,6 +16,7 @@ CollideContainer::CollideContainer()
 	BehaviourFactory::Instance()->Register("MovingBulletCollideBehaviour", [](void) -> Behaviour* { return new MovingBulletCollideBehaviour(); });
 	BehaviourFactory::Instance()->Register("PickupCollideBehaviour", [](void) -> Behaviour* { return new PickupCollideBehaviour(); });
 	BehaviourFactory::Instance()->Register("NonMovingBulletCollideBehaviour", [](void) -> Behaviour* { return new NonMovingBulletCollideBehaviour(); });
+	BehaviourFactory::Instance()->Register("ZombieBlubberCollideBehaviour", [](void) -> Behaviour* { return new ZombieBlubberCollideBehaviour(); });	
 }
 
 CollideContainer::~CollideContainer()

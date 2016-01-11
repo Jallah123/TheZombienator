@@ -81,8 +81,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)SDL2_image-2\include;$(ProjectDir)SDL2_ttf-2\include;$(ProjectDir)SDL2\include;$(ProjectDir)\SDL2_mixer-2\include;$(IncludePath);C:\Users\Tojba\Documents\TheZombienator\Project\Zombienator\thirdparty\jsoncpp-0.10.5\include\json</IncludePath>
-    <LibraryPath>$(ProjectDir)SDL2_image-2\lib\x86;$(ProjectDir)SDL2_ttf-2\lib\x86;$(ProjectDir)SDL2\lib\win32;$(ProjectDir)SDL2_mixer-2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\include;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\include;$(ProjectDir)\thirdparty\SDL\SDL2\include;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\include;$(ProjectDir)\thirdparty\cereal\include;$(ProjectDir)\thirdparty\*;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\thirdparty\SDL\SDL2_image-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2_ttf-2\lib\x86;$(ProjectDir)\thirdparty\SDL\SDL2\lib\win32;$(ProjectDir)\thirdparty\SDL\SDL2_mixer-2\lib\x86;$(ProjectDir)\thirdparty\*;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -184,6 +184,9 @@
     <ClCompile Include="AnimateContainer.cpp" />
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="BackToMenuButton.cpp" />
+    <ClCompile Include="BadassAttackState.cpp" />
+    <ClCompile Include="BadassStillState.cpp" />
+    <ClCompile Include="BadassWalkingState.cpp" />
     <ClCompile Include="BadassZombie.cpp" />
     <ClCompile Include="Bazooka.cpp" />
     <ClCompile Include="BazookaBullet.cpp" />
@@ -245,13 +248,12 @@
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
     <ClCompile Include="MultiplayerButton.cpp" />
-    <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="MapSelectionScreen.cpp" />
     <ClCompile Include="Mine.cpp" />
     <ClCompile Include="MineBullet.cpp" />
     <ClCompile Include="NonMovingBullet.cpp" />
     <ClCompile Include="NonMovingBulletCollideBehaviour.cpp" />
-    <ClCompile Include="NonMovingBulletDrawBehaviour.cpp" />
+    <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PickupCollideBehaviour.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -299,6 +301,8 @@
     <ClCompile Include="WunderlandMap.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieAttackState.cpp" />
+    <ClCompile Include="ZombieBlubberBullet.cpp" />
+    <ClCompile Include="ZombieBlubberCollideBehaviour.cpp" />
     <ClCompile Include="ZombieDeadState.cpp" />
     <ClCompile Include="ZombieStandStillState.cpp" />
     <ClCompile Include="ZombieState.cpp" />
@@ -317,6 +321,9 @@
     <ClInclude Include="AnimateContainer.h" />
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="BackToMenuButton.h" />
+    <ClInclude Include="BadassAttackState.h" />
+    <ClInclude Include="BadassStillState.h" />
+    <ClInclude Include="BadassWalkingState.h" />
     <ClInclude Include="BadassZombie.h" />
     <ClInclude Include="Bazooka.h" />
     <ClInclude Include="BazookaBullet.h" />
@@ -372,7 +379,6 @@
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MiniGameButton.h" />
     <ClInclude Include="MultiplayerButton.h" />
-    <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="MapSelectionScreen.h" />
     <ClInclude Include="Mine.h" />
     <ClInclude Include="MineBullet.h" />
@@ -380,7 +386,6 @@
     <ClInclude Include="MoveContainer.h" />
     <ClInclude Include="NonMovingBullet.h" />
     <ClInclude Include="NonMovingBulletCollideBehaviour.h" />
-    <ClInclude Include="NonMovingBulletDrawBehaviour.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PickupCollideBehaviour.h" />
     <ClInclude Include="Settings.h" />
@@ -428,6 +433,8 @@
     <ClInclude Include="WunderlandMap.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieAttackState.h" />
+    <ClInclude Include="ZombieBlubberBullet.h" />
+    <ClInclude Include="ZombieBlubberCollideBehaviour.h" />
     <ClInclude Include="ZombieDeadState.h" />
     <ClInclude Include="ZombieStandStillState.h" />
     <ClInclude Include="ZombieState.h" />

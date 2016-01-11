@@ -6,7 +6,8 @@ class ZombieWalkingState :
 public:
 	ZombieWalkingState();
 	~ZombieWalkingState();
-	void CheckState();
-	void Update(float dt);
+
+	virtual void CheckState() override;
+	virtual void Update(float dt) override;
 };
 

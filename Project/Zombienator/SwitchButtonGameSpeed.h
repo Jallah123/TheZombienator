@@ -3,8 +3,6 @@
 #include "GameSpeed.cpp"
 #include "AbstractScreen.h"
 #include "Settings.h"
-#include "TextureFactory.h"
-#include <map>
 #include <functional>
 
 class SettingsScreen;

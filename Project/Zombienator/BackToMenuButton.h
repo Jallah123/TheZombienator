@@ -1,8 +1,6 @@
 #pragma once
 #include "Button.h"
 
-#include <iostream>
-
 class BackToMenuButton
 	: public Button
 {

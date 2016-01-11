@@ -1,8 +1,7 @@
 #include "SettingsScreen.h"
-#include <functional>
-#include <iostream>
-#include <string>
 #include <vector>
+#include "BackButton.h"
+#include <functional>
 
 SettingsScreen::SettingsScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
@@ -26,7 +25,7 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	AddUIComponent(b);
 
 	//labels:
-	Label* difficultyLabel = new Label(ren, "Difficulty", 500, 120, 30, { 0,0,0 });  //ren, text, xpos,ypos, fontsize, color
+	//Label* difficultyLabel = new Label(ren, "Difficulty", 500, 120, 30, { 0,0,0 });  //ren, text, xpos,ypos, fontsize, color
 	Label* gamespeedLabel = new Label(ren, "Game speed", 500, 190, 30, { 0,0,0 });
 	Label* fpsLabel = new Label(ren, "FPS", 500, 265, 30, { 0,0,0 });
 	Label* ffLabel = new Label(ren, "Friendly fire", 500, 335, 30, { 0,0,0 });
@@ -35,7 +34,7 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	Label* volumeLabel = new Label(ren, "Volume", 500, 550, 30, { 0,0,0 });
 	currentVolumeLabel = new Label(ren, SoundController->GetVolume(), 825, 545, 30, { 248 ,248 ,255 });
 
-	AddUIComponent(difficultyLabel);
+	//AddUIComponent(difficultyLabel);
 	AddUIComponent(gamespeedLabel);
 	AddUIComponent(fpsLabel);
 	AddUIComponent(ffLabel);
@@ -59,11 +58,10 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 	//friendlyfirebtns
 	friendlyFireOnBtn = new SwitchButton(ren, "On", spriteSheet, 725, 300, true, Settings->getFiendlyFire(), *this);
 	friendlyFireOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
-	AddUIComponent(friendlyFireOnBtn);
 
 	friendlyFireOffBtn = new SwitchButton(ren, "Off", spriteSheet, 830, 300, false, !Settings->getFiendlyFire(), *this);
 	friendlyFireOffBtn->setUpdateFunction(std::bind(&SettingsScreen::setFriendlyFire, this, std::placeholders::_1));
-	AddUIComponent(friendlyFireOffBtn);
+
 	//fpsbtns
 	fpsOnBtn = new SwitchButton(ren, "On", spriteSheet, 725, 230, true, Settings->getShowFps(), *this);
 	fpsOnBtn->setUpdateFunction(std::bind(&SettingsScreen::setFPS, this, std::placeholders::_1));
@@ -114,6 +112,8 @@ void SettingsScreen::initCompontents(SDL_Renderer &ren)
 
 	AddUIComponent(fpsOnBtn);
 	AddUIComponent(fpsOffBtn);
+	AddUIComponent(friendlyFireOnBtn);
+	AddUIComponent(friendlyFireOffBtn);
 	AddUIComponent(soundOnBtn);
 	AddUIComponent(soundOffBtn);
 	AddUIComponent(musicOnBtn);
