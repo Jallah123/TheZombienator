@@ -1,8 +1,8 @@
 #pragma once
 #include "SDL.h"
-#include "GameScreen.h"
 #include <SDL_mixer.h>
 #include <iostream>
+#include "GameScreen.h"
 #include "Quadtree.h"
 #include "NumberUtility.h"
 #include "BehaviourFactory.h"
@@ -24,13 +24,13 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 	characterImageUrls = characterUrls;
 
 	// Get map
-	if (mapUrl == "") 
+	if (mapUrl == "")
 	{
 		map = MapFactory::GetInstance()->NextMap();
 	}
-	else 
+	else
 	{
-		isInfinityMode = true;
+		gameType = GameType::INFINITY_MODE;
 		map = new Map{ mapUrl };
 	}
 
@@ -42,7 +42,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 	spawnController.SetMap(map);
 	BehaviourFactory::Instance()->SetMap(map);
 
-	hudVisitor = HudVisitor{ ren, map->GetBounds() };
 	goFactory->SetContainers(
 		&drawContainer,
 		&animateContainer,
@@ -63,7 +62,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 		ren
 		);
 
-	for (int i = 0; i < characterImageUrls.size();i++)
+	for (int i = 0; i < characterImageUrls.size(); i++)
 	{
 		players.push_back(goFactory->CreatePlayableCharacter(characterImageUrls.at(i), defaultKeybindings.at(i)));
 	}
@@ -80,13 +79,14 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
 		bubbleVisitor = BubbleVisitor{ ren };
-		
+
 		for (auto& player : players)
 		{
 			tutorialController = TutorialController(&bubbleVisitor, &spawnController, player);
 		}
-		
+
 	}
+	hudVisitor = HudVisitor{ ren, map->GetBounds(), players.size() };
 
 	//Load && play sound
 	map->PlaySounds();
@@ -194,7 +194,9 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	map->DrawFrontLayer(ren, XOffset, YOffset);
 
-	hudVisitor.DrawBase(players.size());
+	hudVisitor.DrawBase();
+	hudVisitor.Visit(spawnController, GetGameType());
+	hudVisitor.Visit(players);
 
 	// BUBBLE ZOOI
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
@@ -205,19 +207,12 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		}
 	}
 
-	// If all waves defeated
-	if (spawnController.Completed())
-		this->Transition(ren);
-
-	hudVisitor.Visit(spawnController);
-
-	hudVisitor.Visit(players);
 
 	// if story mode || not infinity mode
-	if (!isInfinityMode) 
+	if (gameType == GameType::STORY_MODE)
 	{
 		// if maxwave completed
-		if (spawnController.CurrentWave() == 5) 
+		if (spawnController.Completed())
 		{
 			currentState = GameState::TRANSITIONING;
 			if (this->Transition(ren))

@@ -3,7 +3,8 @@
 #include "MachineGunBullet.h"
 #include "SoundController.h"
 
-MachineGun::MachineGun() : Weapon("MachineGun", 20, 20, 20, 20, "MachineGunBullet", SDL_Rect{ 580, 431, 282, 186 })
+MachineGun::MachineGun() 
+	: Weapon("MachineGun", 20, 200, 20, 20, "MachineGunBullet", SDL_Rect{ 580, 431, 282, 186 })
 {
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new MachineGunBullet(); });
 }

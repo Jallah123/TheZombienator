@@ -4,7 +4,7 @@
 #include "SoundController.h"
 
 Bazooka::Bazooka()
-	: Weapon("Bazooka", 20, 100, 200, 100, "BazookaBullet", SDL_Rect{ 1064, 1022, 708, 218 })
+	: Weapon("Bazooka", 10, 20, 200, 100, "BazookaBullet", SDL_Rect{ 1064, 1022, 708, 218 })
 {
 	GameObjectFactory::Instance()->Register(bulletType, [](void) -> GameObject* { return new BazookaBullet(); });
 }

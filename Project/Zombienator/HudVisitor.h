@@ -7,28 +7,31 @@
 class PlayableCharacter;
 class Weapon;
 class SpawnController;
+enum GameType;
 struct SDL_Rect;
-
+using std::pair;
+using std::vector;
 class HudVisitor
 {
 private:
 	int horizontalPadding = 6;
 	int verticalPadding = 9;
+	size_t players = 1;
 	SDL_Renderer* renderer = nullptr;
 
-	std::pair<SDL_Texture*, SDL_Rect> weaponImagePair = {};
+	pair<SDL_Texture*, SDL_Rect> weaponImagePair = {};
 	SDL_Rect weaponImageSrcRect = { 0,0,0,0 };
-	std::pair<SDL_Texture*, SDL_Rect> weaponTextPair = {};
-	std::pair<SDL_Texture*, SDL_Rect> ammoTextPair = {};
-	std::pair<SDL_Texture*, SDL_Rect> waveTextPair = {};
-	std::pair<SDL_Texture*, SDL_Rect> countDownTextPair = {};
+	vector<pair<SDL_Texture*, SDL_Rect>> weaponTextPairs = {};
+	vector<pair<SDL_Texture*, SDL_Rect>> ammoTextPairs = {};
+	pair<SDL_Texture*, SDL_Rect> waveTextPair = {};
+	pair<SDL_Texture*, SDL_Rect> countDownTextPair = {};
 	
 
 	SDL_Texture* bloodHud = nullptr;
 	SDL_Texture* infiniteSign = nullptr;
 	SDL_Rect bloodRect = { 0,0,289,13 };
 
-	std::map<PlayableCharacter*, std::map<std::string, std::string>> prevValues = {};
+	std::map<int, std::map<std::string, std::string>> prevValues = {};
 
 	std::string countdown;
 
@@ -36,13 +39,13 @@ private:
 	size_t ammoFixedSize = 3;
 public:
 	HudVisitor() {};
-	HudVisitor(SDL_Renderer* _renderer, SDL_Rect bounds);
+	HudVisitor(SDL_Renderer* _renderer, SDL_Rect bounds, size_t players);
 	~HudVisitor();
 
-	void DrawBase(int players);
+	void DrawBase();
 	void Visit(std::vector<PlayableCharacter*> characters);
-	void Visit(SpawnController& spawnController);
+	void Visit(SpawnController& spawnController, GameType& gameType);
 	
-	std::string const PrevMapValue(PlayableCharacter* character, std::string index);
+	std::string const PrevMapValue(int i, std::string index);
 };
 

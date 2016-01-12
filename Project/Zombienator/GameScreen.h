@@ -19,9 +19,11 @@
 #include "TutorialController.h"
 #include "PauseScreen.h"
 #include "PlayableCharacter.h"
+#include "GameTypeEnum.cpp"
 
 class Quadtree;
-class GameScreen : public AbstractScreen
+class GameScreen 
+	: public AbstractScreen
 {
 public:
 	GameScreen();
@@ -38,7 +40,10 @@ public:
 	bool IsGameOver();
 	InputContainer* inputContainer = &InputContainer::GetInstance();
 	void EndMap();
+
+	GameType& GetGameType() { return gameType; }
 private:
+	GameType gameType = GameType::STORY_MODE;
 	vector<KeyBinding*> defaultKeybindings;
 	vector<string> characterImageUrls;
 	float shake = 0;
@@ -47,7 +52,6 @@ private:
 	int YOffset = 0;
 	int stateChangeDelay = 50;
 	int timeLastStateChange = 0;
-	bool isInfinityMode = false;
 	bool inTransistion = false;
 	int cheatDelay = 50;
 	int timeCheatActivated = 0;
