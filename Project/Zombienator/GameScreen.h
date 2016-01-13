@@ -39,6 +39,10 @@ public:
 	InputContainer* inputContainer = &InputContainer::GetInstance();
 	void EndMap();
 private:
+	void ShakeScreen(float dt);
+	void UpdateZombies(float dt);
+	void SetZombieTargets();
+	void RemoveDeadPlayers();
 	vector<KeyBinding*> defaultKeybindings;
 	vector<string> characterImageUrls;
 	float shake = 0;
