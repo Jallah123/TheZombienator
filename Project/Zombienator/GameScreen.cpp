@@ -153,18 +153,18 @@ void GameScreen::UpdateZombies(float dt)
 
 void GameScreen::RemoveDeadPlayers()
 {
-	vector<int> toRemove;
-	for (int i = 0; i < players.size(); i++)
+	vector<PlayableCharacter*> toRemove;
+	for (auto& player: players)
 	{
-		if (players.at(i)->IsDeath())
+		if (player->IsDeath())
 		{
-			players.at(i)->Remove();
-			toRemove.push_back(i);
+			player->Remove();
+			toRemove.push_back(player);
 		}
 	}
-	for (auto& i : toRemove)
+	for (auto& player : toRemove)
 	{
-		players.erase(find(players.begin(), players.end(), players.at(i)));
+		players.erase(find(players.begin(), players.end(), player));
 	}
 
 	toRemove.clear();
