@@ -17,6 +17,7 @@
 #include "Pistol.h"
 #include "MachineGun.h"
 #include "PlayableCharacter.h"
+#include "GameMath.h"
 
 GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string mapUrl) : AbstractScreen(ren)
 {
@@ -109,24 +110,15 @@ void GameScreen::Update(float dt)
 {
 	if (currentState == GameState::RUNNING)
 	{
+		RemoveDeadPlayers();
+		SetZombieTargets();
+		
 		dt *= (float)settings->getGameSpeed() / 10;
 
-		XOffset = 0;
-		YOffset = 0;
-		if (shake > 0) {
-			shake -= dt;
-			XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
-			YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
-		}
+		ShakeScreen(dt);
 		HandleInput(dt);
 
-		for (auto& g : gameObjectContainer->GetGameObjects()) {
-			tree->AddObject(g);
-			if (Zombie* z = dynamic_cast<Zombie*>(g))
-			{
-				z->Update(dt);
-			}
-		}
+		UpdateZombies(dt);
 		spawnController.Update(dt);
 		actionContainer.Update(dt);
 		collideContainer.Collide(dt);
@@ -135,6 +127,69 @@ void GameScreen::Update(float dt)
 		tree->Clear();
 
 		timeLastStateChange -= dt;
+	}
+}
+
+void GameScreen::ShakeScreen(float dt)
+{
+	XOffset = 0;
+	YOffset = 0;
+	if (shake > 0) {
+		shake -= dt;
+		XOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
+		YOffset = NumberUtility::RandomNumber(-shakeIntensity, shakeIntensity);
+	}
+}
+
+void GameScreen::UpdateZombies(float dt)
+{
+	for (auto& g : gameObjectContainer->GetGameObjects()) {
+		tree->AddObject(g);
+		if (Zombie* z = dynamic_cast<Zombie*>(g))
+		{
+			z->Update(dt);
+		}
+	}
+}
+
+void GameScreen::RemoveDeadPlayers()
+{
+	vector<int> toRemove;
+	for (int i = 0; i < players.size(); i++)
+	{
+		if (players.at(i)->IsDeath())
+		{
+			players.at(i)->Remove();
+			toRemove.push_back(i);
+		}
+	}
+	for (auto& i : toRemove)
+	{
+		players.erase(find(players.begin(), players.end(), players.at(i)));
+	}
+
+	toRemove.clear();
+}
+
+void GameScreen::SetZombieTargets()
+{
+	for (auto& gameObject: gameObjectContainer->GetGameObjects())
+	{
+		if (Zombie* z = dynamic_cast<Zombie*>(gameObject))
+		{
+			Character* closestTarget = nullptr;
+			float closest = INT_MAX;
+			for (auto& target : players)
+			{
+				float distance = GameMath::Distance(*z, *target);
+				if (distance < closest)
+				{
+					closest = distance;
+					closestTarget = target;
+				}
+			}
+			z->SetTarget(closestTarget);
+		}
 	}
 }
 
