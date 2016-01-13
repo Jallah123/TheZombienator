@@ -21,7 +21,7 @@
 GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string mapUrl) : AbstractScreen(ren)
 {
 	defaultKeybindings.push_back(new KeyBinding{ SDLK_w, SDLK_a, SDLK_s, SDLK_d, SDLK_SPACE, SDLK_e, SDLK_q });
-	defaultKeybindings.push_back(new KeyBinding{ SDLK_UP, SDLK_LEFT, SDLK_DOWN, SDLK_RIGHT, SDLK_RCTRL, SDLK_PAGEDOWN, SDLK_DELETE });
+	defaultKeybindings.push_back(new KeyBinding{ SDLK_UP, SDLK_LEFT, SDLK_DOWN, SDLK_RIGHT, SDLK_RCTRL, SDLK_LEFTBRACKET, SDLK_RIGHTBRACKET });
 	characterImageUrls = characterUrls;
 
 	// Get map
