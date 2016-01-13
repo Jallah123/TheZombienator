@@ -102,6 +102,7 @@ void GameObject::SetCollideBehaviour(std::string name)
 
 void GameObject::Remove()
 {
+	inputContainer = nullptr;
 	if (drawBehaviour != nullptr) drawBehaviour->CanRemove(true);
 	if (animateBehaviour != nullptr) animateBehaviour->CanRemove(true);
 	if (moveBehaviour != nullptr) moveBehaviour->CanRemove(true);
