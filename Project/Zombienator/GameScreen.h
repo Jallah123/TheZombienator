@@ -44,6 +44,10 @@ public:
 	GameType& GetGameType() { return gameType; }
 private:
 	GameType gameType = GameType::STORY_MODE;
+	void ShakeScreen(float dt);
+	void UpdateZombies(float dt);
+	void SetZombieTargets();
+	void RemoveDeadPlayers();
 	vector<KeyBinding*> defaultKeybindings;
 	vector<string> characterImageUrls;
 	float shake = 0;

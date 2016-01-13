@@ -6,6 +6,7 @@ class PauseScreen :
 {
 public:
 	void Resume();
+	void Help();
 	void Settings();
 	void Quit();
 

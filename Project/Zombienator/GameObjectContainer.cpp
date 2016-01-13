@@ -49,7 +49,10 @@ void GameObjectContainer::AddGameObject(GameObject * c)
 
 void GameObjectContainer::Remove(GameObject * c)
 {
-	if (dynamic_cast<Zombie*>(c)) StatsController::GetInstance()->AddKill();
+	if (dynamic_cast<Zombie*>(c)) 
+	{
+		StatsController::GetInstance()->AddKill(); 
+	}
 	objects.erase(std::remove(objects.begin(), objects.end(), c), objects.end());
 }
 
