@@ -289,7 +289,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		SDL_RenderCopy(&ren, fpsTexture.first, NULL, &fpsTexture.second);
 		SDL_DestroyTexture(fpsTexture.first);
 	}
-
+	/*
 	//DEBUG: draw waypoints
 	SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
 	for (Node* node : map->GetGraph()->GetNodes())
@@ -302,7 +302,7 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 	}
 
 	//DEBUG: draw collision
-	/*
+
 	vector<SDL_Rect*> collision = map->GetObjectLayer("Collision")->GetRects();
 	SDL_SetRenderDrawColor(&ren, 255, 255, 255, 255);
 	for (auto& rect : collision)
