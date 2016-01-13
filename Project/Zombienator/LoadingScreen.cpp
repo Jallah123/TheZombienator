@@ -5,6 +5,7 @@
 #include "TextureFactory.h"
 #include "LabelEndScreen.h"
 #include "Button.h"
+#include "NumberUtility.h"
 
 LoadingScreen::~LoadingScreen() {}
 LoadingScreen::LoadingScreen(SDL_Renderer* ren) : AbstractScreen(ren)
@@ -33,7 +34,7 @@ void LoadingScreen::SearchAds(SDL_Renderer* ren)
 	vector<std::string> images = DirectoryUtils::getFilesFromDirectory("images/ads-350x150/", "png", true);
 	
 	if (images.size() != 0) {
-		std::string url = images.at(rand() % images.size());
+		std::string url = images.at(NumberUtility::RandomNumber(0, images.size() - 1));
 		SDL_Texture* test = TextureFactory::CreateTexture(url);
 		SDL_QueryTexture(test, NULL, NULL, &w, &h);
 
