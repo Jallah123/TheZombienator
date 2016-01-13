@@ -1,8 +1,8 @@
 #pragma once
 #include "MenuScreen.h"
-#include "TextureFactory.h"
 
-class LoadingScreen : public AbstractScreen
+class LoadingScreen 
+	: public AbstractScreen
 {
 public:
 	LoadingScreen(SDL_Renderer* ren);

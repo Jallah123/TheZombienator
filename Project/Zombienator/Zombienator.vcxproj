@@ -185,6 +185,9 @@
     <ClCompile Include="Astar.cpp" />
     <ClCompile Include="BackButton.cpp" />
     <ClCompile Include="BackToMenuButton.cpp" />
+    <ClCompile Include="BadassAttackState.cpp" />
+    <ClCompile Include="BadassStillState.cpp" />
+    <ClCompile Include="BadassWalkingState.cpp" />
     <ClCompile Include="BadassZombie.cpp" />
     <ClCompile Include="Bazooka.cpp" />
     <ClCompile Include="BazookaBullet.cpp" />
@@ -247,13 +250,12 @@
     <ClCompile Include="MoveContainer.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="MultiplayerButton.cpp" />
-    <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="MapSelectionScreen.cpp" />
     <ClCompile Include="Mine.cpp" />
     <ClCompile Include="MineBullet.cpp" />
     <ClCompile Include="NonMovingBullet.cpp" />
     <ClCompile Include="NonMovingBulletCollideBehaviour.cpp" />
-    <ClCompile Include="NonMovingBulletDrawBehaviour.cpp" />
+    <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PickupCollideBehaviour.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -301,6 +303,8 @@
     <ClCompile Include="WunderlandMap.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieAttackState.cpp" />
+    <ClCompile Include="ZombieBlubberBullet.cpp" />
+    <ClCompile Include="ZombieBlubberCollideBehaviour.cpp" />
     <ClCompile Include="ZombieDeadState.cpp" />
     <ClCompile Include="ZombieStandStillState.cpp" />
     <ClCompile Include="ZombieState.cpp" />
@@ -320,6 +324,9 @@
     <ClInclude Include="Astar.h" />
     <ClInclude Include="BackButton.h" />
     <ClInclude Include="BackToMenuButton.h" />
+    <ClInclude Include="BadassAttackState.h" />
+    <ClInclude Include="BadassStillState.h" />
+    <ClInclude Include="BadassWalkingState.h" />
     <ClInclude Include="BadassZombie.h" />
     <ClInclude Include="Bazooka.h" />
     <ClInclude Include="BazookaBullet.h" />
@@ -384,7 +391,6 @@
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="NonMovingBullet.h" />
     <ClInclude Include="NonMovingBulletCollideBehaviour.h" />
-    <ClInclude Include="NonMovingBulletDrawBehaviour.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PickupCollideBehaviour.h" />
     <ClInclude Include="Settings.h" />
@@ -432,6 +438,8 @@
     <ClInclude Include="WunderlandMap.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieAttackState.h" />
+    <ClInclude Include="ZombieBlubberBullet.h" />
+    <ClInclude Include="ZombieBlubberCollideBehaviour.h" />
     <ClInclude Include="ZombieDeadState.h" />
     <ClInclude Include="ZombieStandStillState.h" />
     <ClInclude Include="ZombieState.h" />

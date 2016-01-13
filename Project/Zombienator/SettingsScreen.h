@@ -1,16 +1,12 @@
 #pragma once
 #include "MenuScreen.h"
-#include "TextureFactory.h"
-#include "BackButton.h"
 #include "Label.h"
-#include "SwitchButton.h"
-#include "SwitchButtonGameSpeed.h"
-#include "SwitchButtonGameDifficulty.h"
-#include "VolumeButton.h"
 #include "Settings.h"
-#include <functional>
-#include <list>
-using namespace std;
+#include "SwitchButton.h"
+#include "VolumeButton.h"
+#include "SwitchButtonGameDifficulty.h"
+#include "SwitchButtonGameSpeed.h"
+
 class SettingsScreen :
 	public MenuScreen
 {

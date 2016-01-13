@@ -6,7 +6,8 @@
 #include "NumberUtility.h"
 #include "Map.h"
 #include "StatsController.h"
-
+#include "Zombie.h"
+#include "BadassZombie.h"
 bool SpawnController::IsFinished()
 {
 	int kills = statsController->GetKills();
@@ -67,7 +68,14 @@ void SpawnController::Spawn()
 	int l = NumberUtility::RandomNumber(0, locations.size() - 1);
 	xy p = locations.at(l);
 
-	Zombie* z = GameObjectFactory::Instance()->CreateZombie();
+	Zombie* z = nullptr;
+	if (amountToSpawn - 1 == amountSpawned) {
+		z = GameObjectFactory::Instance()->CreateBadassZombie();
+	}
+	else {
+		z = GameObjectFactory::Instance()->CreateZombie();
+	}
+	
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
 	zombiesVector.push_back(z);

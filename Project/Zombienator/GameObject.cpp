@@ -37,9 +37,7 @@ GameObject::~GameObject()
 		delete *it;
 
 	actionBehaviours.clear();
-
-	if (texture != nullptr)
-		SDL_DestroyTexture(texture);
+	SDL_free(texture);
 }
 
 void GameObject::SetImage(std::string path)

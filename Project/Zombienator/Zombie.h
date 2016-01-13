@@ -17,19 +17,34 @@ using std::string;
 class Zombie :
 	public Character
 {
-private:
+protected:
 	const string basePath = "assets/images/spritesheets/";
 	const string baseAttackPath = "assets/images/spritesheets/attack/";
+
+	Character* target = nullptr;//Mike||Arnold
+	ZombieState* currentState = nullptr;
+	SDL_Texture* normalTexture = nullptr;
+	SDL_Texture* AttackTexture = nullptr;
+	SDL_Texture* DeadTexture = nullptr;
+
+	float attackDamage = 0;
+	float attackSpeed = 0;
+	float soundSpeed = 0;
+
+	const double sweetspotX = 35;
+	const double sweetspotY = 25;
+
+	deque<Node*> path;
 public:
 	Zombie();
 	Zombie(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, CollideContainer* collideC, ActionContainer* actionC, GameObjectContainer* gameObjectC);
 	virtual ~Zombie();
-	void Init();
+	virtual void Init();
 
 	void SetTarget(Character* c) { this->target = c; }
 	Character* GetTarget() { return this->target; }
 
-	void Update(float dt) { currentState->Update(dt); }
+	void Update(float dt) { if(currentState!= nullptr) currentState->Update(dt); }
 	
 	ZombieState* GetCurrentState() { return this->currentState; }
 	void SetCurrentState(ZombieState* newState);
@@ -51,20 +66,5 @@ public:
 	deque<Node*> GetPathCopy() { return path; };
 	void SetPath(deque<Node*> _path) { path = _path; };
 	virtual void OnDeath() override;
-private:
-	Character* target = nullptr;//Mike||Arnold
-	ZombieState* currentState = nullptr;
-	SDL_Texture* normalTexture = nullptr;
-	SDL_Texture* AttackTexture = nullptr;
-	SDL_Texture* DeadTexture = nullptr;
-	
-	float attackDamage = 0;
-	float attackSpeed = 0;
-	float soundSpeed = 0;
-
-	const double sweetspotX = 35;
-	const double sweetspotY = 25;
-
-	deque<Node*> path;
 };
 

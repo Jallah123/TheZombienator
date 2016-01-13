@@ -13,17 +13,10 @@ SimpleDrawBehaviour::~SimpleDrawBehaviour()
 
 void SimpleDrawBehaviour::Draw(float dt, SDL_Renderer & ren, int XOffset, int YOffset)
 {
-	if (!this->gameObject) {
-		return;
-	}
+	if (gameObject == nullptr) return;
 
-	float newX = gameObject->getPosX();
-	float newY = gameObject->getPosY();
-
-	gameObject->SetPosition(newX, newY);
-
-	gameObject->GetDestinationRect()->x += XOffset;
-	gameObject->GetDestinationRect()->y += YOffset;
-
-	SDL_RenderCopy(&ren, gameObject->GetTexture(), gameObject->GetSourceRect(), gameObject->GetDestinationRect());
+	SDL_Rect& dest = *gameObject->GetDestinationRect();
+	dest.x -= XOffset;
+	dest.y -= YOffset;
+	SDL_RenderCopy(&ren, gameObject->GetTexture(), gameObject->GetSourceRect(), &dest);
 }

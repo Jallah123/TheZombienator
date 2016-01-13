@@ -169,6 +169,12 @@
     <Filter Include="Header Files\Models\Behaviour\Move">
       <UniqueIdentifier>{715d0bb5-158d-4d61-a9a6-eb8a1205b8b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Models\States\Badass">
+      <UniqueIdentifier>{60f4a00f-3e80-470a-8aec-e4b9ff5546ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\States\Badass">
+      <UniqueIdentifier>{bf2d339c-42a1-4889-84fc-9eeaa12ab209}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -435,9 +441,6 @@
     <ClCompile Include="StatsScreen.cpp">
       <Filter>Source Files\Views\LoadingScreen</Filter>
     </ClCompile>
-    <ClCompile Include="PauseScreen.cpp">
-      <Filter>Source Files\Views\MenuScreens</Filter>
-    </ClCompile>
     <ClCompile Include="CustomFuncButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
@@ -540,9 +543,6 @@
     <ClCompile Include="HudDrawBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour\Draw</Filter>
     </ClCompile>
-    <ClCompile Include="NonMovingBulletDrawBehaviour.cpp">
-      <Filter>Source Files\Models\Behaviour\Draw</Filter>
-    </ClCompile>
     <ClCompile Include="NormalBulletDrawBehaviour.cpp">
       <Filter>Source Files\Models\Behaviour\Draw</Filter>
     </ClCompile>
@@ -575,6 +575,24 @@
     </ClCompile>
     <ClCompile Include="PauseScreen.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BadassWalkingState.cpp">
+      <Filter>Source Files\Models\States\Badass</Filter>
+    </ClCompile>
+    <ClCompile Include="BadassStillState.cpp">
+      <Filter>Source Files\Models\States\Badass</Filter>
+    </ClCompile>
+    <ClCompile Include="BadassAttackState.cpp">
+      <Filter>Source Files\Models\States\Badass</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Source Files\Views\GameScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieBlubberBullet.cpp">
+      <Filter>Source Files\Models\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieBlubberCollideBehaviour.cpp">
+      <Filter>Source Files\Models\Behaviour\Collide</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -812,9 +830,6 @@
     <ClInclude Include="StatsScreen.h">
       <Filter>Header Files\Views\LoadingScreen</Filter>
     </ClInclude>
-    <ClInclude Include="PauseScreen.h">
-      <Filter>Header Files\Views\MenuScreen</Filter>
-    </ClInclude>
     <ClInclude Include="CustomFuncButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
@@ -881,6 +896,24 @@
     <ClInclude Include="MoveContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BadassWalkingState.h">
+      <Filter>Header Files\Models\States\Badass</Filter>
+    </ClInclude>
+    <ClInclude Include="BadassAttackState.h">
+      <Filter>Header Files\Models\States\Badass</Filter>
+    </ClInclude>
+    <ClInclude Include="BadassStillState.h">
+      <Filter>Header Files\Models\States\Badass</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.h">
+      <Filter>Header Files\Views\GameScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieBlubberBullet.h">
+      <Filter>Header Files\Models\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieBlubberCollideBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadingScreen.h">
@@ -908,9 +941,6 @@
       <Filter>Header Files\Models\Behaviour\Draw</Filter>
     </ClInclude>
     <ClInclude Include="MovingBulletDrawBehaviour.h">
-      <Filter>Header Files\Models\Behaviour\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="NonMovingBulletDrawBehaviour.h">
       <Filter>Header Files\Models\Behaviour\Draw</Filter>
     </ClInclude>
     <ClInclude Include="NormalBulletDrawBehaviour.h">

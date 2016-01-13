@@ -1,8 +1,6 @@
 #pragma once
 #include "Button.h"
 #include "AbstractScreen.h"
-#include "TextureFactory.h"
-#include <map>
 #include <functional>
 
 class SettingsScreen;

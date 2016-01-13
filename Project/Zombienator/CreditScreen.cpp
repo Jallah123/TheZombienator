@@ -1,4 +1,6 @@
 #include "CreditScreen.h"
+#include "BackButton.h"
+#include "TextureFactory.h"
 
 CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {	

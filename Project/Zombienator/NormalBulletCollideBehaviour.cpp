@@ -22,7 +22,7 @@ void NormalBulletCollideBehaviour::Collide(float dt)
 		if (g != bullet->GetOrigin() && g != bullet) {
 			SDL_Point* b = bullet->GetBeginPoint();
 			SDL_Point* e = bullet->GetEndPoint();
-			if(SDL_IntersectRectAndLine(g->GetDestinationRect(), &b->x, &b->y, &e->x, &e->y))
+			if (SDL_IntersectRectAndLine(g->GetDestinationRect(), &b->x, &b->y, &e->x, &e->y))
 			{
 				collision.push_back(g);
 			}
@@ -30,7 +30,7 @@ void NormalBulletCollideBehaviour::Collide(float dt)
 	}
 
 	if (collision.size() > 0) {
-		HandleClosest( GetClosest(collision, *bullet), bullet );
+		HandleClosest(GetClosest(collision, *bullet), bullet);
 	}
 	CanRemove(true);
 }
@@ -52,21 +52,22 @@ GameObject * NormalBulletCollideBehaviour::GetClosest(std::vector<GameObject*> o
 
 void NormalBulletCollideBehaviour::HandleClosest(GameObject * closest, Bullet* bullet)
 {
-	if (closest != nullptr) {
-		Zombie* zombie = dynamic_cast<Zombie*>(closest);
-		bullet->SetTarget(closest);
+	if (closest == nullptr) return;
+	PlayableCharacter* pc = static_cast<PlayableCharacter*>(bullet->GetOrigin());
+	Zombie* zombie = dynamic_cast<Zombie*>(closest);
+	bullet->SetTarget(closest);
 
-		if (zombie != nullptr) {
-			zombie->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
-		}
-		//check if object is playableCharacter
-		else if(dynamic_cast<PlayableCharacter*>(closest) != nullptr && Settings::GetInstance().getFiendlyFire()) {
-			PlayableCharacter* pCharachter = dynamic_cast<PlayableCharacter*>(closest);
-			pCharachter->TakeHit(bullet->GetOrigin()->GetWeapon()->GetDamage());
-		}
-
-		bullet->SetCollision(true);
+	if (zombie != nullptr) {
+		zombie->TakeHit(pc->GetWeapon()->GetDamage());
 	}
+	//check if object is playableCharacter
+	else if (dynamic_cast<PlayableCharacter*>(closest) != nullptr && Settings::GetInstance().getFiendlyFire()) {
+		PlayableCharacter* pCharachter = dynamic_cast<PlayableCharacter*>(closest);
+		pCharachter->TakeHit(pc->GetWeapon()->GetDamage());
+	}
+
+	bullet->SetCollision(true);
+
 }
 
 

@@ -238,3 +238,4 @@ Project/Zombienator/Debug/*
 *.idb
 *.log
 *.log
+Project/Zombienator/assets/ioFiles/settings.cereal

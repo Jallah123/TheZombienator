@@ -12,6 +12,7 @@ StatsScreen::StatsScreen(SDL_Renderer* ren) : AbstractScreen(ren)
 
 StatsScreen::~StatsScreen()
 {
+	delete highScores;
 }
 
 
@@ -19,11 +20,11 @@ void StatsScreen::AddHighScores(SDL_Renderer* ren)
 {
 	AddUIComponent(new LabelEndScreen(*ren, "Highscores:", 100, 200));
 
+	highScores = new HighScores();
 	highScores = ioC->LoadFile("highscores", highScores);
 	if (highScores == nullptr) {
 		highScores = new HighScores();
 	}
-
 	highScores->Insert(StatsController::GetInstance()->GetTotalWavesDefeated());
 
 	bool protectOnce = true;
