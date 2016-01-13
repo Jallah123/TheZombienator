@@ -25,6 +25,7 @@ PlayableCharacter::~PlayableCharacter()
 
 	weapons.clear();
 	delete keyBinding;
+	Remove();
 }
 
 void PlayableCharacter::Init(string img_url, KeyBinding* _keyBinding)
