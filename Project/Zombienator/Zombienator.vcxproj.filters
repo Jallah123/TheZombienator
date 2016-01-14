@@ -607,7 +607,7 @@
       <Filter>Source Files\Views\MenuScreens</Filter>
     </ClCompile>
     <ClCompile Include="SaveGameButton.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -933,7 +933,7 @@
       <Filter>Header Files\Views\MenuScreen</Filter>
     </ClInclude>
     <ClInclude Include="SaveGameButton.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
