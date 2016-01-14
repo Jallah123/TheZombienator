@@ -7,7 +7,7 @@
 #include "TextureFactory.h"
 #include "GameMath.h"
 #include "GameObjectFactory.h"
-
+#include <deque>
 
 Zombie::Zombie()
 	: Character()

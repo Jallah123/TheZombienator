@@ -1,7 +1,9 @@
 #pragma once
 #include "Character.h"
 #include "ZombieState.h"
+#include <deque>
 #include <string>
+#include "Node.h"
 
 class DrawContainer;
 class AnimateContainer;
@@ -32,6 +34,7 @@ protected:
 	const double sweetspotX = 35;
 	const double sweetspotY = 25;
 
+	deque<Node*> path;
 public:
 	Zombie();
 	Zombie(DrawContainer* drawC, AnimateContainer* animC, MoveContainer* moveC, CollideContainer* collideC, ActionContainer* actionC, GameObjectContainer* gameObjectC);
@@ -59,6 +62,9 @@ public:
 	float GetAttackSpeed() { return this->attackSpeed; }
 	float GetSoundSpeed() { return this->soundSpeed; }
 
+	deque<Node*>& GetPath() { return path; };
+	deque<Node*> GetPathCopy() { return path; };
+	void SetPath(deque<Node*> _path) { path = _path; };
 	virtual void OnDeath() override;
 };
 

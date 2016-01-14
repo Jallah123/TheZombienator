@@ -12,6 +12,7 @@
 #include "TextureFactory.h"
 #include "MapFactory.h"
 #include "ScreenFactory.h"
+#include <map>
 #include "TutorialMap.h"
 #include "Pistol.h"
 #include "MachineGun.h"
@@ -283,6 +284,38 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		SDL_RenderCopy(&ren, fpsTexture.first, NULL, &fpsTexture.second);
 		SDL_DestroyTexture(fpsTexture.first);
 	}
+	/*
+	//DEBUG: draw waypoints
+	SDL_SetRenderDrawColor(&ren, 0, 0, 0, 255);
+	for (Node* node : map->GetGraph()->GetNodes())
+	{
+		SDL_Rect& wp1 = node->getDestRect();
+		for (Node* wp2 : node->Adjacent())
+		{
+			SDL_RenderDrawLine(&ren, wp1.x, wp1.y, wp2->getDestRect().x, wp2->getDestRect().y);
+		}
+	}
+
+	//DEBUG: draw collision
+
+	vector<SDL_Rect*> collision = map->GetObjectLayer("Collision")->GetRects();
+	SDL_SetRenderDrawColor(&ren, 255, 255, 255, 255);
+	for (auto& rect : collision)
+	{
+		SDL_RenderDrawRect(&ren, rect);
+	}
+
+	//DEBUG: draw zombie path
+	for (Zombie* z: spawnController.zombiesVector)
+	{
+		deque<Node*> path = z->GetPathCopy();
+		while (!path.empty())
+		{
+			SDL_RenderDrawRect(&ren, &path.front()->getDestRect());
+			path.pop_front();
+		}
+	}
+	*/
 }
 
 // returns if done transitioning

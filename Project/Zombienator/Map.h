@@ -4,12 +4,13 @@
 #include <vector>
 #include <SDL_rect.h>
 #include <SDL_render.h>
-
 #include "Layer.h"
 #include "TileSet.h"
 #include "MapParser.h"
 #include "TileLayer.h"
 #include "ObjectLayer.h"
+#include "Node.h"
+#include "Graph.h"
 #include "SoundController.h"
 
 using std::string;
@@ -70,4 +71,12 @@ public:
 	vector<SDL_Rect*> GetRects() { return this->rects; }
 	vector<TileSet*> GetTileSets() { return this->tilesets; }
 	SDL_Rect GetBounds() { return bounds; }
+
+	Graph* GetGraph() { return &graph; };
+
+	bool IntersectsWithCollisionLayer(SDL_Rect wp1, SDL_Rect wp2);
+	bool ExistsInMap(Node* n1, Node* n2);
+private:
+	Graph graph;
+	void GenerateGraph();
 };

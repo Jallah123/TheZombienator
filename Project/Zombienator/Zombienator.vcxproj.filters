@@ -133,6 +133,12 @@
     <Filter Include="Source Files\Views\UIComponents\Images">
       <UniqueIdentifier>{4233e3d9-6d9a-479d-9582-f474fae886fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Models\Pathfinding">
+      <UniqueIdentifier>{d9ad93c7-4679-435d-b767-31f7db736c87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Pathfinding">
+      <UniqueIdentifier>{73be2d05-33a8-4958-88b7-a87fdaac6b26}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\Models\Visitors">
       <UniqueIdentifier>{16491f39-9b09-4d2c-afee-50e6be5bd63a}</UniqueIdentifier>
     </Filter>
@@ -443,6 +449,18 @@
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\Views\UIComponents\Images</Filter>
+    </ClCompile>
+    <ClCompile Include="Astar.cpp">
+      <Filter>Source Files\Models\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="Edge.cpp">
+      <Filter>Source Files\Models\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Source Files\Models\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source Files\Models\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="MapSelectionScreen.cpp">
       <Filter>Source Files\Views\MenuScreens</Filter>
@@ -835,6 +853,18 @@
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files\Views\UIComponents\Images</Filter>
+    </ClInclude>
+    <ClInclude Include="Astar.h">
+      <Filter>Header Files\Models\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Edge.h">
+      <Filter>Header Files\Models\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files\Models\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files\Models\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="dirent.h">
       <Filter>Header Files\Utils</Filter>

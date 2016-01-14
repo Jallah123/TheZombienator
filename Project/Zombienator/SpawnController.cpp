@@ -78,6 +78,7 @@ void SpawnController::Spawn()
 	
 	z->SetTarget(target);
 	z->SetPosition(p.first, p.second);
+	zombiesVector.push_back(z);
 	amountSpawned++;
 	elapsedtime = 0;
 }

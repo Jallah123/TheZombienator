@@ -1,15 +1,17 @@
 #include "ZombieWalkingState.h"
 #include "ZombieStateFactory.h"
 #include "GameObjectContainer.h"
-
-ZombieWalkingState::ZombieWalkingState()
-{
-}
-
-
-ZombieWalkingState::~ZombieWalkingState()
-{
-}
+#include "GameMath.h"
+#include <limits>
+#include <set>
+#include "Astar.h"
+#include <SDL_rect.h>
+#include <algorithm>
+#include "Graph.h"
+#include "Node.h"
+#include "Map.h"
+#include <vector>
+#include <deque>
 
 
 void ZombieWalkingState::CheckState()
@@ -36,9 +38,12 @@ void ZombieWalkingState::Update(float dt)
 	Zombie* z = GetOwner();
 	Character* target = z->GetTarget();
 	GameObjectContainer* goc = z->GetGameObjectContainer();
+	float destX;
+	float destY;
+	SDL_Rect targetRect = GetDestination(dt);
 
-	float destX = target->getPosX();
-	float destY = target->getPosY();
+	destX = targetRect.x;
+	destY = targetRect.y;
 
 	// -- Get destination rect
 	SDL_Rect* goRect = z->GetCollideRect();
@@ -48,9 +53,9 @@ void ZombieWalkingState::Update(float dt)
 	// -- Move directions
 	bool left = destX + target->GetWidth() <= newX;
 	bool right = destX >= newX + z->GetWidth();
-	bool up = destY + (target->GetHeight()/2) <= newY;
+	bool up = destY + (target->GetHeight() / 2) <= newY;
 	bool down = destY >= newY + (z->GetHeight() / 2);
-	
+
 	float speed = z->GetSpeed() * dt;
 
 	z->SetMoveDir(Direction::NONE);
@@ -76,7 +81,7 @@ void ZombieWalkingState::Update(float dt)
 		z->SetLookDir(Direction::SOUTH);
 		newY += speed;
 	}
-	
+
 
 	float finalX = newX;
 	float finalY = newY;
@@ -97,7 +102,88 @@ void ZombieWalkingState::Update(float dt)
 				finalY = z->getPosY();
 		}
 	}
-
 	z->SetPosition(finalX, finalY);
 	CheckState();
+}
+
+SDL_Rect ZombieWalkingState::GetDestination(float dt)
+{
+	Zombie* z = GetOwner();
+	Character* target = z->GetTarget();
+	Map* map = z->GetGameObjectContainer()->GetMap();
+	Graph* graph = map->GetGraph();
+	vector<Node*>& nodes = graph->GetNodes();
+	SDL_Rect targetRect{ 0,0,20,20 };
+
+	Node* selfNode = GetClosestNodeNearTarget(z, nodes);
+	Node* targetNode = GetClosestNodeNearTarget(target, nodes);
+	// Check if path to target is free
+	if (!map->IntersectsWithCollisionLayer(*z->GetDestinationRect(), *target->GetDestinationRect()))
+	{
+		z->GetPath().clear();
+		targetRect.x = target->GetDestinationRect()->x;
+		targetRect.y = target->GetDestinationRect()->y;
+		return targetRect;
+	}
+	else if (previousTargetNode != targetNode)
+	{
+		// Calculate path
+		Astar astar;
+		astar.Compute(graph, selfNode->ID(), targetNode->ID());
+		deque<Node*> path = astar.GetPath(graph, selfNode->ID(), targetNode->ID());
+		z->SetPath(path);
+		previousTargetNode = targetNode;
+	}
+	if (!z->GetPath().empty())
+	{
+		SDL_Rect waypoint = z->GetPath().front()->getDestRect();
+		SDL_Rect zombieRect = *z->GetDestinationRect();
+		zombieRect.x -= 10;
+		zombieRect.y -= 10;
+		zombieRect.w += 20;
+		zombieRect.h += 20;
+		if (SDL_HasIntersection(&waypoint, &zombieRect))
+		{
+			z->GetPath().pop_front();
+		}
+	}
+	targetRect.x = target->GetDestinationRect()->x;
+	targetRect.y = target->GetDestinationRect()->y;
+	if (!z->GetPath().empty())
+	{
+		targetRect.x = z->GetPath().front()->getDestRect().x;
+		targetRect.y = z->GetPath().front()->getDestRect().y;
+	}
+	return targetRect;
+}
+
+Node* ZombieWalkingState::GetClosestNodeNearTarget(Character* target, vector<Node*>& nodes)
+{
+	Node* closestNode = nodes.at(0);
+	int closestRectDistance = INT_MAX;
+	SDL_Rect* destRect = target->GetDestinationRect();
+
+	for (auto& node : nodes)
+	{
+		SDL_Rect& currentRect = node->getDestRect();
+		double distance = GameMath::Distance(currentRect, *destRect);
+		if (distance < closestRectDistance && NodeIsInGoodDirection(destRect, node))
+		{
+			closestNode = node;
+			closestRectDistance = distance;
+		}
+	}
+	return closestNode;
+}
+
+bool ZombieWalkingState::NodeIsInGoodDirection(SDL_Rect* destRect, Node* node)
+{
+	int destX = destRect->x;
+	int destY = destRect->y;
+	int nodeX = node->getDestRect().x;
+	int nodeY = node->getDestRect().y;
+	int zombieX = GetOwner()->GetDestinationRect()->x;
+	int zombieY = GetOwner()->GetDestinationRect()->y;
+
+	return ((destX <= zombieX && nodeX <= zombieX) || (destX >= zombieX && nodeX >= zombieX)) && ((destY <= zombieY && nodeY <= zombieY) || (destY >= zombieY && nodeY >= zombieY));
 }

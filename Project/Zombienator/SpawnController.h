@@ -44,6 +44,8 @@ public:
 	SpawnController(GameScreen* gs);
 	~SpawnController();
 
+	vector<Zombie*> zombiesVector;
+
 	void SetMap(Map* m);
 	
 	void Update(float dt);
@@ -66,7 +68,7 @@ public:
 	
 	int CurrentWave() { return this->currentWave; }
 
-	int GetAmountToSpawn() { return round(pow((currentWave + 1), (3.0 / 2.0)));	};
+	int GetAmountToSpawn() { return round(pow((currentWave + 1), (3.0 / 2.0))); };
 
 	int GetTimeTillNextWave() { return timeBetweenWaves - elapsedtime; }
 
