@@ -76,7 +76,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 		player->SetGameScreen(this);
 		player->SetPosition(x, y);
 		spawnController.AddTarget(player);
-		x += 100;
+		x += 110;
 	}
 
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
