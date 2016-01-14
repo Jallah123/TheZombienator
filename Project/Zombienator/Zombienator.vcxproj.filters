@@ -572,7 +572,7 @@
     </ClCompile>
     <ClCompile Include="MiniGameButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
-		</ClCompile>
+    </ClCompile>
     <ClCompile Include="BadassWalkingState.cpp">
       <Filter>Source Files\Models\States\Badass</Filter>
     </ClCompile>
@@ -593,6 +593,9 @@
     </ClCompile>
     <ClCompile Include="GameTypeEnum.cpp">
       <Filter>Source Files\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="StringUtils.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -899,14 +902,14 @@
     <ClInclude Include="ZombieBlubberCollideBehaviour.h">
       <Filter>Header Files\Models\Behaviour\Collide</Filter>
     </ClInclude>
-    <ClInclude Include="PauseScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ContinueButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="MiniGameButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtils.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
