@@ -11,6 +11,7 @@
 #include "PauseScreen.h"
 #include "SettingsScreen.h"
 #include "MapSelectionScreen.h"
+#include "LoadGameScreen.h"
 
 std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 {
@@ -25,6 +26,7 @@ std::map<ScreenEnum, std::function<AbstractScreen*(void)>> fillMap()
 	map[ScreenEnum::PAUSESCREEN] = [](void) -> AbstractScreen * { return new PauseScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::SETTINGSSCREEN] = [](void) -> AbstractScreen * { return new SettingsScreen{ Program::getInstance()->GetRenderer() }; };
 	map[ScreenEnum::MAPSELECTIONSCREEN] = [](void) -> AbstractScreen * { return new MapSelectionScreen{ Program::getInstance()->GetRenderer() }; };
+	map[ScreenEnum::LOADGAMESCREEN] = [](void) -> AbstractScreen * { return new LoadGameScreen{ Program::getInstance()->GetRenderer() }; };
 
 	return map;
 }

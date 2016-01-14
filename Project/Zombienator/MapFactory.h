@@ -6,6 +6,7 @@
 #include "TutorialMap.h"
 #include <iostream>
 #include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -22,6 +23,8 @@ public:
 	void MapFactory::TutorialMode();
 	void MapFactory::EmptyQueue();
 	bool MapFactory::IsQueueEmpty();
+	void MapFactory::SetCustomQueue(vector<string> maps);
+	queue<Map*> MapFactory::GetQueue() { return mapQueue; };
 
 	static MapFactory* GetInstance() {
 		static MapFactory f;

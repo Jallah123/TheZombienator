@@ -18,6 +18,7 @@
 #include "MachineGun.h"
 #include "PlayableCharacter.h"
 #include "GameMath.h"
+#include "StringUtils.h"
 
 GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string mapUrl) : AbstractScreen(ren)
 {
@@ -29,6 +30,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 	if (mapUrl == "")
 	{
 		map = MapFactory::GetInstance()->NextMap();
+		SaveGame();
 	}
 	else
 	{
@@ -76,7 +78,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 		player->SetGameScreen(this);
 		player->SetPosition(x, y);
 		spawnController.AddTarget(player);
-		x += 100;
+		x += 110;
 	}
 
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
@@ -104,6 +106,30 @@ GameScreen::~GameScreen()
 void GameScreen::ReceiveFocus()
 {
 	currentState = GameState::RUNNING;
+}
+
+void GameScreen::SaveGame()
+{
+	auto queue = MapFactory::GetInstance()->GetQueue();
+	vector<string> mapsUrls;
+	ofstream maps("assets/saves/story1.save");
+	// Save current map
+	maps << characterImageUrls.at(0) << ',';
+	maps << map->GetMapPath() << ',';
+	// Save all maps in the queue.
+	if (queue.empty())
+	{
+		cout << "Queue empty, nothing to save";
+	}
+	else {
+		for (int i = 0; i <= queue.size(); i++)
+		{
+			maps << queue.front()->GetMapPath() << ',';
+			queue.pop();
+		}
+	}
+	// close file
+	maps.close();
 }
 
 void GameScreen::Update(float dt)
@@ -210,6 +236,7 @@ void GameScreen::HandleInput(float dt)
 			timeLastStateChange = stateChangeDelay;
 		}
 	}
+
 	if (timeCheatActivated <= 0) {
 		if (inputContainer->GetKeyState(SDLK_F3))
 		{
@@ -271,10 +298,15 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		if (spawnController.Completed())
 		{
 			currentState = GameState::TRANSITIONING;
-			if (this->Transition(ren))
-			{
-				return;
-			}
+
+		}
+	}
+
+	if (currentState == GameState::TRANSITIONING)
+	{
+		if (this->Transition(ren))
+		{
+			return;
 		}
 	}
 

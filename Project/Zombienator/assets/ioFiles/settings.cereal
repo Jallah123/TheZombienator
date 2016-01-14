@@ -1,14 +1,14 @@
 {
     "value0": {
         "friendlyFire": false,
-        "sound": true,
-        "music": true,
+        "sound": false,
+        "music": false,
         "showFps": false,
-        "gameSpeed": 10,
+        "gameSpeed": 20,
         "gameDifficulty": 1,
         "defaultVolume": 29,
-        "musicVolume": 29,
-        "soundVolume": 29,
+        "musicVolume": 0,
+        "soundVolume": 0,
         "godmode": false,
         "infiniteAmmo": false
     }
