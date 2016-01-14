@@ -3,7 +3,7 @@
 
 ZombieDeadState::ZombieDeadState()
 {
-	SoundController->PlaySound("assets/sounds/DeathFlash.wav", 0);
+	SoundController->PlaySound("assets/sounds/DeathFlash.flac", 0);
 }
 
 ZombieDeadState::~ZombieDeadState()

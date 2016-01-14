@@ -6,7 +6,7 @@ WinScreen::WinScreen(SDL_Renderer* ren) : StatsScreen(ren)
 {
 	SoundController::GetInstance().StopAllSounds();
 	ChangeBackground(ren, "assets/images/bg/win_bg.png");
-	SoundController->GetInstance().PlaySound("assets/sounds/youvewon.wav", 1);
+	SoundController->GetInstance().PlaySound("assets/sounds/youvewon.flac", 1);
 
 	AddStats(ren);
 }

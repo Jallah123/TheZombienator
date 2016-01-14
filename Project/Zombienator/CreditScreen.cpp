@@ -13,7 +13,7 @@ CreditScreen::CreditScreen(SDL_Renderer* ren) : MenuScreen(ren)
 
 
 	//plays sound:
-	SoundController->ChangeMusic("assets/sounds/StandByMe.wav");
+	SoundController->ChangeMusic("assets/sounds/StandByMe.flac");
 
 	//Credit text
 	addTextToSet("Made by");

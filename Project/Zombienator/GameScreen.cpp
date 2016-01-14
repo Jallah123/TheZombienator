@@ -29,7 +29,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 	if (mapUrl == "")
 	{
 		map = MapFactory::GetInstance()->NextMap();
-		SaveGame();
 	}
 	else
 	{
@@ -87,8 +86,15 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 		{
 			tutorialController = TutorialController(&bubbleVisitor, &spawnController, player);
 		}
+		gameType = GameType::TUTORIAL_MODE;
 
 	}
+
+	if (gameType == GameType::STORY_MODE)
+	{
+		SaveGame();
+	}
+
 	hudVisitor = HudVisitor{ ren, map->GetBounds(), players.size() };
 
 	//Load && play sound
@@ -297,7 +303,6 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		if (spawnController.Completed())
 		{
 			currentState = GameState::TRANSITIONING;
-
 		}
 	}
 

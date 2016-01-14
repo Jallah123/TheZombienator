@@ -19,9 +19,9 @@ void Bazooka::Fire()
 	Weapon::Fire();
 	if (rounds != 0) {
 		BazookaBullet* b = GameObjectFactory::Instance()->CreateBazookaBullet(this->character);
-		SoundController::GetInstance().PlaySound("assets/sounds/bazooka.wav", 0);
+		SoundController::GetInstance().PlaySound("assets/sounds/bazooka.flac", 0);
 	}
 	else {
-		SoundController::GetInstance().PlaySound("assets/sounds/gun-empty.wav", 0);
+		SoundController::GetInstance().PlaySound("assets/sounds/gun-empty.flac", 0);
 	}
 }

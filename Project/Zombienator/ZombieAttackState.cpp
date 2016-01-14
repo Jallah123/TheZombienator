@@ -34,7 +34,7 @@ void ZombieAttackState::PlaySound() // 1 Sound per 4 seconds
 		if (!timeTillNewSound)
 			timeTillNewSound = GetOwner()->GetSoundSpeed();
 		soundBegin = clock();
-		SoundController::GetInstance().PlaySound("assets/sounds/zombie-attack.wav", 0);
+		SoundController::GetInstance().PlaySound("assets/sounds/zombie-attack.flac", 0);
 	}
 }
 

@@ -22,7 +22,7 @@ class Map
 {
 private:
 	string mapPath = "";
-	string soundPath = "bgSound1.wav"; // Default music
+	string soundPath = "bgSound1.flac"; // Default music
 
 	int width = 0;
 	int height = 0;

@@ -443,7 +443,7 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "Sound":"bgSound2.wav"
+     "Sound":"bgSound2.flac"
     },
  "renderorder":"right-down",
  "tileheight":32,

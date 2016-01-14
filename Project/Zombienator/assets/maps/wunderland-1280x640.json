@@ -612,7 +612,7 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "Sound":"bgSound3.wav"
+     "Sound":"bgSound3.flac"
     },
  "renderorder":"right-down",
  "tileheight":32,

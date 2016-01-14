@@ -5,7 +5,7 @@ GameOverScreen::GameOverScreen(SDL_Renderer* ren) : StatsScreen(ren)
 {
 	SoundController::GetInstance().StopAllSounds();
 	ChangeBackground(ren, "assets/images/bg/gameover_bg.png");
-	SoundController->GetInstance().PlaySound("assets/sounds/gameover.wav", 1);
+	SoundController->GetInstance().PlaySound("assets/sounds/gameover.flac", 1);
 
 	AddStats(ren);
 }

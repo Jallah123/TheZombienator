@@ -203,7 +203,7 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "Sound":"bgSound1.wav"
+     "Sound":"bgSound1.flac"
     },
  "renderorder":"right-down",
  "tileheight":32,
