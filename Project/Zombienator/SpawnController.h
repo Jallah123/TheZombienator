@@ -32,7 +32,6 @@ private:
 
 	bool waveFinished = false;
 	bool completed = false;
-	bool allWavesCompleted = false;
 	
 	GameScreen* gameScreen = nullptr;
 	Character* target = nullptr;
@@ -74,8 +73,8 @@ public:
 	int GetAmountSpawned() { return amountSpawned; }
 
 	bool WaveCompleted() { return this->waveFinished; }
-
-	bool AllWavesCompleted() { return this->allWavesCompleted; }
+	
+	bool LastWave() { return (currentWave == maxWaves); }
 
 	bool Completed() { return completed; }
 

@@ -215,6 +215,7 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameState.h" />
     <ClCompile Include="GameSpeed.cpp" />
+    <ClCompile Include="GameTypeEnum.cpp" />
     <ClCompile Include="HelpScreen.cpp" />
     <ClCompile Include="HighScores.cpp" />
     <ClCompile Include="HudDrawBehaviour.cpp" />

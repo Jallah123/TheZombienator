@@ -48,4 +48,6 @@ void BadassZombie::Init()
 void BadassZombie::OnDeath()
 {
 	GameObjectFactory::Instance()->CreateAmmoBox(this);
+	if(target->GetHealth() != target->GetMaxHealth())
+		GameObjectFactory::Instance()->CreateMedkit(this);
 }
