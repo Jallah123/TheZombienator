@@ -9,7 +9,7 @@ LoadSaveButton::LoadSaveButton(SDL_Renderer& ren, char* text, char* img_url, int
 {
 	SetSourceLocation(0, 238);
 	SetSize(239, 97);
-	SetDestLocation(515, 210 + (97 * _loadSlot));
+	SetDestLocation(515, 220 + (97 * _loadSlot));
 	buttonText = TextureFactory::GenerateText(string(text), 24, destRect.x + (destRect.w / 2), destRect.y + (destRect.h / 2), FontEnum::CARTOON, { 248 ,248 ,255 });
 	loadSlot = _loadSlot;
 }

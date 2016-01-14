@@ -1,7 +1,7 @@
 #pragma once
 #include "HomeScreen.h"
 #include "SettingsButton.h"
-#include "StoryModeButton.h"
+#include "LoadGameScreenButton.h"
 #include "InfiniteModeButton.h"
 #include "CreditButton.h"
 #include "SettingsButton.h"
@@ -19,7 +19,7 @@ struct HelpButton : Button {
 	}
 
 	void ClickAction() {
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::LOADGAMESCREEN));
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::HELPSCREEN));
 	}
 };
 
@@ -29,7 +29,7 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	// SettingsButton
 	settingsBtn = new SettingsButton(*ren, "", "assets/images/button_spritesheet.png");
 	// StoryModeButton
-	storyModeBtn = new StoryModeButton(*ren, "Story Mode", "assets/images/button_spritesheet.png");
+	loadGameScreenButton = new LoadGameScreenButton(*ren, "Story Mode", "assets/images/button_spritesheet.png");
 	// InfiniteModeButton -- Uncomment for presentation
 	infiniteModeBtn = new InfiniteModeButton(*ren, "Infinite Mode", "assets/images/button_spritesheet.png");
 	// Multiplayer
@@ -37,7 +37,7 @@ HomeScreen::HomeScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	// CreditScreenButton
 	creditsButton = new CreditButton(*ren, "", "assets/images/button_spritesheet.png");
 
-	AddUIComponent(storyModeBtn);
+	AddUIComponent(loadGameScreenButton);
 	AddUIComponent(infiniteModeBtn);
 	AddUIComponent(multiplayerBtn);
 	AddUIComponent(settingsBtn);

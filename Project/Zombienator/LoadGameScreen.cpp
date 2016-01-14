@@ -1,17 +1,16 @@
 #include "LoadGameScreen.h"
 #include "LoadSaveButton.h"
-#include "BackToMenuButton.h"
+#include "BackButton.h"
+#include "StoryModeButton.h"
 
 LoadGameScreen::LoadGameScreen(SDL_Renderer* ren) : MenuScreen(ren)
 {
-	BackToMenuButton* b = new BackToMenuButton(*ren, "", "assets/images/button_spritesheet.png");
-	LoadSaveButton* lsb = new LoadSaveButton(*ren, "Load slot 0", "assets/images/button_spritesheet.png", 0);
-	LoadSaveButton* lsb2 = new LoadSaveButton(*ren, "Load slot 1", "assets/images/button_spritesheet.png", 1);
-	LoadSaveButton* lsb3 = new LoadSaveButton(*ren, "Load slot 2", "assets/images/button_spritesheet.png", 2);
+	BackButton* b = new BackButton(*ren, "", "assets/images/button_spritesheet.png");
+	StoryModeButton* smb = new StoryModeButton(*ren, "New Game", "assets/images/button_spritesheet.png");
+	LoadSaveButton* lsb = new LoadSaveButton(*ren, "Continue", "assets/images/button_spritesheet.png", 1);
 	AddUIComponent(b);
+	AddUIComponent(smb);
 	AddUIComponent(lsb);
-	AddUIComponent(lsb2);
-	AddUIComponent(lsb3);
 }
 
 void LoadGameScreen::Update(float dt)

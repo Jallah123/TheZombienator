@@ -1,7 +1,7 @@
 #pragma once
 #include "MenuScreen.h"
 class SettingsButton;
-class StoryModeButton;
+class LoadGameScreenButton;
 class InfiniteModeButton;
 class CreditButton;
 class MultiplayerButton;
@@ -13,7 +13,7 @@ class HomeScreen :
 private:
 	HelpButton* helpBtn = nullptr;
 	SettingsButton* settingsBtn = nullptr;
-	StoryModeButton* storyModeBtn = nullptr;
+	LoadGameScreenButton* loadGameScreenButton = nullptr;
 	InfiniteModeButton* infiniteModeBtn = nullptr;
 	MultiplayerButton* multiplayerBtn = nullptr;
 	CreditButton* creditsButton = nullptr;

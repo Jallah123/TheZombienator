@@ -237,6 +237,7 @@
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LoadGameScreen.cpp" />
+    <ClCompile Include="LoadGameScreenButton.cpp" />
     <ClCompile Include="LoadSaveButton.cpp" />
     <ClCompile Include="MachineGun.cpp" />
     <ClCompile Include="MachineGunBullet.cpp" />
@@ -366,6 +367,7 @@
     <ClInclude Include="LandscapeMap.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LoadGameScreen.h" />
+    <ClInclude Include="LoadGameScreenButton.h" />
     <ClInclude Include="LoadSaveButton.h" />
     <ClInclude Include="MachineGun.h" />
     <ClInclude Include="MachineGunBullet.h" />

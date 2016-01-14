@@ -29,6 +29,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 	if (mapUrl == "")
 	{
 		map = MapFactory::GetInstance()->NextMap();
+		SaveGame();
 	}
 	else
 	{
@@ -104,6 +105,30 @@ GameScreen::~GameScreen()
 void GameScreen::ReceiveFocus()
 {
 	currentState = GameState::RUNNING;
+}
+
+void GameScreen::SaveGame()
+{
+	auto queue = MapFactory::GetInstance()->GetQueue();
+	vector<string> mapsUrls;
+	ofstream maps("assets/saves/story1.save");
+	// Save current map
+	maps << characterImageUrls.at(0) << ',';
+	maps << map->GetMapPath() << ',';
+	// Save all maps in the queue.
+	if (queue.empty())
+	{
+		cout << "Queue empty, nothing to save";
+	}
+	else {
+		for (int i = 0; i <= queue.size(); i++)
+		{
+			maps << queue.front()->GetMapPath() << ',';
+			queue.pop();
+		}
+	}
+	// close file
+	maps.close();
 }
 
 void GameScreen::Update(float dt)
@@ -213,31 +238,12 @@ void GameScreen::HandleInput(float dt)
 
 	if (InputContainer::GetInstance().GetKeyState(SDLK_DELETE))
 	{
-		auto queue = MapFactory::GetInstance()->GetQueue();
-		vector<string> mapsUrls;
-		ofstream maps("assets/saves/story.save");
-		// Save current map
-		maps << characterImageUrls.at(0) << ',';
-		maps << map->GetMapPath() << ',';
-		// Save all maps in the queue.
-		if (queue.empty())
-		{
-			cout << "Queue empty, nothing to save";
-		}
-		else {
-			for (int i = 0; i <= queue.size(); i++)
-			{
-				maps << queue.front()->GetMapPath() << ',';
-				queue.pop();
-			}
-		}
-		// close file
-		maps.close();
+
 	}
 	else if (InputContainer::GetInstance().GetKeyState(SDLK_INSERT))
 	{
 		// Open save file
-		ifstream save("assets/saves/story.save");
+		ifstream save("assets/saves/story1.save");
 		// If opening succeeded
 		if (save)
 		{

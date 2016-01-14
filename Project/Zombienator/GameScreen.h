@@ -66,6 +66,7 @@ private:
 	GameObjectFactory* goFactory = GameObjectFactory::Instance();
 
 	void HandleInput(float dt);
+	void SaveGame();
 	
 	DrawContainer drawContainer;
 	AnimateContainer animateContainer;

@@ -609,6 +609,9 @@
     <ClCompile Include="SaveGameButton.cpp">
       <Filter>Source Files\Views\UIComponents\Buttons</Filter>
     </ClCompile>
+    <ClCompile Include="LoadGameScreenButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program.h">
@@ -934,6 +937,9 @@
     </ClInclude>
     <ClInclude Include="SaveGameButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadGameScreenButton.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
