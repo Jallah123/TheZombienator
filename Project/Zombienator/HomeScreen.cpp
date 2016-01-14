@@ -19,7 +19,7 @@ struct HelpButton : Button {
 	}
 
 	void ClickAction() {
-		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::HELPSCREEN));
+		ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::LOADGAMESCREEN));
 	}
 };
 

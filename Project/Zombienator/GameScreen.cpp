@@ -217,6 +217,7 @@ void GameScreen::HandleInput(float dt)
 		vector<string> mapsUrls;
 		ofstream maps("assets/saves/story.save");
 		// Save current map
+		maps << characterImageUrls.at(0) << ',';
 		maps << map->GetMapPath() << ',';
 		// Save all maps in the queue.
 		if (queue.empty())
@@ -246,6 +247,8 @@ void GameScreen::HandleInput(float dt)
 			save.getline(urls, 512);
 			string s = urls;
 			StringUtils::Split(s, ',', maps);
+			// Remove character url
+			maps.erase(maps.begin());
 			// Add maps to mapqueue and change to that queue
 			MapFactory::GetInstance()->SetCustomQueue(maps);
 			currentState = GameState::TRANSITIONING;

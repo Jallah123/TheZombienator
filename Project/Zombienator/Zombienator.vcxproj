@@ -236,6 +236,8 @@
     <ClCompile Include="LandscapeMap.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="LoadGameScreen.cpp" />
+    <ClCompile Include="LoadSaveButton.cpp" />
     <ClCompile Include="MachineGun.cpp" />
     <ClCompile Include="MachineGunBullet.cpp" />
     <ClCompile Include="LoadingScreen.cpp" />
@@ -257,6 +259,8 @@
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PickupCollideBehaviour.cpp" />
+    <ClCompile Include="SaveGameButton.cpp" />
+    <ClCompile Include="SaveGameScreen.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SettingsScreen.cpp" />
     <ClCompile Include="MovingBulletCollideBehaviour.cpp" />
@@ -361,6 +365,8 @@
     <ClInclude Include="LabelEndScreen.h" />
     <ClInclude Include="LandscapeMap.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="LoadGameScreen.h" />
+    <ClInclude Include="LoadSaveButton.h" />
     <ClInclude Include="MachineGun.h" />
     <ClInclude Include="MachineGunBullet.h" />
     <ClInclude Include="LoadingScreen.h" />
@@ -390,6 +396,8 @@
     <ClInclude Include="NonMovingBulletCollideBehaviour.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PickupCollideBehaviour.h" />
+    <ClInclude Include="SaveGameButton.h" />
+    <ClInclude Include="SaveGameScreen.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="SettingsScreen.h" />
     <ClInclude Include="MovingBulletCollideBehaviour.h" />
