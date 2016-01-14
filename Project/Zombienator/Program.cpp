@@ -36,22 +36,9 @@ Program& Program::shared_program() {
 }
 */
 
-void Program::ShowLoadingScreen() {
-	if (ScreenController::GetInstance().GetLoadingScreen() == nullptr)
-	{
-		LoadingScreen* l = dynamic_cast<LoadingScreen*>(ScreenFactory::Create(ScreenEnum::LOADINGSCREEN));
-		ScreenController::GetInstance().AddLoadingScreen(l);
-	}
-
-	// SDL Render
-	SDL_SetRenderDrawColor(Sdl_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	SDL_RenderClear(Sdl_Renderer);
-	ScreenController::GetInstance().GetLoadingScreen()->Draw(*Sdl_Renderer, 0);
-	// Update screen 
-	SDL_RenderPresent(Sdl_Renderer);
-
-	// Sleep
-	SDL_Delay(400);
+void Program::ShowLoadingScreen() 
+{
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::LOADINGSCREEN));
 }
 
 void Program::ShowGameOverScreen()
@@ -69,9 +56,6 @@ int Program::Tick() {
 
 	//load settings
 	settings->Load();
-
-	// LoadingScreen
-	ShowLoadingScreen();
 
 	// MenuScreen
 	MenuScreen* m = dynamic_cast<HomeScreen*>(ScreenFactory::Create(ScreenEnum::HOMESCREEN));
@@ -97,15 +81,15 @@ int Program::Tick() {
 
 		// Check Gameover
 		if (GameScreen* g = dynamic_cast<GameScreen*>(currentScreen))
-		{
-			// Check if screen has changed
-			if (previousScreen != currentScreen) {
-				ShowLoadingScreen();
-			}
-			
+		{			
 			if (g->IsGameOver())
 			{
 				ShowGameOverScreen();
+				currentScreen = sc->GetCurrentScreen();
+			}
+			if (!g->Loading())
+			{
+				ShowLoadingScreen();
 				currentScreen = sc->GetCurrentScreen();
 			}
 		}

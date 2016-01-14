@@ -201,6 +201,7 @@
     <ClCompile Include="CollideBehaviour.cpp" />
     <ClCompile Include="CollideContainer.cpp" />
     <ClCompile Include="CollideObject.cpp" />
+    <ClCompile Include="ContinueButton.cpp" />
     <ClCompile Include="CreditButton.cpp" />
     <ClCompile Include="CreditScreen.cpp" />
     <ClCompile Include="CustomFuncButton.cpp" />
@@ -244,6 +245,7 @@
     <ClCompile Include="MapParser.cpp" />
     <ClCompile Include="Medkit.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
+    <ClCompile Include="MiniGameButton.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="MoveContainer.cpp" />
     <ClCompile Include="MultiplayerButton.cpp" />
@@ -337,6 +339,7 @@
     <ClInclude Include="CollideBehaviour.h" />
     <ClInclude Include="CollideContainer.h" />
     <ClInclude Include="CollideObject.h" />
+    <ClInclude Include="ContinueButton.h" />
     <ClInclude Include="CustomFuncButton.h" />
     <ClInclude Include="DirectoryUtils.h" />
     <ClInclude Include="dirent.h" />
@@ -375,6 +378,7 @@
     <ClInclude Include="KeyboardInputHandler.h" />
     <ClInclude Include="Medkit.h" />
     <ClInclude Include="MenuScreen.h" />
+    <ClInclude Include="MiniGameButton.h" />
     <ClInclude Include="MultiplayerButton.h" />
     <ClInclude Include="MapSelectionScreen.h" />
     <ClInclude Include="Mine.h" />

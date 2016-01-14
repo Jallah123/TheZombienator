@@ -558,6 +558,21 @@
     <ClCompile Include="PauseScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MoveBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ContinueButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniGameButton.cpp">
+      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
+		</ClCompile>
     <ClCompile Include="BadassWalkingState.cpp">
       <Filter>Source Files\Models\States\Badass</Filter>
     </ClCompile>
@@ -883,6 +898,15 @@
     </ClInclude>
     <ClInclude Include="ZombieBlubberCollideBehaviour.h">
       <Filter>Header Files\Models\Behaviour\Collide</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ContinueButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniGameButton.h">
+      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

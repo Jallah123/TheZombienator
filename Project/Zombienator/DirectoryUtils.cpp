@@ -7,7 +7,7 @@ std::vector<std::string> DirectoryUtils::getFilesFromDirectory(std::string folde
 	std::vector<std::string> files;
 	DIR* dir;
 	struct dirent* ent;
-	std::string folder = "assets/" + folderName + '/';
+	std::string folder = "assets/" + folderName;
 	extension.insert(0, ".");
 	if ((dir = opendir(folder.c_str())) != NULL)
 	{
