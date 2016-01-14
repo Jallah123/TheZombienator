@@ -10,22 +10,27 @@ PauseScreen::PauseScreen(SDL_Renderer* ren) : MenuScreen(ren)
 	//default background
 	ChangeBackground(ren, "assets/images/bg/default_bg.png");
 
-	Label* pauseLabel = new Label(*ren, "Game paused", 655, 100, 44, { 255,255,240 });  //ren, text, xpos,ypos, fontsize, color
+	Label* pauseLabel = new Label(*ren, "Game paused", 655, 50, 44, { 255,255,240 });  //ren, text, xpos,ypos, fontsize, color
 	AddUIComponent(pauseLabel);
 
 
 	//resume button
-	CustomFuncButton* resumebtn = new CustomFuncButton(*ren, "Resume", spriteSheet, 540, 200, *this);
+	CustomFuncButton* resumebtn = new CustomFuncButton(*ren, "Resume", spriteSheet, 540, 150, *this);
 	resumebtn->setUpdateFunction(std::bind(&PauseScreen::Resume, this));
 	AddUIComponent(resumebtn);
 
 	//resume button
-	CustomFuncButton* settingsBtn = new CustomFuncButton(*ren, "Settings", spriteSheet, 540, 310, *this);
+	CustomFuncButton* settingsBtn = new CustomFuncButton(*ren, "Settings", spriteSheet, 540, 260, *this);
 	settingsBtn->setUpdateFunction(std::bind(&PauseScreen::Settings, this));
 	AddUIComponent(settingsBtn);
 
+	//help button
+	CustomFuncButton* helpBtn = new CustomFuncButton(*ren, "Help", spriteSheet, 540, 370, *this);
+	helpBtn->setUpdateFunction(std::bind(&PauseScreen::Help, this));
+	AddUIComponent(helpBtn);
+
 	//quit button
-	CustomFuncButton* quitBtn = new CustomFuncButton(*ren, "Quit game", spriteSheet, 540, 420, *this);
+	CustomFuncButton* quitBtn = new CustomFuncButton(*ren, "Quit game", spriteSheet, 540, 480, *this);
 	quitBtn->setUpdateFunction(std::bind(&PauseScreen::Quit, this));
 	AddUIComponent(quitBtn);
 
@@ -45,6 +50,11 @@ void PauseScreen::Resume()
 void PauseScreen::Settings()
 {
 	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::SETTINGSSCREEN));
+}
+
+void PauseScreen::Help()
+{
+	ScreenController::GetInstance().ChangeScreen(ScreenFactory::Create(ScreenEnum::HELPSCREEN));
 }
 
 void PauseScreen::Quit()

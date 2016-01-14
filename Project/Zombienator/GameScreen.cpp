@@ -1,8 +1,8 @@
 #pragma once
 #include "SDL.h"
-#include "GameScreen.h"
 #include <SDL_mixer.h>
 #include <iostream>
+#include "GameScreen.h"
 #include "Quadtree.h"
 #include "NumberUtility.h"
 #include "BehaviourFactory.h"
@@ -22,17 +22,17 @@
 GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string mapUrl) : AbstractScreen(ren)
 {
 	defaultKeybindings.push_back(new KeyBinding{ SDLK_w, SDLK_a, SDLK_s, SDLK_d, SDLK_SPACE, SDLK_e, SDLK_q });
-	defaultKeybindings.push_back(new KeyBinding{ SDLK_UP, SDLK_LEFT, SDLK_DOWN, SDLK_RIGHT, SDLK_RCTRL, SDLK_PAGEDOWN, SDLK_DELETE });
+	defaultKeybindings.push_back(new KeyBinding{ SDLK_UP, SDLK_LEFT, SDLK_DOWN, SDLK_RIGHT, SDLK_RCTRL, SDLK_LEFTBRACKET, SDLK_RIGHTBRACKET });
 	characterImageUrls = characterUrls;
 
 	// Get map
-	if (mapUrl == "") 
+	if (mapUrl == "")
 	{
 		map = MapFactory::GetInstance()->NextMap();
 	}
-	else 
+	else
 	{
-		isInfinityMode = true;
+		gameType = GameType::INFINITY_MODE;
 		map = new Map{ mapUrl };
 	}
 
@@ -44,7 +44,6 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 	spawnController.SetMap(map);
 	BehaviourFactory::Instance()->SetMap(map);
 
-	hudVisitor = HudVisitor{ ren, map->GetBounds() };
 	goFactory->SetContainers(
 		&drawContainer,
 		&animateContainer,
@@ -65,7 +64,7 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 		ren
 		);
 
-	for (int i = 0; i < characterImageUrls.size();i++)
+	for (int i = 0; i < characterImageUrls.size(); i++)
 	{
 		players.push_back(goFactory->CreatePlayableCharacter(characterImageUrls.at(i), defaultKeybindings.at(i)));
 	}
@@ -82,13 +81,14 @@ GameScreen::GameScreen(SDL_Renderer* ren, vector<string> characterUrls, string m
 
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
 		bubbleVisitor = BubbleVisitor{ ren };
-		
+
 		for (auto& player : players)
 		{
 			tutorialController = TutorialController(&bubbleVisitor, &spawnController, player);
 		}
-		
+
 	}
+	hudVisitor = HudVisitor{ ren, map->GetBounds(), players.size() };
 
 	//Load && play sound
 	map->PlaySounds();
@@ -154,18 +154,18 @@ void GameScreen::UpdateZombies(float dt)
 
 void GameScreen::RemoveDeadPlayers()
 {
-	vector<int> toRemove;
-	for (int i = 0; i < players.size(); i++)
+	vector<PlayableCharacter*> toRemove;
+	for (auto& player: players)
 	{
-		if (players.at(i)->IsDeath())
+		if (player->IsDeath())
 		{
-			players.at(i)->Remove();
-			toRemove.push_back(i);
+			player->Remove();
+			toRemove.push_back(player);
 		}
 	}
-	for (auto& i : toRemove)
+	for (auto& player : toRemove)
 	{
-		players.erase(find(players.begin(), players.end(), players.at(i)));
+		players.erase(find(players.begin(), players.end(), player));
 	}
 
 	toRemove.clear();
@@ -250,7 +250,9 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 
 	map->DrawFrontLayer(ren, XOffset, YOffset);
 
-	hudVisitor.DrawBase(players.size());
+	hudVisitor.DrawBase();
+	hudVisitor.Visit(spawnController, GetGameType());
+	hudVisitor.Visit(players);
 
 	// BUBBLE ZOOI
 	if (dynamic_cast<TutorialMap*>(map) != nullptr) {
@@ -261,19 +263,12 @@ void GameScreen::Draw(SDL_Renderer& ren, float dt)
 		}
 	}
 
-	// If all waves defeated
-	if (spawnController.Completed())
-		this->Transition(ren);
-
-	hudVisitor.Visit(spawnController);
-
-	hudVisitor.Visit(players);
 
 	// if story mode || not infinity mode
-	if (!isInfinityMode) 
+	if (gameType == GameType::STORY_MODE)
 	{
 		// if maxwave completed
-		if (spawnController.CurrentWave() == 5) 
+		if (spawnController.Completed())
 		{
 			currentState = GameState::TRANSITIONING;
 			if (this->Transition(ren))
@@ -356,6 +351,7 @@ bool GameScreen::Transition(SDL_Renderer& ren)
 
 bool GameScreen::IsGameOver()
 {
+	if (players.size() == 0) return false;
 	for (auto& player : players)
 	{
 		if (!player->IsDeath())
@@ -364,4 +360,11 @@ bool GameScreen::IsGameOver()
 		}
 	}
 	return true;
+}
+
+bool GameScreen::Loading() 
+{
+	bool b = isLoading;
+	isLoading = true;
+	return b;
 }

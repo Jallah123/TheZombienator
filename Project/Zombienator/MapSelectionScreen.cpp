@@ -68,7 +68,7 @@ struct MapSelectButton : Button {
 
 MapSelectionScreen::MapSelectionScreen(SDL_Renderer* ren): MenuScreen(ren)
 {
-	vector<string> test = DirectoryUtils::getFilesFromDirectory("maps", "json", true);
+	vector<string> test = DirectoryUtils::getFilesFromDirectory("maps/", "json", true);
 	for (auto s : test)
 	{
 		Map* m = new Map{ s };

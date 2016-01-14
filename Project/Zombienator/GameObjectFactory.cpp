@@ -230,7 +230,7 @@ Pickup * GameObjectFactory::CreateRandomPickup(Character * obj)
 	Pickup* p = nullptr;
 	int dice_roll = NumberUtility::RandomNumber(1, 100);
 	const int ammoChance = 10;
-	const int medKitChance = 2;
+	const int medKitChance = 5;
 	if (dice_roll <= medKitChance) {
 		p = CreateMedkit(obj);
 	}

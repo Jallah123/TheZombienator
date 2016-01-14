@@ -19,9 +19,11 @@
 #include "TutorialController.h"
 #include "PauseScreen.h"
 #include "PlayableCharacter.h"
+#include "GameTypeEnum.cpp"
 
 class Quadtree;
-class GameScreen : public AbstractScreen
+class GameScreen 
+	: public AbstractScreen
 {
 public:
 	GameScreen();
@@ -36,9 +38,13 @@ public:
 	void NextMap(SDL_Renderer & ren);
 	Quadtree* GetTree() { return this->tree; }
 	bool IsGameOver();
+	bool Loading();
 	InputContainer* inputContainer = &InputContainer::GetInstance();
 	void EndMap();
+
+	GameType& GetGameType() { return gameType; }
 private:
+	GameType gameType = GameType::STORY_MODE;
 	void ShakeScreen(float dt);
 	void UpdateZombies(float dt);
 	void SetZombieTargets();
@@ -51,8 +57,8 @@ private:
 	int YOffset = 0;
 	int stateChangeDelay = 50;
 	int timeLastStateChange = 0;
-	bool isInfinityMode = false;
 	bool inTransistion = false;
+	bool isLoading = false;
 	int cheatDelay = 50;
 	int timeCheatActivated = 0;
 	GameState currentState = GameState::INIT;
