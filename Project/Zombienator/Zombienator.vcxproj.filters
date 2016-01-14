@@ -603,12 +603,6 @@
     <ClCompile Include="LoadGameScreen.cpp">
       <Filter>Source Files\Views\MenuScreens</Filter>
     </ClCompile>
-    <ClCompile Include="SaveGameScreen.cpp">
-      <Filter>Source Files\Views\MenuScreens</Filter>
-    </ClCompile>
-    <ClCompile Include="SaveGameButton.cpp">
-      <Filter>Source Files\Views\UIComponents\Buttons</Filter>
-    </ClCompile>
     <ClCompile Include="LoadGameScreenButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -929,17 +923,11 @@
     <ClInclude Include="LoadSaveButton.h">
       <Filter>Header Files\Views\UIComponents\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="LoadGameScreen.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveGameScreen.h">
-      <Filter>Header Files\Views\MenuScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveGameButton.h">
-      <Filter>Header Files\Views\UIComponents\Buttons</Filter>
-    </ClInclude>
     <ClInclude Include="LoadGameScreenButton.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadGameScreen.h">
+      <Filter>Header Files\Views\MenuScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -260,8 +260,6 @@
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="PickupCollideBehaviour.cpp" />
-    <ClCompile Include="SaveGameButton.cpp" />
-    <ClCompile Include="SaveGameScreen.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SettingsScreen.cpp" />
     <ClCompile Include="MovingBulletCollideBehaviour.cpp" />
@@ -398,8 +396,6 @@
     <ClInclude Include="NonMovingBulletCollideBehaviour.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="PickupCollideBehaviour.h" />
-    <ClInclude Include="SaveGameButton.h" />
-    <ClInclude Include="SaveGameScreen.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="SettingsScreen.h" />
     <ClInclude Include="MovingBulletCollideBehaviour.h" />
