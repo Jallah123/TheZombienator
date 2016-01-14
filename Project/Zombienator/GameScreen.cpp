@@ -236,35 +236,6 @@ void GameScreen::HandleInput(float dt)
 		}
 	}
 
-	if (InputContainer::GetInstance().GetKeyState(SDLK_DELETE))
-	{
-
-	}
-	else if (InputContainer::GetInstance().GetKeyState(SDLK_INSERT))
-	{
-		// Open save file
-		ifstream save("assets/saves/story1.save");
-		// If opening succeeded
-		if (save)
-		{
-			// Load all maps in this vector
-			vector<string> maps;
-			char urls[512];
-			save.getline(urls, 512);
-			string s = urls;
-			StringUtils::Split(s, ',', maps);
-			// Remove character url
-			maps.erase(maps.begin());
-			// Add maps to mapqueue and change to that queue
-			MapFactory::GetInstance()->SetCustomQueue(maps);
-			currentState = GameState::TRANSITIONING;
-			save.close();
-		}
-		else {
-			cout << "No save";
-		}
-	}
-
 	if (timeCheatActivated <= 0) {
 		if (inputContainer->GetKeyState(SDLK_F3))
 		{
